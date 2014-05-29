@@ -6,13 +6,14 @@
 #import "SuperpoweredEcho.h"
 #import "SuperpoweredRoll.h"
 #import "SuperpoweredFlanger.h"
-#import "SuperpoweredDeinterleave.h"
+#import "SuperpoweredMixer.h"
 #import "SuperpoweredIOSAudioOutput.h"
 #import <mach/mach_time.h>
 
 @implementation Superpowered {
     SuperpoweredAdvancedAudioPlayer *player;
     SuperpoweredFX *effects[NUMFXUNITS];
+    SuperpoweredStereoMixer *mixer;
     SuperpoweredIOSAudioOutput *output;
     float *stereoBuffer;
     void *unaligned;
@@ -23,6 +24,7 @@
 
 - (void)dealloc {
     delete player;
+    delete mixer;
     for (int n = 2; n < NUMFXUNITS; n++) delete effects[n];
     free(unaligned);
 #if !__has_feature(objc_arc)
@@ -120,12 +122,14 @@
     eq->adjust();
     effects[EQINDEX] = eq;
     
-    output = [[SuperpoweredIOSAudioOutput alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:512 audioSessionCategory:AVAudioSessionCategoryPlayback multiRouteChannels:2 fixReceiver:true];
+    mixer = new SuperpoweredStereoMixer();
+    
+    output = [[SuperpoweredIOSAudioOutput alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:512 audioSessionCategory:AVAudioSessionCategoryPlayback multiRouteChannels:2 fixReceiver:true float32:false];
     return self;
 }
 
 // This is where the Superpowered magic happens.
-- (bool)audioProcessingCallback:(float **)buffers inputChannels:(unsigned int)inputChannels outputChannels:(unsigned int)outputChannels numberOfSamples:(unsigned int)numberOfSamples samplerate:(unsigned int)samplerate hostTime:(UInt64)hostTime {
+- (bool)audioProcessingCallback:(void **)buffers inputChannels:(unsigned int)inputChannels outputChannels:(unsigned int)outputChannels numberOfSamples:(unsigned int)numberOfSamples samplerate:(unsigned int)samplerate hostTime:(UInt64)hostTime {
     uint64_t startTime = mach_absolute_time();
     
     if (samplerate != lastSamplerate) { // Has samplerate changed?
@@ -149,9 +153,6 @@
     if (effects[DELAYINDEX]->process(silence ? NULL : stereoBuffer, stereoBuffer, numberOfSamples)) silence = false;
     if (effects[REVERBINDEX]->process(silence ? NULL : stereoBuffer, stereoBuffer, numberOfSamples)) silence = false;
     
-// The stereoBuffer is ready now, let's put the finished audio into the requested buffers.
-    if (!silence) SuperpoweredDeinterleave(stereoBuffer, buffers[0], buffers[1], numberOfSamples);
-    
 // CPU measurement code to show some nice numbers for the business guys.
     uint64_t elapsedUnits = mach_absolute_time() - startTime;
     if (elapsedUnits > maxTime) maxTime = elapsedUnits;
@@ -162,6 +163,12 @@
         maxUnitsPerSecond = (double(samplerate) / double(numberOfSamples)) * maxTime;
         samplesProcessed = timeUnitsProcessed = maxTime = 0;
     };
+    
+// The stereoBuffer is ready now, let's put the finished audio into the requested buffers.
+    float *mixerInputs[4] = { stereoBuffer, NULL, NULL, NULL };
+    float mixerInputLevels[8] = { 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f };
+    float mixerOutputLevels[2] = { 1.0f, 1.0f };
+    if (!silence) mixer->process(mixerInputs, buffers, mixerInputLevels, mixerOutputLevels, NULL, NULL, numberOfSamples, true);
     
     playing = player->playing;
     return !silence;

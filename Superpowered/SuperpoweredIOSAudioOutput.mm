@@ -2,9 +2,28 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import <AudioUnit/AudioUnit.h>
 #import <MediaPlayer/MediaPlayer.h>
-#ifndef __i386__
-#import <arm/arch.h>
-#endif
+
+void apple824ToFloat(int **input, float **output, int numberOfBuffers, int numberOfFrames) {
+    static const float conv_824_to_float = 1.0f / float(1 << 24);
+    for (int n = 0; n < numberOfBuffers; n++) {
+        int *src = input[n];
+        float *dst = output[n];
+        int f = numberOfFrames;
+        while (f) {
+            *dst++ = float(*src++) * conv_824_to_float;
+            f--;
+        };
+    };
+}
+
+void stereoFloatToApple824(float *input, int *output[2], int numberOfFrames) {
+    static const float conv_float_to_824 = float(1 << 24);
+    while (numberOfFrames) {
+        *output[0]++ = int(*input++ * conv_float_to_824);
+        *output[1]++ = int(*input++ * conv_float_to_824);
+        numberOfFrames--;
+    };
+}
 
 typedef enum audioDeviceType {
     audioDeviceType_USB = 1, audioDeviceType_headphone = 2, audioDeviceType_HDMI = 3, audioDeviceType_other = 4
@@ -32,7 +51,7 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
     SInt32 AUOutputChannelMap[32], AUInputChannelMap[32];
     
     int remoteIOChannels, silenceFrames, sampleRate, multiRouteChannels;
-    bool audioUnitRunning, multiRouteDeviceConnected, samplerate48000, iOS6, background, fixReceiver, changingSamplerate, waitingForReset;
+    bool audioUnitRunning, multiRouteDeviceConnected, samplerate48000, iOS6, background, fixReceiver, changingSamplerate, waitingForReset, float32;
 }
 
 @synthesize preferredBufferSizeSamples, inputEnabled;
@@ -60,14 +79,13 @@ static OSStatus audioProcessingCallback(void *inRefCon, AudioUnitRenderActionFla
     };
 
     if (ioData->mNumberBuffers != self->remoteIOChannels) return kAudioUnitErr_InvalidParameter; // Should never happen. But what if... ?
+    void *bufs[self->remoteIOChannels];
+    for (int n = 0; n < self->remoteIOChannels; n++) bufs[n] = ioData->mBuffers[n].mData;
     
     unsigned int inputChannels = 0;
     if (self->inputEnabled) {
         if (!AudioUnitRender(self->audioUnit, ioActionFlags, inTimeStamp, 1, inNumberFrames, ioData)) inputChannels = self->remoteIOChannels;
     };
-    
-    float *bufs[self->remoteIOChannels];
-    for (int n = 0; n < self->remoteIOChannels; n++) bufs[n] = (float *)ioData->mBuffers[n].mData;
     
 	if (![self->delegate audioProcessingCallback:bufs inputChannels:inputChannels outputChannels:self->remoteIOChannels numberOfSamples:inNumberFrames samplerate:self->samplerate48000 ? 48000 : 44100 hostTime:inTimeStamp->mHostTime]) {
         // Output silence.
@@ -87,7 +105,7 @@ static OSStatus audioProcessingCallback(void *inRefCon, AudioUnitRenderActionFla
 	return noErr;
 }
 
-- (id)initWithDelegate:(NSObject<SuperpoweredIOSAudioIODelegate> *)d preferredBufferSize:(unsigned int)samples audioSessionCategory:(NSString *)category multiRouteChannels:(int)channels fixReceiver:(bool)fr {
+- (id)initWithDelegate:(NSObject<SuperpoweredIOSAudioIODelegate> *)d preferredBufferSize:(unsigned int)samples audioSessionCategory:(NSString *)category multiRouteChannels:(int)channels fixReceiver:(bool)fr float32:(bool)fl32 {
     self = [super init];
     if (self) {
         iOS6 = ([[[UIDevice currentDevice] systemVersion] compare:@"6.0" options:NSNumericSearch] != NSOrderedAscending);
@@ -103,6 +121,7 @@ static OSStatus audioProcessingCallback(void *inRefCon, AudioUnitRenderActionFla
         inputEnabled = changingSamplerate = waitingForReset = false;
         delegate = d;
         fixReceiver = fr;
+        float32 = fl32;
         
         outputsAndInputs = [[NSMutableString alloc] initWithCapacity:256];
         silenceFrames = 0;
@@ -377,7 +396,7 @@ static OSStatus audioProcessingCallback(void *inRefCon, AudioUnitRenderActionFla
     AudioStreamBasicDescription format;
 	format.mSampleRate = sampleRate;
 	format.mFormatID = kAudioFormatLinearPCM;
-	format.mFormatFlags = kAudioFormatFlagIsFloat | kAudioFormatFlagIsPacked | kAudioFormatFlagIsNonInterleaved | kAudioFormatFlagsNativeEndian;
+	format.mFormatFlags = float32 ? (kAudioFormatFlagIsFloat | kAudioFormatFlagIsPacked | kAudioFormatFlagIsNonInterleaved | kAudioFormatFlagsNativeEndian) : kAudioFormatFlagsAudioUnitCanonical;
     format.mBitsPerChannel = 32;
 	format.mFramesPerPacket = 1;
     format.mBytesPerFrame = 4;

@@ -335,7 +335,7 @@ public:
  @param buffer 32-bit interleaved stereo input/output buffer. Should be numberOfSamples * 8 + 64 bytes big.
  @param bufferAdd If true, the contents of buffer will be preserved and audio will be added to them. If false, buffer is completely overwritten.
  @param numberOfSamples The number of samples to provide.
- @param volume 0.0f is silence, 1.0f is "original volume".
+ @param volume 0.0f is silence, 1.0f is "original volume". Changes are automatically smoothed between consecutive processes.
  @param masterBpm A bpm value to sync with. Use 0.0f for no syncing.
  @param masterMsElapsedSinceLastBeat How many milliseconds elapsed since the last beat on the other stuff we are syncing to. Use -1.0 to ignore.
 */

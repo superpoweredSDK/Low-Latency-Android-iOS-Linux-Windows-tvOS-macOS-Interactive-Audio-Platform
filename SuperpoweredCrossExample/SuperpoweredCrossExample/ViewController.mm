@@ -4,7 +4,7 @@
 #import "SuperpoweredRoll.h"
 #import "SuperpoweredFlanger.h"
 #import "SuperpoweredIOSAudioOutput.h"
-#import "SuperpoweredDeinterleave.h"
+#import "SuperpoweredMixer.h"
 #import <pthread.h>
 
 #define HEADROOM_DECIBEL 3.0f
@@ -16,6 +16,7 @@ static const float headroom = powf(10.0f, -HEADROOM_DECIBEL * 0.025);
     SuperpoweredRoll *roll;
     SuperpoweredFilter *filter;
     SuperpoweredFlanger *flanger;
+    SuperpoweredStereoMixer *mixer;
     unsigned char activeFx;
     float *stereoBuffer, crossValue, volA, volB;
     void *unaligned;
@@ -62,13 +63,16 @@ void playerEventCallbackB(void *clientData, SuperpoweredAdvancedAudioPlayerEvent
     filter = new SuperpoweredFilter(SuperpoweredFilter_Resonant_Lowpass, 44100);
     flanger = new SuperpoweredFlanger(44100);
     
-    output = [[SuperpoweredIOSAudioOutput alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:512 audioSessionCategory:AVAudioSessionCategoryPlayback multiRouteChannels:2 fixReceiver:true];
+    mixer = new SuperpoweredStereoMixer();
+    
+    output = [[SuperpoweredIOSAudioOutput alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:512 audioSessionCategory:AVAudioSessionCategoryPlayback multiRouteChannels:2 fixReceiver:true float32:false];
     [output start];
 }
 
 - (void)dealloc {
     delete playerA;
     delete playerB;
+    delete mixer;
     free(unaligned);
     pthread_mutex_destroy(&mutex);
 #if !__has_feature(objc_arc)
@@ -83,7 +87,7 @@ void playerEventCallbackB(void *clientData, SuperpoweredAdvancedAudioPlayerEvent
 }
 
 // This is where the Superpowered magic happens.
-- (bool)audioProcessingCallback:(float **)buffers inputChannels:(unsigned int)inputChannels outputChannels:(unsigned int)outputChannels numberOfSamples:(unsigned int)numberOfSamples samplerate:(unsigned int)samplerate hostTime:(UInt64)hostTime {
+- (bool)audioProcessingCallback:(void **)buffers inputChannels:(unsigned int)inputChannels outputChannels:(unsigned int)outputChannels numberOfSamples:(unsigned int)numberOfSamples samplerate:(unsigned int)samplerate hostTime:(UInt64)hostTime {
     if (samplerate != lastSamplerate) { // Has samplerate changed?
         lastSamplerate = samplerate;
         playerA->setSamplerate(samplerate);
@@ -112,8 +116,11 @@ void playerEventCallbackB(void *clientData, SuperpoweredAdvancedAudioPlayerEvent
     
     pthread_mutex_unlock(&mutex);
     
-// The stereoBuffer is ready now, let's put the finished audio into the requested buffers.
-    if (!silence) SuperpoweredDeinterleave(stereoBuffer, buffers[0], buffers[1], numberOfSamples);
+    // The stereoBuffer is ready now, let's put the finished audio into the requested buffers.
+    float *mixerInputs[4] = { stereoBuffer, NULL, NULL, NULL };
+    float mixerInputLevels[8] = { 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f };
+    float mixerOutputLevels[2] = { 1.0f, 1.0f };
+    if (!silence) mixer->process(mixerInputs, buffers, mixerInputLevels, mixerOutputLevels, NULL, NULL, numberOfSamples, true);
     return !silence;
 }
 

@@ -93,13 +93,13 @@ public:
     void reset();
     
 /**
- @brief Processes the audio.
+ @brief Processes interleaved audio.
  
  @return Put something into output or not.
  
  @param input 32-bit interleaved stereo input buffer. Can point to the same location with output (in-place processing).
  @param output 32-bit interleaved stereo output buffer. Can point to the same location with input (in-place processing).
- @param numberOfSamples Should be 20 minimum.
+ @param numberOfSamples Should be 32 minimum.
 */
     bool process(float *input, float *output, unsigned int numberOfSamples);
     

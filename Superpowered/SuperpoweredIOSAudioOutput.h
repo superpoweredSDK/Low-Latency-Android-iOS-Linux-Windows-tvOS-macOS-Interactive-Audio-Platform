@@ -27,8 +27,9 @@ struct multiRouteInputChannelMap;
  @param audioSessionCategory The audio session category. If you want to use MultiRoute, set it to AVAudioSessionCategoryPlayback, and set multiRouteChannels to more than 2. You don't loose the ability of AirPlay this way.
  @param multiRouteChannels The number of channels you provide in the audio processing callback. Used in the MultiRoute category only.
  @param fixReceiver Sometimes the audio goes to the phone's receiver ("ear speaker"). Set this to true if you want the real speaker instead.
+ @param float32 The canonical iOS audio format is "Apple 8.24". Set this to true if you want 32-bit floating point instead.
  */
-- (id)initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)delegate preferredBufferSize:(unsigned int)preferredBufferSize audioSessionCategory:(NSString *)audioSessionCategory multiRouteChannels:(int)multiRouteChannels fixReceiver:(bool)fixReceiver;
+- (id)initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)delegate preferredBufferSize:(unsigned int)preferredBufferSize audioSessionCategory:(NSString *)audioSessionCategory multiRouteChannels:(int)multiRouteChannels fixReceiver:(bool)fixReceiver float32:(bool)float32;
 
 /**
  @brief Starts audio processing.
@@ -84,7 +85,7 @@ struct multiRouteInputChannelMap;
  
  @warning It's called on a high priority real-time audio thread, so please take care of blocking and processing time to prevent audio dropouts.
  */
-- (bool)audioProcessingCallback:(float **)buffers inputChannels:(unsigned int)inputChannels outputChannels:(unsigned int)outputChannels numberOfSamples:(unsigned int)numberOfSamples samplerate:(unsigned int)samplerate hostTime:(UInt64)hostTime;
+- (bool)audioProcessingCallback:(void **)buffers inputChannels:(unsigned int)inputChannels outputChannels:(unsigned int)outputChannels numberOfSamples:(unsigned int)numberOfSamples samplerate:(unsigned int)samplerate hostTime:(UInt64)hostTime;
 
 @end
 
@@ -150,3 +151,26 @@ typedef struct multiRouteInputChannelMap {
     int USBChannels[32];
     int numberOfUSBChannelsAvailable; // READ ONLY
 } multiRouteInputChannelMap;
+
+/**
+ @brief Converts from Apple 8.24 to 32-bit floating point.
+ 
+ This code is not optimized with Superpowered.
+ 
+ @param input Input buffers.
+ @param output Output buffers.
+ @param numberOfBuffers How many buffers to convert.
+ @param numberOfFrames How many frames to convert.
+ */
+void apple824ToFloat(int **input, float **output, int numberOfBuffers, int numberOfFrames);
+
+/**
+ @brief Converts from stereo interleaved 32-bit floating point to non-interleaved Apple 8.24.
+ 
+ This code is not optimized with Superpowered. If you have the Superpowered Audio SDK, please use the SuperpoweredStereoMixer for this conversion.
+ 
+ @param input Input buffer (stereo, interleaved, 32-bit floating point).
+ @param output Two output buffer.
+ @param numberOfFrames How many frames to convert.
+ */
+void stereoFloatToApple824(float *input, int *output[2], int numberOfFrames);

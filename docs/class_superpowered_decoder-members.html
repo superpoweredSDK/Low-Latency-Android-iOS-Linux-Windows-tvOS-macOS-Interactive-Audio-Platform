@@ -1,3 +1,4 @@
+<!-- HTML header for doxygen 1.8.7-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,6 +10,7 @@
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="customdoxygen.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -18,7 +20,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -55,16 +57,18 @@
   <tr class="even"><td class="entry"><a class="el" href="class_superpowered_decoder.html#a28fef6e884182f746d8b21316d04c5cc">decode</a>(short int *pcmOutput, unsigned int *samples)</td><td class="entry"><a class="el" href="class_superpowered_decoder.html">SuperpoweredDecoder</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>durationSamples</b> (defined in <a class="el" href="class_superpowered_decoder.html">SuperpoweredDecoder</a>)</td><td class="entry"><a class="el" href="class_superpowered_decoder.html">SuperpoweredDecoder</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>durationSeconds</b> (defined in <a class="el" href="class_superpowered_decoder.html">SuperpoweredDecoder</a>)</td><td class="entry"><a class="el" href="class_superpowered_decoder.html">SuperpoweredDecoder</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>kind</b> (defined in <a class="el" href="class_superpowered_decoder.html">SuperpoweredDecoder</a>)</td><td class="entry"><a class="el" href="class_superpowered_decoder.html">SuperpoweredDecoder</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_superpowered_decoder.html#aefd57c4f8585f686fdbcfc6bd6d73c6e">open</a>(const char *path)</td><td class="entry"><a class="el" href="class_superpowered_decoder.html">SuperpoweredDecoder</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="class_superpowered_decoder.html#ae0544563f5ee1d11f660aa8cd994d72b">reconnectToMediaserver</a>()</td><td class="entry"><a class="el" href="class_superpowered_decoder.html">SuperpoweredDecoder</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>samplePosition</b> (defined in <a class="el" href="class_superpowered_decoder.html">SuperpoweredDecoder</a>)</td><td class="entry"><a class="el" href="class_superpowered_decoder.html">SuperpoweredDecoder</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>samplerate</b> (defined in <a class="el" href="class_superpowered_decoder.html">SuperpoweredDecoder</a>)</td><td class="entry"><a class="el" href="class_superpowered_decoder.html">SuperpoweredDecoder</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>samplesPerFrame</b> (defined in <a class="el" href="class_superpowered_decoder.html">SuperpoweredDecoder</a>)</td><td class="entry"><a class="el" href="class_superpowered_decoder.html">SuperpoweredDecoder</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="class_superpowered_decoder.html#add513f60d474c54a4054abf52e3aa91a">seekTo</a>(unsigned int sample, bool precise)</td><td class="entry"><a class="el" href="class_superpowered_decoder.html">SuperpoweredDecoder</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_superpowered_decoder.html#a1c4e5c1c53780654b1317895958a4a27">SuperpoweredDecoder</a>(bool mediaServerOnly)</td><td class="entry"><a class="el" href="class_superpowered_decoder.html">SuperpoweredDecoder</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>~SuperpoweredDecoder</b>() (defined in <a class="el" href="class_superpowered_decoder.html">SuperpoweredDecoder</a>)</td><td class="entry"><a class="el" href="class_superpowered_decoder.html">SuperpoweredDecoder</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_superpowered_decoder.html#ad4c4d71c5f2523f4c783a48e0cec7a22">getMetaData</a>(char **artist, char **title, void **image, int *imageSizeBytes, float *bpm, SuperpoweredDecoderID3Callback callback, void *clientData, int maxFrameDataSize)</td><td class="entry"><a class="el" href="class_superpowered_decoder.html">SuperpoweredDecoder</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>kind</b> (defined in <a class="el" href="class_superpowered_decoder.html">SuperpoweredDecoder</a>)</td><td class="entry"><a class="el" href="class_superpowered_decoder.html">SuperpoweredDecoder</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_superpowered_decoder.html#ab19a8fdb125efa8775485e87d91790cf">open</a>(const char *path, bool metaOnly)</td><td class="entry"><a class="el" href="class_superpowered_decoder.html">SuperpoweredDecoder</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_superpowered_decoder.html#ae0544563f5ee1d11f660aa8cd994d72b">reconnectToMediaserver</a>()</td><td class="entry"><a class="el" href="class_superpowered_decoder.html">SuperpoweredDecoder</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>samplePosition</b> (defined in <a class="el" href="class_superpowered_decoder.html">SuperpoweredDecoder</a>)</td><td class="entry"><a class="el" href="class_superpowered_decoder.html">SuperpoweredDecoder</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>samplerate</b> (defined in <a class="el" href="class_superpowered_decoder.html">SuperpoweredDecoder</a>)</td><td class="entry"><a class="el" href="class_superpowered_decoder.html">SuperpoweredDecoder</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>samplesPerFrame</b> (defined in <a class="el" href="class_superpowered_decoder.html">SuperpoweredDecoder</a>)</td><td class="entry"><a class="el" href="class_superpowered_decoder.html">SuperpoweredDecoder</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_superpowered_decoder.html#add513f60d474c54a4054abf52e3aa91a">seekTo</a>(unsigned int sample, bool precise)</td><td class="entry"><a class="el" href="class_superpowered_decoder.html">SuperpoweredDecoder</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_superpowered_decoder.html#a1c4e5c1c53780654b1317895958a4a27">SuperpoweredDecoder</a>(bool mediaServerOnly)</td><td class="entry"><a class="el" href="class_superpowered_decoder.html">SuperpoweredDecoder</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>~SuperpoweredDecoder</b>() (defined in <a class="el" href="class_superpowered_decoder.html">SuperpoweredDecoder</a>)</td><td class="entry"><a class="el" href="class_superpowered_decoder.html">SuperpoweredDecoder</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
+<!-- HTML footer for doxygen 1.8.7-->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

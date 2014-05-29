@@ -1,3 +1,4 @@
+<!-- HTML header for doxygen 1.8.7-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,6 +10,7 @@
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="customdoxygen.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -18,7 +20,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -59,9 +61,9 @@
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aefd57c4f8585f686fdbcfc6bd6d73c6e"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#aefd57c4f8585f686fdbcfc6bd6d73c6e">open</a> (const char *path)</td></tr>
-<tr class="memdesc:aefd57c4f8585f686fdbcfc6bd6d73c6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a file for decoding.  <a href="#aefd57c4f8585f686fdbcfc6bd6d73c6e">More...</a><br /></td></tr>
-<tr class="separator:aefd57c4f8585f686fdbcfc6bd6d73c6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab19a8fdb125efa8775485e87d91790cf"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#ab19a8fdb125efa8775485e87d91790cf">open</a> (const char *path, bool metaOnly)</td></tr>
+<tr class="memdesc:ab19a8fdb125efa8775485e87d91790cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a file for decoding.  <a href="#ab19a8fdb125efa8775485e87d91790cf">More...</a><br /></td></tr>
+<tr class="separator:ab19a8fdb125efa8775485e87d91790cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28fef6e884182f746d8b21316d04c5cc"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#a28fef6e884182f746d8b21316d04c5cc">decode</a> (short int *pcmOutput, unsigned int *samples)</td></tr>
 <tr class="memdesc:a28fef6e884182f746d8b21316d04c5cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decodes the requested number of samples.  <a href="#a28fef6e884182f746d8b21316d04c5cc">More...</a><br /></td></tr>
 <tr class="separator:a28fef6e884182f746d8b21316d04c5cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -71,6 +73,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae0544563f5ee1d11f660aa8cd994d72b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#ae0544563f5ee1d11f660aa8cd994d72b">reconnectToMediaserver</a> ()</td></tr>
 <tr class="memdesc:ae0544563f5ee1d11f660aa8cd994d72b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this on a phone call or other interruption.  <a href="#ae0544563f5ee1d11f660aa8cd994d72b">More...</a><br /></td></tr>
 <tr class="separator:ae0544563f5ee1d11f660aa8cd994d72b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4c4d71c5f2523f4c783a48e0cec7a22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#ad4c4d71c5f2523f4c783a48e0cec7a22">getMetaData</a> (char **artist, char **title, void **image, int *imageSizeBytes, float *bpm, SuperpoweredDecoderID3Callback callback, void *clientData, int maxFrameDataSize)</td></tr>
+<tr class="memdesc:ad4c4d71c5f2523f4c783a48e0cec7a22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns with often used metadata.  <a href="#ad4c4d71c5f2523f4c783a48e0cec7a22">More...</a><br /></td></tr>
+<tr class="separator:ad4c4d71c5f2523f4c783a48e0cec7a22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c4e5c1c53780654b1317895958a4a27"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#a1c4e5c1c53780654b1317895958a4a27">SuperpoweredDecoder</a> (bool mediaServerOnly)</td></tr>
 <tr class="memdesc:a1c4e5c1c53780654b1317895958a4a27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lightweight constructor, doesn't do or allocate much.  <a href="#a1c4e5c1c53780654b1317895958a4a27">More...</a><br /></td></tr>
 <tr class="separator:a1c4e5c1c53780654b1317895958a4a27"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -97,7 +102,7 @@ SuperpoweredDecoder_Kind&#160;</td><td class="memItemRight" valign="bottom"><b>k
 <tr class="separator:a45c43b63f4d7c4fc3be294cd389c0b02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Thread safety: single threaded, not thread safe. After a succesful <a class="el" href="class_superpowered_decoder.html#aefd57c4f8585f686fdbcfc6bd6d73c6e" title="Opens a file for decoding. ">open()</a>, samplePosition changes only.</p>
+<div class="textblock"><p>Thread safety: single threaded, not thread safe. After a succesful <a class="el" href="class_superpowered_decoder.html#ab19a8fdb125efa8775485e87d91790cf" title="Opens a file for decoding. ">open()</a>, samplePosition changes only.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">durationSeconds</td><td>The duration of the current file in seconds. Read only. </td></tr>
@@ -133,7 +138,7 @@ SuperpoweredDecoder_Kind&#160;</td><td class="memItemRight" valign="bottom"><b>k
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="aefd57c4f8585f686fdbcfc6bd6d73c6e"></a>
+<a class="anchor" id="ab19a8fdb125efa8775485e87d91790cf"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -141,11 +146,28 @@ SuperpoweredDecoder_Kind&#160;</td><td class="memItemRight" valign="bottom"><b>k
           <td class="memname">const char* SuperpoweredDecoder::open </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>path</em></td><td>)</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>metaOnly</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Full file system path. </td></tr>
+    <tr><td class="paramname">metaOnly</td><td>If true, it opens the file for fast metadata reading only, not for decoding audio.</td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>NULL if successful, or an error string. </dd></dl>
 
 </div>
@@ -234,7 +256,83 @@ SuperpoweredDecoder_Kind&#160;</td><td class="memItemRight" valign="bottom"><b>k
 
 </div>
 </div>
+<a class="anchor" id="ad4c4d71c5f2523f4c783a48e0cec7a22"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SuperpoweredDecoder::getMetaData </td>
+          <td>(</td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>artist</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>title</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void **&#160;</td>
+          <td class="paramname"><em>image</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>imageSizeBytes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>bpm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SuperpoweredDecoderID3Callback&#160;</td>
+          <td class="paramname"><em>callback</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>clientData</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>maxFrameDataSize</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">artist</td><td>Artist, set to NULL if you're not interested. Returns NULL if can not be retrieved. Ownership passed (you must free() after finished using it). </td></tr>
+    <tr><td class="paramname">title</td><td>Title, set to NULL if you're not interested. Returns NULL if can not be retrieved. Ownership passed (you must free() after finished using it). </td></tr>
+    <tr><td class="paramname">image</td><td>Raw image data (usually PNG or JPG). Set to NULL if you're not interested. Returns NULL if can not be retrieved. Ownership passed (you must free() after finished using it). </td></tr>
+    <tr><td class="paramname">imageSizeBytes</td><td>Size of the raw image data. Set to NULL if you're not interested. </td></tr>
+    <tr><td class="paramname">bpm</td><td>Tempo in beats per minute. Set to NULL if you're not interested. </td></tr>
+    <tr><td class="paramname">callback</td><td>A callback to process other ID3 frames. Set to NULL if you're not interested. </td></tr>
+    <tr><td class="paramname">clientData</td><td>A custom pointer the callback receives. </td></tr>
+    <tr><td class="paramname">maxFrameDataSize</td><td>The maximum frame size in bytes to receive by the callback, if the decoder can not memory map the entire audio file. Affects memory usage. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 </div><!-- contents -->
+<!-- HTML footer for doxygen 1.8.7-->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

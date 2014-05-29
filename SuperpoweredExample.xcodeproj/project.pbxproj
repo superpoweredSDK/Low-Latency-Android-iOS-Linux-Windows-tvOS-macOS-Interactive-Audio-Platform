@@ -22,7 +22,6 @@
 		1B85C550189E6F20006D6C3C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B85C54F189E6F20006D6C3C /* Images.xcassets */; };
 		1B85C56F189E70E5006D6C3C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B85C56E189E70E5006D6C3C /* AudioToolbox.framework */; };
 		1B85C571189EA027006D6C3C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B85C570189EA027006D6C3C /* AVFoundation.framework */; };
-		1BA11FB318FBBF9A00484827 /* SuperpoweredDeinterleave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1BA11FAF18FBBF9A00484827 /* SuperpoweredDeinterleave.cpp */; };
 		1BA11FB418FBBF9A00484827 /* SuperpoweredIOSAudioOutput.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1BA11FB218FBBF9A00484827 /* SuperpoweredIOSAudioOutput.mm */; };
 		1BA11FC618FBBFB300484827 /* libSuperpoweredAudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BA11FC518FBBFB300484827 /* libSuperpoweredAudio.a */; };
 		1BA11FC818FC28F300484827 /* track.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1BA11FC718FC28F300484827 /* track.mp3 */; };
@@ -52,8 +51,6 @@
 		1B85C54F189E6F20006D6C3C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SuperpoweredExample/Images.xcassets; sourceTree = "<group>"; };
 		1B85C56E189E70E5006D6C3C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		1B85C570189EA027006D6C3C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		1BA11FAF18FBBF9A00484827 /* SuperpoweredDeinterleave.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SuperpoweredDeinterleave.cpp; path = Superpowered/SuperpoweredDeinterleave.cpp; sourceTree = "<group>"; };
-		1BA11FB018FBBF9A00484827 /* SuperpoweredDeinterleave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperpoweredDeinterleave.h; path = Superpowered/SuperpoweredDeinterleave.h; sourceTree = "<group>"; };
 		1BA11FB118FBBF9A00484827 /* SuperpoweredIOSAudioOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperpoweredIOSAudioOutput.h; path = Superpowered/SuperpoweredIOSAudioOutput.h; sourceTree = "<group>"; };
 		1BA11FB218FBBF9A00484827 /* SuperpoweredIOSAudioOutput.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SuperpoweredIOSAudioOutput.mm; path = Superpowered/SuperpoweredIOSAudioOutput.mm; sourceTree = "<group>"; };
 		1BA11FB518FBBFAB00484827 /* Superpowered3BandEQ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Superpowered3BandEQ.h; path = Superpowered/Superpowered3BandEQ.h; sourceTree = "<group>"; };
@@ -76,6 +73,7 @@
 		1BA11FC718FC28F300484827 /* track.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = track.mp3; path = SuperpoweredExample/track.mp3; sourceTree = "<group>"; };
 		1BADEA8D18DB8925001E9516 /* fftTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fftTest.h; path = SuperpoweredExample/fftTest.h; sourceTree = "<group>"; };
 		1BADEA8E18DB892F001E9516 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		1BAF73EB19361C3D00154D8C /* SuperpoweredMixer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredMixer.h; path = Superpowered/SuperpoweredMixer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				1BA11FC518FBBFB300484827 /* libSuperpoweredAudio.a */,
-				1BADEAB918DB8A30001E9516 /* Superpowered Open Source */,
+				1BA11FB118FBBF9A00484827 /* SuperpoweredIOSAudioOutput.h */,
+				1BA11FB218FBBF9A00484827 /* SuperpoweredIOSAudioOutput.mm */,
 				1BADEA9018DB898A001E9516 /* Superpowered Headers */,
 				1B85C53E189E6F20006D6C3C /* Supporting Files */,
 				1B85C546189E6F20006D6C3C /* AppDelegate.h */,
@@ -171,6 +170,7 @@
 				1BA11FBD18FBBFAB00484827 /* SuperpoweredFlanger.h */,
 				1BA11FBE18FBBFAB00484827 /* SuperpoweredFX.h */,
 				1BA11FBF18FBBFAB00484827 /* SuperpoweredGate.h */,
+				1BAF73EB19361C3D00154D8C /* SuperpoweredMixer.h */,
 				1BA11FC018FBBFAB00484827 /* SuperpoweredResampler.h */,
 				1BA11FC118FBBFAB00484827 /* SuperpoweredReverb.h */,
 				1BA11FC218FBBFAB00484827 /* SuperpoweredRoll.h */,
@@ -178,17 +178,6 @@
 				1BA11FC418FBBFAB00484827 /* SuperpoweredWhoosh.h */,
 			);
 			name = "Superpowered Headers";
-			sourceTree = "<group>";
-		};
-		1BADEAB918DB8A30001E9516 /* Superpowered Open Source */ = {
-			isa = PBXGroup;
-			children = (
-				1BA11FAF18FBBF9A00484827 /* SuperpoweredDeinterleave.cpp */,
-				1BA11FB018FBBF9A00484827 /* SuperpoweredDeinterleave.h */,
-				1BA11FB118FBBF9A00484827 /* SuperpoweredIOSAudioOutput.h */,
-				1BA11FB218FBBF9A00484827 /* SuperpoweredIOSAudioOutput.mm */,
-			);
-			name = "Superpowered Open Source";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,7 +257,6 @@
 			files = (
 				1B85C54E189E6F20006D6C3C /* ViewController.mm in Sources */,
 				1B7D530618ABB43B00931EE7 /* Superpowered.mm in Sources */,
-				1BA11FB318FBBF9A00484827 /* SuperpoweredDeinterleave.cpp in Sources */,
 				1B7D530318ABA93400931EE7 /* CoreAudio.mm in Sources */,
 				1BA11FB418FBBF9A00484827 /* SuperpoweredIOSAudioOutput.mm in Sources */,
 				1B85C548189E6F20006D6C3C /* AppDelegate.mm in Sources */,

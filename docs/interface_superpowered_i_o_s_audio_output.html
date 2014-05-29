@@ -1,3 +1,4 @@
+<!-- HTML header for doxygen 1.8.7-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,6 +10,7 @@
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="customdoxygen.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -18,7 +20,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -61,9 +63,9 @@
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Instance Methods</h2></td></tr>
-<tr class="memitem:a82f1f1968fef849909e93756482eda50"><td class="memItemLeft" align="right" valign="top">(id)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_superpowered_i_o_s_audio_output.html#a82f1f1968fef849909e93756482eda50">initWithDelegate:preferredBufferSize:audioSessionCategory:multiRouteChannels:fixReceiver:</a></td></tr>
-<tr class="memdesc:a82f1f1968fef849909e93756482eda50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the audio output instance.  <a href="#a82f1f1968fef849909e93756482eda50">More...</a><br /></td></tr>
-<tr class="separator:a82f1f1968fef849909e93756482eda50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d982228e0aa034ae11ffea489652fe1"><td class="memItemLeft" align="right" valign="top">(id)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_superpowered_i_o_s_audio_output.html#a8d982228e0aa034ae11ffea489652fe1">initWithDelegate:preferredBufferSize:audioSessionCategory:multiRouteChannels:fixReceiver:float32:</a></td></tr>
+<tr class="memdesc:a8d982228e0aa034ae11ffea489652fe1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the audio output instance.  <a href="#a8d982228e0aa034ae11ffea489652fe1">More...</a><br /></td></tr>
+<tr class="separator:a8d982228e0aa034ae11ffea489652fe1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9bfbbf262926e01409fe7cde5f9decfc"><td class="memItemLeft" align="right" valign="top">(bool)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_superpowered_i_o_s_audio_output.html#a9bfbbf262926e01409fe7cde5f9decfc">start</a></td></tr>
 <tr class="memdesc:a9bfbbf262926e01409fe7cde5f9decfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts audio processing.  <a href="#a9bfbbf262926e01409fe7cde5f9decfc">More...</a><br /></td></tr>
 <tr class="separator:a9bfbbf262926e01409fe7cde5f9decfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -90,7 +92,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section warning"><dt>Warning</dt><dd>All methods and setters should be called on the main thread only! </dd></dl>
 </div><h2 class="groupheader">Method Documentation</h2>
-<a class="anchor" id="a82f1f1968fef849909e93756482eda50"></a>
+<a class="anchor" id="a8d982228e0aa034ae11ffea489652fe1"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -122,7 +124,13 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
           <td class="paramkey">fixReceiver:</td>
           <td></td>
           <td class="paramtype">(bool)&#160;</td>
-          <td class="paramname"><em>fixReceiver</em>&#160;</td>
+          <td class="paramname"><em>fixReceiver</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">float32:</td>
+          <td></td>
+          <td class="paramtype">(bool)&#160;</td>
+          <td class="paramname"><em>float32</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -138,6 +146,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
     <tr><td class="paramname">audioSessionCategory</td><td>The audio session category. If you want to use MultiRoute, set it to AVAudioSessionCategoryPlayback, and set multiRouteChannels to more than 2. You don't loose the ability of AirPlay this way. </td></tr>
     <tr><td class="paramname">multiRouteChannels</td><td>The number of channels you provide in the audio processing callback. Used in the MultiRoute category only. </td></tr>
     <tr><td class="paramname">fixReceiver</td><td>Sometimes the audio goes to the phone's receiver ("ear speaker"). Set this to true if you want the real speaker instead. </td></tr>
+    <tr><td class="paramname">float32</td><td>The canonical iOS audio format is "Apple 8.24". Set this to true if you want 32-bit floating point instead. </td></tr>
   </table>
   </dd>
 </dl>
@@ -161,6 +170,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
 </div>
 </div>
 </div><!-- contents -->
+<!-- HTML footer for doxygen 1.8.7-->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

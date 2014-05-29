@@ -1,4 +1,4 @@
-struct musicFileInternals;
+struct decoderInternals;
 
 #define SUPERPOWEREDDECODER_EOF 0
 #define SUPERPOWEREDDECODER_OK 1
@@ -7,6 +7,16 @@ struct musicFileInternals;
 typedef enum SuperpoweredDecoder_Kind {
     SuperpoweredDecoder_MP3, SuperpoweredDecoder_AAC, SuperpoweredDecoder_AIFF, SuperpoweredDecoder_WAV, SuperpoweredDecoder_MediaServer
 } SuperpoweredDecoder_Kind;
+
+/**
+ @brief Callback for parsing ID3 frames. Compatible with 2.3 and 2.4 only.
+ 
+ @param clientData Some custom pointer you set when you called getMetaData().
+ @param frameName The ID3 frame name (four char).
+ @param frameData The data inside the ID3 frame.
+ @param frameDataSize Data size in bytes.
+ */
+typedef void (* SuperpoweredDecoderID3Callback) (void *clientData, void *frameName, void *frameData, int frameDataSize);
 
 /**
  @brief Audio file decoder. Provides uncompresses PCM samples from various compressed formats.
@@ -30,9 +40,12 @@ public:
 /**
  @brief Opens a file for decoding.
  
+ @param path Full file system path.
+ @param metaOnly If true, it opens the file for fast metadata reading only, not for decoding audio.
+ 
  @return NULL if successful, or an error string.
  */
-    const char *open(const char *path);
+    const char *open(const char *path, bool metaOnly);
 /**
  @brief Decodes the requested number of samples.
  
@@ -58,6 +71,19 @@ public:
  Call this after a media server reset or audio session interrupt to resume playback.
  */
     void reconnectToMediaserver();
+/**
+ @brief Returns with often used metadata.
+ 
+ @param artist Artist, set to NULL if you're not interested. Returns NULL if can not be retrieved. Ownership passed (you must free() after finished using it).
+ @param title Title, set to NULL if you're not interested. Returns NULL if can not be retrieved. Ownership passed (you must free() after finished using it).
+ @param image Raw image data (usually PNG or JPG). Set to NULL if you're not interested. Returns NULL if can not be retrieved. Ownership passed (you must free() after finished using it).
+ @param imageSizeBytes Size of the raw image data. Set to NULL if you're not interested.
+ @param bpm Tempo in beats per minute. Set to NULL if you're not interested.
+ @param callback A callback to process other ID3 frames. Set to NULL if you're not interested.
+ @param clientData A custom pointer the callback receives.
+ @param maxFrameDataSize The maximum frame size in bytes to receive by the callback, if the decoder can not memory map the entire audio file. Affects memory usage.
+ */
+    void getMetaData(char **artist, char **title, void **image, int *imageSizeBytes, float *bpm, SuperpoweredDecoderID3Callback callback, void *clientData, int maxFrameDataSize);
     
 /**
  @brief Lightweight constructor, doesn't do or allocate much. 
@@ -68,7 +94,17 @@ public:
     ~SuperpoweredDecoder();
     
 private:
-    musicFileInternals *internals;
+    decoderInternals *internals;
     SuperpoweredDecoder(const SuperpoweredDecoder&);
     SuperpoweredDecoder& operator=(const SuperpoweredDecoder&);
 };
+
+/**
+ @brief Helper function to parse ID3 text frames.
+ 
+ @return A pointer to the text in UTF-8 encoding (you must free() it), or NULL if empty.
+ 
+ @param frameData Frame data without the frame header.
+ @param frameLength The data length in bytes.
+ */
+char *getID3TextFrameUTF8(unsigned char *frameData, int frameLength);

@@ -1,3 +1,4 @@
+<!-- HTML header for doxygen 1.8.7-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,6 +10,7 @@
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="customdoxygen.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -18,7 +20,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -47,7 +49,7 @@
 <div class="title">SuperpoweredDecoder.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">struct </span>musicFileInternals;</div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">struct </span>decoderInternals;</div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#define SUPERPOWEREDDECODER_EOF 0</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#define SUPERPOWEREDDECODER_OK 1</span></div>
@@ -57,33 +59,40 @@
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    SuperpoweredDecoder_MP3, SuperpoweredDecoder_AAC, SuperpoweredDecoder_AIFF, SuperpoweredDecoder_WAV, SuperpoweredDecoder_MediaServer</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;} SuperpoweredDecoder_Kind;</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_superpowered_decoder.html">   23</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_superpowered_decoder.html">SuperpoweredDecoder</a> {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">// READ ONLY properties</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">double</span> durationSeconds;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> durationSamples, samplePosition, samplerate, samplesPerFrame;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    SuperpoweredDecoder_Kind kind;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="class_superpowered_decoder.html#aefd57c4f8585f686fdbcfc6bd6d73c6e">open</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *path);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code" href="class_superpowered_decoder.html#a28fef6e884182f746d8b21316d04c5cc">decode</a>(<span class="keywordtype">short</span> <span class="keywordtype">int</span> *pcmOutput, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> *samples);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_superpowered_decoder.html#add513f60d474c54a4054abf52e3aa91a">seekTo</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> sample, <span class="keywordtype">bool</span> precise);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_decoder.html#ae0544563f5ee1d11f660aa8cd994d72b">reconnectToMediaserver</a>();</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <a class="code" href="class_superpowered_decoder.html#a1c4e5c1c53780654b1317895958a4a27">SuperpoweredDecoder</a>(<span class="keywordtype">bool</span> mediaServerOnly);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    ~<a class="code" href="class_superpowered_decoder.html">SuperpoweredDecoder</a>();</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    musicFileInternals *internals;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="class_superpowered_decoder.html#a1c4e5c1c53780654b1317895958a4a27">SuperpoweredDecoder</a>(<span class="keyword">const</span> <a class="code" href="class_superpowered_decoder.html">SuperpoweredDecoder</a>&amp;);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="class_superpowered_decoder.html">SuperpoweredDecoder</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="class_superpowered_decoder.html">SuperpoweredDecoder</a>&amp;);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;};</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">typedef</span> void (* SuperpoweredDecoderID3Callback) (<span class="keywordtype">void</span> *clientData, <span class="keywordtype">void</span> *frameName, <span class="keywordtype">void</span> *frameData, <span class="keywordtype">int</span> frameDataSize);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="class_superpowered_decoder.html">   33</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_superpowered_decoder.html">SuperpoweredDecoder</a> {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">// READ ONLY properties</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">double</span> durationSeconds;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> durationSamples, samplePosition, samplerate, samplesPerFrame;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    SuperpoweredDecoder_Kind kind;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="class_superpowered_decoder.html#ab19a8fdb125efa8775485e87d91790cf">open</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *path, <span class="keywordtype">bool</span> metaOnly);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code" href="class_superpowered_decoder.html#a28fef6e884182f746d8b21316d04c5cc">decode</a>(<span class="keywordtype">short</span> <span class="keywordtype">int</span> *pcmOutput, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> *samples);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_superpowered_decoder.html#add513f60d474c54a4054abf52e3aa91a">seekTo</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> sample, <span class="keywordtype">bool</span> precise);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_decoder.html#ae0544563f5ee1d11f660aa8cd994d72b">reconnectToMediaserver</a>();</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_decoder.html#ad4c4d71c5f2523f4c783a48e0cec7a22">getMetaData</a>(<span class="keywordtype">char</span> **artist, <span class="keywordtype">char</span> **title, <span class="keywordtype">void</span> **image, <span class="keywordtype">int</span> *imageSizeBytes, <span class="keywordtype">float</span> *bpm, SuperpoweredDecoderID3Callback callback, <span class="keywordtype">void</span> *clientData, <span class="keywordtype">int</span> maxFrameDataSize);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <a class="code" href="class_superpowered_decoder.html#a1c4e5c1c53780654b1317895958a4a27">SuperpoweredDecoder</a>(<span class="keywordtype">bool</span> mediaServerOnly);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    ~<a class="code" href="class_superpowered_decoder.html">SuperpoweredDecoder</a>();</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    decoderInternals *internals;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <a class="code" href="class_superpowered_decoder.html#a1c4e5c1c53780654b1317895958a4a27">SuperpoweredDecoder</a>(<span class="keyword">const</span> <a class="code" href="class_superpowered_decoder.html">SuperpoweredDecoder</a>&amp;);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="class_superpowered_decoder.html">SuperpoweredDecoder</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="class_superpowered_decoder.html">SuperpoweredDecoder</a>&amp;);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;};</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="keywordtype">char</span> *getID3TextFrameUTF8(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *frameData, <span class="keywordtype">int</span> frameLength);</div>
 <div class="ttc" id="class_superpowered_decoder_html_ae0544563f5ee1d11f660aa8cd994d72b"><div class="ttname"><a href="class_superpowered_decoder.html#ae0544563f5ee1d11f660aa8cd994d72b">SuperpoweredDecoder::reconnectToMediaserver</a></div><div class="ttdeci">void reconnectToMediaserver()</div><div class="ttdoc">Call this on a phone call or other interruption. </div></div>
 <div class="ttc" id="class_superpowered_decoder_html_add513f60d474c54a4054abf52e3aa91a"><div class="ttname"><a href="class_superpowered_decoder.html#add513f60d474c54a4054abf52e3aa91a">SuperpoweredDecoder::seekTo</a></div><div class="ttdeci">unsigned int seekTo(unsigned int sample, bool precise)</div><div class="ttdoc">Jumps to a specific position. </div></div>
-<div class="ttc" id="class_superpowered_decoder_html_aefd57c4f8585f686fdbcfc6bd6d73c6e"><div class="ttname"><a href="class_superpowered_decoder.html#aefd57c4f8585f686fdbcfc6bd6d73c6e">SuperpoweredDecoder::open</a></div><div class="ttdeci">const char * open(const char *path)</div><div class="ttdoc">Opens a file for decoding. </div></div>
-<div class="ttc" id="class_superpowered_decoder_html"><div class="ttname"><a href="class_superpowered_decoder.html">SuperpoweredDecoder</a></div><div class="ttdoc">Audio file decoder. Provides uncompresses PCM samples from various compressed formats. </div><div class="ttdef"><b>Definition:</b> SuperpoweredDecoder.h:23</div></div>
+<div class="ttc" id="class_superpowered_decoder_html"><div class="ttname"><a href="class_superpowered_decoder.html">SuperpoweredDecoder</a></div><div class="ttdoc">Audio file decoder. Provides uncompresses PCM samples from various compressed formats. </div><div class="ttdef"><b>Definition:</b> SuperpoweredDecoder.h:33</div></div>
 <div class="ttc" id="class_superpowered_decoder_html_a28fef6e884182f746d8b21316d04c5cc"><div class="ttname"><a href="class_superpowered_decoder.html#a28fef6e884182f746d8b21316d04c5cc">SuperpoweredDecoder::decode</a></div><div class="ttdeci">unsigned char decode(short int *pcmOutput, unsigned int *samples)</div><div class="ttdoc">Decodes the requested number of samples. </div></div>
+<div class="ttc" id="class_superpowered_decoder_html_ab19a8fdb125efa8775485e87d91790cf"><div class="ttname"><a href="class_superpowered_decoder.html#ab19a8fdb125efa8775485e87d91790cf">SuperpoweredDecoder::open</a></div><div class="ttdeci">const char * open(const char *path, bool metaOnly)</div><div class="ttdoc">Opens a file for decoding. </div></div>
 <div class="ttc" id="class_superpowered_decoder_html_a1c4e5c1c53780654b1317895958a4a27"><div class="ttname"><a href="class_superpowered_decoder.html#a1c4e5c1c53780654b1317895958a4a27">SuperpoweredDecoder::SuperpoweredDecoder</a></div><div class="ttdeci">SuperpoweredDecoder(bool mediaServerOnly)</div><div class="ttdoc">Lightweight constructor, doesn&#39;t do or allocate much. </div></div>
+<div class="ttc" id="class_superpowered_decoder_html_ad4c4d71c5f2523f4c783a48e0cec7a22"><div class="ttname"><a href="class_superpowered_decoder.html#ad4c4d71c5f2523f4c783a48e0cec7a22">SuperpoweredDecoder::getMetaData</a></div><div class="ttdeci">void getMetaData(char **artist, char **title, void **image, int *imageSizeBytes, float *bpm, SuperpoweredDecoderID3Callback callback, void *clientData, int maxFrameDataSize)</div><div class="ttdoc">Returns with often used metadata. </div></div>
 </div><!-- fragment --></div><!-- contents -->
+<!-- HTML footer for doxygen 1.8.7-->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -1,3 +1,4 @@
+<!-- HTML header for doxygen 1.8.7-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,6 +10,7 @@
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="customdoxygen.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -18,7 +20,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -67,14 +69,18 @@
 <tr id="row_13_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_superpowered_gate.html" target="_self">SuperpoweredGate</a></td><td class="desc">Simple gate effect </td></tr>
 <tr id="row_14_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html" target="_self">&lt;SuperpoweredIOSAudioIODelegate&gt;</a></td><td class="desc">You must implement this protocol to make <a class="el" href="interface_superpowered_i_o_s_audio_output.html" title="Handles all audio session, audio lifecycle (interruptions), output, buffer size, samplerate and routi...">SuperpoweredIOSAudioOutput</a> work </td></tr>
 <tr id="row_15_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="interface_superpowered_i_o_s_audio_output.html" target="_self">SuperpoweredIOSAudioOutput</a></td><td class="desc">Handles all audio session, audio lifecycle (interruptions), output, buffer size, samplerate and routing headaches </td></tr>
-<tr id="row_16_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_superpowered_resampler.html" target="_self">SuperpoweredResampler</a></td><td class="desc">Linear or 6-point resampler, audio reverser and 16-bit to 32-bit audio converter </td></tr>
-<tr id="row_17_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_superpowered_reverb.html" target="_self">SuperpoweredReverb</a></td><td class="desc">CPU-friendly reverb </td></tr>
-<tr id="row_18_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_superpowered_roll.html" target="_self">SuperpoweredRoll</a></td><td class="desc">Bpm/beat based loop roll effect </td></tr>
-<tr id="row_19_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_superpowered_time_stretching.html" target="_self">SuperpoweredTimeStretching</a></td><td class="desc">Time stretching and pitch shifting </td></tr>
-<tr id="row_20_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_superpowered_whoosh.html" target="_self">SuperpoweredWhoosh</a></td><td class="desc">White noise + filter </td></tr>
+<tr id="row_16_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_superpowered_mono_mixer.html" target="_self">SuperpoweredMonoMixer</a></td><td class="desc">Mixes max. 4 mono inputs into a mono output, with optional conversion to Apple 8.24 format </td></tr>
+<tr id="row_17_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_superpowered_recorder.html" target="_self">SuperpoweredRecorder</a></td><td class="desc">Records audio into a stereo 16-bit WAV file, with an optional tracklist </td></tr>
+<tr id="row_18_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_superpowered_resampler.html" target="_self">SuperpoweredResampler</a></td><td class="desc">Linear or 6-point resampler, audio reverser and 16-bit to 32-bit audio converter </td></tr>
+<tr id="row_19_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_superpowered_reverb.html" target="_self">SuperpoweredReverb</a></td><td class="desc">CPU-friendly reverb </td></tr>
+<tr id="row_20_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_superpowered_roll.html" target="_self">SuperpoweredRoll</a></td><td class="desc">Bpm/beat based loop roll effect </td></tr>
+<tr id="row_21_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_superpowered_stereo_mixer.html" target="_self">SuperpoweredStereoMixer</a></td><td class="desc">Mixer, splitter and Apple 8.24 format converter </td></tr>
+<tr id="row_22_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_superpowered_time_stretching.html" target="_self">SuperpoweredTimeStretching</a></td><td class="desc">Time stretching and pitch shifting </td></tr>
+<tr id="row_23_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_superpowered_whoosh.html" target="_self">SuperpoweredWhoosh</a></td><td class="desc">White noise + filter </td></tr>
 </table>
 </div><!-- directory -->
 </div><!-- contents -->
+<!-- HTML footer for doxygen 1.8.7-->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

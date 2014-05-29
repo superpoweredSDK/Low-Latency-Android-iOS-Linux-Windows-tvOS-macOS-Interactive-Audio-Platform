@@ -21,7 +21,6 @@
 		1B80C73C18E0C81700DF5B81 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1B80C73B18E0C81700DF5B81 /* ViewController.mm */; };
 		1B80C73F18E0C83800DF5B81 /* lycka.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1B80C73D18E0C83800DF5B81 /* lycka.mp3 */; };
 		1B80C74018E0C83800DF5B81 /* nuyorica.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1B80C73E18E0C83800DF5B81 /* nuyorica.m4a */; };
-		1BA11FD118FC314E00484827 /* SuperpoweredDeinterleave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1BA11FCD18FC314E00484827 /* SuperpoweredDeinterleave.cpp */; };
 		1BA11FD218FC314E00484827 /* SuperpoweredIOSAudioOutput.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1BA11FD018FC314E00484827 /* SuperpoweredIOSAudioOutput.mm */; };
 		1BA11FD418FC316800484827 /* libSuperpoweredAudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BA11FD318FC316800484827 /* libSuperpoweredAudio.a */; };
 /* End PBXBuildFile section */
@@ -51,11 +50,10 @@
 		1BA11FCA18FC313D00484827 /* SuperpoweredFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredFilter.h; path = ../Superpowered/SuperpoweredFilter.h; sourceTree = "<group>"; };
 		1BA11FCB18FC313D00484827 /* SuperpoweredFlanger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredFlanger.h; path = ../Superpowered/SuperpoweredFlanger.h; sourceTree = "<group>"; };
 		1BA11FCC18FC313D00484827 /* SuperpoweredRoll.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredRoll.h; path = ../Superpowered/SuperpoweredRoll.h; sourceTree = "<group>"; };
-		1BA11FCD18FC314E00484827 /* SuperpoweredDeinterleave.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SuperpoweredDeinterleave.cpp; path = ../Superpowered/SuperpoweredDeinterleave.cpp; sourceTree = "<group>"; };
-		1BA11FCE18FC314E00484827 /* SuperpoweredDeinterleave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperpoweredDeinterleave.h; path = ../Superpowered/SuperpoweredDeinterleave.h; sourceTree = "<group>"; };
 		1BA11FCF18FC314E00484827 /* SuperpoweredIOSAudioOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperpoweredIOSAudioOutput.h; path = ../Superpowered/SuperpoweredIOSAudioOutput.h; sourceTree = "<group>"; };
 		1BA11FD018FC314E00484827 /* SuperpoweredIOSAudioOutput.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SuperpoweredIOSAudioOutput.mm; path = ../Superpowered/SuperpoweredIOSAudioOutput.mm; sourceTree = "<group>"; };
 		1BA11FD318FC316800484827 /* libSuperpoweredAudio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSuperpoweredAudio.a; path = ../Superpowered/libSuperpoweredAudio.a; sourceTree = "<group>"; };
+		1BAF73ED19361E5500154D8C /* SuperpoweredMixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperpoweredMixer.h; path = ../Superpowered/SuperpoweredMixer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,8 +78,9 @@
 			isa = PBXGroup;
 			children = (
 				1BA11FD318FC316800484827 /* libSuperpoweredAudio.a */,
+				1BA11FCF18FC314E00484827 /* SuperpoweredIOSAudioOutput.h */,
+				1BA11FD018FC314E00484827 /* SuperpoweredIOSAudioOutput.mm */,
 				1B80C74818E0C85B00DF5B81 /* Superpowered Headers */,
-				1B80C74118E0C84500DF5B81 /* Superpowered Open Source */,
 				1B80C70718E0C79600DF5B81 /* Supporting Files */,
 				1B80C70F18E0C79600DF5B81 /* AppDelegate.h */,
 				1B80C71018E0C79600DF5B81 /* AppDelegate.m */,
@@ -130,23 +129,13 @@
 			path = SuperpoweredCrossExample;
 			sourceTree = "<group>";
 		};
-		1B80C74118E0C84500DF5B81 /* Superpowered Open Source */ = {
-			isa = PBXGroup;
-			children = (
-				1BA11FCD18FC314E00484827 /* SuperpoweredDeinterleave.cpp */,
-				1BA11FCE18FC314E00484827 /* SuperpoweredDeinterleave.h */,
-				1BA11FCF18FC314E00484827 /* SuperpoweredIOSAudioOutput.h */,
-				1BA11FD018FC314E00484827 /* SuperpoweredIOSAudioOutput.mm */,
-			);
-			name = "Superpowered Open Source";
-			sourceTree = "<group>";
-		};
 		1B80C74818E0C85B00DF5B81 /* Superpowered Headers */ = {
 			isa = PBXGroup;
 			children = (
 				1BA11FC918FC313D00484827 /* SuperpoweredAdvancedAudioPlayer.h */,
 				1BA11FCA18FC313D00484827 /* SuperpoweredFilter.h */,
 				1BA11FCB18FC313D00484827 /* SuperpoweredFlanger.h */,
+				1BAF73ED19361E5500154D8C /* SuperpoweredMixer.h */,
 				1BA11FCC18FC313D00484827 /* SuperpoweredRoll.h */,
 			);
 			name = "Superpowered Headers";
@@ -222,7 +211,6 @@
 				1B80C73C18E0C81700DF5B81 /* ViewController.mm in Sources */,
 				1B80C71118E0C79600DF5B81 /* AppDelegate.m in Sources */,
 				1BA11FD218FC314E00484827 /* SuperpoweredIOSAudioOutput.mm in Sources */,
-				1BA11FD118FC314E00484827 /* SuperpoweredDeinterleave.cpp in Sources */,
 				1B80C70D18E0C79600DF5B81 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
