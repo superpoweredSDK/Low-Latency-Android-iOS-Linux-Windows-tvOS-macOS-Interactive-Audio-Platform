@@ -1,4 +1,7 @@
-#import "SuperpoweredFX.h"
+#ifndef Header_SuperpoweredWhoosh
+#define Header_SuperpoweredWhoosh
+
+#include "SuperpoweredFX.h"
 struct whooshInternals;
 
 /**
@@ -58,3 +61,5 @@ private:
     SuperpoweredWhoosh(const SuperpoweredWhoosh&);
     SuperpoweredWhoosh& operator=(const SuperpoweredWhoosh&);
 };
+
+#endif

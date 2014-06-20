@@ -1,4 +1,3 @@
-<!-- HTML header for doxygen 1.8.7-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -10,7 +9,6 @@
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="customdoxygen.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -20,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.2</span>
+   &#160;<span id="projectnumber">0.3</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -66,6 +64,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1a8c61ee00792879e2657cc65db5af9b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_audiofile_player.html#a1a8c61ee00792879e2657cc65db5af9b">open</a> (const char *path)</td></tr>
 <tr class="memdesc:a1a8c61ee00792879e2657cc65db5af9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens an audio file. If something was loaded before, it becomes replaced.  <a href="#a1a8c61ee00792879e2657cc65db5af9b">More...</a><br /></td></tr>
 <tr class="separator:a1a8c61ee00792879e2657cc65db5af9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32bdbdbf7a4b21086a3081ebe22f516a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_audiofile_player.html#a32bdbdbf7a4b21086a3081ebe22f516a">open</a> (const char *path, int offset, int length)</td></tr>
+<tr class="memdesc:a32bdbdbf7a4b21086a3081ebe22f516a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a file. If something was loaded before, it becomes replaced.  <a href="#a32bdbdbf7a4b21086a3081ebe22f516a">More...</a><br /></td></tr>
+<tr class="separator:a32bdbdbf7a4b21086a3081ebe22f516a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2ee707dbfaf288da113fcb0cb5ddbc3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_audiofile_player.html#aa2ee707dbfaf288da113fcb0cb5ddbc3">getError</a> (char **errorMessage)</td></tr>
 <tr class="memdesc:aa2ee707dbfaf288da113fcb0cb5ddbc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns with the last error.  <a href="#aa2ee707dbfaf288da113fcb0cb5ddbc3">More...</a><br /></td></tr>
 <tr class="separator:aa2ee707dbfaf288da113fcb0cb5ddbc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -146,7 +147,54 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>positionPercent</b><
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Opening happens on a background thread, with setting durationSeconds to 0. Opening ends when durationSeconds becomes &gt;0 (loaded successfully) or -1 (load error). Use <a class="el" href="class_superpowered_audiofile_player.html#aa2ee707dbfaf288da113fcb0cb5ddbc3" title="Returns with the last error. ">getError()</a> to get the error message. </p>
+<p>Opening happens on a background thread, with setting durationSeconds to 0. Opening ends when durationSeconds becomes &gt;0 (loaded successfully) or -1 (load error). Use <a class="el" href="class_superpowered_audiofile_player.html#aa2ee707dbfaf288da113fcb0cb5ddbc3" title="Returns with the last error. ">getError()</a> to get the error message.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>The full file system path of the audio file. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a32bdbdbf7a4b21086a3081ebe22f516a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SuperpoweredAudiofilePlayer::open </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Opening happens on a background thread, with setting durationSeconds to 0. Opening ends when durationSeconds becomes &gt;0 (loaded successfully) or -1 (load error). Use <a class="el" href="class_superpowered_audiofile_player.html#aa2ee707dbfaf288da113fcb0cb5ddbc3" title="Returns with the last error. ">getError()</a> to get the error message.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>The full file system path of the file. </td></tr>
+    <tr><td class="paramname">offset</td><td>The byte offset inside the file. </td></tr>
+    <tr><td class="paramname">length</td><td>The byte length from the offset. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -222,7 +270,6 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>positionPercent</b><
 </div>
 </div>
 </div><!-- contents -->
-<!-- HTML footer for doxygen 1.8.7-->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

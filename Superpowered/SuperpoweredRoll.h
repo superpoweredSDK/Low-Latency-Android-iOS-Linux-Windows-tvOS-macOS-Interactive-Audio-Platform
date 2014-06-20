@@ -1,4 +1,7 @@
-#import "SuperpoweredFX.h"
+#ifndef Header_SuperpoweredRoll
+#define Header_SuperpoweredRoll
+
+#include "SuperpoweredFX.h"
 struct rollInternals;
 
 /**
@@ -59,3 +62,5 @@ private:
     SuperpoweredRoll(const SuperpoweredRoll&);
     SuperpoweredRoll& operator=(const SuperpoweredRoll&);
 };
+
+#endif

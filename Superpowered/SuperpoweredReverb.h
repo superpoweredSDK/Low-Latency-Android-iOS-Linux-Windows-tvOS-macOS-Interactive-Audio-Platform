@@ -1,4 +1,7 @@
-#import "SuperpoweredFX.h"
+#ifndef Header_SuperpoweredReverb
+#define Header_SuperpoweredReverb
+
+#include "SuperpoweredFX.h"
 struct reverbInternals;
 
 /**
@@ -104,3 +107,5 @@ private:
     SuperpoweredReverb(const SuperpoweredReverb&);
     SuperpoweredReverb& operator=(const SuperpoweredReverb&);
 };
+
+#endif

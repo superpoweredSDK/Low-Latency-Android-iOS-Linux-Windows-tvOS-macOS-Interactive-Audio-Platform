@@ -1,3 +1,6 @@
+#ifndef Header_SuperpoweredMixer
+#define Header_SuperpoweredMixer
+
 struct stereoMixerInternals;
 struct monoMixerInternals;
 
@@ -88,3 +91,5 @@ private:
     SuperpoweredMonoMixer(const SuperpoweredMonoMixer&);
     SuperpoweredMonoMixer& operator=(const SuperpoweredMonoMixer&);
 };
+
+#endif

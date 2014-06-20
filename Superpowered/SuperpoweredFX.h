@@ -1,3 +1,6 @@
+#ifndef Header_SuperpoweredFX
+#define Header_SuperpoweredFX
+
 /**
  @brief This is the base class for Superpowered effects.
  
@@ -47,3 +50,5 @@ public:
  
  Details of the latest version can be found at http://superpowered.com/superpowered-audio-sdk/
  */
+
+#endif

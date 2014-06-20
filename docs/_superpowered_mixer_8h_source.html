@@ -1,4 +1,3 @@
-<!-- HTML header for doxygen 1.8.7-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -10,7 +9,6 @@
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="customdoxygen.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -20,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.2</span>
+   &#160;<span id="projectnumber">0.3</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -49,46 +47,50 @@
 <div class="title">SuperpoweredMixer.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">struct </span>stereoMixerInternals;</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">struct </span>monoMixerInternals;</div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef Header_SuperpoweredMixer</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define Header_SuperpoweredMixer</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="class_superpowered_stereo_mixer.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_superpowered_stereo_mixer.html">SuperpoweredStereoMixer</a> {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="class_superpowered_stereo_mixer.html#a96b3998d77c67f254cb7e22a8325325c">SuperpoweredStereoMixer</a>();</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    ~<a class="code" href="class_superpowered_stereo_mixer.html">SuperpoweredStereoMixer</a>();</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_stereo_mixer.html#acb0f0e434d1c284faf24622fe544b7e8">process</a>(<span class="keywordtype">float</span> *inputs[4], <span class="keywordtype">void</span> *outputs[2], <span class="keywordtype">float</span> inputLevels[8], <span class="keywordtype">float</span> outputLevels[2], <span class="keywordtype">float</span> inputMeters[8], <span class="keywordtype">float</span> outputMeters[2], <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numberOfSamples, <span class="keywordtype">bool</span> convertToApple824);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_superpowered_stereo_mixer.html#a5054c5bb844dbf78bfcba9786d31b69e">floatToShortInt</a>(<span class="keywordtype">float</span> *input, <span class="keywordtype">short</span> <span class="keywordtype">int</span> *output, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numberOfSamples);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_superpowered_stereo_mixer.html#a5054c5bb844dbf78bfcba9786d31b69e">floatToShortInt</a>(<span class="keywordtype">float</span> *inputLeft, <span class="keywordtype">float</span> *inputRight, <span class="keywordtype">short</span> <span class="keywordtype">int</span> *output, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numberOfSamples);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    stereoMixerInternals *internals;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="class_superpowered_stereo_mixer.html#a96b3998d77c67f254cb7e22a8325325c">SuperpoweredStereoMixer</a>(<span class="keyword">const</span> <a class="code" href="class_superpowered_stereo_mixer.html">SuperpoweredStereoMixer</a>&amp;);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="class_superpowered_stereo_mixer.html">SuperpoweredStereoMixer</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="class_superpowered_stereo_mixer.html">SuperpoweredStereoMixer</a>&amp;);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;};</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="class_superpowered_mono_mixer.html">   66</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_superpowered_mono_mixer.html">SuperpoweredMonoMixer</a> {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <a class="code" href="class_superpowered_mono_mixer.html#a2700f844143970180c6fbf877d8c108d">SuperpoweredMonoMixer</a>();</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    ~<a class="code" href="class_superpowered_mono_mixer.html">SuperpoweredMonoMixer</a>();</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_mono_mixer.html#a630663339f622cfb8e79d694d70c14b5">process</a>(<span class="keywordtype">float</span> **inputs, <span class="keywordtype">void</span> *output, <span class="keywordtype">float</span> *inputLevels, <span class="keywordtype">float</span> outputGain, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numberOfSamples, <span class="keywordtype">bool</span> convertToApple824);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    monoMixerInternals *internals;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <a class="code" href="class_superpowered_mono_mixer.html#a2700f844143970180c6fbf877d8c108d">SuperpoweredMonoMixer</a>(<span class="keyword">const</span> <a class="code" href="class_superpowered_mono_mixer.html">SuperpoweredMonoMixer</a>&amp;);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="class_superpowered_mono_mixer.html">SuperpoweredMonoMixer</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="class_superpowered_mono_mixer.html">SuperpoweredMonoMixer</a>&amp;);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;};</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">struct </span>stereoMixerInternals;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">struct </span>monoMixerInternals;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="class_superpowered_stereo_mixer.html">   14</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_superpowered_stereo_mixer.html">SuperpoweredStereoMixer</a> {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="class_superpowered_stereo_mixer.html#a96b3998d77c67f254cb7e22a8325325c">SuperpoweredStereoMixer</a>();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    ~<a class="code" href="class_superpowered_stereo_mixer.html">SuperpoweredStereoMixer</a>();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_stereo_mixer.html#acb0f0e434d1c284faf24622fe544b7e8">process</a>(<span class="keywordtype">float</span> *inputs[4], <span class="keywordtype">void</span> *outputs[2], <span class="keywordtype">float</span> inputLevels[8], <span class="keywordtype">float</span> outputLevels[2], <span class="keywordtype">float</span> inputMeters[8], <span class="keywordtype">float</span> outputMeters[2], <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numberOfSamples, <span class="keywordtype">bool</span> convertToApple824);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_superpowered_stereo_mixer.html#a5054c5bb844dbf78bfcba9786d31b69e">floatToShortInt</a>(<span class="keywordtype">float</span> *input, <span class="keywordtype">short</span> <span class="keywordtype">int</span> *output, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numberOfSamples);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_superpowered_stereo_mixer.html#a5054c5bb844dbf78bfcba9786d31b69e">floatToShortInt</a>(<span class="keywordtype">float</span> *inputLeft, <span class="keywordtype">float</span> *inputRight, <span class="keywordtype">short</span> <span class="keywordtype">int</span> *output, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numberOfSamples);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    stereoMixerInternals *internals;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="class_superpowered_stereo_mixer.html#a96b3998d77c67f254cb7e22a8325325c">SuperpoweredStereoMixer</a>(<span class="keyword">const</span> <a class="code" href="class_superpowered_stereo_mixer.html">SuperpoweredStereoMixer</a>&amp;);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="class_superpowered_stereo_mixer.html">SuperpoweredStereoMixer</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="class_superpowered_stereo_mixer.html">SuperpoweredStereoMixer</a>&amp;);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;};</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="class_superpowered_mono_mixer.html">   69</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_superpowered_mono_mixer.html">SuperpoweredMonoMixer</a> {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <a class="code" href="class_superpowered_mono_mixer.html#a2700f844143970180c6fbf877d8c108d">SuperpoweredMonoMixer</a>();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    ~<a class="code" href="class_superpowered_mono_mixer.html">SuperpoweredMonoMixer</a>();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_mono_mixer.html#a630663339f622cfb8e79d694d70c14b5">process</a>(<span class="keywordtype">float</span> **inputs, <span class="keywordtype">void</span> *output, <span class="keywordtype">float</span> *inputLevels, <span class="keywordtype">float</span> outputGain, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numberOfSamples, <span class="keywordtype">bool</span> convertToApple824);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    monoMixerInternals *internals;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="class_superpowered_mono_mixer.html#a2700f844143970180c6fbf877d8c108d">SuperpoweredMonoMixer</a>(<span class="keyword">const</span> <a class="code" href="class_superpowered_mono_mixer.html">SuperpoweredMonoMixer</a>&amp;);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <a class="code" href="class_superpowered_mono_mixer.html">SuperpoweredMonoMixer</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="class_superpowered_mono_mixer.html">SuperpoweredMonoMixer</a>&amp;);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;};</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="class_superpowered_stereo_mixer_html_a5054c5bb844dbf78bfcba9786d31b69e"><div class="ttname"><a href="class_superpowered_stereo_mixer.html#a5054c5bb844dbf78bfcba9786d31b69e">SuperpoweredStereoMixer::floatToShortInt</a></div><div class="ttdeci">static void floatToShortInt(float *input, short int *output, unsigned int numberOfSamples)</div><div class="ttdoc">Converts a stereo interleaved 32-bit float input to stereo interleaved 16-bit signed integer output...</div></div>
-<div class="ttc" id="class_superpowered_mono_mixer_html"><div class="ttname"><a href="class_superpowered_mono_mixer.html">SuperpoweredMonoMixer</a></div><div class="ttdoc">Mixes max. 4 mono inputs into a mono output, with optional conversion to Apple 8.24 format...</div><div class="ttdef"><b>Definition:</b> SuperpoweredMixer.h:66</div></div>
-<div class="ttc" id="class_superpowered_stereo_mixer_html"><div class="ttname"><a href="class_superpowered_stereo_mixer.html">SuperpoweredStereoMixer</a></div><div class="ttdoc">Mixer, splitter and Apple 8.24 format converter. </div><div class="ttdef"><b>Definition:</b> SuperpoweredMixer.h:11</div></div>
+<div class="ttc" id="class_superpowered_mono_mixer_html"><div class="ttname"><a href="class_superpowered_mono_mixer.html">SuperpoweredMonoMixer</a></div><div class="ttdoc">Mixes max. 4 mono inputs into a mono output, with optional conversion to Apple 8.24 format...</div><div class="ttdef"><b>Definition:</b> SuperpoweredMixer.h:69</div></div>
+<div class="ttc" id="class_superpowered_stereo_mixer_html"><div class="ttname"><a href="class_superpowered_stereo_mixer.html">SuperpoweredStereoMixer</a></div><div class="ttdoc">Mixer, splitter and Apple 8.24 format converter. </div><div class="ttdef"><b>Definition:</b> SuperpoweredMixer.h:14</div></div>
 <div class="ttc" id="class_superpowered_mono_mixer_html_a630663339f622cfb8e79d694d70c14b5"><div class="ttname"><a href="class_superpowered_mono_mixer.html#a630663339f622cfb8e79d694d70c14b5">SuperpoweredMonoMixer::process</a></div><div class="ttdeci">void process(float **inputs, void *output, float *inputLevels, float outputGain, unsigned int numberOfSamples, bool convertToApple824)</div><div class="ttdoc">Processes the audio. </div></div>
 <div class="ttc" id="class_superpowered_stereo_mixer_html_a96b3998d77c67f254cb7e22a8325325c"><div class="ttname"><a href="class_superpowered_stereo_mixer.html#a96b3998d77c67f254cb7e22a8325325c">SuperpoweredStereoMixer::SuperpoweredStereoMixer</a></div><div class="ttdeci">SuperpoweredStereoMixer()</div><div class="ttdoc">Creates a stereo mixer instance. </div></div>
 <div class="ttc" id="class_superpowered_mono_mixer_html_a2700f844143970180c6fbf877d8c108d"><div class="ttname"><a href="class_superpowered_mono_mixer.html#a2700f844143970180c6fbf877d8c108d">SuperpoweredMonoMixer::SuperpoweredMonoMixer</a></div><div class="ttdeci">SuperpoweredMonoMixer()</div><div class="ttdoc">Creates a mono mixer instance. </div></div>
 <div class="ttc" id="class_superpowered_stereo_mixer_html_acb0f0e434d1c284faf24622fe544b7e8"><div class="ttname"><a href="class_superpowered_stereo_mixer.html#acb0f0e434d1c284faf24622fe544b7e8">SuperpoweredStereoMixer::process</a></div><div class="ttdeci">void process(float *inputs[4], void *outputs[2], float inputLevels[8], float outputLevels[2], float inputMeters[8], float outputMeters[2], unsigned int numberOfSamples, bool convertToApple824)</div><div class="ttdoc">Processes the audio. </div></div>
 </div><!-- fragment --></div><!-- contents -->
-<!-- HTML footer for doxygen 1.8.7-->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

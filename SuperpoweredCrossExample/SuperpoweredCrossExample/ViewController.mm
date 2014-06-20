@@ -49,7 +49,7 @@ void playerEventCallbackB(void *clientData, SuperpoweredAdvancedAudioPlayerEvent
     volA = 1.0f * headroom;
     pthread_mutex_init(&mutex, NULL); // This will keep our player volumes and playback states in sync.
 	
-    unaligned = malloc(4096 + 128 + 15); //itt comment
+    unaligned = malloc(4096 + 128 + 15);
     stereoBuffer = (float *)(((unsigned long)unaligned + 15) & (unsigned long)-16); // align to 16
     
     playerA = new SuperpoweredAdvancedAudioPlayer((__bridge void *)self, playerEventCallbackA, 44100, 0);

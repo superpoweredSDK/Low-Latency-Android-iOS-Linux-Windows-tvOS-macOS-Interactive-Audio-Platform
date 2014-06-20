@@ -21,8 +21,8 @@
 		1B80C73C18E0C81700DF5B81 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1B80C73B18E0C81700DF5B81 /* ViewController.mm */; };
 		1B80C73F18E0C83800DF5B81 /* lycka.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1B80C73D18E0C83800DF5B81 /* lycka.mp3 */; };
 		1B80C74018E0C83800DF5B81 /* nuyorica.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1B80C73E18E0C83800DF5B81 /* nuyorica.m4a */; };
+		1B97253119470E69005CCEEB /* libSuperpoweredAudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B97253019470E69005CCEEB /* libSuperpoweredAudio.a */; };
 		1BA11FD218FC314E00484827 /* SuperpoweredIOSAudioOutput.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1BA11FD018FC314E00484827 /* SuperpoweredIOSAudioOutput.mm */; };
-		1BA11FD418FC316800484827 /* libSuperpoweredAudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BA11FD318FC316800484827 /* libSuperpoweredAudio.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,13 +46,13 @@
 		1B80C73B18E0C81700DF5B81 /* ViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ViewController.mm; path = SuperpoweredCrossExample/ViewController.mm; sourceTree = "<group>"; };
 		1B80C73D18E0C83800DF5B81 /* lycka.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = lycka.mp3; path = SuperpoweredCrossExample/lycka.mp3; sourceTree = "<group>"; };
 		1B80C73E18E0C83800DF5B81 /* nuyorica.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = nuyorica.m4a; path = SuperpoweredCrossExample/nuyorica.m4a; sourceTree = "<group>"; };
+		1B97253019470E69005CCEEB /* libSuperpoweredAudio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSuperpoweredAudio.a; path = ../Superpowered/libSuperpoweredAudio.a; sourceTree = "<group>"; };
 		1BA11FC918FC313D00484827 /* SuperpoweredAdvancedAudioPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredAdvancedAudioPlayer.h; path = ../Superpowered/SuperpoweredAdvancedAudioPlayer.h; sourceTree = "<group>"; };
 		1BA11FCA18FC313D00484827 /* SuperpoweredFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredFilter.h; path = ../Superpowered/SuperpoweredFilter.h; sourceTree = "<group>"; };
 		1BA11FCB18FC313D00484827 /* SuperpoweredFlanger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredFlanger.h; path = ../Superpowered/SuperpoweredFlanger.h; sourceTree = "<group>"; };
 		1BA11FCC18FC313D00484827 /* SuperpoweredRoll.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredRoll.h; path = ../Superpowered/SuperpoweredRoll.h; sourceTree = "<group>"; };
 		1BA11FCF18FC314E00484827 /* SuperpoweredIOSAudioOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperpoweredIOSAudioOutput.h; path = ../Superpowered/SuperpoweredIOSAudioOutput.h; sourceTree = "<group>"; };
 		1BA11FD018FC314E00484827 /* SuperpoweredIOSAudioOutput.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SuperpoweredIOSAudioOutput.mm; path = ../Superpowered/SuperpoweredIOSAudioOutput.mm; sourceTree = "<group>"; };
-		1BA11FD318FC316800484827 /* libSuperpoweredAudio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSuperpoweredAudio.a; path = ../Superpowered/libSuperpoweredAudio.a; sourceTree = "<group>"; };
 		1BAF73ED19361E5500154D8C /* SuperpoweredMixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperpoweredMixer.h; path = ../Superpowered/SuperpoweredMixer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,7 +64,7 @@
 				1B80C73618E0C7A300DF5B81 /* AudioToolbox.framework in Frameworks */,
 				1B80C73818E0C7A600DF5B81 /* AVFoundation.framework in Frameworks */,
 				1B80C70318E0C79600DF5B81 /* CoreGraphics.framework in Frameworks */,
-				1BA11FD418FC316800484827 /* libSuperpoweredAudio.a in Frameworks */,
+				1B97253119470E69005CCEEB /* libSuperpoweredAudio.a in Frameworks */,
 				1B80C70118E0C79600DF5B81 /* Foundation.framework in Frameworks */,
 				1B80C73A18E0C7AD00DF5B81 /* MediaPlayer.framework in Frameworks */,
 				1B80C70518E0C79600DF5B81 /* UIKit.framework in Frameworks */,
@@ -77,7 +77,7 @@
 		1B80C6F418E0C79600DF5B81 = {
 			isa = PBXGroup;
 			children = (
-				1BA11FD318FC316800484827 /* libSuperpoweredAudio.a */,
+				1B97253019470E69005CCEEB /* libSuperpoweredAudio.a */,
 				1BA11FCF18FC314E00484827 /* SuperpoweredIOSAudioOutput.h */,
 				1BA11FD018FC314E00484827 /* SuperpoweredIOSAudioOutput.mm */,
 				1B80C74818E0C85B00DF5B81 /* Superpowered Headers */,
@@ -313,7 +313,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SuperpoweredCrossExample/SuperpoweredCrossExample-Prefix.pch";
 				INFOPLIST_FILE = "SuperpoweredCrossExample/SuperpoweredCrossExample-Info.plist";
@@ -321,6 +323,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/../Superpowered",
+					/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "armv7 armv7s";
@@ -333,7 +336,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SuperpoweredCrossExample/SuperpoweredCrossExample-Prefix.pch";
 				INFOPLIST_FILE = "SuperpoweredCrossExample/SuperpoweredCrossExample-Info.plist";
@@ -341,6 +346,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/../Superpowered",
+					/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "armv7 armv7s";

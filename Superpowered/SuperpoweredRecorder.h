@@ -1,3 +1,6 @@
+#ifndef Header_SuperpoweredRecorder
+#define Header_SuperpoweredRecorder
+
 struct SuperpoweredRecorderInternals;
 
 /**
@@ -60,3 +63,5 @@ private:
     SuperpoweredRecorder(const SuperpoweredRecorder&);
     SuperpoweredRecorder& operator=(const SuperpoweredRecorder&);
 };
+
+#endif

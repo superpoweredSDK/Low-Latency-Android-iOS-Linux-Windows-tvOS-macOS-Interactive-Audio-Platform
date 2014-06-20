@@ -1,4 +1,7 @@
-#import "SuperpoweredFX.h"
+#ifndef Header_SuperpoweredFlanger
+#define Header_SuperpoweredFlanger
+
+#include "SuperpoweredFX.h"
 struct flangerInternals;
 
 /**
@@ -85,3 +88,5 @@ private:
     SuperpoweredFlanger(const SuperpoweredFlanger&);
     SuperpoweredFlanger& operator=(const SuperpoweredFlanger&);
 };
+
+#endif

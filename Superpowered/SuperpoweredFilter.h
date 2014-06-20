@@ -1,4 +1,7 @@
-#import "SuperpoweredFX.h"
+#ifndef Header_SuperpoweredFilter
+#define Header_SuperpoweredFilter
+
+#include "SuperpoweredFX.h"
 struct filterInternals;
 
 typedef enum SuperpoweredFilterType {
@@ -108,3 +111,5 @@ protected:
     SuperpoweredFilter(const SuperpoweredFilter&);
     SuperpoweredFilter& operator=(const SuperpoweredFilter&);
 };
+
+#endif

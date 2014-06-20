@@ -1,3 +1,6 @@
+#ifndef Header_SuperpoweredFFT
+#define Header_SuperpoweredFFT
+
 /**
  @file SuperpoweredFFT.h
  @brief Super fast FFT.
@@ -63,3 +66,5 @@ void SuperpoweredFFTReal(float *real, float *imag, int logSize, bool forward);
  @param forward Forward or inverse.
  */
 void SuperpoweredPolarFFT(float *mag, float *phase, int logSize, bool forward);
+
+#endif

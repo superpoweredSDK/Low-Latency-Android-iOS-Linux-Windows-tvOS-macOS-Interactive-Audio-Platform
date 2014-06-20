@@ -1,4 +1,7 @@
-#import "SuperpoweredFX.h"
+#ifndef Header_SuperpoweredEcho
+#define Header_SuperpoweredEcho
+
+#include "SuperpoweredFX.h"
 struct echoInternals;
 
 /**
@@ -72,3 +75,5 @@ private:
     SuperpoweredEcho(const SuperpoweredEcho&);
     SuperpoweredEcho& operator=(const SuperpoweredEcho&);
 };
+
+#endif

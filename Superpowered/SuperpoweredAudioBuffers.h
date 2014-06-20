@@ -1,5 +1,5 @@
-#ifndef SuperpoweredBufferList
-#define SuperpoweredBufferList
+#ifndef Header_SuperpoweredAudioBuffers
+#define Header_SuperpoweredAudioBuffers
 
 struct bufferPoolInternals;
 struct pointerListInternals;
@@ -53,7 +53,7 @@ public:
  @see SuperpoweredAudiobufferlistElement
  */
     bool createSuperpoweredAudiobufferlistElement(SuperpoweredAudiobufferlistElement *item, unsigned int samplePosition, unsigned int sizeInSamples);
-    
+
 private:
     bufferPoolInternals *internals;
     SuperpoweredAudiobufferPool(const SuperpoweredAudiobufferPool&);

@@ -1,4 +1,7 @@
-#import "SuperpoweredFX.h"
+#ifndef Header_Superpowered3BandEQ
+#define Header_Superpowered3BandEQ
+
+#include "SuperpoweredFX.h"
 struct eqInternals;
 
 /**
@@ -80,3 +83,5 @@ private:
     Superpowered3BandEQ(const Superpowered3BandEQ&);
     Superpowered3BandEQ& operator=(const Superpowered3BandEQ&);
 };
+
+#endif

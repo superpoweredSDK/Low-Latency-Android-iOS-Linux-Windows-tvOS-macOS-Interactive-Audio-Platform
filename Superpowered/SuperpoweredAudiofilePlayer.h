@@ -1,3 +1,6 @@
+#ifndef Header_SuperpoweredAudiofilePlayer
+#define Header_SuperpoweredAudiofilePlayer
+
 struct audiofilePlayerInternals;
 
 /**
@@ -35,8 +38,22 @@ public:
  Opening happens on a background thread, with setting durationSeconds to 0.
  Opening ends when durationSeconds becomes >0 (loaded successfully) or -1 (load error).
  Use getError() to get the error message.
+ 
+ @param path The full file system path of the audio file.
 */
     void open(const char *path);
+/**
+ @brief Opens a file. If something was loaded before, it becomes replaced.
+ 
+ Opening happens on a background thread, with setting durationSeconds to 0.
+ Opening ends when durationSeconds becomes >0 (loaded successfully) or -1 (load error).
+ Use getError() to get the error message.
+ 
+ @param path The full file system path of the file.
+ @param offset The byte offset inside the file.
+ @param length The byte length from the offset.
+ */
+    void open(const char *path, int offset, int length);
 /**
  @brief Returns with the last error.
  
@@ -70,3 +87,5 @@ private:
     SuperpoweredAudiofilePlayer(const SuperpoweredAudiofilePlayer&);
     SuperpoweredAudiofilePlayer& operator=(const SuperpoweredAudiofilePlayer&);
 };
+
+#endif

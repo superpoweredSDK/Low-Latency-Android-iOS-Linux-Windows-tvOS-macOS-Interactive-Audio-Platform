@@ -1,4 +1,7 @@
-#import "SuperpoweredFX.h"
+#ifndef Header_SuperpoweredGate
+#define Header_SuperpoweredGate
+
+#include "SuperpoweredFX.h"
 struct gateInternals;
 
 /**
@@ -59,3 +62,5 @@ private:
     SuperpoweredGate(const SuperpoweredGate&);
     SuperpoweredGate& operator=(const SuperpoweredGate&);
 };
+
+#endif

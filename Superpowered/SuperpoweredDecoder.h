@@ -1,3 +1,6 @@
+#ifndef Header_SuperpoweredDecoder
+#define Header_SuperpoweredDecoder
+
 struct decoderInternals;
 
 #define SUPERPOWEREDDECODER_EOF 0
@@ -42,10 +45,12 @@ public:
  
  @param path Full file system path.
  @param metaOnly If true, it opens the file for fast metadata reading only, not for decoding audio.
+ @param offset Byte offset in the file.
+ @param length Byte length from offset. Set offset and length to 0 to read the entire file.
  
  @return NULL if successful, or an error string.
  */
-    const char *open(const char *path, bool metaOnly);
+    const char *open(const char *path, bool metaOnly, int offset, int length);
 /**
  @brief Decodes the requested number of samples.
  
@@ -108,3 +113,5 @@ private:
  @param frameLength The data length in bytes.
  */
 char *getID3TextFrameUTF8(unsigned char *frameData, int frameLength);
+
+#endif

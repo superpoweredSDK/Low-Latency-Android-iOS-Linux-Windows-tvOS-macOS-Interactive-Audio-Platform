@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SuperpoweredExample</string>
+    <string name="play">Play</string>
+    <string name="flanger">Flanger</string>
+    <string name="filter">Filter</string>
+    <string name="roll">Roll</string>
+</resources>

@@ -1,3 +1,6 @@
+#ifndef Header_SuperpoweredAdvancedAudioPlayer
+#define Header_SuperpoweredAdvancedAudioPlayer
+
 struct SuperpoweredAdvancedAudioPlayerInternals;
 struct SuperpoweredAdvancedAudioPlayerBase;
 
@@ -108,7 +111,7 @@ public:
     bool reverse;
     bool looping;
     
-    float firstBeatMs;
+    double firstBeatMs;
     double msElapsedSinceLastBeat;
     unsigned char beatIndex;
 
@@ -134,9 +137,22 @@ public:
  @brief Opens a new audio file, with playback paused. 
  
  Tempo, pitchShift, masterTempo and syncMode are NOT changed if you open a new one.
+ 
+ @param path The full file system path of the audio file.
 */
     void open(const char *path);
     
+/**
+ @brief Opens a file, with playback paused.
+ 
+ Tempo, pitchShift, masterTempo and syncMode are NOT changed if you open a new one.
+ 
+ @param path The full file system path of the file.
+ @param offset The byte offset inside the file.
+ @param length The byte length from the offset.
+*/
+    void open(const char *path, int offset, int length);
+
 /**
  @brief Starts playback.
  
@@ -166,14 +182,14 @@ public:
  @param andStop If true, stops playback.
  @param synchronisedStart If andStop is false, a beat-synced start is possible.
  */
-    void setPosition(unsigned int ms, bool andStop, bool synchronisedStart);
+    void setPosition(double ms, bool andStop, bool synchronisedStart);
 /**
  @brief Cache a position for zero latency seeking. It will cache around +/- 1 second around this point.
  
  @param ms Position in milliseconds.
  @param pointID Use this to provide a custom identifier, so you can overwrite the same point later. Use 255 for a point with no identifier.
 */
-    void cachePosition(unsigned int ms, unsigned char pointID);
+    void cachePosition(double ms, unsigned char pointID);
 /**
  @brief Loop from a start point with some length.
  
@@ -183,7 +199,7 @@ public:
  @param pointID Looping caches startMs, so you can specify a pointID too (or set to 255 if you don't care).
  @param synchronisedStart Beat-synced start.
  */
-    bool loop(unsigned int startMs, double lengthMs, bool jumpToStartMs, unsigned char pointID, bool synchronisedStart);
+    bool loop(double startMs, double lengthMs, bool jumpToStartMs, unsigned char pointID, bool synchronisedStart);
 /**
  @brief Loop from a start to an end point.
      
@@ -193,7 +209,7 @@ public:
  @param pointID Looping caches startMs, so you can specify a pointID too (or set to 255 if you don't care).
  @param synchronisedStart Beat-synced start.
 */
-    bool loopBetween(unsigned int startMs, unsigned int endMs, bool jumpToStartMs, unsigned char pointID, bool synchronisedStart);
+    bool loopBetween(double startMs, double endMs, bool jumpToStartMs, unsigned char pointID, bool synchronisedStart);
 /**
  @brief Exits from the current loop.
  */
@@ -203,7 +219,7 @@ public:
  
  @param ms The position to check in milliseconds.
  */
-    bool msInLoop(unsigned int ms);
+    bool msInLoop(double ms);
 /**
  @brief There is no auto-bpm detection inside, you must set the original bpm of the track with this for syncing.
  
@@ -217,14 +233,14 @@ public:
  
   Should be called after a successful open().
  */
-    void setFirstBeatMs(float ms);
+    void setFirstBeatMs(double ms);
 /**
  @brief Shows you where the closest beat is to a specific position.
  
  @param ms The position in milliseconds.
  @param beatIndex Set to 0 if beat index is not important, 1-4 otherwise.
 */
-    double closestBeatMs(unsigned int ms, unsigned char beatIndex);
+    double closestBeatMs(double ms, unsigned char beatIndex);
     
 /**
  @brief "Virtual jog wheel" or "virtual turntable" handling. 
@@ -348,3 +364,4 @@ private:
     SuperpoweredAdvancedAudioPlayer& operator=(const SuperpoweredAdvancedAudioPlayer&);
 };
 
+#endif

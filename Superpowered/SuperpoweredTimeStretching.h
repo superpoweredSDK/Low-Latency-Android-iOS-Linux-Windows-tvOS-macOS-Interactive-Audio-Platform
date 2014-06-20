@@ -1,5 +1,8 @@
-#import "stretchAudioCurve.h"
-#import "SuperpoweredAudioBuffers.h"
+#ifndef Header_SuperpoweredTimeStretching
+#define Header_SuperpoweredTimeStretching
+
+#include "stretchAudioCurve.h"
+#include "SuperpoweredAudioBuffers.h"
 struct stretchInternals;
 
 /**
@@ -65,3 +68,5 @@ private:
     SuperpoweredTimeStretching(const SuperpoweredTimeStretching&);
     SuperpoweredTimeStretching& operator=(const SuperpoweredTimeStretching&);
 };
+
+#endif

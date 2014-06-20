@@ -22,8 +22,8 @@
 		1B85C550189E6F20006D6C3C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B85C54F189E6F20006D6C3C /* Images.xcassets */; };
 		1B85C56F189E70E5006D6C3C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B85C56E189E70E5006D6C3C /* AudioToolbox.framework */; };
 		1B85C571189EA027006D6C3C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B85C570189EA027006D6C3C /* AVFoundation.framework */; };
+		1B97252F19470E13005CCEEB /* libSuperpoweredAudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B97252E19470E13005CCEEB /* libSuperpoweredAudio.a */; };
 		1BA11FB418FBBF9A00484827 /* SuperpoweredIOSAudioOutput.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1BA11FB218FBBF9A00484827 /* SuperpoweredIOSAudioOutput.mm */; };
-		1BA11FC618FBBFB300484827 /* libSuperpoweredAudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BA11FC518FBBFB300484827 /* libSuperpoweredAudio.a */; };
 		1BA11FC818FC28F300484827 /* track.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1BA11FC718FC28F300484827 /* track.mp3 */; };
 		1BADEA8F18DB892F001E9516 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BADEA8E18DB892F001E9516 /* Accelerate.framework */; };
 /* End PBXBuildFile section */
@@ -51,6 +51,7 @@
 		1B85C54F189E6F20006D6C3C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SuperpoweredExample/Images.xcassets; sourceTree = "<group>"; };
 		1B85C56E189E70E5006D6C3C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		1B85C570189EA027006D6C3C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		1B97252E19470E13005CCEEB /* libSuperpoweredAudio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSuperpoweredAudio.a; path = Superpowered/libSuperpoweredAudio.a; sourceTree = "<group>"; };
 		1BA11FB118FBBF9A00484827 /* SuperpoweredIOSAudioOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperpoweredIOSAudioOutput.h; path = Superpowered/SuperpoweredIOSAudioOutput.h; sourceTree = "<group>"; };
 		1BA11FB218FBBF9A00484827 /* SuperpoweredIOSAudioOutput.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SuperpoweredIOSAudioOutput.mm; path = Superpowered/SuperpoweredIOSAudioOutput.mm; sourceTree = "<group>"; };
 		1BA11FB518FBBFAB00484827 /* Superpowered3BandEQ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Superpowered3BandEQ.h; path = Superpowered/Superpowered3BandEQ.h; sourceTree = "<group>"; };
@@ -69,7 +70,6 @@
 		1BA11FC218FBBFAB00484827 /* SuperpoweredRoll.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredRoll.h; path = Superpowered/SuperpoweredRoll.h; sourceTree = "<group>"; };
 		1BA11FC318FBBFAB00484827 /* SuperpoweredTimeStretching.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredTimeStretching.h; path = Superpowered/SuperpoweredTimeStretching.h; sourceTree = "<group>"; };
 		1BA11FC418FBBFAB00484827 /* SuperpoweredWhoosh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredWhoosh.h; path = Superpowered/SuperpoweredWhoosh.h; sourceTree = "<group>"; };
-		1BA11FC518FBBFB300484827 /* libSuperpoweredAudio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSuperpoweredAudio.a; path = Superpowered/libSuperpoweredAudio.a; sourceTree = "<group>"; };
 		1BA11FC718FC28F300484827 /* track.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = track.mp3; path = SuperpoweredExample/track.mp3; sourceTree = "<group>"; };
 		1BADEA8D18DB8925001E9516 /* fftTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fftTest.h; path = SuperpoweredExample/fftTest.h; sourceTree = "<group>"; };
 		1BADEA8E18DB892F001E9516 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
@@ -84,7 +84,7 @@
 				1BADEA8F18DB892F001E9516 /* Accelerate.framework in Frameworks */,
 				1B85C56F189E70E5006D6C3C /* AudioToolbox.framework in Frameworks */,
 				1B85C571189EA027006D6C3C /* AVFoundation.framework in Frameworks */,
-				1BA11FC618FBBFB300484827 /* libSuperpoweredAudio.a in Frameworks */,
+				1B97252F19470E13005CCEEB /* libSuperpoweredAudio.a in Frameworks */,
 				1B85C53A189E6F20006D6C3C /* CoreGraphics.framework in Frameworks */,
 				1B85C538189E6F20006D6C3C /* Foundation.framework in Frameworks */,
 				1B790D0418B5F5020041A145 /* MediaPlayer.framework in Frameworks */,
@@ -99,7 +99,7 @@
 		1B85C52B189E6F20006D6C3C = {
 			isa = PBXGroup;
 			children = (
-				1BA11FC518FBBFB300484827 /* libSuperpoweredAudio.a */,
+				1B97252E19470E13005CCEEB /* libSuperpoweredAudio.a */,
 				1BA11FB118FBBF9A00484827 /* SuperpoweredIOSAudioOutput.h */,
 				1BA11FB218FBBF9A00484827 /* SuperpoweredIOSAudioOutput.mm */,
 				1BADEA9018DB898A001E9516 /* Superpowered Headers */,
@@ -362,11 +362,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_ENABLE_MODULES = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_CW_ASM_SYNTAX = YES;
-				GCC_C_LANGUAGE_STANDARD = c11;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "SuperpoweredExample/SuperpoweredExample-Prefix.pch";
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
@@ -376,15 +376,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Superpowered",
 				);
-				OTHER_CFLAGS = (
-					"-mfloat-abi=softfp",
-					"-mfpu=neon",
-					"-mno-thumb",
-				);
-				OTHER_LDFLAGS = (
-					"-all_load",
-					"-ObjC",
-				);
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "armv7 armv7s i386";
 				WRAPPER_EXTENSION = app;
@@ -396,11 +389,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_ENABLE_MODULES = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_CW_ASM_SYNTAX = YES;
-				GCC_C_LANGUAGE_STANDARD = c11;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "SuperpoweredExample/SuperpoweredExample-Prefix.pch";
 				INFOPLIST_FILE = "SuperpoweredExample/SuperpoweredExample-Info.plist";
@@ -409,15 +402,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Superpowered",
 				);
-				OTHER_CFLAGS = (
-					"-mfloat-abi=softfp",
-					"-mfpu=neon",
-					"-mno-thumb",
-				);
-				OTHER_LDFLAGS = (
-					"-all_load",
-					"-ObjC",
-				);
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "armv7 armv7s i386";
 				WRAPPER_EXTENSION = app;

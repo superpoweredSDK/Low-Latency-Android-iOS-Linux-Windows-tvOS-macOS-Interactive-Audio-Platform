@@ -1,3 +1,6 @@
+#ifndef Header_SuperpoweredResampler
+#define Header_SuperpoweredResampler
+
 struct resamplerInternals;
 
 /**
@@ -37,3 +40,5 @@ private:
     SuperpoweredResampler(const SuperpoweredResampler&);
     SuperpoweredResampler& operator=(const SuperpoweredResampler&);
 };
+
+#endif
