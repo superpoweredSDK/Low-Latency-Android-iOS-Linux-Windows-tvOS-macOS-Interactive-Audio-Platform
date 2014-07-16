@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.3</span>
+   &#160;<span id="projectnumber">0.4</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -56,12 +56,12 @@
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    </div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_superpowered_f_x.html#ac9ad841f5dab47f11d7a69584cc1e882">enable</a>(<span class="keywordtype">bool</span> flag) = 0; <span class="comment">// Use this to turn it on/off.</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_superpowered_f_x.html#a684b7cef894f2f2819295b820765dcfa">setSamplerate</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> samplerate) = 0;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_superpowered_f_x.html#a633194e7def93e260d7b7c820fb946a8">process</a>(<span class="keywordtype">float</span> *input, <span class="keywordtype">float</span> *output, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numberOfSamples) = 0;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="class_superpowered_f_x.html">SuperpoweredFX</a>() {};</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;};</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_superpowered_f_x.html#a633194e7def93e260d7b7c820fb946a8">process</a>(<span class="keywordtype">float</span> *input, <span class="keywordtype">float</span> *output, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numberOfSamples) = 0;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="class_superpowered_f_x.html">SuperpoweredFX</a>() {};</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;};</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="class_superpowered_f_x_html_a684b7cef894f2f2819295b820765dcfa"><div class="ttname"><a href="class_superpowered_f_x.html#a684b7cef894f2f2819295b820765dcfa">SuperpoweredFX::setSamplerate</a></div><div class="ttdeci">virtual void setSamplerate(unsigned int samplerate)=0</div><div class="ttdoc">Sets the sample rate. </div></div>
 <div class="ttc" id="class_superpowered_f_x_html_a633194e7def93e260d7b7c820fb946a8"><div class="ttname"><a href="class_superpowered_f_x.html#a633194e7def93e260d7b7c820fb946a8">SuperpoweredFX::process</a></div><div class="ttdeci">virtual bool process(float *input, float *output, unsigned int numberOfSamples)=0</div><div class="ttdoc">Processes the audio. </div></div>
 <div class="ttc" id="class_superpowered_f_x_html"><div class="ttname"><a href="class_superpowered_f_x.html">SuperpoweredFX</a></div><div class="ttdoc">This is the base class for Superpowered effects. </div><div class="ttdef"><b>Definition:</b> SuperpoweredFX.h:10</div></div>

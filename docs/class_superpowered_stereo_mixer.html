@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.3</span>
+   &#160;<span id="projectnumber">0.4</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -75,6 +75,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:af17d599e596e44d6ec419de7cf6ad77d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_stereo_mixer.html#af17d599e596e44d6ec419de7cf6ad77d">floatToShortInt</a> (float *inputLeft, float *inputRight, short int *output, unsigned int numberOfSamples)</td></tr>
 <tr class="memdesc:af17d599e596e44d6ec419de7cf6ad77d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts two 32-bit float input channels to stereo interleaved 16-bit signed integer output.  <a href="#af17d599e596e44d6ec419de7cf6ad77d">More...</a><br /></td></tr>
 <tr class="separator:af17d599e596e44d6ec419de7cf6ad77d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59066c11b5affa744a415515c2219221"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_stereo_mixer.html#a59066c11b5affa744a415515c2219221">shortIntToFloat</a> (short int *input, float *output, unsigned int numberOfSamples)</td></tr>
+<tr class="memdesc:a59066c11b5affa744a415515c2219221"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a stereo interleaved 16-bit signed integer input to stereo interleaved 32-bit float output.  <a href="#a59066c11b5affa744a415515c2219221">More...</a><br /></td></tr>
+<tr class="separator:a59066c11b5affa744a415515c2219221"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Mixes max. 4 interleaved stereo inputs together. Output can be interleaved or non-interleaved (split). Separate input channel levels (good for gain and pan), separate output channel levels (master gain and pan). Returns maximum values for metering.</p>
@@ -253,6 +256,55 @@ Static Public Member Functions</h2></td></tr>
     <tr><td class="paramname">inputLeft</td><td>32-bit input for the left side. Should be numberOfSamples + 8 big minimum. </td></tr>
     <tr><td class="paramname">inputRight</td><td>32-bit input for the right side. Should be numberOfSamples + 8 big minimum. </td></tr>
     <tr><td class="paramname">output</td><td>Stereo interleaved 16-bit output. Should be numberOfSamples * 2 + 16 big minimum. </td></tr>
+    <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. Should be 4 minimum. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a59066c11b5affa744a415515c2219221"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void SuperpoweredStereoMixer::shortIntToFloat </td>
+          <td>(</td>
+          <td class="paramtype">short int *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>output</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>numberOfSamples</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>This is a static method, you don't need to create a <a class="el" href="class_superpowered_stereo_mixer.html" title="Mixer, splitter and Apple 8.24 format converter. ">SuperpoweredStereoMixer</a> instance to use it.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>Stereo interleaved 16-bit input. Should be numberOfSamples + 8 big minimum. </td></tr>
+    <tr><td class="paramname">output</td><td>Stereo interleaved 32-bit output. Should be numberOfSamples + 8 big minimum. </td></tr>
     <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. Should be 4 minimum. </td></tr>
   </table>
   </dd>

@@ -66,7 +66,7 @@ public:
  
  @param input 32-bit interleaved stereo input buffer. Can point to the same location with output (in-place processing). Special case: input can be NULL, echo will output the tail only this case.
  @param output 32-bit interleaved stereo output buffer. Can point to the same location with input (in-place processing).
- @param numberOfSamples Should be 16 minimum, and exactly divisible with 8.
+ @param numberOfSamples Should be 16 minimum, and a multiply of 8.
 */
     bool process(float *input, float *output, unsigned int numberOfSamples);
     

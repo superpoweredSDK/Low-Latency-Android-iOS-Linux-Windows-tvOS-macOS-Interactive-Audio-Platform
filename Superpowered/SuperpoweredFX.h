@@ -25,6 +25,7 @@ public:
  @brief Processes the audio.
  
  It's not locked when you call other methods from other threads, and they not interfere with process() at all.
+ Check the process() documentation of each fx for the minimum number of samples and an optional vector size limitation. For maximum compatibility with all Superpowered effects, numberOfSamples should be minimum 32 and a multiply of 8.
  
  @return Put something into output or not.
  
@@ -45,8 +46,6 @@ public:
  Superpowered technology allows developers to build computationally intensive audio apps and embedded applications that process more quickly and use less power than other comparable solutions.
  
  Superpowered DSP is designed and optimized, from scratch, to run on low-power mobile processors. Specifically, any device running ARM with the NEON extension (which covers 99% of all mobile devices manufactured as of Spring 2014).
- 
- The current version of Superpowered Audio SDK is only for iOS. The SDK for Android will be released Summer 2014.
  
  Details of the latest version can be found at http://superpowered.com/superpowered-audio-sdk/
  */

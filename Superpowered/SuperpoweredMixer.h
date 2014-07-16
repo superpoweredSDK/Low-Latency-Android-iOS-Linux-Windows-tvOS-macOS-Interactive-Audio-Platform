@@ -54,6 +54,16 @@ public:
  @param numberOfSamples The number of samples to process. Should be 4 minimum.
  */
     static void floatToShortInt(float *inputLeft, float *inputRight, short int *output, unsigned int numberOfSamples);
+/**
+ @brief Converts a stereo interleaved 16-bit signed integer input to stereo interleaved 32-bit float output.
+     
+ This is a static method, you don't need to create a SuperpoweredStereoMixer instance to use it.
+     
+ @param input Stereo interleaved 16-bit input. Should be numberOfSamples + 8 big minimum.
+ @param output Stereo interleaved 32-bit output. Should be numberOfSamples + 8 big minimum.
+ @param numberOfSamples The number of samples to process. Should be 4 minimum.
+*/
+    static void shortIntToFloat(short int *input, float *output, unsigned int numberOfSamples);
     
 private:
     stereoMixerInternals *internals;

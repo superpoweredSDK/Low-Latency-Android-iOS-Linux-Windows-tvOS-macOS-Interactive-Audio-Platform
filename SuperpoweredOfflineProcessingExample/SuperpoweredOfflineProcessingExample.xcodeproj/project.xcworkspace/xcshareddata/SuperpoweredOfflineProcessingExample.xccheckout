@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>ED8ABFBA-3C8A-44AF-8A25-896D964190C4</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SuperpoweredOfflineProcessingExample</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C871C7B6-75E7-4ECF-A250-9FB5DBB50067</key>
+		<string>https://github.com/superpoweredSDK/Superpowered-Audio-SDK.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SuperpoweredOfflineProcessingExample/SuperpoweredOfflineProcessingExample.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C871C7B6-75E7-4ECF-A250-9FB5DBB50067</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/superpoweredSDK/Superpowered-Audio-SDK.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C871C7B6-75E7-4ECF-A250-9FB5DBB50067</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C871C7B6-75E7-4ECF-A250-9FB5DBB50067</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SuperpoweredSDK</string>
+		</dict>
+	</array>
+</dict>
+</plist>
