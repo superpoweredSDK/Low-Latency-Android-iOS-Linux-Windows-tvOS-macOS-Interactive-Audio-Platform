@@ -21,15 +21,14 @@ struct multiRouteInputChannelMap;
 
 /**
  @brief Creates the audio output instance.
- 
+  
  @param delegate The object fully implementing the SuperpoweredIOSAudioIODelegate protocol. Not retained.
  @param preferredBufferSize The initial value for preferredBufferSizeSamples. Should be 128, 256 or 512.
  @param audioSessionCategory The audio session category. If you want to use MultiRoute, set it to AVAudioSessionCategoryPlayback, and set multiRouteChannels to more than 2. You don't loose the ability of AirPlay this way.
  @param multiRouteChannels The number of channels you provide in the audio processing callback. Used in the MultiRoute category only.
  @param fixReceiver Sometimes the audio goes to the phone's receiver ("ear speaker"). Set this to true if you want the real speaker instead.
- @param float32 The canonical iOS audio format is "Apple 8.24". Set this to true if you want 32-bit floating point instead.
  */
-- (id)initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)delegate preferredBufferSize:(unsigned int)preferredBufferSize audioSessionCategory:(NSString *)audioSessionCategory multiRouteChannels:(int)multiRouteChannels fixReceiver:(bool)fixReceiver float32:(bool)float32;
+- (id)initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)delegate preferredBufferSize:(unsigned int)preferredBufferSize audioSessionCategory:(NSString *)audioSessionCategory multiRouteChannels:(int)multiRouteChannels fixReceiver:(bool)fixReceiver;
 
 /**
  @brief Starts audio processing.

@@ -31,10 +31,7 @@ static const SLboolean requireds[2] = { SL_BOOLEAN_TRUE, SL_BOOLEAN_TRUE };
 SuperpoweredExample::SuperpoweredExample(const char *path, int *params) : currentBuffer(0), buffersize(params[5]), activeFx(0), crossValue(0.0f), volB(0.0f), volA(1.0f * headroom) {
     pthread_mutex_init(&mutex, NULL); // This will keep our player volumes and playback states in sync.
 
-    for (int n = 0; n < NUM_BUFFERS; n++) {
-    	unaligned[n] = malloc((buffersize + 16) * sizeof(float) * 2);
-    	outputBuffer[n] = (float *)(((unsigned long)unaligned[n] + 15) & (unsigned long)-16); // align to 16
-    };
+    for (int n = 0; n < NUM_BUFFERS; n++) outputBuffer[n] = (float *)memalign(16, (buffersize + 16) * sizeof(float) * 2);
 
     unsigned int samplerate = params[4];
 
@@ -83,7 +80,7 @@ SuperpoweredExample::SuperpoweredExample(const char *path, int *params) : curren
 }
 
 SuperpoweredExample::~SuperpoweredExample() {
-	for (int n = 0; n < NUM_BUFFERS; n++) free(unaligned[n]);
+	for (int n = 0; n < NUM_BUFFERS; n++) free(outputBuffer[n]);
     delete playerA;
     delete playerB;
     delete mixer;

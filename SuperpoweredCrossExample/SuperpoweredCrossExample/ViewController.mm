@@ -5,6 +5,7 @@
 #import "SuperpoweredFlanger.h"
 #import "SuperpoweredIOSAudioOutput.h"
 #import "SuperpoweredMixer.h"
+#import <stdlib.h>
 #import <pthread.h>
 
 #define HEADROOM_DECIBEL 3.0f
@@ -19,7 +20,6 @@ static const float headroom = powf(10.0f, -HEADROOM_DECIBEL * 0.025);
     SuperpoweredStereoMixer *mixer;
     unsigned char activeFx;
     float *stereoBuffer, crossValue, volA, volB;
-    void *unaligned;
     unsigned int lastSamplerate;
     pthread_mutex_t mutex;
 }
@@ -48,10 +48,8 @@ void playerEventCallbackB(void *clientData, SuperpoweredAdvancedAudioPlayerEvent
     crossValue = volB = 0.0f;
     volA = 1.0f * headroom;
     pthread_mutex_init(&mutex, NULL); // This will keep our player volumes and playback states in sync.
-	
-    unaligned = malloc(4096 + 128 + 15);
-    stereoBuffer = (float *)(((unsigned long)unaligned + 15) & (unsigned long)-16); // align to 16
-    
+    if (posix_memalign((void **)&stereoBuffer, 16, 4096 + 128) != 0) abort(); // Allocating memory, aligned to 16.
+
     playerA = new SuperpoweredAdvancedAudioPlayer((__bridge void *)self, playerEventCallbackA, 44100, 0);
     playerA->open([[[NSBundle mainBundle] pathForResource:@"lycka" ofType:@"mp3"] fileSystemRepresentation]);
     playerB = new SuperpoweredAdvancedAudioPlayer((__bridge void *)self, playerEventCallbackB, 44100, 0);
@@ -65,7 +63,7 @@ void playerEventCallbackB(void *clientData, SuperpoweredAdvancedAudioPlayerEvent
     
     mixer = new SuperpoweredStereoMixer();
     
-    output = [[SuperpoweredIOSAudioOutput alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:512 audioSessionCategory:AVAudioSessionCategoryPlayback multiRouteChannels:2 fixReceiver:true float32:false];
+    output = [[SuperpoweredIOSAudioOutput alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:512 audioSessionCategory:AVAudioSessionCategoryPlayback multiRouteChannels:2 fixReceiver:true];
     [output start];
 }
 
@@ -73,7 +71,7 @@ void playerEventCallbackB(void *clientData, SuperpoweredAdvancedAudioPlayerEvent
     delete playerA;
     delete playerB;
     delete mixer;
-    free(unaligned);
+    free(stereoBuffer);
     pthread_mutex_destroy(&mutex);
 #if !__has_feature(objc_arc)
     [output release];
@@ -120,7 +118,7 @@ void playerEventCallbackB(void *clientData, SuperpoweredAdvancedAudioPlayerEvent
     float *mixerInputs[4] = { stereoBuffer, NULL, NULL, NULL };
     float mixerInputLevels[8] = { 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f };
     float mixerOutputLevels[2] = { 1.0f, 1.0f };
-    if (!silence) mixer->process(mixerInputs, buffers, mixerInputLevels, mixerOutputLevels, NULL, NULL, numberOfSamples, true);
+    if (!silence) mixer->process(mixerInputs, buffers, mixerInputLevels, mixerOutputLevels, NULL, NULL, numberOfSamples, false);
     return !silence;
 }
 

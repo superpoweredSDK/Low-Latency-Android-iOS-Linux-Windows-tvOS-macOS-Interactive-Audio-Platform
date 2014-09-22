@@ -72,6 +72,15 @@ public:
     void setShelfParametersAndType(float frequency, float slope, float dbGain, SuperpoweredFilterType type);
     
 /**
+ @brief Set params and type at once for bandlimited filters.
+ 
+ @param frequency The frequency in Hz.
+ @param octaveWidth Width in octave.
+ @param type Must be bandpass or notch.
+ */
+    void setBandlimitedParametersAndType(float frequency, float octaveWidth, SuperpoweredFilterType type);
+    
+/**
  @brief Turns the effect on/off.
  */
     void enable(bool flag); // Use this to turn it on/off.

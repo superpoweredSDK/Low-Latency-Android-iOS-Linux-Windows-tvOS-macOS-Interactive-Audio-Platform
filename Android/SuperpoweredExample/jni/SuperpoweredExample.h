@@ -44,7 +44,6 @@ private:
     pthread_mutex_t mutex;
 
 	float *outputBuffer[NUM_BUFFERS];
-	void *unaligned[NUM_BUFFERS];
 	int currentBuffer, buffersize;
 };
 

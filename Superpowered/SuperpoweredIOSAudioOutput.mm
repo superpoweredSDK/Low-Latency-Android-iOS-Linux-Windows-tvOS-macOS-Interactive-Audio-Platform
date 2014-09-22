@@ -51,7 +51,7 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
     SInt32 AUOutputChannelMap[32], AUInputChannelMap[32];
     
     int remoteIOChannels, silenceFrames, sampleRate, multiRouteChannels;
-    bool audioUnitRunning, multiRouteDeviceConnected, samplerate48000, iOS6, background, fixReceiver, changingSamplerate, waitingForReset, float32;
+    bool audioUnitRunning, multiRouteDeviceConnected, samplerate48000, iOS6, background, fixReceiver, changingSamplerate, waitingForReset;
 }
 
 @synthesize preferredBufferSizeSamples, inputEnabled;
@@ -59,7 +59,7 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
 static OSStatus audioProcessingCallback(void *inRefCon, AudioUnitRenderActionFlags *ioActionFlags, const AudioTimeStamp *inTimeStamp, UInt32 inBusNumber, UInt32 inNumberFrames, AudioBufferList *ioData) {
     SuperpoweredIOSAudioOutput *self = (__bridge SuperpoweredIOSAudioOutput *)inRefCon;
     if (self->changingSamplerate) return noErr;
-    
+
 // Superpowered works with a limited set of buffer sizes, from low to mid latency.
 // There is no benefit to use higher sizes, as Superpowered is efficient with the battery and CPU.
     switch (inNumberFrames) {
@@ -105,7 +105,7 @@ static OSStatus audioProcessingCallback(void *inRefCon, AudioUnitRenderActionFla
 	return noErr;
 }
 
-- (id)initWithDelegate:(NSObject<SuperpoweredIOSAudioIODelegate> *)d preferredBufferSize:(unsigned int)samples audioSessionCategory:(NSString *)category multiRouteChannels:(int)channels fixReceiver:(bool)fr float32:(bool)fl32 {
+- (id)initWithDelegate:(NSObject<SuperpoweredIOSAudioIODelegate> *)d preferredBufferSize:(unsigned int)samples audioSessionCategory:(NSString *)category multiRouteChannels:(int)channels fixReceiver:(bool)fr {
     self = [super init];
     if (self) {
         iOS6 = ([[[UIDevice currentDevice] systemVersion] compare:@"6.0" options:NSNumericSearch] != NSOrderedAscending);
@@ -121,8 +121,7 @@ static OSStatus audioProcessingCallback(void *inRefCon, AudioUnitRenderActionFla
         inputEnabled = changingSamplerate = waitingForReset = false;
         delegate = d;
         fixReceiver = fr;
-        float32 = fl32;
-        
+
         outputsAndInputs = [[NSMutableString alloc] initWithCapacity:256];
         silenceFrames = 0;
         samplerate48000 = background = audioUnitRunning = false;
@@ -288,7 +287,7 @@ static OSStatus audioProcessingCallback(void *inRefCon, AudioUnitRenderActionFla
     
     bool first = true; int n = 0;
     for (AVAudioSessionPortDescription *port in [[[AVAudioSession sharedInstance] currentRoute] outputs]) {
-        int channels = [port.channels count];
+        int channels = (int)[port.channels count];
         audioDeviceType type = NSStringToAudioDeviceType(port.portType);
         [outputsAndInputs appendFormat:@"%s%@ (%i out)", first ? "" : ", ", [port.portName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]], channels];
         first = false;
@@ -325,7 +324,7 @@ static OSStatus audioProcessingCallback(void *inRefCon, AudioUnitRenderActionFla
         first = true;
         
         for (AVAudioSessionPortDescription *port in [[[AVAudioSession sharedInstance] currentRoute] inputs]) {
-            int channels = [port.channels count];
+            int channels = (int)[port.channels count];
             audioDeviceType type = NSStringToAudioDeviceType(port.portType);
             [outputsAndInputs appendFormat:@"%s%@ (%i in)", first ? "" : ", ", [port.portName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]], channels];
             first = false;
@@ -396,7 +395,7 @@ static OSStatus audioProcessingCallback(void *inRefCon, AudioUnitRenderActionFla
     AudioStreamBasicDescription format;
 	format.mSampleRate = sampleRate;
 	format.mFormatID = kAudioFormatLinearPCM;
-	format.mFormatFlags = float32 ? (kAudioFormatFlagIsFloat | kAudioFormatFlagIsPacked | kAudioFormatFlagIsNonInterleaved | kAudioFormatFlagsNativeEndian) : kAudioFormatFlagsAudioUnitCanonical;
+	format.mFormatFlags = (kAudioFormatFlagIsFloat | kAudioFormatFlagIsPacked | kAudioFormatFlagIsNonInterleaved | kAudioFormatFlagsNativeEndian);
     format.mBitsPerChannel = 32;
 	format.mFramesPerPacket = 1;
     format.mBytesPerFrame = 4;
@@ -444,7 +443,7 @@ static OSStatus audioProcessingCallback(void *inRefCon, AudioUnitRenderActionFla
     for (int n = 0; n < 32; n++) AUOutputChannelMap[n] = -1;
     
     if (multiRouteChannels > 2) [delegate multiRouteMapChannels:&outputChannelMap inputMap:&inputChannelMap multiRouteDeviceName:multiRouteDeviceName outputsAndInputs:outputsAndInputs];
-    
+
     int devicePos = 0, hdmiPos = 0, usbPos = 0;
     for (int n = 0; n < 32; n++) {
         if (RemoteIOOutputChannelMap[n] != 0) switch (RemoteIOOutputChannelMap[n]) {

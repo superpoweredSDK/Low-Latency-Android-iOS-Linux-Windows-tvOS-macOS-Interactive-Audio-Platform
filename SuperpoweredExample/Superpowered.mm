@@ -16,7 +16,6 @@
     SuperpoweredStereoMixer *mixer;
     SuperpoweredIOSAudioOutput *output;
     float *stereoBuffer;
-    void *unaligned;
     bool started;
     uint64_t timeUnitsProcessed, maxTime;
     unsigned int lastPositionSeconds, lastSamplerate, samplesProcessed;
@@ -26,7 +25,7 @@
     delete player;
     delete mixer;
     for (int n = 2; n < NUMFXUNITS; n++) delete effects[n];
-    free(unaligned);
+    free(stereoBuffer);
 #if !__has_feature(objc_arc)
     [output release];
     [super dealloc];
@@ -89,10 +88,8 @@
     if (!self) return nil;
     started = false;
     lastPositionSeconds = lastSamplerate = samplesProcessed = timeUnitsProcessed = maxTime = avgUnitsPerSecond = maxUnitsPerSecond = 0;
-    
-    unaligned = malloc(4096 + 128 + 15);
-    stereoBuffer = (float *)(((unsigned long)unaligned + 15) & (unsigned long)-16); // align to 16
-    
+    if (posix_memalign((void **)&stereoBuffer, 16, 4096 + 128) != 0) abort(); // Allocating memory, aligned to 16.
+
 // Create the Superpowered units we'll use.
     player = new SuperpoweredAdvancedAudioPlayer(NULL, NULL, 44100, 0);
     player->open([[[NSBundle mainBundle] pathForResource:@"track" ofType:@"mp3"] fileSystemRepresentation]);
@@ -124,7 +121,7 @@
     
     mixer = new SuperpoweredStereoMixer();
     
-    output = [[SuperpoweredIOSAudioOutput alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:512 audioSessionCategory:AVAudioSessionCategoryPlayback multiRouteChannels:2 fixReceiver:true float32:false];
+    output = [[SuperpoweredIOSAudioOutput alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:512 audioSessionCategory:AVAudioSessionCategoryPlayback multiRouteChannels:2 fixReceiver:true];
     return self;
 }
 
@@ -168,7 +165,7 @@
     float *mixerInputs[4] = { stereoBuffer, NULL, NULL, NULL };
     float mixerInputLevels[8] = { 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f };
     float mixerOutputLevels[2] = { 1.0f, 1.0f };
-    if (!silence) mixer->process(mixerInputs, buffers, mixerInputLevels, mixerOutputLevels, NULL, NULL, numberOfSamples, true);
+    if (!silence) mixer->process(mixerInputs, buffers, mixerInputLevels, mixerOutputLevels, NULL, NULL, numberOfSamples, false);
     
     playing = player->playing;
     return !silence;

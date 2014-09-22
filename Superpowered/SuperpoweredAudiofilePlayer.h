@@ -28,7 +28,7 @@ public:
     
 /**
  Create a player instance with the current sample rate value.
- */
+*/
     SuperpoweredAudiofilePlayer(unsigned int sampleRate);
     ~SuperpoweredAudiofilePlayer();
     

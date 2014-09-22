@@ -10,29 +10,29 @@
 	<string>SuperpoweredOfflineProcessingExample</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>C871C7B6-75E7-4ECF-A250-9FB5DBB50067</key>
+		<key>6FA8E443A5E5A11CF356621EFFAE01B51203C6A0</key>
 		<string>https://github.com/superpoweredSDK/Superpowered-Audio-SDK.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>SuperpoweredOfflineProcessingExample/SuperpoweredOfflineProcessingExample.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>C871C7B6-75E7-4ECF-A250-9FB5DBB50067</key>
+		<key>6FA8E443A5E5A11CF356621EFFAE01B51203C6A0</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/superpoweredSDK/Superpowered-Audio-SDK.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>C871C7B6-75E7-4ECF-A250-9FB5DBB50067</string>
+	<string>6FA8E443A5E5A11CF356621EFFAE01B51203C6A0</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>C871C7B6-75E7-4ECF-A250-9FB5DBB50067</string>
+			<string>6FA8E443A5E5A11CF356621EFFAE01B51203C6A0</string>
 			<key>IDESourceControlWCCName</key>
 			<string>SuperpoweredSDK</string>
 		</dict>

@@ -47,10 +47,10 @@ public:
  @param metaOnly If true, it opens the file for fast metadata reading only, not for decoding audio.
  @param offset Byte offset in the file.
  @param length Byte length from offset. Set offset and length to 0 to read the entire file.
- 
+
  @return NULL if successful, or an error string.
  */
-    const char *open(const char *path, bool metaOnly, int offset, int length);
+    const char *open(const char *path, bool metaOnly = false, int offset = 0, int length = 0);
 /**
  @brief Decodes the requested number of samples.
  
@@ -94,8 +94,9 @@ public:
  @brief Lightweight constructor, doesn't do or allocate much. 
  
  @param mediaServerOnly Set it to true, if you don't want the internal codecs used (iOS only).
+ @param clientData Custom data for the custom data provider.
  */
-    SuperpoweredDecoder(bool mediaServerOnly);
+    SuperpoweredDecoder(bool mediaServerOnly, void *clientData = 0);
     ~SuperpoweredDecoder();
     
 private:

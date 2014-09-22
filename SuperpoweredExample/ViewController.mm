@@ -125,8 +125,8 @@ static const bool availableInCoreAudio[8] = { true, false, false, true, true, fa
         break;
     };
     
-    [coreAudio toggleFx:indexPath.row];
-    [superpowered toggleFx:indexPath.row];
+    [coreAudio toggleFx:(int)indexPath.row];
+    [superpowered toggleFx:(int)indexPath.row];
     
     [table reloadData];
     return nil;
