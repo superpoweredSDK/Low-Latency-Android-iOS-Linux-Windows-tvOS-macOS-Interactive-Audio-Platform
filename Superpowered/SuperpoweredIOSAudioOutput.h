@@ -84,7 +84,7 @@ struct multiRouteInputChannelMap;
  
  @warning It's called on a high priority real-time audio thread, so please take care of blocking and processing time to prevent audio dropouts.
  */
-- (bool)audioProcessingCallback:(void **)buffers inputChannels:(unsigned int)inputChannels outputChannels:(unsigned int)outputChannels numberOfSamples:(unsigned int)numberOfSamples samplerate:(unsigned int)samplerate hostTime:(UInt64)hostTime;
+- (bool)audioProcessingCallback:(float **)buffers inputChannels:(unsigned int)inputChannels outputChannels:(unsigned int)outputChannels numberOfSamples:(unsigned int)numberOfSamples samplerate:(unsigned int)samplerate hostTime:(UInt64)hostTime;
 
 @end
 
@@ -150,26 +150,3 @@ typedef struct multiRouteInputChannelMap {
     int USBChannels[32];
     int numberOfUSBChannelsAvailable; // READ ONLY
 } multiRouteInputChannelMap;
-
-/**
- @brief Converts from Apple 8.24 to 32-bit floating point.
- 
- This code is not optimized with Superpowered.
- 
- @param input Input buffers.
- @param output Output buffers.
- @param numberOfBuffers How many buffers to convert.
- @param numberOfFrames How many frames to convert.
- */
-void apple824ToFloat(int **input, float **output, int numberOfBuffers, int numberOfFrames);
-
-/**
- @brief Converts from stereo interleaved 32-bit floating point to non-interleaved Apple 8.24.
- 
- This code is not optimized with Superpowered. If you have the Superpowered Audio SDK, please use the SuperpoweredStereoMixer for this conversion.
- 
- @param input Input buffer (stereo, interleaved, 32-bit floating point).
- @param output Two output buffer.
- @param numberOfFrames How many frames to convert.
- */
-void stereoFloatToApple824(float *input, int *output[2], int numberOfFrames);

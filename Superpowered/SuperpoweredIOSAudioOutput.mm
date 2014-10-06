@@ -3,28 +3,6 @@
 #import <AudioUnit/AudioUnit.h>
 #import <MediaPlayer/MediaPlayer.h>
 
-void apple824ToFloat(int **input, float **output, int numberOfBuffers, int numberOfFrames) {
-    static const float conv_824_to_float = 1.0f / float(1 << 24);
-    for (int n = 0; n < numberOfBuffers; n++) {
-        int *src = input[n];
-        float *dst = output[n];
-        int f = numberOfFrames;
-        while (f) {
-            *dst++ = float(*src++) * conv_824_to_float;
-            f--;
-        };
-    };
-}
-
-void stereoFloatToApple824(float *input, int *output[2], int numberOfFrames) {
-    static const float conv_float_to_824 = float(1 << 24);
-    while (numberOfFrames) {
-        *output[0]++ = int(*input++ * conv_float_to_824);
-        *output[1]++ = int(*input++ * conv_float_to_824);
-        numberOfFrames--;
-    };
-}
-
 typedef enum audioDeviceType {
     audioDeviceType_USB = 1, audioDeviceType_headphone = 2, audioDeviceType_HDMI = 3, audioDeviceType_other = 4
 } audioDeviceType;
@@ -79,8 +57,8 @@ static OSStatus audioProcessingCallback(void *inRefCon, AudioUnitRenderActionFla
     };
 
     if (ioData->mNumberBuffers != self->remoteIOChannels) return kAudioUnitErr_InvalidParameter; // Should never happen. But what if... ?
-    void *bufs[self->remoteIOChannels];
-    for (int n = 0; n < self->remoteIOChannels; n++) bufs[n] = ioData->mBuffers[n].mData;
+    float *bufs[self->remoteIOChannels];
+    for (int n = 0; n < self->remoteIOChannels; n++) bufs[n] = (float *)ioData->mBuffers[n].mData;
     
     unsigned int inputChannels = 0;
     if (self->inputEnabled) {

@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.4</span>
+   &#160;<span id="projectnumber">0.5</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -65,9 +65,9 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:aca8fbc41489b091c75a07351f2913387"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html#aca8fbc41489b091c75a07351f2913387">multiRouteMapChannels:inputMap:multiRouteDeviceName:outputsAndInputs:</a></td></tr>
 <tr class="memdesc:aca8fbc41489b091c75a07351f2913387"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is called on the main thread, when you use the MultiRoute audio session category and a new audio device is connected or disconnected.  <a href="#aca8fbc41489b091c75a07351f2913387">More...</a><br /></td></tr>
 <tr class="separator:aca8fbc41489b091c75a07351f2913387"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb30fbf0b98de0a2ea24098489a3eda3"><td class="memItemLeft" align="right" valign="top">(bool)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html#afb30fbf0b98de0a2ea24098489a3eda3">audioProcessingCallback:inputChannels:outputChannels:numberOfSamples:samplerate:hostTime:</a></td></tr>
-<tr class="memdesc:afb30fbf0b98de0a2ea24098489a3eda3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process audio here.  <a href="#afb30fbf0b98de0a2ea24098489a3eda3">More...</a><br /></td></tr>
-<tr class="separator:afb30fbf0b98de0a2ea24098489a3eda3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98f5968d2d14643445272bba1db6673e"><td class="memItemLeft" align="right" valign="top">(bool)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html#a98f5968d2d14643445272bba1db6673e">audioProcessingCallback:inputChannels:outputChannels:numberOfSamples:samplerate:hostTime:</a></td></tr>
+<tr class="memdesc:a98f5968d2d14643445272bba1db6673e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process audio here.  <a href="#a98f5968d2d14643445272bba1db6673e">More...</a><br /></td></tr>
+<tr class="separator:a98f5968d2d14643445272bba1db6673e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Method Documentation</h2>
 <a class="anchor" id="aca8fbc41489b091c75a07351f2913387"></a>
@@ -117,14 +117,14 @@ Instance Methods</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="afb30fbf0b98de0a2ea24098489a3eda3"></a>
+<a class="anchor" id="a98f5968d2d14643445272bba1db6673e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">- (bool) audioProcessingCallback: </td>
           <td></td>
-          <td class="paramtype">(void **)&#160;</td>
+          <td class="paramtype">(float **)&#160;</td>
           <td class="paramname"><em>buffers</em></td>
         </tr>
         <tr>

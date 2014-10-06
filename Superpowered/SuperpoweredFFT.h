@@ -30,7 +30,7 @@ void SuperpoweredFFTCleanup();
  @fn SuperpoweredFFTComplex(float *real, float *imag, int logSize, bool forward);
  @brief Complex in-place FFT.
  
- Data packing is same as Apple's vDSP.
+ Data packing is same as Apple's vDSP. Check the "Using Fourier Transforms" page of Apple's vDSP documentation ("Data Packing for Real FFTs").
  
  @param real Real part.
  @param imag Imaginary part.
@@ -44,7 +44,7 @@ void SuperpoweredFFTComplex(float *real, float *imag, int logSize, bool forward)
  @fn SuperpoweredFFTReal(float *real, float *imag, int logSize, bool forward);
  @brief Real in-place FFT.
  
- Data packing is same as Apple's vDSP.
+ Data packing is same as Apple's vDSP. Check the "Using Fourier Transforms" page of Apple's vDSP documentation ("Data Packing for Real FFTs").
  
  @param real Real part.
  @param imag Imaginary part.
@@ -58,7 +58,7 @@ void SuperpoweredFFTReal(float *real, float *imag, int logSize, bool forward);
  @fn SuperpoweredPolarFFT(float *mag, float *phase, int logSize, bool forward);
  @brief Polar FFT.
  
- Data packing is same as Apple's vDSP.
+ Data packing is same as Apple's vDSP. Check the "Using Fourier Transforms" page of Apple's vDSP documentation ("Data Packing for Real FFTs").
  
  @param mag Input: split real part. Output: magnitudes.
  @param phase Input: split real part. Output: phases.

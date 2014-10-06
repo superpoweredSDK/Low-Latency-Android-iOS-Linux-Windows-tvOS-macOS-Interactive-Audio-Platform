@@ -9,6 +9,7 @@ struct SuperpoweredAudiobufferlistElement;
  @brief This object manages an audio buffer pool.
  
  It reduces the number of memory allocation requests, increasing efficiency of audio applications.
+ Check the SuperpoweredOfflineProcessingExample project on how to use.
  */
 class SuperpoweredAudiobufferPool {
 public:
@@ -65,6 +66,7 @@ private:
  @brief This object manages an audio buffer list.
  
  Instead of circular buffers and too many memmove/memcpy, this object maintains an audio buffer "chain". You can append, insert, truncate, slice, extend, etc. this without the expensive memory operations.
+ Check the SuperpoweredOfflineProcessingExample project on how to use.
  
  @param sampleLength The number of samples inside this list.
  */

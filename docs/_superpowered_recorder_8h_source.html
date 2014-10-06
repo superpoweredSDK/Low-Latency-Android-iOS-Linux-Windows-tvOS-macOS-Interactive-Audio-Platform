@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.4</span>
+   &#160;<span id="projectnumber">0.5</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -50,33 +50,40 @@
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef Header_SuperpoweredRecorder</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define Header_SuperpoweredRecorder</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">struct </span>SuperpoweredRecorderInternals;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="class_superpowered_recorder.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_superpowered_recorder.html">SuperpoweredRecorder</a> {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="class_superpowered_recorder.html#ad00dfe67b561b0d7e7b06fa0a6c4e2fc">SuperpoweredRecorder</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *tempPath, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> samplerate);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    ~<a class="code" href="class_superpowered_recorder.html">SuperpoweredRecorder</a>();</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_recorder.html#a9809618f3adddea984efa38619a138f0">start</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *destinationPath);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_recorder.html#ab91723892859005472af7cc783ed743c">stop</a>();</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_recorder.html#ad11e1a3eacd78a635c2e786edffb9074">addToTracklist</a>(<span class="keywordtype">char</span> *artist, <span class="keywordtype">char</span> *title, <span class="keywordtype">int</span> offsetSeconds);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_recorder.html#a53fcb63604ca492e20ec386ddf8773c1">setSamplerate</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> samplerate);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_superpowered_recorder.html#ac99ae7f4273eccb42c8a84176b777067">process</a>(<span class="keywordtype">float</span> *input0, <span class="keywordtype">float</span> *input1, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numberOfSamples);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    SuperpoweredRecorderInternals *internals;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="class_superpowered_recorder.html#ad00dfe67b561b0d7e7b06fa0a6c4e2fc">SuperpoweredRecorder</a>(<span class="keyword">const</span> <a class="code" href="class_superpowered_recorder.html">SuperpoweredRecorder</a>&amp;);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="class_superpowered_recorder.html">SuperpoweredRecorder</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="class_superpowered_recorder.html">SuperpoweredRecorder</a>&amp;);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;};</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;FILE *createWAV(<span class="keyword">const</span> <span class="keywordtype">char</span> *path, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> samplerate, <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> numChannels);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keywordtype">void</span> closeWAV(FILE *fd);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">struct </span>SuperpoweredRecorderInternals;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="class_superpowered_recorder.html">   36</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_superpowered_recorder.html">SuperpoweredRecorder</a> {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="class_superpowered_recorder.html#ad00dfe67b561b0d7e7b06fa0a6c4e2fc">SuperpoweredRecorder</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *tempPath, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> samplerate);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    ~<a class="code" href="class_superpowered_recorder.html">SuperpoweredRecorder</a>();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_recorder.html#a9809618f3adddea984efa38619a138f0">start</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *destinationPath);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_recorder.html#ab91723892859005472af7cc783ed743c">stop</a>();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_recorder.html#ad11e1a3eacd78a635c2e786edffb9074">addToTracklist</a>(<span class="keywordtype">char</span> *artist, <span class="keywordtype">char</span> *title, <span class="keywordtype">int</span> offsetSeconds);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_recorder.html#a53fcb63604ca492e20ec386ddf8773c1">setSamplerate</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> samplerate);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_superpowered_recorder.html#ac99ae7f4273eccb42c8a84176b777067">process</a>(<span class="keywordtype">float</span> *input0, <span class="keywordtype">float</span> *input1, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numberOfSamples);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    SuperpoweredRecorderInternals *internals;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <a class="code" href="class_superpowered_recorder.html#ad00dfe67b561b0d7e7b06fa0a6c4e2fc">SuperpoweredRecorder</a>(<span class="keyword">const</span> <a class="code" href="class_superpowered_recorder.html">SuperpoweredRecorder</a>&amp;);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="class_superpowered_recorder.html">SuperpoweredRecorder</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="class_superpowered_recorder.html">SuperpoweredRecorder</a>&amp;);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;};</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="class_superpowered_recorder_html_a53fcb63604ca492e20ec386ddf8773c1"><div class="ttname"><a href="class_superpowered_recorder.html#a53fcb63604ca492e20ec386ddf8773c1">SuperpoweredRecorder::setSamplerate</a></div><div class="ttdeci">void setSamplerate(unsigned int samplerate)</div><div class="ttdoc">Sets the sample rate. </div></div>
 <div class="ttc" id="class_superpowered_recorder_html_ad00dfe67b561b0d7e7b06fa0a6c4e2fc"><div class="ttname"><a href="class_superpowered_recorder.html#ad00dfe67b561b0d7e7b06fa0a6c4e2fc">SuperpoweredRecorder::SuperpoweredRecorder</a></div><div class="ttdeci">SuperpoweredRecorder(const char *tempPath, unsigned int samplerate)</div><div class="ttdoc">Creates a recorder instance. </div></div>
 <div class="ttc" id="class_superpowered_recorder_html_ac99ae7f4273eccb42c8a84176b777067"><div class="ttname"><a href="class_superpowered_recorder.html#ac99ae7f4273eccb42c8a84176b777067">SuperpoweredRecorder::process</a></div><div class="ttdeci">unsigned int process(float *input0, float *input1, unsigned int numberOfSamples)</div><div class="ttdoc">Processes incoming audio. </div></div>
 <div class="ttc" id="class_superpowered_recorder_html_ab91723892859005472af7cc783ed743c"><div class="ttname"><a href="class_superpowered_recorder.html#ab91723892859005472af7cc783ed743c">SuperpoweredRecorder::stop</a></div><div class="ttdeci">void stop()</div><div class="ttdoc">Stops recording. </div></div>
 <div class="ttc" id="class_superpowered_recorder_html_ad11e1a3eacd78a635c2e786edffb9074"><div class="ttname"><a href="class_superpowered_recorder.html#ad11e1a3eacd78a635c2e786edffb9074">SuperpoweredRecorder::addToTracklist</a></div><div class="ttdeci">void addToTracklist(char *artist, char *title, int offsetSeconds)</div><div class="ttdoc">Adds an artist + title to the tracklist. </div></div>
 <div class="ttc" id="class_superpowered_recorder_html_a9809618f3adddea984efa38619a138f0"><div class="ttname"><a href="class_superpowered_recorder.html#a9809618f3adddea984efa38619a138f0">SuperpoweredRecorder::start</a></div><div class="ttdeci">void start(const char *destinationPath)</div><div class="ttdoc">Starts recording. </div></div>
-<div class="ttc" id="class_superpowered_recorder_html"><div class="ttname"><a href="class_superpowered_recorder.html">SuperpoweredRecorder</a></div><div class="ttdoc">Records audio into a stereo 16-bit WAV file, with an optional tracklist. </div><div class="ttdef"><b>Definition:</b> SuperpoweredRecorder.h:11</div></div>
+<div class="ttc" id="class_superpowered_recorder_html"><div class="ttname"><a href="class_superpowered_recorder.html">SuperpoweredRecorder</a></div><div class="ttdoc">Records audio into a stereo 16-bit WAV file, with an optional tracklist. </div><div class="ttdef"><b>Definition:</b> SuperpoweredRecorder.h:36</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

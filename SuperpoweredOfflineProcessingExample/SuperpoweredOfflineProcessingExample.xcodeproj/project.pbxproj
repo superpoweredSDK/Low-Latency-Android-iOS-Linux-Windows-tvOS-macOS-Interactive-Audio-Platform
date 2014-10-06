@@ -22,6 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1BEB178A19E2DEEA003A0203 /* SuperpoweredRecorder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredRecorder.h; path = ../Superpowered/SuperpoweredRecorder.h; sourceTree = "<group>"; };
+		1BEB178B19E2DF81003A0203 /* SuperpoweredTimeStretching.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredTimeStretching.h; path = ../Superpowered/SuperpoweredTimeStretching.h; sourceTree = "<group>"; };
+		1BEB178C19E2DFB3003A0203 /* SuperpoweredAudioBuffers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredAudioBuffers.h; path = ../Superpowered/SuperpoweredAudioBuffers.h; sourceTree = "<group>"; };
 		1BF94B3219765521001FFAC9 /* SuperpoweredOfflineProcessingExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperpoweredOfflineProcessingExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BF94B3519765521001FFAC9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1BF94B3719765521001FFAC9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -41,7 +44,6 @@
 		1BF94B6E19765833001FFAC9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		1BF94B7019765932001FFAC9 /* SuperpoweredMixer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredMixer.h; path = ../Superpowered/SuperpoweredMixer.h; sourceTree = "<group>"; };
 		1BF94B7119766149001FFAC9 /* track.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = track.mp3; path = ../SuperpoweredExample/track.mp3; sourceTree = "<group>"; };
-		1BF94B7419766E92001FFAC9 /* SuperpoweredFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredFilter.h; path = ../Superpowered/SuperpoweredFilter.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,8 +67,10 @@
 			children = (
 				1BF94B6A19765615001FFAC9 /* libSuperpoweredAudio.a */,
 				1BF94B6C19765644001FFAC9 /* SuperpoweredDecoder.h */,
-				1BF94B7419766E92001FFAC9 /* SuperpoweredFilter.h */,
 				1BF94B7019765932001FFAC9 /* SuperpoweredMixer.h */,
+				1BEB178A19E2DEEA003A0203 /* SuperpoweredRecorder.h */,
+				1BEB178B19E2DF81003A0203 /* SuperpoweredTimeStretching.h */,
+				1BEB178C19E2DFB3003A0203 /* SuperpoweredAudioBuffers.h */,
 				1BF94B3C19765521001FFAC9 /* Supporting Files */,
 				1BF94B4419765521001FFAC9 /* AppDelegate.h */,
 				1BF94B4519765521001FFAC9 /* AppDelegate.m */,

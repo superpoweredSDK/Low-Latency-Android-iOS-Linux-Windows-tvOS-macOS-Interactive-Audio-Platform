@@ -94,9 +94,8 @@ public:
  @brief Lightweight constructor, doesn't do or allocate much. 
  
  @param mediaServerOnly Set it to true, if you don't want the internal codecs used (iOS only).
- @param clientData Custom data for the custom data provider.
  */
-    SuperpoweredDecoder(bool mediaServerOnly, void *clientData = 0);
+    SuperpoweredDecoder(bool mediaServerOnly);
     ~SuperpoweredDecoder();
     
 private:

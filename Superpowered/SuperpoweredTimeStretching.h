@@ -1,14 +1,13 @@
 #ifndef Header_SuperpoweredTimeStretching
 #define Header_SuperpoweredTimeStretching
 
-#include "stretchAudioCurve.h"
 #include "SuperpoweredAudioBuffers.h"
 struct stretchInternals;
 
 /**
  @brief Time stretching and pitch shifting.
  
- One instance allocates around 100 kb.
+ One instance allocates around 100 kb. Check the SuperpoweredOfflineProcessingExample project on how to use.
  
  @param rate 1.0f means no time stretching. Read only.
  @param pitchShift Should be -12 (one octave down) to 12 (one octave up). 0 means no pitch shift. Read only.

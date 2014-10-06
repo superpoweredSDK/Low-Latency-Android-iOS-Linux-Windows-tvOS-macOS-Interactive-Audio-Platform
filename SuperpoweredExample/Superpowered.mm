@@ -126,7 +126,7 @@
 }
 
 // This is where the Superpowered magic happens.
-- (bool)audioProcessingCallback:(void **)buffers inputChannels:(unsigned int)inputChannels outputChannels:(unsigned int)outputChannels numberOfSamples:(unsigned int)numberOfSamples samplerate:(unsigned int)samplerate hostTime:(UInt64)hostTime {
+- (bool)audioProcessingCallback:(float **)buffers inputChannels:(unsigned int)inputChannels outputChannels:(unsigned int)outputChannels numberOfSamples:(unsigned int)numberOfSamples samplerate:(unsigned int)samplerate hostTime:(UInt64)hostTime {
     uint64_t startTime = mach_absolute_time();
     
     if (samplerate != lastSamplerate) { // Has samplerate changed?
@@ -165,7 +165,7 @@
     float *mixerInputs[4] = { stereoBuffer, NULL, NULL, NULL };
     float mixerInputLevels[8] = { 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f };
     float mixerOutputLevels[2] = { 1.0f, 1.0f };
-    if (!silence) mixer->process(mixerInputs, buffers, mixerInputLevels, mixerOutputLevels, NULL, NULL, numberOfSamples, false);
+    if (!silence) mixer->process(mixerInputs, (void **)buffers, mixerInputLevels, mixerOutputLevels, NULL, NULL, numberOfSamples, false);
     
     playing = player->playing;
     return !silence;

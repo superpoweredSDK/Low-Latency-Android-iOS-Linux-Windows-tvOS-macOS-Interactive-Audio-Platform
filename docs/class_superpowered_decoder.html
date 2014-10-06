@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.4</span>
+   &#160;<span id="projectnumber">0.5</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -59,9 +59,9 @@
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad84a1f7b817a1a6a1f723819bf01c7df"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#ad84a1f7b817a1a6a1f723819bf01c7df">open</a> (const char *path, bool metaOnly, int offset, int length)</td></tr>
-<tr class="memdesc:ad84a1f7b817a1a6a1f723819bf01c7df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a file for decoding.  <a href="#ad84a1f7b817a1a6a1f723819bf01c7df">More...</a><br /></td></tr>
-<tr class="separator:ad84a1f7b817a1a6a1f723819bf01c7df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac910184ff34b71cacffa73a3050f201a"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#ac910184ff34b71cacffa73a3050f201a">open</a> (const char *path, bool metaOnly=false, int offset=0, int length=0)</td></tr>
+<tr class="memdesc:ac910184ff34b71cacffa73a3050f201a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a file for decoding.  <a href="#ac910184ff34b71cacffa73a3050f201a">More...</a><br /></td></tr>
+<tr class="separator:ac910184ff34b71cacffa73a3050f201a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28fef6e884182f746d8b21316d04c5cc"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#a28fef6e884182f746d8b21316d04c5cc">decode</a> (short int *pcmOutput, unsigned int *samples)</td></tr>
 <tr class="memdesc:a28fef6e884182f746d8b21316d04c5cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decodes the requested number of samples.  <a href="#a28fef6e884182f746d8b21316d04c5cc">More...</a><br /></td></tr>
 <tr class="separator:a28fef6e884182f746d8b21316d04c5cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -100,7 +100,7 @@ SuperpoweredDecoder_Kind&#160;</td><td class="memItemRight" valign="bottom"><b>k
 <tr class="separator:a45c43b63f4d7c4fc3be294cd389c0b02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Thread safety: single threaded, not thread safe. After a succesful <a class="el" href="class_superpowered_decoder.html#ad84a1f7b817a1a6a1f723819bf01c7df" title="Opens a file for decoding. ">open()</a>, samplePosition changes only.</p>
+<div class="textblock"><p>Thread safety: single threaded, not thread safe. After a succesful <a class="el" href="class_superpowered_decoder.html#ac910184ff34b71cacffa73a3050f201a" title="Opens a file for decoding. ">open()</a>, samplePosition changes only.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">durationSeconds</td><td>The duration of the current file in seconds. Read only. </td></tr>
@@ -136,7 +136,7 @@ SuperpoweredDecoder_Kind&#160;</td><td class="memItemRight" valign="bottom"><b>k
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="ad84a1f7b817a1a6a1f723819bf01c7df"></a>
+<a class="anchor" id="ac910184ff34b71cacffa73a3050f201a"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -150,19 +150,19 @@ SuperpoweredDecoder_Kind&#160;</td><td class="memItemRight" valign="bottom"><b>k
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>metaOnly</em>, </td>
+          <td class="paramname"><em>metaOnly</em> = <code>false</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>offset</em>, </td>
+          <td class="paramname"><em>offset</em> = <code>0</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>length</em>&#160;</td>
+          <td class="paramname"><em>length</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
           <td></td>

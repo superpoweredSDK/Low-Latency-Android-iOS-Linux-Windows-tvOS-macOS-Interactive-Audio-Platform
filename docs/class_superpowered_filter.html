@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.4</span>
+   &#160;<span id="projectnumber">0.5</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -85,6 +85,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:ada4ccf94e973b350acbfc88087335488"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_filter.html#ada4ccf94e973b350acbfc88087335488">setShelfParametersAndType</a> (float frequency, float slope, float dbGain, SuperpoweredFilterType type)</td></tr>
 <tr class="memdesc:ada4ccf94e973b350acbfc88087335488"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set params and type at once for shelving filters.  <a href="#ada4ccf94e973b350acbfc88087335488">More...</a><br /></td></tr>
 <tr class="separator:ada4ccf94e973b350acbfc88087335488"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4c6e5dd8c5c6b52992370312d0dc0f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_filter.html#ac4c6e5dd8c5c6b52992370312d0dc0f2">setBandlimitedParametersAndType</a> (float frequency, float octaveWidth, SuperpoweredFilterType type)</td></tr>
+<tr class="memdesc:ac4c6e5dd8c5c6b52992370312d0dc0f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set params and type at once for bandlimited filters.  <a href="#ac4c6e5dd8c5c6b52992370312d0dc0f2">More...</a><br /></td></tr>
+<tr class="separator:ac4c6e5dd8c5c6b52992370312d0dc0f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af69a99327cad30be497c9dc7dd3b7f06"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af69a99327cad30be497c9dc7dd3b7f06"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_filter.html#af69a99327cad30be497c9dc7dd3b7f06">enable</a> (bool flag)</td></tr>
 <tr class="memdesc:af69a99327cad30be497c9dc7dd3b7f06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turns the effect on/off. <br /></td></tr>
@@ -266,6 +269,46 @@ filterInternals *&#160;</td><td class="memItemRight" valign="bottom"><b>internal
     <tr><td class="paramname">slope</td><td>Slope. </td></tr>
     <tr><td class="paramname">dbGain</td><td>Gain in decibel. </td></tr>
     <tr><td class="paramname">type</td><td>Must be low shelf or high shelf. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ac4c6e5dd8c5c6b52992370312d0dc0f2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SuperpoweredFilter::setBandlimitedParametersAndType </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>frequency</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>octaveWidth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SuperpoweredFilterType&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frequency</td><td>The frequency in Hz. </td></tr>
+    <tr><td class="paramname">octaveWidth</td><td>Width in octave. </td></tr>
+    <tr><td class="paramname">type</td><td>Must be bandpass or notch. </td></tr>
   </table>
   </dd>
 </dl>
