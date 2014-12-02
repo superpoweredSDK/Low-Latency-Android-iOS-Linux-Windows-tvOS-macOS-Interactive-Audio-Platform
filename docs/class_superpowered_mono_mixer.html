@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.5</span>
+   &#160;<span id="projectnumber">0.6</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -53,7 +53,7 @@
 </div><!--header-->
 <div class="contents">
 
-<p>Mixes max. 4 mono inputs into a mono output, with optional conversion to Apple 8.24 format.  
+<p>Mixes max. 4 mono inputs into a mono output.  
  <a href="class_superpowered_mono_mixer.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -62,14 +62,14 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_mono_mixer.html#a2700f844143970180c6fbf877d8c108d">SuperpoweredMonoMixer</a> ()</td></tr>
 <tr class="memdesc:a2700f844143970180c6fbf877d8c108d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a mono mixer instance. <br /></td></tr>
 <tr class="separator:a2700f844143970180c6fbf877d8c108d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a630663339f622cfb8e79d694d70c14b5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_mono_mixer.html#a630663339f622cfb8e79d694d70c14b5">process</a> (float **inputs, void *output, float *inputLevels, float outputGain, unsigned int numberOfSamples, bool convertToApple824)</td></tr>
-<tr class="memdesc:a630663339f622cfb8e79d694d70c14b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes the audio.  <a href="#a630663339f622cfb8e79d694d70c14b5">More...</a><br /></td></tr>
-<tr class="separator:a630663339f622cfb8e79d694d70c14b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e3e56ff98a9ea799afcf4d3d043d8ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_mono_mixer.html#a1e3e56ff98a9ea799afcf4d3d043d8ac">process</a> (float **inputs, void *output, float *inputLevels, float outputGain, unsigned int numberOfSamples)</td></tr>
+<tr class="memdesc:a1e3e56ff98a9ea799afcf4d3d043d8ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes the audio.  <a href="#a1e3e56ff98a9ea799afcf4d3d043d8ac">More...</a><br /></td></tr>
+<tr class="separator:a1e3e56ff98a9ea799afcf4d3d043d8ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>One instance allocates just a few bytes of memory. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a630663339f622cfb8e79d694d70c14b5"></a>
+<a class="anchor" id="a1e3e56ff98a9ea799afcf4d3d043d8ac"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -101,13 +101,7 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>numberOfSamples</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>convertToApple824</em>&#160;</td>
+          <td class="paramname"><em>numberOfSamples</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -123,7 +117,6 @@ Public Member Functions</h2></td></tr>
     <tr><td class="paramname">inputLevels</td><td>Four input volume levels. Value changes between consecutive processes are automatically smoothed. </td></tr>
     <tr><td class="paramname">outputGain</td><td>Output level. Value changes between consecutive processes are automatically smoothed. </td></tr>
     <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. Minimum 8, maximum 2048, must be exactly divisible with 4. </td></tr>
-    <tr><td class="paramname">convertToApple824</td><td>If true, outputs in Apple 8.24 format. If false, 32-bit float. </td></tr>
   </table>
   </dd>
 </dl>

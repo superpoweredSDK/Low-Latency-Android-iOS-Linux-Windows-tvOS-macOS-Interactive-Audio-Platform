@@ -63,7 +63,7 @@ void playerEventCallbackB(void *clientData, SuperpoweredAdvancedAudioPlayerEvent
     
     mixer = new SuperpoweredStereoMixer();
     
-    output = [[SuperpoweredIOSAudioOutput alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:512 audioSessionCategory:AVAudioSessionCategoryPlayback multiRouteChannels:2 fixReceiver:true];
+    output = [[SuperpoweredIOSAudioOutput alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:12 preferredMinimumSamplerate:44100 audioSessionCategory:AVAudioSessionCategoryPlayback multiChannels:2 fixReceiver:true];
     [output start];
 }
 
@@ -118,7 +118,7 @@ void playerEventCallbackB(void *clientData, SuperpoweredAdvancedAudioPlayerEvent
     float *mixerInputs[4] = { stereoBuffer, NULL, NULL, NULL };
     float mixerInputLevels[8] = { 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f };
     float mixerOutputLevels[2] = { 1.0f, 1.0f };
-    if (!silence) mixer->process(mixerInputs, (void **)buffers, mixerInputLevels, mixerOutputLevels, NULL, NULL, numberOfSamples, false);
+    if (!silence) mixer->process(mixerInputs, buffers, mixerInputLevels, mixerOutputLevels, NULL, NULL, numberOfSamples);
     return !silence;
 }
 
@@ -153,13 +153,11 @@ void playerEventCallbackB(void *clientData, SuperpoweredAdvancedAudioPlayerEvent
     pthread_mutex_unlock(&mutex);
 }
 
-#define MINFREQ 60.0f
-#define MAXFREQ 20000.0f
-
 static inline float floatToFrequency(float value) {
-    if (value > 0.97f) return MAXFREQ;
-    if (value < 0.03f) return MINFREQ;
-    return MIN(MAXFREQ, powf(10.0f, (value + ((0.4f - fabsf(value - 0.4f)) * 0.3f)) * log10f(MAXFREQ - MINFREQ)) + MINFREQ);
+    static const float min = logf(20.0f) / logf(10.0f);
+    static const float max = logf(20000.0f) / logf(10.0f);
+    static const float range = max - min;
+    return powf(10.0f, value * range + min);
 }
 
 - (IBAction)onFxSelect:(id)sender {
@@ -170,7 +168,7 @@ static inline float floatToFrequency(float value) {
     float value = ((UISlider *)sender).value;
     switch (activeFx) {
         case 1:
-            filter->setResonantParameters(floatToFrequency(1.0f - value), 0.2f);
+            filter->setResonantParameters(floatToFrequency(1.0f - value), 0.1f);
             filter->enable(true);
             flanger->enable(false);
             roll->enable(false);

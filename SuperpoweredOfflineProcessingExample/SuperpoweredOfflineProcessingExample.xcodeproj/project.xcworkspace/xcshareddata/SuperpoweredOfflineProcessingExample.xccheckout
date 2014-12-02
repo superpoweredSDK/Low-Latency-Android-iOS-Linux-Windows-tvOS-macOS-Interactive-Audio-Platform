@@ -14,7 +14,7 @@
 		<string>https://github.com/superpoweredSDK/Superpowered-Audio-SDK.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>SuperpoweredOfflineProcessingExample/SuperpoweredOfflineProcessingExample.xcodeproj/project.xcworkspace</string>
+	<string>SuperpoweredOfflineProcessingExample/SuperpoweredOfflineProcessingExample.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>6FA8E443A5E5A11CF356621EFFAE01B51203C6A0</key>

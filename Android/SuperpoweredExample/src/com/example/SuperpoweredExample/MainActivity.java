@@ -15,7 +15,7 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 
 public class MainActivity extends Activity {
-	boolean playing =false;
+	boolean playing = false;
 	    
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

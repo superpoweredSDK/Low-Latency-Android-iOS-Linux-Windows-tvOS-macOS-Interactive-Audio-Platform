@@ -42,7 +42,7 @@ public:
  @brief Reset all internals, sets the instance as good as new.
  */
     void reset();
-    
+
 /**
  @brief Processes the audio.
  

@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.5</span>
+   &#160;<span id="projectnumber">0.6</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -71,9 +71,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af42b558cfd477552c4e7e65fd72d6dcc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#af42b558cfd477552c4e7e65fd72d6dcc">play</a> (bool synchronised)</td></tr>
 <tr class="memdesc:af42b558cfd477552c4e7e65fd72d6dcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts playback.  <a href="#af42b558cfd477552c4e7e65fd72d6dcc">More...</a><br /></td></tr>
 <tr class="separator:af42b558cfd477552c4e7e65fd72d6dcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a13f036a6eee87e83514b94b96f334dba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a13f036a6eee87e83514b94b96f334dba">pause</a> ()</td></tr>
-<tr class="memdesc:a13f036a6eee87e83514b94b96f334dba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pause playback.  <a href="#a13f036a6eee87e83514b94b96f334dba">More...</a><br /></td></tr>
-<tr class="separator:a13f036a6eee87e83514b94b96f334dba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78a17466269d4ff682ecaba541724d9b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a78a17466269d4ff682ecaba541724d9b">pause</a> (float decelerateSeconds=0, unsigned int slipMs=0)</td></tr>
+<tr class="memdesc:a78a17466269d4ff682ecaba541724d9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pause playback.  <a href="#a78a17466269d4ff682ecaba541724d9b">More...</a><br /></td></tr>
+<tr class="separator:a78a17466269d4ff682ecaba541724d9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac72c412ef5bee200bd7c90d4abafa3f6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac72c412ef5bee200bd7c90d4abafa3f6"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#ac72c412ef5bee200bd7c90d4abafa3f6">togglePlayback</a> ()</td></tr>
 <tr class="memdesc:ac72c412ef5bee200bd7c90d4abafa3f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggle play/pause. <br /></td></tr>
@@ -400,19 +400,37 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>waitForNextBeatWithBe
 
 </div>
 </div>
-<a class="anchor" id="a13f036a6eee87e83514b94b96f334dba"></a>
+<a class="anchor" id="a78a17466269d4ff682ecaba541724d9b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void SuperpoweredAdvancedAudioPlayer::pause </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>decelerateSeconds</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>slipMs</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>There is no need for a "stop" method, this player is very efficient with the battery and has no significant "stand-by" processing. </p>
+<p>There is no need for a "stop" method, this player is very efficient with the battery and has no significant "stand-by" processing.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">decelerateSeconds</td><td>Optional momentum. 0 means pause immediately. </td></tr>
+    <tr><td class="paramname">slipMs</td><td>Enable slip mode for a specific amount of time, or 0 to not slip. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

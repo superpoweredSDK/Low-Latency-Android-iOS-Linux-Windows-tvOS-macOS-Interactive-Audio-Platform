@@ -15,12 +15,14 @@ public:
  @brief Turns the effect on/off.
  */
     virtual void enable(bool flag) = 0; // Use this to turn it on/off.
+    
 /**
  @brief Sets the sample rate.
  
  @param samplerate 44100, 48000, etc.
  */
     virtual void setSamplerate(unsigned int samplerate) = 0;
+
 /**
  @brief Processes the audio.
  
@@ -42,10 +44,10 @@ public:
  \mainpage Superpowered Audio SDK
  
  The Superpowered Audio SDK is a software development kit based on Superpowered Inc’s digital signal processing (DSP) technology.
- 
+
  Superpowered technology allows developers to build computationally intensive audio apps and embedded applications that process more quickly and use less power than other comparable solutions.
- 
- Superpowered DSP is designed and optimized, from scratch, to run on low-power mobile processors. Specifically, any device running ARM with the NEON extension (which covers 99% of all mobile devices manufactured as of Spring 2014).
+
+ Superpowered DSP is designed and optimized, from scratch, to run on low-power mobile processors. Specifically, any device running ARM with the NEON extension (which covers 99% of all mobile devices manufactured as of Spring 2014). Intel CPU is supported too.
  
  Details of the latest version can be found at http://superpowered.com/superpowered-audio-sdk/
  */

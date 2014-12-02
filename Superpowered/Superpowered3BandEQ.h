@@ -9,38 +9,13 @@ struct eqInternals;
  
  It doesn't allocate any internal buffers and needs just a few bytes of memory.
  
- @param lowDecibel The decibel value of the low band. Read only.
- @param midDecibel The decibel value of the mid band. Read only.
- @param highDecibel The decibel value of the high band. Read only.
- @param lowDecibelRounded The rounded decibel value of the low band. Read only.
- @param midDecibelRounded The rounded decibel value of the mid band. Read only.
- @param highDecibelRounded The rounded decibel value of the high band. Read only.
- @param lowGain Low band gain. Read-write. See the adjust() method.
- @param midGain Mid band gain. Read-write. See the adjust() method.
- @param highGain High band gain. Read-write. See the adjust() method.
- @param lowGainMod Low band gain modifier for advanced usage. Effective low gain is lowGain * lowGainMod. See the adjust() method.
- @param midGainMod Mid band gain modifier for advanced usage. Effective mid gain is midGain * midGainMod. See the adjust() method.
- @param highGainMod High band gain modifier for advanced usage. Effective high gain is highGain * highGainMod. See the adjust() method.
- @param lowKill If true, the low band will be killed regardless the other variables. See the adjust() method.
- @param midKill If true, the mid band will be killed regardless the other variables. See the adjust() method.
- @param highKill If true, the high band will be killed regardless the other variables. See the adjust() method.
+ @param bands Low/mid/high gain. Read-write. 1.0f is "flat", 2.0f is +6db. Kill is enabled under -40 db (0.01f).
  @param enabled True if the effect is enabled (processing audio). Read only. Use the enable() method to set.
  */
 class Superpowered3BandEQ: public SuperpoweredFX {
 public:
-// READ ONLY parameters for nice displaying.
-    float lowDecibel, midDecibel, highDecibel;
-    float lowDecibelRounded, midDecibelRounded, highDecibelRounded;
-    
-// READ-WRITE parameters. After finished changing one or more of these, call adjust().
-    float lowGain, midGain, highGain;
-    float lowGainMod, midGainMod, highGainMod;
-    bool lowKill, midKill, highKill;
-    
-/**
- @brief After setting any of the gain, gainMod or kill variables, call this to make the changes take to effect.
- */
-    void adjust();
+    float bands[3]; // READ-WRITE parameter.
+
 /**
  @brief Turns the effect on/off.
  */

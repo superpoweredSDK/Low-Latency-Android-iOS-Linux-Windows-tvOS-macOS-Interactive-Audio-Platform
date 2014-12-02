@@ -70,6 +70,13 @@ public:
 */
     unsigned int seekTo(unsigned int sample, bool precise);
 /**
+ @return Returns with the position where audio starts. This function changes position!
+ 
+ @param limitSamples How far to search for. 0 means "the entire audio file".
+ @param decibel Optional loudness threshold in decibel. 0 means "any non-zero audio sample". The value -49 is useful for vinyl rips.
+ */
+    unsigned int audioStartSample(unsigned int limitSamples = 0, int decibel = 0);
+/**
  @brief Call this on a phone call or other interruption.
  
  Apple's built-in codec may be used in some cases, for example ALAC files.

@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.5</span>
+   &#160;<span id="projectnumber">0.6</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -54,7 +54,7 @@
 </div><!--header-->
 <div class="contents">
 
-<p>Mixer, splitter and Apple 8.24 format converter.  
+<p>Mixer and splitter.  
  <a href="class_superpowered_stereo_mixer.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -63,9 +63,12 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_stereo_mixer.html#a96b3998d77c67f254cb7e22a8325325c">SuperpoweredStereoMixer</a> ()</td></tr>
 <tr class="memdesc:a96b3998d77c67f254cb7e22a8325325c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a stereo mixer instance. <br /></td></tr>
 <tr class="separator:a96b3998d77c67f254cb7e22a8325325c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb0f0e434d1c284faf24622fe544b7e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_stereo_mixer.html#acb0f0e434d1c284faf24622fe544b7e8">process</a> (float *inputs[4], void *outputs[2], float inputLevels[8], float outputLevels[2], float inputMeters[8], float outputMeters[2], unsigned int numberOfSamples, bool convertToApple824)</td></tr>
-<tr class="memdesc:acb0f0e434d1c284faf24622fe544b7e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes the audio.  <a href="#acb0f0e434d1c284faf24622fe544b7e8">More...</a><br /></td></tr>
-<tr class="separator:acb0f0e434d1c284faf24622fe544b7e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d536046ca8182f1ef8542251bf86806"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_stereo_mixer.html#a1d536046ca8182f1ef8542251bf86806">process</a> (float *inputs[4], float *outputs[2], float inputLevels[8], float outputLevels[2], float inputMeters[8], float outputMeters[2], unsigned int numberOfSamples)</td></tr>
+<tr class="memdesc:a1d536046ca8182f1ef8542251bf86806"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mixes max. 4 interleaved stereo inputs into a stereo output.  <a href="#a1d536046ca8182f1ef8542251bf86806">More...</a><br /></td></tr>
+<tr class="separator:a1d536046ca8182f1ef8542251bf86806"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa828c180846291625227d656e9b63e54"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_stereo_mixer.html#aa828c180846291625227d656e9b63e54">processPFL</a> (float *channels[4], float *outputs[2], bool channelSwitches[4], float channelOutputLevels[4], unsigned int numberOfSamples)</td></tr>
+<tr class="memdesc:aa828c180846291625227d656e9b63e54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mixes max. 4 interleaved stereo channels into a stereo output and changes volume in the channels as well.  <a href="#aa828c180846291625227d656e9b63e54">More...</a><br /></td></tr>
+<tr class="separator:aa828c180846291625227d656e9b63e54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -83,7 +86,7 @@ Static Public Member Functions</h2></td></tr>
 <div class="textblock"><p>Mixes max. 4 interleaved stereo inputs together. Output can be interleaved or non-interleaved (split). Separate input channel levels (good for gain and pan), separate output channel levels (master gain and pan). Returns maximum values for metering.</p>
 <p>One instance allocates just a few bytes of memory. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="acb0f0e434d1c284faf24622fe544b7e8"></a>
+<a class="anchor" id="a1d536046ca8182f1ef8542251bf86806"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -96,7 +99,7 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *&#160;</td>
+          <td class="paramtype">float *&#160;</td>
           <td class="paramname"><em>outputs</em>[2], </td>
         </tr>
         <tr>
@@ -127,13 +130,7 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>numberOfSamples</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>convertToApple824</em>&#160;</td>
+          <td class="paramname"><em>numberOfSamples</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -151,7 +148,60 @@ Static Public Member Functions</h2></td></tr>
     <tr><td class="paramname">inputMeters</td><td>Returns with the maximum values for metering. Can be NULL. </td></tr>
     <tr><td class="paramname">outputMeters</td><td>Returns with the maximum values for metering. Can be NULL. </td></tr>
     <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. Minimum 2, maximum 2048. </td></tr>
-    <tr><td class="paramname">convertToApple824</td><td>If true, outputs in Apple 8.24 format. If false, 32-bit float. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aa828c180846291625227d656e9b63e54"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SuperpoweredStereoMixer::processPFL </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>channels</em>[4], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>outputs</em>[2], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>channelSwitches</em>[4], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>channelOutputLevels</em>[4], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>numberOfSamples</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">channels</td><td>Four pointers to stereo interleaved input/output buffers. Every pointer should not be NULL. </td></tr>
+    <tr><td class="paramname">outputs</td><td>If outputs[1] is NULL, output is interleaved stereo in outputs[0]. If outputs[1] is not NULL, output is non-interleaved (left side in outputs[0], right side in outputs[1]). </td></tr>
+    <tr><td class="paramname">channelSwitches</td><td>On/off switches for each channel. </td></tr>
+    <tr><td class="paramname">channelOutputLevels</td><td>Volume for each channel output. Value changes between consecutive processes are automatically smoothed. </td></tr>
+    <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. Minimum 2, maximum 2048. </td></tr>
   </table>
   </dd>
 </dl>
@@ -195,7 +245,7 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>This is a static method, you don't need to create a <a class="el" href="class_superpowered_stereo_mixer.html" title="Mixer, splitter and Apple 8.24 format converter. ">SuperpoweredStereoMixer</a> instance to use it.</p>
+<p>This is a static method, you don't need to create a <a class="el" href="class_superpowered_stereo_mixer.html" title="Mixer and splitter. ">SuperpoweredStereoMixer</a> instance to use it.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">input</td><td>Stereo interleaved 32-bit input. Should be numberOfSamples * 2 + 16 big minimum. </td></tr>
@@ -250,7 +300,7 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>This is a static method, you don't need to create a <a class="el" href="class_superpowered_stereo_mixer.html" title="Mixer, splitter and Apple 8.24 format converter. ">SuperpoweredStereoMixer</a> instance to use it.</p>
+<p>This is a static method, you don't need to create a <a class="el" href="class_superpowered_stereo_mixer.html" title="Mixer and splitter. ">SuperpoweredStereoMixer</a> instance to use it.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">inputLeft</td><td>32-bit input for the left side. Should be numberOfSamples + 8 big minimum. </td></tr>
@@ -300,7 +350,7 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>This is a static method, you don't need to create a <a class="el" href="class_superpowered_stereo_mixer.html" title="Mixer, splitter and Apple 8.24 format converter. ">SuperpoweredStereoMixer</a> instance to use it.</p>
+<p>This is a static method, you don't need to create a <a class="el" href="class_superpowered_stereo_mixer.html" title="Mixer and splitter. ">SuperpoweredStereoMixer</a> instance to use it.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">input</td><td>Stereo interleaved 16-bit input. Should be numberOfSamples + 8 big minimum. </td></tr>

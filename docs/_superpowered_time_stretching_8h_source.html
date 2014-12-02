@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.5</span>
+   &#160;<span id="projectnumber">0.6</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -61,7 +61,7 @@
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    </div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_superpowered_time_stretching.html#a1d059bbc92713379dc5aad77006dd032">setRateAndPitchShift</a>(<span class="keywordtype">float</span> newRate, <span class="keywordtype">int</span> newShift);</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="class_superpowered_time_stretching.html#ad84b3eae77d543bc20cee21c36e84cb4">SuperpoweredTimeStretching</a>(<a class="code" href="class_superpowered_audiobuffer_pool.html">SuperpoweredAudiobufferPool</a> *p, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> sampleRate);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="class_superpowered_time_stretching.html#a35317602c2e7ada9e6d15e8b0fa6ae0b">SuperpoweredTimeStretching</a>(<a class="code" href="class_superpowered_audiobuffer_pool.html">SuperpoweredAudiobufferPool</a> *p, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> samplerate);</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    ~<a class="code" href="class_superpowered_time_stretching.html">SuperpoweredTimeStretching</a>();</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    </div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_time_stretching.html#ab72ba1a792003a907436bf1c57ff4694">setSampleRate</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> samplerate);</div>
@@ -72,14 +72,14 @@
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    </div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    stretchInternals *internals;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <a class="code" href="class_superpowered_time_stretching.html#ad84b3eae77d543bc20cee21c36e84cb4">SuperpoweredTimeStretching</a>(<span class="keyword">const</span> <a class="code" href="class_superpowered_time_stretching.html">SuperpoweredTimeStretching</a>&amp;);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <a class="code" href="class_superpowered_time_stretching.html#a35317602c2e7ada9e6d15e8b0fa6ae0b">SuperpoweredTimeStretching</a>(<span class="keyword">const</span> <a class="code" href="class_superpowered_time_stretching.html">SuperpoweredTimeStretching</a>&amp;);</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <a class="code" href="class_superpowered_time_stretching.html">SuperpoweredTimeStretching</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="class_superpowered_time_stretching.html">SuperpoweredTimeStretching</a>&amp;);</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;};</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="class_superpowered_time_stretching_html_a47772269ace8d24748e13809cb6aed79"><div class="ttname"><a href="class_superpowered_time_stretching.html#a47772269ace8d24748e13809cb6aed79">SuperpoweredTimeStretching::removeSamplesFromInputBuffersEnd</a></div><div class="ttdeci">void removeSamplesFromInputBuffersEnd(unsigned int samples)</div><div class="ttdoc">Removes samples from the input buffer (good for looping for example). </div></div>
 <div class="ttc" id="class_superpowered_time_stretching_html_ab72ba1a792003a907436bf1c57ff4694"><div class="ttname"><a href="class_superpowered_time_stretching.html#ab72ba1a792003a907436bf1c57ff4694">SuperpoweredTimeStretching::setSampleRate</a></div><div class="ttdeci">void setSampleRate(unsigned int samplerate)</div><div class="ttdoc">Sets the sample rate. </div></div>
-<div class="ttc" id="class_superpowered_time_stretching_html_ad84b3eae77d543bc20cee21c36e84cb4"><div class="ttname"><a href="class_superpowered_time_stretching.html#ad84b3eae77d543bc20cee21c36e84cb4">SuperpoweredTimeStretching::SuperpoweredTimeStretching</a></div><div class="ttdeci">SuperpoweredTimeStretching(SuperpoweredAudiobufferPool *p, unsigned int sampleRate)</div><div class="ttdoc">Create a time-stretching instance with an audio buffer pool and the current sample rate...</div></div>
+<div class="ttc" id="class_superpowered_time_stretching_html_a35317602c2e7ada9e6d15e8b0fa6ae0b"><div class="ttname"><a href="class_superpowered_time_stretching.html#a35317602c2e7ada9e6d15e8b0fa6ae0b">SuperpoweredTimeStretching::SuperpoweredTimeStretching</a></div><div class="ttdeci">SuperpoweredTimeStretching(SuperpoweredAudiobufferPool *p, unsigned int samplerate)</div><div class="ttdoc">Create a time-stretching instance with an audio buffer pool and the current sample rate...</div></div>
 <div class="ttc" id="class_superpowered_audiopointer_list_html"><div class="ttname"><a href="class_superpowered_audiopointer_list.html">SuperpoweredAudiopointerList</a></div><div class="ttdoc">This object manages an audio buffer list. </div><div class="ttdef"><b>Definition:</b> SuperpoweredAudioBuffers.h:73</div></div>
 <div class="ttc" id="class_superpowered_audiobuffer_pool_html"><div class="ttname"><a href="class_superpowered_audiobuffer_pool.html">SuperpoweredAudiobufferPool</a></div><div class="ttdoc">This object manages an audio buffer pool. </div><div class="ttdef"><b>Definition:</b> SuperpoweredAudioBuffers.h:14</div></div>
 <div class="ttc" id="class_superpowered_time_stretching_html_a0a2ca9a32525d3e98541e441c664e172"><div class="ttname"><a href="class_superpowered_time_stretching.html#a0a2ca9a32525d3e98541e441c664e172">SuperpoweredTimeStretching::reset</a></div><div class="ttdeci">void reset()</div><div class="ttdoc">Reset all internals, sets the instance as good as new. </div></div>

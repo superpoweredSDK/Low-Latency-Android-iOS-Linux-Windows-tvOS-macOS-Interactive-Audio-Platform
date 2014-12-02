@@ -113,15 +113,14 @@
     effects[REVERBINDEX] = reverb;
     
     Superpowered3BandEQ *eq = new Superpowered3BandEQ(44100);
-    eq->lowGain = 2.0f;
-    eq->midGain = 0.5f;
-    eq->highGain = 2.0f;
-    eq->adjust();
+    eq->bands[0] = 2.0f;
+    eq->bands[1] = 0.5f;
+    eq->bands[2] = 2.0f;
     effects[EQINDEX] = eq;
     
     mixer = new SuperpoweredStereoMixer();
     
-    output = [[SuperpoweredIOSAudioOutput alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:512 audioSessionCategory:AVAudioSessionCategoryPlayback multiRouteChannels:2 fixReceiver:true];
+    output = [[SuperpoweredIOSAudioOutput alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:12 preferredMinimumSamplerate:44100 audioSessionCategory:AVAudioSessionCategoryPlayback multiChannels:2 fixReceiver:true];
     return self;
 }
 
@@ -165,7 +164,7 @@
     float *mixerInputs[4] = { stereoBuffer, NULL, NULL, NULL };
     float mixerInputLevels[8] = { 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f };
     float mixerOutputLevels[2] = { 1.0f, 1.0f };
-    if (!silence) mixer->process(mixerInputs, (void **)buffers, mixerInputLevels, mixerOutputLevels, NULL, NULL, numberOfSamples, false);
+    if (!silence) mixer->process(mixerInputs, buffers, mixerInputLevels, mixerOutputLevels, NULL, NULL, numberOfSamples);
     
     playing = player->playing;
     return !silence;

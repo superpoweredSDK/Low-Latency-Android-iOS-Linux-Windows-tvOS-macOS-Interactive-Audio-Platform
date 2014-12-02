@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.5</span>
+   &#160;<span id="projectnumber">0.6</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -58,39 +58,43 @@
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Instance Methods</h2></td></tr>
+<tr class="memitem:aae55829bbcf8176b34d1c567a27c9eeb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aae55829bbcf8176b34d1c567a27c9eeb"></a>
+(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html#aae55829bbcf8176b34d1c567a27c9eeb">interruptionStarted</a></td></tr>
+<tr class="memdesc:aae55829bbcf8176b34d1c567a27c9eeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">The audio session may be interrupted by a phone call, etc. This method is called on the main thread when this happens. <br /></td></tr>
+<tr class="separator:aae55829bbcf8176b34d1c567a27c9eeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac371788ed59085810a0633aae0f12c9c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac371788ed59085810a0633aae0f12c9c"></a>
 (void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html#ac371788ed59085810a0633aae0f12c9c">interruptionEnded</a></td></tr>
 <tr class="memdesc:ac371788ed59085810a0633aae0f12c9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The audio session may be interrupted by a phone call, etc. This method is called on the main thread when audio resumes. <br /></td></tr>
 <tr class="separator:ac371788ed59085810a0633aae0f12c9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca8fbc41489b091c75a07351f2913387"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html#aca8fbc41489b091c75a07351f2913387">multiRouteMapChannels:inputMap:multiRouteDeviceName:outputsAndInputs:</a></td></tr>
-<tr class="memdesc:aca8fbc41489b091c75a07351f2913387"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is called on the main thread, when you use the MultiRoute audio session category and a new audio device is connected or disconnected.  <a href="#aca8fbc41489b091c75a07351f2913387">More...</a><br /></td></tr>
-<tr class="separator:aca8fbc41489b091c75a07351f2913387"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a382d2cf3bfa30a41853e81a736087b62"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html#a382d2cf3bfa30a41853e81a736087b62">multiMapChannels:inputMap:multiDeviceName:outputsAndInputs:</a></td></tr>
+<tr class="memdesc:a382d2cf3bfa30a41853e81a736087b62"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is called on the main thread, when a multi-channel audio device is connected or disconnected.  <a href="#a382d2cf3bfa30a41853e81a736087b62">More...</a><br /></td></tr>
+<tr class="separator:a382d2cf3bfa30a41853e81a736087b62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98f5968d2d14643445272bba1db6673e"><td class="memItemLeft" align="right" valign="top">(bool)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html#a98f5968d2d14643445272bba1db6673e">audioProcessingCallback:inputChannels:outputChannels:numberOfSamples:samplerate:hostTime:</a></td></tr>
 <tr class="memdesc:a98f5968d2d14643445272bba1db6673e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process audio here.  <a href="#a98f5968d2d14643445272bba1db6673e">More...</a><br /></td></tr>
 <tr class="separator:a98f5968d2d14643445272bba1db6673e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Method Documentation</h2>
-<a class="anchor" id="aca8fbc41489b091c75a07351f2913387"></a>
+<a class="anchor" id="a382d2cf3bfa30a41853e81a736087b62"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (void) multiRouteMapChannels: </td>
+          <td class="memname">- (void) multiMapChannels: </td>
           <td></td>
-          <td class="paramtype">(<a class="el" href="structmulti_route_output_channel_map.html">multiRouteOutputChannelMap</a> *)&#160;</td>
+          <td class="paramtype">(<a class="el" href="structmulti_output_channel_map.html">multiOutputChannelMap</a> *)&#160;</td>
           <td class="paramname"><em>outputMap</em></td>
         </tr>
         <tr>
           <td class="paramkey">inputMap:</td>
           <td></td>
-          <td class="paramtype">(<a class="el" href="structmulti_route_input_channel_map.html">multiRouteInputChannelMap</a> *)&#160;</td>
+          <td class="paramtype">(<a class="el" href="structmulti_input_channel_map.html">multiInputChannelMap</a> *)&#160;</td>
           <td class="paramname"><em>inputMap</em></td>
         </tr>
         <tr>
-          <td class="paramkey">multiRouteDeviceName:</td>
+          <td class="paramkey">multiDeviceName:</td>
           <td></td>
           <td class="paramtype">(NSString *)&#160;</td>
-          <td class="paramname"><em>multiRouteDeviceName</em></td>
+          <td class="paramname"><em>multiDeviceName</em></td>
         </tr>
         <tr>
           <td class="paramkey">outputsAndInputs:</td>
@@ -109,7 +113,7 @@ Instance Methods</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">outputMap</td><td>Map the output channels here. </td></tr>
     <tr><td class="paramname">inputMap</td><td>Map the input channels here. </td></tr>
-    <tr><td class="paramname">multiRouteDeviceName</td><td>The name of the attached audio device, for example the model of the sound card. </td></tr>
+    <tr><td class="paramname">multiDeviceName</td><td>The name of the attached audio device, for example the model of the sound card. </td></tr>
     <tr><td class="paramname">outputsAndInputs</td><td>A human readable description about the available outputs and inputs. </td></tr>
   </table>
   </dd>

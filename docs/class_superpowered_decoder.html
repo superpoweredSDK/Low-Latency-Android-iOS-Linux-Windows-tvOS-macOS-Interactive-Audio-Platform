@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.5</span>
+   &#160;<span id="projectnumber">0.6</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -68,6 +68,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:add513f60d474c54a4054abf52e3aa91a"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#add513f60d474c54a4054abf52e3aa91a">seekTo</a> (unsigned int sample, bool precise)</td></tr>
 <tr class="memdesc:add513f60d474c54a4054abf52e3aa91a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Jumps to a specific position.  <a href="#add513f60d474c54a4054abf52e3aa91a">More...</a><br /></td></tr>
 <tr class="separator:add513f60d474c54a4054abf52e3aa91a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05def9f65d88e4fd1e43b75f69f83d1d"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#a05def9f65d88e4fd1e43b75f69f83d1d">audioStartSample</a> (unsigned int limitSamples=0, int decibel=0)</td></tr>
+<tr class="separator:a05def9f65d88e4fd1e43b75f69f83d1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0544563f5ee1d11f660aa8cd994d72b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#ae0544563f5ee1d11f660aa8cd994d72b">reconnectToMediaserver</a> ()</td></tr>
 <tr class="memdesc:ae0544563f5ee1d11f660aa8cd994d72b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this on a phone call or other interruption.  <a href="#ae0544563f5ee1d11f660aa8cd994d72b">More...</a><br /></td></tr>
 <tr class="separator:ae0544563f5ee1d11f660aa8cd994d72b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -246,6 +248,40 @@ SuperpoweredDecoder_Kind&#160;</td><td class="memItemRight" valign="bottom"><b>k
   <table class="params">
     <tr><td class="paramname">sample</td><td>The position (a sample index). </td></tr>
     <tr><td class="paramname">precise</td><td>Some codecs may not jump precisely due internal framing. Set precise to true if you want exact positioning (for a little performance penalty of 1 memmove). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a05def9f65d88e4fd1e43b75f69f83d1d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int SuperpoweredDecoder::audioStartSample </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>limitSamples</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>decibel</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Returns with the position where audio starts. This function changes position!</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">limitSamples</td><td>How far to search for. 0 means "the entire audio file". </td></tr>
+    <tr><td class="paramname">decibel</td><td>Optional loudness threshold in decibel. 0 means "any non-zero audio sample". The value -49 is useful for vinyl rips. </td></tr>
   </table>
   </dd>
 </dl>

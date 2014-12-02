@@ -33,7 +33,7 @@ typedef enum SuperpoweredAdvancedAudioPlayerEvent {
  
  @param clientData Some custom pointer you set when you created a SuperpoweredAdvancedAudioPlayer instance.
  @param event What happened (load success, load error, end of file, jog parameter).
- @param value NULL for LoadSuccess and EOF. (const char *) for LoadError, pointing to the error message. (double *) for JogParameter in the range of 0.0 to 1.0.
+ @param value NULL for LoadSuccess. (const char *) for LoadError, pointing to the error message. (double *) for JogParameter in the range of 0.0 to 1.0. (bool *) for EOF, set it to true to pause playback. Don't call this instance's methods from an EOF event callback!
  */
 typedef void (* SuperpoweredAdvancedAudioPlayerCallback) (void *clientData, SuperpoweredAdvancedAudioPlayerEvent event, void *value);
 
@@ -164,8 +164,11 @@ public:
  @brief Pause playback. 
  
  There is no need for a "stop" method, this player is very efficient with the battery and has no significant "stand-by" processing.
+ 
+ @param decelerateSeconds Optional momentum. 0 means pause immediately.
+ @param slipMs Enable slip mode for a specific amount of time, or 0 to not slip.
  */
-    void pause();
+    void pause(float decelerateSeconds = 0, unsigned int slipMs = 0);
     
 /**
  @brief Toggle play/pause.

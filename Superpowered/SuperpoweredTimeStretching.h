@@ -32,7 +32,7 @@ public:
  
  @see @c SuperpoweredAudiobufferPool
  */
-    SuperpoweredTimeStretching(SuperpoweredAudiobufferPool *p, unsigned int sampleRate);
+    SuperpoweredTimeStretching(SuperpoweredAudiobufferPool *p, unsigned int samplerate);
     ~SuperpoweredTimeStretching();
     
 /**
