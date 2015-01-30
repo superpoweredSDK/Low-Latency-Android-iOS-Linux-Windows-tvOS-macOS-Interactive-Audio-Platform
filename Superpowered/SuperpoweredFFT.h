@@ -34,7 +34,7 @@ void SuperpoweredFFTCleanup();
  
  @param real Real part.
  @param imag Imaginary part.
- @param logSize Should be 5 - 13 (FFT sizes 32 - 8192).
+ @param logSize Should be 4 - 12 (FFT sizes 16 - 4096).
  @param forward Forward or inverse.
  */
 void SuperpoweredFFTComplex(float *real, float *imag, int logSize, bool forward);

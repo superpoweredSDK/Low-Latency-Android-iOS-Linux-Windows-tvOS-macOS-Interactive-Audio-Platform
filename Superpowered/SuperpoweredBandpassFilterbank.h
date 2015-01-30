@@ -31,7 +31,7 @@ public:
  @brief Processes the audio.
 
  @param input 32-bit interleaved stereo input buffer.
- @param bands Frequency band results will be ADDED to these. For example: bands[0] += result[0] If you divide each with the number of samples, the result will be between 0.0f and 1.0f.
+ @param bands Frequency band results (magnitudes) will be ADDED to these. For example: bands[0] += result[0] If you divide each with the number of samples, the result will be between 0.0f and 1.0f.
  @param peak Maximum absolute peak value. Will compare against the input value of peak too. For example: peak = max(peak, fabsf(all samples))
  @param sum The cumulated absolute value will be ADDED to this. For example: sum += (sum of all fabsf(samples))
  @param numberOfSamples The number of samples to process.

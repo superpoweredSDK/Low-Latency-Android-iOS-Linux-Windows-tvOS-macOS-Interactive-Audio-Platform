@@ -43,7 +43,7 @@
 		1BF94B6C19765644001FFAC9 /* SuperpoweredDecoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredDecoder.h; path = ../Superpowered/SuperpoweredDecoder.h; sourceTree = "<group>"; };
 		1BF94B6E19765833001FFAC9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		1BF94B7019765932001FFAC9 /* SuperpoweredMixer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredMixer.h; path = ../Superpowered/SuperpoweredMixer.h; sourceTree = "<group>"; };
-		1BF94B7119766149001FFAC9 /* track.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = track.mp3; path = ../SuperpoweredExample/track.mp3; sourceTree = "<group>"; };
+		1BF94B7119766149001FFAC9 /* track.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = track.mp3; path = ../SuperpoweredPerformance/track.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,7 +293,7 @@
 					"$(PROJECT_DIR)/../Superpowered",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALID_ARCHS = "armv7 armv7s i386 x86_64";
+				VALID_ARCHS = "armv7 arm64 i386 x86_64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -311,7 +311,7 @@
 					"$(PROJECT_DIR)/../Superpowered",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALID_ARCHS = "armv7 armv7s i386 x86_64";
+				VALID_ARCHS = "armv7 arm64 i386 x86_64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

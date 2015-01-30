@@ -324,8 +324,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/../Superpowered",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALID_ARCHS = "armv7 armv7s i386 x86_64";
+				VALID_ARCHS = "armv7 i386 x86_64 arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -347,7 +348,7 @@
 					"$(PROJECT_DIR)/../Superpowered",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALID_ARCHS = "armv7 armv7s i386 x86_64";
+				VALID_ARCHS = "armv7 i386 x86_64 arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

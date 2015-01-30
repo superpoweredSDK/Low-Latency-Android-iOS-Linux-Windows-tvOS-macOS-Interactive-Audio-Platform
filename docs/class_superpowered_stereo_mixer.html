@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.6</span>
+   &#160;<span id="projectnumber">0.7</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -72,6 +72,18 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a1e57a7192c0885fb4736b45373c00dfb"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_stereo_mixer.html#a1e57a7192c0885fb4736b45373c00dfb">simpleGain</a> (float *input, float *output, float gainStart, float gainEnd, unsigned int numberOfSamples)</td></tr>
+<tr class="memdesc:a1e57a7192c0885fb4736b45373c00dfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies volume on a single stereo interleaved buffer.  <a href="#a1e57a7192c0885fb4736b45373c00dfb">More...</a><br /></td></tr>
+<tr class="separator:a1e57a7192c0885fb4736b45373c00dfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c6624a7262f34776dc4e11aedcd3f7f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_stereo_mixer.html#a6c6624a7262f34776dc4e11aedcd3f7f">simpleGainAdd</a> (float *input, float *output, float gainStart, float gainEnd, unsigned int numberOfSamples)</td></tr>
+<tr class="memdesc:a6c6624a7262f34776dc4e11aedcd3f7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies volume on a single stereo interleaved buffer and adds it to the audio in the output buffer.  <a href="#a6c6624a7262f34776dc4e11aedcd3f7f">More...</a><br /></td></tr>
+<tr class="separator:a6c6624a7262f34776dc4e11aedcd3f7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab444b71e75d7bd2d9a15a877b4dc0fc8"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_stereo_mixer.html#ab444b71e75d7bd2d9a15a877b4dc0fc8">gain</a> (float *input, float *output, float gainStart, float gainChange, unsigned int numberOfSamples)</td></tr>
+<tr class="memdesc:ab444b71e75d7bd2d9a15a877b4dc0fc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies volume on a single stereo interleaved buffer.  <a href="#ab444b71e75d7bd2d9a15a877b4dc0fc8">More...</a><br /></td></tr>
+<tr class="separator:ab444b71e75d7bd2d9a15a877b4dc0fc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d80772d965d79fe2eb94e83628ea3e5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_stereo_mixer.html#a2d80772d965d79fe2eb94e83628ea3e5">gainAdd</a> (float *input, float *output, float gainStart, float gainChange, unsigned int numberOfSamples)</td></tr>
+<tr class="memdesc:a2d80772d965d79fe2eb94e83628ea3e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies volume on a single stereo interleaved buffer and adds it to the audio in the output buffer.  <a href="#a2d80772d965d79fe2eb94e83628ea3e5">More...</a><br /></td></tr>
+<tr class="separator:a2d80772d965d79fe2eb94e83628ea3e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5054c5bb844dbf78bfcba9786d31b69e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_stereo_mixer.html#a5054c5bb844dbf78bfcba9786d31b69e">floatToShortInt</a> (float *input, short int *output, unsigned int numberOfSamples)</td></tr>
 <tr class="memdesc:a5054c5bb844dbf78bfcba9786d31b69e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a stereo interleaved 32-bit float input to stereo interleaved 16-bit signed integer output.  <a href="#a5054c5bb844dbf78bfcba9786d31b69e">More...</a><br /></td></tr>
 <tr class="separator:a5054c5bb844dbf78bfcba9786d31b69e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -147,7 +159,7 @@ Static Public Member Functions</h2></td></tr>
     <tr><td class="paramname">outputLevels</td><td>Output levels [left, right]. Value changes between consecutive processes are automatically smoothed. </td></tr>
     <tr><td class="paramname">inputMeters</td><td>Returns with the maximum values for metering. Can be NULL. </td></tr>
     <tr><td class="paramname">outputMeters</td><td>Returns with the maximum values for metering. Can be NULL. </td></tr>
-    <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. Minimum 2, maximum 2048. </td></tr>
+    <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. Minimum 2, maximum 2048, must be exactly divisible with 2. </td></tr>
   </table>
   </dd>
 </dl>
@@ -201,7 +213,255 @@ Static Public Member Functions</h2></td></tr>
     <tr><td class="paramname">outputs</td><td>If outputs[1] is NULL, output is interleaved stereo in outputs[0]. If outputs[1] is not NULL, output is non-interleaved (left side in outputs[0], right side in outputs[1]). </td></tr>
     <tr><td class="paramname">channelSwitches</td><td>On/off switches for each channel. </td></tr>
     <tr><td class="paramname">channelOutputLevels</td><td>Volume for each channel output. Value changes between consecutive processes are automatically smoothed. </td></tr>
-    <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. Minimum 2, maximum 2048. </td></tr>
+    <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. Minimum 2, maximum 2048, must be exactly divisible with 2. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a1e57a7192c0885fb4736b45373c00dfb"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void SuperpoweredStereoMixer::simpleGain </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>output</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>gainStart</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>gainEnd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>numberOfSamples</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>Input buffer. Should be numberOfSamples * 2 + 16 big minimum. </td></tr>
+    <tr><td class="paramname">output</td><td>Output buffer. Should be numberOfSamples * 2 + 16 big minimum. Can be equal to input (in-place). </td></tr>
+    <tr><td class="paramname">gainStart</td><td>Gain for the first sample. </td></tr>
+    <tr><td class="paramname">gainEnd</td><td>Gain for the last sample. Gain will be smoothly calculated between start end end. </td></tr>
+    <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a6c6624a7262f34776dc4e11aedcd3f7f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void SuperpoweredStereoMixer::simpleGainAdd </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>output</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>gainStart</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>gainEnd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>numberOfSamples</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>Input buffer. Should be numberOfSamples * 2 + 32 big minimum. </td></tr>
+    <tr><td class="paramname">output</td><td>Output buffer. Should be numberOfSamples * 2 + 32 big minimum. </td></tr>
+    <tr><td class="paramname">gainStart</td><td>Gain for the first sample. </td></tr>
+    <tr><td class="paramname">gainEnd</td><td>Gain for the last sample. Gain will be smoothly calculated between start end end. </td></tr>
+    <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ab444b71e75d7bd2d9a15a877b4dc0fc8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void SuperpoweredStereoMixer::gain </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>output</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>gainStart</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>gainChange</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>numberOfSamples</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>Input buffer. Should be numberOfSamples * 2 + 16 big minimum. </td></tr>
+    <tr><td class="paramname">output</td><td>Output buffer. Should be numberOfSamples * 2 + 16 big minimum. Can be equal to input (in-place). </td></tr>
+    <tr><td class="paramname">gainStart</td><td>Gain for the first sample. </td></tr>
+    <tr><td class="paramname">gainChange</td><td>Change gain by this amount for every sample. </td></tr>
+    <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a2d80772d965d79fe2eb94e83628ea3e5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void SuperpoweredStereoMixer::gainAdd </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>output</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>gainStart</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>gainChange</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>numberOfSamples</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>Input buffer. </td></tr>
+    <tr><td class="paramname">output</td><td>Output buffer. </td></tr>
+    <tr><td class="paramname">gainStart</td><td>Gain for the first sample. </td></tr>
+    <tr><td class="paramname">gainChange</td><td>Change gain by this amount for every sample. </td></tr>
+    <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. </td></tr>
   </table>
   </dd>
 </dl>
@@ -250,7 +510,7 @@ Static Public Member Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">input</td><td>Stereo interleaved 32-bit input. Should be numberOfSamples * 2 + 16 big minimum. </td></tr>
     <tr><td class="paramname">output</td><td>Stereo interleaved 16-bit output. Should be numberOfSamples * 2 + 16 big minimum. </td></tr>
-    <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. Should be 4 minimum. </td></tr>
+    <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. Should be 8 minimum, must be exactly divisible with 8. </td></tr>
   </table>
   </dd>
 </dl>
@@ -306,7 +566,7 @@ Static Public Member Functions</h2></td></tr>
     <tr><td class="paramname">inputLeft</td><td>32-bit input for the left side. Should be numberOfSamples + 8 big minimum. </td></tr>
     <tr><td class="paramname">inputRight</td><td>32-bit input for the right side. Should be numberOfSamples + 8 big minimum. </td></tr>
     <tr><td class="paramname">output</td><td>Stereo interleaved 16-bit output. Should be numberOfSamples * 2 + 16 big minimum. </td></tr>
-    <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. Should be 4 minimum. </td></tr>
+    <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. Should be 8 minimum, must be exactly divisible with 8. </td></tr>
   </table>
   </dd>
 </dl>
@@ -355,7 +615,7 @@ Static Public Member Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">input</td><td>Stereo interleaved 16-bit input. Should be numberOfSamples + 8 big minimum. </td></tr>
     <tr><td class="paramname">output</td><td>Stereo interleaved 32-bit output. Should be numberOfSamples + 8 big minimum. </td></tr>
-    <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. Should be 4 minimum. </td></tr>
+    <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. Should be 8 minimum, must be exactly divisible with 8. </td></tr>
   </table>
   </dd>
 </dl>

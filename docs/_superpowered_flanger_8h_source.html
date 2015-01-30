@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.6</span>
+   &#160;<span id="projectnumber">0.7</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -53,43 +53,44 @@
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;SuperpoweredFX.h&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">struct </span>flangerInternals;</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_superpowered_flanger.html">   19</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_superpowered_flanger.html">SuperpoweredFlanger</a>: <span class="keyword">public</span> <a class="code" href="class_superpowered_f_x.html">SuperpoweredFX</a> {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">// READ ONLY parameters, don&#39;t set them directly, use the methods below.</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">float</span> wet;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">float</span> depthMs;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">float</span> depth;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">float</span> lfoBeats;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// READ-WRITE parameters, thread safe (change from any thread)</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">float</span> bpm;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">bool</span> stereo;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_flanger.html#ae23709e380aa47f23bf3423ba83a8ca1">setWet</a>(<span class="keywordtype">float</span> value);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_flanger.html#a76b6773e9ec7bedcf2eb46e1498c0b34">setDepth</a>(<span class="keywordtype">float</span> value);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_flanger.html#a93acf39cfb1ae9da63c485e812dfd408">setLFOBeats</a>(<span class="keywordtype">float</span> beats);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_flanger.html#a8ad83511c49bbbcda7a80221fe012d22">enable</a>(<span class="keywordtype">bool</span> flag);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <a class="code" href="class_superpowered_flanger.html#a9b5d22d6c08ac0c1b74e1dfe41dc66ae">SuperpoweredFlanger</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> samplerate);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    ~<a class="code" href="class_superpowered_flanger.html">SuperpoweredFlanger</a>();</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_flanger.html#a34e4e52dc0a536b14982f1e28620073a">setSamplerate</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> samplerate);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_flanger.html#a13a3b7cb7b6c2ee56b3f0e5cba2decbf">reset</a>();</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_superpowered_flanger.html#aa369e1e59531ee6262153e33da82c92c">process</a>(<span class="keywordtype">float</span> *input, <span class="keywordtype">float</span> *output, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numberOfSamples);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    flangerInternals *internals;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <a class="code" href="class_superpowered_flanger.html#a9b5d22d6c08ac0c1b74e1dfe41dc66ae">SuperpoweredFlanger</a>(<span class="keyword">const</span> <a class="code" href="class_superpowered_flanger.html">SuperpoweredFlanger</a>&amp;);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="class_superpowered_flanger.html">SuperpoweredFlanger</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="class_superpowered_flanger.html">SuperpoweredFlanger</a>&amp;);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;};</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_superpowered_flanger.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_superpowered_flanger.html">SuperpoweredFlanger</a>: <span class="keyword">public</span> <a class="code" href="class_superpowered_f_x.html">SuperpoweredFX</a> {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">// READ ONLY parameters, don&#39;t set them directly, use the methods below.</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">float</span> wet;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">float</span> depthMs;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">float</span> depth;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">float</span> lfoBeats;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">// READ-WRITE parameters, thread safe (change from any thread)</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">float</span> bpm;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">float</span> limitLevel;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">bool</span> stereo;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_flanger.html#ae23709e380aa47f23bf3423ba83a8ca1">setWet</a>(<span class="keywordtype">float</span> value);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_flanger.html#a76b6773e9ec7bedcf2eb46e1498c0b34">setDepth</a>(<span class="keywordtype">float</span> value);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_flanger.html#a93acf39cfb1ae9da63c485e812dfd408">setLFOBeats</a>(<span class="keywordtype">float</span> beats);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_flanger.html#a8ad83511c49bbbcda7a80221fe012d22">enable</a>(<span class="keywordtype">bool</span> flag);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="class_superpowered_flanger.html#a9b5d22d6c08ac0c1b74e1dfe41dc66ae">SuperpoweredFlanger</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> samplerate);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    ~<a class="code" href="class_superpowered_flanger.html">SuperpoweredFlanger</a>();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_flanger.html#a34e4e52dc0a536b14982f1e28620073a">setSamplerate</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> samplerate);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_flanger.html#a13a3b7cb7b6c2ee56b3f0e5cba2decbf">reset</a>();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_superpowered_flanger.html#aa369e1e59531ee6262153e33da82c92c">process</a>(<span class="keywordtype">float</span> *input, <span class="keywordtype">float</span> *output, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numberOfSamples);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    flangerInternals *internals;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <a class="code" href="class_superpowered_flanger.html#a9b5d22d6c08ac0c1b74e1dfe41dc66ae">SuperpoweredFlanger</a>(<span class="keyword">const</span> <a class="code" href="class_superpowered_flanger.html">SuperpoweredFlanger</a>&amp;);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="class_superpowered_flanger.html">SuperpoweredFlanger</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="class_superpowered_flanger.html">SuperpoweredFlanger</a>&amp;);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;};</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="class_superpowered_flanger_html_a13a3b7cb7b6c2ee56b3f0e5cba2decbf"><div class="ttname"><a href="class_superpowered_flanger.html#a13a3b7cb7b6c2ee56b3f0e5cba2decbf">SuperpoweredFlanger::reset</a></div><div class="ttdeci">void reset()</div><div class="ttdoc">Reset all internals, sets the instance as good as new. </div></div>
 <div class="ttc" id="class_superpowered_f_x_html"><div class="ttname"><a href="class_superpowered_f_x.html">SuperpoweredFX</a></div><div class="ttdoc">This is the base class for Superpowered effects. </div><div class="ttdef"><b>Definition:</b> SuperpoweredFX.h:10</div></div>
 <div class="ttc" id="class_superpowered_flanger_html_a76b6773e9ec7bedcf2eb46e1498c0b34"><div class="ttname"><a href="class_superpowered_flanger.html#a76b6773e9ec7bedcf2eb46e1498c0b34">SuperpoweredFlanger::setDepth</a></div><div class="ttdeci">void setDepth(float value)</div><div class="ttdoc">Set depth. </div></div>
 <div class="ttc" id="class_superpowered_flanger_html_aa369e1e59531ee6262153e33da82c92c"><div class="ttname"><a href="class_superpowered_flanger.html#aa369e1e59531ee6262153e33da82c92c">SuperpoweredFlanger::process</a></div><div class="ttdeci">bool process(float *input, float *output, unsigned int numberOfSamples)</div><div class="ttdoc">Processes the audio. </div></div>
-<div class="ttc" id="class_superpowered_flanger_html"><div class="ttname"><a href="class_superpowered_flanger.html">SuperpoweredFlanger</a></div><div class="ttdoc">Flanger with aggressive sound ("jet"). </div><div class="ttdef"><b>Definition:</b> SuperpoweredFlanger.h:19</div></div>
+<div class="ttc" id="class_superpowered_flanger_html"><div class="ttname"><a href="class_superpowered_flanger.html">SuperpoweredFlanger</a></div><div class="ttdoc">Flanger with aggressive sound ("jet"). </div><div class="ttdef"><b>Definition:</b> SuperpoweredFlanger.h:20</div></div>
 <div class="ttc" id="class_superpowered_flanger_html_a34e4e52dc0a536b14982f1e28620073a"><div class="ttname"><a href="class_superpowered_flanger.html#a34e4e52dc0a536b14982f1e28620073a">SuperpoweredFlanger::setSamplerate</a></div><div class="ttdeci">void setSamplerate(unsigned int samplerate)</div><div class="ttdoc">Sets the sample rate. </div></div>
 <div class="ttc" id="class_superpowered_flanger_html_a9b5d22d6c08ac0c1b74e1dfe41dc66ae"><div class="ttname"><a href="class_superpowered_flanger.html#a9b5d22d6c08ac0c1b74e1dfe41dc66ae">SuperpoweredFlanger::SuperpoweredFlanger</a></div><div class="ttdeci">SuperpoweredFlanger(unsigned int samplerate)</div><div class="ttdoc">Create a flanger instance with the current sample rate value. </div></div>
 <div class="ttc" id="class_superpowered_flanger_html_a8ad83511c49bbbcda7a80221fe012d22"><div class="ttname"><a href="class_superpowered_flanger.html#a8ad83511c49bbbcda7a80221fe012d22">SuperpoweredFlanger::enable</a></div><div class="ttdeci">void enable(bool flag)</div><div class="ttdoc">Turns the effect on/off. </div></div>

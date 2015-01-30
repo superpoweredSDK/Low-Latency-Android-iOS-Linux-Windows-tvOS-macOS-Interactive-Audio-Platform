@@ -79,7 +79,7 @@ public:
  
  @param input0 Left input channel or stereo interleaved input.
  @param input1 Right input channel. If NULL, input0 is a stereo interleaved input.
- @param numberOfSamples The number of samples in input. Should be 4 minimum.
+ @param numberOfSamples The number of samples in input. Should be 8 minimum.
  */
     unsigned int process(float *input0, float *input1, unsigned int numberOfSamples);
     

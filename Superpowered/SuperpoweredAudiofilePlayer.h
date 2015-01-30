@@ -7,7 +7,7 @@ struct audiofilePlayerInternals;
  @brief Low-power, easy-to-use real-time audio player.
  
  Thread safety: you can call any method from any thread, just make sure the same stuff is not running somewhere else currently.
- All methods are non-blocking.
+ All methods are non-blocking. Can not be used for offline processing.
  
  @param playing Play/pause (read-write).
  @param loopCount Playback count (read-write). If playback reaches to end and loopCount is 0 (default), then playback stops and playing becomes false.

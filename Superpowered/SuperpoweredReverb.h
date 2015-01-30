@@ -15,7 +15,6 @@ struct reverbInternals;
  @param width >= 0.0f and <= 1.0f. Read only.
  @param damp >= 0.0f and <= 1.0f. Read only.
  @param roomSize >= 0.0f and <= 1.0f. Read only.
- @param tailLengthSeconds Normally, a reverb has a nice tail sound when it goes off (default = 2). 0 means no tail. Read-write.
  */
 class SuperpoweredReverb: public SuperpoweredFX {
 public:
@@ -66,10 +65,7 @@ public:
  @brief Turns the effect on/off.
  */
     void enable(bool flag);
-    
-// READ-WRITE PARAMETER:
-    unsigned int tailLengthSeconds;
-    
+
 /**
  @brief Create a reverb instance with the current sample rate value.
  

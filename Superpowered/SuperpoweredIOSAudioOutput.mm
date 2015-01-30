@@ -17,7 +17,7 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
 
 @implementation SuperpoweredIOSAudioOutput {
     id<SuperpoweredIOSAudioIODelegate>delegate;
-    NSString *audioSessionCategory, *multiDeviceName;
+    NSString *multiDeviceName;
     NSMutableString *outputsAndInputs;
     audioProcessingCallback_C processingCallback;
     void *processingClientdata;
@@ -34,7 +34,7 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
     bool audioUnitRunning, iOS6, background, fixReceiver, waitingForReset;
 }
 
-@synthesize preferredBufferSizeMs, inputEnabled, saveBatteryInBackground;
+@synthesize preferredBufferSizeMs, inputEnabled, saveBatteryInBackground, audioSessionCategory;
 
 static OSStatus audioProcessingCallback(void *inRefCon, AudioUnitRenderActionFlags *ioActionFlags, const AudioTimeStamp *inTimeStamp, UInt32 inBusNumber, UInt32 inNumberFrames, AudioBufferList *ioData) {
     SuperpoweredIOSAudioOutput *self = (__bridge SuperpoweredIOSAudioOutput *)inRefCon;
@@ -89,7 +89,8 @@ static OSStatus audioProcessingCallback(void *inRefCon, AudioUnitRenderActionFla
         remoteIOChannels = 2;
         preferredBufferSizeMs = preferredBufferSize;
         preferredMinimumSamplerate = prefsamplerate;
-        inputEnabled = waitingForReset = false;
+        waitingForReset = false;
+        inputEnabled = [category isEqualToString:AVAudioSessionCategoryPlayAndRecord] || (iOS6 && [category isEqualToString:AVAudioSessionCategoryMultiRoute]);
         processingCallback = NULL;
         processingClientdata = NULL;
         delegate = d;
@@ -337,8 +338,9 @@ static OSStatus audioProcessingCallback(void *inRefCon, AudioUnitRenderActionFla
 - (void)resetAudioSession {
     remoteIOChannels = multiDeviceChannels ? multiChannels : 2;
 
-    // If an audio device is connected with only 2 channels and we provide more, force multi-route category to combine the iOS device's output with the audio device.
-    [[AVAudioSession sharedInstance] setCategory:(multiDeviceChannels == 2) && (multiChannels > 2) ? AVAudioSessionCategoryMultiRoute : audioSessionCategory error:NULL];
+    // If an audio device is connected with only 2 channels and we provide more, or input is enabled but the category is playback, force multi-route category to combine the iOS device's output with the audio device.
+    [[AVAudioSession sharedInstance] setCategory:((multiDeviceChannels == 2) && (multiChannels > 2)) ? AVAudioSessionCategoryMultiRoute : audioSessionCategory error:NULL];
+
     [[AVAudioSession sharedInstance] setMode:AVAudioSessionModeDefault error:NULL];
     [self setSamplerateAndBuffersize];
     [[AVAudioSession sharedInstance] setActive:YES error:NULL];
@@ -462,18 +464,20 @@ static void streamFormatChangedCallback(void *inRefCon, AudioUnit inUnit, AudioU
         } else break;
     };
 
-    if (audioUnit && iOS6) [self setChannelMap:false map:AUOutputChannelMap];
+    if (audioUnit && iOS6) [self setOutputChannelMap:AUOutputChannelMap];
     for (int n = 0; n < 32; n++) AUInputChannelMap[n] = inputChannelMap.USBChannels[n];
-    if (audioUnit && iOS6 && inputEnabled) [self setChannelMap:true map:AUInputChannelMap];
+    if (audioUnit && iOS6 && inputEnabled) [self setInputChannelMap:AUInputChannelMap];
 }
 
-- (void)setChannelMap:(bool)input map:(SInt32 *)map {
-    AudioUnitScope scope = input ? kAudioUnitScope_Output : kAudioUnitScope_Input;
-    AudioUnitElement element = input ? 1 : 0;
+- (void)setInputChannelMap:(SInt32 *)map {
+    AudioUnitSetProperty(audioUnit, kAudioOutputUnitProperty_ChannelMap, kAudioUnitScope_Input, 1, map, sizeof(SInt32) * 32);
+}
+
+- (void)setOutputChannelMap:(SInt32 *)map {
     UInt32 size = 0;
     Boolean writable = false;
-    AudioUnitGetPropertyInfo(audioUnit, kAudioOutputUnitProperty_ChannelMap, scope, element, &size, &writable);
-    if ((size > 0) && writable) AudioUnitSetProperty(audioUnit, kAudioOutputUnitProperty_ChannelMap, scope, element, map, size);
+    AudioUnitGetPropertyInfo(audioUnit, kAudioOutputUnitProperty_ChannelMap, kAudioUnitScope_Input, 0, &size, &writable);
+    if ((size > 0) && writable) AudioUnitSetProperty(audioUnit, kAudioOutputUnitProperty_ChannelMap, kAudioUnitScope_Input, 0, map, size);
 }
 
 - (void)setInputEnabled:(bool)ie {
@@ -484,8 +488,8 @@ static void streamFormatChangedCallback(void *inRefCon, AudioUnit inUnit, AudioU
             
             audioUnit = [self createRemoteIO];
             if (multiDeviceChannels && iOS6) {
-                [self setChannelMap:false map:AUOutputChannelMap];
-                if (inputEnabled) [self setChannelMap:true map:AUInputChannelMap];
+                [self setOutputChannelMap:AUOutputChannelMap];
+                if (inputEnabled) [self setInputChannelMap:AUInputChannelMap];
             };
             
             if (audioUnitRunning) [self start];
@@ -497,6 +501,13 @@ static void streamFormatChangedCallback(void *inRefCon, AudioUnit inUnit, AudioU
             };
         };
     };
+}
+
+- (void)setAudioSessionCategory:(NSString *)category {
+    if ([category isEqualToString:self->audioSessionCategory]) return;
+    if (!self->inputEnabled && ([category isEqualToString:AVAudioSessionCategoryPlayAndRecord] || (iOS6 && [category isEqualToString:AVAudioSessionCategoryMultiRoute]))) self->inputEnabled = true;
+    self->audioSessionCategory = category;
+    [self performSelectorOnMainThread:@selector(onMediaServerReset:) withObject:nil waitUntilDone:NO];
 }
 
 - (void)setPreferredBufferSizeMs:(int)ms {

@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.6</span>
+   &#160;<span id="projectnumber">0.7</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -105,6 +105,9 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>lfoBeats</b></td></t
 <tr class="memitem:a28915726f2bb474e93432a85bfaa06e4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a28915726f2bb474e93432a85bfaa06e4"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>bpm</b></td></tr>
 <tr class="separator:a28915726f2bb474e93432a85bfaa06e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a997e564d10e07ae1ba89fb092bae1269"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a997e564d10e07ae1ba89fb092bae1269"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>limitLevel</b></td></tr>
+<tr class="separator:a997e564d10e07ae1ba89fb092bae1269"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabf4bfd99ed9a2df3bf8aed6744ae0d2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aabf4bfd99ed9a2df3bf8aed6744ae0d2"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>stereo</b></td></tr>
 <tr class="separator:aabf4bfd99ed9a2df3bf8aed6744ae0d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -114,7 +117,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>enabled</b></td></tr>
 <tr class="separator:a898cb808ada61ebe11dddac0afa9194e inherit pub_attribs_class_superpowered_f_x"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>One instance allocates around 32 kb memory.</p>
+<div class="textblock"><p>One instance allocates around 80 kb memory.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">wet</td><td>0.0f to 1.0f. Read only. </td></tr>
@@ -122,6 +125,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>enabled</b></td></tr>
     <tr><td class="paramname">depth</td><td>0.0f to 1.0f (0.0 is 0.3 ms, 1.0 is 8 ms). Read only. </td></tr>
     <tr><td class="paramname">lfoBeats</td><td>The length in beats between the "lowest" and the "highest" jet sound, &gt;= 0.25f and &lt;= 64.0f. Read only. </td></tr>
     <tr><td class="paramname">bpm</td><td>Set this right for a nice sounding lfo. Read-write. </td></tr>
+    <tr><td class="paramname">limitLevel</td><td>The flanger has a hard-knee limiter inside to prevent overdrive. The default value of 1.0f means hard knee limiting to 0.0 db. Threshold is fixed at -3.0 db below the limit level. Valid range is 0.1f to 1.0f. </td></tr>
     <tr><td class="paramname">stereo</td><td>Stereo/mono switch. Read-write. </td></tr>
   </table>
   </dd>

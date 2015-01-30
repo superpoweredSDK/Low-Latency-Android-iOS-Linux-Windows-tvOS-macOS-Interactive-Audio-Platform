@@ -11,6 +11,11 @@
 #define HEADROOM_DECIBEL 3.0f
 static const float headroom = powf(10.0f, -HEADROOM_DECIBEL * 0.025);
 
+/*
+ This is a .mm file, meaning it's Objective-C++.
+ You can perfectly mix it with Objective-C or Swift, until you keep the member variables and C++ related includes here.
+ Yes, the header file (.h) isn't the only place for member variables.
+ */
 @implementation ViewController {
     SuperpoweredAdvancedAudioPlayer *playerA, *playerB;
     SuperpoweredIOSAudioOutput *output;
@@ -98,27 +103,28 @@ void playerEventCallbackB(void *clientData, SuperpoweredAdvancedAudioPlayerEvent
     pthread_mutex_lock(&mutex);
     
     bool masterIsA = (crossValue <= 0.5f);
-    float masterBpm = masterIsA ? playerA->currentBpm : playerB->currentBpm;
+    float masterBpm = masterIsA ? playerA->currentBpm : playerB->currentBpm; // Players will sync to this tempo.
     double msElapsedSinceLastBeatA = playerA->msElapsedSinceLastBeat; // When playerB needs it, playerA has already stepped this value, so save it now.
     
     bool silence = !playerA->process(stereoBuffer, false, numberOfSamples, volA, masterBpm, playerB->msElapsedSinceLastBeat);
     if (playerB->process(stereoBuffer, !silence, numberOfSamples, volB, masterBpm, msElapsedSinceLastBeatA)) silence = false;
-    
+
     roll->bpm = flanger->bpm = masterBpm; // Syncing fx is one line.
-    
+
     if (roll->process(silence ? NULL : stereoBuffer, stereoBuffer, numberOfSamples) && silence) silence = false;
     if (!silence) {
         filter->process(stereoBuffer, stereoBuffer, numberOfSamples);
         flanger->process(stereoBuffer, stereoBuffer, numberOfSamples);
     };
-    
+
     pthread_mutex_unlock(&mutex);
-    
+
     // The stereoBuffer is ready now, let's put the finished audio into the requested buffers.
     float *mixerInputs[4] = { stereoBuffer, NULL, NULL, NULL };
     float mixerInputLevels[8] = { 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f };
     float mixerOutputLevels[2] = { 1.0f, 1.0f };
     if (!silence) mixer->process(mixerInputs, buffers, mixerInputLevels, mixerOutputLevels, NULL, NULL, numberOfSamples);
+
     return !silence;
 }
 

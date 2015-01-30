@@ -14,7 +14,6 @@ struct echoInternals;
  @param bpm >= 60.0f and <= 240.0f. Read-write.
  @param beats Delay in beats, >= 0.125f and <= 2.0f. Read-write.
  @param decay >= 0.0f and <= 1.0f. Read-write.
- @param tailLengthSeconds Normally, an echo has a nice tail sound when it goes off (default = 2). 0 means no tail. Read-write.
  */
 class SuperpoweredEcho: public SuperpoweredFX {
 public:
@@ -25,8 +24,7 @@ public:
     float bpm;
     float beats;
     float decay;
-    unsigned int tailLengthSeconds;
-    
+
 /**
  @brief Wet is always == mix, but dry changes with a nice curve for a good echo/dry balance.
  
