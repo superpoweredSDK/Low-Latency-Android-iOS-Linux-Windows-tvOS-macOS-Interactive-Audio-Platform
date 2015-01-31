@@ -298,10 +298,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = SuperpoweredFrequencies/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered,
-				);
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../Superpowered";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SuperpoweredFrequencies/SuperpoweredFrequencies-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -315,10 +312,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = SuperpoweredFrequencies/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered,
-				);
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../Superpowered";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SuperpoweredFrequencies/SuperpoweredFrequencies-Bridging-Header.h";
 			};
@@ -343,6 +337,7 @@
 				1B1688FB1A7BAFF800CB7477 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
