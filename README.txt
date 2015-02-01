@@ -1,54 +1,14 @@
-<<<<<<< Updated upstream
 Superpowered Audio Engine for Games, Music and Interactive Audio Apps on Android, iOS & OSX.
 
 Low Latency Audio. Cross Platform. Free.
-
-
-What is it?
------------
-
-The Superpowered Audio Engine is a software development kit based on Superpowered IncÃ•s digital signal processing (DSP) technology. 
-
-Superpowered technology allows developers to build computationally intensive audio apps and embedded applications that process more quickly and use less power than other comparable solutions. 
-
-Superpowered DSP is designed and optimized, from scratch, to run on low-power mobile processors. Specifically, any device running ARM with the NEON extension (which covers 99% of all mobile devices manufactured as of Spring 2014). Intel CPU is supported too.
-
-
-Folders
--------
-
-SuperpoweredExample (iOS)
-This example project contains everything you need to understand Superpowered.
-
-SuperpoweredCrossExample (iOS)
-A fully-functional DJ app project example.
-
-SuperpoweredOfflineProcessingExample
-Offline processing with time stretching example.
-
-Superpowered (iOS)
-The SDK itself (static library and headers).
-=======
-Superpowered Audio SDKWhat is it?-----------The Superpowered Audio SDK is a software development kit based on Superpowered IncÕs digital signal processing (DSP) technology. Superpowered technology allows developers to build computationally intensive audio apps and embedded applications that process more quickly and use less power than other comparable solutions. Superpowered DSP is designed and optimized, from scratch, to run on low-power mobile processors. Specifically, any device running ARM with the NEON extension (which covers 99% of all mobile devices manufactured as of Spring 2014). Intel CPU is supported too.PLEASE NOTE: all example codes working with the Superpowered features are cross-platform, can be used under iOS and Android.
+What is it?-----------The Superpowered Audio SDK is a software development kit based on Superpowered IncÕs digital signal processing (DSP) technology. Superpowered technology allows developers to build computationally intensive audio apps and embedded applications that process more quickly and use less power than other comparable solutions. Superpowered DSP is designed and optimized, from scratch, to run on low-power mobile processors. Specifically, any device running ARM with the NEON extension (which covers 99% of all mobile devices manufactured as of Spring 2014). Intel CPU is supported too.PLEASE NOTE: all example codes working with the Superpowered features are cross-platform, can be used under iOS and Android.
 Folders-------
-
-/docs
-The documentation. Start with index.html.
->>>>>>> Stashed changes
-
 /SuperpoweredThe SDK itself (static library and headers).
 
-<<<<<<< Updated upstream
 docs
 The documentation. Start with index.html.
 
-The Latest Version ------------------
 
-Details of the latest version can be found at http://superpowered.com/superpowered-audio-sdk/
-
-
-Pricing and licensing
-=======
 /SuperpoweredCrossExample (iOS)A fully-functional DJ app project example. Shows how to:
 
 - Set up two players.
@@ -89,7 +49,6 @@ NDK integration with static libraries is still incomplete in Android Studio. Bef
 - Open local.properties. Set ndk.dir to your ndk folder.
 - Open build.gradle for the app module. Check for ndk-build, and set the appropriate path.- Before building the project, uncomment the jni.srcDirs line. This makes the C folder disappear from the view, but donÕt worry. After a successful build, comment the line again.The Latest Version 
 ------------------Details of the latest version can be found at http://superpowered.com/superpowered-audio-sdk/Pricing and licensing
->>>>>>> Stashed changes
 ---------
 The Superpowered Audio SDK is free for software applications. Please see the file called license.pdf.
 
