@@ -43,6 +43,8 @@
     audioIO = nil;
 }
 
+- (void)interruptionEnded {}
+
 - (bool)audioProcessingCallback:(float **)buffers inputChannels:(unsigned int)inputChannels outputChannels:(unsigned int)outputChannels numberOfSamples:(unsigned int)numberOfSamples samplerate:(unsigned int)currentsamplerate hostTime:(UInt64)hostTime {
     if (samplerate != currentsamplerate) {
         samplerate = currentsamplerate;

@@ -52,9 +52,10 @@ NDK integration with static libraries is still incomplete in Android Studio. Bef
 ---------
 The Superpowered Audio SDK is free for software applications. Please see the file called license.pdf.
 
+Superpowered FFT benefits from ideas in Construction of a High-Performance FFT by Eric Postpischil (http://edp.org/resume.htm).
+
 
 Contacts
 --------
 
 If you want to be informed about new code releases, bug fixes, general news and information about Superpowered, please email hello@superpowered.com.
-

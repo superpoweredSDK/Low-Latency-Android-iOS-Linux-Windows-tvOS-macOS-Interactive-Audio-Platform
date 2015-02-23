@@ -89,7 +89,7 @@ typedef void (* SuperpoweredAdvancedAudioPlayerCallback) (void *clientData, Supe
  @param msElapsedSinceLastBeat How many milliseconds elapsed since the last beat. Read only.
  @param beatIndex Which beat has just happened (1, 2, 3, 4). A value of 0 means "don't know". Read only.
  @param syncMode The current sync mode (off, tempo, or tempo and beat).
- @param fixDoubleOrHalfBPM If tempo is >1.4f or <0.6f, it will treat the bpm as half or double. Good for certain genres. True by default.
+ @param fixDoubleOrHalfBPM If tempo is >1.4f or <0.6f, it will treat the bpm as half or double. Good for certain genres. False by default.
  @param waitForNextBeatWithBeatSync Wait for the next beat if beat-syncing is enabled. False by default.
 */
 class SuperpoweredAdvancedAudioPlayer {
@@ -102,11 +102,11 @@ public:
     unsigned int durationSeconds;
     bool playing;
     
-    float tempo;
+    double tempo;
     bool masterTempo;
     int pitchShift;
-    float bpm;
-    float currentBpm;
+    double bpm;
+    double currentBpm;
     
     bool slip;
     bool scratching;
@@ -232,7 +232,7 @@ public:
  
  @param newBpm The bpm value. A number below 10.0f means "bpm unknown", and sync will not work.
 */
-    void setBpm(float newBpm);
+    void setBpm(double newBpm);
 /**
   @brief Beat-sync works only if the first beat's position is known. Set it here.
  
@@ -269,15 +269,16 @@ public:
  @brief Call this when the jog touch ends.
  
  @param decelerate The decelerating rate for momentum. Set to 0.0f for automatic.
+ @param synchronisedStart Beat-synced start after decelerating.
  */
-    void jogTouchEnd(float decelerate);
+    void jogTouchEnd(float decelerate, bool synchronisedStart);
 /**
  @brief Sets the relative tempo of the playback.
  
  @param tempo 1.0f is "original speed".
  @param masterTempo Enable or disable time-stretching.
  */
-    void setTempo(float tempo, bool masterTempo);
+    void setTempo(double tempo, bool masterTempo);
 /**
  @brief Sets the pitch shift value. Needs masterTempo enabled.
  
@@ -321,7 +322,7 @@ public:
  @param pitch The current speed.
  @param smoothing Should be between 0.05f (max. smoothing) and 1.0f (no smoothing).
  */
-    void scratch(float pitch, float smoothing);
+    void scratch(double pitch, float smoothing);
 /**
  @brief Ends scratching.
  
@@ -360,7 +361,7 @@ public:
  @param masterBpm A bpm value to sync with. Use 0.0f for no syncing.
  @param masterMsElapsedSinceLastBeat How many milliseconds elapsed since the last beat on the other stuff we are syncing to. Use -1.0 to ignore.
 */
-    bool process(float *buffer, bool bufferAdd, unsigned int numberOfSamples, float volume, float masterBpm, double masterMsElapsedSinceLastBeat);
+    bool process(float *buffer, bool bufferAdd, unsigned int numberOfSamples, float volume, double masterBpm, double masterMsElapsedSinceLastBeat);
     
 private:
     SuperpoweredAdvancedAudioPlayerInternals *internals;

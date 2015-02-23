@@ -12,7 +12,7 @@ public:
 /**
  Create a filterbank instance.
  
- @param numBands The number of bands. Must be a multiply of 4.
+ @param numBands The number of bands. Must be a multiply of 8.
  @param frequencies The center frequencies of the bands.
  @param widths The width of the bands. 1.0f is one octave, 1.0f / 12.0f is one halfnote.
  @param samplerate The initial sample rate.

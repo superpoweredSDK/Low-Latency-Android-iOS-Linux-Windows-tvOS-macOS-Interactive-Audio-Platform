@@ -5,7 +5,9 @@
  @file SuperpoweredFFT.h
  @brief Super fast FFT.
  
- Single threaded, not thread safe.
+ Single threaded, not thread safe. 
+ 
+ @remark Superpowered FFT benefits from ideas in Construction of a High-Performance FFT by Eric Postpischil (http://edp.org/resume.htm).
 */
 
 

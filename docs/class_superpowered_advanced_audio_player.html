@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.7</span>
+   &#160;<span id="projectnumber">0.7.1</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -101,9 +101,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:abb5d2fcecea8df4a9f3ac2be21ccf229"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#abb5d2fcecea8df4a9f3ac2be21ccf229">msInLoop</a> (double ms)</td></tr>
 <tr class="memdesc:abb5d2fcecea8df4a9f3ac2be21ccf229"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if ms fall into the current loop.  <a href="#abb5d2fcecea8df4a9f3ac2be21ccf229">More...</a><br /></td></tr>
 <tr class="separator:abb5d2fcecea8df4a9f3ac2be21ccf229"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a13eda27b3f8504c629bb4f489c4174a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a13eda27b3f8504c629bb4f489c4174a4">setBpm</a> (float newBpm)</td></tr>
-<tr class="memdesc:a13eda27b3f8504c629bb4f489c4174a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">There is no auto-bpm detection inside, you must set the original bpm of the track with this for syncing.  <a href="#a13eda27b3f8504c629bb4f489c4174a4">More...</a><br /></td></tr>
-<tr class="separator:a13eda27b3f8504c629bb4f489c4174a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a406cb7ead42f0dade5eb349ba6ead8ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a406cb7ead42f0dade5eb349ba6ead8ea">setBpm</a> (double newBpm)</td></tr>
+<tr class="memdesc:a406cb7ead42f0dade5eb349ba6ead8ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">There is no auto-bpm detection inside, you must set the original bpm of the track with this for syncing.  <a href="#a406cb7ead42f0dade5eb349ba6ead8ea">More...</a><br /></td></tr>
+<tr class="separator:a406cb7ead42f0dade5eb349ba6ead8ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4fbae56279945d88be4fe93ec1104063"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a4fbae56279945d88be4fe93ec1104063">setFirstBeatMs</a> (double ms)</td></tr>
 <tr class="memdesc:a4fbae56279945d88be4fe93ec1104063"><td class="mdescLeft">&#160;</td><td class="mdescRight">Beat-sync works only if the first beat's position is known. Set it here.  <a href="#a4fbae56279945d88be4fe93ec1104063">More...</a><br /></td></tr>
 <tr class="separator:a4fbae56279945d88be4fe93ec1104063"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -116,12 +116,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a80f42efde112dd369f383555daf6f422"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a80f42efde112dd369f383555daf6f422">jogTick</a> (int value, bool bendStretch, float bendMaxPercent, unsigned int bendHoldMs, bool parameterMode)</td></tr>
 <tr class="memdesc:a80f42efde112dd369f383555daf6f422"><td class="mdescLeft">&#160;</td><td class="mdescRight">A jog wheel should send some "ticks" according to the movement. A waveform's movement in pixels for example.  <a href="#a80f42efde112dd369f383555daf6f422">More...</a><br /></td></tr>
 <tr class="separator:a80f42efde112dd369f383555daf6f422"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a08492d74bb6e0c48924c3fe4209f34"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a6a08492d74bb6e0c48924c3fe4209f34">jogTouchEnd</a> (float decelerate)</td></tr>
-<tr class="memdesc:a6a08492d74bb6e0c48924c3fe4209f34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this when the jog touch ends.  <a href="#a6a08492d74bb6e0c48924c3fe4209f34">More...</a><br /></td></tr>
-<tr class="separator:a6a08492d74bb6e0c48924c3fe4209f34"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aecb6e2b209777b2627fd7bfc9bcab6ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#aecb6e2b209777b2627fd7bfc9bcab6ee">setTempo</a> (float tempo, bool masterTempo)</td></tr>
-<tr class="memdesc:aecb6e2b209777b2627fd7bfc9bcab6ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the relative tempo of the playback.  <a href="#aecb6e2b209777b2627fd7bfc9bcab6ee">More...</a><br /></td></tr>
-<tr class="separator:aecb6e2b209777b2627fd7bfc9bcab6ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14366cf970bd7d21d9ea04934a23d76c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a14366cf970bd7d21d9ea04934a23d76c">jogTouchEnd</a> (float decelerate, bool synchronisedStart)</td></tr>
+<tr class="memdesc:a14366cf970bd7d21d9ea04934a23d76c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this when the jog touch ends.  <a href="#a14366cf970bd7d21d9ea04934a23d76c">More...</a><br /></td></tr>
+<tr class="separator:a14366cf970bd7d21d9ea04934a23d76c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a209579fba6164afb75e7d714737b537c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a209579fba6164afb75e7d714737b537c">setTempo</a> (double tempo, bool masterTempo)</td></tr>
+<tr class="memdesc:a209579fba6164afb75e7d714737b537c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the relative tempo of the playback.  <a href="#a209579fba6164afb75e7d714737b537c">More...</a><br /></td></tr>
+<tr class="separator:a209579fba6164afb75e7d714737b537c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6d79450ba83b760fd5721af4b9b28a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#ab6d79450ba83b760fd5721af4b9b28a1">setPitchShift</a> (int pitchShift)</td></tr>
 <tr class="memdesc:ab6d79450ba83b760fd5721af4b9b28a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the pitch shift value. Needs masterTempo enabled.  <a href="#ab6d79450ba83b760fd5721af4b9b28a1">More...</a><br /></td></tr>
 <tr class="separator:ab6d79450ba83b760fd5721af4b9b28a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -138,15 +138,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a4151f9ec2e00fd3de7c7bbd4845661af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a4151f9ec2e00fd3de7c7bbd4845661af">startScratch</a> (unsigned int slipMs, bool stopImmediately)</td></tr>
 <tr class="memdesc:a4151f9ec2e00fd3de7c7bbd4845661af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call when scratching starts.  <a href="#a4151f9ec2e00fd3de7c7bbd4845661af">More...</a><br /></td></tr>
 <tr class="separator:a4151f9ec2e00fd3de7c7bbd4845661af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb9ec30f546b1b2c6a53b7b572eb5299"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#abb9ec30f546b1b2c6a53b7b572eb5299">scratch</a> (float pitch, float smoothing)</td></tr>
-<tr class="memdesc:abb9ec30f546b1b2c6a53b7b572eb5299"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scratch movement.  <a href="#abb9ec30f546b1b2c6a53b7b572eb5299">More...</a><br /></td></tr>
-<tr class="separator:abb9ec30f546b1b2c6a53b7b572eb5299"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0586295280d3ce5b41b7bfe2675445c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#ad0586295280d3ce5b41b7bfe2675445c">scratch</a> (double pitch, float smoothing)</td></tr>
+<tr class="memdesc:ad0586295280d3ce5b41b7bfe2675445c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scratch movement.  <a href="#ad0586295280d3ce5b41b7bfe2675445c">More...</a><br /></td></tr>
+<tr class="separator:ad0586295280d3ce5b41b7bfe2675445c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e209a757de737fb450295dbbf6d7e83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a1e209a757de737fb450295dbbf6d7e83">endScratch</a> (bool returnToStateBeforeScratch)</td></tr>
 <tr class="memdesc:a1e209a757de737fb450295dbbf6d7e83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ends scratching.  <a href="#a1e209a757de737fb450295dbbf6d7e83">More...</a><br /></td></tr>
 <tr class="separator:a1e209a757de737fb450295dbbf6d7e83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac78737adad9c6f4b733c263bb04d0986"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac78737adad9c6f4b733c263bb04d0986"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#ac78737adad9c6f4b733c263bb04d0986">lastProcessMs</a> ()</td></tr>
-<tr class="memdesc:ac78737adad9c6f4b733c263bb04d0986"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the last <a class="el" href="class_superpowered_advanced_audio_player.html#a334904b1d18897036701330dd11e7820" title="Processes the audio. ">process()</a> numberOfSamples converted to milliseconds. <br /></td></tr>
+<tr class="memdesc:ac78737adad9c6f4b733c263bb04d0986"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the last <a class="el" href="class_superpowered_advanced_audio_player.html#a6a27464c30103cff954868b0f852880d" title="Processes the audio. ">process()</a> numberOfSamples converted to milliseconds. <br /></td></tr>
 <tr class="separator:ac78737adad9c6f4b733c263bb04d0986"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acee23ff2aee1da7b01f71afa8f24b3c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#acee23ff2aee1da7b01f71afa8f24b3c1">setSamplerate</a> (unsigned int samplerate)</td></tr>
 <tr class="memdesc:acee23ff2aee1da7b01f71afa8f24b3c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the sample rate.  <a href="#acee23ff2aee1da7b01f71afa8f24b3c1">More...</a><br /></td></tr>
@@ -154,9 +154,9 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 <tr class="memitem:ac5fc6e04104d60f18eb2e090cbe7f854"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#ac5fc6e04104d60f18eb2e090cbe7f854">onMediaserverInterrupt</a> ()</td></tr>
 <tr class="memdesc:ac5fc6e04104d60f18eb2e090cbe7f854"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this on a phone call or other interruption.  <a href="#ac5fc6e04104d60f18eb2e090cbe7f854">More...</a><br /></td></tr>
 <tr class="separator:ac5fc6e04104d60f18eb2e090cbe7f854"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a334904b1d18897036701330dd11e7820"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a334904b1d18897036701330dd11e7820">process</a> (float *buffer, bool bufferAdd, unsigned int numberOfSamples, float volume, float masterBpm, double masterMsElapsedSinceLastBeat)</td></tr>
-<tr class="memdesc:a334904b1d18897036701330dd11e7820"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes the audio.  <a href="#a334904b1d18897036701330dd11e7820">More...</a><br /></td></tr>
-<tr class="separator:a334904b1d18897036701330dd11e7820"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a27464c30103cff954868b0f852880d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a6a27464c30103cff954868b0f852880d">process</a> (float *buffer, bool bufferAdd, unsigned int numberOfSamples, float volume, double masterBpm, double masterMsElapsedSinceLastBeat)</td></tr>
+<tr class="memdesc:a6a27464c30103cff954868b0f852880d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes the audio.  <a href="#a6a27464c30103cff954868b0f852880d">More...</a><br /></td></tr>
+<tr class="separator:a6a27464c30103cff954868b0f852880d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -178,21 +178,21 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>durationSecon
 <tr class="memitem:a344f312201332134f5ce0440d91888ca"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a344f312201332134f5ce0440d91888ca"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>playing</b></td></tr>
 <tr class="separator:a344f312201332134f5ce0440d91888ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af55e638234f404c92002af7dc08a32da"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af55e638234f404c92002af7dc08a32da"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>tempo</b></td></tr>
-<tr class="separator:af55e638234f404c92002af7dc08a32da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a228309c458a5e7c8ab3dc5809855821b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a228309c458a5e7c8ab3dc5809855821b"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>tempo</b></td></tr>
+<tr class="separator:a228309c458a5e7c8ab3dc5809855821b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a409f7bba39bd9ebef240b2fdbaae9e8d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a409f7bba39bd9ebef240b2fdbaae9e8d"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>masterTempo</b></td></tr>
 <tr class="separator:a409f7bba39bd9ebef240b2fdbaae9e8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64d2b25e485265913a39dad735fc2a48"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a64d2b25e485265913a39dad735fc2a48"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>pitchShift</b></td></tr>
 <tr class="separator:a64d2b25e485265913a39dad735fc2a48"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9fefdbb8e943346231da9a222d01462d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9fefdbb8e943346231da9a222d01462d"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>bpm</b></td></tr>
-<tr class="separator:a9fefdbb8e943346231da9a222d01462d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a192d18e2396fa4035843339c372d834a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a192d18e2396fa4035843339c372d834a"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>currentBpm</b></td></tr>
-<tr class="separator:a192d18e2396fa4035843339c372d834a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63b396340565bd33c3f250686dfaf8b0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a63b396340565bd33c3f250686dfaf8b0"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>bpm</b></td></tr>
+<tr class="separator:a63b396340565bd33c3f250686dfaf8b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdced97b0c43714b64ecbadafd531cb6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abdced97b0c43714b64ecbadafd531cb6"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>currentBpm</b></td></tr>
+<tr class="separator:abdced97b0c43714b64ecbadafd531cb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0cd9bbfd9de8eeb683848c5d2699f81"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab0cd9bbfd9de8eeb683848c5d2699f81"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>slip</b></td></tr>
 <tr class="separator:ab0cd9bbfd9de8eeb683848c5d2699f81"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -260,7 +260,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>waitForNextBeatWithBe
     <tr><td class="paramname">msElapsedSinceLastBeat</td><td>How many milliseconds elapsed since the last beat. Read only. </td></tr>
     <tr><td class="paramname">beatIndex</td><td>Which beat has just happened (1, 2, 3, 4). A value of 0 means "don't know". Read only. </td></tr>
     <tr><td class="paramname">syncMode</td><td>The current sync mode (off, tempo, or tempo and beat). </td></tr>
-    <tr><td class="paramname">fixDoubleOrHalfBPM</td><td>If tempo is &gt;1.4f or &lt;0.6f, it will treat the bpm as half or double. Good for certain genres. True by default. </td></tr>
+    <tr><td class="paramname">fixDoubleOrHalfBPM</td><td>If tempo is &gt;1.4f or &lt;0.6f, it will treat the bpm as half or double. Good for certain genres. False by default. </td></tr>
     <tr><td class="paramname">waitForNextBeatWithBeatSync</td><td>Wait for the next beat if beat-syncing is enabled. False by default. </td></tr>
   </table>
   </dd>
@@ -638,14 +638,14 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>waitForNextBeatWithBe
 
 </div>
 </div>
-<a class="anchor" id="a13eda27b3f8504c629bb4f489c4174a4"></a>
+<a class="anchor" id="a406cb7ead42f0dade5eb349ba6ead8ea"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void SuperpoweredAdvancedAudioPlayer::setBpm </td>
           <td>(</td>
-          <td class="paramtype">float&#160;</td>
+          <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>newBpm</em></td><td>)</td>
           <td></td>
         </tr>
@@ -805,7 +805,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>waitForNextBeatWithBe
 
 </div>
 </div>
-<a class="anchor" id="a6a08492d74bb6e0c48924c3fe4209f34"></a>
+<a class="anchor" id="a14366cf970bd7d21d9ea04934a23d76c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -813,28 +813,39 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>waitForNextBeatWithBe
           <td class="memname">void SuperpoweredAdvancedAudioPlayer::jogTouchEnd </td>
           <td>(</td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>decelerate</em></td><td>)</td>
+          <td class="paramname"><em>decelerate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>synchronisedStart</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">decelerate</td><td>The decelerating rate for momentum. Set to 0.0f for automatic. </td></tr>
+    <tr><td class="paramname">synchronisedStart</td><td>Beat-synced start after decelerating. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a class="anchor" id="aecb6e2b209777b2627fd7bfc9bcab6ee"></a>
+<a class="anchor" id="a209579fba6164afb75e7d714737b537c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void SuperpoweredAdvancedAudioPlayer::setTempo </td>
           <td>(</td>
-          <td class="paramtype">float&#160;</td>
+          <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>tempo</em>, </td>
         </tr>
         <tr>
@@ -996,14 +1007,14 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>waitForNextBeatWithBe
 
 </div>
 </div>
-<a class="anchor" id="abb9ec30f546b1b2c6a53b7b572eb5299"></a>
+<a class="anchor" id="ad0586295280d3ce5b41b7bfe2675445c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void SuperpoweredAdvancedAudioPlayer::scratch </td>
           <td>(</td>
-          <td class="paramtype">float&#160;</td>
+          <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>pitch</em>, </td>
         </tr>
         <tr>
@@ -1091,7 +1102,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>waitForNextBeatWithBe
 
 </div>
 </div>
-<a class="anchor" id="a334904b1d18897036701330dd11e7820"></a>
+<a class="anchor" id="a6a27464c30103cff954868b0f852880d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -1122,7 +1133,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>waitForNextBeatWithBe
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float&#160;</td>
+          <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>masterBpm</em>, </td>
         </tr>
         <tr>

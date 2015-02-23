@@ -477,7 +477,10 @@ static void streamFormatChangedCallback(void *inRefCon, AudioUnit inUnit, AudioU
     UInt32 size = 0;
     Boolean writable = false;
     AudioUnitGetPropertyInfo(audioUnit, kAudioOutputUnitProperty_ChannelMap, kAudioUnitScope_Input, 0, &size, &writable);
-    if ((size > 0) && writable) AudioUnitSetProperty(audioUnit, kAudioOutputUnitProperty_ChannelMap, kAudioUnitScope_Input, 0, map, size);
+    if ((size > 0) && writable) {
+        if (size > sizeof(AUOutputChannelMap)) size = sizeof(AUOutputChannelMap);
+        AudioUnitSetProperty(audioUnit, kAudioOutputUnitProperty_ChannelMap, kAudioUnitScope_Input, 0, map, size);
+    };
 }
 
 - (void)setInputEnabled:(bool)ie {
@@ -505,7 +508,7 @@ static void streamFormatChangedCallback(void *inRefCon, AudioUnit inUnit, AudioU
 
 - (void)setAudioSessionCategory:(NSString *)category {
     if ([category isEqualToString:self->audioSessionCategory]) return;
-    if (!self->inputEnabled && ([category isEqualToString:AVAudioSessionCategoryPlayAndRecord] || (iOS6 && [category isEqualToString:AVAudioSessionCategoryMultiRoute]))) self->inputEnabled = true;
+    if (!self->inputEnabled && [category isEqualToString:AVAudioSessionCategoryPlayAndRecord]) self->inputEnabled = true;
     self->audioSessionCategory = category;
     [self performSelectorOnMainThread:@selector(onMediaServerReset:) withObject:nil waitUntilDone:NO];
 }
