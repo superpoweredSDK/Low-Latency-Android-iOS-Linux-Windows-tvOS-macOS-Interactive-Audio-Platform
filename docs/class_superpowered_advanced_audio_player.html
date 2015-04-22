@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.7.1</span>
+   &#160;<span id="projectnumber">0.8</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -175,6 +175,9 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>durationMs</b
 <tr class="memitem:a80aae242b7875dac7dd01f142dc859c7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a80aae242b7875dac7dd01f142dc859c7"></a>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>durationSeconds</b></td></tr>
 <tr class="separator:a80aae242b7875dac7dd01f142dc859c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea057b7cef6cbfda0a44b011d0f32bbe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aea057b7cef6cbfda0a44b011d0f32bbe"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>waitingForBuffering</b></td></tr>
+<tr class="separator:aea057b7cef6cbfda0a44b011d0f32bbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a344f312201332134f5ce0440d91888ca"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a344f312201332134f5ce0440d91888ca"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>playing</b></td></tr>
 <tr class="separator:a344f312201332134f5ce0440d91888ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -211,9 +214,9 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>firstBeatMs</b></td
 <tr class="memitem:af5a8824457f388b9ded3851c17dd4467"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af5a8824457f388b9ded3851c17dd4467"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><b>msElapsedSinceLastBeat</b></td></tr>
 <tr class="separator:af5a8824457f388b9ded3851c17dd4467"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58cefc7274ec3f8694f64225302ea20d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a58cefc7274ec3f8694f64225302ea20d"></a>
-unsigned char&#160;</td><td class="memItemRight" valign="bottom"><b>beatIndex</b></td></tr>
-<tr class="separator:a58cefc7274ec3f8694f64225302ea20d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf4d29457881f3817f3f1db39ff9b677"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acf4d29457881f3817f3f1db39ff9b677"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>beatIndex</b></td></tr>
+<tr class="separator:acf4d29457881f3817f3f1db39ff9b677"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64224f1d5ba11c6ccbb2e5dd02983f35"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a64224f1d5ba11c6ccbb2e5dd02983f35"></a>
 SuperpoweredAdvancedAudioPlayerSyncMode&#160;</td><td class="memItemRight" valign="bottom"><b>syncMode</b></td></tr>
 <tr class="separator:a64224f1d5ba11c6ccbb2e5dd02983f35"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -246,6 +249,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>waitForNextBeatWithBe
     <tr><td class="paramname">positionSeconds</td><td>The current position as seconds elapsed. Read only. </td></tr>
     <tr><td class="paramname">durationMs</td><td>The duration of the current track in milliseconds. Read only. </td></tr>
     <tr><td class="paramname">durationSeconds</td><td>The duration of the current track in seconds. Read only. </td></tr>
+    <tr><td class="paramname">waitingForBuffering</td><td>Indicates if the player waits for audio data to be bufferred. </td></tr>
     <tr><td class="paramname">playing</td><td>Indicates if the player is playing or paused. Read only. </td></tr>
     <tr><td class="paramname">tempo</td><td>The current tempo. Read only. </td></tr>
     <tr><td class="paramname">masterTempo</td><td>Time-stretching is enabled or not. Read only. </td></tr>
@@ -258,7 +262,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>waitForNextBeatWithBe
     <tr><td class="paramname">looping</td><td>Indicates if looping is enabled. Read only. </td></tr>
     <tr><td class="paramname">firstBeatMs</td><td>Tells where the first beat (the beatgrid) begins. Must be correct for syncing. Read only. </td></tr>
     <tr><td class="paramname">msElapsedSinceLastBeat</td><td>How many milliseconds elapsed since the last beat. Read only. </td></tr>
-    <tr><td class="paramname">beatIndex</td><td>Which beat has just happened (1, 2, 3, 4). A value of 0 means "don't know". Read only. </td></tr>
+    <tr><td class="paramname">beatIndex</td><td>Which beat has just happened (1 [1.0f-1.999f], 2 [2.0f-2.999f], 3 [3.0f-3.99f], 4 [4.0f-4.99f]). A value of 0 means "don't know". Read only. </td></tr>
     <tr><td class="paramname">syncMode</td><td>The current sync mode (off, tempo, or tempo and beat). </td></tr>
     <tr><td class="paramname">fixDoubleOrHalfBPM</td><td>If tempo is &gt;1.4f or &lt;0.6f, it will treat the bpm as half or double. Good for certain genres. False by default. </td></tr>
     <tr><td class="paramname">waitForNextBeatWithBeatSync</td><td>Wait for the next beat if beat-syncing is enabled. False by default. </td></tr>

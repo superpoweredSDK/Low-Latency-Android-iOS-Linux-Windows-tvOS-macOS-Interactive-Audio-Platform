@@ -88,7 +88,7 @@ typedef bool (*audioProcessingCallback_C) (void *clientdata, float **buffers, un
     int preferredBufferSizeMs;
     bool inputEnabled;
     bool saveBatteryInBackground;
-    __unsafe_unretained NSString *audioSessionCategory;
+    NSString * __unsafe_unretained audioSessionCategory;
 }
 
 /** @brief The preferred buffer size. Recommended: 12. */

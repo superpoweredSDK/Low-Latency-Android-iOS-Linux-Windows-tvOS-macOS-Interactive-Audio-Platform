@@ -4,7 +4,7 @@
 #import "SuperpoweredRoll.h"
 #import "SuperpoweredFlanger.h"
 #import "SuperpoweredIOSAudioOutput.h"
-#import "SuperpoweredMixer.h"
+#import "SuperpoweredSimple.h"
 #import <stdlib.h>
 #import <pthread.h>
 
@@ -22,7 +22,6 @@ static const float headroom = powf(10.0f, -HEADROOM_DECIBEL * 0.025);
     SuperpoweredRoll *roll;
     SuperpoweredFilter *filter;
     SuperpoweredFlanger *flanger;
-    SuperpoweredStereoMixer *mixer;
     unsigned char activeFx;
     float *stereoBuffer, crossValue, volA, volB;
     unsigned int lastSamplerate;
@@ -65,9 +64,7 @@ void playerEventCallbackB(void *clientData, SuperpoweredAdvancedAudioPlayerEvent
     roll = new SuperpoweredRoll(44100);
     filter = new SuperpoweredFilter(SuperpoweredFilter_Resonant_Lowpass, 44100);
     flanger = new SuperpoweredFlanger(44100);
-    
-    mixer = new SuperpoweredStereoMixer();
-    
+
     output = [[SuperpoweredIOSAudioOutput alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:12 preferredMinimumSamplerate:44100 audioSessionCategory:AVAudioSessionCategoryPlayback multiChannels:2 fixReceiver:true];
     [output start];
 }
@@ -75,7 +72,6 @@ void playerEventCallbackB(void *clientData, SuperpoweredAdvancedAudioPlayerEvent
 - (void)dealloc {
     delete playerA;
     delete playerB;
-    delete mixer;
     free(stereoBuffer);
     pthread_mutex_destroy(&mutex);
 #if !__has_feature(objc_arc)
@@ -119,12 +115,7 @@ void playerEventCallbackB(void *clientData, SuperpoweredAdvancedAudioPlayerEvent
 
     pthread_mutex_unlock(&mutex);
 
-    // The stereoBuffer is ready now, let's put the finished audio into the requested buffers.
-    float *mixerInputs[4] = { stereoBuffer, NULL, NULL, NULL };
-    float mixerInputLevels[8] = { 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f };
-    float mixerOutputLevels[2] = { 1.0f, 1.0f };
-    if (!silence) mixer->process(mixerInputs, buffers, mixerInputLevels, mixerOutputLevels, NULL, NULL, numberOfSamples);
-
+    if (!silence) SuperpoweredDeInterleave(stereoBuffer, buffers[0], buffers[1], numberOfSamples); // The stereoBuffer is ready now, let's put the finished audio into the requested buffers.
     return !silence;
 }
 

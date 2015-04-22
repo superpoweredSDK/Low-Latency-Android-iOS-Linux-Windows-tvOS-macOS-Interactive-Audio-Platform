@@ -3,6 +3,8 @@
 #import <mach/mach_time.h>
 #import <math.h>
 
+#define VALUE_OF_PI M_PI
+
 // Result differences to vDSP
 #if __arm64__
 #define vdspdiff 0.00125f // 64-bit ARM: Superpowered is MORE PRECISE than vDSP due the fused multiply-add instructions inside
@@ -55,10 +57,8 @@ static int checkRealImagErrorsInverse(const char *job, float *vdsp_real, float *
 
     return errors;
 }
-#endif
 
 static void SuperpoweredFFTTest() {
-#if __arm64__ || __arm__
     // setup time measurement
     mach_absolute_time();
     mach_absolute_time();
@@ -177,7 +177,7 @@ static void SuperpoweredFFTTest() {
 
             // perform forward polar FFT
             st = mach_absolute_time();
-            SuperpoweredPolarFFT(real, imag, logSize, true);
+            SuperpoweredPolarFFT(real, imag, logSize, true, VALUE_OF_PI);
             measurements[logSize][2][2][mea] = mach_absolute_time() - st;
 
             st = mach_absolute_time();
@@ -186,30 +186,26 @@ static void SuperpoweredFFTTest() {
             vDSP_zvphas(&complex, 1, vdsp_phase, 1, fftSize / 2);
             measurements[logSize][2][0][mea] = mach_absolute_time() - st;
 
-            // check the results against std math functions
+            // check the results
             errors = 0;
-            vdsp_imag[0] = vdsp_real[0] = 0.0f;
+            vdsp_phase[0] = vdsp_magnitude[0] = 0.0f;
+            float mul = float(VALUE_OF_PI / M_PI);
             for (unsigned int n = 0; n < fftSize / 2; n++) {
-                float phase = atan2f(vdsp_imag[n], vdsp_real[n]) * float(0.5 / M_PI);
-                float magnitude = sqrtf(vdsp_imag[n] * vdsp_imag[n] + vdsp_real[n] * vdsp_real[n]);
-                vdsp_real[n] *= 0.5f;
-                vdsp_imag[n] *= 0.5f;
+                float phase = vdsp_phase[n] * mul, magnitude = vdsp_magnitude[n];
 
                 float magError = fabsf(magnitude - real[n]), phaseError = fabsf(phase - imag[n]);
                 if (magnitude != 0) magError /= fabsf(magnitude);
                 if (phase != 0) phaseError /= fabsf(phase);
+
                 if ((magError > magnitudediff) || (phaseError > phasediff) || !isfinite(real[n]) || !isfinite(imag[n])) {
-                    printf("forward polar %i  mag %f %f   phase %f %f\n", n, magnitude, magError, phase, imag[n]);
+                    printf("forward polar %i  mag %f %f   phase %f %f\n", n, vdsp_magnitude[n], magError, phase, imag[n]);
                     errors++;
                 };
-
-                imag[n] *= 2.0f; // inverse needs -1 - 1 range
-                real[n] *= 0.5f;
             };
 
             // perform inverse polar FFT
             st = mach_absolute_time();
-            SuperpoweredPolarFFT(real, imag, logSize, false);
+            SuperpoweredPolarFFT(real, imag, logSize, false, VALUE_OF_PI);
             measurements[logSize][2][3][mea] = mach_absolute_time() - st;
 
             st = mach_absolute_time();
@@ -217,15 +213,14 @@ static void SuperpoweredFFTTest() {
             complex.imagp = vdsp_phase;
             vDSP_ztoc(&complex, 1, polarToRectComplex, 2, fftSize / 2);
             vDSP_rect((float*)polarToRectComplex, 2, (float*)polarToRectComplex, 2, fftSize / 2);
-            vDSP_ctoz(polarToRectComplex, 2, &complex, 1, fftSize / 2);
-            
             complex.realp = vdsp_real;
             complex.imagp = vdsp_imag;
+            vDSP_ctoz(polarToRectComplex, 2, &complex, 1, fftSize / 2);
             vDSP_fft_zrip((FFTSetup)setups[logSize], &complex, 1, logSize, FFT_INVERSE);
             measurements[logSize][2][1][mea] = mach_absolute_time() - st;
             
             // check the results
-            float scale = 1.0f / float(fftSize);
+            float scale = 0.5f / float(fftSize);
             for (unsigned int n = 0; n < fftSize / 2; n++) {
                 vdsp_real[n] *= scale;
                 vdsp_imag[n] *= scale;
@@ -277,8 +272,11 @@ static void SuperpoweredFFTTest() {
         printf("\n");
         vDSP_destroy_fftsetup(setups[logSize]);
     };
+};
 
 #else
+static void SuperpoweredFFTTest() {
     printf("Please run this test on a mobile device with an ARM processor.");
+};
 #endif
-}
+

@@ -7,25 +7,35 @@ struct stretchInternals;
 /**
  @brief Time stretching and pitch shifting.
  
- One instance allocates around 100 kb. Check the SuperpoweredOfflineProcessingExample project on how to use.
+ One instance allocates around 220 kb. Check the SuperpoweredOfflineProcessingExample project on how to use.
  
  @param rate 1.0f means no time stretching. Read only.
- @param pitchShift Should be -12 (one octave down) to 12 (one octave up). 0 means no pitch shift. Read only.
+ @param pitchShift Pitch shift notes, from -12 (one octave down) to 12 (one octave up). 0 means no pitch shift. Read only.
+ @param pitchShiftCents Pitch shift cents, from -2400 (two octaves down) to 2400 (two octaves up). 0 means no pitch shift. Read only.
  @param numberOfInputSamplesNeeded How many samples required to some output. Read only.
 */
 class SuperpoweredTimeStretching {
 public:
     float rate;
     int pitchShift;
+    int pitchShiftCents;
     int numberOfInputSamplesNeeded;
     
 /**
- @brief Set rate and pitch shift with this.
+ @brief Set rate and pitch shift. This method executes very quickly, in a few CPU cycles.
  
- @param newRate Limited to >= 0.5f and <= 2.0f.
+ @param newRate Limited to >= 0.01f and <= 4.0f. Values above 2.0f or below 0.5f are not recommended on mobile devices with low latency audio.
  @param newShift Limited to >= -12 and <= 12.
  */
     bool setRateAndPitchShift(float newRate, int newShift);
+
+/**
+ @brief Set rate and pitch shift with greater precision. Calling this method requires magnitudes more CPU than setRateAndPitchShift.
+
+ @param newRate Limited to >= 0.01f and <= 4.0f. Values above 2.0f or below 0.5f are not recommended on mobile devices with low latency audio.
+ @param newShiftCents Limited to >= -2400 and <= 2400.
+*/
+    bool setRateAndPitchShiftCents(float newRate, int newShiftCents);
     
 /**
  @brief Create a time-stretching instance with an audio buffer pool and the current sample rate.

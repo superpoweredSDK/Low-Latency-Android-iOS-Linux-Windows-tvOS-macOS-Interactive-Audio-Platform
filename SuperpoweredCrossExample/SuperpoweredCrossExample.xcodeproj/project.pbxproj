@@ -26,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1B468B8B1AE68EAB0099A7DD /* SuperpoweredSimple.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredSimple.h; path = ../Superpowered/SuperpoweredSimple.h; sourceTree = "<group>"; };
 		1B80C6FD18E0C79600DF5B81 /* SuperpoweredCrossExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperpoweredCrossExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B80C70018E0C79600DF5B81 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1B80C70218E0C79600DF5B81 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -53,7 +54,6 @@
 		1BA11FCC18FC313D00484827 /* SuperpoweredRoll.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredRoll.h; path = ../Superpowered/SuperpoweredRoll.h; sourceTree = "<group>"; };
 		1BA11FCF18FC314E00484827 /* SuperpoweredIOSAudioOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperpoweredIOSAudioOutput.h; path = ../Superpowered/SuperpoweredIOSAudioOutput.h; sourceTree = "<group>"; };
 		1BA11FD018FC314E00484827 /* SuperpoweredIOSAudioOutput.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SuperpoweredIOSAudioOutput.mm; path = ../Superpowered/SuperpoweredIOSAudioOutput.mm; sourceTree = "<group>"; };
-		1BAF73ED19361E5500154D8C /* SuperpoweredMixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperpoweredMixer.h; path = ../Superpowered/SuperpoweredMixer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,7 +135,7 @@
 				1BA11FC918FC313D00484827 /* SuperpoweredAdvancedAudioPlayer.h */,
 				1BA11FCA18FC313D00484827 /* SuperpoweredFilter.h */,
 				1BA11FCB18FC313D00484827 /* SuperpoweredFlanger.h */,
-				1BAF73ED19361E5500154D8C /* SuperpoweredMixer.h */,
+				1B468B8B1AE68EAB0099A7DD /* SuperpoweredSimple.h */,
 				1BA11FCC18FC313D00484827 /* SuperpoweredRoll.h */,
 			);
 			name = "Superpowered Headers";

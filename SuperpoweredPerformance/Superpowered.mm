@@ -6,7 +6,7 @@
 #import "SuperpoweredEcho.h"
 #import "SuperpoweredRoll.h"
 #import "SuperpoweredFlanger.h"
-#import "SuperpoweredMixer.h"
+#import "SuperpoweredSimple.h"
 #import "SuperpoweredIOSAudioOutput.h"
 #import "fftTest.h"
 #import <mach/mach_time.h>
@@ -19,7 +19,6 @@
 @implementation Superpowered {
     SuperpoweredAdvancedAudioPlayer *player;
     SuperpoweredFX *effects[NUMFXUNITS];
-    SuperpoweredStereoMixer *mixer;
     SuperpoweredIOSAudioOutput *output;
     float *stereoBuffer;
     bool started;
@@ -29,7 +28,6 @@
 
 - (void)dealloc {
     delete player;
-    delete mixer;
     for (int n = 2; n < NUMFXUNITS; n++) delete effects[n];
     free(stereoBuffer);
 #if !__has_feature(objc_arc)
@@ -125,9 +123,7 @@
     eq->bands[1] = 0.5f;
     eq->bands[2] = 2.0f;
     effects[EQINDEX] = eq;
-    
-    mixer = new SuperpoweredStereoMixer();
-    
+
     output = [[SuperpoweredIOSAudioOutput alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:12 preferredMinimumSamplerate:44100 audioSessionCategory:AVAudioSessionCategoryPlayback multiChannels:2 fixReceiver:true];
     return self;
 }
@@ -168,15 +164,8 @@
         samplesProcessed = timeUnitsProcessed = maxTime = 0;
     };
     
-// The stereoBuffer is ready now, let's put the finished audio into the requested buffers.
-    float *mixerInputs[4] = { stereoBuffer, NULL, NULL, NULL };
-    float mixerInputLevels[8] = { 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f };
-    float mixerOutputLevels[2] = { 1.0f, 1.0f };
-    if (!silence) mixer->process(mixerInputs, buffers, mixerInputLevels, mixerOutputLevels, NULL, NULL, numberOfSamples);
-
-    for (int n = 0; n < numberOfSamples; n++) if (!isfinite(buffers[0][n]) || !isfinite(buffers[1][n])) printf("%i ", n);
-
     playing = player->playing;
+    if (!silence) SuperpoweredDeInterleave(stereoBuffer, buffers[0], buffers[1], numberOfSamples); // The stereoBuffer is ready now, let's put the finished audio into the requested buffers.
     return !silence;
 }
 

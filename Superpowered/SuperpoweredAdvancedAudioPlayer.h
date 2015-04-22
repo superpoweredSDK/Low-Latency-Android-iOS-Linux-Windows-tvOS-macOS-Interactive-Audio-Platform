@@ -20,7 +20,8 @@ typedef enum SuperpoweredAdvancedAudioPlayerEvent {
     SuperpoweredAdvancedAudioPlayerEvent_LoadSuccess,
     SuperpoweredAdvancedAudioPlayerEvent_LoadError,
     SuperpoweredAdvancedAudioPlayerEvent_EOF,
-    SuperpoweredAdvancedAudioPlayerEvent_JogParameter
+    SuperpoweredAdvancedAudioPlayerEvent_JogParameter,
+    SuperpoweredAdvancedAudioPlayerEvent_DurationChanged,
 } SuperpoweredAdvancedAudioPlayerEvent;
 
 
@@ -75,6 +76,7 @@ typedef void (* SuperpoweredAdvancedAudioPlayerCallback) (void *clientData, Supe
  @param positionSeconds The current position as seconds elapsed. Read only.
  @param durationMs The duration of the current track in milliseconds. Read only.
  @param durationSeconds The duration of the current track in seconds. Read only.
+ @param waitingForBuffering Indicates if the player waits for audio data to be bufferred.
  @param playing Indicates if the player is playing or paused. Read only.
  @param tempo The current tempo. Read only.
  @param masterTempo Time-stretching is enabled or not. Read only.
@@ -87,7 +89,7 @@ typedef void (* SuperpoweredAdvancedAudioPlayerCallback) (void *clientData, Supe
  @param looping Indicates if looping is enabled. Read only.
  @param firstBeatMs Tells where the first beat (the beatgrid) begins. Must be correct for syncing. Read only.
  @param msElapsedSinceLastBeat How many milliseconds elapsed since the last beat. Read only.
- @param beatIndex Which beat has just happened (1, 2, 3, 4). A value of 0 means "don't know". Read only.
+ @param beatIndex Which beat has just happened (1 [1.0f-1.999f], 2 [2.0f-2.999f], 3 [3.0f-3.99f], 4 [4.0f-4.99f]). A value of 0 means "don't know". Read only.
  @param syncMode The current sync mode (off, tempo, or tempo and beat).
  @param fixDoubleOrHalfBPM If tempo is >1.4f or <0.6f, it will treat the bpm as half or double. Good for certain genres. False by default.
  @param waitForNextBeatWithBeatSync Wait for the next beat if beat-syncing is enabled. False by default.
@@ -100,6 +102,7 @@ public:
     unsigned int positionSeconds;
     unsigned int durationMs;
     unsigned int durationSeconds;
+    bool waitingForBuffering;
     bool playing;
     
     double tempo;
@@ -115,7 +118,7 @@ public:
     
     double firstBeatMs;
     double msElapsedSinceLastBeat;
-    unsigned char beatIndex;
+    float beatIndex;
 
 // READ-WRITE parameters
     SuperpoweredAdvancedAudioPlayerSyncMode syncMode;

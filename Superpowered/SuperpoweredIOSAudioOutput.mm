@@ -114,7 +114,7 @@ static OSStatus audioProcessingCallback(void *inRefCon, AudioUnitRenderActionFla
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onRouteChange:) name:AVAudioSessionRouteChangeNotification object:[AVAudioSession sharedInstance]];
         } else {
             AVAudioSession *s = [AVAudioSession sharedInstance];
-            s.delegate = (id<AVAudioSessionDelegate>)self;
+            s.delegate = (id<AVAudioSessionDelegate>)self; // iOS 5 compatibility
         };
     };
     return self;
@@ -134,7 +134,6 @@ static OSStatus audioProcessingCallback(void *inRefCon, AudioUnitRenderActionFla
     [[AVAudioSession sharedInstance] setActive:NO error:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 #if !__has_feature(objc_arc)
-    [audioSessionCategory release];
     [outputsAndInputs release];
     [multiDeviceName release];
     [super dealloc];
@@ -143,7 +142,7 @@ static OSStatus audioProcessingCallback(void *inRefCon, AudioUnitRenderActionFla
 
 - (void)resetStart {
     [self resetAudioSession];
-    [self performSelector:@selector(start) withObject:nil afterDelay:1.0]; // Give iOS 1 second for the new audio session, we may see some glitches otherwise with some USB devices.
+    [self performSelector:@selector((start)) withObject:nil afterDelay:1.0]; // Give iOS 1 second for the new audio session, we may see some glitches otherwise with some USB devices.
 }
 
 // App and audio session lifecycle.
@@ -319,16 +318,16 @@ static OSStatus audioProcessingCallback(void *inRefCon, AudioUnitRenderActionFla
     
     [self multiRemapChannels];
     // Maximize system volume for connected audio devices.
-    if (_multiDeviceChannels) [[MPMusicPlayerController applicationMusicPlayer] setVolume:1.0f];
+    if (_multiDeviceChannels) [[MPMusicPlayerController applicationMusicPlayer] setVolume:1.0f]; // iOS 5 and iOS 6 compatibility
 }
 
 - (void)setSamplerateAndBuffersize {
     if (samplerate > 0) {
         double sr = samplerate < preferredMinimumSamplerate ? preferredMinimumSamplerate : 0;
-        double current = !iOS6 ? [[AVAudioSession sharedInstance] preferredHardwareSampleRate] : [[AVAudioSession sharedInstance] preferredSampleRate];
+        double current = !iOS6 ? [[AVAudioSession sharedInstance] preferredHardwareSampleRate] : [[AVAudioSession sharedInstance] preferredSampleRate]; // iOS 5 compatibility
 
         if (current != sr) {
-            if (!iOS6) [[AVAudioSession sharedInstance] setPreferredHardwareSampleRate:sr error:NULL];
+            if (!iOS6) [[AVAudioSession sharedInstance] setPreferredHardwareSampleRate:sr error:NULL]; // iOS 5 compatibility
             else [[AVAudioSession sharedInstance] setPreferredSampleRate:sr error:NULL];
         };
     };
@@ -391,7 +390,7 @@ static void streamFormatChangedCallback(void *inRefCon, AudioUnit inUnit, AudioU
     [self setSamplerateAndBuffersize];
 
 	format.mFormatID = kAudioFormatLinearPCM;
-	format.mFormatFlags = (kAudioFormatFlagIsFloat | kAudioFormatFlagIsPacked | kAudioFormatFlagIsNonInterleaved | kAudioFormatFlagsNativeEndian);
+    format.mFormatFlags = kAudioFormatFlagIsFloat | kAudioFormatFlagIsPacked | kAudioFormatFlagIsNonInterleaved | kAudioFormatFlagsNativeEndian;
     format.mBitsPerChannel = 32;
 	format.mFramesPerPacket = 1;
     format.mBytesPerFrame = 4;
@@ -509,7 +508,11 @@ static void streamFormatChangedCallback(void *inRefCon, AudioUnit inUnit, AudioU
 - (void)setAudioSessionCategory:(NSString *)category {
     if ([category isEqualToString:self->audioSessionCategory]) return;
     if (!self->inputEnabled && [category isEqualToString:AVAudioSessionCategoryPlayAndRecord]) self->inputEnabled = true;
-    self->audioSessionCategory = category;
+#if !__has_feature(objc_arc)
+    audioSessionCategory = [category retain];
+#else
+    audioSessionCategory = category;
+#endif
     [self performSelectorOnMainThread:@selector(onMediaServerReset:) withObject:nil waitUntilDone:NO];
 }
 

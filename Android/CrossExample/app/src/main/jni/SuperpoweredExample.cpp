@@ -1,4 +1,5 @@
 #include "SuperpoweredExample.h"
+#include "SuperpoweredSimple.h"
 #include <jni.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -22,18 +23,14 @@ static void playerEventCallbackB(void *clientData, SuperpoweredAdvancedAudioPlay
     };
 }
 
-static void openSLESCallback(SLAndroidSimpleBufferQueueItf caller, void *pContext) {
-	((SuperpoweredExample *)pContext)->process(caller);
+static bool audioProcessing(void *clientdata, short int *audioIO, int numberOfSamples, int samplerate) {
+	return ((SuperpoweredExample *)clientdata)->process(audioIO, numberOfSamples);
 }
 
-static const SLboolean requireds[2] = { SL_BOOLEAN_TRUE, SL_BOOLEAN_TRUE };
-
-SuperpoweredExample::SuperpoweredExample(const char *path, int *params) : currentBuffer(0), buffersize(params[5]), activeFx(0), crossValue(0.0f), volB(0.0f), volA(1.0f * headroom) {
+SuperpoweredExample::SuperpoweredExample(const char *path, int *params) : activeFx(0), crossValue(0.0f), volB(0.0f), volA(1.0f * headroom) {
     pthread_mutex_init(&mutex, NULL); // This will keep our player volumes and playback states in sync.
-
-    for (int n = 0; n < NUM_BUFFERS; n++) outputBuffer[n] = (float *)memalign(16, (buffersize + 16) * sizeof(float) * 2);
-
-    unsigned int samplerate = params[4];
+    unsigned int samplerate = params[4], buffersize = params[5];
+    stereoBuffer = (float *)memalign(16, (buffersize + 16) * sizeof(float) * 2);
 
     playerA = new SuperpoweredAdvancedAudioPlayer(&playerA , playerEventCallbackA, samplerate, 0);
     playerA->open(path, params[0], params[1]);
@@ -46,44 +43,14 @@ SuperpoweredExample::SuperpoweredExample(const char *path, int *params) : curren
     filter = new SuperpoweredFilter(SuperpoweredFilter_Resonant_Lowpass, samplerate);
     flanger = new SuperpoweredFlanger(samplerate);
 
-    mixer = new SuperpoweredStereoMixer();
-
-    // Create the OpenSL ES engine.
-	slCreateEngine(&openSLEngine, 0, NULL, 0, NULL, NULL);
-	(*openSLEngine)->Realize(openSLEngine, SL_BOOLEAN_FALSE);
-	SLEngineItf openSLEngineInterface = NULL;
-	(*openSLEngine)->GetInterface(openSLEngine, SL_IID_ENGINE, &openSLEngineInterface);
-	// Create the output mix.
-	(*openSLEngineInterface)->CreateOutputMix(openSLEngineInterface, &outputMix, 0, NULL, NULL);
-	(*outputMix)->Realize(outputMix, SL_BOOLEAN_FALSE);
-	SLDataLocator_OutputMix outputMixLocator = { SL_DATALOCATOR_OUTPUTMIX, outputMix };
-
-	// Create the buffer queue player.
-	SLDataLocator_AndroidSimpleBufferQueue bufferPlayerLocator = { SL_DATALOCATOR_ANDROIDSIMPLEBUFFERQUEUE, NUM_BUFFERS };
-	SLDataFormat_PCM bufferPlayerFormat = { SL_DATAFORMAT_PCM, 2, samplerate * 1000, SL_PCMSAMPLEFORMAT_FIXED_16, SL_PCMSAMPLEFORMAT_FIXED_16, SL_SPEAKER_FRONT_LEFT | SL_SPEAKER_FRONT_RIGHT, SL_BYTEORDER_LITTLEENDIAN };
-	SLDataSource bufferPlayerSource = { &bufferPlayerLocator, &bufferPlayerFormat };
-    const SLInterfaceID bufferPlayerInterfaces[1] = { SL_IID_BUFFERQUEUE };
-    SLDataSink bufferPlayerOutput = { &outputMixLocator, NULL };
-    (*openSLEngineInterface)->CreateAudioPlayer(openSLEngineInterface, &bufferPlayer, &bufferPlayerSource, &bufferPlayerOutput, 1, bufferPlayerInterfaces, requireds);
-    (*bufferPlayer)->Realize(bufferPlayer, SL_BOOLEAN_FALSE);
-
-    // Initialize and start the buffer queue.
-    (*bufferPlayer)->GetInterface(bufferPlayer, SL_IID_BUFFERQUEUE, &bufferQueue);
-    (*bufferQueue)->RegisterCallback(bufferQueue, openSLESCallback, this);
-    memset(outputBuffer[0], 0, buffersize * 4);
-    memset(outputBuffer[1], 0, buffersize * 4);
-    (*bufferQueue)->Enqueue(bufferQueue, outputBuffer[0], buffersize * 4);
-    (*bufferQueue)->Enqueue(bufferQueue, outputBuffer[1], buffersize * 4);
-    SLPlayItf bufferPlayerPlayInterface;
-    (*bufferPlayer)->GetInterface(bufferPlayer, SL_IID_PLAY, &bufferPlayerPlayInterface);
-    (*bufferPlayerPlayInterface)->SetPlayState(bufferPlayerPlayInterface, SL_PLAYSTATE_PLAYING);
+    audioSystem = new SuperpoweredAndroidAudioIO(samplerate, buffersize, false, true, audioProcessing, this, 0);
 }
 
 SuperpoweredExample::~SuperpoweredExample() {
-	for (int n = 0; n < NUM_BUFFERS; n++) free(outputBuffer[n]);
     delete playerA;
     delete playerB;
-    delete mixer;
+    delete audioSystem;
+    free(stereoBuffer);
     pthread_mutex_destroy(&mutex);
 }
 
@@ -164,32 +131,29 @@ void SuperpoweredExample::onFxValue(int ivalue) {
     };
 }
 
-void SuperpoweredExample::process(SLAndroidSimpleBufferQueueItf caller) {
+bool SuperpoweredExample::process(short int *output, unsigned int numberOfSamples) {
     pthread_mutex_lock(&mutex);
-    float *stereoBuffer = outputBuffer[currentBuffer];
 
     bool masterIsA = (crossValue <= 0.5f);
     float masterBpm = masterIsA ? playerA->currentBpm : playerB->currentBpm;
     double msElapsedSinceLastBeatA = playerA->msElapsedSinceLastBeat; // When playerB needs it, playerA has already stepped this value, so save it now.
 
-    bool silence = !playerA->process(stereoBuffer, false, buffersize, volA, masterBpm, playerB->msElapsedSinceLastBeat);
-    if (playerB->process(stereoBuffer, !silence, buffersize, volB, masterBpm, msElapsedSinceLastBeatA)) silence = false;
+    bool silence = !playerA->process(stereoBuffer, false, numberOfSamples, volA, masterBpm, playerB->msElapsedSinceLastBeat);
+    if (playerB->process(stereoBuffer, !silence, numberOfSamples, volB, masterBpm, msElapsedSinceLastBeatA)) silence = false;
 
     roll->bpm = flanger->bpm = masterBpm; // Syncing fx is one line.
 
-    if (roll->process(silence ? NULL : stereoBuffer, stereoBuffer, buffersize) && silence) silence = false;
+    if (roll->process(silence ? NULL : stereoBuffer, stereoBuffer, numberOfSamples) && silence) silence = false;
     if (!silence) {
-        filter->process(stereoBuffer, stereoBuffer, buffersize);
-        flanger->process(stereoBuffer, stereoBuffer, buffersize);
+        filter->process(stereoBuffer, stereoBuffer, numberOfSamples);
+        flanger->process(stereoBuffer, stereoBuffer, numberOfSamples);
     };
 
     pthread_mutex_unlock(&mutex);
 
     // The stereoBuffer is ready now, let's put the finished audio into the requested buffers.
-    if (silence) memset(stereoBuffer, 0, buffersize * 4); else SuperpoweredStereoMixer::floatToShortInt(stereoBuffer, (short int *)stereoBuffer, buffersize);
-
-	(*caller)->Enqueue(caller, stereoBuffer, buffersize * 4);
-	if (currentBuffer < NUM_BUFFERS - 1) currentBuffer++; else currentBuffer = 0;
+    if (!silence) SuperpoweredFloatToShortInt(stereoBuffer, output, numberOfSamples);
+    return !silence;
 }
 
 extern "C" {

@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.7.1</span>
+   &#160;<span id="projectnumber">0.8</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -75,6 +75,9 @@
 <div class="textblock">Here is a list of all documented class members with links to the class documentation for each member:</div>
 
 <h3><a class="anchor" id="index_a"></a>- a -</h3><ul>
+<li>addInput()
+: <a class="el" href="class_superpowered_frequency_domain.html#aeb9c62d702c198dee88bf75d3da98ba3">SuperpoweredFrequencyDomain</a>
+</li>
 <li>addToTracklist()
 : <a class="el" href="class_superpowered_recorder.html#ad11e1a3eacd78a635c2e786edffb9074">SuperpoweredRecorder</a>
 </li>
@@ -150,25 +153,16 @@
 <li>floatAudio()
 : <a class="el" href="class_superpowered_audiobuffer_pool.html#a514de7a92e867986ddec22f0dcdc406c">SuperpoweredAudiobufferPool</a>
 </li>
-<li>floatToShortInt()
-: <a class="el" href="class_superpowered_stereo_mixer.html#a5054c5bb844dbf78bfcba9786d31b69e">SuperpoweredStereoMixer</a>
-</li>
 <li>forwardToLastSliceBuffer()
 : <a class="el" href="class_superpowered_audiopointer_list.html#a2230c3df8f6e75d522c9ca47fdfd690e">SuperpoweredAudiopointerList</a>
+</li>
+<li>frequencyDomainToTimeDomain()
+: <a class="el" href="class_superpowered_frequency_domain.html#a80f3a043748d3b294946c6b3f6f7fe09">SuperpoweredFrequencyDomain</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_g"></a>- g -</h3><ul>
-<li>gain()
-: <a class="el" href="class_superpowered_stereo_mixer.html#ab444b71e75d7bd2d9a15a877b4dc0fc8">SuperpoweredStereoMixer</a>
-</li>
-<li>gainAdd()
-: <a class="el" href="class_superpowered_stereo_mixer.html#a2d80772d965d79fe2eb94e83628ea3e5">SuperpoweredStereoMixer</a>
-</li>
-<li>getError()
-: <a class="el" href="class_superpowered_audiofile_player.html#aa2ee707dbfaf288da113fcb0cb5ddbc3">SuperpoweredAudiofilePlayer</a>
-</li>
 <li>getMetaData()
 : <a class="el" href="class_superpowered_decoder.html#ad4c4d71c5f2523f4c783a48e0cec7a22">SuperpoweredDecoder</a>
 </li>
@@ -261,7 +255,6 @@
 </li>
 <li>open()
 : <a class="el" href="class_superpowered_advanced_audio_player.html#a6288f11e620dbac00c5381466b907798">SuperpoweredAdvancedAudioPlayer</a>
-, <a class="el" href="class_superpowered_audiofile_player.html#a1a8c61ee00792879e2657cc65db5af9b">SuperpoweredAudiofilePlayer</a>
 , <a class="el" href="class_superpowered_decoder.html#ac910184ff34b71cacffa73a3050f201a">SuperpoweredDecoder</a>
 </li>
 </ul>
@@ -286,7 +279,6 @@
 <li>process()
 : <a class="el" href="class_superpowered3_band_e_q.html#a49d3f505ae87c11f3543b0e5e96aa9db">Superpowered3BandEQ</a>
 , <a class="el" href="class_superpowered_advanced_audio_player.html#a6a27464c30103cff954868b0f852880d">SuperpoweredAdvancedAudioPlayer</a>
-, <a class="el" href="class_superpowered_audiofile_player.html#ad992ee8acd9dfdbd7187f8e7aed77e5a">SuperpoweredAudiofilePlayer</a>
 , <a class="el" href="class_superpowered_bandpass_filterbank.html#a120cbdd85032ff6cdcac7765ebc30292">SuperpoweredBandpassFilterbank</a>
 , <a class="el" href="class_superpowered_echo.html#a72984c9a5930eb4e2208df2dc506fa00">SuperpoweredEcho</a>
 , <a class="el" href="class_superpowered_filter.html#aa23883554450b321bbb10d98c1ced805">SuperpoweredFilter</a>
@@ -324,6 +316,7 @@
 , <a class="el" href="class_superpowered_echo.html#a74add2dd31ab61e9d68d737760551fd9">SuperpoweredEcho</a>
 , <a class="el" href="class_superpowered_filter.html#a98bfe122621f3f6b3db4b93c0f067ba5">SuperpoweredFilter</a>
 , <a class="el" href="class_superpowered_flanger.html#a13a3b7cb7b6c2ee56b3f0e5cba2decbf">SuperpoweredFlanger</a>
+, <a class="el" href="class_superpowered_frequency_domain.html#a0d62a20d4a5e4cfa0b666908382971c4">SuperpoweredFrequencyDomain</a>
 , <a class="el" href="class_superpowered_gate.html#af57ec345524fbd6960e062eb8a42543e">SuperpoweredGate</a>
 , <a class="el" href="class_superpowered_resampler.html#a244d612ccca287670a299f5362740495">SuperpoweredResampler</a>
 , <a class="el" href="class_superpowered_reverb.html#a1d331f2f1aeb7bc185988232b719d9aa">SuperpoweredReverb</a>
@@ -354,8 +347,7 @@
 : <a class="el" href="class_superpowered_advanced_audio_player.html#a52463fe909c4917270a2b128c98195c5">SuperpoweredAdvancedAudioPlayer</a>
 </li>
 <li>seekTo()
-: <a class="el" href="class_superpowered_audiofile_player.html#adc8bcfe446241eeb238396eecb8ce2a2">SuperpoweredAudiofilePlayer</a>
-, <a class="el" href="class_superpowered_decoder.html#add513f60d474c54a4054abf52e3aa91a">SuperpoweredDecoder</a>
+: <a class="el" href="class_superpowered_decoder.html#add513f60d474c54a4054abf52e3aa91a">SuperpoweredDecoder</a>
 </li>
 <li>setBandlimitedParameters()
 : <a class="el" href="class_superpowered_filter.html#ab613cb61f4ea409a842ced71bfdf42a7">SuperpoweredFilter</a>
@@ -403,6 +395,9 @@
 <li>setRateAndPitchShift()
 : <a class="el" href="class_superpowered_time_stretching.html#a1d059bbc92713379dc5aad77006dd032">SuperpoweredTimeStretching</a>
 </li>
+<li>setRateAndPitchShiftCents()
+: <a class="el" href="class_superpowered_time_stretching.html#ad3c80694e4ed40f4e1dee5bd41fa3070">SuperpoweredTimeStretching</a>
+</li>
 <li>setResonantParameters()
 : <a class="el" href="class_superpowered_filter.html#a9157e623edec0f3ca7eff375959cc181">SuperpoweredFilter</a>
 </li>
@@ -418,12 +413,7 @@
 <li>setSamplerate()
 : <a class="el" href="class_superpowered3_band_e_q.html#af36b575e7df2b849b8a6a849eb99f8b3">Superpowered3BandEQ</a>
 , <a class="el" href="class_superpowered_advanced_audio_player.html#acee23ff2aee1da7b01f71afa8f24b3c1">SuperpoweredAdvancedAudioPlayer</a>
-</li>
-<li>setSampleRate()
-: <a class="el" href="class_superpowered_audiofile_player.html#a9c7e0a4df303e9554a9e0f90f893fc77">SuperpoweredAudiofilePlayer</a>
-</li>
-<li>setSamplerate()
-: <a class="el" href="class_superpowered_bandpass_filterbank.html#ab69461ac253a510b1f6d5baa2381809c">SuperpoweredBandpassFilterbank</a>
+, <a class="el" href="class_superpowered_bandpass_filterbank.html#ab69461ac253a510b1f6d5baa2381809c">SuperpoweredBandpassFilterbank</a>
 , <a class="el" href="class_superpowered_echo.html#a9beca059ce9e5522560870c8b290c9f0">SuperpoweredEcho</a>
 , <a class="el" href="class_superpowered_filter.html#aa441881063344fefc11a1afddf717fe2">SuperpoweredFilter</a>
 , <a class="el" href="class_superpowered_flanger.html#a34e4e52dc0a536b14982f1e28620073a">SuperpoweredFlanger</a>
@@ -455,15 +445,6 @@
 <li>setWidth()
 : <a class="el" href="class_superpowered_reverb.html#a823ab9a70e206404bab74c0e6e636027">SuperpoweredReverb</a>
 </li>
-<li>shortIntToFloat()
-: <a class="el" href="class_superpowered_stereo_mixer.html#a59066c11b5affa744a415515c2219221">SuperpoweredStereoMixer</a>
-</li>
-<li>simpleGain()
-: <a class="el" href="class_superpowered_stereo_mixer.html#a1e57a7192c0885fb4736b45373c00dfb">SuperpoweredStereoMixer</a>
-</li>
-<li>simpleGainAdd()
-: <a class="el" href="class_superpowered_stereo_mixer.html#a6c6624a7262f34776dc4e11aedcd3f7f">SuperpoweredStereoMixer</a>
-</li>
 <li>start
 : <a class="el" href="interface_superpowered_i_o_s_audio_output.html#a9bfbbf262926e01409fe7cde5f9decfc">SuperpoweredIOSAudioOutput</a>
 , <a class="el" href="class_superpowered_recorder.html#a9809618f3adddea984efa38619a138f0">SuperpoweredRecorder</a>
@@ -484,11 +465,11 @@
 <li>SuperpoweredAdvancedAudioPlayer()
 : <a class="el" href="class_superpowered_advanced_audio_player.html#ad2126e2711b2773865dbad09e216355a">SuperpoweredAdvancedAudioPlayer</a>
 </li>
+<li>SuperpoweredAndroidAudioIO()
+: <a class="el" href="class_superpowered_android_audio_i_o.html#ab5c9848a740c2fb75e38ec3bcad433a0">SuperpoweredAndroidAudioIO</a>
+</li>
 <li>SuperpoweredAudiobufferPool()
 : <a class="el" href="class_superpowered_audiobuffer_pool.html#a9e74c7cbdcc9ed81fcb38fa5d3b6a0c5">SuperpoweredAudiobufferPool</a>
-</li>
-<li>SuperpoweredAudiofilePlayer()
-: <a class="el" href="class_superpowered_audiofile_player.html#ac5ea33d6e09ee2759d0fcd9027e731f4">SuperpoweredAudiofilePlayer</a>
 </li>
 <li>SuperpoweredAudiopointerList()
 : <a class="el" href="class_superpowered_audiopointer_list.html#abe169a595fe05696ea329bfd0d80b95a">SuperpoweredAudiopointerList</a>
@@ -507,6 +488,9 @@
 </li>
 <li>SuperpoweredFlanger()
 : <a class="el" href="class_superpowered_flanger.html#a9b5d22d6c08ac0c1b74e1dfe41dc66ae">SuperpoweredFlanger</a>
+</li>
+<li>SuperpoweredFrequencyDomain()
+: <a class="el" href="class_superpowered_frequency_domain.html#a8f277013fed5759043b59e72e9fddbc9">SuperpoweredFrequencyDomain</a>
 </li>
 <li>SuperpoweredGate()
 : <a class="el" href="class_superpowered_gate.html#a4325e6576cb480441f77900575cdca8f">SuperpoweredGate</a>
@@ -539,6 +523,9 @@
 
 
 <h3><a class="anchor" id="index_t"></a>- t -</h3><ul>
+<li>timeDomainToFrequencyDomain()
+: <a class="el" href="class_superpowered_frequency_domain.html#aa08e8ead76c08de92e05779a2fa1547f">SuperpoweredFrequencyDomain</a>
+</li>
 <li>togglePlayback()
 : <a class="el" href="class_superpowered_advanced_audio_player.html#ac72c412ef5bee200bd7c90d4abafa3f6">SuperpoweredAdvancedAudioPlayer</a>
 </li>

@@ -47,7 +47,7 @@ public:
 
  Superpowered technology allows developers to build computationally intensive audio apps and embedded applications that process more quickly and use less power than other comparable solutions.
 
- Superpowered DSP is designed and optimized, from scratch, to run on low-power mobile processors. Specifically, any device running ARM with the NEON extension (which covers 99% of all mobile devices manufactured as of Spring 2014). Intel CPU is supported too.
+ Superpowered DSP is designed and optimized, from scratch, to run on low-power mobile processors. Specifically, any device running ARM with the NEON extension (which covers 99% of all mobile devices manufactured). Intel CPU is supported too.
  
  Details of the latest version can be found at http://superpowered.com/superpowered-audio-sdk/
  */

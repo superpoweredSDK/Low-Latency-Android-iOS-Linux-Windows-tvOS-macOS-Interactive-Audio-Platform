@@ -66,7 +66,8 @@ void SuperpoweredFFTReal(float *real, float *imag, int logSize, bool forward);
  @param phase Input: split real part. Output: phases.
  @param logSize Should be 5 - 13 (FFT sizes 32 - 8192).
  @param forward Forward or inverse.
+ @param valueOfPi The function can translate pi to any value (Google: the tau manifesto). Leave it at 0 for M_PI.
  */
-void SuperpoweredPolarFFT(float *mag, float *phase, int logSize, bool forward);
+void SuperpoweredPolarFFT(float *mag, float *phase, int logSize, bool forward, float valueOfPi = 0);
 
 #endif

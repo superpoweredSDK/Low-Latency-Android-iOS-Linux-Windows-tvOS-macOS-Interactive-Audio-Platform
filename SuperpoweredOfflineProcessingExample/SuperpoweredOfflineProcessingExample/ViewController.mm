@@ -1,6 +1,6 @@
 #import "ViewController.h"
 #include "SuperpoweredDecoder.h"
-#include "SuperpoweredMixer.h"
+#include "SuperpoweredSimple.h"
 #include "SuperpoweredRecorder.h"
 #include "SuperpoweredTimeStretching.h"
 #include "SuperpoweredAudioBuffers.h"
@@ -81,7 +81,7 @@
         bufferPool->createSuperpoweredAudiobufferlistElement(&inputBuffer, decoder->samplePosition, samplesDecoded + 8);
 
         // Convert the decoded PCM samples from 16-bit integer to 32-bit floating point.
-        SuperpoweredStereoMixer::shortIntToFloat(intBuffer, bufferPool->floatAudio(&inputBuffer), samplesDecoded);
+        SuperpoweredShortIntToFloat(intBuffer, bufferPool->floatAudio(&inputBuffer), samplesDecoded);
         inputBuffer.endSample = samplesDecoded; // <-- Important!
 
         // Time stretching.
@@ -98,7 +98,7 @@
                 if (!outputBuffers->nextSliceItem(&timeStretchedAudio, &samples)) break;
 
                 // Convert the time stretched PCM samples from 32-bit floating point to 16-bit integer.
-                SuperpoweredStereoMixer::floatToShortInt(timeStretchedAudio, intBuffer, samples);
+                SuperpoweredFloatToShortInt(timeStretchedAudio, intBuffer, samples);
 
                 // Write the audio to disk.
                 fwrite(intBuffer, 1, samples * 4, fd);

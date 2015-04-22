@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.7.1</span>
+   &#160;<span id="projectnumber">0.8</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -60,8 +60,11 @@
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a1d059bbc92713379dc5aad77006dd032"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_time_stretching.html#a1d059bbc92713379dc5aad77006dd032">setRateAndPitchShift</a> (float newRate, int newShift)</td></tr>
-<tr class="memdesc:a1d059bbc92713379dc5aad77006dd032"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set rate and pitch shift with this.  <a href="#a1d059bbc92713379dc5aad77006dd032">More...</a><br /></td></tr>
+<tr class="memdesc:a1d059bbc92713379dc5aad77006dd032"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set rate and pitch shift. This method executes very quickly, in a few CPU cycles.  <a href="#a1d059bbc92713379dc5aad77006dd032">More...</a><br /></td></tr>
 <tr class="separator:a1d059bbc92713379dc5aad77006dd032"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3c80694e4ed40f4e1dee5bd41fa3070"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_time_stretching.html#ad3c80694e4ed40f4e1dee5bd41fa3070">setRateAndPitchShiftCents</a> (float newRate, int newShiftCents)</td></tr>
+<tr class="memdesc:ad3c80694e4ed40f4e1dee5bd41fa3070"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set rate and pitch shift with greater precision. Calling this method requires magnitudes more CPU than setRateAndPitchShift.  <a href="#ad3c80694e4ed40f4e1dee5bd41fa3070">More...</a><br /></td></tr>
+<tr class="separator:ad3c80694e4ed40f4e1dee5bd41fa3070"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35317602c2e7ada9e6d15e8b0fa6ae0b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_time_stretching.html#a35317602c2e7ada9e6d15e8b0fa6ae0b">SuperpoweredTimeStretching</a> (<a class="el" href="class_superpowered_audiobuffer_pool.html">SuperpoweredAudiobufferPool</a> *p, unsigned int samplerate)</td></tr>
 <tr class="memdesc:a35317602c2e7ada9e6d15e8b0fa6ae0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a time-stretching instance with an audio buffer pool and the current sample rate.  <a href="#a35317602c2e7ada9e6d15e8b0fa6ae0b">More...</a><br /></td></tr>
 <tr class="separator:a35317602c2e7ada9e6d15e8b0fa6ae0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -87,16 +90,20 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>rate</b></td></tr>
 <tr class="memitem:a58114404d7cdfd60c6bf2b84962102da"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a58114404d7cdfd60c6bf2b84962102da"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>pitchShift</b></td></tr>
 <tr class="separator:a58114404d7cdfd60c6bf2b84962102da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af63a6e7b43edaf7a60364b3d615c657f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af63a6e7b43edaf7a60364b3d615c657f"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>pitchShiftCents</b></td></tr>
+<tr class="separator:af63a6e7b43edaf7a60364b3d615c657f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6010f8bbb7d4db6b9e3dbd910cf6898"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad6010f8bbb7d4db6b9e3dbd910cf6898"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>numberOfInputSamplesNeeded</b></td></tr>
 <tr class="separator:ad6010f8bbb7d4db6b9e3dbd910cf6898"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>One instance allocates around 100 kb. Check the SuperpoweredOfflineProcessingExample project on how to use.</p>
+<div class="textblock"><p>One instance allocates around 220 kb. Check the SuperpoweredOfflineProcessingExample project on how to use.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">rate</td><td>1.0f means no time stretching. Read only. </td></tr>
-    <tr><td class="paramname">pitchShift</td><td>Should be -12 (one octave down) to 12 (one octave up). 0 means no pitch shift. Read only. </td></tr>
+    <tr><td class="paramname">pitchShift</td><td>Pitch shift notes, from -12 (one octave down) to 12 (one octave up). 0 means no pitch shift. Read only. </td></tr>
+    <tr><td class="paramname">pitchShiftCents</td><td>Pitch shift cents, from -2400 (two octaves down) to 2400 (two octaves up). 0 means no pitch shift. Read only. </td></tr>
     <tr><td class="paramname">numberOfInputSamplesNeeded</td><td>How many samples required to some output. Read only. </td></tr>
   </table>
   </dd>
@@ -155,8 +162,41 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>numberOfInputSamplesNe
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">newRate</td><td>Limited to &gt;= 0.5f and &lt;= 2.0f. </td></tr>
+    <tr><td class="paramname">newRate</td><td>Limited to &gt;= 0.01f and &lt;= 4.0f. Values above 2.0f or below 0.5f are not recommended on mobile devices with low latency audio. </td></tr>
     <tr><td class="paramname">newShift</td><td>Limited to &gt;= -12 and &lt;= 12. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ad3c80694e4ed40f4e1dee5bd41fa3070"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SuperpoweredTimeStretching::setRateAndPitchShiftCents </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>newRate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>newShiftCents</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">newRate</td><td>Limited to &gt;= 0.01f and &lt;= 4.0f. Values above 2.0f or below 0.5f are not recommended on mobile devices with low latency audio. </td></tr>
+    <tr><td class="paramname">newShiftCents</td><td>Limited to &gt;= -2400 and &lt;= 2400. </td></tr>
   </table>
   </dd>
 </dl>

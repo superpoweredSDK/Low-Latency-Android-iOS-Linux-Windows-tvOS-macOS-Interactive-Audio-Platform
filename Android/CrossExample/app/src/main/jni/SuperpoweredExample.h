@@ -1,8 +1,6 @@
 #ifndef Header_SuperpoweredExample
 #define Header_SuperpoweredExample
 
-#include <SLES/OpenSLES.h>
-#include <SLES/OpenSLES_Android.h>
 #include <math.h>
 #include <pthread.h>
 
@@ -11,7 +9,7 @@
 #include "SuperpoweredFilter.h"
 #include "SuperpoweredRoll.h"
 #include "SuperpoweredFlanger.h"
-#include "SuperpoweredMixer.h"
+#include "SuperpoweredAndroidAudioIO.h"
 
 #define NUM_BUFFERS 2
 #define HEADROOM_DECIBEL 3.0f
@@ -23,7 +21,7 @@ public:
 	SuperpoweredExample(const char *path, int *params);
 	~SuperpoweredExample();
 
-	void process(SLAndroidSimpleBufferQueueItf caller);
+	bool process(short int *output, unsigned int numberOfSamples);
 	void onPlayPause(bool play);
 	void onCrossfader(int value);
 	void onFxSelect(int value);
@@ -31,20 +29,15 @@ public:
 	void onFxValue(int value);
 
 private:
-	SLObjectItf openSLEngine, outputMix, bufferPlayer;
-	SLAndroidSimpleBufferQueueItf bufferQueue;
-
+    pthread_mutex_t mutex;
+    SuperpoweredAndroidAudioIO *audioSystem;
     SuperpoweredAdvancedAudioPlayer *playerA, *playerB;
     SuperpoweredRoll *roll;
     SuperpoweredFilter *filter;
     SuperpoweredFlanger *flanger;
-    SuperpoweredStereoMixer *mixer;
+    float *stereoBuffer;
     unsigned char activeFx;
     float crossValue, volA, volB;
-    pthread_mutex_t mutex;
-
-	float *outputBuffer[NUM_BUFFERS];
-	int currentBuffer, buffersize;
 };
 
 #endif

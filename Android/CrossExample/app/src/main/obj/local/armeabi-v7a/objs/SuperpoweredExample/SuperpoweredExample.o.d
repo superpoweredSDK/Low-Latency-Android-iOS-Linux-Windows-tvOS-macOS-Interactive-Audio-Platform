@@ -1,9 +1,6 @@
 /Volumes/iMect/iphone/SuperpoweredSDK/Android/CrossExample/app/src/main/obj/local/armeabi-v7a/objs/SuperpoweredExample/SuperpoweredExample.o: \
   /Volumes/iMect/iphone/SuperpoweredSDK/Android/CrossExample/app/src/main/jni/SuperpoweredExample.cpp \
   /Volumes/iMect/iphone/SuperpoweredSDK/Android/CrossExample/app/src/main/jni/SuperpoweredExample.h \
-  /android/ndk/platforms/android-9/arch-arm/usr/include/SLES/OpenSLES.h \
-  /android/ndk/platforms/android-9/arch-arm/usr/include/SLES/OpenSLES_Platform.h \
-  /android/ndk/platforms/android-9/arch-arm/usr/include/SLES/OpenSLES_Android.h \
   /android/ndk/platforms/android-9/arch-arm/usr/include/math.h \
   /android/ndk/platforms/android-9/arch-arm/usr/include/sys/cdefs.h \
   /android/ndk/platforms/android-9/arch-arm/usr/include/sys/cdefs_elf.h \
@@ -47,7 +44,8 @@
   /Volumes/iMect/iphone/SuperpoweredSDK/Android/CrossExample/app/src/main/jni/SuperpoweredFX.h \
   /Volumes/iMect/iphone/SuperpoweredSDK/Android/CrossExample/app/src/main/jni/SuperpoweredRoll.h \
   /Volumes/iMect/iphone/SuperpoweredSDK/Android/CrossExample/app/src/main/jni/SuperpoweredFlanger.h \
-  /Volumes/iMect/iphone/SuperpoweredSDK/Android/CrossExample/app/src/main/jni/SuperpoweredMixer.h \
+  /Volumes/iMect/iphone/SuperpoweredSDK/Android/CrossExample/app/src/main/jni/SuperpoweredAndroidAudioIO.h \
+  /Volumes/iMect/iphone/SuperpoweredSDK/Android/CrossExample/app/src/main/jni/SuperpoweredSimple.h \
   /android/ndk/platforms/android-9/arch-arm/usr/include/jni.h \
   /android/ndk/platforms/android-9/arch-arm/usr/include/stdlib.h \
   /android/ndk/platforms/android-9/arch-arm/usr/include/alloca.h \
@@ -57,12 +55,6 @@
   /android/ndk/platforms/android-9/arch-arm/usr/include/android/log.h
 
 /Volumes/iMect/iphone/SuperpoweredSDK/Android/CrossExample/app/src/main/jni/SuperpoweredExample.h:
-
-/android/ndk/platforms/android-9/arch-arm/usr/include/SLES/OpenSLES.h:
-
-/android/ndk/platforms/android-9/arch-arm/usr/include/SLES/OpenSLES_Platform.h:
-
-/android/ndk/platforms/android-9/arch-arm/usr/include/SLES/OpenSLES_Android.h:
 
 /android/ndk/platforms/android-9/arch-arm/usr/include/math.h:
 
@@ -150,7 +142,9 @@
 
 /Volumes/iMect/iphone/SuperpoweredSDK/Android/CrossExample/app/src/main/jni/SuperpoweredFlanger.h:
 
-/Volumes/iMect/iphone/SuperpoweredSDK/Android/CrossExample/app/src/main/jni/SuperpoweredMixer.h:
+/Volumes/iMect/iphone/SuperpoweredSDK/Android/CrossExample/app/src/main/jni/SuperpoweredAndroidAudioIO.h:
+
+/Volumes/iMect/iphone/SuperpoweredSDK/Android/CrossExample/app/src/main/jni/SuperpoweredSimple.h:
 
 /android/ndk/platforms/android-9/arch-arm/usr/include/jni.h:
 

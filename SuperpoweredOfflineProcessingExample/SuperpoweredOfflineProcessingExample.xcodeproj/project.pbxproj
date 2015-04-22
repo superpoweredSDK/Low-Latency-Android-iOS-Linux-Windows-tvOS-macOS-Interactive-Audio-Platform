@@ -22,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1B468B4B1AE662C50099A7DD /* SuperpoweredSimple.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredSimple.h; path = ../Superpowered/SuperpoweredSimple.h; sourceTree = "<group>"; };
 		1BEB178A19E2DEEA003A0203 /* SuperpoweredRecorder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredRecorder.h; path = ../Superpowered/SuperpoweredRecorder.h; sourceTree = "<group>"; };
 		1BEB178B19E2DF81003A0203 /* SuperpoweredTimeStretching.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredTimeStretching.h; path = ../Superpowered/SuperpoweredTimeStretching.h; sourceTree = "<group>"; };
 		1BEB178C19E2DFB3003A0203 /* SuperpoweredAudioBuffers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredAudioBuffers.h; path = ../Superpowered/SuperpoweredAudioBuffers.h; sourceTree = "<group>"; };
@@ -42,7 +43,6 @@
 		1BF94B6A19765615001FFAC9 /* libSuperpoweredAudio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSuperpoweredAudio.a; path = ../Superpowered/libSuperpoweredAudio.a; sourceTree = "<group>"; };
 		1BF94B6C19765644001FFAC9 /* SuperpoweredDecoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredDecoder.h; path = ../Superpowered/SuperpoweredDecoder.h; sourceTree = "<group>"; };
 		1BF94B6E19765833001FFAC9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		1BF94B7019765932001FFAC9 /* SuperpoweredMixer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredMixer.h; path = ../Superpowered/SuperpoweredMixer.h; sourceTree = "<group>"; };
 		1BF94B7119766149001FFAC9 /* track.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = track.mp3; path = ../SuperpoweredPerformance/track.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,7 +67,7 @@
 			children = (
 				1BF94B6A19765615001FFAC9 /* libSuperpoweredAudio.a */,
 				1BF94B6C19765644001FFAC9 /* SuperpoweredDecoder.h */,
-				1BF94B7019765932001FFAC9 /* SuperpoweredMixer.h */,
+				1B468B4B1AE662C50099A7DD /* SuperpoweredSimple.h */,
 				1BEB178A19E2DEEA003A0203 /* SuperpoweredRecorder.h */,
 				1BEB178B19E2DF81003A0203 /* SuperpoweredTimeStretching.h */,
 				1BEB178C19E2DFB3003A0203 /* SuperpoweredAudioBuffers.h */,

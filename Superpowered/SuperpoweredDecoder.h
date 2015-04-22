@@ -44,7 +44,7 @@ public:
  @brief Opens a file for decoding.
  
  @param path Full file system path.
- @param metaOnly If true, it opens the file for fast metadata reading only, not for decoding audio.
+ @param metaOnly If true, it opens the file for fast metadata reading only, not for decoding audio. Available for fully available local files only (no network access).
  @param offset Byte offset in the file.
  @param length Byte length from offset. Set offset and length to 0 to read the entire file.
 

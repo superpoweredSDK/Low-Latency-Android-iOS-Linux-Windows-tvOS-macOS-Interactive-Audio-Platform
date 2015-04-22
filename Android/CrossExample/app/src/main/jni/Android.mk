@@ -15,7 +15,9 @@ include $(PREBUILT_STATIC_LIBRARY)
 
 include $(CLEAR_VARS)  
 LOCAL_MODULE := SuperpoweredExample  
-LOCAL_SRC_FILES := SuperpoweredExample.cpp
+LOCAL_SRC_FILES := \
+    SuperpoweredExample.cpp \
+    SuperpoweredAndroidAudioIO.cpp
 LOCAL_LDLIBS := -llog -landroid -lOpenSLES 
 LOCAL_STATIC_LIBRARIES := Superpowered
 LOCAL_CFLAGS = -O3

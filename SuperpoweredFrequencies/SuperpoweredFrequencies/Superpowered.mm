@@ -1,13 +1,12 @@
 #import "SuperpoweredFrequencies-Bridging-Header.h"
 #import "SuperpoweredIOSAudioOutput.h"
 #include "SuperpoweredBandpassFilterbank.h"
-#include "SuperpoweredMixer.h"
+#include "SuperpoweredSimple.h"
 #include <pthread.h>
 
 @implementation Superpowered {
     SuperpoweredIOSAudioOutput *audioIO;
     SuperpoweredBandpassFilterbank *filters;
-    SuperpoweredStereoMixer *mixer;
     float bands[8];
     pthread_mutex_t mutex;
     unsigned int samplerate, samplesProcessedForOneDisplayFrame;
@@ -23,8 +22,6 @@
     // We use a mutex to prevent simultaneous reading/writing of bands.
     pthread_mutex_init(&mutex, NULL);
 
-    mixer = new SuperpoweredStereoMixer();
-
     float frequencies[8] = { 55, 110, 220, 440, 880, 1760, 3520, 7040 };
     float widths[8] = { 1, 1, 1, 1, 1, 1, 1, 1 };
     filters = new SuperpoweredBandpassFilterbank(8, frequencies, widths, samplerate);
@@ -38,7 +35,6 @@
 
 - (void)dealloc {
     delete filters;
-    delete mixer;
     pthread_mutex_destroy(&mutex);
     audioIO = nil;
 }
@@ -53,10 +49,7 @@
 
     // Mix the non-interleaved input to interleaved.
     float interleaved[numberOfSamples * 2 + 16];
-    float *inputs[4] = { buffers[0], buffers[1], NULL, NULL };
-    float *outputs[2] = { interleaved, NULL };
-    float inputLevels[8] = { 1, 1, 0, 0, 0, 0, 0, 0 };
-    mixer->process(inputs, outputs, inputLevels, inputLevels, NULL, NULL, numberOfSamples);
+    SuperpoweredInterleave(buffers[0], buffers[1], interleaved, numberOfSamples);
 
     // Detect frequency magnitudes.
     float peak, sum;

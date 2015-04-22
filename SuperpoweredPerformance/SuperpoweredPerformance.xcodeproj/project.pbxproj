@@ -42,6 +42,7 @@
 		1B0377EC1A7ABE1B0094A776 /* fftTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fftTest.h; sourceTree = "<group>"; };
 		1B0377ED1A7ABE250094A776 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1B0377EF1A7ABE2E0094A776 /* track.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = track.mp3; sourceTree = "<group>"; };
+		1B468B8D1AE6946A0099A7DD /* SuperpoweredSimple.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredSimple.h; path = ../Superpowered/SuperpoweredSimple.h; sourceTree = "<group>"; };
 		1B56C2241A7AC21200A649D2 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
 		1B56C2261A7AC27F00A649D2 /* SuperpoweredFlanger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredFlanger.h; path = ../Superpowered/SuperpoweredFlanger.h; sourceTree = "<group>"; };
 		1B56C2271A7AC27F00A649D2 /* SuperpoweredEcho.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredEcho.h; path = ../Superpowered/SuperpoweredEcho.h; sourceTree = "<group>"; };
@@ -50,7 +51,6 @@
 		1B56C22A1A7AC27F00A649D2 /* SuperpoweredAdvancedAudioPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredAdvancedAudioPlayer.h; path = ../Superpowered/SuperpoweredAdvancedAudioPlayer.h; sourceTree = "<group>"; };
 		1B56C22B1A7AC27F00A649D2 /* SuperpoweredRoll.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredRoll.h; path = ../Superpowered/SuperpoweredRoll.h; sourceTree = "<group>"; };
 		1B56C22C1A7AC27F00A649D2 /* Superpowered3BandEQ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Superpowered3BandEQ.h; path = ../Superpowered/Superpowered3BandEQ.h; sourceTree = "<group>"; };
-		1B56C22D1A7AC28D00A649D2 /* SuperpoweredMixer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredMixer.h; path = ../Superpowered/SuperpoweredMixer.h; sourceTree = "<group>"; };
 		1B56C22E1A7AC29900A649D2 /* SuperpoweredFFT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredFFT.h; path = ../Superpowered/SuperpoweredFFT.h; sourceTree = "<group>"; };
 		1B56C2301A7AC2E900A649D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1B790D0318B5F5020041A145 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -97,7 +97,7 @@
 				1B56C22A1A7AC27F00A649D2 /* SuperpoweredAdvancedAudioPlayer.h */,
 				1B56C22B1A7AC27F00A649D2 /* SuperpoweredRoll.h */,
 				1B56C22C1A7AC27F00A649D2 /* Superpowered3BandEQ.h */,
-				1B56C22D1A7AC28D00A649D2 /* SuperpoweredMixer.h */,
+				1B468B8D1AE6946A0099A7DD /* SuperpoweredSimple.h */,
 				1B56C22E1A7AC29900A649D2 /* SuperpoweredFFT.h */,
 				1B0377DD1A7ABDEA0094A776 /* SuperpoweredIOSAudioOutput.h */,
 				1B0377DE1A7ABDEA0094A776 /* SuperpoweredIOSAudioOutput.mm */,
