@@ -54,6 +54,14 @@ SuperpoweredExample::~SuperpoweredExample() {
     pthread_mutex_destroy(&mutex);
 }
 
+void SuperpoweredExample::onStartAudio() {
+    audioSystem->start();
+}
+
+void SuperpoweredExample::onStopAudio() {
+    audioSystem->stop();
+}
+
 void SuperpoweredExample::onPlayPause(bool play) {
     pthread_mutex_lock(&mutex);
     if (!play) {
@@ -158,6 +166,9 @@ bool SuperpoweredExample::process(short int *output, unsigned int numberOfSample
 
 extern "C" {
 	JNIEXPORT void Java_com_superpowered_crossexample_MainActivity_SuperpoweredExample(JNIEnv *javaEnvironment, jobject self, jstring apkPath, jlongArray offsetAndLength);
+	JNIEXPORT void Java_com_superpowered_crossexample_MainActivity_SuperpoweredExampleTerm(JNIEnv *javaEnvironment, jobject self);
+	JNIEXPORT void Java_com_superpowered_crossexample_MainActivity_onStartAudio(JNIEnv *javaEnvironment, jobject self);
+	JNIEXPORT void Java_com_superpowered_crossexample_MainActivity_onStopAudio(JNIEnv *javaEnvironment, jobject self);
 	JNIEXPORT void Java_com_superpowered_crossexample_MainActivity_onPlayPause(JNIEnv *javaEnvironment, jobject self, jboolean play);
 	JNIEXPORT void Java_com_superpowered_crossexample_MainActivity_onCrossfader(JNIEnv *javaEnvironment, jobject self, jint value);
 	JNIEXPORT void Java_com_superpowered_crossexample_MainActivity_onFxSelect(JNIEnv *javaEnvironment, jobject self, jint value);
@@ -179,6 +190,19 @@ JNIEXPORT void Java_com_superpowered_crossexample_MainActivity_SuperpoweredExamp
     example = new SuperpoweredExample(path, arr);
     javaEnvironment->ReleaseStringUTFChars(apkPath, path);
 
+}
+
+JNIEXPORT void Java_com_superpowered_crossexample_MainActivity_SuperpoweredExampleTerm(JNIEnv *javaEnvironment, jobject self) {
+    delete example;
+    example = NULL;
+}
+
+JNIEXPORT void Java_com_superpowered_crossexample_MainActivity_onStartAudio(JNIEnv *javaEnvironment, jobject self) {
+    example->onStartAudio();
+}
+
+JNIEXPORT void Java_com_superpowered_crossexample_MainActivity_onStopAudio(JNIEnv *javaEnvironment, jobject self) {
+    example->onStopAudio();
 }
 
 JNIEXPORT void Java_com_superpowered_crossexample_MainActivity_onPlayPause(JNIEnv *javaEnvironment, jobject self, jboolean play) {

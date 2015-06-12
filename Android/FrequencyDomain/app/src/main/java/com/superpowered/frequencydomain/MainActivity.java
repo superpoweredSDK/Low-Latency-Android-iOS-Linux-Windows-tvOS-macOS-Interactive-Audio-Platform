@@ -30,6 +30,26 @@ public class MainActivity extends ActionBarActivity {
         FrequencyDomain(Integer.parseInt(samplerateString), Integer.parseInt(buffersizeString));
     }
 
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+        onStartAudio();
+    }
+
+    @Override
+    public void onStop()
+    {
+        super.onStop();
+        onStopAudio();
+    }
+
+    @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+        FrequencyDomainTerm();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -54,4 +74,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private native void FrequencyDomain(long samplerate, long buffersize);
+    private native void FrequencyDomainTerm();
+    private native void onStartAudio();
+    private native void onStopAudio();
 }

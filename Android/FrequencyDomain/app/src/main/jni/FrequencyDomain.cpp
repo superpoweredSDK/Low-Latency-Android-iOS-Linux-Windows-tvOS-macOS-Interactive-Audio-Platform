@@ -51,6 +51,9 @@ static bool audioProcessing(void *clientdata, short int *audioInputOutput, int n
 // Ugly Java-native bridges - JNI, that is.
 extern "C" {
     JNIEXPORT void Java_com_superpowered_frequencydomain_MainActivity_FrequencyDomain(JNIEnv *javaEnvironment, jobject self, jlong samplerate, jlong buffersize);
+    JNIEXPORT void Java_com_superpowered_frequencydomain_MainActivity_FrequencyDomainTerm(JNIEnv *javaEnvironment, jobject self);
+    JNIEXPORT void Java_com_superpowered_frequencydomain_MainActivity_onStartAudio(JNIEnv *javaEnvironment, jobject self);
+    JNIEXPORT void Java_com_superpowered_frequencydomain_MainActivity_onStopAudio(JNIEnv *javaEnvironment, jobject self);
 }
 
 JNIEXPORT void Java_com_superpowered_frequencydomain_MainActivity_FrequencyDomain(JNIEnv *javaEnvironment, jobject self, jlong samplerate, jlong buffersize) {
@@ -70,4 +73,26 @@ JNIEXPORT void Java_com_superpowered_frequencydomain_MainActivity_FrequencyDomai
 
     inputBufferFloat = (float *)malloc(buffersize * sizeof(float) * 2 + 128);
     audioIO = new SuperpoweredAndroidAudioIO(samplerate, buffersize, true, true, audioProcessing, NULL, buffersize * 2); // Start audio input/output.
+}
+
+JNIEXPORT void Java_com_superpowered_frequencydomain_MainActivity_FrequencyDomainTerm(JNIEnv *javaEnvironment, jobject self) {
+    delete audioIO;
+    delete frequencyDomain;
+
+    free(magnitudeLeft);
+    free(magnitudeRight);
+    free(phaseLeft);
+    free(phaseRight);
+
+    free(fifoOutput);
+
+    free(inputBufferFloat);
+}
+
+JNIEXPORT void Java_com_superpowered_frequencydomain_MainActivity_onStartAudio(JNIEnv *javaEnvironment, jobject self) {
+    audioIO->start();
+}
+
+JNIEXPORT void Java_com_superpowered_frequencydomain_MainActivity_onStopAudio(JNIEnv *javaEnvironment, jobject self) {
+    audioIO->stop();
 }

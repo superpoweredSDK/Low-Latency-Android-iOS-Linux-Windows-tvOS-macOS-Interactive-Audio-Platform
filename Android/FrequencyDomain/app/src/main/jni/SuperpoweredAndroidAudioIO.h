@@ -34,6 +34,16 @@ public:
     SuperpoweredAndroidAudioIO(int samplerate, int buffersize, bool enableInput, bool enableOutput, audioProcessingCallback callback, void *clientdata, int latencySamples = 0);
     ~SuperpoweredAndroidAudioIO();
 
+/**
+ @brief Starts audio input and/or output.
+ */
+    void start();
+
+/**
+ @brief Stops audio input and/or output.
+ */
+    void stop();
+
 private:
     SuperpoweredAndroidAudioIOInternals *internals;
     SuperpoweredAndroidAudioIO(const SuperpoweredAndroidAudioIO&);
