@@ -91,6 +91,27 @@ public class MainActivity extends ActionBarActivity {
         });
     }
 
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+        onStartAudio();
+    }
+
+    @Override
+    public void onStop()
+    {
+        super.onStop();
+        onStopAudio();
+    }
+
+    @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+        SuperpoweredExampleTerm();
+    }
+
     public void SuperpoweredExample_PlayPause(View button) {  // Play/pause.
         playing = !playing;
         onPlayPause(playing);
@@ -121,6 +142,9 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private native void SuperpoweredExample(String apkPath, long[] offsetAndLength);
+    private native void SuperpoweredExampleTerm();
+    private native void onStartAudio();
+    private native void onStopAudio();
     private native void onPlayPause(boolean play);
     private native void onCrossfader(int value);
     private native void onFxSelect(int value);

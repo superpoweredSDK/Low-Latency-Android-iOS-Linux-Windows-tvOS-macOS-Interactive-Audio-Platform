@@ -22,6 +22,8 @@ public:
 	~SuperpoweredExample();
 
 	bool process(short int *output, unsigned int numberOfSamples);
+	void onStartAudio();
+	void onStopAudio();
 	void onPlayPause(bool play);
 	void onCrossfader(int value);
 	void onFxSelect(int value);

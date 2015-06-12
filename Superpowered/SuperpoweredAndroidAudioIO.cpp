@@ -10,6 +10,8 @@ typedef struct SuperpoweredAndroidAudioIOInternals {
     audioProcessingCallback callback;
     SLObjectItf openSLEngine, outputMix, outputBufferQueue, inputBufferQueue;
     SLAndroidSimpleBufferQueueItf outputBufferQueueInterface, inputBufferQueueInterface;
+    SLRecordItf recordInterface;
+    SLPlayItf outputPlayInterface;
     short int *fifobuffer, *silence;
     int samplerate, buffersize, fifoCapacity, fifoFirstSample, fifoLastSample, latencySamples;
     bool hasOutput, hasInput;
@@ -126,28 +128,59 @@ SuperpoweredAndroidAudioIO::SuperpoweredAndroidAudioIO(int samplerate, int buffe
         (*internals->outputBufferQueue)->Realize(internals->outputBufferQueue, SL_BOOLEAN_FALSE);
     };
 
-    if (enableInput) { // Initialize and start the input buffer queue.
+    if (enableInput) { // Initialize the input buffer queue.
         (*internals->inputBufferQueue)->GetInterface(internals->inputBufferQueue, SL_IID_ANDROIDSIMPLEBUFFERQUEUE, &internals->inputBufferQueueInterface);
         (*internals->inputBufferQueueInterface)->RegisterCallback(internals->inputBufferQueueInterface, SuperpoweredAndroidAudioIO_InputCallback, internals);
-        SLRecordItf recordInterface;
-        (*internals->inputBufferQueue)->GetInterface(internals->inputBufferQueue, SL_IID_RECORD, &recordInterface);
         (*internals->inputBufferQueueInterface)->Enqueue(internals->inputBufferQueueInterface, internals->fifobuffer, buffersize * 4);
-        (*recordInterface)->SetRecordState(recordInterface, SL_RECORDSTATE_RECORDING);
+        (*internals->inputBufferQueue)->GetInterface(internals->inputBufferQueue, SL_IID_RECORD, &internals->recordInterface);
     };
 
-    if (enableOutput) { // Initialize and start the output buffer queue.
+    if (enableOutput) { // Initialize the output buffer queue.
         (*internals->outputBufferQueue)->GetInterface(internals->outputBufferQueue, SL_IID_BUFFERQUEUE, &internals->outputBufferQueueInterface);
         (*internals->outputBufferQueueInterface)->RegisterCallback(internals->outputBufferQueueInterface, SuperpoweredAndroidAudioIO_OutputCallback, internals);
         (*internals->outputBufferQueueInterface)->Enqueue(internals->outputBufferQueueInterface, internals->fifobuffer, buffersize * 4);
-        SLPlayItf outputPlayInterface;
-        (*internals->outputBufferQueue)->GetInterface(internals->outputBufferQueue, SL_IID_PLAY, &outputPlayInterface);
-        (*outputPlayInterface)->SetPlayState(outputPlayInterface, SL_PLAYSTATE_PLAYING);
+        (*internals->outputBufferQueue)->GetInterface(internals->outputBufferQueue, SL_IID_PLAY, &internals->outputPlayInterface);
     };
 }
 
 SuperpoweredAndroidAudioIO::~SuperpoweredAndroidAudioIO() {
+    // Stopped queues assure the callbacks are no longer called.
+    stop();
+
+    if (internals->hasInput) { // Destroy the input buffer queue.
+        (*internals->inputBufferQueue)->Destroy(internals->inputBufferQueue);
+    };
+
+    if (internals->hasOutput) { // Destroy the output buffer queue.
+        (*internals->outputBufferQueue)->Destroy(internals->outputBufferQueue);
+    };
+
+    // Destroy the OpenSL ES engine.
+    (*internals->outputMix)->Destroy(internals->outputMix);
+    (*internals->openSLEngine)->Destroy(internals->openSLEngine);
+
     free(internals->fifobuffer);
     free(internals->silence);
     pthread_mutex_destroy(&internals->mutex);
     delete internals;
+}
+
+void SuperpoweredAndroidAudioIO::start() {
+    if (internals->hasInput) { // Start the input buffer queue.
+        (*internals->recordInterface)->SetRecordState(internals->recordInterface, SL_RECORDSTATE_RECORDING);
+    };
+
+    if (internals->hasOutput) { // Start the output buffer queue.
+        (*internals->outputPlayInterface)->SetPlayState(internals->outputPlayInterface, SL_PLAYSTATE_PLAYING);
+    };
+}
+
+void SuperpoweredAndroidAudioIO::stop() {
+    if (internals->hasInput) { // Stop the input buffer queue.
+        (*internals->recordInterface)->SetRecordState(internals->recordInterface, SL_RECORDSTATE_STOPPED);
+    };
+
+    if (internals->hasOutput) { // Stop the output buffer queue.
+        (*internals->outputPlayInterface)->SetPlayState(internals->outputPlayInterface, SL_PLAYSTATE_STOPPED);
+    };
 }
