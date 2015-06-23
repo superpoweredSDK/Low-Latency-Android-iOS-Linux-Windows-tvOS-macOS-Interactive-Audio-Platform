@@ -81,6 +81,7 @@
     // If we have enough samples in the fifo output buffer, pass them to the audio output.
     if (fifoOutputLastSample - fifoOutputFirstSample >= numberOfSamples) {
         SuperpoweredDeInterleave(fifoOutput + fifoOutputFirstSample * 2, buffers[0], buffers[1], numberOfSamples);
+        // buffers[0] and buffer[1] now have time domain audio output (left and right channels)
         fifoOutputFirstSample += numberOfSamples;
         return true;
     } else return false;

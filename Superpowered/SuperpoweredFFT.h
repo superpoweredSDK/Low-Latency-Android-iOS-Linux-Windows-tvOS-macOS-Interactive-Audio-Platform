@@ -10,24 +10,6 @@
  @remark Superpowered FFT benefits from ideas in Construction of a High-Performance FFT by Eric Postpischil (http://edp.org/resume.htm).
 */
 
-
-/**
- @fn SuperpoweredFFTPrepare(int logSize, bool real);
- @brief Call this once, before processing. No subsequent calls required.
- 
- @param logSize Should be 5 - 13 (FFT sizes 32 - 8192).
- @param real True if you prepare for a real function, false for complex.
- */
-void SuperpoweredFFTPrepare(int logSize, bool real);
-
-
-/**
- @fn SuperpoweredFFTCleanup();
- @brief Cleans up the memory allocated by FFTPrepare.
- */
-void SuperpoweredFFTCleanup();
-
-
 /**
  @fn SuperpoweredFFTComplex(float *real, float *imag, int logSize, bool forward);
  @brief Complex in-place FFT.

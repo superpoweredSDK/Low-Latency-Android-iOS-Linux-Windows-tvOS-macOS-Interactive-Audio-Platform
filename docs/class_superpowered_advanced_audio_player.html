@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.8</span>
+   &#160;<span id="projectnumber">0.8.5</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -47,6 +47,7 @@
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="class_superpowered_advanced_audio_player-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -62,12 +63,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad2126e2711b2773865dbad09e216355a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#ad2126e2711b2773865dbad09e216355a">SuperpoweredAdvancedAudioPlayer</a> (void *clientData, SuperpoweredAdvancedAudioPlayerCallback callback, unsigned int samplerate, unsigned int cachedPointCount)</td></tr>
 <tr class="memdesc:ad2126e2711b2773865dbad09e216355a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a player instance with the current sample rate value.  <a href="#ad2126e2711b2773865dbad09e216355a">More...</a><br /></td></tr>
 <tr class="separator:ad2126e2711b2773865dbad09e216355a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6288f11e620dbac00c5381466b907798"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a6288f11e620dbac00c5381466b907798">open</a> (const char *path)</td></tr>
-<tr class="memdesc:a6288f11e620dbac00c5381466b907798"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a new audio file, with playback paused.  <a href="#a6288f11e620dbac00c5381466b907798">More...</a><br /></td></tr>
-<tr class="separator:a6288f11e620dbac00c5381466b907798"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3eca72ccd2920fb6a418d80f556dd04a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a3eca72ccd2920fb6a418d80f556dd04a">open</a> (const char *path, int offset, int length)</td></tr>
-<tr class="memdesc:a3eca72ccd2920fb6a418d80f556dd04a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a file, with playback paused.  <a href="#a3eca72ccd2920fb6a418d80f556dd04a">More...</a><br /></td></tr>
-<tr class="separator:a3eca72ccd2920fb6a418d80f556dd04a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa89c18c1abe220991b73d64aef3e2bc6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#aa89c18c1abe220991b73d64aef3e2bc6">open</a> (const char *path, char **customHTTPHeaders=0)</td></tr>
+<tr class="memdesc:aa89c18c1abe220991b73d64aef3e2bc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a new audio file, with playback paused.  <a href="#aa89c18c1abe220991b73d64aef3e2bc6">More...</a><br /></td></tr>
+<tr class="separator:aa89c18c1abe220991b73d64aef3e2bc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13aea6cc01341c1333754d617e0aa20c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a13aea6cc01341c1333754d617e0aa20c">open</a> (const char *path, int offset, int length, char **customHTTPHeaders=0)</td></tr>
+<tr class="memdesc:a13aea6cc01341c1333754d617e0aa20c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a file, with playback paused.  <a href="#a13aea6cc01341c1333754d617e0aa20c">More...</a><br /></td></tr>
+<tr class="separator:a13aea6cc01341c1333754d617e0aa20c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af42b558cfd477552c4e7e65fd72d6dcc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#af42b558cfd477552c4e7e65fd72d6dcc">play</a> (bool synchronised)</td></tr>
 <tr class="memdesc:af42b558cfd477552c4e7e65fd72d6dcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts playback.  <a href="#af42b558cfd477552c4e7e65fd72d6dcc">More...</a><br /></td></tr>
 <tr class="separator:af42b558cfd477552c4e7e65fd72d6dcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -78,10 +79,10 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#ac72c412ef5bee200bd7c90d4abafa3f6">togglePlayback</a> ()</td></tr>
 <tr class="memdesc:ac72c412ef5bee200bd7c90d4abafa3f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggle play/pause. <br /></td></tr>
 <tr class="separator:ac72c412ef5bee200bd7c90d4abafa3f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52463fe909c4917270a2b128c98195c5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a52463fe909c4917270a2b128c98195c5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a52463fe909c4917270a2b128c98195c5">seek</a> (float percent)</td></tr>
-<tr class="memdesc:a52463fe909c4917270a2b128c98195c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simple seeking to a percentage. <br /></td></tr>
-<tr class="separator:a52463fe909c4917270a2b128c98195c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8ae38606f72c79ece0a92be2eeec729"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab8ae38606f72c79ece0a92be2eeec729"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#ab8ae38606f72c79ece0a92be2eeec729">seek</a> (double percent)</td></tr>
+<tr class="memdesc:ab8ae38606f72c79ece0a92be2eeec729"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simple seeking to a percentage. <br /></td></tr>
+<tr class="separator:ab8ae38606f72c79ece0a92be2eeec729"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7cc9eb513c1a9761f58033908cd8aaa1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a7cc9eb513c1a9761f58033908cd8aaa1">setPosition</a> (double ms, bool andStop, bool synchronisedStart)</td></tr>
 <tr class="memdesc:a7cc9eb513c1a9761f58033908cd8aaa1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Precise seeking.  <a href="#a7cc9eb513c1a9761f58033908cd8aaa1">More...</a><br /></td></tr>
 <tr class="separator:a7cc9eb513c1a9761f58033908cd8aaa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -125,6 +126,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:ab6d79450ba83b760fd5721af4b9b28a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#ab6d79450ba83b760fd5721af4b9b28a1">setPitchShift</a> (int pitchShift)</td></tr>
 <tr class="memdesc:ab6d79450ba83b760fd5721af4b9b28a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the pitch shift value. Needs masterTempo enabled.  <a href="#ab6d79450ba83b760fd5721af4b9b28a1">More...</a><br /></td></tr>
 <tr class="separator:ab6d79450ba83b760fd5721af4b9b28a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb26ec22146323e50dfc366084c00555"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#abb26ec22146323e50dfc366084c00555">setPitchShiftCents</a> (int pitchShiftCents)</td></tr>
+<tr class="memdesc:abb26ec22146323e50dfc366084c00555"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the pitch shift value with greater precision. Calling this method requires magnitudes more CPU than setPitchShift.  <a href="#abb26ec22146323e50dfc366084c00555">More...</a><br /></td></tr>
+<tr class="separator:abb26ec22146323e50dfc366084c00555"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e173db9b802f2cdfc953d6117246ea8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a8e173db9b802f2cdfc953d6117246ea8">setReverse</a> (bool reverse, unsigned int slipMs)</td></tr>
 <tr class="memdesc:a8e173db9b802f2cdfc953d6117246ea8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets playback direction.  <a href="#a8e173db9b802f2cdfc953d6117246ea8">More...</a><br /></td></tr>
 <tr class="separator:a8e173db9b802f2cdfc953d6117246ea8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -146,7 +150,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="separator:a1e209a757de737fb450295dbbf6d7e83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac78737adad9c6f4b733c263bb04d0986"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac78737adad9c6f4b733c263bb04d0986"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#ac78737adad9c6f4b733c263bb04d0986">lastProcessMs</a> ()</td></tr>
-<tr class="memdesc:ac78737adad9c6f4b733c263bb04d0986"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the last <a class="el" href="class_superpowered_advanced_audio_player.html#a6a27464c30103cff954868b0f852880d" title="Processes the audio. ">process()</a> numberOfSamples converted to milliseconds. <br /></td></tr>
+<tr class="memdesc:ac78737adad9c6f4b733c263bb04d0986"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the last <a class="el" href="class_superpowered_advanced_audio_player.html#adf07eaeeb9a86836325aa5677a034ede" title="Processes the audio. ">process()</a> numberOfSamples converted to milliseconds. <br /></td></tr>
 <tr class="separator:ac78737adad9c6f4b733c263bb04d0986"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acee23ff2aee1da7b01f71afa8f24b3c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#acee23ff2aee1da7b01f71afa8f24b3c1">setSamplerate</a> (unsigned int samplerate)</td></tr>
 <tr class="memdesc:acee23ff2aee1da7b01f71afa8f24b3c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the sample rate.  <a href="#acee23ff2aee1da7b01f71afa8f24b3c1">More...</a><br /></td></tr>
@@ -154,9 +158,19 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 <tr class="memitem:ac5fc6e04104d60f18eb2e090cbe7f854"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#ac5fc6e04104d60f18eb2e090cbe7f854">onMediaserverInterrupt</a> ()</td></tr>
 <tr class="memdesc:ac5fc6e04104d60f18eb2e090cbe7f854"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this on a phone call or other interruption.  <a href="#ac5fc6e04104d60f18eb2e090cbe7f854">More...</a><br /></td></tr>
 <tr class="separator:ac5fc6e04104d60f18eb2e090cbe7f854"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a27464c30103cff954868b0f852880d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a6a27464c30103cff954868b0f852880d">process</a> (float *buffer, bool bufferAdd, unsigned int numberOfSamples, float volume, double masterBpm, double masterMsElapsedSinceLastBeat)</td></tr>
-<tr class="memdesc:a6a27464c30103cff954868b0f852880d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes the audio.  <a href="#a6a27464c30103cff954868b0f852880d">More...</a><br /></td></tr>
-<tr class="separator:a6a27464c30103cff954868b0f852880d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf07eaeeb9a86836325aa5677a034ede"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#adf07eaeeb9a86836325aa5677a034ede">process</a> (float *buffer, bool bufferAdd, unsigned int numberOfSamples, float volume=1.0f, double masterBpm=0.0f, double masterMsElapsedSinceLastBeat=-1.0)</td></tr>
+<tr class="memdesc:adf07eaeeb9a86836325aa5677a034ede"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes the audio.  <a href="#adf07eaeeb9a86836325aa5677a034ede">More...</a><br /></td></tr>
+<tr class="separator:adf07eaeeb9a86836325aa5677a034ede"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a1e7c8628aef83898eca5e572204d24bd"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a1e7c8628aef83898eca5e572204d24bd">setTempFolder</a> (const char *path)</td></tr>
+<tr class="memdesc:a1e7c8628aef83898eca5e572204d24bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the folder path for temporary files. Used for HLS only.  <a href="#a1e7c8628aef83898eca5e572204d24bd">More...</a><br /></td></tr>
+<tr class="separator:a1e7c8628aef83898eca5e572204d24bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e9915a31077c584b29d976e8789f7ca"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6e9915a31077c584b29d976e8789f7ca"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a6e9915a31077c584b29d976e8789f7ca">clearTempFolder</a> ()</td></tr>
+<tr class="memdesc:a6e9915a31077c584b29d976e8789f7ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove the temp folder. Use this when your program ends. <br /></td></tr>
+<tr class="separator:a6e9915a31077c584b29d976e8789f7ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -190,6 +204,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>masterTempo</b></td><
 <tr class="memitem:a64d2b25e485265913a39dad735fc2a48"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a64d2b25e485265913a39dad735fc2a48"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>pitchShift</b></td></tr>
 <tr class="separator:a64d2b25e485265913a39dad735fc2a48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb75752a79d576fd40801f7fd03bd33e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afb75752a79d576fd40801f7fd03bd33e"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>pitchShiftCents</b></td></tr>
+<tr class="separator:afb75752a79d576fd40801f7fd03bd33e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63b396340565bd33c3f250686dfaf8b0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a63b396340565bd33c3f250686dfaf8b0"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><b>bpm</b></td></tr>
 <tr class="separator:a63b396340565bd33c3f250686dfaf8b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -217,6 +234,15 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>msElapsedSinceLastB
 <tr class="memitem:acf4d29457881f3817f3f1db39ff9b677"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acf4d29457881f3817f3f1db39ff9b677"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>beatIndex</b></td></tr>
 <tr class="separator:acf4d29457881f3817f3f1db39ff9b677"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af111717a0cc9ce33089632827ffbd104"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af111717a0cc9ce33089632827ffbd104"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>bufferStartPercent</b></td></tr>
+<tr class="separator:af111717a0cc9ce33089632827ffbd104"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61ed25d49b13638c1e73b634ccb78c9a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a61ed25d49b13638c1e73b634ccb78c9a"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>bufferEndPercent</b></td></tr>
+<tr class="separator:a61ed25d49b13638c1e73b634ccb78c9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebf49b92885caddbaf4c5e933b8347e7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aebf49b92885caddbaf4c5e933b8347e7"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>currentBps</b></td></tr>
+<tr class="separator:aebf49b92885caddbaf4c5e933b8347e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64224f1d5ba11c6ccbb2e5dd02983f35"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a64224f1d5ba11c6ccbb2e5dd02983f35"></a>
 SuperpoweredAdvancedAudioPlayerSyncMode&#160;</td><td class="memItemRight" valign="bottom"><b>syncMode</b></td></tr>
 <tr class="separator:a64224f1d5ba11c6ccbb2e5dd02983f35"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -226,6 +252,12 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>fixDoubleOrHalfBPM</b
 <tr class="memitem:a4fb7177780b993de058c082ee1b5d85c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4fb7177780b993de058c082ee1b5d85c"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>waitForNextBeatWithBeatSync</b></td></tr>
 <tr class="separator:a4fb7177780b993de058c082ee1b5d85c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45f5b5e2ef978c9c63f432924fc02887"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a45f5b5e2ef978c9c63f432924fc02887"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>dynamicHLSAlternativeSwitching</b></td></tr>
+<tr class="separator:a45f5b5e2ef978c9c63f432924fc02887"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a913d11f6be74cc2a2afefb6e2703ef87"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a913d11f6be74cc2a2afefb6e2703ef87"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>downloadSecondsAhead</b></td></tr>
+<tr class="separator:a913d11f6be74cc2a2afefb6e2703ef87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><ul>
@@ -239,21 +271,30 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>waitForNextBeatWithBe
 <li>momentum and jog wheel handling,</li>
 <li>0 latency, real-time operation,</li>
 <li>low memory usage (5300 kb plus 200 kb for every cached point),</li>
-<li>thread safety (all methods are thread-safe).</li>
+<li>thread safety (all methods are thread-safe),</li>
+<li>direct iPod music library access.</li>
 </ul>
-<p>Can not be used for offline processing.</p>
+<p>Can not be used for offline processing. Supported file types:</p><ul>
+<li>Stereo or mono pcm WAV and AIFF (16-bit int, 24-bit int, 32-bit int or 32-bit IEEE float).</li>
+<li>MP3 (all kind).</li>
+<li>AAC-LC in M4A container (iTunes).</li>
+<li>AAC-LC in ADTS container (.aac).</li>
+<li>Apple Lossless (on iOS only).</li>
+<li>Http Live Streaming (HLS): vod/live/event streams, AAC-LC/MP3 in audio files or MPEG-TS files. Support for byte ranges and AES-128 encryption.</li>
+</ul>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">positionMs</td><td>The current position. Always accurate, no matter of time-stretching and other transformations. Read only. </td></tr>
     <tr><td class="paramname">positionPercent</td><td>The current position as a percentage (0.0f to 1.0f). Read only. </td></tr>
     <tr><td class="paramname">positionSeconds</td><td>The current position as seconds elapsed. Read only. </td></tr>
-    <tr><td class="paramname">durationMs</td><td>The duration of the current track in milliseconds. Read only. </td></tr>
-    <tr><td class="paramname">durationSeconds</td><td>The duration of the current track in seconds. Read only. </td></tr>
-    <tr><td class="paramname">waitingForBuffering</td><td>Indicates if the player waits for audio data to be bufferred. </td></tr>
+    <tr><td class="paramname">durationMs</td><td>The duration of the current track in milliseconds. Equals to UINT_MAX for live streams. Read only. </td></tr>
+    <tr><td class="paramname">durationSeconds</td><td>The duration of the current track in seconds. Equals to UINT_MAX for live streams. Read only. </td></tr>
+    <tr><td class="paramname">waitingForBuffering</td><td>Indicates if the player waits for audio data to be bufferred. Read only. </td></tr>
     <tr><td class="paramname">playing</td><td>Indicates if the player is playing or paused. Read only. </td></tr>
     <tr><td class="paramname">tempo</td><td>The current tempo. Read only. </td></tr>
     <tr><td class="paramname">masterTempo</td><td>Time-stretching is enabled or not. Read only. </td></tr>
     <tr><td class="paramname">pitchShift</td><td>Note offset from -12 to 12. 0 means no pitch shift. Read only. </td></tr>
+    <tr><td class="paramname">pitchShiftCents</td><td>Pitch shift cents, from -1200 (one octave down) to 1200 (one octave up). 0 means no pitch shift. Read only. </td></tr>
     <tr><td class="paramname">bpm</td><td>Must be correct for syncing. There is no auto-bpm detection inside. Read only. </td></tr>
     <tr><td class="paramname">currentBpm</td><td>The actual bpm of the track (as bpm changes with the current tempo). Read only. </td></tr>
     <tr><td class="paramname">slip</td><td>If enabled, scratching or reverse will maintain the playback position as if you had never entered those modes. Read only. </td></tr>
@@ -263,9 +304,14 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>waitForNextBeatWithBe
     <tr><td class="paramname">firstBeatMs</td><td>Tells where the first beat (the beatgrid) begins. Must be correct for syncing. Read only. </td></tr>
     <tr><td class="paramname">msElapsedSinceLastBeat</td><td>How many milliseconds elapsed since the last beat. Read only. </td></tr>
     <tr><td class="paramname">beatIndex</td><td>Which beat has just happened (1 [1.0f-1.999f], 2 [2.0f-2.999f], 3 [3.0f-3.99f], 4 [4.0f-4.99f]). A value of 0 means "don't know". Read only. </td></tr>
+    <tr><td class="paramname">bufferStartPercent</td><td>What is buffered from the original source, start point. Will always be 0 for non-network sources (files). Read only. </td></tr>
+    <tr><td class="paramname">bufferEndPercent</td><td>What is buffered from the original source, end point. Will always be 1.0f for non-network sources (files). Read only. </td></tr>
+    <tr><td class="paramname">currentBps</td><td>The current download speed. </td></tr>
     <tr><td class="paramname">syncMode</td><td>The current sync mode (off, tempo, or tempo and beat). </td></tr>
     <tr><td class="paramname">fixDoubleOrHalfBPM</td><td>If tempo is &gt;1.4f or &lt;0.6f, it will treat the bpm as half or double. Good for certain genres. False by default. </td></tr>
     <tr><td class="paramname">waitForNextBeatWithBeatSync</td><td>Wait for the next beat if beat-syncing is enabled. False by default. </td></tr>
+    <tr><td class="paramname">dynamicHLSAlternativeSwitching</td><td>Dynamicly changing the current HLS alternative to match the available network bandwidth. Default is true. </td></tr>
+    <tr><td class="paramname">downloadSecondsAhead</td><td>The HLS content download strategy: how many seconds ahead of the playback position to download. Default is HLS_DOWNLOAD_REMAINING, meaning it will download everything after the playback position, until the end. HLS_DOWNLOAD_EVERYTHING downloads before the playback position too. </td></tr>
   </table>
   </dd>
 </dl>
@@ -319,7 +365,38 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>waitForNextBeatWithBe
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a6288f11e620dbac00c5381466b907798"></a>
+<a class="anchor" id="a1e7c8628aef83898eca5e572204d24bd"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void SuperpoweredAdvancedAudioPlayer::setTempFolder </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Call this first before any player instance is created. It will create a subfolder with the name "SuperpoweredHLS" in this folder.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>File system path of the folder. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aa89c18c1abe220991b73d64aef3e2bc6"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -327,8 +404,18 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>waitForNextBeatWithBe
           <td class="memname">void SuperpoweredAdvancedAudioPlayer::open </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>path</em></td><td>)</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>customHTTPHeaders</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -336,13 +423,14 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>waitForNextBeatWithBe
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">path</td><td>The full file system path of the audio file. </td></tr>
+    <tr><td class="paramname">customHTTPHeaders</td><td>NULL terminated list of custom headers for http communication. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a class="anchor" id="a3eca72ccd2920fb6a418d80f556dd04a"></a>
+<a class="anchor" id="a13aea6cc01341c1333754d617e0aa20c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -362,7 +450,13 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>waitForNextBeatWithBe
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>length</em>&#160;</td>
+          <td class="paramname"><em>length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>customHTTPHeaders</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -377,6 +471,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>waitForNextBeatWithBe
     <tr><td class="paramname">path</td><td>The full file system path of the file. </td></tr>
     <tr><td class="paramname">offset</td><td>The byte offset inside the file. </td></tr>
     <tr><td class="paramname">length</td><td>The byte length from the offset. </td></tr>
+    <tr><td class="paramname">customHTTPHeaders</td><td>NULL terminated list of custom headers for http communication. </td></tr>
   </table>
   </dd>
 </dl>
@@ -655,7 +750,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>waitForNextBeatWithBe
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Should be called after a successful <a class="el" href="class_superpowered_advanced_audio_player.html#a6288f11e620dbac00c5381466b907798" title="Opens a new audio file, with playback paused. ">open()</a>.</p>
+<p>Should be called after a successful <a class="el" href="class_superpowered_advanced_audio_player.html#aa89c18c1abe220991b73d64aef3e2bc6" title="Opens a new audio file, with playback paused. ">open()</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">newBpm</td><td>The bpm value. A number below 10.0f means "bpm unknown", and sync will not work. </td></tr>
@@ -678,7 +773,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>waitForNextBeatWithBe
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Should be called after a successful <a class="el" href="class_superpowered_advanced_audio_player.html#a6288f11e620dbac00c5381466b907798" title="Opens a new audio file, with playback paused. ">open()</a>. </p>
+<p>Should be called after a successful <a class="el" href="class_superpowered_advanced_audio_player.html#aa89c18c1abe220991b73d64aef3e2bc6" title="Opens a new audio file, with playback paused. ">open()</a>. </p>
 
 </div>
 </div>
@@ -897,6 +992,28 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>waitForNextBeatWithBe
 
 </div>
 </div>
+<a class="anchor" id="abb26ec22146323e50dfc366084c00555"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SuperpoweredAdvancedAudioPlayer::setPitchShiftCents </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pitchShiftCents</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pitchShiftCents</td><td>Limited to &gt;= -1200 and &lt;= 1200. 0 means no pitch shift. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a8e173db9b802f2cdfc953d6117246ea8"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1000,7 +1117,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>waitForNextBeatWithBe
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section warning"><dt>Warning</dt><dd>This is an advance method, use it only if you don't want the jogT... methods.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>This is an advanced method, use it only if you don't want the jogT... methods.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">slipMs</td><td>Enable slip mode for a specific amount of time for scratching, or 0 to not slip. </td></tr>
@@ -1034,7 +1151,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>waitForNextBeatWithBe
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section warning"><dt>Warning</dt><dd>This is an advance method, use it only if you don't want the jogT... methods.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>This is an advanced method, use it only if you don't want the jogT... methods.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">pitch</td><td>The current speed. </td></tr>
@@ -1058,7 +1175,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>waitForNextBeatWithBe
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section warning"><dt>Warning</dt><dd>This is an advance method, use it only if you don't want the jogT... methods.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>This is an advanced method, use it only if you don't want the jogT... methods.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">returnToStateBeforeScratch</td><td>Return to the previous playback state (direction, speed) or not. </td></tr>
@@ -1106,7 +1223,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>waitForNextBeatWithBe
 
 </div>
 </div>
-<a class="anchor" id="a6a27464c30103cff954868b0f852880d"></a>
+<a class="anchor" id="adf07eaeeb9a86836325aa5677a034ede"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -1132,19 +1249,19 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>waitForNextBeatWithBe
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>volume</em>, </td>
+          <td class="paramname"><em>volume</em> = <code>1.0f</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>masterBpm</em>, </td>
+          <td class="paramname"><em>masterBpm</em> = <code>0.0f</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>masterMsElapsedSinceLastBeat</em>&#160;</td>
+          <td class="paramname"><em>masterMsElapsedSinceLastBeat</em> = <code>-1.0</code>&#160;</td>
         </tr>
         <tr>
           <td></td>

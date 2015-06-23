@@ -107,6 +107,18 @@ void SuperpoweredShortIntToFloat(short int *input, float *output, unsigned int n
 void SuperpoweredInterleave(float *left, float *right, float *output, unsigned int numberOfSamples);
 
 /**
+ @fn SuperpoweredInterleaveAndGetPeaks(float *left, float *right, float *output, unsigned int numberOfSamples, float *peaks);
+ @brief Makes an interleaved output from two input channels, and measures the input volume.
+
+ @param left Input for left channel.
+ @param right Input for right channel.
+ @param output Interleaved output.
+ @param numberOfSamples The number of samples to process. Should be 4 minimum, must be exactly divisible with 4.
+ @param peaks Peak value result (2 floats: left peak, right peak).
+ */
+void SuperpoweredInterleaveAndGetPeaks(float *left, float *right, float *output, unsigned int numberOfSamples, float *peaks);
+
+/**
  @fn SuperpoweredDeInterleave(float *input, float *left, float *right, unsigned int numberOfSamples);
  @brief Deinterleaves an interleaved input.
 
@@ -117,5 +129,13 @@ void SuperpoweredInterleave(float *left, float *right, float *output, unsigned i
  @param numberOfSamples The number of samples to process. Should be 4 minimum, must be exactly divisible with 4.
  */
 void SuperpoweredDeInterleave(float *input, float *left, float *right, unsigned int numberOfSamples);
+
+/**
+ @fn SuperpoweredVersion()
+ @return Returns with the current version of the Superpowered SDK.
+ 
+ The returned value is 3 unsigned chars: major,minor,revision Example: 1,0,0 means 1.0.0
+ */
+const unsigned char *SuperpoweredVersion();
 
 #endif

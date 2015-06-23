@@ -3,6 +3,14 @@
 #import <AudioUnit/AudioUnit.h>
 #import <MediaPlayer/MediaPlayer.h>
 
+#define SILENCE_DEPRECATION(code)                                   \
+{                                                                   \
+_Pragma("clang diagnostic push")                                    \
+_Pragma("clang diagnostic ignored \"-Wdeprecated-declarations\"")   \
+code;                                                               \
+_Pragma("clang diagnostic pop")                                     \
+}
+
 typedef enum audioDeviceType {
     audioDeviceType_USB = 1, audioDeviceType_headphone = 2, audioDeviceType_HDMI = 3, audioDeviceType_other = 4
 } audioDeviceType;
@@ -114,7 +122,7 @@ static OSStatus audioProcessingCallback(void *inRefCon, AudioUnitRenderActionFla
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onRouteChange:) name:AVAudioSessionRouteChangeNotification object:[AVAudioSession sharedInstance]];
         } else {
             AVAudioSession *s = [AVAudioSession sharedInstance];
-            s.delegate = (id<AVAudioSessionDelegate>)self; // iOS 5 compatibility
+            SILENCE_DEPRECATION(s.delegate = (id<AVAudioSessionDelegate>)self); // iOS 5 compatibility
         };
     };
     return self;
@@ -318,17 +326,21 @@ static OSStatus audioProcessingCallback(void *inRefCon, AudioUnitRenderActionFla
     
     [self multiRemapChannels];
     // Maximize system volume for connected audio devices.
-    if (_multiDeviceChannels) [[MPMusicPlayerController applicationMusicPlayer] setVolume:1.0f]; // iOS 5 and iOS 6 compatibility
+    if (_multiDeviceChannels) SILENCE_DEPRECATION([[MPMusicPlayerController applicationMusicPlayer] setVolume:1.0f]); // iOS 5 and iOS 6 compatibility
 }
 
 - (void)setSamplerateAndBuffersize {
     if (samplerate > 0) {
         double sr = samplerate < preferredMinimumSamplerate ? preferredMinimumSamplerate : 0;
-        double current = !iOS6 ? [[AVAudioSession sharedInstance] preferredHardwareSampleRate] : [[AVAudioSession sharedInstance] preferredSampleRate]; // iOS 5 compatibility
+        double current;
+        if (!iOS6) {
+            SILENCE_DEPRECATION(current = [[AVAudioSession sharedInstance] preferredHardwareSampleRate]); // iOS 5 compatibility
+        } else current = [[AVAudioSession sharedInstance] preferredSampleRate];
 
         if (current != sr) {
-            if (!iOS6) [[AVAudioSession sharedInstance] setPreferredHardwareSampleRate:sr error:NULL]; // iOS 5 compatibility
-            else [[AVAudioSession sharedInstance] setPreferredSampleRate:sr error:NULL];
+            if (!iOS6) {
+                SILENCE_DEPRECATION([[AVAudioSession sharedInstance] setPreferredHardwareSampleRate:sr error:NULL]); // iOS 5 compatibility
+            } else [[AVAudioSession sharedInstance] setPreferredSampleRate:sr error:NULL];
         };
     };
     [[AVAudioSession sharedInstance] setPreferredIOBufferDuration:double(preferredBufferSizeMs) * 0.001 error:NULL];

@@ -1,6 +1,6 @@
 package com.superpowered.crossexample;
 
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,7 +16,7 @@ import android.widget.RadioGroup;
 import android.widget.Button;
 import android.view.View;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
     boolean playing = false;
 
     @Override
@@ -47,7 +47,9 @@ public class MainActivity extends ActionBarActivity {
         try {
             fd0.getParcelFileDescriptor().close();
             fd1.getParcelFileDescriptor().close();
-        } catch (IOException e) {}
+        } catch (IOException e) {
+            android.util.Log.d("", "Close error.");
+        }
 
         // Arguments: path to the APK file, offset and length of the two resource files, sample rate, audio buffer size.
         SuperpoweredExample(getPackageResourcePath(), params);

@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.8</span>
+   &#160;<span id="projectnumber">0.8.5</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -65,9 +65,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a28fef6e884182f746d8b21316d04c5cc"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#a28fef6e884182f746d8b21316d04c5cc">decode</a> (short int *pcmOutput, unsigned int *samples)</td></tr>
 <tr class="memdesc:a28fef6e884182f746d8b21316d04c5cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decodes the requested number of samples.  <a href="#a28fef6e884182f746d8b21316d04c5cc">More...</a><br /></td></tr>
 <tr class="separator:a28fef6e884182f746d8b21316d04c5cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add513f60d474c54a4054abf52e3aa91a"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#add513f60d474c54a4054abf52e3aa91a">seekTo</a> (unsigned int sample, bool precise)</td></tr>
-<tr class="memdesc:add513f60d474c54a4054abf52e3aa91a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Jumps to a specific position.  <a href="#add513f60d474c54a4054abf52e3aa91a">More...</a><br /></td></tr>
-<tr class="separator:add513f60d474c54a4054abf52e3aa91a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa6f40a82737eb77e992f5fe618fb8d5"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#aaa6f40a82737eb77e992f5fe618fb8d5">seekTo</a> (int64_t sample, bool precise)</td></tr>
+<tr class="memdesc:aaa6f40a82737eb77e992f5fe618fb8d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Jumps to a specific position.  <a href="#aaa6f40a82737eb77e992f5fe618fb8d5">More...</a><br /></td></tr>
+<tr class="separator:aaa6f40a82737eb77e992f5fe618fb8d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a05def9f65d88e4fd1e43b75f69f83d1d"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#a05def9f65d88e4fd1e43b75f69f83d1d">audioStartSample</a> (unsigned int limitSamples=0, int decibel=0)</td></tr>
 <tr class="separator:a05def9f65d88e4fd1e43b75f69f83d1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0544563f5ee1d11f660aa8cd994d72b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#ae0544563f5ee1d11f660aa8cd994d72b">reconnectToMediaserver</a> ()</td></tr>
@@ -76,21 +76,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad4c4d71c5f2523f4c783a48e0cec7a22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#ad4c4d71c5f2523f4c783a48e0cec7a22">getMetaData</a> (char **artist, char **title, void **image, int *imageSizeBytes, float *bpm, SuperpoweredDecoderID3Callback callback, void *clientData, int maxFrameDataSize)</td></tr>
 <tr class="memdesc:ad4c4d71c5f2523f4c783a48e0cec7a22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns with often used metadata.  <a href="#ad4c4d71c5f2523f4c783a48e0cec7a22">More...</a><br /></td></tr>
 <tr class="separator:ad4c4d71c5f2523f4c783a48e0cec7a22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c4e5c1c53780654b1317895958a4a27"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#a1c4e5c1c53780654b1317895958a4a27">SuperpoweredDecoder</a> (bool mediaServerOnly)</td></tr>
-<tr class="memdesc:a1c4e5c1c53780654b1317895958a4a27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lightweight constructor, doesn't do or allocate much.  <a href="#a1c4e5c1c53780654b1317895958a4a27">More...</a><br /></td></tr>
-<tr class="separator:a1c4e5c1c53780654b1317895958a4a27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a0dbdf064a0eacdecb2965e636254d54f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0dbdf064a0eacdecb2965e636254d54f"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><b>durationSeconds</b></td></tr>
 <tr class="separator:a0dbdf064a0eacdecb2965e636254d54f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e6b25bdd98c2874efe102f6047e1ed7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9e6b25bdd98c2874efe102f6047e1ed7"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>durationSamples</b></td></tr>
-<tr class="separator:a9e6b25bdd98c2874efe102f6047e1ed7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38d7a23761ffcbada2cc97cf8b254827"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a38d7a23761ffcbada2cc97cf8b254827"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>samplePosition</b></td></tr>
-<tr class="separator:a38d7a23761ffcbada2cc97cf8b254827"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0ae48fc166d825e136d494aa6294526"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab0ae48fc166d825e136d494aa6294526"></a>
+int64_t&#160;</td><td class="memItemRight" valign="bottom"><b>durationSamples</b></td></tr>
+<tr class="separator:ab0ae48fc166d825e136d494aa6294526"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a77c3299e63923e3798476d9c827dca"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8a77c3299e63923e3798476d9c827dca"></a>
+int64_t&#160;</td><td class="memItemRight" valign="bottom"><b>samplePosition</b></td></tr>
+<tr class="separator:a8a77c3299e63923e3798476d9c827dca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8b26878615bfccd02a7fce1a29e8df1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab8b26878615bfccd02a7fce1a29e8df1"></a>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>samplerate</b></td></tr>
 <tr class="separator:ab8b26878615bfccd02a7fce1a29e8df1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -102,42 +99,25 @@ SuperpoweredDecoder_Kind&#160;</td><td class="memItemRight" valign="bottom"><b>k
 <tr class="separator:a45c43b63f4d7c4fc3be294cd389c0b02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Thread safety: single threaded, not thread safe. After a succesful <a class="el" href="class_superpowered_decoder.html#ac910184ff34b71cacffa73a3050f201a" title="Opens a file for decoding. ">open()</a>, samplePosition changes only.</p>
+<div class="textblock"><p>Thread safety: single threaded, not thread safe. After a succesful <a class="el" href="class_superpowered_decoder.html#ac910184ff34b71cacffa73a3050f201a" title="Opens a file for decoding. ">open()</a>, samplePosition and duration may change. Supported file types:</p><ul>
+<li>Stereo or mono pcm WAV and AIFF (16-bit int, 24-bit int, 32-bit int or 32-bit IEEE float).</li>
+<li>MP3 (all kind).</li>
+<li>AAC-LC in M4A container (iTunes).</li>
+<li>AAC-LC in ADTS container (.aac).</li>
+<li>Apple Lossless (on iOS only).</li>
+</ul>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">durationSeconds</td><td>The duration of the current file in seconds. Read only. </td></tr>
     <tr><td class="paramname">durationSamples</td><td>The duration of the current file in samples. Read only. </td></tr>
-    <tr><td class="paramname">samplePosition</td><td>The current position in samples. May change after each <a class="el" href="class_superpowered_decoder.html#a28fef6e884182f746d8b21316d04c5cc" title="Decodes the requested number of samples. ">decode()</a> or <a class="el" href="class_superpowered_decoder.html#add513f60d474c54a4054abf52e3aa91a" title="Jumps to a specific position. ">seekTo()</a>. Read only. </td></tr>
+    <tr><td class="paramname">samplePosition</td><td>The current position in samples. May change after each <a class="el" href="class_superpowered_decoder.html#a28fef6e884182f746d8b21316d04c5cc" title="Decodes the requested number of samples. ">decode()</a> or <a class="el" href="class_superpowered_decoder.html#aaa6f40a82737eb77e992f5fe618fb8d5" title="Jumps to a specific position. ">seekTo()</a>. Read only. </td></tr>
     <tr><td class="paramname">samplerate</td><td>The sample rate of the current file. Read only. </td></tr>
     <tr><td class="paramname">samplesPerFrame</td><td>How many samples are in one frame of the source file. For example: 1152 in mp3 files. </td></tr>
     <tr><td class="paramname">kind</td><td>The format of the current file. </td></tr>
   </table>
   </dd>
 </dl>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a1c4e5c1c53780654b1317895958a4a27"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SuperpoweredDecoder::SuperpoweredDecoder </td>
-          <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>mediaServerOnly</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">mediaServerOnly</td><td>Set it to true, if you don't want the internal codecs used (iOS only). </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="ac910184ff34b71cacffa73a3050f201a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -220,14 +200,14 @@ SuperpoweredDecoder_Kind&#160;</td><td class="memItemRight" valign="bottom"><b>k
 
 </div>
 </div>
-<a class="anchor" id="add513f60d474c54a4054abf52e3aa91a"></a>
+<a class="anchor" id="aaa6f40a82737eb77e992f5fe618fb8d5"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int SuperpoweredDecoder::seekTo </td>
+          <td class="memname">int64_t SuperpoweredDecoder::seekTo </td>
           <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramtype">int64_t&#160;</td>
           <td class="paramname"><em>sample</em>, </td>
         </tr>
         <tr>

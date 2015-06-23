@@ -71,11 +71,7 @@ static void SuperpoweredFFTTest() {
     // prepare
     uint64_t measurements[14][3][4][10]; // logSize, complex/real/polar, vdspforward/vdspinverse/forward/inverse
     FFTSetup setups[14];
-    for (int logSize = 5; logSize < 14; logSize++) {
-        SuperpoweredFFTPrepare(logSize, true);
-        SuperpoweredFFTPrepare(logSize, false);
-        setups[logSize] = vDSP_create_fftsetup(logSize, FFT_RADIX2);
-    };
+    for (int logSize = 5; logSize < 14; logSize++) setups[logSize] = vDSP_create_fftsetup(logSize, FFT_RADIX2);
 
     // perform each measurement 10 times
     for (int mea = 0; mea < 10; mea++) {

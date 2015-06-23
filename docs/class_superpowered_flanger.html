@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.8</span>
+   &#160;<span id="projectnumber">0.8.5</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -82,7 +82,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="separator:a34e4e52dc0a536b14982f1e28620073a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a13a3b7cb7b6c2ee56b3f0e5cba2decbf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a13a3b7cb7b6c2ee56b3f0e5cba2decbf"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_flanger.html#a13a3b7cb7b6c2ee56b3f0e5cba2decbf">reset</a> ()</td></tr>
-<tr class="memdesc:a13a3b7cb7b6c2ee56b3f0e5cba2decbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset all internals, sets the instance as good as new. <br /></td></tr>
+<tr class="memdesc:a13a3b7cb7b6c2ee56b3f0e5cba2decbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset all internals, sets the instance as good as new and turns it off. <br /></td></tr>
 <tr class="separator:a13a3b7cb7b6c2ee56b3f0e5cba2decbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa369e1e59531ee6262153e33da82c92c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_flanger.html#aa369e1e59531ee6262153e33da82c92c">process</a> (float *input, float *output, unsigned int numberOfSamples)</td></tr>
 <tr class="memdesc:aa369e1e59531ee6262153e33da82c92c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes the audio.  <a href="#aa369e1e59531ee6262153e33da82c92c">More...</a><br /></td></tr>
@@ -124,7 +124,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>enabled</b></td></tr>
     <tr><td class="paramname">depthMs</td><td>Depth in milliseconds, 0.3f to 8.0f (0.3 ms to 8 ms). Read only. </td></tr>
     <tr><td class="paramname">depth</td><td>0.0f to 1.0f (0.0 is 0.3 ms, 1.0 is 8 ms). Read only. </td></tr>
     <tr><td class="paramname">lfoBeats</td><td>The length in beats between the "lowest" and the "highest" jet sound, &gt;= 0.25f and &lt;= 64.0f. Read only. </td></tr>
-    <tr><td class="paramname">bpm</td><td>Set this right for a nice sounding lfo. Read-write. </td></tr>
+    <tr><td class="paramname">bpm</td><td>Set this right for a nice sounding lfo. Limited to &gt;= 60.0f and &lt;= 240.0f. Read-write. </td></tr>
     <tr><td class="paramname">limitLevel</td><td>The flanger has a hard-knee limiter inside to prevent overdrive. The default value of 1.0f means hard knee limiting to 0.0 db. Threshold is fixed at -3.0 db below the limit level. Valid range is 0.1f to 1.0f. </td></tr>
     <tr><td class="paramname">stereo</td><td>Stereo/mono switch. Read-write. </td></tr>
   </table>

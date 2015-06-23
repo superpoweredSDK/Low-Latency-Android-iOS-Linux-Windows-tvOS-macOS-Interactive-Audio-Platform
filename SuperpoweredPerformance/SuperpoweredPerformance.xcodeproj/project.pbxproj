@@ -24,6 +24,7 @@
 		1B85C53C189E6F20006D6C3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B85C53B189E6F20006D6C3C /* UIKit.framework */; };
 		1B85C56F189E70E5006D6C3C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B85C56E189E70E5006D6C3C /* AudioToolbox.framework */; };
 		1B85C571189EA027006D6C3C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B85C570189EA027006D6C3C /* AVFoundation.framework */; };
+		1B98E0081B14BE9600617EF9 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B98E0071B14BE9600617EF9 /* CoreMedia.framework */; };
 		1BADEA8F18DB892F001E9516 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BADEA8E18DB892F001E9516 /* Accelerate.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		1B85C545189E6F20006D6C3C /* SuperpoweredPerformance-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SuperpoweredPerformance-Prefix.pch"; sourceTree = "<group>"; };
 		1B85C56E189E70E5006D6C3C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		1B85C570189EA027006D6C3C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		1B98E0071B14BE9600617EF9 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		1BADEA8E18DB892F001E9516 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -71,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B98E0081B14BE9600617EF9 /* CoreMedia.framework in Frameworks */,
 				1BADEA8F18DB892F001E9516 /* Accelerate.framework in Frameworks */,
 				1B85C56F189E70E5006D6C3C /* AudioToolbox.framework in Frameworks */,
 				1B85C571189EA027006D6C3C /* AVFoundation.framework in Frameworks */,
@@ -138,6 +141,7 @@
 		1B85C536189E6F20006D6C3C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1B98E0071B14BE9600617EF9 /* CoreMedia.framework */,
 				1BADEA8E18DB892F001E9516 /* Accelerate.framework */,
 				1B85C56E189E70E5006D6C3C /* AudioToolbox.framework */,
 				1B85C570189EA027006D6C3C /* AVFoundation.framework */,

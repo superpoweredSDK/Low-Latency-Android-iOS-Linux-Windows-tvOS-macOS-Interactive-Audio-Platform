@@ -24,6 +24,14 @@ typedef enum SuperpoweredAdvancedAudioPlayerEvent {
     SuperpoweredAdvancedAudioPlayerEvent_DurationChanged,
 } SuperpoweredAdvancedAudioPlayerEvent;
 
+typedef struct hlsStreamAlternative {
+    char *uri, *name, *language, *groupid;
+    int bps;
+    bool isDefault, isMp4a;
+} hlsStreamAlternative;
+
+#define HLS_DOWNLOAD_EVERYTHING 86401
+#define HLS_DOWNLOAD_REMAINING 86400
 
 /**
  @brief Events happen asynchronously, implement this callback to get notified.
@@ -67,20 +75,29 @@ typedef void (* SuperpoweredAdvancedAudioPlayerCallback) (void *clientData, Supe
  
  - low memory usage (5300 kb plus 200 kb for every cached point),
  
- - thread safety (all methods are thread-safe).
+ - thread safety (all methods are thread-safe),
  
- Can not be used for offline processing.
+ - direct iPod music library access.
+ 
+ Can not be used for offline processing. Supported file types:
+ - Stereo or mono pcm WAV and AIFF (16-bit int, 24-bit int, 32-bit int or 32-bit IEEE float).
+ - MP3 (all kind).
+ - AAC-LC in M4A container (iTunes).
+ - AAC-LC in ADTS container (.aac).
+ - Apple Lossless (on iOS only).
+ - Http Live Streaming (HLS): vod/live/event streams, AAC-LC/MP3 in audio files or MPEG-TS files. Support for byte ranges and AES-128 encryption.
  
  @param positionMs The current position. Always accurate, no matter of time-stretching and other transformations. Read only.
  @param positionPercent The current position as a percentage (0.0f to 1.0f). Read only.
  @param positionSeconds The current position as seconds elapsed. Read only.
- @param durationMs The duration of the current track in milliseconds. Read only.
- @param durationSeconds The duration of the current track in seconds. Read only.
- @param waitingForBuffering Indicates if the player waits for audio data to be bufferred.
+ @param durationMs The duration of the current track in milliseconds. Equals to UINT_MAX for live streams. Read only.
+ @param durationSeconds The duration of the current track in seconds. Equals to UINT_MAX for live streams. Read only.
+ @param waitingForBuffering Indicates if the player waits for audio data to be bufferred. Read only.
  @param playing Indicates if the player is playing or paused. Read only.
  @param tempo The current tempo. Read only.
  @param masterTempo Time-stretching is enabled or not. Read only.
  @param pitchShift Note offset from -12 to 12. 0 means no pitch shift. Read only.
+ @param pitchShiftCents Pitch shift cents, from -1200 (one octave down) to 1200 (one octave up). 0 means no pitch shift. Read only.
  @param bpm Must be correct for syncing. There is no auto-bpm detection inside. Read only.
  @param currentBpm The actual bpm of the track (as bpm changes with the current tempo). Read only.
  @param slip If enabled, scratching or reverse will maintain the playback position as if you had never entered those modes. Read only.
@@ -90,9 +107,14 @@ typedef void (* SuperpoweredAdvancedAudioPlayerCallback) (void *clientData, Supe
  @param firstBeatMs Tells where the first beat (the beatgrid) begins. Must be correct for syncing. Read only.
  @param msElapsedSinceLastBeat How many milliseconds elapsed since the last beat. Read only.
  @param beatIndex Which beat has just happened (1 [1.0f-1.999f], 2 [2.0f-2.999f], 3 [3.0f-3.99f], 4 [4.0f-4.99f]). A value of 0 means "don't know". Read only.
+ @param bufferStartPercent What is buffered from the original source, start point. Will always be 0 for non-network sources (files). Read only.
+ @param bufferEndPercent What is buffered from the original source, end point. Will always be 1.0f for non-network sources (files). Read only.
+ @param currentBps The current download speed.
  @param syncMode The current sync mode (off, tempo, or tempo and beat).
  @param fixDoubleOrHalfBPM If tempo is >1.4f or <0.6f, it will treat the bpm as half or double. Good for certain genres. False by default.
  @param waitForNextBeatWithBeatSync Wait for the next beat if beat-syncing is enabled. False by default.
+ @param dynamicHLSAlternativeSwitching Dynamicly changing the current HLS alternative to match the available network bandwidth. Default is true.
+ @param downloadSecondsAhead The HLS content download strategy: how many seconds ahead of the playback position to download. Default is HLS_DOWNLOAD_REMAINING, meaning it will download everything after the playback position, until the end. HLS_DOWNLOAD_EVERYTHING downloads before the playback position too.
 */
 class SuperpoweredAdvancedAudioPlayer {
 public:
@@ -108,6 +130,7 @@ public:
     double tempo;
     bool masterTempo;
     int pitchShift;
+    int pitchShiftCents;
     double bpm;
     double currentBpm;
     
@@ -120,10 +143,30 @@ public:
     double msElapsedSinceLastBeat;
     float beatIndex;
 
+    float bufferStartPercent;
+    float bufferEndPercent;
+    int currentBps;
+
 // READ-WRITE parameters
     SuperpoweredAdvancedAudioPlayerSyncMode syncMode;
     bool fixDoubleOrHalfBPM;
     bool waitForNextBeatWithBeatSync;
+    bool dynamicHLSAlternativeSwitching;
+    int downloadSecondsAhead;
+
+/**
+ @brief Set the folder path for temporary files. Used for HLS only. 
+ 
+ Call this first before any player instance is created. It will create a subfolder with the name "SuperpoweredHLS" in this folder.
+ 
+ @param path File system path of the folder.
+ */
+    static void setTempFolder(const char *path);
+
+/**
+ @brief Remove the temp folder. Use this when your program ends.
+ */
+    static void clearTempFolder();
     
 /**
  @brief Create a player instance with the current sample rate value.
@@ -137,15 +180,16 @@ public:
 */
     SuperpoweredAdvancedAudioPlayer(void *clientData, SuperpoweredAdvancedAudioPlayerCallback callback, unsigned int samplerate, unsigned int cachedPointCount);
     ~SuperpoweredAdvancedAudioPlayer();
-    
+
 /**
  @brief Opens a new audio file, with playback paused. 
  
  Tempo, pitchShift, masterTempo and syncMode are NOT changed if you open a new one.
  
  @param path The full file system path of the audio file.
+ @param customHTTPHeaders NULL terminated list of custom headers for http communication.
 */
-    void open(const char *path);
+    void open(const char *path, char **customHTTPHeaders = 0);
     
 /**
  @brief Opens a file, with playback paused.
@@ -155,8 +199,9 @@ public:
  @param path The full file system path of the file.
  @param offset The byte offset inside the file.
  @param length The byte length from the offset.
+ @param customHTTPHeaders NULL terminated list of custom headers for http communication.
 */
-    void open(const char *path, int offset, int length);
+    void open(const char *path, int offset, int length, char **customHTTPHeaders = 0);
 
 /**
  @brief Starts playback.
@@ -182,7 +227,7 @@ public:
 /**
  @brief Simple seeking to a percentage.
  */
-    void seek(float percent);
+    void seek(double percent);
 /**
  @brief Precise seeking.
  
@@ -288,6 +333,14 @@ public:
  @param pitchShift Note offset from -12 to 12. 0 means no pitch shift.
  */
     void setPitchShift(int pitchShift);
+    
+/**
+ @brief Sets the pitch shift value with greater precision. Calling this method requires magnitudes more CPU than setPitchShift.
+ 
+ @param pitchShiftCents Limited to >= -1200 and <= 1200. 0 means no pitch shift.
+ */
+    void setPitchShiftCents(int pitchShiftCents);
+
 /**
  @brief Sets playback direction.
  
@@ -311,7 +364,7 @@ public:
 /**
  @brief Call when scratching starts.
  
- @warning This is an advance method, use it only if you don't want the jogT... methods.
+ @warning This is an advanced method, use it only if you don't want the jogT... methods.
  
  @param slipMs Enable slip mode for a specific amount of time for scratching, or 0 to not slip.
  @param stopImmediately Stop now or not.
@@ -320,7 +373,7 @@ public:
 /**
  @brief Scratch movement.
  
- @warning This is an advance method, use it only if you don't want the jogT... methods.
+ @warning This is an advanced method, use it only if you don't want the jogT... methods.
  
  @param pitch The current speed.
  @param smoothing Should be between 0.05f (max. smoothing) and 1.0f (no smoothing).
@@ -329,7 +382,7 @@ public:
 /**
  @brief Ends scratching.
  
- @warning This is an advance method, use it only if you don't want the jogT... methods.
+ @warning This is an advanced method, use it only if you don't want the jogT... methods.
  
  @param returnToStateBeforeScratch Return to the previous playback state (direction, speed) or not.
  */
@@ -351,7 +404,7 @@ public:
  Call this after a media server reset or audio session interrupt to resume playback.
 */
     void onMediaserverInterrupt();
-    
+
 /**
  @brief Processes the audio.
  
@@ -364,7 +417,7 @@ public:
  @param masterBpm A bpm value to sync with. Use 0.0f for no syncing.
  @param masterMsElapsedSinceLastBeat How many milliseconds elapsed since the last beat on the other stuff we are syncing to. Use -1.0 to ignore.
 */
-    bool process(float *buffer, bool bufferAdd, unsigned int numberOfSamples, float volume, double masterBpm, double masterMsElapsedSinceLastBeat);
+    bool process(float *buffer, bool bufferAdd, unsigned int numberOfSamples, float volume = 1.0f, double masterBpm = 0.0f, double masterMsElapsedSinceLastBeat = -1.0);
     
 private:
     SuperpoweredAdvancedAudioPlayerInternals *internals;

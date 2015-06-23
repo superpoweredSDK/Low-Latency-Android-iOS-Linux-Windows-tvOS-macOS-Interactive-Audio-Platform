@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.8</span>
+   &#160;<span id="projectnumber">0.8.5</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -57,13 +57,6 @@
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac1062cd6fa7621b2b615119d51c83b40"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_f_f_t_8h.html#ac1062cd6fa7621b2b615119d51c83b40">SuperpoweredFFTPrepare</a> (int logSize, bool real)</td></tr>
-<tr class="memdesc:ac1062cd6fa7621b2b615119d51c83b40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this once, before processing. No subsequent calls required.  <a href="#ac1062cd6fa7621b2b615119d51c83b40">More...</a><br /></td></tr>
-<tr class="separator:ac1062cd6fa7621b2b615119d51c83b40"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace198c19ae65ff895fe3b8abeb1a81c2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ace198c19ae65ff895fe3b8abeb1a81c2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_f_f_t_8h.html#ace198c19ae65ff895fe3b8abeb1a81c2">SuperpoweredFFTCleanup</a> ()</td></tr>
-<tr class="memdesc:ace198c19ae65ff895fe3b8abeb1a81c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cleans up the memory allocated by FFTPrepare. <br /></td></tr>
-<tr class="separator:ace198c19ae65ff895fe3b8abeb1a81c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed38bde106533ddd34aee00bb60c9215"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_f_f_t_8h.html#aed38bde106533ddd34aee00bb60c9215">SuperpoweredFFTComplex</a> (float *real, float *imag, int logSize, bool forward)</td></tr>
 <tr class="memdesc:aed38bde106533ddd34aee00bb60c9215"><td class="mdescLeft">&#160;</td><td class="mdescRight">Complex in-place FFT.  <a href="#aed38bde106533ddd34aee00bb60c9215">More...</a><br /></td></tr>
 <tr class="separator:aed38bde106533ddd34aee00bb60c9215"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -78,39 +71,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SuperpoweredPolarFFT<
 <div class="textblock"><p>Single threaded, not thread safe.</p>
 <dl class="section remark"><dt>Remarks</dt><dd>Superpowered FFT benefits from ideas in Construction of a High-Performance FFT by Eric Postpischil (<a href="http://edp.org/resume.htm">http://edp.org/resume.htm</a>). </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="ac1062cd6fa7621b2b615119d51c83b40"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SuperpoweredFFTPrepare </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>logSize</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>real</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">logSize</td><td>Should be 5 - 13 (FFT sizes 32 - 8192). </td></tr>
-    <tr><td class="paramname">real</td><td>True if you prepare for a real function, false for complex. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a class="anchor" id="aed38bde106533ddd34aee00bb60c9215"></a>
 <div class="memitem">
 <div class="memproto">

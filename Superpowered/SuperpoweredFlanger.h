@@ -13,7 +13,7 @@ struct flangerInternals;
  @param depthMs Depth in milliseconds, 0.3f to 8.0f (0.3 ms to 8 ms). Read only.
  @param depth 0.0f to 1.0f (0.0 is 0.3 ms, 1.0 is 8 ms). Read only.
  @param lfoBeats The length in beats between the "lowest" and the "highest" jet sound, >= 0.25f and <= 64.0f. Read only.
- @param bpm Set this right for a nice sounding lfo. Read-write.
+ @param bpm Set this right for a nice sounding lfo. Limited to >= 60.0f and <= 240.0f. Read-write.
  @param limitLevel The flanger has a hard-knee limiter inside to prevent overdrive. The default value of 1.0f means hard knee limiting to 0.0 db. Threshold is fixed at -3.0 db below the limit level. Valid range is 0.1f to 1.0f.
  @param stereo Stereo/mono switch. Read-write.
  */
@@ -68,7 +68,7 @@ public:
  */
     void setSamplerate(unsigned int samplerate);
 /**
- @brief Reset all internals, sets the instance as good as new.
+ @brief Reset all internals, sets the instance as good as new and turns it off.
  */
     void reset();
 

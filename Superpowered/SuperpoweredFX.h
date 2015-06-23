@@ -24,6 +24,11 @@ public:
     virtual void setSamplerate(unsigned int samplerate) = 0;
 
 /**
+ @brief Reset all internals, sets the instance as good as new and turns it off.
+*/
+    virtual void reset() = 0;
+
+/**
  @brief Processes the audio.
  
  It's not locked when you call other methods from other threads, and they not interfere with process() at all.

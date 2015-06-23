@@ -5,11 +5,11 @@
 #include <pthread.h>
 
 #include "SuperpoweredExample.h"
-#include "SuperpoweredAdvancedAudioPlayer.h"
-#include "SuperpoweredFilter.h"
-#include "SuperpoweredRoll.h"
-#include "SuperpoweredFlanger.h"
-#include "SuperpoweredAndroidAudioIO.h"
+#include "../../../../../../Superpowered/SuperpoweredAdvancedAudioPlayer.h"
+#include "../../../../../../Superpowered/SuperpoweredFilter.h"
+#include "../../../../../../Superpowered/SuperpoweredRoll.h"
+#include "../../../../../../Superpowered/SuperpoweredFlanger.h"
+#include "../../../../../../Superpowered/SuperpoweredAndroidAudioIO.h"
 
 #define NUM_BUFFERS 2
 #define HEADROOM_DECIBEL 3.0f

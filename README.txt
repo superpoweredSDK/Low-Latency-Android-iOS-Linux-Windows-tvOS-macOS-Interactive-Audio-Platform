@@ -1,9 +1,13 @@
-Superpowered Audio Engine for Games, Music and Interactive Audio Apps on Android, iOS & OSX.
+Superpowered Audio Engine for Games, Music and Interactive Audio Apps on Android, iOS and OSX.
 
 Low Latency Audio. Cross Platform. Free.
 What is it?-----------The Superpowered Audio SDK is a software development kit based on Superpowered Inc’s digital signal processing (DSP) technology. Superpowered technology allows developers to build computationally intensive audio apps and embedded applications that process more quickly and use less power than other comparable solutions. Superpowered DSP is designed and optimized, from scratch, to run on low-power mobile processors. Specifically, any device running ARM with the NEON extension (which covers 99% of all mobile devices manufactured). Intel CPU is supported too.PLEASE NOTE: all example codes working with the Superpowered features are cross-platform, can be used under iOS and Android.
 Folders-------
-/SuperpoweredThe SDK itself (static library and headers).
+/SuperpoweredThe SDK itself (static library and headers).
+/Superpowered/libSuperpoweredAudio.a is a fat static library for iOS and OSX projects
+/Superpowered/libSuperpoweredARM.a is the armeabi-v7a library for Android
+/Superpowered/libSuperpoweredARM64.a is the arm64-v8a library for Android
+/Superpowered/libSuperpoweredX86.a is the x86 library for Android
 
 docs
 The documentation. Start with index.html.
@@ -28,7 +32,17 @@ Simple 8-band frequency analyzer. Shows how to:
 Simple time domain to frequency domain transformation with buffering and windowing. Shows how to:
 
 - Use the SuperpoweredFrequencyDomain class.
-- Process the magnitudes and phases of the audio input./SuperpoweredPerformance (iOS)It compares several Superpowered features to Core Audio.
+- Process the magnitudes and phases of the audio input./SuperpoweredHLSExample (iOS)
+HTTP Live Streaming example project.
+
+
+/SuperpoweredOfflineProcessingExample (iOS)
+Advanced example. Decodes an audio file, applies time stretching and saves the result in WAV. Shows how to:
+
+- Set up the SuperpoweredDecoder.
+- Use the time stretcher with an efficient dynamic memory pool.
+- Save the result in WAV.
+- Directly read from the iPod music library./SuperpoweredPerformance (iOS)It compares several Superpowered features to Core Audio.
 
 - Shows the differences between Superpowered and Core Audio.
 - Syncs effects to the player’s bpm.
@@ -37,21 +51,19 @@ Simple time domain to frequency domain transformation with buffering and windowi
 Swift note:
 We have also tried creating this project in Swift, but it’s not complete for audio and several features were impossible to implement (such as proper performance measurement). Swift is not designed for real-time audio. Fortunately, Objective-C++ files work great in Swift projects.
 
-/SuperpoweredOfflineProcessingExample
-Advanced example. Decodes an audio file, applies time stretching and saves the result in WAV. Shows how to:
-
-- Set up the SuperpoweredDecoder.
-- Use the time stretcher with an efficient dynamic memory pool.
-- Save the result in WAV.
-
 /Android/CrossExample (Android)
 - Android NDK sample project, similar to SuperpoweredCrossExample.
 - Also shows how to use SuperpoweredAndroidAudioIO for output only.
 
 
-/Android/FrequencyDomain
+/Android/FrequencyDomain (Android)
 - Android NDK sample project, similar to SuperpoweredFrequencyDomain.
 - Shows how to use SuperpoweredAndroidAudioIO for audio input and output.
+
+
+/Android/HLSExample (Android)
+HTTP Live Streaming example project.
+
 
 
 Android Studio
@@ -60,7 +72,8 @@ Android Studio
 NDK integration with static libraries is still incomplete in Android Studio. Before running the example, please set up the following:
 
 - Open local.properties. Set ndk.dir to your ndk folder.
-- Open build.gradle under the app folder. Check for ndk-build, and set the appropriate path again.
+- Open build.gradle under the app folder. Check for ndk-build, and set the appropriate path to ndk again.
+- Open Android.mk in the src/main/jni folder. Check and correct SUPERPOWERED_PATH if needed (should be OK if you leave the folder structure intact).
 
 
 How to create a Superpowered project with Android Studio
@@ -82,7 +95,7 @@ Steps:
 
         sourceSets.main {
             jniLibs.srcDir 'src/main/libs'
-            //jni.srcDirs = []
+            jni.srcDirs = []
         }
     }
 
@@ -92,15 +105,14 @@ Steps:
     tasks.withType(JavaCompile) {
         compileTask -> compileTask.dependsOn ndkBuild
     }
-5. the jni folder appears as “c” under app in Android Studio
-6. copy Android.mk, Application.mk and the libSuperpowered.a files into the jni folder you created at step 2, from a similar folder in one of our example projects
-7. create your custom .cpp and .h files, then don’t forget to properly set LOCAL_MODULE and LOCAL_SRC_FILES in Android.mk
-8. before compiling the project, uncomment the line: jni.srcDirs = []
-9. comment the line to make the “c” folder reappear again
-The Latest Version 
+5. copy Android.mk, Application.mk and the libSuperpowered.a files into the jni folder you created at step 2, from a similar folder in one of our example projects
+6. check the correct SUPERPOWERED_PATH in Android.mk
+6. create your custom .cpp and .h files, then don’t forget to properly set LOCAL_MODULE and LOCAL_SRC_FILES in Android.mk
+
+The Latest Version 
 ------------------Details of the latest version can be found at http://superpowered.com/superpowered-audio-sdk/Pricing and licensing
 ---------
-The Superpowered Audio SDK is free for software applications. Please see the file called license.pdf.
+The Superpowered Audio SDK is free for software applications, except HLS playback. Please see the included license pdf.
 
 Superpowered FFT benefits from ideas in Construction of a High-Performance FFT by Eric Postpischil (http://edp.org/resume.htm).
 

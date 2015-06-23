@@ -51,7 +51,7 @@ public:
  */
     void setSamplerate(unsigned int samplerate); // 44100, 48000, etc.
 /**
- @brief Reset all internals, sets the instance as good as new.
+ @brief Reset all internals, sets the instance as good as new and turns it off.
  */
     void reset();
 

@@ -26,14 +26,29 @@ public:
 
  @return The number of output frames (samples).
  
- @param input 16-bit stereo input. Should be numberOfSamples + 64 big.
- @param output 32-bit floating point stereo output. Should be numberOfSamples + 64 big.
+ @param input 16-bit stereo input. Should be numberOfSamples * 2 + 64 big.
+ @param output 32-bit floating point stereo output. Should be numberOfSamples * 2 + 64 big.
  @param numberOfSamples Number of samples to process.
  @param reverse Plays backwards.
  @param highQuality Enables more sophisticated processing to reduce interpolation noise. Good for scratching for example, but not recommended for continous music playback above 0.5f rate.
  @param rateAdd Changes rate during process(), good for scratching or super smooth rate changes. After process(), rate will be near the desired value.
 */
     int process(short int *input, float *output, int numberOfSamples, bool reverse = false, bool highQuality = false, float rateAdd = 0.0f);
+
+/**
+ @brief Processes the audio.
+
+ @return The number of output frames (samples).
+
+ @param input 16-bit stereo input. Should be numberOfSamples * 2 + 64 big.
+ @param temp Temporary buffer. Should be numberOfSamples * 2 + 64 big.
+ @param output 16-bit stereo output. Should be numberOfSamples * 2 + 64 big.
+ @param numberOfSamples Number of samples to process.
+ @param reverse Plays backwards.
+ @param highQuality Enables more sophisticated processing to reduce interpolation noise. Good for scratching for example, but not recommended for continous music playback above 0.5f rate.
+ @param rateAdd Changes rate during process(), good for scratching or super smooth rate changes. After process(), rate will be near the desired value.
+*/
+    int process(short int *input, float *temp, short int *output, int numberOfSamples, bool reverse = false, bool highQuality = false, float rateAdd = 0.0f);
     
 private:
     resamplerInternals *internals;

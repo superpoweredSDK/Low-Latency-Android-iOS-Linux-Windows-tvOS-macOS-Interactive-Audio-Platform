@@ -34,6 +34,27 @@ public:
     SuperpoweredAndroidAudioIO(int samplerate, int buffersize, bool enableInput, bool enableOutput, audioProcessingCallback callback, void *clientdata, int latencySamples = 0);
     ~SuperpoweredAndroidAudioIO();
 
+/*
+ @brief Call this in the main activity's onResume() method.
+ 
+  Calling this is important if you'd like to save battery. When there is no audio playing and the app goes to the background, it will automatically stop audio input and/or output.
+*/
+    void onForeground();
+/*
+ @brief Call this in the main activity's onPause() method.
+ 
+ Calling this is important if you'd like to save battery. When there is no audio playing and the app goes to the background, it will automatically stop audio input and/or output.
+*/
+    void onBackground();
+/*
+ @brief Starts audio input and/or output.
+*/
+    void start();
+/*
+ @brief Stops audio input and/or output.
+*/
+    void stop();
+
 private:
     SuperpoweredAndroidAudioIOInternals *internals;
     SuperpoweredAndroidAudioIO(const SuperpoweredAndroidAudioIO&);

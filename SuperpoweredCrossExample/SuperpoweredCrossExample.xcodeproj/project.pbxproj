@@ -22,6 +22,7 @@
 		1B80C73F18E0C83800DF5B81 /* lycka.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1B80C73D18E0C83800DF5B81 /* lycka.mp3 */; };
 		1B80C74018E0C83800DF5B81 /* nuyorica.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1B80C73E18E0C83800DF5B81 /* nuyorica.m4a */; };
 		1B97253119470E69005CCEEB /* libSuperpoweredAudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B97253019470E69005CCEEB /* libSuperpoweredAudio.a */; };
+		1B98DFFE1B14BD5700617EF9 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B98DFFD1B14BD5700617EF9 /* CoreMedia.framework */; };
 		1BA11FD218FC314E00484827 /* SuperpoweredIOSAudioOutput.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1BA11FD018FC314E00484827 /* SuperpoweredIOSAudioOutput.mm */; };
 /* End PBXBuildFile section */
 
@@ -40,7 +41,6 @@
 		1B80C71318E0C79600DF5B81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1B80C71518E0C79600DF5B81 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = SuperpoweredCrossExample/ViewController.h; sourceTree = "<group>"; };
 		1B80C71818E0C79600DF5B81 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SuperpoweredCrossExample/Images.xcassets; sourceTree = "<group>"; };
-		1B80C71F18E0C79600DF5B81 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		1B80C73518E0C7A300DF5B81 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		1B80C73718E0C7A600DF5B81 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		1B80C73918E0C7AD00DF5B81 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -48,6 +48,7 @@
 		1B80C73D18E0C83800DF5B81 /* lycka.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = lycka.mp3; path = SuperpoweredCrossExample/lycka.mp3; sourceTree = "<group>"; };
 		1B80C73E18E0C83800DF5B81 /* nuyorica.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = nuyorica.m4a; path = SuperpoweredCrossExample/nuyorica.m4a; sourceTree = "<group>"; };
 		1B97253019470E69005CCEEB /* libSuperpoweredAudio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSuperpoweredAudio.a; path = ../Superpowered/libSuperpoweredAudio.a; sourceTree = "<group>"; };
+		1B98DFFD1B14BD5700617EF9 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		1BA11FC918FC313D00484827 /* SuperpoweredAdvancedAudioPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredAdvancedAudioPlayer.h; path = ../Superpowered/SuperpoweredAdvancedAudioPlayer.h; sourceTree = "<group>"; };
 		1BA11FCA18FC313D00484827 /* SuperpoweredFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredFilter.h; path = ../Superpowered/SuperpoweredFilter.h; sourceTree = "<group>"; };
 		1BA11FCB18FC313D00484827 /* SuperpoweredFlanger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredFlanger.h; path = ../Superpowered/SuperpoweredFlanger.h; sourceTree = "<group>"; };
@@ -61,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B98DFFE1B14BD5700617EF9 /* CoreMedia.framework in Frameworks */,
 				1B80C73618E0C7A300DF5B81 /* AudioToolbox.framework in Frameworks */,
 				1B80C73818E0C7A600DF5B81 /* AVFoundation.framework in Frameworks */,
 				1B80C70318E0C79600DF5B81 /* CoreGraphics.framework in Frameworks */,
@@ -106,13 +108,13 @@
 		1B80C6FF18E0C79600DF5B81 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1B98DFFD1B14BD5700617EF9 /* CoreMedia.framework */,
 				1B80C73918E0C7AD00DF5B81 /* MediaPlayer.framework */,
 				1B80C73718E0C7A600DF5B81 /* AVFoundation.framework */,
 				1B80C73518E0C7A300DF5B81 /* AudioToolbox.framework */,
 				1B80C70018E0C79600DF5B81 /* Foundation.framework */,
 				1B80C70218E0C79600DF5B81 /* CoreGraphics.framework */,
 				1B80C70418E0C79600DF5B81 /* UIKit.framework */,
-				1B80C71F18E0C79600DF5B81 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

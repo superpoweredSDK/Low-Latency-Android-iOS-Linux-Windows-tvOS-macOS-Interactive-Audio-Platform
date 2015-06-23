@@ -1,6 +1,8 @@
 #ifndef Header_SuperpoweredAudioBuffers
 #define Header_SuperpoweredAudioBuffers
 
+#include <stdint.h>
+
 struct bufferPoolInternals;
 struct pointerListInternals;
 struct SuperpoweredAudiobufferlistElement;
@@ -53,7 +55,7 @@ public:
  
  @see SuperpoweredAudiobufferlistElement
  */
-    bool createSuperpoweredAudiobufferlistElement(SuperpoweredAudiobufferlistElement *item, unsigned int samplePosition, unsigned int sizeInSamples);
+    bool createSuperpoweredAudiobufferlistElement(SuperpoweredAudiobufferlistElement *item, int64_t samplePosition, unsigned int sizeInSamples);
 
 private:
     bufferPoolInternals *internals;
@@ -112,11 +114,11 @@ public:
 /**
  @brief Returns the buffer list beginning's sample position in an audio file or stream.
  */
-    int startSamplePosition();
+    int64_t startSamplePosition();
 /**
  @brief Returns the buffer list end's sample position in an audio file or stream, plus 1.
 */
-    int nextSamplePosition();
+    int64_t nextSamplePosition();
     
 /**
  @brief Creates a "virtual slice" from this list.
@@ -128,7 +130,7 @@ public:
 /**
  @brief Returns the slice beginning's sample position in an audio file or stream.
  */
-    int samplePositionOfSliceBeginning();
+    int64_t samplePositionOfSliceBeginning();
     
 /**
  @brief This the slice's forward enumerator method to go through all buffers in it.
@@ -180,14 +182,15 @@ private:
 /**
  @brief An audio buffer list item.
  
+ @param samplePosition The buffer beginning's sample position in an audio file or stream.
  @param bufferID The buffer's identifier in a buffer pool.
  @param startSample The first sample in the buffer.
  @param endSample The last sample in the buffer.
- @param samplePosition The buffer beginning's sample position in an audio file or stream.
  @param samplesUsed How many "original" samples were used to create this chunk of audio. Good for time-stretching for example, to track the movement of the playhead.
  */
 typedef struct SuperpoweredAudiobufferlistElement {
-	int bufferID, startSample, endSample, samplePosition;
+    int64_t samplePosition;
+	int bufferID, startSample, endSample;
     float samplesUsed;
 } SuperpoweredAudiobufferlistElement;
 

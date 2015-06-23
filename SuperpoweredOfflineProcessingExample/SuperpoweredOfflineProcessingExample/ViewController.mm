@@ -14,13 +14,35 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     progress = 0.0f;
     displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(onDisplayLink)];
     displayLink.frameInterval = 1;
-    [displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
-    
-    [self performSelectorInBackground:@selector(processingThread) withObject:nil];
+    [self displayMediaPicker];
+}
+
+- (void)displayMediaPicker {
+    MPMediaPickerController *picker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeMusic];
+    [picker setDelegate:self];
+    [picker setAllowsPickingMultipleItems:NO];
+    picker.prompt = @"Pick a song to process";
+    [self presentViewController:picker animated:YES completion:nil];
+    picker = nil;
+}
+
+- (void)mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self displayMediaPicker];
+}
+
+- (void)mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)collection {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    NSURL *url = nil;
+    MPMediaItem *item = [collection.items objectAtIndex:0];
+    if (item) url = [item valueForProperty:@"assetURL"];
+    if (url) {
+        [displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
+        [self performSelectorInBackground:@selector(processingThread:) withObject:url];
+    } else [self displayMediaPicker];
 }
 
 - (void)dealloc {
@@ -31,12 +53,12 @@
     progressView.progress = progress;
 }
 
-- (void)processingThread {
+- (void)processingThread:(NSURL *)url {
     // Open the input file.
-    SuperpoweredDecoder *decoder = new SuperpoweredDecoder(false);
-    const char *openError = decoder->open([[[NSBundle mainBundle] pathForResource:@"track" ofType:@"mp3"] fileSystemRepresentation], false, 0, 0);
+    SuperpoweredDecoder *decoder = new SuperpoweredDecoder();
+    const char *openError = decoder->open([[url absoluteString] UTF8String], false, 0, 0);
     if (openError) {
-        NSLog(@"%s", openError);
+        NSLog(@"open error: %s", openError);
         delete decoder;
         return;
     };
@@ -52,7 +74,7 @@
     */
     SuperpoweredAudiobufferPool *bufferPool = new SuperpoweredAudiobufferPool(4, 1024 * 1024); // Allow 1 MB max. memory for the buffer pool.
     SuperpoweredTimeStretching *timeStretch = new SuperpoweredTimeStretching(bufferPool, decoder->samplerate);
-    timeStretch->setRateAndPitchShift(1.1f, 0); // Audio will be 10% faster.
+    timeStretch->setRateAndPitchShift(1.04f, 0); // Audio will be 4% faster.
 
     // This buffer list will receive the time-stretched samples.
     SuperpoweredAudiopointerList *outputBuffers = new SuperpoweredAudiopointerList(bufferPool);
@@ -65,7 +87,6 @@
         delete decoder;
         return;
     };
-    NSLog(@"Destination path: %@", destinationPath);
 
     // Create a buffer for the 16-bit integer samples.
     short int *intBuffer = (short int *)malloc(decoder->samplesPerFrame * 2 * sizeof(short int) + 16384);
@@ -74,7 +95,8 @@
     while (true) {
         // Decode one frame. samplesDecoded will be overwritten with the actual decoded number of samples.
         unsigned int samplesDecoded = decoder->samplesPerFrame;
-        if (decoder->decode(intBuffer, &samplesDecoded) != SUPERPOWEREDDECODER_OK) break;
+        if (decoder->decode(intBuffer, &samplesDecoded) == SUPERPOWEREDDECODER_ERROR) break;
+        if (samplesDecoded < 1) break;
 
         // Create an input buffer for the time stretcher.
         SuperpoweredAudiobufferlistElement inputBuffer;
@@ -109,13 +131,17 @@
         };
 
         // Update the progress indicator.
-        progress = (float)decoder->samplePosition / (float)decoder->durationSamples;
+        progress = (double)decoder->samplePosition / (double)decoder->durationSamples;
     };
-    
+
+    // iTunes File Sharing: https://support.apple.com/en-gb/HT201301
+    NSLog(@"The file is available in iTunes File Sharing, and locally at %@.", destinationPath);
+
     // Cleanup.
     closeWAV(fd);
     delete decoder;
     delete timeStretch;
+    delete outputBuffers;
     delete bufferPool;
     free(intBuffer);
 }

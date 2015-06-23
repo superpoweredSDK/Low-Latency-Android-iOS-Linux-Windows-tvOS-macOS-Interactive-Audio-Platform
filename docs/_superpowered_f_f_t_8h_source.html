@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.8</span>
+   &#160;<span id="projectnumber">0.8.5</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -50,24 +50,16 @@
 <a href="_superpowered_f_f_t_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef Header_SuperpoweredFFT</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define Header_SuperpoweredFFT</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_superpowered_f_f_t_8h.html#ac1062cd6fa7621b2b615119d51c83b40">SuperpoweredFFTPrepare</a>(<span class="keywordtype">int</span> logSize, <span class="keywordtype">bool</span> real);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_superpowered_f_f_t_8h.html#ace198c19ae65ff895fe3b8abeb1a81c2">SuperpoweredFFTCleanup</a>();</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_superpowered_f_f_t_8h.html#aed38bde106533ddd34aee00bb60c9215">SuperpoweredFFTComplex</a>(<span class="keywordtype">float</span> *real, <span class="keywordtype">float</span> *imag, <span class="keywordtype">int</span> logSize, <span class="keywordtype">bool</span> forward);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_superpowered_f_f_t_8h.html#ab4c8d9807a510b92beaaa173a154691f">SuperpoweredFFTReal</a>(<span class="keywordtype">float</span> *real, <span class="keywordtype">float</span> *imag, <span class="keywordtype">int</span> logSize, <span class="keywordtype">bool</span> forward);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordtype">void</span> SuperpoweredPolarFFT(<span class="keywordtype">float</span> *mag, <span class="keywordtype">float</span> *phase, <span class="keywordtype">int</span> logSize, <span class="keywordtype">bool</span> forward, <span class="keywordtype">float</span> valueOfPi = 0);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="_superpowered_f_f_t_8h_html_ace198c19ae65ff895fe3b8abeb1a81c2"><div class="ttname"><a href="_superpowered_f_f_t_8h.html#ace198c19ae65ff895fe3b8abeb1a81c2">SuperpoweredFFTCleanup</a></div><div class="ttdeci">void SuperpoweredFFTCleanup()</div><div class="ttdoc">Cleans up the memory allocated by FFTPrepare. </div></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_superpowered_f_f_t_8h.html#aed38bde106533ddd34aee00bb60c9215">SuperpoweredFFTComplex</a>(<span class="keywordtype">float</span> *real, <span class="keywordtype">float</span> *imag, <span class="keywordtype">int</span> logSize, <span class="keywordtype">bool</span> forward);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_superpowered_f_f_t_8h.html#ab4c8d9807a510b92beaaa173a154691f">SuperpoweredFFTReal</a>(<span class="keywordtype">float</span> *real, <span class="keywordtype">float</span> *imag, <span class="keywordtype">int</span> logSize, <span class="keywordtype">bool</span> forward);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keywordtype">void</span> SuperpoweredPolarFFT(<span class="keywordtype">float</span> *mag, <span class="keywordtype">float</span> *phase, <span class="keywordtype">int</span> logSize, <span class="keywordtype">bool</span> forward, <span class="keywordtype">float</span> valueOfPi = 0);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="_superpowered_f_f_t_8h_html_ab4c8d9807a510b92beaaa173a154691f"><div class="ttname"><a href="_superpowered_f_f_t_8h.html#ab4c8d9807a510b92beaaa173a154691f">SuperpoweredFFTReal</a></div><div class="ttdeci">void SuperpoweredFFTReal(float *real, float *imag, int logSize, bool forward)</div><div class="ttdoc">Real in-place FFT. </div></div>
-<div class="ttc" id="_superpowered_f_f_t_8h_html_ac1062cd6fa7621b2b615119d51c83b40"><div class="ttname"><a href="_superpowered_f_f_t_8h.html#ac1062cd6fa7621b2b615119d51c83b40">SuperpoweredFFTPrepare</a></div><div class="ttdeci">void SuperpoweredFFTPrepare(int logSize, bool real)</div><div class="ttdoc">Call this once, before processing. No subsequent calls required. </div></div>
 <div class="ttc" id="_superpowered_f_f_t_8h_html_aed38bde106533ddd34aee00bb60c9215"><div class="ttname"><a href="_superpowered_f_f_t_8h.html#aed38bde106533ddd34aee00bb60c9215">SuperpoweredFFTComplex</a></div><div class="ttdeci">void SuperpoweredFFTComplex(float *real, float *imag, int logSize, bool forward)</div><div class="ttdoc">Complex in-place FFT. </div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

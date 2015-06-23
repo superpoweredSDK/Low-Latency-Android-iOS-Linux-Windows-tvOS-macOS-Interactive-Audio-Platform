@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.8</span>
+   &#160;<span id="projectnumber">0.8.5</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -83,9 +83,14 @@ Functions</h2></td></tr>
 <tr class="memitem:aba4dddc17e9e853e6b82442b4e33e465"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#aba4dddc17e9e853e6b82442b4e33e465">SuperpoweredInterleave</a> (float *left, float *right, float *output, unsigned int numberOfSamples)</td></tr>
 <tr class="memdesc:aba4dddc17e9e853e6b82442b4e33e465"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes an interleaved output from two input channels.  <a href="#aba4dddc17e9e853e6b82442b4e33e465">More...</a><br /></td></tr>
 <tr class="separator:aba4dddc17e9e853e6b82442b4e33e465"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a3bac6f65efb1d289d7893feb62d587"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#a9a3bac6f65efb1d289d7893feb62d587">SuperpoweredInterleaveAndGetPeaks</a> (float *left, float *right, float *output, unsigned int numberOfSamples, float *peaks)</td></tr>
+<tr class="memdesc:a9a3bac6f65efb1d289d7893feb62d587"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes an interleaved output from two input channels, and measures the input volume.  <a href="#a9a3bac6f65efb1d289d7893feb62d587">More...</a><br /></td></tr>
+<tr class="separator:a9a3bac6f65efb1d289d7893feb62d587"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9359d1c7a32f81c76466c91726954c8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#a9359d1c7a32f81c76466c91726954c8d">SuperpoweredDeInterleave</a> (float *input, float *left, float *right, unsigned int numberOfSamples)</td></tr>
 <tr class="memdesc:a9359d1c7a32f81c76466c91726954c8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deinterleaves an interleaved input.  <a href="#a9359d1c7a32f81c76466c91726954c8d">More...</a><br /></td></tr>
 <tr class="separator:a9359d1c7a32f81c76466c91726954c8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe7772f165043b851a9bf074771cf17a"><td class="memItemLeft" align="right" valign="top">const unsigned char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#abe7772f165043b851a9bf074771cf17a">SuperpoweredVersion</a> ()</td></tr>
+<tr class="separator:abe7772f165043b851a9bf074771cf17a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a310f03a58374e6ffb11d5ed10812c531"></a>
@@ -512,6 +517,60 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a9a3bac6f65efb1d289d7893feb62d587"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SuperpoweredInterleaveAndGetPeaks </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>left</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>right</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>output</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>numberOfSamples</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>peaks</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">left</td><td>Input for left channel. </td></tr>
+    <tr><td class="paramname">right</td><td>Input for right channel. </td></tr>
+    <tr><td class="paramname">output</td><td>Interleaved output. </td></tr>
+    <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. Should be 4 minimum, must be exactly divisible with 4. </td></tr>
+    <tr><td class="paramname">peaks</td><td>Peak value result (2 floats: left peak, right peak). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a9359d1c7a32f81c76466c91726954c8d"></a>
 <div class="memitem">
 <div class="memproto">
@@ -556,6 +615,23 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a class="anchor" id="abe7772f165043b851a9bf074771cf17a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SuperpoweredVersion </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Returns with the current version of the Superpowered SDK.</dd></dl>
+<p>The returned value is 3 unsigned chars: major,minor,revision Example: 1,0,0 means 1.0.0 </p>
 
 </div>
 </div>

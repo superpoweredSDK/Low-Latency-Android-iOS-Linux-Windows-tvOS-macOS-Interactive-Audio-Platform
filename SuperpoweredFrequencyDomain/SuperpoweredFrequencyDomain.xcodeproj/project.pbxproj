@@ -18,6 +18,7 @@
 		1B468B841AE6643E0099A7DD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B468B831AE6643E0099A7DD /* AudioToolbox.framework */; };
 		1B468B871AE664CF0099A7DD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B468B861AE664CF0099A7DD /* AVFoundation.framework */; };
 		1B468B891AE664DD0099A7DD /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B468B881AE664DD0099A7DD /* MediaPlayer.framework */; };
+		1B98E0021B14BDF300617EF9 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B98E0011B14BDF300617EF9 /* CoreMedia.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		1B468B861AE664CF0099A7DD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		1B468B881AE664DD0099A7DD /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		1B468B8E1AE696520099A7DD /* SuperpoweredSimple.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredSimple.h; path = ../Superpowered/SuperpoweredSimple.h; sourceTree = "<group>"; };
+		1B98E0011B14BDF300617EF9 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B98E0021B14BDF300617EF9 /* CoreMedia.framework in Frameworks */,
 				1B468B891AE664DD0099A7DD /* MediaPlayer.framework in Frameworks */,
 				1B468B871AE664CF0099A7DD /* AVFoundation.framework in Frameworks */,
 				1B468B841AE6643E0099A7DD /* AudioToolbox.framework in Frameworks */,
@@ -59,6 +62,7 @@
 		1B468B4C1AE663D20099A7DD = {
 			isa = PBXGroup;
 			children = (
+				1B98E0011B14BDF300617EF9 /* CoreMedia.framework */,
 				1B468B881AE664DD0099A7DD /* MediaPlayer.framework */,
 				1B468B861AE664CF0099A7DD /* AVFoundation.framework */,
 				1B468B831AE6643E0099A7DD /* AudioToolbox.framework */,

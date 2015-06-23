@@ -1,11 +1,13 @@
 #ifndef Header_SuperpoweredDecoder
 #define Header_SuperpoweredDecoder
 
+#include <stdint.h>
 struct decoderInternals;
 
 #define SUPERPOWEREDDECODER_EOF 0
 #define SUPERPOWEREDDECODER_OK 1
 #define SUPERPOWEREDDECODER_ERROR 2
+#define SUPERPOWEREDDECODER_BUFFERING 3
 
 typedef enum SuperpoweredDecoder_Kind {
     SuperpoweredDecoder_MP3, SuperpoweredDecoder_AAC, SuperpoweredDecoder_AIFF, SuperpoweredDecoder_WAV, SuperpoweredDecoder_MediaServer
@@ -24,7 +26,13 @@ typedef void (* SuperpoweredDecoderID3Callback) (void *clientData, void *frameNa
 /**
  @brief Audio file decoder. Provides uncompresses PCM samples from various compressed formats.
  
- Thread safety: single threaded, not thread safe. After a succesful open(), samplePosition changes only.
+ Thread safety: single threaded, not thread safe. After a succesful open(), samplePosition and duration may change.
+ Supported file types:
+ - Stereo or mono pcm WAV and AIFF (16-bit int, 24-bit int, 32-bit int or 32-bit IEEE float).
+ - MP3 (all kind).
+ - AAC-LC in M4A container (iTunes).
+ - AAC-LC in ADTS container (.aac).
+ - Apple Lossless (on iOS only).
  
  @param durationSeconds The duration of the current file in seconds. Read only.
  @param durationSamples The duration of the current file in samples. Read only.
@@ -37,7 +45,8 @@ class SuperpoweredDecoder {
 public:
 // READ ONLY properties
     double durationSeconds;
-    unsigned int durationSamples, samplePosition, samplerate, samplesPerFrame;
+    int64_t durationSamples, samplePosition;
+    unsigned int samplerate, samplesPerFrame;
     SuperpoweredDecoder_Kind kind;
     
 /**
@@ -68,7 +77,7 @@ public:
  @param sample The position (a sample index).
  @param precise Some codecs may not jump precisely due internal framing. Set precise to true if you want exact positioning (for a little performance penalty of 1 memmove).
 */
-    unsigned int seekTo(unsigned int sample, bool precise);
+    int64_t seekTo(int64_t sample, bool precise);
 /**
  @return Returns with the position where audio starts. This function changes position!
  
@@ -97,12 +106,7 @@ public:
  */
     void getMetaData(char **artist, char **title, void **image, int *imageSizeBytes, float *bpm, SuperpoweredDecoderID3Callback callback, void *clientData, int maxFrameDataSize);
     
-/**
- @brief Lightweight constructor, doesn't do or allocate much. 
- 
- @param mediaServerOnly Set it to true, if you don't want the internal codecs used (iOS only).
- */
-    SuperpoweredDecoder(bool mediaServerOnly);
+    SuperpoweredDecoder();
     ~SuperpoweredDecoder();
     
 private:
