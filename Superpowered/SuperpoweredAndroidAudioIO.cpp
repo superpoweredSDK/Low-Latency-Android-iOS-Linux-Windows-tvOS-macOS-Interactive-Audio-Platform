@@ -2,18 +2,33 @@
 #include <android/log.h>
 #include <SLES/OpenSLES.h>
 #include <SLES/OpenSLES_Android.h>
-#include <pthread.h>
+#include <atomic>
+#include <cassert>
 #include <unistd.h>
 
 typedef struct SuperpoweredAndroidAudioIOInternals {
-    pthread_mutex_t mutex;
-    void *clientdata;
-    audioProcessingCallback callback;
+#ifndef NDEBUG
+    // static_assert() would be better, but since atomic::is_lock_free() is not a constexpr,
+    // this is a good place to do the checks, close to the fields using this type
+    SuperpoweredAndroidAudioIOInternals() {
+        assert(std::atomic<bool>().is_lock_free());
+    }
+#endif
+
+    // Thread-safe by OpenSL ES docs
     SLObjectItf openSLEngine, outputMix, outputBufferQueue, inputBufferQueue;
     SLAndroidSimpleBufferQueueItf outputBufferQueueInterface, inputBufferQueueInterface;
-    short int *fifobuffer, *silence;
-    int samplerate, buffersize, fifoCapacity, fifoFirstSample, fifoLastSample, latencySamples, silenceSamples;
-    bool hasOutput, hasInput, foreground, started;
+    // The OpenSL ES callback may run on a different thread each time but is not reentrant (by docs),
+    // so the only need for these is ensuring cache consistency via fences (1)
+    int fifoFirstSample, fifoLastSample, silenceSamples;
+    // Atomicity is enough for these. (Btw, GCC version tested lacks std::atomic_init() for bools)
+    std::atomic<bool> foreground = ATOMIC_VAR_INIT(false), started = ATOMIC_VAR_INIT(false);
+    // Thread-safe (set at startup and only read on processing thread(s))
+    void *clientdata;
+    audioProcessingCallback callback;
+    short int *fifobuffer, *silence; // For fifoBuffer *contents* (1) holds as well
+    int samplerate, buffersize, fifoCapacity, latencySamples;
+    bool hasOutput, hasInput;
 } SuperpoweredAndroidAudioIOInternals;
 
 static void stopQueues(SuperpoweredAndroidAudioIOInternals *internals) {
@@ -57,19 +72,19 @@ static inline void checkRoom(SuperpoweredAndroidAudioIOInternals *internals) {
 
 static void SuperpoweredAndroidAudioIO_InputCallback(SLAndroidSimpleBufferQueueItf caller, void *pContext) { // Audio input comes here.
     SuperpoweredAndroidAudioIOInternals *internals = (SuperpoweredAndroidAudioIOInternals *)pContext;
-    pthread_mutex_lock(&internals->mutex);
+    std::atomic_thread_fence(std::memory_order_acquire);
     checkRoom(internals);
 
     short int *input = internals->fifobuffer + internals->fifoLastSample * 2;
     internals->fifoLastSample += internals->buffersize;
 
     if (internals->hasOutput) {
-        pthread_mutex_unlock(&internals->mutex);
+        std::atomic_thread_fence(std::memory_order_release);
         (*caller)->Enqueue(caller, input, internals->buffersize * 4);
     } else {
         short int *process = internals->fifobuffer + internals->fifoFirstSample * 2;
         internals->fifoFirstSample += internals->buffersize;
-        pthread_mutex_unlock(&internals->mutex);
+        std::atomic_thread_fence(std::memory_order_release);
 
         (*caller)->Enqueue(caller, input, internals->buffersize * 4);
         internals->callback(internals->clientdata, process, internals->buffersize, internals->samplerate);
@@ -78,7 +93,7 @@ static void SuperpoweredAndroidAudioIO_InputCallback(SLAndroidSimpleBufferQueueI
 
 static void SuperpoweredAndroidAudioIO_OutputCallback(SLAndroidSimpleBufferQueueItf caller, void *pContext) {
     SuperpoweredAndroidAudioIOInternals *internals = (SuperpoweredAndroidAudioIOInternals *)pContext;
-    pthread_mutex_lock(&internals->mutex);
+    std::atomic_thread_fence(std::memory_order_acquire);
 
     if (!internals->hasInput) {
         checkRoom(internals);
@@ -86,7 +101,7 @@ static void SuperpoweredAndroidAudioIO_OutputCallback(SLAndroidSimpleBufferQueue
         internals->fifoLastSample += internals->buffersize;
         short int *output = internals->fifobuffer + internals->fifoFirstSample * 2;
         internals->fifoFirstSample += internals->buffersize;
-        pthread_mutex_unlock(&internals->mutex);
+        std::atomic_thread_fence(std::memory_order_release);
 
         if (!internals->callback(internals->clientdata, process, internals->buffersize, internals->samplerate)) {
             memset(process, 0, internals->buffersize * 4);
@@ -97,7 +112,7 @@ static void SuperpoweredAndroidAudioIO_OutputCallback(SLAndroidSimpleBufferQueue
         if (internals->fifoLastSample - internals->fifoFirstSample >= internals->latencySamples) {
             short int *output = internals->fifobuffer + internals->fifoFirstSample * 2;
             internals->fifoFirstSample += internals->buffersize;
-            pthread_mutex_unlock(&internals->mutex);
+            std::atomic_thread_fence(std::memory_order_release);
 
             if (!internals->callback(internals->clientdata, output, internals->buffersize, internals->samplerate)) {
                 memset(output, 0, internals->buffersize * 4);
@@ -105,7 +120,7 @@ static void SuperpoweredAndroidAudioIO_OutputCallback(SLAndroidSimpleBufferQueue
             } else internals->silenceSamples = 0;
             (*caller)->Enqueue(caller, output, internals->buffersize * 4);
         } else {
-            pthread_mutex_unlock(&internals->mutex);
+            std::atomic_thread_fence(std::memory_order_release);
             (*caller)->Enqueue(caller, internals->silence, internals->buffersize * 4); // dropout, not enough audio input
         };
     };
@@ -121,7 +136,6 @@ SuperpoweredAndroidAudioIO::SuperpoweredAndroidAudioIO(int samplerate, int buffe
 
     internals = new SuperpoweredAndroidAudioIOInternals;
     memset(internals, 0, sizeof(SuperpoweredAndroidAudioIOInternals));
-    pthread_mutex_init(&internals->mutex, NULL);
     internals->samplerate = samplerate;
     internals->buffersize = buffersize;
     internals->clientdata = clientdata;
@@ -212,6 +226,6 @@ SuperpoweredAndroidAudioIO::~SuperpoweredAndroidAudioIO() {
 
     free(internals->fifobuffer);
     free(internals->silence);
-    pthread_mutex_destroy(&internals->mutex);
+    //pthread_mutex_destroy(&internals->mutex);
     delete internals;
 }
