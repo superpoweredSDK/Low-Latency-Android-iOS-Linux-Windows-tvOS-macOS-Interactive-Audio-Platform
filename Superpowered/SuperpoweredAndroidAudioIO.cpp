@@ -226,6 +226,5 @@ SuperpoweredAndroidAudioIO::~SuperpoweredAndroidAudioIO() {
 
     free(internals->fifobuffer);
     free(internals->silence);
-    //pthread_mutex_destroy(&internals->mutex);
     delete internals;
 }
