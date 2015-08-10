@@ -4,6 +4,7 @@
 #include <SLES/OpenSLES_Android.h>
 #include <atomic>
 #include <cassert>
+#include <mutex>
 #include <unistd.h>
 
 typedef struct SuperpoweredAndroidAudioIOInternals {
@@ -19,8 +20,11 @@ typedef struct SuperpoweredAndroidAudioIOInternals {
     SLObjectItf openSLEngine, outputMix, outputBufferQueue, inputBufferQueue;
     SLAndroidSimpleBufferQueueItf outputBufferQueueInterface, inputBufferQueueInterface;
     // The OpenSL ES callback may run on a different thread each time but is not reentrant (by docs),
-    // so the only need for these is ensuring cache consistency via fences (1)
+    // so the only need for these is ensuring cache consistency via fences (1)...
     int fifoFirstSample, fifoLastSample, silenceSamples;
+    // ...but if both input and output are enabled, both callbacks may be called concurrently
+    // so a mutex is needed on those cases to avoid race conditions
+    std::mutex mutex;
     // Atomicity is enough for these. (Btw, GCC version tested lacks std::atomic_init() for bools)
     std::atomic<bool> foreground = ATOMIC_VAR_INIT(false), started = ATOMIC_VAR_INIT(false);
     // Thread-safe (set at startup and only read on processing thread(s))
@@ -72,14 +76,18 @@ static inline void checkRoom(SuperpoweredAndroidAudioIOInternals *internals) {
 
 static void SuperpoweredAndroidAudioIO_InputCallback(SLAndroidSimpleBufferQueueItf caller, void *pContext) { // Audio input comes here.
     SuperpoweredAndroidAudioIOInternals *internals = (SuperpoweredAndroidAudioIOInternals *)pContext;
-    std::atomic_thread_fence(std::memory_order_acquire);
+    if (internals->hasOutput) {
+        mutex.lock();
+    } else {
+        std::atomic_thread_fence(std::memory_order_acquire);
+    }
     checkRoom(internals);
 
     short int *input = internals->fifobuffer + internals->fifoLastSample * 2;
     internals->fifoLastSample += internals->buffersize;
 
     if (internals->hasOutput) {
-        std::atomic_thread_fence(std::memory_order_release);
+        mutex.unlock();
         (*caller)->Enqueue(caller, input, internals->buffersize * 4);
     } else {
         short int *process = internals->fifobuffer + internals->fifoFirstSample * 2;
@@ -93,9 +101,9 @@ static void SuperpoweredAndroidAudioIO_InputCallback(SLAndroidSimpleBufferQueueI
 
 static void SuperpoweredAndroidAudioIO_OutputCallback(SLAndroidSimpleBufferQueueItf caller, void *pContext) {
     SuperpoweredAndroidAudioIOInternals *internals = (SuperpoweredAndroidAudioIOInternals *)pContext;
-    std::atomic_thread_fence(std::memory_order_acquire);
-
+    
     if (!internals->hasInput) {
+        std::atomic_thread_fence(std::memory_order_acquire);
         checkRoom(internals);
         short int *process = internals->fifobuffer + internals->fifoLastSample * 2;
         internals->fifoLastSample += internals->buffersize;
@@ -109,10 +117,11 @@ static void SuperpoweredAndroidAudioIO_OutputCallback(SLAndroidSimpleBufferQueue
         } else internals->silenceSamples = 0;
         (*caller)->Enqueue(caller, output, internals->buffersize * 4);
     } else {
+        mutex.lock();
         if (internals->fifoLastSample - internals->fifoFirstSample >= internals->latencySamples) {
             short int *output = internals->fifobuffer + internals->fifoFirstSample * 2;
             internals->fifoFirstSample += internals->buffersize;
-            std::atomic_thread_fence(std::memory_order_release);
+            mutex.unlock();
 
             if (!internals->callback(internals->clientdata, output, internals->buffersize, internals->samplerate)) {
                 memset(output, 0, internals->buffersize * 4);
@@ -120,7 +129,7 @@ static void SuperpoweredAndroidAudioIO_OutputCallback(SLAndroidSimpleBufferQueue
             } else internals->silenceSamples = 0;
             (*caller)->Enqueue(caller, output, internals->buffersize * 4);
         } else {
-            std::atomic_thread_fence(std::memory_order_release);
+            mutex.unlock();
             (*caller)->Enqueue(caller, internals->silence, internals->buffersize * 4); // dropout, not enough audio input
         };
     };
