@@ -77,7 +77,7 @@ static inline void checkRoom(SuperpoweredAndroidAudioIOInternals *internals) {
 static void SuperpoweredAndroidAudioIO_InputCallback(SLAndroidSimpleBufferQueueItf caller, void *pContext) { // Audio input comes here.
     SuperpoweredAndroidAudioIOInternals *internals = (SuperpoweredAndroidAudioIOInternals *)pContext;
     if (internals->hasOutput) {
-        mutex.lock();
+        internals->mutex.lock();
     } else {
         std::atomic_thread_fence(std::memory_order_acquire);
     }
@@ -87,7 +87,7 @@ static void SuperpoweredAndroidAudioIO_InputCallback(SLAndroidSimpleBufferQueueI
     internals->fifoLastSample += internals->buffersize;
 
     if (internals->hasOutput) {
-        mutex.unlock();
+        internals->mutex.unlock();
         (*caller)->Enqueue(caller, input, internals->buffersize * 4);
     } else {
         short int *process = internals->fifobuffer + internals->fifoFirstSample * 2;
@@ -117,11 +117,11 @@ static void SuperpoweredAndroidAudioIO_OutputCallback(SLAndroidSimpleBufferQueue
         } else internals->silenceSamples = 0;
         (*caller)->Enqueue(caller, output, internals->buffersize * 4);
     } else {
-        mutex.lock();
+        internals->mutex.lock();
         if (internals->fifoLastSample - internals->fifoFirstSample >= internals->latencySamples) {
             short int *output = internals->fifobuffer + internals->fifoFirstSample * 2;
             internals->fifoFirstSample += internals->buffersize;
-            mutex.unlock();
+            internals->mutex.unlock();
 
             if (!internals->callback(internals->clientdata, output, internals->buffersize, internals->samplerate)) {
                 memset(output, 0, internals->buffersize * 4);
@@ -129,7 +129,7 @@ static void SuperpoweredAndroidAudioIO_OutputCallback(SLAndroidSimpleBufferQueue
             } else internals->silenceSamples = 0;
             (*caller)->Enqueue(caller, output, internals->buffersize * 4);
         } else {
-            mutex.unlock();
+            internals->mutex.unlock();
             (*caller)->Enqueue(caller, internals->silence, internals->buffersize * 4); // dropout, not enough audio input
         };
     };
