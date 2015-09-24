@@ -43,7 +43,7 @@ SuperpoweredExample::SuperpoweredExample(const char *path, int *params) : active
     filter = new SuperpoweredFilter(SuperpoweredFilter_Resonant_Lowpass, samplerate);
     flanger = new SuperpoweredFlanger(samplerate);
 
-    audioSystem = new SuperpoweredAndroidAudioIO(samplerate, buffersize, false, true, audioProcessing, this, 0);
+    audioSystem = new SuperpoweredAndroidAudioIO(samplerate, buffersize, false, true, audioProcessing, this, buffersize * 2);
 }
 
 SuperpoweredExample::~SuperpoweredExample() {

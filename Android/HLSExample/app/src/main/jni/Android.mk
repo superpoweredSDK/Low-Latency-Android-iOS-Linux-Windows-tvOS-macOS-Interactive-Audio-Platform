@@ -4,12 +4,16 @@ SUPERPOWERED_PATH := ../../../../../../Superpowered
 include $(CLEAR_VARS)
 LOCAL_MODULE := Superpowered
 ifeq ($(TARGET_ARCH_ABI),armeabi-v7a)
-	LOCAL_SRC_FILES := $(SUPERPOWERED_PATH)/libSuperpoweredARM.a
+	LOCAL_SRC_FILES := $(SUPERPOWERED_PATH)/libSuperpoweredAndroidARM.a
 else
 	ifeq ($(TARGET_ARCH_ABI),arm64-v8a)
-		LOCAL_SRC_FILES := $(SUPERPOWERED_PATH)/libSuperpoweredARM64.a
+		LOCAL_SRC_FILES := $(SUPERPOWERED_PATH)/libSuperpoweredAndroidARM64.a
 	else
-		LOCAL_SRC_FILES := $(SUPERPOWERED_PATH)/libSuperpoweredX86.a
+		ifeq ($(TARGET_ARCH_ABI),x86_64)
+			LOCAL_SRC_FILES := $(SUPERPOWERED_PATH)/libSuperpoweredAndroidX86_64.a
+		else
+			LOCAL_SRC_FILES := $(SUPERPOWERED_PATH)/libSuperpoweredAndroidX86.a
+		endif
 	endif
 endif
 include $(PREBUILT_STATIC_LIBRARY)

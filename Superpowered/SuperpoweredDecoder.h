@@ -3,6 +3,8 @@
 
 #include <stdint.h>
 struct decoderInternals;
+struct stemsCompressor;
+struct stemsLimiter;
 
 #define SUPERPOWEREDDECODER_EOF 0
 #define SUPERPOWEREDDECODER_OK 1
@@ -56,10 +58,11 @@ public:
  @param metaOnly If true, it opens the file for fast metadata reading only, not for decoding audio. Available for fully available local files only (no network access).
  @param offset Byte offset in the file.
  @param length Byte length from offset. Set offset and length to 0 to read the entire file.
+ @param stemsIndex Stems track index for Native Instruments Stems format.
 
  @return NULL if successful, or an error string.
  */
-    const char *open(const char *path, bool metaOnly = false, int offset = 0, int length = 0);
+    const char *open(const char *path, bool metaOnly = false, int offset = 0, int length = 0, int stemsIndex = 0);
 /**
  @brief Decodes the requested number of samples.
  
@@ -105,7 +108,16 @@ public:
  @param maxFrameDataSize The maximum frame size in bytes to receive by the callback, if the decoder can not memory map the entire audio file. Affects memory usage.
  */
     void getMetaData(char **artist, char **title, void **image, int *imageSizeBytes, float *bpm, SuperpoweredDecoderID3Callback callback, void *clientData, int maxFrameDataSize);
-    
+/**
+ @return True if the file is Native Instruments Stems format.
+ 
+ @param names Returns with 4 pointers of 0 terminated stem name strings or NULL if the file is not Stems. You take ownership (must free() after used.).
+ @param colors Returns with 4 pointers of 0 terminated stem color strings or NULL if the file is not Stems. You take ownership (must free() after used.).
+ @param compressor Struct to receive compressor DSP settings. Can be NULL.
+ @param limiter Struct to receive limiter DSP settings. Can be NULL;
+*/
+    bool getStemsInfo(char *names[4] = 0, char *colors[4] = 0, stemsCompressor *compressor = 0, stemsLimiter *limiter = 0);
+
     SuperpoweredDecoder();
     ~SuperpoweredDecoder();
     

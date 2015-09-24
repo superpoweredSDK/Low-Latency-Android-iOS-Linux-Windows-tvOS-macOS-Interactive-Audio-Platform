@@ -4,6 +4,32 @@
 struct SuperpoweredAdvancedAudioPlayerInternals;
 struct SuperpoweredAdvancedAudioPlayerBase;
 
+typedef struct stemsCompressor {
+    bool enabled;
+    float inputGainDb;
+    float outputGainDb;
+    float dryWetPercent;
+    float ratio;
+    float attackSec;
+    float releaseSec;
+    float thresholdDb;
+    float hpCutoffHz;
+} stemsCompressor;
+
+typedef struct stemsLimiter {
+    bool enabled;
+    float releaseSec;
+    float thresholdDb;
+    float ceilingDb;
+} stemsLimiter;
+
+typedef struct stemsInfo {
+    char *names[4];
+    char *colors[4];
+    stemsCompressor compressor;
+    stemsLimiter limiter;
+} stemsInfo;
+
 typedef enum SuperpoweredAdvancedAudioPlayerSyncMode {
     SuperpoweredAdvancedAudioPlayerSyncMode_None,
     SuperpoweredAdvancedAudioPlayerSyncMode_Tempo,
@@ -42,7 +68,7 @@ typedef struct hlsStreamAlternative {
  
  @param clientData Some custom pointer you set when you created a SuperpoweredAdvancedAudioPlayer instance.
  @param event What happened (load success, load error, end of file, jog parameter).
- @param value NULL for LoadSuccess. (const char *) for LoadError, pointing to the error message. (double *) for JogParameter in the range of 0.0 to 1.0. (bool *) for EOF, set it to true to pause playback. Don't call this instance's methods from an EOF event callback!
+ @param value A pointer to a stemsInfo structure or NULL for LoadSuccess (you take ownership over the strings). (const char *) for LoadError, pointing to the error message. (double *) for JogParameter in the range of 0.0 to 1.0. (bool *) for EOF, set it to true to pause playback. Don't call this instance's methods from an EOF event callback!
  */
 typedef void (* SuperpoweredAdvancedAudioPlayerCallback) (void *clientData, SuperpoweredAdvancedAudioPlayerEvent event, void *value);
 
@@ -126,7 +152,7 @@ public:
     unsigned int durationSeconds;
     bool waitingForBuffering;
     bool playing;
-    
+
     double tempo;
     bool masterTempo;
     int pitchShift;
@@ -180,7 +206,6 @@ public:
 */
     SuperpoweredAdvancedAudioPlayer(void *clientData, SuperpoweredAdvancedAudioPlayerCallback callback, unsigned int samplerate, unsigned int cachedPointCount);
     ~SuperpoweredAdvancedAudioPlayer();
-
 /**
  @brief Opens a new audio file, with playback paused. 
  
@@ -188,8 +213,9 @@ public:
  
  @param path The full file system path of the audio file.
  @param customHTTPHeaders NULL terminated list of custom headers for http communication.
+ @param stemsIndex The stems track index for Native Instruments Stems format (0 for sum track, 1/2/3/4 for stem tracks).
 */
-    void open(const char *path, char **customHTTPHeaders = 0);
+    void open(const char *path, char **customHTTPHeaders = 0, int stemsIndex = 0);
     
 /**
  @brief Opens a file, with playback paused.
@@ -200,8 +226,9 @@ public:
  @param offset The byte offset inside the file.
  @param length The byte length from the offset.
  @param customHTTPHeaders NULL terminated list of custom headers for http communication.
+ @param stemsIndex The stems track index for Native Instruments Stems format.
 */
-    void open(const char *path, int offset, int length, char **customHTTPHeaders = 0);
+    void open(const char *path, int offset, int length, char **customHTTPHeaders = 0, int stemsIndex = 0);
 
 /**
  @brief Starts playback.

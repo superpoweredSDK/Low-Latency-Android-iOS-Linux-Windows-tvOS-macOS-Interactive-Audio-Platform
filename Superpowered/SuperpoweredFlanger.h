@@ -14,7 +14,8 @@ struct flangerInternals;
  @param depth 0.0f to 1.0f (0.0 is 0.3 ms, 1.0 is 8 ms). Read only.
  @param lfoBeats The length in beats between the "lowest" and the "highest" jet sound, >= 0.25f and <= 64.0f. Read only.
  @param bpm Set this right for a nice sounding lfo. Limited to >= 60.0f and <= 240.0f. Read-write.
- @param limitLevel The flanger has a hard-knee limiter inside to prevent overdrive. The default value of 1.0f means hard knee limiting to 0.0 db. Threshold is fixed at -3.0 db below the limit level. Valid range is 0.1f to 1.0f.
+ @param clipperThresholdDb The flanger has a SuperpoweredClipper inside to prevent overdrive. This is it's thresholdDb parameter.
+ @param clipperMaximumDb The flanger has a SuperpoweredClipper inside to prevent overdrive. This is it's maximumDb parameter.
  @param stereo Stereo/mono switch. Read-write.
  */
 class SuperpoweredFlanger: public SuperpoweredFX {
@@ -27,7 +28,8 @@ public:
     
 // READ-WRITE parameters, thread safe (change from any thread)
     float bpm;
-    float limitLevel;
+    float clipperThresholdDb;
+    float clipperMaximumDb;
     bool stereo;
     
 /**
@@ -81,7 +83,7 @@ public:
  
  @param input 32-bit interleaved stereo input buffer. Can point to the same location with output (in-place processing).
  @param output 32-bit interleaved stereo output buffer. Can point to the same location with input (in-place processing).
- @param numberOfSamples Should be 16 minimum.
+ @param numberOfSamples Should be 16 minimum and exactly divisible with 4.
 */
     bool process(float *input, float *output, unsigned int numberOfSamples);
     

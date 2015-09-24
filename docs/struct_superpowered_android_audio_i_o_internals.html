@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.8.5</span>
+   &#160;<span id="projectnumber">0.9</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -55,9 +55,12 @@
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a5dbacbc20eac709135c93eeaca1c57e5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5dbacbc20eac709135c93eeaca1c57e5"></a>
-pthread_mutex_t&#160;</td><td class="memItemRight" valign="bottom"><b>mutex</b></td></tr>
-<tr class="separator:a5dbacbc20eac709135c93eeaca1c57e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5dac29c9e89a3fe489fb4893bb405dd0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5dac29c9e89a3fe489fb4893bb405dd0"></a>
+pthread_mutex_t&#160;</td><td class="memItemRight" valign="bottom"><b>audioProcessingThreadMutex</b></td></tr>
+<tr class="separator:a5dac29c9e89a3fe489fb4893bb405dd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52ccea6a9bb32984f8c0d56fd7f88160"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a52ccea6a9bb32984f8c0d56fd7f88160"></a>
+pthread_cond_t&#160;</td><td class="memItemRight" valign="bottom"><b>audioProcessingThreadCondition</b></td></tr>
+<tr class="separator:a52ccea6a9bb32984f8c0d56fd7f88160"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2afba4f678e8bfb4dfe7633a4183dc3d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2afba4f678e8bfb4dfe7633a4183dc3d"></a>
 void *&#160;</td><td class="memItemRight" valign="bottom"><b>clientdata</b></td></tr>
 <tr class="separator:a2afba4f678e8bfb4dfe7633a4183dc3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -94,21 +97,24 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>samplerate</b></td></t
 <tr class="memitem:ab8e27f94e6637ce4b0f05d175b5a4a43"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab8e27f94e6637ce4b0f05d175b5a4a43"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>buffersize</b></td></tr>
 <tr class="separator:ab8e27f94e6637ce4b0f05d175b5a4a43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb0de76d9e0f9ec49fbbc483b541a675"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adb0de76d9e0f9ec49fbbc483b541a675"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>fifoCapacity</b></td></tr>
-<tr class="separator:adb0de76d9e0f9ec49fbbc483b541a675"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b6003cf418d3220264963918d4003fa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5b6003cf418d3220264963918d4003fa"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>fifoFirstSample</b></td></tr>
-<tr class="separator:a5b6003cf418d3220264963918d4003fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae952390daf6bc850d4b501d8ae60193e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae952390daf6bc850d4b501d8ae60193e"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>fifoLastSample</b></td></tr>
-<tr class="separator:ae952390daf6bc850d4b501d8ae60193e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0249814e0c880002effa4e5f25e54d3b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0249814e0c880002effa4e5f25e54d3b"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>latencySamples</b></td></tr>
-<tr class="separator:a0249814e0c880002effa4e5f25e54d3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acebb72435d95515e3fb87b9530a8f8b8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acebb72435d95515e3fb87b9530a8f8b8"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>silenceSamples</b></td></tr>
 <tr class="separator:acebb72435d95515e3fb87b9530a8f8b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0249814e0c880002effa4e5f25e54d3b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0249814e0c880002effa4e5f25e54d3b"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>latencySamples</b></td></tr>
+<tr class="separator:a0249814e0c880002effa4e5f25e54d3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff5cc284f80bb9689120b54291d6a2dc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aff5cc284f80bb9689120b54291d6a2dc"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>numBuffers</b></td></tr>
+<tr class="separator:aff5cc284f80bb9689120b54291d6a2dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab538f4e22db640f71036c1ed1ace1709"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab538f4e22db640f71036c1ed1ace1709"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>bufferStep</b></td></tr>
+<tr class="separator:ab538f4e22db640f71036c1ed1ace1709"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8213672fdd372bf1dd04b34823f818a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad8213672fdd372bf1dd04b34823f818a"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>readBufferIndex</b></td></tr>
+<tr class="separator:ad8213672fdd372bf1dd04b34823f818a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a726b721d2e5c6ccc067bc4e22a57e9ef"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a726b721d2e5c6ccc067bc4e22a57e9ef"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>writeBufferIndex</b></td></tr>
+<tr class="separator:a726b721d2e5c6ccc067bc4e22a57e9ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4caecfd272facfdde3f8b2fd29684a1f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4caecfd272facfdde3f8b2fd29684a1f"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>hasOutput</b></td></tr>
 <tr class="separator:a4caecfd272facfdde3f8b2fd29684a1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -121,6 +127,12 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>foreground</b></td></
 <tr class="memitem:ac6f1cdb37c589223ed832fb7626df3e3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac6f1cdb37c589223ed832fb7626df3e3"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>started</b></td></tr>
 <tr class="separator:ac6f1cdb37c589223ed832fb7626df3e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea66a819648b52ea444525ab8092d1d6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aea66a819648b52ea444525ab8092d1d6"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>separateAudioProcessingThread</b></td></tr>
+<tr class="separator:aea66a819648b52ea444525ab8092d1d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f5884c9d8181463cf5c8f567520221e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0f5884c9d8181463cf5c8f567520221e"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>stopAudioProcessingThread</b></td></tr>
+<tr class="separator:a0f5884c9d8181463cf5c8f567520221e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->

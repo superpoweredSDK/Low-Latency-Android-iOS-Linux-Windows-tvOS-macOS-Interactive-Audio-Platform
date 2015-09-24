@@ -4,6 +4,7 @@
 #include "SuperpoweredRecorder.h"
 #include "SuperpoweredTimeStretching.h"
 #include "SuperpoweredAudioBuffers.h"
+#include "SuperpoweredFilter.h"
 
 @implementation ViewController {
     float progress;
@@ -41,7 +42,7 @@
     if (item) url = [item valueForProperty:@"assetURL"];
     if (url) {
         [displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
-        [self performSelectorInBackground:@selector(processingThread:) withObject:url];
+        [self performSelectorInBackground:@selector(offlineFilter:) withObject:url];
     } else [self displayMediaPicker];
 }
 
@@ -53,7 +54,72 @@
     progressView.progress = progress;
 }
 
-- (void)processingThread:(NSURL *)url {
+// EXAMPLE 1: reading an audio file, applying a simple effect (filter) and saving the result to WAV
+- (void)offlineFilter:(NSURL *)url {
+    // Open the input file.
+    SuperpoweredDecoder *decoder = new SuperpoweredDecoder();
+    const char *openError = decoder->open([[url absoluteString] UTF8String], false, 0, 0);
+    if (openError) {
+        NSLog(@"open error: %s", openError);
+        delete decoder;
+        return;
+    };
+
+    // Create the output WAVE file. The destination is accessible in iTunes File Sharing.
+    NSString *destinationPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"SuperpoweredOfflineTest.wav"];
+    FILE *fd = createWAV([destinationPath fileSystemRepresentation], decoder->samplerate, 2);
+    if (!fd) {
+        NSLog(@"File creation error.");
+        delete decoder;
+        return;
+    };
+
+    // Creating the filter.
+    SuperpoweredFilter *filter = new SuperpoweredFilter(SuperpoweredFilter_Resonant_Lowpass, decoder->samplerate);
+    filter->setResonantParameters(1000.0f, 0.1f);
+    filter->enable(true);
+
+    // Create a buffer for the 16-bit integer samples coming from the decoder.
+    short int *intBuffer = (short int *)malloc(decoder->samplesPerFrame * 2 * sizeof(short int) + 16384);
+    // Create a buffer for the 32-bit floating point samples required by the effect.
+    float *floatBuffer = (float *)malloc(decoder->samplesPerFrame * 2 * sizeof(float) + 1024);
+
+    // Processing.
+    while (true) {
+        // Decode one frame. samplesDecoded will be overwritten with the actual decoded number of samples.
+        unsigned int samplesDecoded = decoder->samplesPerFrame;
+        if (decoder->decode(intBuffer, &samplesDecoded) == SUPERPOWEREDDECODER_ERROR) break;
+        if (samplesDecoded < 1) break;
+
+        // Convert the decoded PCM samples from 16-bit integer to 32-bit floating point.
+        SuperpoweredShortIntToFloat(intBuffer, floatBuffer, samplesDecoded);
+
+        // Apply the effect.
+        filter->process(floatBuffer, floatBuffer, samplesDecoded);
+
+        // Convert the PCM samples from 32-bit floating point to 16-bit integer.
+        SuperpoweredFloatToShortInt(floatBuffer, intBuffer, samplesDecoded);
+
+        // Write the audio to disk.
+        fwrite(intBuffer, 1, samplesDecoded * 4, fd);
+
+        // Update the progress indicator.
+        progress = (double)decoder->samplePosition / (double)decoder->durationSamples;
+    };
+
+    // iTunes File Sharing: https://support.apple.com/en-gb/HT201301
+    NSLog(@"The file is available in iTunes File Sharing, and locally at %@.", destinationPath);
+
+    // Cleanup.
+    closeWAV(fd);
+    delete decoder;
+    delete filter;
+    free(intBuffer);
+    free(floatBuffer);
+}
+
+// EXAMPLE 2: reading an audio file, applying time stretching and saving the result to WAV
+- (void)offlineTimeStretching:(NSURL *)url {
     // Open the input file.
     SuperpoweredDecoder *decoder = new SuperpoweredDecoder();
     const char *openError = decoder->open([[url absoluteString] UTF8String], false, 0, 0);

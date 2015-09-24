@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.8.5</span>
+   &#160;<span id="projectnumber">0.9</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -63,12 +63,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad2126e2711b2773865dbad09e216355a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#ad2126e2711b2773865dbad09e216355a">SuperpoweredAdvancedAudioPlayer</a> (void *clientData, SuperpoweredAdvancedAudioPlayerCallback callback, unsigned int samplerate, unsigned int cachedPointCount)</td></tr>
 <tr class="memdesc:ad2126e2711b2773865dbad09e216355a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a player instance with the current sample rate value.  <a href="#ad2126e2711b2773865dbad09e216355a">More...</a><br /></td></tr>
 <tr class="separator:ad2126e2711b2773865dbad09e216355a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa89c18c1abe220991b73d64aef3e2bc6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#aa89c18c1abe220991b73d64aef3e2bc6">open</a> (const char *path, char **customHTTPHeaders=0)</td></tr>
-<tr class="memdesc:aa89c18c1abe220991b73d64aef3e2bc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a new audio file, with playback paused.  <a href="#aa89c18c1abe220991b73d64aef3e2bc6">More...</a><br /></td></tr>
-<tr class="separator:aa89c18c1abe220991b73d64aef3e2bc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a13aea6cc01341c1333754d617e0aa20c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a13aea6cc01341c1333754d617e0aa20c">open</a> (const char *path, int offset, int length, char **customHTTPHeaders=0)</td></tr>
-<tr class="memdesc:a13aea6cc01341c1333754d617e0aa20c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a file, with playback paused.  <a href="#a13aea6cc01341c1333754d617e0aa20c">More...</a><br /></td></tr>
-<tr class="separator:a13aea6cc01341c1333754d617e0aa20c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a314b7b0fb30de9ea973c4bd966b52b6a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a314b7b0fb30de9ea973c4bd966b52b6a">open</a> (const char *path, char **customHTTPHeaders=0, int stemsIndex=0)</td></tr>
+<tr class="memdesc:a314b7b0fb30de9ea973c4bd966b52b6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a new audio file, with playback paused.  <a href="#a314b7b0fb30de9ea973c4bd966b52b6a">More...</a><br /></td></tr>
+<tr class="separator:a314b7b0fb30de9ea973c4bd966b52b6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e43b803a949d80bdc420bc761e80a09"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a7e43b803a949d80bdc420bc761e80a09">open</a> (const char *path, int offset, int length, char **customHTTPHeaders=0, int stemsIndex=0)</td></tr>
+<tr class="memdesc:a7e43b803a949d80bdc420bc761e80a09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a file, with playback paused.  <a href="#a7e43b803a949d80bdc420bc761e80a09">More...</a><br /></td></tr>
+<tr class="separator:a7e43b803a949d80bdc420bc761e80a09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af42b558cfd477552c4e7e65fd72d6dcc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#af42b558cfd477552c4e7e65fd72d6dcc">play</a> (bool synchronised)</td></tr>
 <tr class="memdesc:af42b558cfd477552c4e7e65fd72d6dcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts playback.  <a href="#af42b558cfd477552c4e7e65fd72d6dcc">More...</a><br /></td></tr>
 <tr class="separator:af42b558cfd477552c4e7e65fd72d6dcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -396,7 +396,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>downloadSecondsAhead</
 
 </div>
 </div>
-<a class="anchor" id="aa89c18c1abe220991b73d64aef3e2bc6"></a>
+<a class="anchor" id="a314b7b0fb30de9ea973c4bd966b52b6a"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -410,7 +410,13 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>downloadSecondsAhead</
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">char **&#160;</td>
-          <td class="paramname"><em>customHTTPHeaders</em> = <code>0</code>&#160;</td>
+          <td class="paramname"><em>customHTTPHeaders</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>stemsIndex</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -424,13 +430,14 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>downloadSecondsAhead</
   <table class="params">
     <tr><td class="paramname">path</td><td>The full file system path of the audio file. </td></tr>
     <tr><td class="paramname">customHTTPHeaders</td><td>NULL terminated list of custom headers for http communication. </td></tr>
+    <tr><td class="paramname">stemsIndex</td><td>The stems track index for Native Instruments Stems format (0 for sum track, 1/2/3/4 for stem tracks). </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a class="anchor" id="a13aea6cc01341c1333754d617e0aa20c"></a>
+<a class="anchor" id="a7e43b803a949d80bdc420bc761e80a09"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -456,7 +463,13 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>downloadSecondsAhead</
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">char **&#160;</td>
-          <td class="paramname"><em>customHTTPHeaders</em> = <code>0</code>&#160;</td>
+          <td class="paramname"><em>customHTTPHeaders</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>stemsIndex</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -472,6 +485,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>downloadSecondsAhead</
     <tr><td class="paramname">offset</td><td>The byte offset inside the file. </td></tr>
     <tr><td class="paramname">length</td><td>The byte length from the offset. </td></tr>
     <tr><td class="paramname">customHTTPHeaders</td><td>NULL terminated list of custom headers for http communication. </td></tr>
+    <tr><td class="paramname">stemsIndex</td><td>The stems track index for Native Instruments Stems format. </td></tr>
   </table>
   </dd>
 </dl>
@@ -750,7 +764,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>downloadSecondsAhead</
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Should be called after a successful <a class="el" href="class_superpowered_advanced_audio_player.html#aa89c18c1abe220991b73d64aef3e2bc6" title="Opens a new audio file, with playback paused. ">open()</a>.</p>
+<p>Should be called after a successful <a class="el" href="class_superpowered_advanced_audio_player.html#a314b7b0fb30de9ea973c4bd966b52b6a" title="Opens a new audio file, with playback paused. ">open()</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">newBpm</td><td>The bpm value. A number below 10.0f means "bpm unknown", and sync will not work. </td></tr>
@@ -773,7 +787,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>downloadSecondsAhead</
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Should be called after a successful <a class="el" href="class_superpowered_advanced_audio_player.html#aa89c18c1abe220991b73d64aef3e2bc6" title="Opens a new audio file, with playback paused. ">open()</a>. </p>
+<p>Should be called after a successful <a class="el" href="class_superpowered_advanced_audio_player.html#a314b7b0fb30de9ea973c4bd966b52b6a" title="Opens a new audio file, with playback paused. ">open()</a>. </p>
 
 </div>
 </div>

@@ -9,7 +9,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         // Setup 8 layers for frequency bars.
-        var color:CGColorRef = UIColor(red: 0, green: 0.6, blue: 0.8, alpha: 1).CGColor
+        let color:CGColorRef = UIColor(red: 0, green: 0.6, blue: 0.8, alpha: 1).CGColor
         layers = [CALayer(), CALayer(), CALayer(), CALayer(), CALayer(), CALayer(), CALayer(), CALayer()]
         for n in 0...7 {
             layers[n].backgroundColor = color
@@ -27,7 +27,7 @@ class ViewController: UIViewController {
 
     func onDisplayLink() {
         // Get the frequency values.
-        var frequencies = UnsafeMutablePointer<Float>.alloc(8)
+        let frequencies = UnsafeMutablePointer<Float>.alloc(8)
         superpowered.getFrequencies(frequencies)
 
         // Wrapping the UI changes in a CATransaction block like this prevents animation/smoothing.
@@ -36,8 +36,8 @@ class ViewController: UIViewController {
         CATransaction.setDisableActions(true)
 
         // Set the dimension of every frequency bar.
-        var originY:CGFloat = self.view.frame.size.height - 20
-        var width:CGFloat = (self.view.frame.size.width - 47) / 8
+        let originY:CGFloat = self.view.frame.size.height - 20
+        let width:CGFloat = (self.view.frame.size.width - 47) / 8
         var frame:CGRect = CGRectMake(20, 0, width, 0)
         for n in 0...7 {
             frame.size.height = CGFloat(frequencies[n]) * 4000

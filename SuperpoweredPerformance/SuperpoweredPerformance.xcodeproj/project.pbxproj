@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1B0377DC1A7ABDDE0094A776 /* libSuperpoweredAudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B0377DB1A7ABDDE0094A776 /* libSuperpoweredAudio.a */; };
+		1B0377DC1A7ABDDE0094A776 /* libSuperpoweredAudioIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B0377DB1A7ABDDE0094A776 /* libSuperpoweredAudioIOS.a */; };
 		1B0377DF1A7ABDEA0094A776 /* SuperpoweredIOSAudioOutput.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1B0377DE1A7ABDEA0094A776 /* SuperpoweredIOSAudioOutput.mm */; };
 		1B0377E41A7ABDFB0094A776 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0377E11A7ABDFB0094A776 /* AppDelegate.m */; };
 		1B0377E51A7ABDFB0094A776 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0377E31A7ABDFB0094A776 /* ViewController.m */; };
@@ -29,7 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1B0377DB1A7ABDDE0094A776 /* libSuperpoweredAudio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSuperpoweredAudio.a; path = ../Superpowered/libSuperpoweredAudio.a; sourceTree = "<group>"; };
+		1B0377DB1A7ABDDE0094A776 /* libSuperpoweredAudioIOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSuperpoweredAudioIOS.a; path = ../Superpowered/libSuperpoweredAudioIOS.a; sourceTree = "<group>"; };
 		1B0377DD1A7ABDEA0094A776 /* SuperpoweredIOSAudioOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperpoweredIOSAudioOutput.h; path = ../Superpowered/SuperpoweredIOSAudioOutput.h; sourceTree = "<group>"; };
 		1B0377DE1A7ABDEA0094A776 /* SuperpoweredIOSAudioOutput.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SuperpoweredIOSAudioOutput.mm; path = ../Superpowered/SuperpoweredIOSAudioOutput.mm; sourceTree = "<group>"; };
 		1B0377E01A7ABDFB0094A776 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = SOURCE_ROOT; };
@@ -78,7 +78,7 @@
 				1B85C56F189E70E5006D6C3C /* AudioToolbox.framework in Frameworks */,
 				1B85C571189EA027006D6C3C /* AVFoundation.framework in Frameworks */,
 				1B85C53A189E6F20006D6C3C /* CoreGraphics.framework in Frameworks */,
-				1B0377DC1A7ABDDE0094A776 /* libSuperpoweredAudio.a in Frameworks */,
+				1B0377DC1A7ABDDE0094A776 /* libSuperpoweredAudioIOS.a in Frameworks */,
 				1B85C538189E6F20006D6C3C /* Foundation.framework in Frameworks */,
 				1B790D0418B5F5020041A145 /* MediaPlayer.framework in Frameworks */,
 				1B7D52FF18AB762800931EE7 /* QuartzCore.framework in Frameworks */,
@@ -92,7 +92,7 @@
 		1B2FF5E71A7AC32200E3F0CB /* Superpowered */ = {
 			isa = PBXGroup;
 			children = (
-				1B0377DB1A7ABDDE0094A776 /* libSuperpoweredAudio.a */,
+				1B0377DB1A7ABDDE0094A776 /* libSuperpoweredAudioIOS.a */,
 				1B56C2261A7AC27F00A649D2 /* SuperpoweredFlanger.h */,
 				1B56C2271A7AC27F00A649D2 /* SuperpoweredEcho.h */,
 				1B56C2281A7AC27F00A649D2 /* SuperpoweredReverb.h */,
@@ -191,7 +191,7 @@
 		1B85C52C189E6F20006D6C3C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = imect;
 				TargetAttributes = {
 					1B85C533189E6F20006D6C3C = {
@@ -280,6 +280,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -355,6 +356,7 @@
 				);
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.imect.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = SuperpoweredPerformance;
 				VALID_ARCHS = "armv7 i386 x86_64 arm64";
 				WRAPPER_EXTENSION = app;
@@ -383,6 +385,7 @@
 				);
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.imect.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = SuperpoweredPerformance;
 				VALID_ARCHS = "armv7 i386 x86_64 arm64";
 				WRAPPER_EXTENSION = app;

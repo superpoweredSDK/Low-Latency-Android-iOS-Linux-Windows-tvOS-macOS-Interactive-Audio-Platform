@@ -17,7 +17,7 @@
 		1B1689061A7BB17A00CB7477 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B1689051A7BB17A00CB7477 /* AudioToolbox.framework */; };
 		1B1689081A7BB18200CB7477 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B1689071A7BB18200CB7477 /* AVFoundation.framework */; };
 		1B16890A1A7BB18D00CB7477 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B1689091A7BB18D00CB7477 /* MediaPlayer.framework */; };
-		1B16890E1A7BB39300CB7477 /* libSuperpoweredAudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B16890D1A7BB39300CB7477 /* libSuperpoweredAudio.a */; };
+		1B16890E1A7BB39300CB7477 /* libSuperpoweredAudioIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B16890D1A7BB39300CB7477 /* libSuperpoweredAudioIOS.a */; };
 		1B98E0001B14BD9600617EF9 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B98DFFF1B14BD9600617EF9 /* CoreMedia.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,7 +37,7 @@
 		1B1689071A7BB18200CB7477 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		1B1689091A7BB18D00CB7477 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		1B16890B1A7BB24900CB7477 /* SuperpoweredBandpassFilterbank.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredBandpassFilterbank.h; path = ../../Superpowered/SuperpoweredBandpassFilterbank.h; sourceTree = "<group>"; };
-		1B16890D1A7BB39300CB7477 /* libSuperpoweredAudio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSuperpoweredAudio.a; path = ../../Superpowered/libSuperpoweredAudio.a; sourceTree = "<group>"; };
+		1B16890D1A7BB39300CB7477 /* libSuperpoweredAudioIOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSuperpoweredAudioIOS.a; path = ../../Superpowered/libSuperpoweredAudioIOS.a; sourceTree = "<group>"; };
 		1B468B8C1AE693BF0099A7DD /* SuperpoweredSimple.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredSimple.h; path = ../../Superpowered/SuperpoweredSimple.h; sourceTree = "<group>"; };
 		1B98DFFF1B14BD9600617EF9 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -51,7 +51,7 @@
 				1B16890A1A7BB18D00CB7477 /* MediaPlayer.framework in Frameworks */,
 				1B1689081A7BB18200CB7477 /* AVFoundation.framework in Frameworks */,
 				1B1689061A7BB17A00CB7477 /* AudioToolbox.framework in Frameworks */,
-				1B16890E1A7BB39300CB7477 /* libSuperpoweredAudio.a in Frameworks */,
+				1B16890E1A7BB39300CB7477 /* libSuperpoweredAudioIOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,7 +105,7 @@
 		1B16890F1A7BC0F000CB7477 /* Superpowered */ = {
 			isa = PBXGroup;
 			children = (
-				1B16890D1A7BB39300CB7477 /* libSuperpoweredAudio.a */,
+				1B16890D1A7BB39300CB7477 /* libSuperpoweredAudioIOS.a */,
 				1B16890B1A7BB24900CB7477 /* SuperpoweredBandpassFilterbank.h */,
 				1B468B8C1AE693BF0099A7DD /* SuperpoweredSimple.h */,
 				1B1689001A7BB02B00CB7477 /* SuperpoweredIOSAudioOutput.h */,
@@ -140,7 +140,9 @@
 		1B1688D21A7BAFF800CB7477 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = imect;
 				TargetAttributes = {
 					1B1688D91A7BAFF800CB7477 = {
@@ -238,6 +240,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -303,6 +306,7 @@
 				INFOPLIST_FILE = SuperpoweredFrequencies/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../Superpowered";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.imect.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SuperpoweredFrequencies/SuperpoweredFrequencies-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -317,6 +321,7 @@
 				INFOPLIST_FILE = SuperpoweredFrequencies/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../Superpowered";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.imect.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SuperpoweredFrequencies/SuperpoweredFrequencies-Bridging-Header.h";
 			};

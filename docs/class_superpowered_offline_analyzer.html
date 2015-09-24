@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.8.5</span>
+   &#160;<span id="projectnumber">0.9</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -63,9 +63,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3536e107857d03c400b4d7cac52b39c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_offline_analyzer.html#a3536e107857d03c400b4d7cac52b39c6">process</a> (float *input, unsigned int numberOfSamples)</td></tr>
 <tr class="memdesc:a3536e107857d03c400b4d7cac52b39c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes a chunk of audio.  <a href="#a3536e107857d03c400b4d7cac52b39c6">More...</a><br /></td></tr>
 <tr class="separator:a3536e107857d03c400b4d7cac52b39c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e2c13304b3365f67aba950be34a993c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_offline_analyzer.html#a1e2c13304b3365f67aba950be34a993c">getresults</a> (unsigned char **averageWaveform, unsigned char **peakWaveform, unsigned char **lowWaveform, unsigned char **midWaveform, unsigned char **highWaveform, int *waveformSize, char **overviewWaveform, float *averageDecibel, float *loudpartsAverageDecibel, float *peakDecibel, float *bpm, float *beatgridStartMs, int *keyIndex)</td></tr>
-<tr class="memdesc:a1e2c13304b3365f67aba950be34a993c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get results. Call this method ONCE, after all samples are processed.  <a href="#a1e2c13304b3365f67aba950be34a993c">More...</a><br /></td></tr>
-<tr class="separator:a1e2c13304b3365f67aba950be34a993c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adccd431df4dbc8180311e37d18ede9c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_offline_analyzer.html#adccd431df4dbc8180311e37d18ede9c2">getresults</a> (unsigned char **averageWaveform, unsigned char **peakWaveform, unsigned char **lowWaveform, unsigned char **midWaveform, unsigned char **highWaveform, unsigned char **notes, int *waveformSize, char **overviewWaveform, float *averageDecibel, float *loudpartsAverageDecibel, float *peakDecibel, float *bpm, float *beatgridStartMs, int *keyIndex)</td></tr>
+<tr class="memdesc:adccd431df4dbc8180311e37d18ede9c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get results. Call this method ONCE, after all samples are processed.  <a href="#adccd431df4dbc8180311e37d18ede9c2">More...</a><br /></td></tr>
+<tr class="separator:adccd431df4dbc8180311e37d18ede9c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a7883e53eb95d5cee5cd4720b85f63d70"></a>
@@ -142,7 +142,7 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a1e2c13304b3365f67aba950be34a993c"></a>
+<a class="anchor" id="adccd431df4dbc8180311e37d18ede9c2"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -175,6 +175,12 @@ Public Member Functions</h2></td></tr>
           <td></td>
           <td class="paramtype">unsigned char **&#160;</td>
           <td class="paramname"><em>highWaveform</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char **&#160;</td>
+          <td class="paramname"><em>notes</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -238,6 +244,7 @@ Public Member Functions</h2></td></tr>
     <tr><td class="paramname">lowWaveform</td><td>150 points/sec waveform data displaying the low frequencies. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free()). </td></tr>
     <tr><td class="paramname">midWaveform</td><td>150 points/sec waveform data displaying the mid frequencies. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free()). </td></tr>
     <tr><td class="paramname">highWaveform</td><td>150 points/sec waveform data displaying the high frequencies. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free()). </td></tr>
+    <tr><td class="paramname">notes</td><td>150 points/sec data displaying the bass and mid keys. Upper 4 bits are the bass notes 0 to 11, lower 4 bits are the mid notes 0 to 11 (C, C#, D, D#, E, F, F#, G, G#, A, A#, B). The note value is 12 means "unknown note due low volume". You take ownership on this (must free()). </td></tr>
     <tr><td class="paramname">waveformSize</td><td>The number of points in averageWaveform, peakWaveform or lowMidHighWaveform. </td></tr>
     <tr><td class="paramname">overviewWaveform</td><td>1 point/sec waveform data displaying the average volume in decibels. Useful for displaying the overall structure of a track. Each sample is a signed char, from -128 to 0 decibel. You take ownership on this (must free()). </td></tr>
     <tr><td class="paramname">averageDecibel</td><td>The average loudness of all samples processed in decibel. </td></tr>

@@ -13,7 +13,7 @@
 		1B468B641AE663D20099A7DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B468B621AE663D20099A7DD /* Main.storyboard */; };
 		1B468B661AE663D20099A7DD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B468B651AE663D20099A7DD /* Images.xcassets */; };
 		1B468B691AE663D20099A7DD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B468B671AE663D20099A7DD /* LaunchScreen.xib */; };
-		1B468B811AE664250099A7DD /* libSuperpoweredAudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B468B7E1AE664250099A7DD /* libSuperpoweredAudio.a */; };
+		1B468B811AE664250099A7DD /* libSuperpoweredAudioIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B468B7E1AE664250099A7DD /* libSuperpoweredAudioIOS.a */; };
 		1B468B821AE664250099A7DD /* SuperpoweredIOSAudioOutput.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1B468B801AE664250099A7DD /* SuperpoweredIOSAudioOutput.mm */; };
 		1B468B841AE6643E0099A7DD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B468B831AE6643E0099A7DD /* AudioToolbox.framework */; };
 		1B468B871AE664CF0099A7DD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B468B861AE664CF0099A7DD /* AVFoundation.framework */; };
@@ -32,7 +32,7 @@
 		1B468B631AE663D20099A7DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1B468B651AE663D20099A7DD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1B468B681AE663D20099A7DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		1B468B7E1AE664250099A7DD /* libSuperpoweredAudio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSuperpoweredAudio.a; path = ../Superpowered/libSuperpoweredAudio.a; sourceTree = "<group>"; };
+		1B468B7E1AE664250099A7DD /* libSuperpoweredAudioIOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSuperpoweredAudioIOS.a; path = ../Superpowered/libSuperpoweredAudioIOS.a; sourceTree = "<group>"; };
 		1B468B7F1AE664250099A7DD /* SuperpoweredIOSAudioOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperpoweredIOSAudioOutput.h; path = ../Superpowered/SuperpoweredIOSAudioOutput.h; sourceTree = "<group>"; };
 		1B468B801AE664250099A7DD /* SuperpoweredIOSAudioOutput.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SuperpoweredIOSAudioOutput.mm; path = ../Superpowered/SuperpoweredIOSAudioOutput.mm; sourceTree = "<group>"; };
 		1B468B831AE6643E0099A7DD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -52,7 +52,7 @@
 				1B468B891AE664DD0099A7DD /* MediaPlayer.framework in Frameworks */,
 				1B468B871AE664CF0099A7DD /* AVFoundation.framework in Frameworks */,
 				1B468B841AE6643E0099A7DD /* AudioToolbox.framework in Frameworks */,
-				1B468B811AE664250099A7DD /* libSuperpoweredAudio.a in Frameworks */,
+				1B468B811AE664250099A7DD /* libSuperpoweredAudioIOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,7 +66,7 @@
 				1B468B881AE664DD0099A7DD /* MediaPlayer.framework */,
 				1B468B861AE664CF0099A7DD /* AVFoundation.framework */,
 				1B468B831AE6643E0099A7DD /* AudioToolbox.framework */,
-				1B468B7E1AE664250099A7DD /* libSuperpoweredAudio.a */,
+				1B468B7E1AE664250099A7DD /* libSuperpoweredAudioIOS.a */,
 				1B468B7F1AE664250099A7DD /* SuperpoweredIOSAudioOutput.h */,
 				1B468B801AE664250099A7DD /* SuperpoweredIOSAudioOutput.mm */,
 				1B468B8E1AE696520099A7DD /* SuperpoweredSimple.h */,
@@ -134,7 +134,7 @@
 		1B468B4D1AE663D20099A7DD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = imect;
 				TargetAttributes = {
 					1B468B541AE663D20099A7DD = {
@@ -228,6 +228,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -299,6 +300,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/../Superpowered",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.imect.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -313,6 +315,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/../Superpowered",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.imect.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

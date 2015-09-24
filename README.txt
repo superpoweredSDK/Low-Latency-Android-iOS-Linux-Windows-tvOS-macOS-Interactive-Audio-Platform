@@ -37,9 +37,10 @@ HTTP Live Streaming example project.
 
 
 /SuperpoweredOfflineProcessingExample (iOS)
-Advanced example. Decodes an audio file, applies time stretching and saves the result in WAV. Shows how to:
+Advanced example. Decodes an audio file, applies an effect or time stretching and saves the result in WAV. Shows how to:
 
 - Set up the SuperpoweredDecoder.
+- Apply a simple effect.
 - Use the time stretcher with an efficient dynamic memory pool.
 - Save the result in WAV.
 - Directly read from the iPod music library./SuperpoweredPerformance (iOS)It compares several Superpowered features to Core Audio.
@@ -101,11 +102,13 @@ Steps:
 
     task ndkBuild(type: Exec) {
         commandLine '/android/ndk/ndk-build', '-B', '-C', file('src/main/jni').absolutePath
+// Windows users: 
+// commandLine 'C:\\Android\\ndk\\ndk-build.cmd', '-B', '-C', file('src/main/jni').absolutePath
     }
     tasks.withType(JavaCompile) {
         compileTask -> compileTask.dependsOn ndkBuild
     }
-5. copy Android.mk, Application.mk and the libSuperpowered.a files into the jni folder you created at step 2, from a similar folder in one of our example projects
+5. copy Android.mk, Application.mk and the libSuperpoweredXXX.a files into the jni folder you created at step 2, from a similar folder in one of our example projects
 6. check the correct SUPERPOWERED_PATH in Android.mk
 6. create your custom .cpp and .h files, then don’t forget to properly set LOCAL_MODULE and LOCAL_SRC_FILES in Android.mk
 
