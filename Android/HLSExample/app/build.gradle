@@ -18,7 +18,8 @@ android {
     }
 
     task ndkBuild(type: Exec) {
-        commandLine '/android/ndk/ndk-build', '-B', '-C', file('src/main/jni').absolutePath
+	def ndkdir = android.ndkDirectory
+        commandLine "$ndkDir/ndk-build", '-B', '-C', file('src/main/jni').absolutePath
 // Windows users: 
 // commandLine 'C:\\Android\\ndk\\ndk-build.cmd', '-B', '-C', file('src/main/jni').absolutePath
     }
