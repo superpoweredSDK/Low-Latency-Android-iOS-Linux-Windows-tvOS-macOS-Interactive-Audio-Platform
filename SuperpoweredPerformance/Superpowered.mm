@@ -7,7 +7,7 @@
 #import "SuperpoweredRoll.h"
 #import "SuperpoweredFlanger.h"
 #import "SuperpoweredSimple.h"
-#import "SuperpoweredIOSAudioOutput.h"
+#import "SuperpoweredIOSAudioIO.h"
 #import "fftTest.h"
 #import <mach/mach_time.h>
 
@@ -19,7 +19,7 @@
 @implementation Superpowered {
     SuperpoweredAdvancedAudioPlayer *player;
     SuperpoweredFX *effects[NUMFXUNITS];
-    SuperpoweredIOSAudioOutput *output;
+    SuperpoweredIOSAudioIO *output;
     float *stereoBuffer;
     bool started;
     uint64_t timeUnitsProcessed, maxTime;
@@ -83,6 +83,9 @@
     started = !started;
 }
 
+- (void)interruptionStarted {}
+- (void)recordPermissionRefused {}
+
 - (void)interruptionEnded {
     player->onMediaserverInterrupt(); // If the player plays Apple Lossless audio files, then we need this. Otherwise unnecessary.
 }
@@ -124,7 +127,7 @@
     eq->bands[2] = 2.0f;
     effects[EQINDEX] = eq;
 
-    output = [[SuperpoweredIOSAudioOutput alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:12 preferredMinimumSamplerate:44100 audioSessionCategory:AVAudioSessionCategoryPlayback multiChannels:2 fixReceiver:true];
+    output = [[SuperpoweredIOSAudioIO alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:12 preferredMinimumSamplerate:44100 audioSessionCategory:AVAudioSessionCategoryPlayback channels:2];
     return self;
 }
 

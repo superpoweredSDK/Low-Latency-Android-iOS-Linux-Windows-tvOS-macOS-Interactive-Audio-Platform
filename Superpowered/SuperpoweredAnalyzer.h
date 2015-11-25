@@ -86,6 +86,11 @@ static const int chordToNoteStartingFromC[24] = {
     9, 10, 11, 0, 1, 2, 3, 4, 5, 6, 7, 8,
 };
 
+static const int camelotSort[24] = {
+    21, 11, 1, 15, 5, 19, 9, 23, 13, 3, 17, 7,
+    14, 4, 18, 8, 22, 12, 2, 16, 6, 20, 10, 0
+};
+
 /**
  @brief Provides compact waveform data (150 points/sec and 1 point/sec resolution)
 */

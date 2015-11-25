@@ -3,6 +3,8 @@
 #include "SuperpoweredFrequencyDomain.h"
 #include "SuperpoweredAndroidAudioIO.h"
 #include "SuperpoweredSimple.h"
+#include <SLES/OpenSLES.h>
+#include <SLES/OpenSLES_AndroidConfiguration.h>
 
 static SuperpoweredAndroidAudioIO *audioIO;
 static SuperpoweredFrequencyDomain *frequencyDomain;
@@ -69,5 +71,5 @@ JNIEXPORT void Java_com_superpowered_frequencydomain_MainActivity_FrequencyDomai
     fifoOutput = (float *)malloc(fifoCapacity * sizeof(float) * 2 + 128);
 
     inputBufferFloat = (float *)malloc(buffersize * sizeof(float) * 2 + 128);
-    audioIO = new SuperpoweredAndroidAudioIO(samplerate, buffersize, true, true, audioProcessing, NULL, buffersize * 2); // Start audio input/output.
+    audioIO = new SuperpoweredAndroidAudioIO(samplerate, buffersize, true, true, audioProcessing, NULL, SL_ANDROID_STREAM_MEDIA, buffersize * 2); // Start audio input/output.
 }

@@ -1,10 +1,10 @@
 #import "ViewController.h"
-#import "SuperpoweredIOSAudioOutput.h"
+#import "SuperpoweredIOSAudioIO.h"
 #include "SuperpoweredFrequencyDomain.h"
 #include "SuperpoweredSimple.h"
 
 @implementation ViewController {
-    SuperpoweredIOSAudioOutput *audioIO;
+    SuperpoweredIOSAudioIO *audioIO;
     SuperpoweredFrequencyDomain *frequencyDomain;
     float *magnitudeLeft, *magnitudeRight, *phaseLeft, *phaseRight, *fifoOutput;
     int fifoOutputFirstSample, fifoOutputLastSample, stepSize, fifoCapacity;
@@ -30,8 +30,7 @@
     fifoOutput = (float *)malloc(fifoCapacity * sizeof(float) * 2 + 128);
 
     // Audio input/output handling.
-    audioIO = [[SuperpoweredIOSAudioOutput alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:12 preferredMinimumSamplerate:44100 audioSessionCategory:AVAudioSessionCategoryPlayAndRecord multiChannels:2 fixReceiver:true];
-    audioIO.inputEnabled = true;
+    audioIO = [[SuperpoweredIOSAudioIO alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:12 preferredMinimumSamplerate:44100 audioSessionCategory:AVAudioSessionCategoryPlayAndRecord channels:2];
     [audioIO start];
 }
 
@@ -45,7 +44,9 @@
     free(fifoOutput);
 }
 
+- (void)interruptionStarted {}
 - (void)interruptionEnded {}
+- (void)recordPermissionRefused {}
 
 // This callback is called periodically by the audio system.
 - (bool)audioProcessingCallback:(float **)buffers inputChannels:(unsigned int)inputChannels outputChannels:(unsigned int)outputChannels numberOfSamples:(unsigned int)numberOfSamples samplerate:(unsigned int)currentsamplerate hostTime:(UInt64)hostTime {

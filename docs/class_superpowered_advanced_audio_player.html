@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.9</span>
+   &#160;<span id="projectnumber">0.9.1</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -255,9 +255,18 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>waitForNextBeatWithBe
 <tr class="memitem:a45f5b5e2ef978c9c63f432924fc02887"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a45f5b5e2ef978c9c63f432924fc02887"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>dynamicHLSAlternativeSwitching</b></td></tr>
 <tr class="separator:a45f5b5e2ef978c9c63f432924fc02887"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3e8f2cde64156984e7fdd0ff10b0a96"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac3e8f2cde64156984e7fdd0ff10b0a96"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>reverseToForwardAtLoopStart</b></td></tr>
+<tr class="separator:ac3e8f2cde64156984e7fdd0ff10b0a96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a913d11f6be74cc2a2afefb6e2703ef87"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a913d11f6be74cc2a2afefb6e2703ef87"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>downloadSecondsAhead</b></td></tr>
 <tr class="separator:a913d11f6be74cc2a2afefb6e2703ef87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ead90927942a10897fb7a4bdfe3de03"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2ead90927942a10897fb7a4bdfe3de03"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>minTimeStretchingTempo</b></td></tr>
+<tr class="separator:a2ead90927942a10897fb7a4bdfe3de03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46f717bcac4e81102ff192f1ab0245f1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a46f717bcac4e81102ff192f1ab0245f1"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>maxTimeStretchingTempo</b></td></tr>
+<tr class="separator:a46f717bcac4e81102ff192f1ab0245f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><ul>
@@ -311,7 +320,10 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>downloadSecondsAhead</
     <tr><td class="paramname">fixDoubleOrHalfBPM</td><td>If tempo is &gt;1.4f or &lt;0.6f, it will treat the bpm as half or double. Good for certain genres. False by default. </td></tr>
     <tr><td class="paramname">waitForNextBeatWithBeatSync</td><td>Wait for the next beat if beat-syncing is enabled. False by default. </td></tr>
     <tr><td class="paramname">dynamicHLSAlternativeSwitching</td><td>Dynamicly changing the current HLS alternative to match the available network bandwidth. Default is true. </td></tr>
+    <tr><td class="paramname">reverseToForwardAtLoopStart</td><td>If looping and playback direction is reverse, reaching the beginning of the loop will change direction to forward. True by default. </td></tr>
     <tr><td class="paramname">downloadSecondsAhead</td><td>The HLS content download strategy: how many seconds ahead of the playback position to download. Default is HLS_DOWNLOAD_REMAINING, meaning it will download everything after the playback position, until the end. HLS_DOWNLOAD_EVERYTHING downloads before the playback position too. </td></tr>
+    <tr><td class="paramname">minTimeStretchingTempo</td><td>Will not time-stretch, just resample below this tempo. Default: 0.5f (recommended value for low CPU on older mobile devices, such as the first iPad). </td></tr>
+    <tr><td class="paramname">maxTimeStretchingTempo</td><td>Will not time-stretch, just resample above this tempo. Default: 2.0f (recommended value for low CPU on older mobile devices, such as the first iPad). </td></tr>
   </table>
   </dd>
 </dl>

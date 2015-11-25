@@ -3,11 +3,8 @@ Superpowered Audio Engine for Games, Music and Interactive Audio Apps on Android
 Low Latency Audio. Cross Platform. Free.
 What is it?-----------The Superpowered Audio SDK is a software development kit based on Superpowered IncÕs digital signal processing (DSP) technology. Superpowered technology allows developers to build computationally intensive audio apps and embedded applications that process more quickly and use less power than other comparable solutions. Superpowered DSP is designed and optimized, from scratch, to run on low-power mobile processors. Specifically, any device running ARM with the NEON extension (which covers 99% of all mobile devices manufactured). Intel CPU is supported too.PLEASE NOTE: all example codes working with the Superpowered features are cross-platform, can be used under iOS and Android.
 Folders-------
-/SuperpoweredThe SDK itself (static library and headers).
-/Superpowered/libSuperpoweredAudio.a is a fat static library for iOS and OSX projects
-/Superpowered/libSuperpoweredARM.a is the armeabi-v7a library for Android
-/Superpowered/libSuperpoweredARM64.a is the arm64-v8a library for Android
-/Superpowered/libSuperpoweredX86.a is the x86 library for Android
+/SuperpoweredThe SDK itself (static libraries and headers).
+
 
 docs
 The documentation. Start with index.html.
@@ -73,7 +70,6 @@ Android Studio
 NDK integration with static libraries is still incomplete in Android Studio. Before running the example, please set up the following:
 
 - Open local.properties. Set ndk.dir to your ndk folder.
-- Open build.gradle under the app folder. Check for ndk-build, and set the appropriate path to ndk again.
 - Open Android.mk in the src/main/jni folder. Check and correct SUPERPOWERED_PATH if needed (should be OK if you leave the folder structure intact).
 
 
@@ -101,10 +97,13 @@ Steps:
     }
 
     task ndkBuild(type: Exec) {
-        commandLine '/android/ndk/ndk-build', '-B', '-C', file('src/main/jni').absolutePath
-// Windows users: 
-// commandLine 'C:\\Android\\ndk\\ndk-build.cmd', '-B', '-C', file('src/main/jni').absolutePath
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file('local.properties').newDataInputStream())
+        def ndkDir = properties.getProperty('ndk.dir')
+        commandLine "$ndkDir/ndk-build", '-B', '-C', file('src/main/jni').absolutePath
+        // Windows users: commandLine "$ndkDir\\ndk-build.cmd", '-B', '-C', file('src/main/jni').absolutePath
     }
+
     tasks.withType(JavaCompile) {
         compileTask -> compileTask.dependsOn ndkBuild
     }

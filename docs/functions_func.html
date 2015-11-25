@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.9</span>
+   &#160;<span id="projectnumber">0.9.1</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -89,6 +89,9 @@
 </li>
 <li>audioProcessingCallback:inputChannels:outputChannels:numberOfSamples:samplerate:hostTime:
 : <a class="el" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html#a98f5968d2d14643445272bba1db6673e">&lt;SuperpoweredIOSAudioIODelegate&gt;</a>
+</li>
+<li>audioProcessingCallback:outputChannels:numberOfSamples:samplerate:hostTime:
+: <a class="el" href="protocol_superpoweredtv_o_s_audio_i_o_delegate-p.html#aea816cc7ae3d56a1020bdb695b5f275a">&lt;SuperpoweredtvOSAudioIODelegate&gt;</a>
 </li>
 <li>audioStartSample()
 : <a class="el" href="class_superpowered_decoder.html#a05def9f65d88e4fd1e43b75f69f83d1d">SuperpoweredDecoder</a>
@@ -188,8 +191,9 @@
 
 
 <h3><a class="anchor" id="index_i"></a>- i -</h3><ul>
-<li>initWithDelegate:preferredBufferSize:preferredMinimumSamplerate:audioSessionCategory:multiChannels:fixReceiver:
-: <a class="el" href="interface_superpowered_i_o_s_audio_output.html#af0ccf7d830d24612e5a10283a0e4861d">SuperpoweredIOSAudioOutput</a>
+<li>initWithDelegate:preferredBufferSize:preferredMinimumSamplerate:audioSessionCategory:channels:
+: <a class="el" href="interface_superpowered_i_o_s_audio_i_o.html#af6250956d404b921e3beea93bbd1e64d">SuperpoweredIOSAudioIO</a>
+, <a class="el" href="interface_superpoweredtv_o_s_audio_i_o.html#a7dd1d18b7a31bb42387f4d49d5ce092f">SuperpoweredtvOSAudioIO</a>
 </li>
 <li>initWithDelegate:preferredBufferSizeMs:numberOfChannels:enableInput:enableOutput:
 : <a class="el" href="interface_superpowered_o_s_x_audio_i_o.html#a9ada9b307f4534c6835951de89b0c33f">SuperpoweredOSXAudioIO</a>
@@ -202,9 +206,11 @@
 </li>
 <li>interruptionEnded
 : <a class="el" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html#ac371788ed59085810a0633aae0f12c9c">&lt;SuperpoweredIOSAudioIODelegate&gt;</a>
+, <a class="el" href="protocol_superpoweredtv_o_s_audio_i_o_delegate-p.html#ab0e432032209a10a202411af08c8619c">&lt;SuperpoweredtvOSAudioIODelegate&gt;</a>
 </li>
 <li>interruptionStarted
 : <a class="el" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html#aae55829bbcf8176b34d1c567a27c9eeb">&lt;SuperpoweredIOSAudioIODelegate&gt;</a>
+, <a class="el" href="protocol_superpoweredtv_o_s_audio_i_o_delegate-p.html#a51ff3fa75c9e9af1cd22f8c1fcd82c32">&lt;SuperpoweredtvOSAudioIODelegate&gt;</a>
 </li>
 </ul>
 
@@ -239,17 +245,17 @@
 <li>makeSlice()
 : <a class="el" href="class_superpowered_audiopointer_list.html#af4879956e3b5559909a58e78c9f2e68c">SuperpoweredAudiopointerList</a>
 </li>
+<li>mapChannels
+: <a class="el" href="interface_superpowered_i_o_s_audio_i_o.html#a32bd2402e4ed4afdca73293be9915372">SuperpoweredIOSAudioIO</a>
+</li>
+<li>mapChannels:inputMap:externalAudioDeviceName:outputsAndInputs:
+: <a class="el" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html#a34db7ec18fdf2fbaa3d665b86a64bc65">&lt;SuperpoweredIOSAudioIODelegate&gt;</a>
+</li>
 <li>markLastSamples()
 : <a class="el" href="class_superpowered_audiopointer_list.html#ace05fa9533893d9def0cc2001038de4f">SuperpoweredAudiopointerList</a>
 </li>
 <li>msInLoop()
 : <a class="el" href="class_superpowered_advanced_audio_player.html#abb5d2fcecea8df4a9f3ac2be21ccf229">SuperpoweredAdvancedAudioPlayer</a>
-</li>
-<li>multiMapChannels:inputMap:multiDeviceName:outputsAndInputs:
-: <a class="el" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html#a382d2cf3bfa30a41853e81a736087b62">&lt;SuperpoweredIOSAudioIODelegate&gt;</a>
-</li>
-<li>multiRemapChannels
-: <a class="el" href="interface_superpowered_i_o_s_audio_output.html#a6be1fd24f30725a9c5f37bab0bf6d337">SuperpoweredIOSAudioOutput</a>
 </li>
 </ul>
 
@@ -320,6 +326,9 @@
 <h3><a class="anchor" id="index_r"></a>- r -</h3><ul>
 <li>reconnectToMediaserver()
 : <a class="el" href="class_superpowered_decoder.html#ae0544563f5ee1d11f660aa8cd994d72b">SuperpoweredDecoder</a>
+</li>
+<li>recordPermissionRefused
+: <a class="el" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html#a41192d288bd5cbed0ff2d9d6c8a88d41">&lt;SuperpoweredIOSAudioIODelegate&gt;</a>
 </li>
 <li>releaseBuffer()
 : <a class="el" href="class_superpowered_audiobuffer_pool.html#ab0e70ce2cdbdb2ef430fcce9a715ea56">SuperpoweredAudiobufferPool</a>
@@ -409,8 +418,9 @@
 : <a class="el" href="class_superpowered_advanced_audio_player.html#a7cc9eb513c1a9761f58033908cd8aaa1">SuperpoweredAdvancedAudioPlayer</a>
 </li>
 <li>setProcessingCallback_C:clientdata:
-: <a class="el" href="interface_superpowered_i_o_s_audio_output.html#a14d8cb8335dec5b04125f4bcbfa9c090">SuperpoweredIOSAudioOutput</a>
+: <a class="el" href="interface_superpowered_i_o_s_audio_i_o.html#a3de001450520a31796a2a1f3f4d903f9">SuperpoweredIOSAudioIO</a>
 , <a class="el" href="interface_superpowered_o_s_x_audio_i_o.html#a7300b745299b7fb3cc233fe7281cd795">SuperpoweredOSXAudioIO</a>
+, <a class="el" href="interface_superpoweredtv_o_s_audio_i_o.html#af30187886cd48303b6f5acc48591b1bc">SuperpoweredtvOSAudioIO</a>
 </li>
 <li>setRateAndPitchShift()
 : <a class="el" href="class_superpowered_time_stretching.html#a1d059bbc92713379dc5aad77006dd032">SuperpoweredTimeStretching</a>
@@ -471,8 +481,9 @@
 : <a class="el" href="class_superpowered_reverb.html#a823ab9a70e206404bab74c0e6e636027">SuperpoweredReverb</a>
 </li>
 <li>start
-: <a class="el" href="interface_superpowered_i_o_s_audio_output.html#a9bfbbf262926e01409fe7cde5f9decfc">SuperpoweredIOSAudioOutput</a>
+: <a class="el" href="interface_superpowered_i_o_s_audio_i_o.html#abe7f8d2097684b5f0db47c3eaaa216f9">SuperpoweredIOSAudioIO</a>
 , <a class="el" href="interface_superpowered_o_s_x_audio_i_o.html#a316ca39a067722dae78c488320ba240a">SuperpoweredOSXAudioIO</a>
+, <a class="el" href="interface_superpoweredtv_o_s_audio_i_o.html#a72957a99d801ef0cdcca7a9e9b6d4622">SuperpoweredtvOSAudioIO</a>
 , <a class="el" href="class_superpowered_recorder.html#a9809618f3adddea984efa38619a138f0">SuperpoweredRecorder</a>
 </li>
 <li>startSamplePosition()
@@ -482,8 +493,9 @@
 : <a class="el" href="class_superpowered_advanced_audio_player.html#a4151f9ec2e00fd3de7c7bbd4845661af">SuperpoweredAdvancedAudioPlayer</a>
 </li>
 <li>stop
-: <a class="el" href="interface_superpowered_i_o_s_audio_output.html#a15910ac8ff1eb83593a5ce230de46389">SuperpoweredIOSAudioOutput</a>
+: <a class="el" href="interface_superpowered_i_o_s_audio_i_o.html#a9426ebb93f5e4cbfcef2a7ea31014fc0">SuperpoweredIOSAudioIO</a>
 , <a class="el" href="interface_superpowered_o_s_x_audio_i_o.html#a2f09bf366927082a39a99e75a995a388">SuperpoweredOSXAudioIO</a>
+, <a class="el" href="interface_superpoweredtv_o_s_audio_i_o.html#a24b24c5229a32812364fe96f54c4f404">SuperpoweredtvOSAudioIO</a>
 , <a class="el" href="class_superpowered_recorder.html#ab91723892859005472af7cc783ed743c">SuperpoweredRecorder</a>
 </li>
 <li>Superpowered3BandEQ()
@@ -493,7 +505,7 @@
 : <a class="el" href="class_superpowered_advanced_audio_player.html#ad2126e2711b2773865dbad09e216355a">SuperpoweredAdvancedAudioPlayer</a>
 </li>
 <li>SuperpoweredAndroidAudioIO()
-: <a class="el" href="class_superpowered_android_audio_i_o.html#ab5c9848a740c2fb75e38ec3bcad433a0">SuperpoweredAndroidAudioIO</a>
+: <a class="el" href="class_superpowered_android_audio_i_o.html#ac7d654915c9dfbf69fe5f14006f5685c">SuperpoweredAndroidAudioIO</a>
 </li>
 <li>SuperpoweredAudiobufferPool()
 : <a class="el" href="class_superpowered_audiobuffer_pool.html#a9e74c7cbdcc9ed81fcb38fa5d3b6a0c5">SuperpoweredAudiobufferPool</a>

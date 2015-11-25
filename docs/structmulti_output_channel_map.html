@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.9</span>
+   &#160;<span id="projectnumber">0.9.1</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -79,7 +79,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>headphoneAvailable</b
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This structure maps the channels you provide in the audio processing callback to the appropriate output channels.</p>
-<p>You can have more than a single stereo output if a HDMI or USB audio device is connected (it doesn't work with other, such as wireless audio accessories).</p>
+<p>You can have multi-channel (more than a single stereo channel) output if a HDMI or USB audio device is connected. iOS does not provide multi-channel output for other audio devices, such as wireless audio accessories.</p>
 <p><em>Example:</em> </p>
 <p>Let's say you have four output channels, and you'd like the first stereo pair on USB 3+4, and the other stereo pair on the iPad's headphone socket.</p>
 <ol type="1">
@@ -89,18 +89,18 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>headphoneAvailable</b
 <p><em>Explanation:</em> </p>
 <ul>
 <li>Your four output channels are having the identifiers: 0, 1, 2, 3.</li>
-<li>The iPad (and all other iOS device) has just a stereo built-in channel pair. This is represented by deviceChannels, and (1.) sets your second stereo pair (2, 3) to these.</li>
+<li>Every iOS device has just one stereo built-in output. This is represented by deviceChannels, and (1.) sets your second stereo pair (2, 3) to these.</li>
 <li>You other stereo pair (0, 1) is mapped to USBChannels. USBChannels[2] represents the third USB channel.</li>
 </ul>
-<dl class="section since"><dt>Since</dt><dd>Multiple channels are available in iOS 6.0 and later.</dd></dl>
+<dl class="section since"><dt>Since</dt><dd>Multi-channel output is available in iOS 6.0 and later.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">deviceChannels</td><td>The iOS device's built-in output channels. </td></tr>
     <tr><td class="paramname">HDMIChannels</td><td>HDMI output channels. </td></tr>
     <tr><td class="paramname">USBChannels</td><td>USB output channels. </td></tr>
-    <tr><td class="paramname">numberOfHDMIChannelsAvailable</td><td>Number of available HDMI output channels. </td></tr>
-    <tr><td class="paramname">numberOfUSBChannelsAvailable</td><td>Number of available USB output channels. </td></tr>
-    <tr><td class="paramname">headphoneAvailable</td><td>Something is plugged into the iOS device's headphone socket or not. </td></tr>
+    <tr><td class="paramname">numberOfHDMIChannelsAvailable</td><td>Number of available HDMI output channels. Read only. </td></tr>
+    <tr><td class="paramname">numberOfUSBChannelsAvailable</td><td>Number of available USB output channels. Read only. </td></tr>
+    <tr><td class="paramname">headphoneAvailable</td><td>Something is plugged into the iOS device's headphone socket or not. Read only. </td></tr>
   </table>
   </dd>
 </dl>

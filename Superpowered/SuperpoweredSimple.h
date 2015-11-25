@@ -11,8 +11,8 @@
  @fn SuperpoweredVolume(float *input, float *output, float volumeStart, float volumeEnd, unsigned int numberOfSamples);
  @brief Applies volume on a single stereo interleaved buffer.
 
- @param input Input buffer. Should be numberOfSamples * 2 + 16 big minimum.
- @param output Output buffer. Should be numberOfSamples * 2 + 16 big minimum. Can be equal to input (in-place).
+ @param input Input buffer.
+ @param output Output buffer. Can be equal to input (in-place processing).
  @param volumeStart Volume for the first sample.
  @param volumeEnd Volume for the last sample. Volume will be smoothly calculated between start end end.
  @param numberOfSamples The number of samples to process.
@@ -23,8 +23,8 @@ void SuperpoweredVolume(float *input, float *output, float volumeStart, float vo
  @fn SuperpoweredChangeVolume(float *input, float *output, float volumeStart, float volumeChange, unsigned int numberOfSamples);
  @brief Applies volume on a single stereo interleaved buffer.
 
- @param input Input buffer. Should be numberOfSamples * 2 + 16 big minimum.
- @param output Output buffer. Should be numberOfSamples * 2 + 16 big minimum. Can be equal to input (in-place).
+ @param input Input buffer.
+ @param output Output buffer. Can be equal to input (in-place processing).
  @param volumeStart Voume for the first sample.
  @param volumeChange Change volume by this amount for every sample.
  @param numberOfSamples The number of samples to process.
@@ -35,8 +35,8 @@ void SuperpoweredChangeVolume(float *input, float *output, float volumeStart, fl
  @fn SuperpoweredVolumeAdd(float *input, float *output, float volumeStart, float volumeEnd, unsigned int numberOfSamples);
  @brief Applies volume on a single stereo interleaved buffer and adds it to the audio in the output buffer.
 
- @param input Input buffer. Should be numberOfSamples * 2 + 32 big minimum.
- @param output Output buffer. Should be numberOfSamples * 2 + 32 big minimum.
+ @param input Input buffer.
+ @param output Output buffer.
  @param volumeStart Volume for the first sample.
  @param volumeEnd Volume for the last sample. Volume will be smoothly calculated between start end end.
  @param numberOfSamples The number of samples to process.
@@ -129,6 +129,15 @@ void SuperpoweredInterleaveAndGetPeaks(float *left, float *right, float *output,
  @param numberOfSamples The number of samples to process. Should be 4 minimum, must be exactly divisible with 4.
  */
 void SuperpoweredDeInterleave(float *input, float *left, float *right, unsigned int numberOfSamples);
+
+/**
+ @fn SuperpoweredHasNonFinite(float *buffer, unsigned int numberOfValues);
+ @brief Checks if the samples has non-valid samples, such as infinity or NaN (not a number).
+ 
+ @param buffer The buffer to check.
+ @param numberOfValues Number of values in buffer. For stereo buffers, multiply by two!
+ */
+bool SuperpoweredHasNonFinite(float *buffer, unsigned int numberOfValues);
 
 /**
  @fn SuperpoweredVersion()

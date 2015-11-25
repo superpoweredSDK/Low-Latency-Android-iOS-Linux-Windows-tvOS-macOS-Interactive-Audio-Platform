@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.9</span>
+   &#160;<span id="projectnumber">0.9.1</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -58,9 +58,9 @@
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab5c9848a740c2fb75e38ec3bcad433a0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_android_audio_i_o.html#ab5c9848a740c2fb75e38ec3bcad433a0">SuperpoweredAndroidAudioIO</a> (int samplerate, int buffersize, bool enableInput, bool enableOutput, audioProcessingCallback callback, void *clientdata, int latencySamples=0)</td></tr>
-<tr class="memdesc:ab5c9848a740c2fb75e38ec3bcad433a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an audio I/O instance. Audio input and/or output immediately starts after calling this.  <a href="#ab5c9848a740c2fb75e38ec3bcad433a0">More...</a><br /></td></tr>
-<tr class="separator:ab5c9848a740c2fb75e38ec3bcad433a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7d654915c9dfbf69fe5f14006f5685c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_android_audio_i_o.html#ac7d654915c9dfbf69fe5f14006f5685c">SuperpoweredAndroidAudioIO</a> (int samplerate, int buffersize, bool enableInput, bool enableOutput, audioProcessingCallback callback, void *clientdata, int streamType=-1, int latencySamples=0)</td></tr>
+<tr class="memdesc:ac7d654915c9dfbf69fe5f14006f5685c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an audio I/O instance. Audio input and/or output immediately starts after calling this.  <a href="#ac7d654915c9dfbf69fe5f14006f5685c">More...</a><br /></td></tr>
+<tr class="separator:ac7d654915c9dfbf69fe5f14006f5685c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad19caef28018a158f10ed4f82a93f0cf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad19caef28018a158f10ed4f82a93f0cf"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>onForeground</b> ()</td></tr>
 <tr class="separator:ad19caef28018a158f10ed4f82a93f0cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -75,7 +75,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>stop</b> ()</td></tr>
 <tr class="separator:a017d0eeb7a21027f73cea0ccb797378b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="ab5c9848a740c2fb75e38ec3bcad433a0"></a>
+<a class="anchor" id="ac7d654915c9dfbf69fe5f14006f5685c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -119,6 +119,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>stop</b> ()</td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>streamType</em> = <code>-1</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>latencySamples</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
@@ -136,6 +142,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>stop</b> ()</td></tr>
     <tr><td class="paramname">enableOutput</td><td>Enable audio output. </td></tr>
     <tr><td class="paramname">callback</td><td>The audio processing callback function to call periodically. </td></tr>
     <tr><td class="paramname">clientdata</td><td>A custom pointer the callback receives. </td></tr>
+    <tr><td class="paramname">streamType</td><td>OpenSL ES stream type, such as SL_ANDROID_STREAM_MEDIA or SL_ANDROID_STREAM_VOICE. -1 means default. SLES/OpenSLES_AndroidConfiguration.h has them. </td></tr>
     <tr><td class="paramname">latencySamples</td><td>How many samples to have in the internal fifo buffer minimum. Works only when both input and output are enabled. Might help if you have many dropouts. </td></tr>
   </table>
   </dd>

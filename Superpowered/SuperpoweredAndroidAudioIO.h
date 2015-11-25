@@ -29,9 +29,10 @@ public:
  @param enableOutput Enable audio output.
  @param callback The audio processing callback function to call periodically.
  @param clientdata A custom pointer the callback receives.
+ @param streamType OpenSL ES stream type, such as SL_ANDROID_STREAM_MEDIA or SL_ANDROID_STREAM_VOICE. -1 means default. SLES/OpenSLES_AndroidConfiguration.h has them.
  @param latencySamples How many samples to have in the internal fifo buffer minimum. Works only when both input and output are enabled. Might help if you have many dropouts.
  */
-    SuperpoweredAndroidAudioIO(int samplerate, int buffersize, bool enableInput, bool enableOutput, audioProcessingCallback callback, void *clientdata, int latencySamples = 0);
+    SuperpoweredAndroidAudioIO(int samplerate, int buffersize, bool enableInput, bool enableOutput, audioProcessingCallback callback, void *clientdata, int streamType = -1, int latencySamples = 0);
     ~SuperpoweredAndroidAudioIO();
 
 /*

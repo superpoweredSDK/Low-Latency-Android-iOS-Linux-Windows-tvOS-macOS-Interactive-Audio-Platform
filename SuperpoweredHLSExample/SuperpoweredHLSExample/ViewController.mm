@@ -1,5 +1,5 @@
 #import "ViewController.h"
-#import "SuperpoweredIOSAudioOutput.h"
+#import "SuperpoweredIOSAudioIO.h"
 #include "SuperpoweredAdvancedAudioPlayer.h"
 #include "SuperpoweredSimple.h"
 
@@ -14,7 +14,7 @@ static const char *urls[8] = {
 @implementation ViewController {
     UIView *bufferIndicator;
     CADisplayLink *displayLink;
-    SuperpoweredIOSAudioOutput *audioIO;
+    SuperpoweredIOSAudioIO *audioIO;
     SuperpoweredAdvancedAudioPlayer *player;
     float *interleavedBuffer;
     CGFloat sliderThumbWidth;
@@ -26,7 +26,7 @@ static const char *urls[8] = {
 
 - (void)interruptionStarted {}
 - (void)interruptionEnded {}
-- (void)multiMapChannels:(multiOutputChannelMap *)outputMap inputMap:(multiInputChannelMap *)inputMap multiDeviceName:(NSString *)multiDeviceName outputsAndInputs:(NSString *)outputsAndInputs {}
+- (void)recordPermissionRefused {}
 
 - (void)updateDuration {
     if (player->durationMs == UINT_MAX) {
@@ -83,7 +83,7 @@ static void playerEventCallback(void *clientData, SuperpoweredAdvancedAudioPlaye
     player = new SuperpoweredAdvancedAudioPlayer((__bridge void *)self, playerEventCallback, samplerate, 0);
     interleavedBuffer = (float *)malloc(8192);
 
-    audioIO = [[SuperpoweredIOSAudioOutput alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:12 preferredMinimumSamplerate:44100 audioSessionCategory:AVAudioSessionCategoryPlayback multiChannels:2 fixReceiver:true];
+    audioIO = [[SuperpoweredIOSAudioIO alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:12 preferredMinimumSamplerate:44100 audioSessionCategory:AVAudioSessionCategoryPlayback channels:2];
     [audioIO start];
 
     [sources selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];

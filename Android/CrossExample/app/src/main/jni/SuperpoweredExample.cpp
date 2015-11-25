@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <android/log.h>
+#include <SLES/OpenSLES.h>
+#include <SLES/OpenSLES_AndroidConfiguration.h>
 
 static void playerEventCallbackA(void *clientData, SuperpoweredAdvancedAudioPlayerEvent event, void *value) {
     if (event == SuperpoweredAdvancedAudioPlayerEvent_LoadSuccess) {
@@ -43,7 +45,7 @@ SuperpoweredExample::SuperpoweredExample(const char *path, int *params) : active
     filter = new SuperpoweredFilter(SuperpoweredFilter_Resonant_Lowpass, samplerate);
     flanger = new SuperpoweredFlanger(samplerate);
 
-    audioSystem = new SuperpoweredAndroidAudioIO(samplerate, buffersize, false, true, audioProcessing, this, buffersize * 2);
+    audioSystem = new SuperpoweredAndroidAudioIO(samplerate, buffersize, false, true, audioProcessing, this, SL_ANDROID_STREAM_MEDIA, buffersize * 2);
 }
 
 SuperpoweredExample::~SuperpoweredExample() {

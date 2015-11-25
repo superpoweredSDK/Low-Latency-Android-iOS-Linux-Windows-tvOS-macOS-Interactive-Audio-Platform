@@ -1,0 +1,329 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1B6520F51C05C47F003F05B6 /* libSuperpoweredAudiotvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B6520F41C05C47F003F05B6 /* libSuperpoweredAudiotvOS.a */; };
+		1B911FA11C04B5DD008C0ACA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B911FA01C04B5DD008C0ACA /* main.m */; };
+		1B911FA41C04B5DD008C0ACA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B911FA31C04B5DD008C0ACA /* AppDelegate.m */; };
+		1B911FA71C04B5DD008C0ACA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B911FA61C04B5DD008C0ACA /* ViewController.m */; };
+		1B911FAA1C04B5DD008C0ACA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B911FA81C04B5DD008C0ACA /* Main.storyboard */; };
+		1B911FAC1C04B5DD008C0ACA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B911FAB1C04B5DD008C0ACA /* Assets.xcassets */; };
+		1B911FB51C04BC88008C0ACA /* SuperpoweredtvOSAudioIO.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1B911FB41C04BC88008C0ACA /* SuperpoweredtvOSAudioIO.mm */; };
+		1B911FBE1C04C176008C0ACA /* audioHandler.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1B911FBD1C04C176008C0ACA /* audioHandler.mm */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1B6520F41C05C47F003F05B6 /* libSuperpoweredAudiotvOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSuperpoweredAudiotvOS.a; path = ../../Superpowered/libSuperpoweredAudiotvOS.a; sourceTree = "<group>"; };
+		1B911F9C1C04B5DD008C0ACA /* tvExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tvExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B911FA01C04B5DD008C0ACA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1B911FA21C04B5DD008C0ACA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1B911FA31C04B5DD008C0ACA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1B911FA51C04B5DD008C0ACA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		1B911FA61C04B5DD008C0ACA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		1B911FA91C04B5DD008C0ACA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1B911FAB1C04B5DD008C0ACA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1B911FAD1C04B5DD008C0ACA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B911FB31C04BC88008C0ACA /* SuperpoweredtvOSAudioIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperpoweredtvOSAudioIO.h; path = ../../Superpowered/SuperpoweredtvOSAudioIO.h; sourceTree = "<group>"; };
+		1B911FB41C04BC88008C0ACA /* SuperpoweredtvOSAudioIO.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SuperpoweredtvOSAudioIO.mm; path = ../../Superpowered/SuperpoweredtvOSAudioIO.mm; sourceTree = "<group>"; };
+		1B911FB61C04C04D008C0ACA /* SuperpoweredWhoosh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredWhoosh.h; path = ../../Superpowered/SuperpoweredWhoosh.h; sourceTree = "<group>"; };
+		1B911FB71C04C0B7008C0ACA /* SuperpoweredFX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredFX.h; path = ../../Superpowered/SuperpoweredFX.h; sourceTree = "<group>"; };
+		1B911FBD1C04C176008C0ACA /* audioHandler.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = audioHandler.mm; sourceTree = "<group>"; };
+		1B911FBF1C04C18A008C0ACA /* audioHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = audioHandler.h; sourceTree = "<group>"; };
+		1B911FE91C04C4BB008C0ACA /* SuperpoweredSimple.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredSimple.h; path = ../../Superpowered/SuperpoweredSimple.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1B911F991C04B5DD008C0ACA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B6520F51C05C47F003F05B6 /* libSuperpoweredAudiotvOS.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1B911F931C04B5DD008C0ACA = {
+			isa = PBXGroup;
+			children = (
+				1B911F9E1C04B5DD008C0ACA /* tvExample */,
+				1B911F9D1C04B5DD008C0ACA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1B911F9D1C04B5DD008C0ACA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1B911F9C1C04B5DD008C0ACA /* tvExample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1B911F9E1C04B5DD008C0ACA /* tvExample */ = {
+			isa = PBXGroup;
+			children = (
+				1B6520F41C05C47F003F05B6 /* libSuperpoweredAudiotvOS.a */,
+				1B911FB31C04BC88008C0ACA /* SuperpoweredtvOSAudioIO.h */,
+				1B911FB41C04BC88008C0ACA /* SuperpoweredtvOSAudioIO.mm */,
+				1B911FB71C04C0B7008C0ACA /* SuperpoweredFX.h */,
+				1B911FB61C04C04D008C0ACA /* SuperpoweredWhoosh.h */,
+				1B911FE91C04C4BB008C0ACA /* SuperpoweredSimple.h */,
+				1B911FA21C04B5DD008C0ACA /* AppDelegate.h */,
+				1B911FA31C04B5DD008C0ACA /* AppDelegate.m */,
+				1B911FA51C04B5DD008C0ACA /* ViewController.h */,
+				1B911FA61C04B5DD008C0ACA /* ViewController.m */,
+				1B911FBF1C04C18A008C0ACA /* audioHandler.h */,
+				1B911FBD1C04C176008C0ACA /* audioHandler.mm */,
+				1B911FA81C04B5DD008C0ACA /* Main.storyboard */,
+				1B911FAB1C04B5DD008C0ACA /* Assets.xcassets */,
+				1B911FAD1C04B5DD008C0ACA /* Info.plist */,
+				1B911F9F1C04B5DD008C0ACA /* Supporting Files */,
+			);
+			path = tvExample;
+			sourceTree = "<group>";
+		};
+		1B911F9F1C04B5DD008C0ACA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1B911FA01C04B5DD008C0ACA /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1B911F9B1C04B5DD008C0ACA /* tvExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1B911FB01C04B5DD008C0ACA /* Build configuration list for PBXNativeTarget "tvExample" */;
+			buildPhases = (
+				1B911F981C04B5DD008C0ACA /* Sources */,
+				1B911F991C04B5DD008C0ACA /* Frameworks */,
+				1B911F9A1C04B5DD008C0ACA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = tvExample;
+			productName = tvExample;
+			productReference = 1B911F9C1C04B5DD008C0ACA /* tvExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1B911F941C04B5DD008C0ACA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = superpowered;
+				TargetAttributes = {
+					1B911F9B1C04B5DD008C0ACA = {
+						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = AP4SQ5L535;
+					};
+				};
+			};
+			buildConfigurationList = 1B911F971C04B5DD008C0ACA /* Build configuration list for PBXProject "tvExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1B911F931C04B5DD008C0ACA;
+			productRefGroup = 1B911F9D1C04B5DD008C0ACA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1B911F9B1C04B5DD008C0ACA /* tvExample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1B911F9A1C04B5DD008C0ACA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B911FAC1C04B5DD008C0ACA /* Assets.xcassets in Resources */,
+				1B911FAA1C04B5DD008C0ACA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1B911F981C04B5DD008C0ACA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B911FBE1C04C176008C0ACA /* audioHandler.mm in Sources */,
+				1B911FA71C04B5DD008C0ACA /* ViewController.m in Sources */,
+				1B911FB51C04BC88008C0ACA /* SuperpoweredtvOSAudioIO.mm in Sources */,
+				1B911FA41C04B5DD008C0ACA /* AppDelegate.m in Sources */,
+				1B911FA11C04B5DD008C0ACA /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1B911FA81C04B5DD008C0ACA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1B911FA91C04B5DD008C0ACA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1B911FAE1C04B5DD008C0ACA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		1B911FAF1C04B5DD008C0ACA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1B911FB11C04B5DD008C0ACA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
+				INFOPLIST_FILE = tvExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../Superpowered";
+				PRODUCT_BUNDLE_IDENTIFIER = com.superpowered.tvExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				VALID_ARCHS = "arm64 x86_64";
+			};
+			name = Debug;
+		};
+		1B911FB21C04B5DD008C0ACA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
+				INFOPLIST_FILE = tvExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../Superpowered";
+				PRODUCT_BUNDLE_IDENTIFIER = com.superpowered.tvExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				VALID_ARCHS = "arm64 x86_64";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1B911F971C04B5DD008C0ACA /* Build configuration list for PBXProject "tvExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B911FAE1C04B5DD008C0ACA /* Debug */,
+				1B911FAF1C04B5DD008C0ACA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1B911FB01C04B5DD008C0ACA /* Build configuration list for PBXNativeTarget "tvExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B911FB11C04B5DD008C0ACA /* Debug */,
+				1B911FB21C04B5DD008C0ACA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1B911F941C04B5DD008C0ACA /* Project object */;
+}

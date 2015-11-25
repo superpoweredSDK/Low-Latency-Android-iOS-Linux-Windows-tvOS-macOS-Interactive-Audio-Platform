@@ -1,11 +1,11 @@
 #import "SuperpoweredFrequencies-Bridging-Header.h"
-#import "SuperpoweredIOSAudioOutput.h"
+#import "SuperpoweredIOSAudioIO.h"
 #include "SuperpoweredBandpassFilterbank.h"
 #include "SuperpoweredSimple.h"
 #include <pthread.h>
 
 @implementation Superpowered {
-    SuperpoweredIOSAudioOutput *audioIO;
+    SuperpoweredIOSAudioIO *audioIO;
     SuperpoweredBandpassFilterbank *filters;
     float bands[8];
     pthread_mutex_t mutex;
@@ -26,8 +26,7 @@
     float widths[8] = { 1, 1, 1, 1, 1, 1, 1, 1 };
     filters = new SuperpoweredBandpassFilterbank(8, frequencies, widths, samplerate);
 
-    audioIO = [[SuperpoweredIOSAudioOutput alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:12 preferredMinimumSamplerate:44100 audioSessionCategory:AVAudioSessionCategoryPlayAndRecord multiChannels:2 fixReceiver:2];
-    audioIO.inputEnabled = true;
+    audioIO = [[SuperpoweredIOSAudioIO alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:12 preferredMinimumSamplerate:44100 audioSessionCategory:AVAudioSessionCategoryPlayAndRecord channels:2];
     [audioIO start];
 
     return self;
@@ -39,7 +38,9 @@
     audioIO = nil;
 }
 
+- (void)interruptionStarted {}
 - (void)interruptionEnded {}
+- (void)recordPermissionRefused {}
 
 - (bool)audioProcessingCallback:(float **)buffers inputChannels:(unsigned int)inputChannels outputChannels:(unsigned int)outputChannels numberOfSamples:(unsigned int)numberOfSamples samplerate:(unsigned int)currentsamplerate hostTime:(UInt64)hostTime {
     if (samplerate != currentsamplerate) {

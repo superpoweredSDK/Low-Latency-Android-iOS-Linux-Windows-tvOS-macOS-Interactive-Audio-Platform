@@ -140,7 +140,10 @@ typedef void (* SuperpoweredAdvancedAudioPlayerCallback) (void *clientData, Supe
  @param fixDoubleOrHalfBPM If tempo is >1.4f or <0.6f, it will treat the bpm as half or double. Good for certain genres. False by default.
  @param waitForNextBeatWithBeatSync Wait for the next beat if beat-syncing is enabled. False by default.
  @param dynamicHLSAlternativeSwitching Dynamicly changing the current HLS alternative to match the available network bandwidth. Default is true.
+ @param reverseToForwardAtLoopStart If looping and playback direction is reverse, reaching the beginning of the loop will change direction to forward. True by default.
  @param downloadSecondsAhead The HLS content download strategy: how many seconds ahead of the playback position to download. Default is HLS_DOWNLOAD_REMAINING, meaning it will download everything after the playback position, until the end. HLS_DOWNLOAD_EVERYTHING downloads before the playback position too.
+ @param minTimeStretchingTempo Will not time-stretch, just resample below this tempo. Default: 0.5f (recommended value for low CPU on older mobile devices, such as the first iPad).
+ @param maxTimeStretchingTempo Will not time-stretch, just resample above this tempo. Default: 2.0f (recommended value for low CPU on older mobile devices, such as the first iPad).
 */
 class SuperpoweredAdvancedAudioPlayer {
 public:
@@ -178,7 +181,10 @@ public:
     bool fixDoubleOrHalfBPM;
     bool waitForNextBeatWithBeatSync;
     bool dynamicHLSAlternativeSwitching;
+    bool reverseToForwardAtLoopStart;
     int downloadSecondsAhead;
+    float minTimeStretchingTempo;
+    float maxTimeStretchingTempo;
 
 /**
  @brief Set the folder path for temporary files. Used for HLS only. 

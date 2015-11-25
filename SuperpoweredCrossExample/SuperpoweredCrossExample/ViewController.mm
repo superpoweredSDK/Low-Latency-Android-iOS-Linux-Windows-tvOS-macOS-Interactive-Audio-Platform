@@ -3,7 +3,7 @@
 #import "SuperpoweredFilter.h"
 #import "SuperpoweredRoll.h"
 #import "SuperpoweredFlanger.h"
-#import "SuperpoweredIOSAudioOutput.h"
+#import "SuperpoweredIOSAudioIO.h"
 #import "SuperpoweredSimple.h"
 #import <stdlib.h>
 #import <pthread.h>
@@ -18,7 +18,7 @@ static const float headroom = powf(10.0f, -HEADROOM_DECIBEL * 0.025);
  */
 @implementation ViewController {
     SuperpoweredAdvancedAudioPlayer *playerA, *playerB;
-    SuperpoweredIOSAudioOutput *output;
+    SuperpoweredIOSAudioIO *output;
     SuperpoweredRoll *roll;
     SuperpoweredFilter *filter;
     SuperpoweredFlanger *flanger;
@@ -65,7 +65,7 @@ void playerEventCallbackB(void *clientData, SuperpoweredAdvancedAudioPlayerEvent
     filter = new SuperpoweredFilter(SuperpoweredFilter_Resonant_Lowpass, 44100);
     flanger = new SuperpoweredFlanger(44100);
 
-    output = [[SuperpoweredIOSAudioOutput alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:12 preferredMinimumSamplerate:44100 audioSessionCategory:AVAudioSessionCategoryPlayback multiChannels:2 fixReceiver:true];
+    output = [[SuperpoweredIOSAudioIO alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:12 preferredMinimumSamplerate:44100 audioSessionCategory:AVAudioSessionCategoryPlayback channels:2];
     [output start];
 }
 
@@ -79,6 +79,9 @@ void playerEventCallbackB(void *clientData, SuperpoweredAdvancedAudioPlayerEvent
     [super dealloc];
 #endif
 }
+
+- (void)interruptionStarted {}
+- (void)recordPermissionRefused {}
 
 - (void)interruptionEnded { // If a player plays Apple Lossless audio files, then we need this. Otherwise unnecessary.
     playerA->onMediaserverInterrupt();

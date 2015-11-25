@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.9</span>
+   &#160;<span id="projectnumber">0.9.1</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -98,27 +98,32 @@
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    9, 10, 11, 0, 1, 2, 3, 4, 5, 6, 7, 8,</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;};</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="class_superpowered_waveform.html">   92</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_superpowered_waveform.html">SuperpoweredWaveform</a> {</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="class_superpowered_waveform.html#a0d54a8d8955a9f6cdd5ecd1c96247769">SuperpoweredWaveform</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> samplerate, <span class="keywordtype">int</span> lengthSeconds = 0);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    ~<a class="code" href="class_superpowered_waveform.html">SuperpoweredWaveform</a>();</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_waveform.html#a1ee7f8a3e3c4fc0f90620c5882afc0e8">process</a>(<span class="keywordtype">float</span> *input, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numberOfSamples);</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *<a class="code" href="class_superpowered_waveform.html#ac668ce1f97331d01e56ab92a4550439f">getresult</a>();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> camelotSort[24] = {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    21, 11, 1, 15, 5, 19, 9, 23, 13, 3, 17, 7,</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    14, 4, 18, 8, 22, 12, 2, 16, 6, 20, 10, 0</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;};</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="class_superpowered_waveform.html">   97</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_superpowered_waveform.html">SuperpoweredWaveform</a> {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <a class="code" href="class_superpowered_waveform.html#a0d54a8d8955a9f6cdd5ecd1c96247769">SuperpoweredWaveform</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> samplerate, <span class="keywordtype">int</span> lengthSeconds = 0);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    ~<a class="code" href="class_superpowered_waveform.html">SuperpoweredWaveform</a>();</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_waveform.html#a1ee7f8a3e3c4fc0f90620c5882afc0e8">process</a>(<span class="keywordtype">float</span> *input, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numberOfSamples);</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    waveformInternals *internals;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <a class="code" href="class_superpowered_waveform.html#a0d54a8d8955a9f6cdd5ecd1c96247769">SuperpoweredWaveform</a>(<span class="keyword">const</span> <a class="code" href="class_superpowered_waveform.html">SuperpoweredWaveform</a>&amp;);</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <a class="code" href="class_superpowered_waveform.html">SuperpoweredWaveform</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="class_superpowered_waveform.html">SuperpoweredWaveform</a>&amp;);</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;};</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *<a class="code" href="class_superpowered_waveform.html#ac668ce1f97331d01e56ab92a4550439f">getresult</a>();</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    waveformInternals *internals;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <a class="code" href="class_superpowered_waveform.html#a0d54a8d8955a9f6cdd5ecd1c96247769">SuperpoweredWaveform</a>(<span class="keyword">const</span> <a class="code" href="class_superpowered_waveform.html">SuperpoweredWaveform</a>&amp;);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <a class="code" href="class_superpowered_waveform.html">SuperpoweredWaveform</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="class_superpowered_waveform.html">SuperpoweredWaveform</a>&amp;);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;};</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="class_superpowered_offline_analyzer_html_adccd431df4dbc8180311e37d18ede9c2"><div class="ttname"><a href="class_superpowered_offline_analyzer.html#adccd431df4dbc8180311e37d18ede9c2">SuperpoweredOfflineAnalyzer::getresults</a></div><div class="ttdeci">void getresults(unsigned char **averageWaveform, unsigned char **peakWaveform, unsigned char **lowWaveform, unsigned char **midWaveform, unsigned char **highWaveform, unsigned char **notes, int *waveformSize, char **overviewWaveform, float *averageDecibel, float *loudpartsAverageDecibel, float *peakDecibel, float *bpm, float *beatgridStartMs, int *keyIndex)</div><div class="ttdoc">Get results. Call this method ONCE, after all samples are processed. </div></div>
 <div class="ttc" id="class_superpowered_offline_analyzer_html_a3536e107857d03c400b4d7cac52b39c6"><div class="ttname"><a href="class_superpowered_offline_analyzer.html#a3536e107857d03c400b4d7cac52b39c6">SuperpoweredOfflineAnalyzer::process</a></div><div class="ttdeci">void process(float *input, unsigned int numberOfSamples)</div><div class="ttdoc">Processes a chunk of audio. </div></div>
 <div class="ttc" id="class_superpowered_waveform_html_a0d54a8d8955a9f6cdd5ecd1c96247769"><div class="ttname"><a href="class_superpowered_waveform.html#a0d54a8d8955a9f6cdd5ecd1c96247769">SuperpoweredWaveform::SuperpoweredWaveform</a></div><div class="ttdeci">SuperpoweredWaveform(unsigned int samplerate, int lengthSeconds=0)</div></div>
-<div class="ttc" id="class_superpowered_waveform_html"><div class="ttname"><a href="class_superpowered_waveform.html">SuperpoweredWaveform</a></div><div class="ttdoc">Provides compact waveform data (150 points/sec and 1 point/sec resolution) </div><div class="ttdef"><b>Definition:</b> SuperpoweredAnalyzer.h:92</div></div>
+<div class="ttc" id="class_superpowered_waveform_html"><div class="ttname"><a href="class_superpowered_waveform.html">SuperpoweredWaveform</a></div><div class="ttdoc">Provides compact waveform data (150 points/sec and 1 point/sec resolution) </div><div class="ttdef"><b>Definition:</b> SuperpoweredAnalyzer.h:97</div></div>
 <div class="ttc" id="class_superpowered_offline_analyzer_html"><div class="ttname"><a href="class_superpowered_offline_analyzer.html">SuperpoweredOfflineAnalyzer</a></div><div class="ttdoc">Performs bpm and key detection, loudness/peak analysis. Provides compact waveform data (150 points/se...</div><div class="ttdef"><b>Definition:</b> SuperpoweredAnalyzer.h:12</div></div>
 <div class="ttc" id="class_superpowered_waveform_html_a1ee7f8a3e3c4fc0f90620c5882afc0e8"><div class="ttname"><a href="class_superpowered_waveform.html#a1ee7f8a3e3c4fc0f90620c5882afc0e8">SuperpoweredWaveform::process</a></div><div class="ttdeci">void process(float *input, unsigned int numberOfSamples)</div><div class="ttdoc">Processes a chunk of audio. </div></div>
 <div class="ttc" id="class_superpowered_waveform_html_ac668ce1f97331d01e56ab92a4550439f"><div class="ttname"><a href="class_superpowered_waveform.html#ac668ce1f97331d01e56ab92a4550439f">SuperpoweredWaveform::getresult</a></div><div class="ttdeci">unsigned char * getresult()</div></div>

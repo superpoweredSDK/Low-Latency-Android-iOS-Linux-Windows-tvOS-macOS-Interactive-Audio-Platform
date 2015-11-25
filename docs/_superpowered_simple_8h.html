@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.9</span>
+   &#160;<span id="projectnumber">0.9.1</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -89,6 +89,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a9359d1c7a32f81c76466c91726954c8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#a9359d1c7a32f81c76466c91726954c8d">SuperpoweredDeInterleave</a> (float *input, float *left, float *right, unsigned int numberOfSamples)</td></tr>
 <tr class="memdesc:a9359d1c7a32f81c76466c91726954c8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deinterleaves an interleaved input.  <a href="#a9359d1c7a32f81c76466c91726954c8d">More...</a><br /></td></tr>
 <tr class="separator:a9359d1c7a32f81c76466c91726954c8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afed02e7f7896f13097548f29205f39c5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#afed02e7f7896f13097548f29205f39c5">SuperpoweredHasNonFinite</a> (float *buffer, unsigned int numberOfValues)</td></tr>
+<tr class="memdesc:afed02e7f7896f13097548f29205f39c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the samples has non-valid samples, such as infinity or NaN (not a number).  <a href="#afed02e7f7896f13097548f29205f39c5">More...</a><br /></td></tr>
+<tr class="separator:afed02e7f7896f13097548f29205f39c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe7772f165043b851a9bf074771cf17a"><td class="memItemLeft" align="right" valign="top">const unsigned char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#abe7772f165043b851a9bf074771cf17a">SuperpoweredVersion</a> ()</td></tr>
 <tr class="separator:abe7772f165043b851a9bf074771cf17a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -136,8 +139,8 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">input</td><td>Input buffer. Should be numberOfSamples * 2 + 16 big minimum. </td></tr>
-    <tr><td class="paramname">output</td><td>Output buffer. Should be numberOfSamples * 2 + 16 big minimum. Can be equal to input (in-place). </td></tr>
+    <tr><td class="paramname">input</td><td>Input buffer. </td></tr>
+    <tr><td class="paramname">output</td><td>Output buffer. Can be equal to input (in-place processing). </td></tr>
     <tr><td class="paramname">volumeStart</td><td>Volume for the first sample. </td></tr>
     <tr><td class="paramname">volumeEnd</td><td>Volume for the last sample. Volume will be smoothly calculated between start end end. </td></tr>
     <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. </td></tr>
@@ -190,8 +193,8 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">input</td><td>Input buffer. Should be numberOfSamples * 2 + 16 big minimum. </td></tr>
-    <tr><td class="paramname">output</td><td>Output buffer. Should be numberOfSamples * 2 + 16 big minimum. Can be equal to input (in-place). </td></tr>
+    <tr><td class="paramname">input</td><td>Input buffer. </td></tr>
+    <tr><td class="paramname">output</td><td>Output buffer. Can be equal to input (in-place processing). </td></tr>
     <tr><td class="paramname">volumeStart</td><td>Voume for the first sample. </td></tr>
     <tr><td class="paramname">volumeChange</td><td>Change volume by this amount for every sample. </td></tr>
     <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. </td></tr>
@@ -244,8 +247,8 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">input</td><td>Input buffer. Should be numberOfSamples * 2 + 32 big minimum. </td></tr>
-    <tr><td class="paramname">output</td><td>Output buffer. Should be numberOfSamples * 2 + 32 big minimum. </td></tr>
+    <tr><td class="paramname">input</td><td>Input buffer. </td></tr>
+    <tr><td class="paramname">output</td><td>Output buffer. </td></tr>
     <tr><td class="paramname">volumeStart</td><td>Volume for the first sample. </td></tr>
     <tr><td class="paramname">volumeEnd</td><td>Volume for the last sample. Volume will be smoothly calculated between start end end. </td></tr>
     <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. </td></tr>
@@ -612,6 +615,39 @@ Functions</h2></td></tr>
     <tr><td class="paramname">left</td><td>Input for left channel. </td></tr>
     <tr><td class="paramname">right</td><td>Input for right channel.</td></tr>
     <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. Should be 4 minimum, must be exactly divisible with 4. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="afed02e7f7896f13097548f29205f39c5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SuperpoweredHasNonFinite </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>numberOfValues</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>The buffer to check. </td></tr>
+    <tr><td class="paramname">numberOfValues</td><td>Number of values in buffer. For stereo buffers, multiply by two! </td></tr>
   </table>
   </dd>
 </dl>
