@@ -38,11 +38,11 @@ public:
     bool setRateAndPitchShiftCents(float newRate, int newShiftCents);
     
 /**
- @brief Create a time-stretching instance with an audio buffer pool and the current sample rate.
+ @brief Create a time-stretching instance with an audio buffer pool, the current sample rate and minimum rate value.
  
  @see @c SuperpoweredAudiobufferPool
  */
-    SuperpoweredTimeStretching(SuperpoweredAudiobufferPool *p, unsigned int samplerate);
+    SuperpoweredTimeStretching(SuperpoweredAudiobufferPool *p, unsigned int samplerate, float minimumRate = 0.0f);
     ~SuperpoweredTimeStretching();
     
 /**

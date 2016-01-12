@@ -54,7 +54,7 @@ JNIEXPORT void Java_com_superpowered_hlsexample_MainActivity_SetTempFolder(JNIEn
 JNIEXPORT void Java_com_superpowered_hlsexample_MainActivity_StartAudio(JNIEnv *javaEnvironment, jobject self, jlong samplerate, jlong buffersize) {
     floatBuffer = (float *)malloc(sizeof(float) * 2 * buffersize + 128);
     player = new SuperpoweredAdvancedAudioPlayer(NULL, playerEventCallback, samplerate, 0);
-    audioIO = new SuperpoweredAndroidAudioIO(samplerate, buffersize, false, true, audioProcessing, NULL, SL_ANDROID_STREAM_MEDIA, buffersize * 2);
+    audioIO = new SuperpoweredAndroidAudioIO(samplerate, buffersize, false, true, audioProcessing, NULL, -1, SL_ANDROID_STREAM_MEDIA, buffersize * 2);
 }
 
 JNIEXPORT void Java_com_superpowered_hlsexample_MainActivity_onForeground(JNIEnv *javaEnvironment, jobject self) {

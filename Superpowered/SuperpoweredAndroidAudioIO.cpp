@@ -157,7 +157,7 @@ static void SuperpoweredAndroidAudioIO_OutputCallback(SLAndroidSimpleBufferQueue
     };
 }
 
-SuperpoweredAndroidAudioIO::SuperpoweredAndroidAudioIO(int samplerate, int buffersize, bool enableInput, bool enableOutput, audioProcessingCallback callback, void *clientdata, int streamType, int latencySamples) {
+SuperpoweredAndroidAudioIO::SuperpoweredAndroidAudioIO(int samplerate, int buffersize, bool enableInput, bool enableOutput, audioProcessingCallback callback, void *clientdata, int inputStreamType, int outputStreamType, int latencySamples) {
     static const SLboolean requireds[2] = { SL_BOOLEAN_TRUE, SL_BOOLEAN_FALSE };
 
     internals = new SuperpoweredAndroidAudioIOInternals;
@@ -216,12 +216,12 @@ SuperpoweredAndroidAudioIO::SuperpoweredAndroidAudioIO(int samplerate, int buffe
         const SLInterfaceID inputInterfaces[2] = { SL_IID_ANDROIDSIMPLEBUFFERQUEUE, SL_IID_ANDROIDCONFIGURATION };
         (*openSLEngineInterface)->CreateAudioRecorder(openSLEngineInterface, &internals->inputBufferQueue, &inputSource, &inputSink, 2, inputInterfaces, requireds);
 
-        // Configure the voice recognition preset which has no signal processing for lower latency.
-        if (streamType != SL_ANDROID_STREAM_VOICE) {
+        if (inputStreamType == -1) inputStreamType = (int)SL_ANDROID_RECORDING_PRESET_VOICE_RECOGNITION; // Configure the voice recognition preset which has no signal processing for lower latency.
+        if (inputStreamType > -1) {
             SLAndroidConfigurationItf inputConfiguration;
             if ((*internals->inputBufferQueue)->GetInterface(internals->inputBufferQueue, SL_IID_ANDROIDCONFIGURATION, &inputConfiguration) == SL_RESULT_SUCCESS) {
-                SLuint32 presetValue = SL_ANDROID_RECORDING_PRESET_VOICE_RECOGNITION;
-                (*inputConfiguration)->SetConfiguration(inputConfiguration, SL_ANDROID_KEY_RECORDING_PRESET, &presetValue, sizeof(SLuint32));
+                SLuint32 st = (SLuint32)inputStreamType;
+                (*inputConfiguration)->SetConfiguration(inputConfiguration, SL_ANDROID_KEY_RECORDING_PRESET, &st, sizeof(SLuint32));
             };
         };
         
@@ -237,10 +237,10 @@ SuperpoweredAndroidAudioIO::SuperpoweredAndroidAudioIO(int samplerate, int buffe
         (*openSLEngineInterface)->CreateAudioPlayer(openSLEngineInterface, &internals->outputBufferQueue, &outputSource, &outputSink, 2, outputInterfaces, requireds);
 
         // Configure the stream type.
-        if (streamType > -1) {
+        if (outputStreamType > -1) {
             SLAndroidConfigurationItf outputConfiguration;
             if ((*internals->outputBufferQueue)->GetInterface(internals->outputBufferQueue, SL_IID_ANDROIDCONFIGURATION, &outputConfiguration) == SL_RESULT_SUCCESS) {
-                SLint32 st = (SLint32)streamType;
+                SLint32 st = (SLint32)outputStreamType;
                 (*outputConfiguration)->SetConfiguration(outputConfiguration, SL_ANDROID_KEY_STREAM_TYPE, &st, sizeof(SLint32));
             };
         };
@@ -282,7 +282,7 @@ void SuperpoweredAndroidAudioIO::stop() {
 
 SuperpoweredAndroidAudioIO::~SuperpoweredAndroidAudioIO() {
     stopQueues(internals);
-    usleep(10000);
+    usleep(200000);
     if (internals->outputBufferQueue) (*internals->outputBufferQueue)->Destroy(internals->outputBufferQueue);
     if (internals->inputBufferQueue) (*internals->inputBufferQueue)->Destroy(internals->inputBufferQueue);
     (*internals->outputMix)->Destroy(internals->outputMix);

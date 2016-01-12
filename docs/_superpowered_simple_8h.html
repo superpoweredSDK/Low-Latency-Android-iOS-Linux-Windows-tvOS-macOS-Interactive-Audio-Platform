@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.9.1</span>
+   &#160;<span id="projectnumber">0.9.2</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -77,9 +77,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a598751316ad9827094a0e235880cced5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#a598751316ad9827094a0e235880cced5">SuperpoweredFloatToShortInt</a> (float *inputLeft, float *inputRight, short int *output, unsigned int numberOfSamples)</td></tr>
 <tr class="memdesc:a598751316ad9827094a0e235880cced5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts two 32-bit float input channels to stereo interleaved 16-bit signed integer output.  <a href="#a598751316ad9827094a0e235880cced5">More...</a><br /></td></tr>
 <tr class="separator:a598751316ad9827094a0e235880cced5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae65aa7df8b8959c929ad05fec9cf2eb5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#ae65aa7df8b8959c929ad05fec9cf2eb5">SuperpoweredShortIntToFloat</a> (short int *input, float *output, unsigned int numberOfSamples)</td></tr>
-<tr class="memdesc:ae65aa7df8b8959c929ad05fec9cf2eb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a stereo interleaved 16-bit signed integer input to stereo interleaved 32-bit float output.  <a href="#ae65aa7df8b8959c929ad05fec9cf2eb5">More...</a><br /></td></tr>
-<tr class="separator:ae65aa7df8b8959c929ad05fec9cf2eb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f81a4ba0b3affca2026c71bf9773487"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#a0f81a4ba0b3affca2026c71bf9773487">SuperpoweredShortIntToFloat</a> (short int *input, float *output, unsigned int numberOfSamples, float *peaks=NULL)</td></tr>
+<tr class="memdesc:a0f81a4ba0b3affca2026c71bf9773487"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a stereo interleaved 16-bit signed integer input to stereo interleaved 32-bit float output.  <a href="#a0f81a4ba0b3affca2026c71bf9773487">More...</a><br /></td></tr>
+<tr class="separator:a0f81a4ba0b3affca2026c71bf9773487"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba4dddc17e9e853e6b82442b4e33e465"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#aba4dddc17e9e853e6b82442b4e33e465">SuperpoweredInterleave</a> (float *left, float *right, float *output, unsigned int numberOfSamples)</td></tr>
 <tr class="memdesc:aba4dddc17e9e853e6b82442b4e33e465"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes an interleaved output from two input channels.  <a href="#aba4dddc17e9e853e6b82442b4e33e465">More...</a><br /></td></tr>
 <tr class="separator:aba4dddc17e9e853e6b82442b4e33e465"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -92,6 +92,15 @@ Functions</h2></td></tr>
 <tr class="memitem:afed02e7f7896f13097548f29205f39c5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#afed02e7f7896f13097548f29205f39c5">SuperpoweredHasNonFinite</a> (float *buffer, unsigned int numberOfValues)</td></tr>
 <tr class="memdesc:afed02e7f7896f13097548f29205f39c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the samples has non-valid samples, such as infinity or NaN (not a number).  <a href="#afed02e7f7896f13097548f29205f39c5">More...</a><br /></td></tr>
 <tr class="separator:afed02e7f7896f13097548f29205f39c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e4fd6699e3ca40320333d5e14c014e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#a2e4fd6699e3ca40320333d5e14c014e3">SuperpoweredStereoToMono</a> (float *input, float *output, float leftGainStart, float leftGainEnd, float rightGainStart, float rightGainEnd, unsigned int numberOfSamples)</td></tr>
+<tr class="memdesc:a2e4fd6699e3ca40320333d5e14c014e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes mono output from stereo input.  <a href="#a2e4fd6699e3ca40320333d5e14c014e3">More...</a><br /></td></tr>
+<tr class="separator:a2e4fd6699e3ca40320333d5e14c014e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad97f3af83989b9e944651345658328d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#ad97f3af83989b9e944651345658328d7">SuperpoweredCrossMono</a> (float *left, float *right, float *output, float leftGainStart, float leftGainEnd, float rightGainStart, float rightGainEnd, unsigned int numberOfSamples)</td></tr>
+<tr class="memdesc:ad97f3af83989b9e944651345658328d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes mono output from two separate input channels.  <a href="#ad97f3af83989b9e944651345658328d7">More...</a><br /></td></tr>
+<tr class="separator:ad97f3af83989b9e944651345658328d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a920e96664e06aea99dcec99b78b24e48"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#a920e96664e06aea99dcec99b78b24e48">SuperpoweredCrossStereo</a> (float *inputA, float *inputB, float *output, float gainStart[4], float gainEnd[4], unsigned int numberOfSamples)</td></tr>
+<tr class="memdesc:a920e96664e06aea99dcec99b78b24e48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crossfades two separate input channels.  <a href="#a920e96664e06aea99dcec99b78b24e48">More...</a><br /></td></tr>
+<tr class="separator:a920e96664e06aea99dcec99b78b24e48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe7772f165043b851a9bf074771cf17a"><td class="memItemLeft" align="right" valign="top">const unsigned char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#abe7772f165043b851a9bf074771cf17a">SuperpoweredVersion</a> ()</td></tr>
 <tr class="separator:abe7772f165043b851a9bf074771cf17a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -433,7 +442,7 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ae65aa7df8b8959c929ad05fec9cf2eb5"></a>
+<a class="anchor" id="a0f81a4ba0b3affca2026c71bf9773487"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -453,7 +462,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>numberOfSamples</em>&#160;</td>
+          <td class="paramname"><em>numberOfSamples</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>peaks</em> = <code>NULL</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -467,6 +482,7 @@ Functions</h2></td></tr>
     <tr><td class="paramname">input</td><td>Stereo interleaved 16-bit input. Should be numberOfSamples + 8 big minimum. </td></tr>
     <tr><td class="paramname">output</td><td>Stereo interleaved 32-bit output. Should be numberOfSamples + 8 big minimum. </td></tr>
     <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. </td></tr>
+    <tr><td class="paramname">peaks</td><td>Peak value result (2 floats: left peak, right peak). Can be NULL if you are not interested. </td></tr>
   </table>
   </dd>
 </dl>
@@ -648,6 +664,210 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">buffer</td><td>The buffer to check. </td></tr>
     <tr><td class="paramname">numberOfValues</td><td>Number of values in buffer. For stereo buffers, multiply by two! </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a2e4fd6699e3ca40320333d5e14c014e3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SuperpoweredStereoToMono </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>output</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>leftGainStart</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>leftGainEnd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>rightGainStart</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>rightGainEnd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>numberOfSamples</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>Stereo interleaved input. </td></tr>
+    <tr><td class="paramname">output</td><td>Output. </td></tr>
+    <tr><td class="paramname">leftGainStart</td><td>Gain of the first sample on the left channel. </td></tr>
+    <tr><td class="paramname">leftGainEnd</td><td>Gain for the last sample on the left channel. Gain will be smoothly calculated between start end end. </td></tr>
+    <tr><td class="paramname">rightGainStart</td><td>Gain of the first sample on the right channel. </td></tr>
+    <tr><td class="paramname">rightGainEnd</td><td>Gain for the last sample on the right channel. Gain will be smoothly calculated between start end end. </td></tr>
+    <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ad97f3af83989b9e944651345658328d7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SuperpoweredCrossMono </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>left</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>right</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>output</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>leftGainStart</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>leftGainEnd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>rightGainStart</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>rightGainEnd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>numberOfSamples</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">left</td><td>Input for left channel. </td></tr>
+    <tr><td class="paramname">right</td><td>Input for right channel. </td></tr>
+    <tr><td class="paramname">output</td><td>Output. </td></tr>
+    <tr><td class="paramname">leftGainStart</td><td>Gain of the first sample on the left channel. </td></tr>
+    <tr><td class="paramname">leftGainEnd</td><td>Gain for the last sample on the left channel. Gain will be smoothly calculated between start end end. </td></tr>
+    <tr><td class="paramname">rightGainStart</td><td>Gain of the first sample on the right channel. </td></tr>
+    <tr><td class="paramname">rightGainEnd</td><td>Gain for the last sample on the right channel. Gain will be smoothly calculated between start end end. </td></tr>
+    <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a920e96664e06aea99dcec99b78b24e48"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SuperpoweredCrossStereo </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>inputA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>inputB</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>output</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>gainStart</em>[4], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>gainEnd</em>[4], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>numberOfSamples</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inputA</td><td>Interleaved stereo input (first). </td></tr>
+    <tr><td class="paramname">inputB</td><td>Interleaved stereo input (second). </td></tr>
+    <tr><td class="paramname">output</td><td>Interleaved stereo output. </td></tr>
+    <tr><td class="paramname">gainStart</td><td>Gain of the first sample (first left, first right, second left, second right). </td></tr>
+    <tr><td class="paramname">gainEnd</td><td>Gain for the last sample (first left, first right, second left, second right). Gain will be smoothly calculated between start end end. </td></tr>
+    <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. </td></tr>
   </table>
   </dd>
 </dl>

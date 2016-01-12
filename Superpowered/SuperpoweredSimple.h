@@ -86,14 +86,15 @@ void SuperpoweredFloatToShortInt(float *input, short int *output, unsigned int n
 void SuperpoweredFloatToShortInt(float *inputLeft, float *inputRight, short int *output, unsigned int numberOfSamples);
 
 /**
- @fn SuperpoweredShortIntToFloat(short int *input, float *output, unsigned int numberOfSamples);
+ @fn SuperpoweredShortIntToFloat(short int *input, float *output, unsigned int numberOfSamples, float *peaks);
  @brief Converts a stereo interleaved 16-bit signed integer input to stereo interleaved 32-bit float output.
 
  @param input Stereo interleaved 16-bit input. Should be numberOfSamples + 8 big minimum.
  @param output Stereo interleaved 32-bit output. Should be numberOfSamples + 8 big minimum.
  @param numberOfSamples The number of samples to process.
+ @param peaks Peak value result (2 floats: left peak, right peak). Can be NULL if you are not interested.
  */
-void SuperpoweredShortIntToFloat(short int *input, float *output, unsigned int numberOfSamples);
+void SuperpoweredShortIntToFloat(short int *input, float *output, unsigned int numberOfSamples, float *peaks = NULL);
 
 /**
  @fn SuperpoweredInterleave(float *left, float *right, float *output, unsigned int numberOfSamples);
@@ -138,6 +139,48 @@ void SuperpoweredDeInterleave(float *input, float *left, float *right, unsigned 
  @param numberOfValues Number of values in buffer. For stereo buffers, multiply by two!
  */
 bool SuperpoweredHasNonFinite(float *buffer, unsigned int numberOfValues);
+
+/**
+ @fn SuperpoweredStereoToMono(float *input, float *output, float leftGainStart, float leftGainEnd, float rightGainStart, float rightGainEnd, unsigned int numberOfSamples);
+ @brief Makes mono output from stereo input.
+
+ @param input Stereo interleaved input.
+ @param output Output.
+ @param leftGainStart Gain of the first sample on the left channel.
+ @param leftGainEnd Gain for the last sample on the left channel. Gain will be smoothly calculated between start end end.
+ @param rightGainStart Gain of the first sample on the right channel.
+ @param rightGainEnd Gain for the last sample on the right channel. Gain will be smoothly calculated between start end end.
+ @param numberOfSamples The number of samples to process.
+ */
+void SuperpoweredStereoToMono(float *input, float *output, float leftGainStart, float leftGainEnd, float rightGainStart, float rightGainEnd, unsigned int numberOfSamples);
+
+/**
+ @fn SuperpoweredCrossMono(float *left, float *right, float *output, float leftGainStart, float leftGainEnd, float rightGainStart, float rightGainEnd, unsigned int numberOfSamples);
+ @brief Makes mono output from two separate input channels.
+ 
+ @param left Input for left channel.
+ @param right Input for right channel.
+ @param output Output.
+ @param leftGainStart Gain of the first sample on the left channel.
+ @param leftGainEnd Gain for the last sample on the left channel. Gain will be smoothly calculated between start end end.
+ @param rightGainStart Gain of the first sample on the right channel.
+ @param rightGainEnd Gain for the last sample on the right channel. Gain will be smoothly calculated between start end end.
+ @param numberOfSamples The number of samples to process.
+ */
+void SuperpoweredCrossMono(float *left, float *right, float *output, float leftGainStart, float leftGainEnd, float rightGainStart, float rightGainEnd, unsigned int numberOfSamples);
+
+/**
+ @fn SuperpoweredCrossStereo(float *inputA, float *inputB, float *output, float gainStart[4], float gainEnd[4], unsigned int numberOfSamples);
+ @brief Crossfades two separate input channels.
+
+ @param inputA Interleaved stereo input (first).
+ @param inputB Interleaved stereo input (second).
+ @param output Interleaved stereo output.
+ @param gainStart Gain of the first sample (first left, first right, second left, second right).
+ @param gainEnd Gain for the last sample (first left, first right, second left, second right). Gain will be smoothly calculated between start end end.
+ @param numberOfSamples The number of samples to process.
+ */
+void SuperpoweredCrossStereo(float *inputA, float *inputB, float *output, float gainStart[4], float gainEnd[4], unsigned int numberOfSamples);
 
 /**
  @fn SuperpoweredVersion()

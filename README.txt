@@ -109,7 +109,7 @@ Steps:
     }
 5. copy Android.mk, Application.mk and the libSuperpoweredXXX.a files into the jni folder you created at step 2, from a similar folder in one of our example projects
 6. check the correct SUPERPOWERED_PATH in Android.mk
-6. create your custom .cpp and .h files, then don’t forget to properly set LOCAL_MODULE and LOCAL_SRC_FILES in Android.mk
+7. create your custom .cpp and .h files, then don’t forget to properly set LOCAL_MODULE and LOCAL_SRC_FILES in Android.mk
 
 The Latest Version 
 ------------------Details of the latest version can be found at http://superpowered.com/superpowered-audio-sdk/Pricing and licensing

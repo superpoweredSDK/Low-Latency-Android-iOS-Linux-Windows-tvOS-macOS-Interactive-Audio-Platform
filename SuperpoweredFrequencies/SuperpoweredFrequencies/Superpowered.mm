@@ -41,6 +41,7 @@
 - (void)interruptionStarted {}
 - (void)interruptionEnded {}
 - (void)recordPermissionRefused {}
+- (void)mapChannels:(multiOutputChannelMap *)outputMap inputMap:(multiInputChannelMap *)inputMap externalAudioDeviceName:(NSString *)externalAudioDeviceName outputsAndInputs:(NSString *)outputsAndInputs {}
 
 - (bool)audioProcessingCallback:(float **)buffers inputChannels:(unsigned int)inputChannels outputChannels:(unsigned int)outputChannels numberOfSamples:(unsigned int)numberOfSamples samplerate:(unsigned int)currentsamplerate hostTime:(UInt64)hostTime {
     if (samplerate != currentsamplerate) {
@@ -64,7 +65,7 @@
 
 /*
  It's important to understand that the audio processing callback and the screen update (getFrequencies) are never in sync. 
- More than 1 audio processing turns can happen between two consecutive screen updates.
+ More than 1 audio processing turns may happen between two consecutive screen updates.
  */
 
 - (void)getFrequencies:(float *)freqs {

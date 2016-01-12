@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.9.1</span>
+   &#160;<span id="projectnumber">0.9.2</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -59,24 +59,27 @@
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8f277013fed5759043b59e72e9fddbc9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_frequency_domain.html#a8f277013fed5759043b59e72e9fddbc9">SuperpoweredFrequencyDomain</a> (int fftLogSize=11, <a class="el" href="class_superpowered_audiobuffer_pool.html">SuperpoweredAudiobufferPool</a> *pool=0)</td></tr>
-<tr class="memdesc:a8f277013fed5759043b59e72e9fddbc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an instance.  <a href="#a8f277013fed5759043b59e72e9fddbc9">More...</a><br /></td></tr>
-<tr class="separator:a8f277013fed5759043b59e72e9fddbc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21766dd949c1eef46386aa13299aa8b2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_frequency_domain.html#a21766dd949c1eef46386aa13299aa8b2">SuperpoweredFrequencyDomain</a> (int fftLogSize=11, <a class="el" href="class_superpowered_audiobuffer_pool.html">SuperpoweredAudiobufferPool</a> *pool=0, int maxOverlap=4)</td></tr>
+<tr class="memdesc:a21766dd949c1eef46386aa13299aa8b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an instance.  <a href="#a21766dd949c1eef46386aa13299aa8b2">More...</a><br /></td></tr>
+<tr class="separator:a21766dd949c1eef46386aa13299aa8b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb9c62d702c198dee88bf75d3da98ba3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_frequency_domain.html#aeb9c62d702c198dee88bf75d3da98ba3">addInput</a> (float *input, int numberOfSamples)</td></tr>
 <tr class="memdesc:aeb9c62d702c198dee88bf75d3da98ba3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add some audio input. Use it only if you created the instance with pool = 0.  <a href="#aeb9c62d702c198dee88bf75d3da98ba3">More...</a><br /></td></tr>
 <tr class="separator:aeb9c62d702c198dee88bf75d3da98ba3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a224f99ac5d280399af4ae4e60ea85877"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_frequency_domain.html#a224f99ac5d280399af4ae4e60ea85877">addInput</a> (<a class="el" href="struct_superpowered_audiobufferlist_element.html">SuperpoweredAudiobufferlistElement</a> *input)</td></tr>
 <tr class="memdesc:a224f99ac5d280399af4ae4e60ea85877"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add some audio input (advanced use). Use it only if you created the instance with an existing buffer pool.  <a href="#a224f99ac5d280399af4ae4e60ea85877">More...</a><br /></td></tr>
 <tr class="separator:a224f99ac5d280399af4ae4e60ea85877"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa08e8ead76c08de92e05779a2fa1547f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_frequency_domain.html#aa08e8ead76c08de92e05779a2fa1547f">timeDomainToFrequencyDomain</a> (float *magnitudeL, float *magnitudeR, float *phaseL, float *phaseR, float valueOfPi=0)</td></tr>
-<tr class="memdesc:aa08e8ead76c08de92e05779a2fa1547f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the audio inputs to frequency domain.  <a href="#aa08e8ead76c08de92e05779a2fa1547f">More...</a><br /></td></tr>
-<tr class="separator:aa08e8ead76c08de92e05779a2fa1547f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15bbc88bcea9a5ce41f0faabc51ebfe5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_frequency_domain.html#a15bbc88bcea9a5ce41f0faabc51ebfe5">timeDomainToFrequencyDomain</a> (float *magnitudeL, float *magnitudeR, float *phaseL, float *phaseR, float valueOfPi=0, bool complexMode=false)</td></tr>
+<tr class="memdesc:a15bbc88bcea9a5ce41f0faabc51ebfe5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the audio inputs to frequency domain.  <a href="#a15bbc88bcea9a5ce41f0faabc51ebfe5">More...</a><br /></td></tr>
+<tr class="separator:a15bbc88bcea9a5ce41f0faabc51ebfe5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9317088fcb43abfa9f2ea8643127f0ab"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_frequency_domain.html#a9317088fcb43abfa9f2ea8643127f0ab">timeDomainToFrequencyDomain</a> (float *magnitude, float *phase, float valueOfPi=0, bool complexMode=false)</td></tr>
+<tr class="memdesc:a9317088fcb43abfa9f2ea8643127f0ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the mono audio input to frequency domain.  <a href="#a9317088fcb43abfa9f2ea8643127f0ab">More...</a><br /></td></tr>
+<tr class="separator:a9317088fcb43abfa9f2ea8643127f0ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7808eacee9cb8de272b188db06be5a92"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7808eacee9cb8de272b188db06be5a92"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>advance</b> (int numberOfSamples=0)</td></tr>
 <tr class="separator:a7808eacee9cb8de272b188db06be5a92"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a80f3a043748d3b294946c6b3f6f7fe09"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_frequency_domain.html#a80f3a043748d3b294946c6b3f6f7fe09">frequencyDomainToTimeDomain</a> (float *magnitudeL, float *magnitudeR, float *phaseL, float *phaseR, float *output, float valueOfPi=0, int incrementSamples=0)</td></tr>
-<tr class="memdesc:a80f3a043748d3b294946c6b3f6f7fe09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts frequency domain data to audio output.  <a href="#a80f3a043748d3b294946c6b3f6f7fe09">More...</a><br /></td></tr>
-<tr class="separator:a80f3a043748d3b294946c6b3f6f7fe09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63e8b9958793de0f167b079c9f3f5e67"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_frequency_domain.html#a63e8b9958793de0f167b079c9f3f5e67">frequencyDomainToTimeDomain</a> (float *magnitudeL, float *magnitudeR, float *phaseL, float *phaseR, float *output, float valueOfPi=0, int incrementSamples=0, bool complexMode=false)</td></tr>
+<tr class="memdesc:a63e8b9958793de0f167b079c9f3f5e67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts frequency domain data to audio output.  <a href="#a63e8b9958793de0f167b079c9f3f5e67">More...</a><br /></td></tr>
+<tr class="separator:a63e8b9958793de0f167b079c9f3f5e67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d62a20d4a5e4cfa0b666908382971c4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d62a20d4a5e4cfa0b666908382971c4"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_frequency_domain.html#a0d62a20d4a5e4cfa0b666908382971c4">reset</a> ()</td></tr>
 <tr class="memdesc:a0d62a20d4a5e4cfa0b666908382971c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset all internals, sets the instance as good as new. <br /></td></tr>
@@ -98,9 +101,9 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>numberOfInputSamplesNe
 <div class="textblock"><p>One instance allocates around 131 kb. How to use:</p>
 <ul>
 <li>feed audio input using <a class="el" href="class_superpowered_frequency_domain.html#aeb9c62d702c198dee88bf75d3da98ba3" title="Add some audio input. Use it only if you created the instance with pool = 0. ">addInput()</a></li>
-<li>then iterate on <a class="el" href="class_superpowered_frequency_domain.html#aa08e8ead76c08de92e05779a2fa1547f" title="Converts the audio inputs to frequency domain. ">timeDomainToFrequencyDomain()</a> until it returns false</li>
-<li>if <a class="el" href="class_superpowered_frequency_domain.html#aa08e8ead76c08de92e05779a2fa1547f" title="Converts the audio inputs to frequency domain. ">timeDomainToFrequencyDomain()</a> returns true, you have frequency domain data you can work with, use advance() in this case</li>
-<li><a class="el" href="class_superpowered_frequency_domain.html#a80f3a043748d3b294946c6b3f6f7fe09" title="Converts frequency domain data to audio output. ">frequencyDomainToTimeDomain()</a> creates time domain audio samples from frequency domain data</li>
+<li>then iterate on <a class="el" href="class_superpowered_frequency_domain.html#a15bbc88bcea9a5ce41f0faabc51ebfe5" title="Converts the audio inputs to frequency domain. ">timeDomainToFrequencyDomain()</a> until it returns false</li>
+<li>if <a class="el" href="class_superpowered_frequency_domain.html#a15bbc88bcea9a5ce41f0faabc51ebfe5" title="Converts the audio inputs to frequency domain. ">timeDomainToFrequencyDomain()</a> returns true, you have frequency domain data you can work with, use advance() in this case</li>
+<li><a class="el" href="class_superpowered_frequency_domain.html#a63e8b9958793de0f167b079c9f3f5e67" title="Converts frequency domain data to audio output. ">frequencyDomainToTimeDomain()</a> creates time domain audio samples from frequency domain data</li>
 </ul>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -111,7 +114,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>numberOfInputSamplesNe
   </dd>
 </dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a8f277013fed5759043b59e72e9fddbc9"></a>
+<a class="anchor" id="a21766dd949c1eef46386aa13299aa8b2"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -125,7 +128,13 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>numberOfInputSamplesNe
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="class_superpowered_audiobuffer_pool.html">SuperpoweredAudiobufferPool</a> *&#160;</td>
-          <td class="paramname"><em>pool</em> = <code>0</code>&#160;</td>
+          <td class="paramname"><em>pool</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>maxOverlap</em> = <code>4</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -138,6 +147,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>numberOfInputSamplesNe
   <table class="params">
     <tr><td class="paramname">fftLogSize</td><td>FFT log size, between 8 and 13 (FFT 256 - 8192). The default value (11) provides a good compromise in precision (~11 Hz per bin), CPU load and time-domain event sensitivity. </td></tr>
     <tr><td class="paramname">pool</td><td>An audio buffer pool to use for internal buffers. 0 means it will create and use an internal pool. </td></tr>
+    <tr><td class="paramname">maxOverlap</td><td>Maximum overlap:1 (default: 4:1). </td></tr>
   </table>
   </dd>
 </dl>
@@ -200,7 +210,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>numberOfInputSamplesNe
 
 </div>
 </div>
-<a class="anchor" id="aa08e8ead76c08de92e05779a2fa1547f"></a>
+<a class="anchor" id="a15bbc88bcea9a5ce41f0faabc51ebfe5"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -232,7 +242,13 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>numberOfInputSamplesNe
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>valueOfPi</em> = <code>0</code>&#160;</td>
+          <td class="paramname"><em>valueOfPi</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>complexMode</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -250,13 +266,63 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>numberOfInputSamplesNe
     <tr><td class="paramname">phaseL</td><td>Phases for each frequency bin, left side. Must be at least fftSize big. </td></tr>
     <tr><td class="paramname">phaseR</td><td>Phases for each frequency bin, right side. Must be at least fftSize big. </td></tr>
     <tr><td class="paramname">valueOfPi</td><td>Pi can be translated to any value (Google: the tau manifesto). Leave it at 0 for M_PI. </td></tr>
+    <tr><td class="paramname">complexMode</td><td>Instead of polar transform, returns with complex values (magnitude: real, phase: imag). </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a class="anchor" id="a80f3a043748d3b294946c6b3f6f7fe09"></a>
+<a class="anchor" id="a9317088fcb43abfa9f2ea8643127f0ab"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SuperpoweredFrequencyDomain::timeDomainToFrequencyDomain </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>magnitude</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>phase</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>valueOfPi</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>complexMode</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Each frequency bin is (samplerate / fftSize / 2) wide.</p>
+<dl class="section return"><dt>Returns</dt><dd>True, if a conversion was possible (enough samples were available).</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">magnitude</td><td>Magnitudes for each frequency bin. Must be at least fftSize big. </td></tr>
+    <tr><td class="paramname">phase</td><td>Phases for each frequency bin. Must be at least fftSize big. </td></tr>
+    <tr><td class="paramname">valueOfPi</td><td>Pi can be translated to any value (Google: the tau manifesto). Leave it at 0 for M_PI. </td></tr>
+    <tr><td class="paramname">complexMode</td><td>Instead of polar transform, returns with complex values (magnitude: real, phase: imag). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a63e8b9958793de0f167b079c9f3f5e67"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -300,7 +366,13 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>numberOfInputSamplesNe
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>incrementSamples</em> = <code>0</code>&#160;</td>
+          <td class="paramname"><em>incrementSamples</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>complexMode</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -318,6 +390,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>numberOfInputSamplesNe
     <tr><td class="paramname">output</td><td>Output goes here. </td></tr>
     <tr><td class="paramname">valueOfPi</td><td>Pi can be translated to any value (Google: the tau manifesto). Leave it at 0 for M_PI. </td></tr>
     <tr><td class="paramname">incrementSamples</td><td>For advanced use, if you know how window overlapping works. 0 (the default value) means 4:1 overlap (good compromise in audio quality). </td></tr>
+    <tr><td class="paramname">complexMode</td><td>Instead of polar transform, returns with complex values (magnitude: real, phase: imag). </td></tr>
   </table>
   </dd>
 </dl>

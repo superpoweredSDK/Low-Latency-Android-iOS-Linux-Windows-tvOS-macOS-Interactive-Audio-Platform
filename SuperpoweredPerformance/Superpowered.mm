@@ -85,6 +85,7 @@
 
 - (void)interruptionStarted {}
 - (void)recordPermissionRefused {}
+- (void)mapChannels:(multiOutputChannelMap *)outputMap inputMap:(multiInputChannelMap *)inputMap externalAudioDeviceName:(NSString *)externalAudioDeviceName outputsAndInputs:(NSString *)outputsAndInputs {}
 
 - (void)interruptionEnded {
     player->onMediaserverInterrupt(); // If the player plays Apple Lossless audio files, then we need this. Otherwise unnecessary.

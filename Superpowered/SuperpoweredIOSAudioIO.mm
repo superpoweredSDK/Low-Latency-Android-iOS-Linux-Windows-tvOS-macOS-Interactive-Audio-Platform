@@ -400,7 +400,7 @@ static OSStatus audioProcessingCallback(void *inRefCon, AudioUnitRenderActionFla
     for (int n = 0; n < 8; n++) outputChannelMap.HDMIChannels[n] = -1;
     for (int n = 0; n < 32; n++) outputChannelMap.USBChannels[n] = inputChannelMap.USBChannels[n] = - 1;
 
-    if ([(NSObject *)delegate respondsToSelector:@selector(mapChannels)]) [delegate mapChannels:&outputChannelMap inputMap:&inputChannelMap externalAudioDeviceName:externalAudioDeviceName outputsAndInputs:audioSystemInfo];
+    [delegate mapChannels:&outputChannelMap inputMap:&inputChannelMap externalAudioDeviceName:externalAudioDeviceName outputsAndInputs:audioSystemInfo];
     if (!audioUnit || !iOS6 || (numChannels <= 2)) return;
 
     SInt32 outputmap[32], inputmap[32];

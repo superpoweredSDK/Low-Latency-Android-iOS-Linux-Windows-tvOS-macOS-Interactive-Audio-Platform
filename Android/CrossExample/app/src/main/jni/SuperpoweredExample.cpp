@@ -45,13 +45,13 @@ SuperpoweredExample::SuperpoweredExample(const char *path, int *params) : active
     filter = new SuperpoweredFilter(SuperpoweredFilter_Resonant_Lowpass, samplerate);
     flanger = new SuperpoweredFlanger(samplerate);
 
-    audioSystem = new SuperpoweredAndroidAudioIO(samplerate, buffersize, false, true, audioProcessing, this, SL_ANDROID_STREAM_MEDIA, buffersize * 2);
+    audioSystem = new SuperpoweredAndroidAudioIO(samplerate, buffersize, false, true, audioProcessing, this, -1, SL_ANDROID_STREAM_MEDIA, buffersize * 2);
 }
 
 SuperpoweredExample::~SuperpoweredExample() {
+    delete audioSystem;
     delete playerA;
     delete playerB;
-    delete audioSystem;
     free(stereoBuffer);
     pthread_mutex_destroy(&mutex);
 }

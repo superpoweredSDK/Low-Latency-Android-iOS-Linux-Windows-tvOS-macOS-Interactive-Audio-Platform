@@ -27,6 +27,7 @@ static const char *urls[8] = {
 - (void)interruptionStarted {}
 - (void)interruptionEnded {}
 - (void)recordPermissionRefused {}
+- (void)mapChannels:(multiOutputChannelMap *)outputMap inputMap:(multiInputChannelMap *)inputMap externalAudioDeviceName:(NSString *)externalAudioDeviceName outputsAndInputs:(NSString *)outputsAndInputs {}
 
 - (void)updateDuration {
     if (player->durationMs == UINT_MAX) {

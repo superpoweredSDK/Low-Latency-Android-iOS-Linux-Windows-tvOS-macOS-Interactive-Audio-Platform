@@ -71,5 +71,5 @@ JNIEXPORT void Java_com_superpowered_frequencydomain_MainActivity_FrequencyDomai
     fifoOutput = (float *)malloc(fifoCapacity * sizeof(float) * 2 + 128);
 
     inputBufferFloat = (float *)malloc(buffersize * sizeof(float) * 2 + 128);
-    audioIO = new SuperpoweredAndroidAudioIO(samplerate, buffersize, true, true, audioProcessing, NULL, SL_ANDROID_STREAM_MEDIA, buffersize * 2); // Start audio input/output.
+    audioIO = new SuperpoweredAndroidAudioIO(samplerate, buffersize, true, true, audioProcessing, NULL, -1, SL_ANDROID_STREAM_MEDIA, buffersize * 2); // Start audio input/output.
 }

@@ -7,7 +7,7 @@ struct reverbInternals;
 /**
  @brief CPU-friendly reverb.
  
- On instance allocates around 120 kb memory.
+ One instance allocates around 120 kb memory.
  
  @param dry >= 0.0f and <= 1.0f. Read only.
  @param wet >= 0.0f and <= 1.0f. Read only.

@@ -29,8 +29,9 @@ public:
  
  @param fftLogSize FFT log size, between 8 and 13 (FFT 256 - 8192). The default value (11) provides a good compromise in precision (~11 Hz per bin), CPU load and time-domain event sensitivity.
  @param pool An audio buffer pool to use for internal buffers. 0 means it will create and use an internal pool.
+ @param maxOverlap Maximum overlap:1 (default: 4:1).
 */
-    SuperpoweredFrequencyDomain(int fftLogSize = 11, SuperpoweredAudiobufferPool *pool = 0);
+    SuperpoweredFrequencyDomain(int fftLogSize = 11, SuperpoweredAudiobufferPool *pool = 0, int maxOverlap = 4);
     ~SuperpoweredFrequencyDomain();
 
 /**
@@ -59,8 +60,23 @@ public:
  @param phaseL Phases for each frequency bin, left side.  Must be at least fftSize big.
  @param phaseR Phases for each frequency bin, right side.  Must be at least fftSize big.
  @param valueOfPi Pi can be translated to any value (Google: the tau manifesto). Leave it at 0 for M_PI.
+ @param complexMode Instead of polar transform, returns with complex values (magnitude: real, phase: imag).
 */
-    bool timeDomainToFrequencyDomain(float *magnitudeL, float *magnitudeR, float *phaseL, float *phaseR, float valueOfPi = 0);
+    bool timeDomainToFrequencyDomain(float *magnitudeL, float *magnitudeR, float *phaseL, float *phaseR, float valueOfPi = 0, bool complexMode = false);
+
+/**
+ @brief Converts the mono audio input to frequency domain.
+
+ Each frequency bin is (samplerate / fftSize / 2) wide.
+
+ @return True, if a conversion was possible (enough samples were available).
+
+ @param magnitude Magnitudes for each frequency bin. Must be at least fftSize big.
+ @param phase Phases for each frequency bin.  Must be at least fftSize big.
+ @param valueOfPi Pi can be translated to any value (Google: the tau manifesto). Leave it at 0 for M_PI.
+ @param complexMode Instead of polar transform, returns with complex values (magnitude: real, phase: imag).
+*/
+    bool timeDomainToFrequencyDomain(float *magnitude, float *phase, float valueOfPi = 0, bool complexMode = false);
 
 /*
  @brief Advances the input buffer (removes the earliest samples).
@@ -79,8 +95,9 @@ public:
  @param output Output goes here.
  @param valueOfPi Pi can be translated to any value (Google: the tau manifesto). Leave it at 0 for M_PI.
  @param incrementSamples For advanced use, if you know how window overlapping works. 0 (the default value) means 4:1 overlap (good compromise in audio quality).
+ @param complexMode Instead of polar transform, returns with complex values (magnitude: real, phase: imag).
 */
-    void frequencyDomainToTimeDomain(float *magnitudeL, float *magnitudeR, float *phaseL, float *phaseR, float *output, float valueOfPi = 0, int incrementSamples = 0);
+    void frequencyDomainToTimeDomain(float *magnitudeL, float *magnitudeR, float *phaseL, float *phaseR, float *output, float valueOfPi = 0, int incrementSamples = 0, bool complexMode = false);
 
 /**
  @brief Reset all internals, sets the instance as good as new.

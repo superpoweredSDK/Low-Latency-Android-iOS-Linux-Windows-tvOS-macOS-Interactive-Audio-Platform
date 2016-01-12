@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.9.1</span>
+   &#160;<span id="projectnumber">0.9.2</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -322,7 +322,7 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>maxTimeStretchingTem
     <tr><td class="paramname">dynamicHLSAlternativeSwitching</td><td>Dynamicly changing the current HLS alternative to match the available network bandwidth. Default is true. </td></tr>
     <tr><td class="paramname">reverseToForwardAtLoopStart</td><td>If looping and playback direction is reverse, reaching the beginning of the loop will change direction to forward. True by default. </td></tr>
     <tr><td class="paramname">downloadSecondsAhead</td><td>The HLS content download strategy: how many seconds ahead of the playback position to download. Default is HLS_DOWNLOAD_REMAINING, meaning it will download everything after the playback position, until the end. HLS_DOWNLOAD_EVERYTHING downloads before the playback position too. </td></tr>
-    <tr><td class="paramname">minTimeStretchingTempo</td><td>Will not time-stretch, just resample below this tempo. Default: 0.5f (recommended value for low CPU on older mobile devices, such as the first iPad). </td></tr>
+    <tr><td class="paramname">minTimeStretchingTempo</td><td>Will not time-stretch, just resample below this tempo. Default: 0.501f (recommended value for low CPU on older mobile devices, such as the first iPad). Set this before an <a class="el" href="class_superpowered_advanced_audio_player.html#a314b7b0fb30de9ea973c4bd966b52b6a" title="Opens a new audio file, with playback paused. ">open()</a> call. </td></tr>
     <tr><td class="paramname">maxTimeStretchingTempo</td><td>Will not time-stretch, just resample above this tempo. Default: 2.0f (recommended value for low CPU on older mobile devices, such as the first iPad). </td></tr>
   </table>
   </dd>
