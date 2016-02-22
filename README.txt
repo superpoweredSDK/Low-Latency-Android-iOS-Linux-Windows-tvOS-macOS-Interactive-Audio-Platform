@@ -118,6 +118,8 @@ The Superpowered Audio SDK is free for software applications, except HLS playbac
 
 Superpowered FFT benefits from ideas in Construction of a High-Performance FFT by Eric Postpischil (http://edp.org/resume.htm).
 
+The Superpowered MP3 and AAC decoder benefits from optimizations by Ken Cooke.
+
 
 Contacts
 --------

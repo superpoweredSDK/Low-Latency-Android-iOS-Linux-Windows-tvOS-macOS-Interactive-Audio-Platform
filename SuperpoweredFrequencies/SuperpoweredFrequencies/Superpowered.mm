@@ -26,7 +26,7 @@
     float widths[8] = { 1, 1, 1, 1, 1, 1, 1, 1 };
     filters = new SuperpoweredBandpassFilterbank(8, frequencies, widths, samplerate);
 
-    audioIO = [[SuperpoweredIOSAudioIO alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:12 preferredMinimumSamplerate:44100 audioSessionCategory:AVAudioSessionCategoryPlayAndRecord channels:2];
+    audioIO = [[SuperpoweredIOSAudioIO alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:12 preferredMinimumSamplerate:44100 audioSessionCategory:AVAudioSessionCategoryRecord channels:2];
     [audioIO start];
 
     return self;

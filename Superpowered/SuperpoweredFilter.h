@@ -114,7 +114,7 @@ public:
  @param numberOfSamples Should be 32 minimum.
 */
     bool process(float *input, float *output, unsigned int numberOfSamples);
-    
+
 protected:
     filterInternals *internals;
     SuperpoweredFilter(const SuperpoweredFilter&);

@@ -45,6 +45,7 @@ typedef enum SuperpoweredAdvancedAudioPlayerJogMode {
 typedef enum SuperpoweredAdvancedAudioPlayerEvent {
     SuperpoweredAdvancedAudioPlayerEvent_LoadSuccess,
     SuperpoweredAdvancedAudioPlayerEvent_LoadError,
+    SuperpoweredAdvancedAudioPlayerEvent_NetworkError,
     SuperpoweredAdvancedAudioPlayerEvent_EOF,
     SuperpoweredAdvancedAudioPlayerEvent_JogParameter,
     SuperpoweredAdvancedAudioPlayerEvent_DurationChanged,
@@ -62,7 +63,7 @@ typedef struct hlsStreamAlternative {
 /**
  @brief Events happen asynchronously, implement this callback to get notified.
  
- LoadSuccess and LoadError are called from an internal thread of this object.
+ LoadSuccess, LoadError and NetworkError are called from an internal thread of this object.
  
  EOF (end of file) and ScratchControl are called from the (probably real-time) audio processing thread, you shouldn't do any expensive there.
  
@@ -142,6 +143,7 @@ typedef void (* SuperpoweredAdvancedAudioPlayerCallback) (void *clientData, Supe
  @param dynamicHLSAlternativeSwitching Dynamicly changing the current HLS alternative to match the available network bandwidth. Default is true.
  @param reverseToForwardAtLoopStart If looping and playback direction is reverse, reaching the beginning of the loop will change direction to forward. True by default.
  @param downloadSecondsAhead The HLS content download strategy: how many seconds ahead of the playback position to download. Default is HLS_DOWNLOAD_REMAINING, meaning it will download everything after the playback position, until the end. HLS_DOWNLOAD_EVERYTHING downloads before the playback position too.
+ @param maxDownloadAttempts If HLS download fails, how many times to try until sleep. Default: 100. After sleep, NetworkError is called continously.
  @param minTimeStretchingTempo Will not time-stretch, just resample below this tempo. Default: 0.501f (recommended value for low CPU on older mobile devices, such as the first iPad). Set this before an open() call. 
  @param maxTimeStretchingTempo Will not time-stretch, just resample above this tempo. Default: 2.0f (recommended value for low CPU on older mobile devices, such as the first iPad).
 */
@@ -183,6 +185,7 @@ public:
     bool dynamicHLSAlternativeSwitching;
     bool reverseToForwardAtLoopStart;
     int downloadSecondsAhead;
+    int maxDownloadAttempts;
     float minTimeStretchingTempo;
     float maxTimeStretchingTempo;
 

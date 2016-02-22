@@ -94,7 +94,7 @@ void SuperpoweredFloatToShortInt(float *inputLeft, float *inputRight, short int 
  @param numberOfSamples The number of samples to process.
  @param peaks Peak value result (2 floats: left peak, right peak). Can be NULL if you are not interested.
  */
-void SuperpoweredShortIntToFloat(short int *input, float *output, unsigned int numberOfSamples, float *peaks = NULL);
+void SuperpoweredShortIntToFloat(short int *input, float *output, unsigned int numberOfSamples, float *peaks = 0);
 
 /**
  @fn SuperpoweredInterleave(float *left, float *right, float *output, unsigned int numberOfSamples);
@@ -103,7 +103,7 @@ void SuperpoweredShortIntToFloat(short int *input, float *output, unsigned int n
  @param left Input for left channel.
  @param right Input for right channel.
  @param output Interleaved output.
- @param numberOfSamples The number of samples to process. Should be 4 minimum, must be exactly divisible with 4.
+ @param numberOfSamples The number of samples to process.
  */
 void SuperpoweredInterleave(float *left, float *right, float *output, unsigned int numberOfSamples);
 
@@ -114,7 +114,7 @@ void SuperpoweredInterleave(float *left, float *right, float *output, unsigned i
  @param left Input for left channel.
  @param right Input for right channel.
  @param output Interleaved output.
- @param numberOfSamples The number of samples to process. Should be 4 minimum, must be exactly divisible with 4.
+ @param numberOfSamples The number of samples to process.
  @param peaks Peak value result (2 floats: left peak, right peak).
  */
 void SuperpoweredInterleaveAndGetPeaks(float *left, float *right, float *output, unsigned int numberOfSamples, float *peaks);
@@ -124,12 +124,24 @@ void SuperpoweredInterleaveAndGetPeaks(float *left, float *right, float *output,
  @brief Deinterleaves an interleaved input.
 
  @param input Interleaved input.
- @param left Input for left channel.
- @param right Input for right channel.
+ @param left Output for left channel.
+ @param right Output for right channel.
 
- @param numberOfSamples The number of samples to process. Should be 4 minimum, must be exactly divisible with 4.
+ @param numberOfSamples The number of samples to process.
  */
 void SuperpoweredDeInterleave(float *input, float *left, float *right, unsigned int numberOfSamples);
+
+/**
+ @fn SuperpoweredDeInterleaveAdd(float *input, float *left, float *right, unsigned int numberOfSamples);
+ @brief Deinterleaves an interleaved input and adds the results to the output channels.
+
+ @param input Interleaved input.
+ @param left Output for left channel.
+ @param right Output for right channel.
+
+ @param numberOfSamples The number of samples to process.
+ */
+void SuperpoweredDeInterleaveAdd(float *input, float *left, float *right, unsigned int numberOfSamples);
 
 /**
  @fn SuperpoweredHasNonFinite(float *buffer, unsigned int numberOfValues);
@@ -155,6 +167,21 @@ bool SuperpoweredHasNonFinite(float *buffer, unsigned int numberOfValues);
 void SuperpoweredStereoToMono(float *input, float *output, float leftGainStart, float leftGainEnd, float rightGainStart, float rightGainEnd, unsigned int numberOfSamples);
 
 /**
+ @fn SuperpoweredStereoToMono2(float *input, float *output0, float *output1, float leftGainStart, float leftGainEnd, float rightGainStart, float rightGainEnd, unsigned int numberOfSamples);
+ @brief Makes two mono outputs from stereo input.
+
+ @param input Stereo interleaved input.
+ @param output0 Output.
+ @param output1 Output.
+ @param leftGainStart Gain of the first sample on the left channel.
+ @param leftGainEnd Gain for the last sample on the left channel. Gain will be smoothly calculated between start end end.
+ @param rightGainStart Gain of the first sample on the right channel.
+ @param rightGainEnd Gain for the last sample on the right channel. Gain will be smoothly calculated between start end end.
+ @param numberOfSamples The number of samples to process.
+ */
+void SuperpoweredStereoToMono2(float *input, float *output0, float *output1, float leftGainStart, float leftGainEnd, float rightGainStart, float rightGainEnd, unsigned int numberOfSamples);
+
+/**
  @fn SuperpoweredCrossMono(float *left, float *right, float *output, float leftGainStart, float leftGainEnd, float rightGainStart, float rightGainEnd, unsigned int numberOfSamples);
  @brief Makes mono output from two separate input channels.
  
@@ -168,6 +195,22 @@ void SuperpoweredStereoToMono(float *input, float *output, float leftGainStart, 
  @param numberOfSamples The number of samples to process.
  */
 void SuperpoweredCrossMono(float *left, float *right, float *output, float leftGainStart, float leftGainEnd, float rightGainStart, float rightGainEnd, unsigned int numberOfSamples);
+
+/**
+ @fn SuperpoweredCrossMono2(float *left, float *right, float *output0, float *output1, float leftGainStart, float leftGainEnd, float rightGainStart, float rightGainEnd, unsigned int numberOfSamples);
+ @brief Makes two mono outputs from two separate input channels.
+
+ @param left Input for left channel.
+ @param right Input for right channel.
+ @param output0 Output.
+ @param output1 Output.
+ @param leftGainStart Gain of the first sample on the left channel.
+ @param leftGainEnd Gain for the last sample on the left channel. Gain will be smoothly calculated between start end end.
+ @param rightGainStart Gain of the first sample on the right channel.
+ @param rightGainEnd Gain for the last sample on the right channel. Gain will be smoothly calculated between start end end.
+ @param numberOfSamples The number of samples to process.
+ */
+void SuperpoweredCrossMono2(float *left, float *right, float *output0, float *output1, float leftGainStart, float leftGainEnd, float rightGainStart, float rightGainEnd, unsigned int numberOfSamples);
 
 /**
  @fn SuperpoweredCrossStereo(float *inputA, float *inputB, float *output, float gainStart[4], float gainEnd[4], unsigned int numberOfSamples);

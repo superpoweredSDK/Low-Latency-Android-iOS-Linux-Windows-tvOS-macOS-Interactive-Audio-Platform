@@ -42,7 +42,7 @@ public:
 
  @param input 16-bit stereo input. Should be numberOfSamples * 2 + 64 big.
  @param temp Temporary buffer. Should be numberOfSamples * 2 + 64 big.
- @param output 16-bit stereo output. Should be numberOfSamples * 2 + 64 big.
+ @param output 16-bit stereo output. Should be big enough to store the expected number of output samples, and some more.
  @param numberOfSamples Number of samples to process.
  @param reverse Plays backwards.
  @param highQuality Enables more sophisticated processing to reduce interpolation noise. Good for scratching for example, but not recommended for continous music playback above 0.5f rate.

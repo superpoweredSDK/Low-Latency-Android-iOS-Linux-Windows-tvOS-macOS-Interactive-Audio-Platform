@@ -10,6 +10,7 @@ struct stemsLimiter;
 #define SUPERPOWEREDDECODER_OK 1
 #define SUPERPOWEREDDECODER_ERROR 2
 #define SUPERPOWEREDDECODER_BUFFERING 3
+#define SUPERPOWEREDDECODER_NETWORK_ERROR 4
 
 typedef enum SuperpoweredDecoder_Kind {
     SuperpoweredDecoder_MP3, SuperpoweredDecoder_AAC, SuperpoweredDecoder_AIFF, SuperpoweredDecoder_WAV, SuperpoweredDecoder_MediaServer

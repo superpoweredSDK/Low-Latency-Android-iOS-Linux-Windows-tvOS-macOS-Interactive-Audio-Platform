@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.9.2</span>
+   &#160;<span id="projectnumber">0.9.4</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -205,7 +205,7 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>rate</b></td></tr>
   <table class="params">
     <tr><td class="paramname">input</td><td>16-bit stereo input. Should be numberOfSamples * 2 + 64 big. </td></tr>
     <tr><td class="paramname">temp</td><td>Temporary buffer. Should be numberOfSamples * 2 + 64 big. </td></tr>
-    <tr><td class="paramname">output</td><td>16-bit stereo output. Should be numberOfSamples * 2 + 64 big. </td></tr>
+    <tr><td class="paramname">output</td><td>16-bit stereo output. Should be big enough to store the expected number of output samples, and some more. </td></tr>
     <tr><td class="paramname">numberOfSamples</td><td>Number of samples to process. </td></tr>
     <tr><td class="paramname">reverse</td><td>Plays backwards. </td></tr>
     <tr><td class="paramname">highQuality</td><td>Enables more sophisticated processing to reduce interpolation noise. Good for scratching for example, but not recommended for continous music playback above 0.5f rate. </td></tr>
