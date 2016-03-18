@@ -121,12 +121,13 @@ static void *audioProcessingThread(void *param) {
 // This is called periodically by the input audio queue. Audio input is received from the media server at this point.
 static void SuperpoweredAndroidAudioIO_InputCallback(SLAndroidSimpleBufferQueueItf caller, void *pContext) {
     SuperpoweredAndroidAudioIOInternals *internals = (SuperpoweredAndroidAudioIOInternals *)pContext;
-    (*caller)->Enqueue(caller, internals->fifobuffer + internals->writeBufferIndex * internals->bufferStep, internals->buffersize * 4);
+    short int *buffer = internals->fifobuffer + internals->writeBufferIndex * internals->bufferStep;
     if (internals->writeBufferIndex < internals->numBuffers - 1) internals->writeBufferIndex++; else internals->writeBufferIndex = 0;
 
     if (!internals->hasOutput) {
         if (internals->separateAudioProcessingThread) pthread_cond_signal(&internals->audioProcessingThreadCondition); else inputOnlyProcessing(internals);
     };
+    (*caller)->Enqueue(caller, buffer, internals->buffersize * 4);
 }
 
 // This is called periodically by the output audio queue. Audio for the user should be provided here.

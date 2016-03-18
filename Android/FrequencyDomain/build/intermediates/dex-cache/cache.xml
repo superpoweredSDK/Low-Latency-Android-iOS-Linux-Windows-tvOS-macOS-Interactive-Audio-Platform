@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Volumes/iMect/iphone/SuperpoweredSDK/Android/FrequencyDomain/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="/Volumes/iMect/iphone/SuperpoweredSDK/Android/FrequencyDomain/app/build/intermediates/pre-dexed/debug/classes-89d6a4ff566ac28dab400c9ca5f5726db8f5024d.jar" />
+    </item>
+    <item
+        jar="/android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="/Volumes/iMect/iphone/SuperpoweredSDK/Android/FrequencyDomain/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-cd23c11e12c927bd3a56453cb6d2f3c8d4ba1566.jar" />
+    </item>
+    <item
+        jar="/Volumes/iMect/iphone/SuperpoweredSDK/Android/FrequencyDomain/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="/Volumes/iMect/iphone/SuperpoweredSDK/Android/FrequencyDomain/app/build/intermediates/pre-dexed/debug/classes-624846620cf4521587df061abdfcee1c3e06052c.jar" />
+    </item>
+    <item
+        jar="/Volumes/iMect/iphone/SuperpoweredSDK/Android/FrequencyDomain/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/libs/internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="/Volumes/iMect/iphone/SuperpoweredSDK/Android/FrequencyDomain/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-fa9f20d362fd83282ecd009983574400f23bf718.jar" />
+    </item>
+
+</items>

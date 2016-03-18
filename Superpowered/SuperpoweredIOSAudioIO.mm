@@ -438,8 +438,10 @@ static OSStatus audioProcessingCallback(void *inRefCon, AudioUnitRenderActionFla
         inputmap[n] = inputChannelMap.USBChannels[n];
     };
 
+#if !TARGET_IPHONE_SIMULATOR
     AudioUnitSetProperty(audioUnit, kAudioOutputUnitProperty_ChannelMap, kAudioUnitScope_Input, 0, outputmap, 128);
     AudioUnitSetProperty(audioUnit, kAudioOutputUnitProperty_ChannelMap, kAudioUnitScope_Input, 1, inputmap, 128);
+#endif
 }
 
 - (void)reconfigureWithAudioSessionCategory:(NSString *)category {
