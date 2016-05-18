@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -53,5 +52,5 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private native void FrequencyDomain(long samplerate, long buffersize);
+    private native void FrequencyDomain(int samplerate, int buffersize);
 }

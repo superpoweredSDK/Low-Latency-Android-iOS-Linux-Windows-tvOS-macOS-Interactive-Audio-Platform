@@ -82,7 +82,7 @@ static void SuperpoweredFFTTest() {
             float *vdsp_imag = (float *)malloc(fftSize * sizeof(float));
             float *vdsp_magnitude = (float *)malloc(fftSize * sizeof(float));
             float *vdsp_phase = (float *)malloc(fftSize * sizeof(float));
-            DSPComplex *polarToRectComplex = new DSPComplex[fftSize / 2];
+            DSPComplex *polarToRectComplex = (DSPComplex *)malloc(sizeof(DSPComplex) * (fftSize / 2));
             float *real = (float *)malloc(fftSize * sizeof(float));
             float *imag = (float *)malloc(fftSize * sizeof(float));
 
@@ -235,7 +235,7 @@ static void SuperpoweredFFTTest() {
             free(vdsp_imag);
             free(vdsp_magnitude);
             free(vdsp_phase);
-            delete polarToRectComplex;
+            free(polarToRectComplex);
             free(real);
             free(imag);
         };

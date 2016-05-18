@@ -1,12 +1,11 @@
 #include <jni.h>
 #include <stdlib.h>
-#include "SuperpoweredFrequencyDomain.h"
-#include "SuperpoweredAndroidAudioIO.h"
-#include "SuperpoweredSimple.h"
+#include <SuperpoweredFrequencyDomain.h>
+#include <AndroidIO/SuperpoweredAndroidAudioIO.h>
+#include <SuperpoweredSimple.h>
 #include <SLES/OpenSLES.h>
 #include <SLES/OpenSLES_AndroidConfiguration.h>
 
-static SuperpoweredAndroidAudioIO *audioIO;
 static SuperpoweredFrequencyDomain *frequencyDomain;
 static float *magnitudeLeft, *magnitudeRight, *phaseLeft, *phaseRight, *fifoOutput, *inputBufferFloat;
 static int fifoOutputFirstSample, fifoOutputLastSample, stepSize, fifoCapacity;
@@ -14,8 +13,8 @@ static int fifoOutputFirstSample, fifoOutputLastSample, stepSize, fifoCapacity;
 #define FFT_LOG_SIZE 11 // 2^11 = 2048
 
 // This is called periodically by the media server.
-static bool audioProcessing(void *clientdata, short int *audioInputOutput, int numberOfSamples, int samplerate) {
-    SuperpoweredShortIntToFloat(audioInputOutput, inputBufferFloat, numberOfSamples); // Converting the 16-bit integer samples to 32-bit floating point.
+static bool audioProcessing(void * __unused clientdata, short int *audioInputOutput, int numberOfSamples, int __unused samplerate) {
+    SuperpoweredShortIntToFloat(audioInputOutput, inputBufferFloat, (unsigned int)numberOfSamples); // Converting the 16-bit integer samples to 32-bit floating point.
     frequencyDomain->addInput(inputBufferFloat, numberOfSamples); // Input goes to the frequency domain.
 
     // In the frequency domain we are working with 1024 magnitudes and phases for every channel (left, right), if the fft size is 2048.
@@ -44,18 +43,13 @@ static bool audioProcessing(void *clientdata, short int *audioInputOutput, int n
 
     // If we have enough samples in the fifo output buffer, pass them to the audio output.
     if (fifoOutputLastSample - fifoOutputFirstSample >= numberOfSamples) {
-        SuperpoweredFloatToShortInt(fifoOutput + fifoOutputFirstSample * 2, audioInputOutput, numberOfSamples);
+        SuperpoweredFloatToShortInt(fifoOutput + fifoOutputFirstSample * 2, audioInputOutput, (unsigned int)numberOfSamples);
         fifoOutputFirstSample += numberOfSamples;
         return true;
     } else return false;
 }
 
-// Ugly Java-native bridges - JNI, that is.
-extern "C" {
-    JNIEXPORT void Java_com_superpowered_frequencydomain_MainActivity_FrequencyDomain(JNIEnv *javaEnvironment, jobject self, jlong samplerate, jlong buffersize);
-}
-
-JNIEXPORT void Java_com_superpowered_frequencydomain_MainActivity_FrequencyDomain(JNIEnv *javaEnvironment, jobject self, jlong samplerate, jlong buffersize) {
+extern "C" JNIEXPORT void Java_com_superpowered_frequencydomain_MainActivity_FrequencyDomain(JNIEnv * __unused javaEnvironment, jobject __unused obj, jint samplerate, jint buffersize) {
     frequencyDomain = new SuperpoweredFrequencyDomain(FFT_LOG_SIZE); // This will do the main "magic".
     stepSize = frequencyDomain->fftSize / 4; // The default overlap ratio is 4:1, so we will receive this amount of samples from the frequency domain in one step.
 
@@ -71,5 +65,5 @@ JNIEXPORT void Java_com_superpowered_frequencydomain_MainActivity_FrequencyDomai
     fifoOutput = (float *)malloc(fifoCapacity * sizeof(float) * 2 + 128);
 
     inputBufferFloat = (float *)malloc(buffersize * sizeof(float) * 2 + 128);
-    audioIO = new SuperpoweredAndroidAudioIO(samplerate, buffersize, true, true, audioProcessing, NULL, -1, SL_ANDROID_STREAM_MEDIA, buffersize * 2); // Start audio input/output.
+    new SuperpoweredAndroidAudioIO(samplerate, buffersize, true, true, audioProcessing, NULL, -1, SL_ANDROID_STREAM_MEDIA, buffersize * 2); // Start audio input/output.
 }

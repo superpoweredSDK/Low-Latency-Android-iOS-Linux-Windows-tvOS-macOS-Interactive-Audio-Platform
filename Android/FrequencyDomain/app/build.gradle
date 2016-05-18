@@ -1,43 +1,65 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.model.application'
 
-android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+def superpowered_sdk_path = properties.getProperty('superpowered.dir')
 
-    defaultConfig {
-        applicationId "com.superpowered.frequencydomain"
-        minSdkVersion 11
-        targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
-
-        sourceSets.main {
-            jniLibs.srcDir 'src/main/libs'
-            jni.srcDirs = []
+model {
+    repositories {
+        libs(PrebuiltLibraries) {
+            superpowered { // this is where you declare the "superpowered" static library
+                headers.srcDir "${superpowered_sdk_path}"
+                binaries.withType(StaticLibraryBinary) { // attaching library files to each platform
+                    def platformName = targetPlatform.getName()
+                    if (platformName == "armeabi-v7a") {
+                        staticLibraryFile = file("${superpowered_sdk_path}/libSuperpoweredAndroidARM.a")
+                    } else if (platformName == "arm64-v8a") {
+                        staticLibraryFile = file("${superpowered_sdk_path}/libSuperpoweredAndroidARM64.a")
+                    } else if (platformName == "x86") {
+                        staticLibraryFile = file("${superpowered_sdk_path}/libSuperpoweredAndroidX86.a")
+                    } else if (platformName == "x86_64") {
+                        staticLibraryFile = file("${superpowered_sdk_path}/libSuperpoweredAndroidX86_64.a")
+                    }
+                }
+            }
         }
     }
 
-    task ndkBuild(type: Exec) {
-        Properties properties = new Properties()
-        properties.load(project.rootProject.file('local.properties').newDataInputStream())
-        def ndkDir = properties.getProperty('ndk.dir')
-        commandLine "$ndkDir/ndk-build", '-B', '-C', file('src/main/jni').absolutePath
-        // Windows users: commandLine "$ndkDir\\ndk-build.cmd", '-B', '-C', file('src/main/jni').absolutePath
+    android { // main settings for your application
+        compileSdkVersion = 23
+        buildToolsVersion = "23.0.2"
+
+        defaultConfig {
+            applicationId "com.superpowered.frequencydomain"
+            minSdkVersion.apiLevel = 11
+            targetSdkVersion.apiLevel = 23
+            versionCode 1
+            versionName "1.0"
+        }
     }
 
-    tasks.withType(JavaCompile) {
-        compileTask -> compileTask.dependsOn ndkBuild
+    android.ndk { // your application's native layer parameters
+        moduleName = "FrequencyDomain"
+        platformVersion = 23 // this will not limit it to run on older devices, it's just the NDK platform to build with
+        stl = "c++_static"
+        CFlags.addAll(["-O3", "-fsigned-char"]) // full optimization, char data type is signed
+        cppFlags.addAll(["-fexceptions", "-fsigned-char", "-I${superpowered_sdk_path}".toString()])
+        ldLibs.addAll(["log", "android", "OpenSLES"]) // load these libraries: log, android, OpenSL ES (for audio)
+        abiFilters.addAll(["armeabi-v7a", "arm64-v8a", "x86", "x86_64"]) // these platforms cover 99% percent of all Android devices
     }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    android.sources.main.jni {
+        source {
+            srcDir "jni"
+            srcDir "${superpowered_sdk_path}/AndroidIO"
+        }
+        dependencies {
+            library "superpowered" linkage "static" // this is where you attach the "superpowered" static library to your app
         }
     }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:22.2.0'
+    compile 'com.android.support:appcompat-v7:23.4.0'
 }

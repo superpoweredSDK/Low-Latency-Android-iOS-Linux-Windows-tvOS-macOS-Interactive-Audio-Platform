@@ -1,22 +1,17 @@
 #include "SuperpoweredAndroidAudioIO.h"
-#include <android/log.h>
 #include <SLES/OpenSLES.h>
 #include <SLES/OpenSLES_Android.h>
-#include <SLES/OpenSLES_AndroidConfiguration.h>
 #include <pthread.h>
 #include <unistd.h>
-#include <sys/resource.h>
 
 typedef struct SuperpoweredAndroidAudioIOInternals {
-    pthread_mutex_t audioProcessingThreadMutex;
-    pthread_cond_t audioProcessingThreadCondition;
     void *clientdata;
     audioProcessingCallback callback;
     SLObjectItf openSLEngine, outputMix, outputBufferQueue, inputBufferQueue;
     SLAndroidSimpleBufferQueueItf outputBufferQueueInterface, inputBufferQueueInterface;
     short int *fifobuffer, *silence;
     int samplerate, buffersize, silenceSamples, latencySamples, numBuffers, bufferStep, readBufferIndex, writeBufferIndex;
-    bool hasOutput, hasInput, foreground, started, separateAudioProcessingThread, stopAudioProcessingThread;
+    bool hasOutput, hasInput, foreground, started;
 } SuperpoweredAndroidAudioIOInternals;
 
 // The entire operation is based on two Android Simple Buffer Queues, one for the audio input and one for the audio output.
@@ -51,106 +46,54 @@ static void stopQueues(SuperpoweredAndroidAudioIOInternals *internals) {
     };
 }
 
-static void cleanup(SuperpoweredAndroidAudioIOInternals *internals) {
-    free(internals->fifobuffer);
-    free(internals->silence);
-    delete internals;
-}
-
-// Called periodically when audio input is enabled but audio output is not.
-static void inputOnlyProcessing(SuperpoweredAndroidAudioIOInternals *internals) {
-    int buffersAvailable = internals->writeBufferIndex - internals->readBufferIndex;
-    if (buffersAvailable < 0) buffersAvailable = internals->numBuffers - (internals->readBufferIndex - internals->writeBufferIndex);
-    if (buffersAvailable * internals->buffersize >= internals->latencySamples) { // if we have enough audio input available
-        internals->callback(internals->clientdata, internals->fifobuffer + internals->readBufferIndex * internals->bufferStep, internals->buffersize, internals->samplerate);
-        if (internals->readBufferIndex < internals->numBuffers - 1) internals->readBufferIndex++; else internals->readBufferIndex = 0;
-    };
-}
-
-// Called periodically when audio output is enabled. Handles audio input as well.
-static short int *normalProcessing(SuperpoweredAndroidAudioIOInternals *internals) {
-    int buffersAvailable = internals->writeBufferIndex - internals->readBufferIndex;
-    if (buffersAvailable < 0) buffersAvailable = internals->numBuffers - (internals->readBufferIndex - internals->writeBufferIndex);
-    short int *audioGoesToOutput = internals->fifobuffer + internals->readBufferIndex * internals->bufferStep;
-
-    if (internals->hasInput) { // If audio input is enabled.
-        if (buffersAvailable * internals->buffersize >= internals->latencySamples) { // if we have enough audio input available
-            if (!internals->callback(internals->clientdata, audioGoesToOutput, internals->buffersize, internals->samplerate)) {
-                memset(audioGoesToOutput, 0, internals->buffersize * 4);
-                internals->silenceSamples += internals->buffersize;
-            } else internals->silenceSamples = 0;
-        } else audioGoesToOutput = NULL; // dropout, not enough audio input
-    } else { // If audio input is not enabled.
-        short int *audioToGenerate = internals->fifobuffer + internals->writeBufferIndex * internals->bufferStep;
-
-        if (!internals->callback(internals->clientdata, audioToGenerate, internals->buffersize, internals->samplerate)) {
-            memset(audioToGenerate, 0, internals->buffersize * 4);
-            internals->silenceSamples += internals->buffersize;
-        } else internals->silenceSamples = 0;
-
-        if (internals->writeBufferIndex < internals->numBuffers - 1) internals->writeBufferIndex++; else internals->writeBufferIndex = 0;
-        if ((buffersAvailable + 1) * internals->buffersize < internals->latencySamples) audioGoesToOutput = NULL; // dropout, not enough audio generated
-    };
-
-    return audioGoesToOutput;
-}
-
-// Devices with badly configured/poorly written Android Audio HAL may need a separate processing thread - this one.
-static void *audioProcessingThread(void *param) {
-    SuperpoweredAndroidAudioIOInternals *internals = (SuperpoweredAndroidAudioIOInternals *)param;
-    setpriority(PRIO_PROCESS, 0, -20);
-
-    while (!internals->stopAudioProcessingThread) {
-        pthread_mutex_lock(&internals->audioProcessingThreadMutex);
-        pthread_cond_wait(&internals->audioProcessingThreadCondition, &internals->audioProcessingThreadMutex);
-        pthread_mutex_unlock(&internals->audioProcessingThreadMutex);
-        if (internals->stopAudioProcessingThread) break;
-        if (!internals->hasOutput) inputOnlyProcessing(internals);
-        else while (normalProcessing(internals) == NULL) { ; };
-    };
-
-    pthread_cond_destroy(&internals->audioProcessingThreadCondition);
-    pthread_mutex_destroy(&internals->audioProcessingThreadMutex);
-    cleanup(internals);
-
-    pthread_detach(pthread_self());
-    pthread_exit(NULL);
-    return NULL;
-}
-
 // This is called periodically by the input audio queue. Audio input is received from the media server at this point.
 static void SuperpoweredAndroidAudioIO_InputCallback(SLAndroidSimpleBufferQueueItf caller, void *pContext) {
     SuperpoweredAndroidAudioIOInternals *internals = (SuperpoweredAndroidAudioIOInternals *)pContext;
     short int *buffer = internals->fifobuffer + internals->writeBufferIndex * internals->bufferStep;
     if (internals->writeBufferIndex < internals->numBuffers - 1) internals->writeBufferIndex++; else internals->writeBufferIndex = 0;
 
-    if (!internals->hasOutput) {
-        if (internals->separateAudioProcessingThread) pthread_cond_signal(&internals->audioProcessingThreadCondition); else inputOnlyProcessing(internals);
-    };
-    (*caller)->Enqueue(caller, buffer, internals->buffersize * 4);
+    if (!internals->hasOutput) { // When there is no audio output configured.
+        int buffersAvailable = internals->writeBufferIndex - internals->readBufferIndex;
+        if (buffersAvailable < 0) buffersAvailable = internals->numBuffers - (internals->readBufferIndex - internals->writeBufferIndex);
+        if (buffersAvailable * internals->buffersize >= internals->latencySamples) { // if we have enough audio input available
+            internals->callback(internals->clientdata, internals->fifobuffer + internals->readBufferIndex * internals->bufferStep, internals->buffersize, internals->samplerate);
+            if (internals->readBufferIndex < internals->numBuffers - 1) internals->readBufferIndex++; else internals->readBufferIndex = 0;
+        };
+    }
+    (*caller)->Enqueue(caller, buffer, (SLuint32)internals->buffersize * 4);
 }
 
 // This is called periodically by the output audio queue. Audio for the user should be provided here.
 static void SuperpoweredAndroidAudioIO_OutputCallback(SLAndroidSimpleBufferQueueItf caller, void *pContext) {
     SuperpoweredAndroidAudioIOInternals *internals = (SuperpoweredAndroidAudioIOInternals *)pContext;
-    short int *output = NULL;
 
-    if (internals->separateAudioProcessingThread) {
-        int buffersAvailable = internals->writeBufferIndex - internals->readBufferIndex;
-        if (buffersAvailable < 0) buffersAvailable = internals->numBuffers - (internals->readBufferIndex - internals->writeBufferIndex);
-        if (buffersAvailable * internals->buffersize > 0) {
-            output = internals->fifobuffer + internals->readBufferIndex * internals->bufferStep;
-            if (internals->readBufferIndex < internals->numBuffers - 1) internals->readBufferIndex++; else internals->readBufferIndex = 0;
-        };
-        pthread_cond_signal(&internals->audioProcessingThreadCondition);
-    } else {
-        output = normalProcessing(internals);
-        if (output) {
-            if (internals->readBufferIndex < internals->numBuffers - 1) internals->readBufferIndex++; else internals->readBufferIndex = 0;
-        };
+    int buffersAvailable = internals->writeBufferIndex - internals->readBufferIndex;
+    if (buffersAvailable < 0) buffersAvailable = internals->numBuffers - (internals->readBufferIndex - internals->writeBufferIndex);
+    short int *output = internals->fifobuffer + internals->readBufferIndex * internals->bufferStep;
+
+    if (internals->hasInput) { // If audio input is enabled.
+        if (buffersAvailable * internals->buffersize >= internals->latencySamples) { // if we have enough audio input available
+            if (!internals->callback(internals->clientdata, output, internals->buffersize, internals->samplerate)) {
+                memset(output, 0, (size_t)internals->buffersize * 4);
+                internals->silenceSamples += internals->buffersize;
+            } else internals->silenceSamples = 0;
+        } else output = NULL; // dropout, not enough audio input
+    } else { // If audio input is not enabled.
+        short int *audioToGenerate = internals->fifobuffer + internals->writeBufferIndex * internals->bufferStep;
+
+        if (!internals->callback(internals->clientdata, audioToGenerate, internals->buffersize, internals->samplerate)) {
+            memset(audioToGenerate, 0, (size_t)internals->buffersize * 4);
+            internals->silenceSamples += internals->buffersize;
+        } else internals->silenceSamples = 0;
+
+        if (internals->writeBufferIndex < internals->numBuffers - 1) internals->writeBufferIndex++; else internals->writeBufferIndex = 0;
+        if ((buffersAvailable + 1) * internals->buffersize < internals->latencySamples) output = NULL; // dropout, not enough audio generated
     };
 
-    (*caller)->Enqueue(caller, output ? output : internals->silence, internals->buffersize * 4);
+    if (output) {
+        if (internals->readBufferIndex < internals->numBuffers - 1) internals->readBufferIndex++; else internals->readBufferIndex = 0;
+    };
+    (*caller)->Enqueue(caller, output ? output : internals->silence, (SLuint32)internals->buffersize * 4);
 
     if (!internals->foreground && (internals->silenceSamples > internals->samplerate)) {
         internals->silenceSamples = 0;
@@ -171,32 +114,16 @@ SuperpoweredAndroidAudioIO::SuperpoweredAndroidAudioIO(int samplerate, int buffe
     internals->hasOutput = enableOutput;
     internals->foreground = true;
     internals->started = false;
-    internals->silence = (short int *)malloc(buffersize * 4);
-    memset(internals->silence, 0, buffersize * 4);
-
-    if (latencySamples < 0) { // If latencySamples is negative, a separate processing thread is created for devices with badly configured/poorly written Android Audio HAL. It may help.
-        internals->latencySamples = buffersize * 8;
-        internals->separateAudioProcessingThread = true;
-        internals->stopAudioProcessingThread = false;
-    } else {
-        internals->separateAudioProcessingThread = false;
-        internals->latencySamples = latencySamples < buffersize ? buffersize : latencySamples;
-    };
+    internals->silence = (short int *)malloc((size_t)buffersize * 4);
+    memset(internals->silence, 0, (size_t)buffersize * 4);
+    internals->latencySamples = latencySamples < buffersize ? buffersize : latencySamples;
 
     internals->numBuffers = (internals->latencySamples / buffersize) * 2;
     if (internals->numBuffers < 16) internals->numBuffers = 16;
     internals->bufferStep = (buffersize + 64) * 2;
-    int fifoBufferSizeBytes = internals->numBuffers * internals->bufferStep * sizeof(short int);
+    size_t fifoBufferSizeBytes = internals->numBuffers * internals->bufferStep * sizeof(short int);
     internals->fifobuffer = (short int *)malloc(fifoBufferSizeBytes);
     memset(internals->fifobuffer, 0, fifoBufferSizeBytes);
-
-    // The separate processing thread operates using a signal, the mutex is not really blocking anything otherwise, so don't worry!
-    if (internals->separateAudioProcessingThread) {
-        pthread_mutex_init(&internals->audioProcessingThreadMutex, NULL);
-        pthread_cond_init(&internals->audioProcessingThreadCondition, NULL);
-        pthread_t thread;
-        pthread_create(&thread, NULL, audioProcessingThread, internals);
-    };
 
     // Create the OpenSL ES engine.
     slCreateEngine(&internals->openSLEngine, 0, NULL, 0, NULL, NULL);
@@ -252,13 +179,13 @@ SuperpoweredAndroidAudioIO::SuperpoweredAndroidAudioIO(int samplerate, int buffe
     if (enableInput) { // Initialize the audio input buffer queue.
         (*internals->inputBufferQueue)->GetInterface(internals->inputBufferQueue, SL_IID_ANDROIDSIMPLEBUFFERQUEUE, &internals->inputBufferQueueInterface);
         (*internals->inputBufferQueueInterface)->RegisterCallback(internals->inputBufferQueueInterface, SuperpoweredAndroidAudioIO_InputCallback, internals);
-        (*internals->inputBufferQueueInterface)->Enqueue(internals->inputBufferQueueInterface, internals->fifobuffer, buffersize * 4);
+        (*internals->inputBufferQueueInterface)->Enqueue(internals->inputBufferQueueInterface, internals->fifobuffer, (SLuint32)buffersize * 4);
     };
 
     if (enableOutput) { // Initialize the audio output buffer queue.
         (*internals->outputBufferQueue)->GetInterface(internals->outputBufferQueue, SL_IID_BUFFERQUEUE, &internals->outputBufferQueueInterface);
         (*internals->outputBufferQueueInterface)->RegisterCallback(internals->outputBufferQueueInterface, SuperpoweredAndroidAudioIO_OutputCallback, internals);
-        (*internals->outputBufferQueueInterface)->Enqueue(internals->outputBufferQueueInterface, internals->fifobuffer, buffersize * 4);
+        (*internals->outputBufferQueueInterface)->Enqueue(internals->outputBufferQueueInterface, internals->fifobuffer, (SLuint32)buffersize * 4);
     };
 
     startQueues(internals);
@@ -288,8 +215,7 @@ SuperpoweredAndroidAudioIO::~SuperpoweredAndroidAudioIO() {
     if (internals->inputBufferQueue) (*internals->inputBufferQueue)->Destroy(internals->inputBufferQueue);
     (*internals->outputMix)->Destroy(internals->outputMix);
     (*internals->openSLEngine)->Destroy(internals->openSLEngine);
-    if (internals->separateAudioProcessingThread) {
-        internals->stopAudioProcessingThread = true;
-        pthread_cond_signal(&internals->audioProcessingThreadCondition);
-    } else cleanup(internals);
+    free(internals->fifobuffer);
+    free(internals->silence);
+    delete internals;
 }

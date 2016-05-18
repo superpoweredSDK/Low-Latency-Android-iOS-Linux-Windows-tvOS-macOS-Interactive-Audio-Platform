@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         superpowered = Superpowered()
 
         // A display link calls us on every frame (60 fps).
-        displayLink = CADisplayLink(target: self, selector: "onDisplayLink")
+        displayLink = CADisplayLink(target: self, selector: #selector(ViewController.onDisplayLink))
         displayLink.frameInterval = 1
         displayLink.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSRunLoopCommonModes)
     }

@@ -1,13 +1,12 @@
 #include "SuperpoweredExample.h"
-#include "SuperpoweredSimple.h"
+#include <SuperpoweredSimple.h>
 #include <jni.h>
-#include <stdlib.h>
 #include <stdio.h>
 #include <android/log.h>
 #include <SLES/OpenSLES.h>
 #include <SLES/OpenSLES_AndroidConfiguration.h>
 
-static void playerEventCallbackA(void *clientData, SuperpoweredAdvancedAudioPlayerEvent event, void *value) {
+static void playerEventCallbackA(void *clientData, SuperpoweredAdvancedAudioPlayerEvent event, void * __unused value) {
     if (event == SuperpoweredAdvancedAudioPlayerEvent_LoadSuccess) {
     	SuperpoweredAdvancedAudioPlayer *playerA = *((SuperpoweredAdvancedAudioPlayer **)clientData);
         playerA->setBpm(126.0f);
@@ -16,7 +15,7 @@ static void playerEventCallbackA(void *clientData, SuperpoweredAdvancedAudioPlay
     };
 }
 
-static void playerEventCallbackB(void *clientData, SuperpoweredAdvancedAudioPlayerEvent event, void *value) {
+static void playerEventCallbackB(void *clientData, SuperpoweredAdvancedAudioPlayerEvent event, void * __unused value) {
     if (event == SuperpoweredAdvancedAudioPlayerEvent_LoadSuccess) {
     	SuperpoweredAdvancedAudioPlayer *playerB = *((SuperpoweredAdvancedAudioPlayer **)clientData);
         playerB->setBpm(123.0f);
@@ -25,19 +24,18 @@ static void playerEventCallbackB(void *clientData, SuperpoweredAdvancedAudioPlay
     };
 }
 
-static bool audioProcessing(void *clientdata, short int *audioIO, int numberOfSamples, int samplerate) {
-	return ((SuperpoweredExample *)clientdata)->process(audioIO, numberOfSamples);
+static bool audioProcessing(void *clientdata, short int *audioIO, int numberOfSamples, int __unused samplerate) {
+	return ((SuperpoweredExample *)clientdata)->process(audioIO, (unsigned int)numberOfSamples);
 }
 
-SuperpoweredExample::SuperpoweredExample(const char *path, int *params) : activeFx(0), crossValue(0.0f), volB(0.0f), volA(1.0f * headroom) {
+SuperpoweredExample::SuperpoweredExample(unsigned int samplerate, unsigned int buffersize, const char *path, int fileAoffset, int fileAlength, int fileBoffset, int fileBlength) : activeFx(0), crossValue(0.0f), volB(0.0f), volA(1.0f * headroom) {
     pthread_mutex_init(&mutex, NULL); // This will keep our player volumes and playback states in sync.
-    unsigned int samplerate = params[4], buffersize = params[5];
     stereoBuffer = (float *)memalign(16, (buffersize + 16) * sizeof(float) * 2);
 
     playerA = new SuperpoweredAdvancedAudioPlayer(&playerA , playerEventCallbackA, samplerate, 0);
-    playerA->open(path, params[0], params[1]);
+    playerA->open(path, fileAoffset, fileAlength);
     playerB = new SuperpoweredAdvancedAudioPlayer(&playerB, playerEventCallbackB, samplerate, 0);
-    playerB->open(path, params[2], params[3]);
+    playerB->open(path, fileBoffset, fileBlength);
 
     playerA->syncMode = playerB->syncMode = SuperpoweredAdvancedAudioPlayerSyncMode_TempoAndBeat;
 
@@ -79,15 +77,15 @@ void SuperpoweredExample::onCrossfader(int value) {
         volA = 0.0f;
         volB = 1.0f * headroom;
     } else { // constant power curve
-        volA = cosf(M_PI_2 * crossValue) * headroom;
-        volB = cosf(M_PI_2 * (1.0f - crossValue)) * headroom;
+        volA = cosf(float(M_PI_2) * crossValue) * headroom;
+        volB = cosf(float(M_PI_2) * (1.0f - crossValue)) * headroom;
     };
     pthread_mutex_unlock(&mutex);
 }
 
 void SuperpoweredExample::onFxSelect(int value) {
 	__android_log_print(ANDROID_LOG_VERBOSE, "SuperpoweredExample", "FXSEL %i", value);
-	activeFx = value;
+	activeFx = (unsigned char)value;
 }
 
 void SuperpoweredExample::onFxOff() {
@@ -137,13 +135,13 @@ bool SuperpoweredExample::process(short int *output, unsigned int numberOfSample
     pthread_mutex_lock(&mutex);
 
     bool masterIsA = (crossValue <= 0.5f);
-    float masterBpm = masterIsA ? playerA->currentBpm : playerB->currentBpm;
+    double masterBpm = masterIsA ? playerA->currentBpm : playerB->currentBpm;
     double msElapsedSinceLastBeatA = playerA->msElapsedSinceLastBeat; // When playerB needs it, playerA has already stepped this value, so save it now.
 
     bool silence = !playerA->process(stereoBuffer, false, numberOfSamples, volA, masterBpm, playerB->msElapsedSinceLastBeat);
     if (playerB->process(stereoBuffer, !silence, numberOfSamples, volB, masterBpm, msElapsedSinceLastBeatA)) silence = false;
 
-    roll->bpm = flanger->bpm = masterBpm; // Syncing fx is one line.
+    roll->bpm = flanger->bpm = (float)masterBpm; // Syncing fx is one line.
 
     if (roll->process(silence ? NULL : stereoBuffer, stereoBuffer, numberOfSamples) && silence) silence = false;
     if (!silence) {
@@ -158,47 +156,31 @@ bool SuperpoweredExample::process(short int *output, unsigned int numberOfSample
     return !silence;
 }
 
-extern "C" {
-	JNIEXPORT void Java_com_superpowered_crossexample_MainActivity_SuperpoweredExample(JNIEnv *javaEnvironment, jobject self, jstring apkPath, jlongArray offsetAndLength);
-	JNIEXPORT void Java_com_superpowered_crossexample_MainActivity_onPlayPause(JNIEnv *javaEnvironment, jobject self, jboolean play);
-	JNIEXPORT void Java_com_superpowered_crossexample_MainActivity_onCrossfader(JNIEnv *javaEnvironment, jobject self, jint value);
-	JNIEXPORT void Java_com_superpowered_crossexample_MainActivity_onFxSelect(JNIEnv *javaEnvironment, jobject self, jint value);
-	JNIEXPORT void Java_com_superpowered_crossexample_MainActivity_onFxOff(JNIEnv *javaEnvironment, jobject self);
-	JNIEXPORT void Java_com_superpowered_crossexample_MainActivity_onFxValue(JNIEnv *javaEnvironment, jobject self, jint value);
-}
-
 static SuperpoweredExample *example = NULL;
 
-// Android is not passing more than 2 custom parameters, so we had to pack file offsets and lengths into an array.
-JNIEXPORT void Java_com_superpowered_crossexample_MainActivity_SuperpoweredExample(JNIEnv *javaEnvironment, jobject self, jstring apkPath, jlongArray params) {
-	// Convert the input jlong array to a regular int array.
-    jlong *longParams = javaEnvironment->GetLongArrayElements(params, JNI_FALSE);
-    int arr[6];
-    for (int n = 0; n < 6; n++) arr[n] = longParams[n];
-    javaEnvironment->ReleaseLongArrayElements(params, longParams, JNI_ABORT);
-
+extern "C" JNIEXPORT void Java_com_superpowered_crossexample_MainActivity_SuperpoweredExample(JNIEnv *javaEnvironment, jobject __unused obj, jint samplerate, jint buffersize, jstring apkPath, jint fileAoffset, jint fileAlength, jint fileBoffset, jint fileBlength) {
     const char *path = javaEnvironment->GetStringUTFChars(apkPath, JNI_FALSE);
-    example = new SuperpoweredExample(path, arr);
+    example = new SuperpoweredExample((unsigned int)samplerate, (unsigned int)buffersize, path, fileAoffset, fileAlength, fileBoffset, fileBlength);
     javaEnvironment->ReleaseStringUTFChars(apkPath, path);
 
 }
 
-JNIEXPORT void Java_com_superpowered_crossexample_MainActivity_onPlayPause(JNIEnv *javaEnvironment, jobject self, jboolean play) {
+extern "C" JNIEXPORT void Java_com_superpowered_crossexample_MainActivity_onPlayPause(JNIEnv * __unused javaEnvironment, jobject __unused obj, jboolean play) {
 	example->onPlayPause(play);
 }
 
-JNIEXPORT void Java_com_superpowered_crossexample_MainActivity_onCrossfader(JNIEnv *javaEnvironment, jobject self, jint value) {
+extern "C" JNIEXPORT void Java_com_superpowered_crossexample_MainActivity_onCrossfader(JNIEnv * __unused javaEnvironment, jobject __unused obj, jint value) {
 	example->onCrossfader(value);
 }
 
-JNIEXPORT void Java_com_superpowered_crossexample_MainActivity_onFxSelect(JNIEnv *javaEnvironment, jobject self, jint value) {
+extern "C" JNIEXPORT void Java_com_superpowered_crossexample_MainActivity_onFxSelect(JNIEnv * __unused javaEnvironment, jobject __unused obj, jint value) {
 	example->onFxSelect(value);
 }
 
-JNIEXPORT void Java_com_superpowered_crossexample_MainActivity_onFxOff(JNIEnv *javaEnvironment, jobject self) {
+extern "C" JNIEXPORT void Java_com_superpowered_crossexample_MainActivity_onFxOff(JNIEnv * __unused javaEnvironment, jobject __unused obj) {
 	example->onFxOff();
 }
 
-JNIEXPORT void Java_com_superpowered_crossexample_MainActivity_onFxValue(JNIEnv *javaEnvironment, jobject self, jint value) {
+extern "C" JNIEXPORT void Java_com_superpowered_crossexample_MainActivity_onFxValue(JNIEnv * __unused javaEnvironment, jobject __unused obj, jint value) {
 	example->onFxValue(value);
 }

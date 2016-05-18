@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.9.4.1</span>
+   &#160;<span id="projectnumber">0.9.5</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -183,6 +183,9 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>positionPercent</b><
 <tr class="memitem:a315a8a3fc27e22d0b998c8bd2890f15e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a315a8a3fc27e22d0b998c8bd2890f15e"></a>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>positionSeconds</b></td></tr>
 <tr class="separator:a315a8a3fc27e22d0b998c8bd2890f15e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1afb7ed93c27b949504545c0888ce623"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1afb7ed93c27b949504545c0888ce623"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>displayPositionMs</b></td></tr>
+<tr class="separator:a1afb7ed93c27b949504545c0888ce623"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8010242b557d23ef302bfc886e095dde"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8010242b557d23ef302bfc886e095dde"></a>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>durationMs</b></td></tr>
 <tr class="separator:a8010242b557d23ef302bfc886e095dde"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -299,6 +302,7 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>maxTimeStretchingTem
     <tr><td class="paramname">positionMs</td><td>The current position. Always accurate, no matter of time-stretching and other transformations. Read only. </td></tr>
     <tr><td class="paramname">positionPercent</td><td>The current position as a percentage (0.0f to 1.0f). Read only. </td></tr>
     <tr><td class="paramname">positionSeconds</td><td>The current position as seconds elapsed. Read only. </td></tr>
+    <tr><td class="paramname">displayPositionMs</td><td>Same as positionMs, but positionMs is not updated until seeking to a different position is finished. This is updated immediately after <a class="el" href="class_superpowered_advanced_audio_player.html#a7cc9eb513c1a9761f58033908cd8aaa1" title="Precise seeking. ">setPosition()</a> or <a class="el" href="class_superpowered_advanced_audio_player.html#ab8ae38606f72c79ece0a92be2eeec729" title="Simple seeking to a percentage. ">seek()</a> is called. Read only. </td></tr>
     <tr><td class="paramname">durationMs</td><td>The duration of the current track in milliseconds. Equals to UINT_MAX for live streams. Read only. </td></tr>
     <tr><td class="paramname">durationSeconds</td><td>The duration of the current track in seconds. Equals to UINT_MAX for live streams. Read only. </td></tr>
     <tr><td class="paramname">waitingForBuffering</td><td>Indicates if the player waits for audio data to be bufferred. Read only. </td></tr>

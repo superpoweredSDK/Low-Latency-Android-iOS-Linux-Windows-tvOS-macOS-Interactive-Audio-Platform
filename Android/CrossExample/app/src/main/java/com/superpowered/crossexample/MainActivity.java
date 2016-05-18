@@ -34,16 +34,9 @@ public class MainActivity extends AppCompatActivity {
         if (samplerateString == null) samplerateString = "44100";
         if (buffersizeString == null) buffersizeString = "512";
 
-        // Files under res/raw are not compressed, just copied into the APK. Get the offset and length to know where our files are located.
+        // Files under res/raw are not zipped, just copied into the APK. Get the offset and length to know where our files are located.
         AssetFileDescriptor fd0 = getResources().openRawResourceFd(R.raw.lycka), fd1 = getResources().openRawResourceFd(R.raw.nuyorica);
-        long[] params = {
-                fd0.getStartOffset(),
-                fd0.getLength(),
-                fd1.getStartOffset(),
-                fd1.getLength(),
-                Integer.parseInt(samplerateString),
-                Integer.parseInt(buffersizeString)
-        };
+        int fileAoffset = (int)fd0.getStartOffset(), fileAlength = (int)fd0.getLength(), fileBoffset = (int)fd1.getStartOffset(), fileBlength = (int)fd1.getLength();
         try {
             fd0.getParcelFileDescriptor().close();
             fd1.getParcelFileDescriptor().close();
@@ -52,12 +45,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Arguments: path to the APK file, offset and length of the two resource files, sample rate, audio buffer size.
-        SuperpoweredExample(getPackageResourcePath(), params);
+        SuperpoweredExample(Integer.parseInt(samplerateString), Integer.parseInt(buffersizeString), getPackageResourcePath(), fileAoffset, fileAlength, fileBoffset, fileBlength);
 
         // crossfader events
         final SeekBar crossfader = (SeekBar)findViewById(R.id.crossFader);
-        crossfader.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
-
+        if (crossfader != null) crossfader.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 onCrossfader(progress);
             }
@@ -68,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
         // fx fader events
         final SeekBar fxfader = (SeekBar)findViewById(R.id.fxFader);
-        fxfader.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+        if (fxfader != null) fxfader.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 onFxValue(progress);
@@ -85,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
         // fx select event
         final RadioGroup group = (RadioGroup)findViewById(R.id.radioGroup1);
-        group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        if (group != null) group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
                 RadioButton checkedRadioButton = (RadioButton)radioGroup.findViewById(checkedId);
                 onFxSelect(radioGroup.indexOfChild(checkedRadioButton));
@@ -97,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         playing = !playing;
         onPlayPause(playing);
         Button b = (Button) findViewById(R.id.playPause);
-        b.setText(playing ? "Pause" : "Play");
+        if (b != null) b.setText(playing ? "Pause" : "Play");
     }
 
     @Override
@@ -122,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private native void SuperpoweredExample(String apkPath, long[] offsetAndLength);
+    private native void SuperpoweredExample(int samplerate, int buffersize, String apkPath, int fileAoffset, int fileAlength, int fileBoffset, int fileBlength);
     private native void onPlayPause(boolean play);
     private native void onCrossfader(int value);
     private native void onFxSelect(int value);

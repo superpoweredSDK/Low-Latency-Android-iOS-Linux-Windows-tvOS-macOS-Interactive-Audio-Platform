@@ -113,10 +113,11 @@ typedef void (* SuperpoweredAdvancedAudioPlayerCallback) (void *clientData, Supe
  - AAC-LC in ADTS container (.aac).
  - Apple Lossless (on iOS only).
  - Http Live Streaming (HLS): vod/live/event streams, AAC-LC/MP3 in audio files or MPEG-TS files. Support for byte ranges and AES-128 encryption.
- 
+
  @param positionMs The current position. Always accurate, no matter of time-stretching and other transformations. Read only.
  @param positionPercent The current position as a percentage (0.0f to 1.0f). Read only.
  @param positionSeconds The current position as seconds elapsed. Read only.
+ @param displayPositionMs Same as positionMs, but positionMs is not updated until seeking to a different position is finished. This is updated immediately after setPosition() or seek() is called.  Read only.
  @param durationMs The duration of the current track in milliseconds. Equals to UINT_MAX for live streams. Read only.
  @param durationSeconds The duration of the current track in seconds. Equals to UINT_MAX for live streams. Read only.
  @param waitingForBuffering Indicates if the player waits for audio data to be bufferred. Read only.
@@ -153,6 +154,7 @@ public:
     double positionMs;
     float positionPercent;
     unsigned int positionSeconds;
+    double displayPositionMs;
     unsigned int durationMs;
     unsigned int durationSeconds;
     bool waitingForBuffering;

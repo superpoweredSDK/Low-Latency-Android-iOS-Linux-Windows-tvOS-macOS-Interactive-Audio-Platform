@@ -17,6 +17,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.ListView;
 import java.util.ArrayList;
+import java.util.Locale;
+
 import android.widget.ArrayAdapter;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -73,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Set up the user interface
         currentTime = (TextView)findViewById(R.id.currentTime);
-        currentTime.setText("");
+        if (currentTime != null) currentTime.setText("");
         duration = (TextView)findViewById(R.id.duration);
         seekBar = (SeekBar)findViewById(R.id.seekBar);
         seekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
@@ -95,17 +97,19 @@ public class MainActivity extends AppCompatActivity {
         ListView urlList = (ListView)findViewById(R.id.urlList);
         for (int n = 1; n < urls.length; n += 2) urlData.add(urls[n]);
         ArrayAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, urlData);
-        urlList.setAdapter(adapter);
-        urlList.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long arg3) {
-                view.setSelected(true);
-                if (position != selectedRow) {
-                    selectedRow = position;
-                    Open(urls[position * 2]);
+        if (urlList != null) {
+            urlList.setAdapter(adapter);
+            urlList.setOnItemClickListener(new OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long arg3) {
+                    view.setSelected(true);
+                    if (position != selectedRow) {
+                        selectedRow = position;
+                        Open(urls[position * 2]);
+                    }
                 }
-            }
-        });
+            });
+        }
 
         // Update the UI every 50 ms
         Runnable mRunnable = new Runnable() {
@@ -116,20 +120,22 @@ public class MainActivity extends AppCompatActivity {
                 if (lastDurationSeconds != durationSeconds) {
                     lastDurationSeconds = durationSeconds;
                     if (durationSeconds > 0) {
-                        duration.setText(String.format("%02d", durationSeconds / 60) + ":" + String.format("%02d", durationSeconds % 60));
+                        duration.setText(String.format(Locale.US, "%02d:%02d", durationSeconds / 60, durationSeconds % 60));
                         seekBar.setVisibility(View.VISIBLE);
                     } else if (durationSeconds == 0) {
-                        duration.setText("Loading...");
+                        final String loading = "Loading...";
+                        duration.setText(loading);
                         currentTime.setText("");
                         seekBar.setVisibility(View.INVISIBLE);
                     } else {
-                        duration.setText("LIVE");
+                        final String live = "LIVE";
+                        duration.setText(live);
                         seekBar.setVisibility(View.INVISIBLE);
                     }
                 }
                 if ((durationSeconds > 0) && (lastPositionSeconds != positionSeconds)) {
                     lastPositionSeconds = positionSeconds;
-                    currentTime.setText(String.format("%02d", positionSeconds / 60) + ":" + String.format("%02d", positionSeconds % 60));
+                    currentTime.setText(String.format(Locale.US, "%02d:%02d", positionSeconds / 60, positionSeconds % 60));
                 }
                 int secondaryProgress = (int)(bufferEndPercent * 100.0f), seekProgress = (int)(positionPercent * 100.0f);
                 if ((lastSecondaryProgress != secondaryProgress) || (lastSeekProgress != seekProgress)) {
@@ -157,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
         doubleSpeed = !doubleSpeed;
         Button btn = (Button)view;
         btn.setText(doubleSpeed ? "2x SPEED" : "1x SPEED");
-        SetSpeed(doubleSpeed ? 1 : 0);
+        SetSpeed(doubleSpeed);
     }
 
     public void onDownloadOption(View view) {
@@ -198,14 +204,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private native void SetTempFolder(String path);
-    private native void StartAudio(long samplerate, long buffersize);
+    private native void StartAudio(int samplerate, int buffersize);
     private native void onForeground();
     private native void onBackground();
     private native void Open(String url);
     private native void Seek(float percent);
-    private native void SetDownloadStrategy(long optionIndex);
+    private native void SetDownloadStrategy(int optionIndex);
     private native void PlayPause();
-    private native void SetSpeed(long fast);
+    private native void SetSpeed(boolean fast);
     private native void UpdateStatus();
     private native void Cleanup();
 }

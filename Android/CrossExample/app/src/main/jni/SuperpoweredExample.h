@@ -5,20 +5,19 @@
 #include <pthread.h>
 
 #include "SuperpoweredExample.h"
-#include "../../../../../../Superpowered/SuperpoweredAdvancedAudioPlayer.h"
-#include "../../../../../../Superpowered/SuperpoweredFilter.h"
-#include "../../../../../../Superpowered/SuperpoweredRoll.h"
-#include "../../../../../../Superpowered/SuperpoweredFlanger.h"
-#include "../../../../../../Superpowered/SuperpoweredAndroidAudioIO.h"
+#include <SuperpoweredAdvancedAudioPlayer.h>
+#include <SuperpoweredFilter.h>
+#include <SuperpoweredRoll.h>
+#include <SuperpoweredFlanger.h>
+#include <AndroidIO/SuperpoweredAndroidAudioIO.h>
 
-#define NUM_BUFFERS 2
 #define HEADROOM_DECIBEL 3.0f
-static const float headroom = powf(10.0f, -HEADROOM_DECIBEL * 0.025);
+static const float headroom = powf(10.0f, -HEADROOM_DECIBEL * 0.025f);
 
 class SuperpoweredExample {
 public:
 
-	SuperpoweredExample(const char *path, int *params);
+	SuperpoweredExample(unsigned int samplerate, unsigned int buffersize, const char *path, int fileAoffset, int fileAlength, int fileBoffset, int fileBlength);
 	~SuperpoweredExample();
 
 	bool process(short int *output, unsigned int numberOfSamples);

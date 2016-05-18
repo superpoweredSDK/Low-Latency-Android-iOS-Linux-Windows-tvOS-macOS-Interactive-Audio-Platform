@@ -43,7 +43,7 @@ public:
  @param loudpartsAverageDecibel The average loudness of the "loud" parts in the music in decibel. (Breakdowns and other quiet parts are excluded.)
  @param peakDecibel The loudest sample in decibel.
  @param bpm Beats per minute.
- @param beatgridStartMs The position where the beatgrid should start. On input set it to 0, or the ms position of the first audio sample.
+ @param beatgridStartMs The position where the beatgrid should start. Important! On input set it to 0, or the ms position of the first audio sample.
  @param keyIndex The dominant key (chord) of the music. 0..11 are major keys from A to G#, 12..23 are minor keys from A to G#. Check the static constants in this header for musical, Camelot and Open Key notations.
  */
     void getresults(unsigned char **averageWaveform, unsigned char **peakWaveform, unsigned char **lowWaveform, unsigned char **midWaveform, unsigned char **highWaveform, unsigned char **notes, int *waveformSize, char **overviewWaveform, float *averageDecibel, float *loudpartsAverageDecibel, float *peakDecibel, float *bpm, float *beatgridStartMs, int *keyIndex);
