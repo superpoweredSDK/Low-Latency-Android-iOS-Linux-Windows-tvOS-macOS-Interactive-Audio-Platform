@@ -31,8 +31,8 @@ model {
 
         defaultConfig {
             applicationId "com.superpowered.frequencydomain"
-            minSdkVersion.apiLevel = 11
-            targetSdkVersion.apiLevel = 23
+            minSdkVersion.apiLevel = 16 // more than 95% of all active Android devices
+            targetSdkVersion.apiLevel = 22
             versionCode 1
             versionName "1.0"
         }
@@ -40,7 +40,7 @@ model {
 
     android.ndk { // your application's native layer parameters
         moduleName = "FrequencyDomain"
-        platformVersion = 23 // this will not limit it to run on older devices, it's just the NDK platform to build with
+        platformVersion = 16
         stl = "c++_static"
         CFlags.addAll(["-O3", "-fsigned-char"]) // full optimization, char data type is signed
         cppFlags.addAll(["-fexceptions", "-fsigned-char", "-I${superpowered_sdk_path}".toString()])

@@ -354,9 +354,9 @@ SuperpoweredDecoder_Kind&#160;</td><td class="memItemRight" valign="bottom"><b>k
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">artist</td><td>Artist, set to NULL if you're not interested. Returns NULL if can not be retrieved. Ownership passed (you must free() after finished using it). </td></tr>
-    <tr><td class="paramname">title</td><td>Title, set to NULL if you're not interested. Returns NULL if can not be retrieved. Ownership passed (you must free() after finished using it). </td></tr>
-    <tr><td class="paramname">image</td><td>Raw image data (usually PNG or JPG). Set to NULL if you're not interested. Returns NULL if can not be retrieved. Ownership passed (you must free() after finished using it). </td></tr>
+    <tr><td class="paramname">artist</td><td>Artist, set to NULL if you're not interested. Returns NULL if can not be retrieved. Ownership passed (you must free memory after finished using it). </td></tr>
+    <tr><td class="paramname">title</td><td>Title, set to NULL if you're not interested. Returns NULL if can not be retrieved. Ownership passed (you must free memory after finished using it). </td></tr>
+    <tr><td class="paramname">image</td><td>Raw image data (usually PNG or JPG). Set to NULL if you're not interested. Returns NULL if can not be retrieved. Ownership passed (you must free memory after finished using it). </td></tr>
     <tr><td class="paramname">imageSizeBytes</td><td>Size of the raw image data. Set to NULL if you're not interested. </td></tr>
     <tr><td class="paramname">bpm</td><td>Tempo in beats per minute. Set to NULL if you're not interested. </td></tr>
     <tr><td class="paramname">callback</td><td>A callback to process other ID3 frames. Set to NULL if you're not interested. </td></tr>
@@ -406,8 +406,8 @@ SuperpoweredDecoder_Kind&#160;</td><td class="memItemRight" valign="bottom"><b>k
 <dl class="section return"><dt>Returns</dt><dd>True if the file is Native Instruments Stems format.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">names</td><td>Returns with 4 pointers of 0 terminated stem name strings or NULL if the file is not Stems. You take ownership (must free() after used.). </td></tr>
-    <tr><td class="paramname">colors</td><td>Returns with 4 pointers of 0 terminated stem color strings or NULL if the file is not Stems. You take ownership (must free() after used.). </td></tr>
+    <tr><td class="paramname">names</td><td>Returns with 4 pointers of 0 terminated stem name strings or NULL if the file is not Stems. You take ownership (must free memory after used.). </td></tr>
+    <tr><td class="paramname">colors</td><td>Returns with 4 pointers of 0 terminated stem color strings or NULL if the file is not Stems. You take ownership (must free memory after used.). </td></tr>
     <tr><td class="paramname">compressor</td><td>Struct to receive compressor DSP settings. Can be NULL. </td></tr>
     <tr><td class="paramname">limiter</td><td>Struct to receive limiter DSP settings. Can be NULL; </td></tr>
   </table>

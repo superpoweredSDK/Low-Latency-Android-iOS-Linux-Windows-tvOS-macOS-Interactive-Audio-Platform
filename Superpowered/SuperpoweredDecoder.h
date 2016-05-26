@@ -99,9 +99,9 @@ public:
 /**
  @brief Returns with often used metadata.
  
- @param artist Artist, set to NULL if you're not interested. Returns NULL if can not be retrieved. Ownership passed (you must free() after finished using it).
- @param title Title, set to NULL if you're not interested. Returns NULL if can not be retrieved. Ownership passed (you must free() after finished using it).
- @param image Raw image data (usually PNG or JPG). Set to NULL if you're not interested. Returns NULL if can not be retrieved. Ownership passed (you must free() after finished using it).
+ @param artist Artist, set to NULL if you're not interested. Returns NULL if can not be retrieved. Ownership passed (you must free memory after finished using it).
+ @param title Title, set to NULL if you're not interested. Returns NULL if can not be retrieved. Ownership passed (you must free memory after finished using it).
+ @param image Raw image data (usually PNG or JPG). Set to NULL if you're not interested. Returns NULL if can not be retrieved. Ownership passed (you must free memory after finished using it).
  @param imageSizeBytes Size of the raw image data. Set to NULL if you're not interested.
  @param bpm Tempo in beats per minute. Set to NULL if you're not interested.
  @param callback A callback to process other ID3 frames. Set to NULL if you're not interested.
@@ -112,8 +112,8 @@ public:
 /**
  @return True if the file is Native Instruments Stems format.
  
- @param names Returns with 4 pointers of 0 terminated stem name strings or NULL if the file is not Stems. You take ownership (must free() after used.).
- @param colors Returns with 4 pointers of 0 terminated stem color strings or NULL if the file is not Stems. You take ownership (must free() after used.).
+ @param names Returns with 4 pointers of 0 terminated stem name strings or NULL if the file is not Stems. You take ownership (must free memory after used.).
+ @param colors Returns with 4 pointers of 0 terminated stem color strings or NULL if the file is not Stems. You take ownership (must free memory after used.).
  @param compressor Struct to receive compressor DSP settings. Can be NULL.
  @param limiter Struct to receive limiter DSP settings. Can be NULL;
 */
@@ -131,7 +131,7 @@ private:
 /**
  @brief Helper function to parse ID3 text frames.
  
- @return A pointer to the text in UTF-8 encoding (you must free() it), or NULL if empty.
+ @return A pointer to the text in UTF-8 encoding (you must free memory it), or NULL if empty.
  
  @param frameData Frame data without the frame header.
  @param frameLength The data length in bytes.
