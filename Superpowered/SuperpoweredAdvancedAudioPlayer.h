@@ -49,6 +49,7 @@ typedef enum SuperpoweredAdvancedAudioPlayerEvent {
     SuperpoweredAdvancedAudioPlayerEvent_EOF,
     SuperpoweredAdvancedAudioPlayerEvent_JogParameter,
     SuperpoweredAdvancedAudioPlayerEvent_DurationChanged,
+    SuperpoweredAdvancedAudioPlayerEvent_LoopEnd,
 } SuperpoweredAdvancedAudioPlayerEvent;
 
 typedef struct hlsStreamAlternative {
@@ -69,7 +70,7 @@ typedef struct hlsStreamAlternative {
  
  @param clientData Some custom pointer you set when you created a SuperpoweredAdvancedAudioPlayer instance.
  @param event What happened (load success, load error, end of file, jog parameter).
- @param value A pointer to a stemsInfo structure or NULL for LoadSuccess (you take ownership over the strings). (const char *) for LoadError, pointing to the error message. (double *) for JogParameter in the range of 0.0 to 1.0. (bool *) for EOF, set it to true to pause playback. Don't call this instance's methods from an EOF event callback!
+ @param value A pointer to a stemsInfo structure or NULL for LoadSuccess (you take ownership over the strings). (const char *) for LoadError, pointing to the error message. (double *) for JogParameter in the range of 0.0 to 1.0. (bool *) for EOF, set it to true to pause playback. (bool *) for LoopEnd, set it to false to exit the loop. Don't call this instance's methods from an EOF event callback!
  */
 typedef void (* SuperpoweredAdvancedAudioPlayerCallback) (void *clientData, SuperpoweredAdvancedAudioPlayerEvent event, void *value);
 
@@ -142,11 +143,12 @@ typedef void (* SuperpoweredAdvancedAudioPlayerCallback) (void *clientData, Supe
  @param fixDoubleOrHalfBPM If tempo is >1.4f or <0.6f, it will treat the bpm as half or double. Good for certain genres. False by default.
  @param waitForNextBeatWithBeatSync Wait for the next beat if beat-syncing is enabled. False by default.
  @param dynamicHLSAlternativeSwitching Dynamicly changing the current HLS alternative to match the available network bandwidth. Default is true.
- @param reverseToForwardAtLoopStart If looping and playback direction is reverse, reaching the beginning of the loop will change direction to forward. True by default.
+ @param reverseToForwardAtLoopStart If looping and playback direction is reverse, reaching the beginning of the loop will change direction to forward. False by default.
  @param downloadSecondsAhead The HLS content download strategy: how many seconds ahead of the playback position to download. Default is HLS_DOWNLOAD_REMAINING, meaning it will download everything after the playback position, until the end. HLS_DOWNLOAD_EVERYTHING downloads before the playback position too.
  @param maxDownloadAttempts If HLS download fails, how many times to try until sleep. Default: 100. After sleep, NetworkError is called continously.
  @param minTimeStretchingTempo Will not time-stretch, just resample below this tempo. Default: 0.501f (recommended value for low CPU on older mobile devices, such as the first iPad). Set this before an open() call. 
  @param maxTimeStretchingTempo Will not time-stretch, just resample above this tempo. Default: 2.0f (recommended value for low CPU on older mobile devices, such as the first iPad).
+ @param handleStems Output 4 distinct stereo pairs for Native Instruments STEMS format. Default: false (output stem 0 for STEMS).
 */
 class SuperpoweredAdvancedAudioPlayer {
 public:
@@ -190,6 +192,7 @@ public:
     int maxDownloadAttempts;
     float minTimeStretchingTempo;
     float maxTimeStretchingTempo;
+    bool handleStems;
 
 /**
  @brief Set the folder path for temporary files. Used for HLS only. 
@@ -214,8 +217,9 @@ public:
  @param callback Your callback to receive player events.
  @param samplerate The current samplerate.
  @param cachedPointCount Sets how many positions can be cached in the memory. Jumping to a cached point happens with 0 latency. Loops are automatically cached.
+ @param internalBufferSizeSeconds The number of seconds to buffer internally for playback and cached points. Minimum 2, maximum 60. Default: 2.
 */
-    SuperpoweredAdvancedAudioPlayer(void *clientData, SuperpoweredAdvancedAudioPlayerCallback callback, unsigned int samplerate, unsigned int cachedPointCount);
+    SuperpoweredAdvancedAudioPlayer(void *clientData, SuperpoweredAdvancedAudioPlayerCallback callback, unsigned int samplerate, unsigned int cachedPointCount, unsigned int internalBufferSizeSeconds = 2);
     ~SuperpoweredAdvancedAudioPlayer();
 /**
  @brief Opens a new audio file, with playback paused. 
@@ -224,9 +228,8 @@ public:
  
  @param path The full file system path of the audio file.
  @param customHTTPHeaders NULL terminated list of custom headers for http communication.
- @param stemsIndex The stems track index for Native Instruments Stems format (0 for sum track, 1/2/3/4 for stem tracks).
 */
-    void open(const char *path, char **customHTTPHeaders = 0, int stemsIndex = 0);
+    void open(const char *path, char **customHTTPHeaders = 0);
     
 /**
  @brief Opens a file, with playback paused.
@@ -237,9 +240,8 @@ public:
  @param offset The byte offset inside the file.
  @param length The byte length from the offset.
  @param customHTTPHeaders NULL terminated list of custom headers for http communication.
- @param stemsIndex The stems track index for Native Instruments Stems format.
 */
-    void open(const char *path, int offset, int length, char **customHTTPHeaders = 0, int stemsIndex = 0);
+    void open(const char *path, int offset, int length, char **customHTTPHeaders = 0);
 
 /**
  @brief Starts playback.
@@ -444,7 +446,7 @@ public:
     void onMediaserverInterrupt();
 
 /**
- @brief Processes the audio.
+ @brief Processes the audio, stereo version.
  
  @return Put something into output or not.
  
@@ -456,6 +458,20 @@ public:
  @param masterMsElapsedSinceLastBeat How many milliseconds elapsed since the last beat on the other stuff we are syncing to. Use -1.0 to ignore.
 */
     bool process(float *buffer, bool bufferAdd, unsigned int numberOfSamples, float volume = 1.0f, double masterBpm = 0.0f, double masterMsElapsedSinceLastBeat = -1.0);
+
+/**
+ @brief Processes the audio, multi-channel version.
+
+ @return Put something into output or not.
+
+ @param buffers 32-bit interleaved stereo input/output buffer pairs. Each pair should be numberOfSamples * 8 + 64 bytes big.
+ @param bufferAdds If true, the contents of buffer will be preserved and audio will be added to them. If false, buffer is completely overwritten.
+ @param numberOfSamples The number of samples to provide.
+ @param volumes 0.0f is silence, 1.0f is "original volume". Changes are automatically smoothed between consecutive processes.
+ @param masterBpm A bpm value to sync with. Use 0.0f for no syncing.
+ @param masterMsElapsedSinceLastBeat How many milliseconds elapsed since the last beat on the other stuff we are syncing to. Use -1.0 to ignore.
+ */
+    bool processMulti(float **buffers, bool *bufferAdds, unsigned int numberOfSamples, float *volumes, double masterBpm = 0.0f, double masterMsElapsedSinceLastBeat = -1.0);
     
 private:
     SuperpoweredAdvancedAudioPlayerInternals *internals;

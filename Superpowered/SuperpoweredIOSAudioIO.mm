@@ -2,6 +2,7 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import <AudioUnit/AudioUnit.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import <pthread.h>
 
 // Helpers
 #define SILENCE_DEPRECATION(code)                                   \
@@ -27,8 +28,9 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
 @implementation SuperpoweredIOSAudioIO {
     id<SuperpoweredIOSAudioIODelegate>delegate;
     NSString *externalAudioDeviceName, *audioSessionCategory;
+    NSTimer *stopTimer;
     NSMutableString *audioSystemInfo;
-    audioProcessingCallback_C processingCallback;
+    audioProcessingCallback processingCallback;
     void *processingClientdata;
     AudioBufferList *inputBufferListForRecordingCategory;
     AudioComponentInstance audioUnit;
@@ -51,7 +53,7 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
     };
 }
 
-- (id)initWithDelegate:(NSObject<SuperpoweredIOSAudioIODelegate> *)d preferredBufferSize:(unsigned int)preferredBufferSize preferredMinimumSamplerate:(unsigned int)prefsamplerate audioSessionCategory:(NSString *)category channels:(int)channels {
+- (id)initWithDelegate:(NSObject<SuperpoweredIOSAudioIODelegate> *)d preferredBufferSize:(unsigned int)preferredBufferSize preferredMinimumSamplerate:(unsigned int)prefsamplerate audioSessionCategory:(NSString *)category channels:(int)channels audioProcessingCallback:(audioProcessingCallback)callback clientdata:(void *)clientdata {
     self = [super init];
     if (self) {
         iOS6 = ([[[UIDevice currentDevice] systemVersion] compare:@"6.0" options:NSNumericSearch] != NSOrderedAscending);
@@ -66,8 +68,8 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
         preferredMinimumSamplerate = prefsamplerate;
         bool recordOnly = [category isEqualToString:AVAudioSessionCategoryRecord];
         inputEnabled = recordOnly || [category isEqualToString:AVAudioSessionCategoryPlayAndRecord];
-        processingCallback = NULL;
-        processingClientdata = NULL;
+        processingCallback = callback;
+        processingClientdata = clientdata;
         delegate = d;
         audioSystemInfo = [[NSMutableString alloc] initWithCapacity:256];
         silenceFrames = 0;
@@ -76,7 +78,7 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
         externalAudioDeviceName = nil;
         audioUnit = NULL;
         if (recordOnly) [self createAudioBuffersForRecordingCategory]; else inputBufferListForRecordingCategory = NULL;
-
+        stopTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(everySecond) userInfo:nil repeats:YES];
         [self resetAudio];
         
         // Need to listen for a few app and audio session related events.
@@ -94,12 +96,8 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
     return self;
 }
 
-- (void)setProcessingCallback_C:(audioProcessingCallback_C)callback clientdata:(void *)clientdata {
-    processingCallback = callback;
-    processingClientdata = clientdata;
-}
-
 - (void)dealloc {
+    [stopTimer invalidate];
     if (audioUnit != NULL) {
         AudioUnitUninitialize(audioUnit);
         AudioComponentInstanceDispose(audioUnit);
@@ -127,6 +125,13 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
         [self resetAudio];
         [self start];
     };
+}
+
+- (void)everySecond { // If we waited for more than 1 second with silence, stop RemoteIO to save battery.
+    if (silenceFrames > samplerate) {
+        [self beginInterruption];
+        silenceFrames = 0;
+    }
 }
 
 - (void)beginInterruption { // Phone call, etc.
@@ -308,14 +313,14 @@ static void streamFormatChangedCallback(void *inRefCon, AudioUnit inUnit, AudioU
         AudioUnitGetPropertyInfo(inUnit, kAudioUnitProperty_StreamFormat, kAudioUnitScope_Output, 0, &size, NULL);
         AudioStreamBasicDescription format;
         AudioUnitGetProperty(inUnit, kAudioUnitProperty_StreamFormat, kAudioUnitScope_Output, 0, &format, &size);
-        SuperpoweredIOSAudioIO *self = (__bridge SuperpoweredIOSAudioIO *)inRefCon;
+        __unsafe_unretained SuperpoweredIOSAudioIO *self = (__bridge SuperpoweredIOSAudioIO *)inRefCon;
         self->samplerate = (int)format.mSampleRate;
         [self performSelectorOnMainThread:@selector(setSamplerateAndBuffersize) withObject:nil waitUntilDone:NO];
     };
 }
 
-static OSStatus audioProcessingCallback(void *inRefCon, AudioUnitRenderActionFlags *ioActionFlags, const AudioTimeStamp *inTimeStamp, UInt32 inBusNumber, UInt32 inNumberFrames, AudioBufferList *ioData) {
-    SuperpoweredIOSAudioIO *self = (__bridge SuperpoweredIOSAudioIO *)inRefCon;
+static OSStatus coreAudioProcessingCallback(void *inRefCon, AudioUnitRenderActionFlags *ioActionFlags, const AudioTimeStamp *inTimeStamp, UInt32 inBusNumber, UInt32 inNumberFrames, AudioBufferList *ioData) {
+    __unsafe_unretained SuperpoweredIOSAudioIO *self = (__bridge SuperpoweredIOSAudioIO *)inRefCon;
     if (!ioData) ioData = self->inputBufferListForRecordingCategory;
 
     div_t d = div(inNumberFrames, 8);
@@ -331,20 +336,14 @@ static OSStatus audioProcessingCallback(void *inRefCon, AudioUnitRenderActionFla
     bool silence = true;
 
     // Make audio output.
-    if (self->processingCallback) silence = !self->processingCallback(self->processingClientdata, bufs, inputChannels, self->numChannels, inNumberFrames, self->samplerate, inTimeStamp->mHostTime);
-    else silence = ![self->delegate audioProcessingCallback:bufs inputChannels:inputChannels outputChannels:self->numChannels numberOfSamples:inNumberFrames samplerate:self->samplerate hostTime:inTimeStamp->mHostTime];
+    silence = !self->processingCallback(self->processingClientdata, bufs, inputChannels, self->numChannels, inNumberFrames, self->samplerate, inTimeStamp->mHostTime);
 
     if (silence) { // Despite of ioActionFlags, it outputs garbage sometimes, so must zero the buffers:
         *ioActionFlags |= kAudioUnitRenderAction_OutputIsSilence;
         for (unsigned char n = 0; n < ioData->mNumberBuffers; n++) memset(ioData->mBuffers[n].mData, 0, inNumberFrames << 2);
 
-        if (self->background && self->saveBatteryInBackground) { // If the app is in the background, check if we don't output anything.
-            self->silenceFrames += inNumberFrames;
-            if (self->silenceFrames > self->samplerate) { // If we waited for more than 1 second with silence, stop RemoteIO to save battery.
-                self->silenceFrames = 0;
-                [self beginInterruption];
-            };
-        } else self->silenceFrames = 0;
+        // If the app is in the background, check if we don't output anything.
+        if (self->background && self->saveBatteryInBackground) self->silenceFrames += inNumberFrames; else self->silenceFrames = 0;
     } else self->silenceFrames = 0;
     
     return noErr;
@@ -389,7 +388,7 @@ static OSStatus audioProcessingCallback(void *inRefCon, AudioUnitRenderActionFla
     if (AudioUnitSetProperty(au, kAudioUnitProperty_StreamFormat, kAudioUnitScope_Output, 1, &format, sizeof(format))) { AudioComponentInstanceDispose(au); return NULL; };
     
 	AURenderCallbackStruct callbackStruct;
-	callbackStruct.inputProc = audioProcessingCallback;
+	callbackStruct.inputProc = coreAudioProcessingCallback;
 	callbackStruct.inputProcRefCon = (__bridge void *)self;
     if (recordOnly) {
         if (AudioUnitSetProperty(au, kAudioOutputUnitProperty_SetInputCallback, kAudioUnitScope_Global, 1, &callbackStruct, sizeof(callbackStruct))) { AudioComponentInstanceDispose(au); return NULL; };

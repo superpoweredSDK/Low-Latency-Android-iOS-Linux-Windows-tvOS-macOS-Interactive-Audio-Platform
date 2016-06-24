@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.9.5</span>
+   &#160;<span id="projectnumber">0.9.6</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -58,12 +58,12 @@
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr class="memitem:acb90fec8159e2861d0969b71fc184717"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acb90fec8159e2861d0969b71fc184717"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>buffers</b> [4]</td></tr>
+<tr class="separator:acb90fec8159e2861d0969b71fc184717"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a05c791bf2d4c165ed6563ce535eeb9f8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a05c791bf2d4c165ed6563ce535eeb9f8"></a>
 int64_t&#160;</td><td class="memItemRight" valign="bottom"><b>samplePosition</b></td></tr>
 <tr class="separator:a05c791bf2d4c165ed6563ce535eeb9f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf6fa99a1fd2e4a6f0279c630ad7b3e5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abf6fa99a1fd2e4a6f0279c630ad7b3e5"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>bufferID</b></td></tr>
-<tr class="separator:abf6fa99a1fd2e4a6f0279c630ad7b3e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a258e89466c74cfe792ce04b83ba3c06e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a258e89466c74cfe792ce04b83ba3c06e"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>startSample</b></td></tr>
 <tr class="separator:a258e89466c74cfe792ce04b83ba3c06e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -77,8 +77,8 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>samplesUsed</b></td>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">buffers</td><td>The buffers, coming from <a class="el" href="class_superpowered_audiobuffer_pool.html" title="This object manages an audio buffer pool. ">SuperpoweredAudiobufferPool</a>. </td></tr>
     <tr><td class="paramname">samplePosition</td><td>The buffer beginning's sample position in an audio file or stream. </td></tr>
-    <tr><td class="paramname">bufferID</td><td>The buffer's identifier in a buffer pool. </td></tr>
     <tr><td class="paramname">startSample</td><td>The first sample in the buffer. </td></tr>
     <tr><td class="paramname">endSample</td><td>The last sample in the buffer. </td></tr>
     <tr><td class="paramname">samplesUsed</td><td>How many "original" samples were used to create this chunk of audio. Good for time-stretching for example, to track the movement of the playhead. </td></tr>

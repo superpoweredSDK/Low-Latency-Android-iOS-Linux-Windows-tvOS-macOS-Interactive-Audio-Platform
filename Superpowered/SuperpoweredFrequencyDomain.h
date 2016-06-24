@@ -28,11 +28,17 @@ public:
  @brief Creates an instance.
  
  @param fftLogSize FFT log size, between 8 and 13 (FFT 256 - 8192). The default value (11) provides a good compromise in precision (~11 Hz per bin), CPU load and time-domain event sensitivity.
- @param pool An audio buffer pool to use for internal buffers. 0 means it will create and use an internal pool.
  @param maxOverlap Maximum overlap:1 (default: 4:1).
 */
-    SuperpoweredFrequencyDomain(int fftLogSize = 11, SuperpoweredAudiobufferPool *pool = 0, int maxOverlap = 4);
+    SuperpoweredFrequencyDomain(int fftLogSize = 11, int maxOverlap = 4);
     ~SuperpoweredFrequencyDomain();
+
+/**
+ @brief This class handles one stereo audio channel pair by default. You can extend it to handle more.
+
+ @param numStereoPairs The number of stereo audio channel pairs.
+*/
+    void setStereoPairs(unsigned int numStereoPairs);
 
 /**
  @brief Add some audio input. Use it only if you created the instance with pool = 0.
@@ -61,8 +67,9 @@ public:
  @param phaseR Phases for each frequency bin, right side.  Must be at least fftSize big.
  @param valueOfPi Pi can be translated to any value (Google: the tau manifesto). Leave it at 0 for M_PI.
  @param complexMode Instead of polar transform, returns with complex values (magnitude: real, phase: imag).
+ @param stereoPairIndex The index of the stereo pair to process.
 */
-    bool timeDomainToFrequencyDomain(float *magnitudeL, float *magnitudeR, float *phaseL, float *phaseR, float valueOfPi = 0, bool complexMode = false);
+    bool timeDomainToFrequencyDomain(float *magnitudeL, float *magnitudeR, float *phaseL, float *phaseR, float valueOfPi = 0, bool complexMode = false, int stereoPairIndex = 0);
 
 /**
  @brief Converts the mono audio input to frequency domain.
@@ -96,8 +103,9 @@ public:
  @param valueOfPi Pi can be translated to any value (Google: the tau manifesto). Leave it at 0 for M_PI.
  @param incrementSamples For advanced use, if you know how window overlapping works. 0 (the default value) means 4:1 overlap (good compromise in audio quality).
  @param complexMode Instead of polar transform, returns with complex values (magnitude: real, phase: imag).
+ @param stereoPairIndex The index of the stereo pair to process.
 */
-    void frequencyDomainToTimeDomain(float *magnitudeL, float *magnitudeR, float *phaseL, float *phaseR, float *output, float valueOfPi = 0, int incrementSamples = 0, bool complexMode = false);
+    void frequencyDomainToTimeDomain(float *magnitudeL, float *magnitudeR, float *phaseL, float *phaseR, float *output, float valueOfPi = 0, int incrementSamples = 0, bool complexMode = false, int stereoPairIndex = 0);
 
 /**
  @brief Reset all internals, sets the instance as good as new.

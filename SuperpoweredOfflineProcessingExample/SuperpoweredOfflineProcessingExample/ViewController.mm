@@ -140,19 +140,16 @@
     };
 
     /*
-     Creating the input-output buffer pool and the time stretcher.
-     
      Due to it's nature, a time stretcher can not operate with fixed buffer sizes.
      This problem can be solved with variable size buffer chains (complex) or FIFO buffering (easier).
 
      Memory bandwidth on mobile devices is way lower than on desktop (laptop), so we need to use variable size buffer chains here.
      This solution provides almost 2x performance increase over FIFO buffering!
     */
-    SuperpoweredAudiobufferPool *bufferPool = new SuperpoweredAudiobufferPool(4, 1024 * 1024); // Allow 1 MB max. memory for the buffer pool.
-    SuperpoweredTimeStretching *timeStretch = new SuperpoweredTimeStretching(bufferPool, decoder->samplerate);
+    SuperpoweredTimeStretching *timeStretch = new SuperpoweredTimeStretching(decoder->samplerate);
     timeStretch->setRateAndPitchShift(1.04f, 0); // Audio will be 4% faster.
     // This buffer list will receive the time-stretched samples.
-    SuperpoweredAudiopointerList *outputBuffers = new SuperpoweredAudiopointerList(bufferPool);
+    SuperpoweredAudiopointerList *outputBuffers = new SuperpoweredAudiopointerList(8, 16);
 
     // Create a buffer for the 16-bit integer samples.
     short int *intBuffer = (short int *)malloc(decoder->samplesPerFrame * 2 * sizeof(short int) + 16384);
@@ -166,11 +163,14 @@
 
         // Create an input buffer for the time stretcher.
         SuperpoweredAudiobufferlistElement inputBuffer;
-        bufferPool->createSuperpoweredAudiobufferlistElement(&inputBuffer, decoder->samplePosition, samplesDecoded + 8);
+        inputBuffer.samplePosition = decoder->samplePosition;
+        inputBuffer.startSample = 0;
+        inputBuffer.samplesUsed = 0;
+        inputBuffer.endSample = samplesDecoded; // <-- Important!
+        inputBuffer.buffers[0] = SuperpoweredAudiobufferPool::getBuffer(samplesDecoded * 8 + 64);
 
         // Convert the decoded PCM samples from 16-bit integer to 32-bit floating point.
-        SuperpoweredShortIntToFloat(intBuffer, bufferPool->floatAudio(&inputBuffer), samplesDecoded);
-        inputBuffer.endSample = samplesDecoded; // <-- Important!
+        SuperpoweredShortIntToFloat(intBuffer, (float *)inputBuffer.buffers[0], samplesDecoded);
 
         // Time stretching.
         timeStretch->process(&inputBuffer, outputBuffers);
@@ -179,17 +179,16 @@
         if (outputBuffers->makeSlice(0, outputBuffers->sampleLength)) {
 
             while (true) { // Iterate on every output slice.
-                float *timeStretchedAudio = NULL;
-                int samples = 0;
-
                 // Get pointer to the output samples.
-                if (!outputBuffers->nextSliceItem(&timeStretchedAudio, &samples)) break;
+                int numSamples = 0;
+                float *timeStretchedAudio = (float *)outputBuffers->nextSliceItem(&numSamples);
+                if (!timeStretchedAudio) break;
 
                 // Convert the time stretched PCM samples from 32-bit floating point to 16-bit integer.
-                SuperpoweredFloatToShortInt(timeStretchedAudio, intBuffer, samples);
+                SuperpoweredFloatToShortInt(timeStretchedAudio, intBuffer, numSamples);
 
                 // Write the audio to disk.
-                fwrite(intBuffer, 1, samples * 4, fd);
+                fwrite(intBuffer, 1, numSamples * 4, fd);
             };
             
             // Clear the output buffer list.
@@ -208,7 +207,6 @@
     delete decoder;
     delete timeStretch;
     delete outputBuffers;
-    delete bufferPool;
     free(intBuffer);
 }
 
@@ -250,10 +248,10 @@
 
     // Get the result.
     unsigned char *averageWaveform = NULL, *lowWaveform = NULL, *midWaveform = NULL, *highWaveform = NULL, *peakWaveform = NULL, *notes = NULL;
-    int waveformSize, keyIndex;
+    int waveformSize, overviewSize, keyIndex;
     char *overviewWaveform = NULL;
     float loudpartsAverageDecibel, peakDecibel, bpm, averageDecibel, beatgridStartMs = 0;
-    analyzer->getresults(&averageWaveform, &peakWaveform, &lowWaveform, &midWaveform, &highWaveform, &notes, &waveformSize, &overviewWaveform, &averageDecibel, &loudpartsAverageDecibel, &peakDecibel, &bpm, &beatgridStartMs, &keyIndex);
+    analyzer->getresults(&averageWaveform, &peakWaveform, &lowWaveform, &midWaveform, &highWaveform, &notes, &waveformSize, &overviewWaveform, &overviewSize, &averageDecibel, &loudpartsAverageDecibel, &peakDecibel, &bpm, &beatgridStartMs, &keyIndex);
 
     // Cleanup.
     delete decoder;

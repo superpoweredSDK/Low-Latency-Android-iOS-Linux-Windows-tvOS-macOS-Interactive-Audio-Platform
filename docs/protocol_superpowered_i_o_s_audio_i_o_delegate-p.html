@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.9.5</span>
+   &#160;<span id="projectnumber">0.9.6</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -73,9 +73,6 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:a34db7ec18fdf2fbaa3d665b86a64bc65"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html#a34db7ec18fdf2fbaa3d665b86a64bc65">mapChannels:inputMap:externalAudioDeviceName:outputsAndInputs:</a></td></tr>
 <tr class="memdesc:a34db7ec18fdf2fbaa3d665b86a64bc65"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is called on the main thread, when a multi-channel audio device is connected or disconnected.  <a href="#a34db7ec18fdf2fbaa3d665b86a64bc65">More...</a><br /></td></tr>
 <tr class="separator:a34db7ec18fdf2fbaa3d665b86a64bc65"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98f5968d2d14643445272bba1db6673e"><td class="memItemLeft" align="right" valign="top">(bool)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html#a98f5968d2d14643445272bba1db6673e">audioProcessingCallback:inputChannels:outputChannels:numberOfSamples:samplerate:hostTime:</a></td></tr>
-<tr class="memdesc:a98f5968d2d14643445272bba1db6673e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process audio here.  <a href="#a98f5968d2d14643445272bba1db6673e">More...</a><br /></td></tr>
-<tr class="separator:a98f5968d2d14643445272bba1db6673e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Method Documentation</h2>
 <a class="anchor" id="a34db7ec18fdf2fbaa3d665b86a64bc65"></a>
@@ -122,69 +119,6 @@ Instance Methods</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a class="anchor" id="a98f5968d2d14643445272bba1db6673e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (bool) audioProcessingCallback: </td>
-          <td></td>
-          <td class="paramtype">(float **)&#160;</td>
-          <td class="paramname"><em>buffers</em></td>
-        </tr>
-        <tr>
-          <td class="paramkey">inputChannels:</td>
-          <td></td>
-          <td class="paramtype">(unsigned int)&#160;</td>
-          <td class="paramname"><em>inputChannels</em></td>
-        </tr>
-        <tr>
-          <td class="paramkey">outputChannels:</td>
-          <td></td>
-          <td class="paramtype">(unsigned int)&#160;</td>
-          <td class="paramname"><em>outputChannels</em></td>
-        </tr>
-        <tr>
-          <td class="paramkey">numberOfSamples:</td>
-          <td></td>
-          <td class="paramtype">(unsigned int)&#160;</td>
-          <td class="paramname"><em>numberOfSamples</em></td>
-        </tr>
-        <tr>
-          <td class="paramkey">samplerate:</td>
-          <td></td>
-          <td class="paramtype">(unsigned int)&#160;</td>
-          <td class="paramname"><em>samplerate</em></td>
-        </tr>
-        <tr>
-          <td class="paramkey">hostTime:</td>
-          <td></td>
-          <td class="paramtype">(UInt64)&#160;</td>
-          <td class="paramname"><em>hostTime</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Return false for no audio output (silence).</dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">buffers</td><td>Input-output buffers. </td></tr>
-    <tr><td class="paramname">inputChannels</td><td>The number of input channels. </td></tr>
-    <tr><td class="paramname">outputChannels</td><td>The number of output channels. </td></tr>
-    <tr><td class="paramname">numberOfSamples</td><td>The number of samples requested. </td></tr>
-    <tr><td class="paramname">samplerate</td><td>The current sample rate in Hz. </td></tr>
-    <tr><td class="paramname">hostTime</td><td>A mach timestamp, indicates when this chunk of audio will be passed to the audio output.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section warning"><dt>Warning</dt><dd>It's called on a high priority real-time audio thread, so please take care of blocking and processing time to prevent audio dropouts. </dd></dl>
 
 </div>
 </div>

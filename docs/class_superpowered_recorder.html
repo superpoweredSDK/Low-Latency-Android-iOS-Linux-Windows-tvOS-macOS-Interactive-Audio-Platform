@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.9.5</span>
+   &#160;<span id="projectnumber">0.9.6</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -58,19 +58,19 @@
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad00dfe67b561b0d7e7b06fa0a6c4e2fc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_recorder.html#ad00dfe67b561b0d7e7b06fa0a6c4e2fc">SuperpoweredRecorder</a> (const char *tempPath, unsigned int samplerate)</td></tr>
-<tr class="memdesc:ad00dfe67b561b0d7e7b06fa0a6c4e2fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a recorder instance.  <a href="#ad00dfe67b561b0d7e7b06fa0a6c4e2fc">More...</a><br /></td></tr>
-<tr class="separator:ad00dfe67b561b0d7e7b06fa0a6c4e2fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9809618f3adddea984efa38619a138f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_recorder.html#a9809618f3adddea984efa38619a138f0">start</a> (const char *destinationPath)</td></tr>
-<tr class="memdesc:a9809618f3adddea984efa38619a138f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts recording.  <a href="#a9809618f3adddea984efa38619a138f0">More...</a><br /></td></tr>
-<tr class="separator:a9809618f3adddea984efa38619a138f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8c79dd381bfb6b3d66c6a59e6cfda24"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_recorder.html#aa8c79dd381bfb6b3d66c6a59e6cfda24">SuperpoweredRecorder</a> (const char *tempPath, unsigned int samplerate, unsigned int minSeconds=1)</td></tr>
+<tr class="memdesc:aa8c79dd381bfb6b3d66c6a59e6cfda24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a recorder instance.  <a href="#aa8c79dd381bfb6b3d66c6a59e6cfda24">More...</a><br /></td></tr>
+<tr class="separator:aa8c79dd381bfb6b3d66c6a59e6cfda24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8adf06a57c735691720a92a24e67402"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_recorder.html#aa8adf06a57c735691720a92a24e67402">start</a> (const char *destinationPath)</td></tr>
+<tr class="memdesc:aa8adf06a57c735691720a92a24e67402"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts recording.  <a href="#aa8adf06a57c735691720a92a24e67402">More...</a><br /></td></tr>
+<tr class="separator:aa8adf06a57c735691720a92a24e67402"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab91723892859005472af7cc783ed743c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab91723892859005472af7cc783ed743c"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_recorder.html#ab91723892859005472af7cc783ed743c">stop</a> ()</td></tr>
 <tr class="memdesc:ab91723892859005472af7cc783ed743c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops recording. <br /></td></tr>
 <tr class="separator:ab91723892859005472af7cc783ed743c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad11e1a3eacd78a635c2e786edffb9074"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_recorder.html#ad11e1a3eacd78a635c2e786edffb9074">addToTracklist</a> (char *artist, char *title, int offsetSeconds)</td></tr>
-<tr class="memdesc:ad11e1a3eacd78a635c2e786edffb9074"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an artist + title to the tracklist.  <a href="#ad11e1a3eacd78a635c2e786edffb9074">More...</a><br /></td></tr>
-<tr class="separator:ad11e1a3eacd78a635c2e786edffb9074"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55d06a1f05face9945b0a12ccf0833e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_recorder.html#a55d06a1f05face9945b0a12ccf0833e7">addToTracklist</a> (char *artist, char *title, int offsetSeconds, bool takeOwnership=false)</td></tr>
+<tr class="memdesc:a55d06a1f05face9945b0a12ccf0833e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an artist + title to the tracklist.  <a href="#a55d06a1f05face9945b0a12ccf0833e7">More...</a><br /></td></tr>
+<tr class="separator:a55d06a1f05face9945b0a12ccf0833e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53fcb63604ca492e20ec386ddf8773c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_recorder.html#a53fcb63604ca492e20ec386ddf8773c1">setSamplerate</a> (unsigned int samplerate)</td></tr>
 <tr class="memdesc:a53fcb63604ca492e20ec386ddf8773c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the sample rate.  <a href="#a53fcb63604ca492e20ec386ddf8773c1">More...</a><br /></td></tr>
 <tr class="separator:a53fcb63604ca492e20ec386ddf8773c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -79,9 +79,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="separator:ac99ae7f4273eccb42c8a84176b777067"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>One instance allocates around 512k memory when recording starts. Use this class in a live audio processing loop, where directly writing to a disk is not recommended. For offline processing, use the createWAV, fwrite and closeWAV functions instead of a <a class="el" href="class_superpowered_recorder.html" title="Records audio into a stereo 16-bit WAV file, with an optional tracklist. ">SuperpoweredRecorder</a>. </p>
+<div class="textblock"><p>One instance allocates around 270k memory when recording starts. Use this class in a live audio processing loop, where directly writing to a disk is not recommended. For offline processing, use the createWAV, fwrite and closeWAV functions instead of a <a class="el" href="class_superpowered_recorder.html" title="Records audio into a stereo 16-bit WAV file, with an optional tracklist. ">SuperpoweredRecorder</a>. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="ad00dfe67b561b0d7e7b06fa0a6c4e2fc"></a>
+<a class="anchor" id="aa8c79dd381bfb6b3d66c6a59e6cfda24"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -95,7 +95,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>samplerate</em>&#160;</td>
+          <td class="paramname"><em>samplerate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>minSeconds</em> = <code>1</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -108,6 +114,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   <table class="params">
     <tr><td class="paramname">tempPath</td><td>The full filesystem path of a temporarily file. </td></tr>
     <tr><td class="paramname">samplerate</td><td>The current samplerate. </td></tr>
+    <tr><td class="paramname">minSeconds</td><td>The minimum length of a recording. If the number of recorded seconds is lower, then a file will not be saved. </td></tr>
   </table>
   </dd>
 </dl>
@@ -115,12 +122,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a9809618f3adddea984efa38619a138f0"></a>
+<a class="anchor" id="aa8adf06a57c735691720a92a24e67402"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void SuperpoweredRecorder::start </td>
+          <td class="memname">bool SuperpoweredRecorder::start </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>destinationPath</em></td><td>)</td>
@@ -128,6 +135,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>False, if another recording is still active or not closed yet.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">destinationPath</td><td>The full filesystem path of the successfully finished recording. </td></tr>
@@ -137,7 +145,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 </div>
 </div>
-<a class="anchor" id="ad11e1a3eacd78a635c2e786edffb9074"></a>
+<a class="anchor" id="a55d06a1f05face9945b0a12ccf0833e7"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -157,7 +165,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>offsetSeconds</em>&#160;</td>
+          <td class="paramname"><em>offsetSeconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>takeOwnership</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -172,6 +186,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
     <tr><td class="paramname">artist</td><td>Artist, can be NULL. </td></tr>
     <tr><td class="paramname">title</td><td>Title, can be NULL. </td></tr>
     <tr><td class="paramname">offsetSeconds</td><td>When the track began to be audible in this recording, relative to the current time. For example, 0 means "now", -10 means "10 seconds ago". </td></tr>
+    <tr><td class="paramname">takeOwnership</td><td>If true, this class will free artist and title. </td></tr>
   </table>
   </dd>
 </dl>

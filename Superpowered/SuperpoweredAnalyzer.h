@@ -39,6 +39,7 @@ public:
  @param notes 150 points/sec data displaying the bass and mid keys. Upper 4 bits are the bass notes 0 to 11, lower 4 bits are the mid notes 0 to 11 (C, C#, D, D#, E, F, F#, G, G#, A, A#, B). The note value is 12 means "unknown note due low volume". You take ownership on this (must free memory).
  @param waveformSize The number of points in averageWaveform, peakWaveform or lowMidHighWaveform.
  @param overviewWaveform 1 point/sec waveform data displaying the average volume in decibels. Useful for displaying the overall structure of a track. Each sample is a signed char, from -128 to 0 decibel. You take ownership on this (must free memory).
+ @param overviewSize The number points in overviewWaveform.
  @param averageDecibel The average loudness of all samples processed in decibel.
  @param loudpartsAverageDecibel The average loudness of the "loud" parts in the music in decibel. (Breakdowns and other quiet parts are excluded.)
  @param peakDecibel The loudest sample in decibel.
@@ -46,7 +47,7 @@ public:
  @param beatgridStartMs The position where the beatgrid should start. Important! On input set it to 0, or the ms position of the first audio sample.
  @param keyIndex The dominant key (chord) of the music. 0..11 are major keys from A to G#, 12..23 are minor keys from A to G#. Check the static constants in this header for musical, Camelot and Open Key notations.
  */
-    void getresults(unsigned char **averageWaveform, unsigned char **peakWaveform, unsigned char **lowWaveform, unsigned char **midWaveform, unsigned char **highWaveform, unsigned char **notes, int *waveformSize, char **overviewWaveform, float *averageDecibel, float *loudpartsAverageDecibel, float *peakDecibel, float *bpm, float *beatgridStartMs, int *keyIndex);
+    void getresults(unsigned char **averageWaveform, unsigned char **peakWaveform, unsigned char **lowWaveform, unsigned char **midWaveform, unsigned char **highWaveform, unsigned char **notes, int *waveformSize, char **overviewWaveform, int *overviewSize, float *averageDecibel, float *loudpartsAverageDecibel, float *peakDecibel, float *bpm, float *beatgridStartMs, int *keyIndex);
 
 private:
     offlineAnalyzerInternals *internals;
@@ -101,7 +102,7 @@ public:
  @param samplerate The sample rate of the source.
  @param lengthSeconds The source's length in seconds.
 */
-    SuperpoweredWaveform(unsigned int samplerate, int lengthSeconds = 0);
+    SuperpoweredWaveform(unsigned int samplerate, int lengthSeconds);
     ~SuperpoweredWaveform();
 
 /**
@@ -114,8 +115,10 @@ public:
 
 /**
  @return Returns with 150 points/sec waveform data displaying the peak volume. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory).
+ 
+ @param size The number of points in the waveform data.
  */
-    unsigned char *getresult();
+    unsigned char *getresult(int *size);
 
 private:
     waveformInternals *internals;

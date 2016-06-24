@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.9.5</span>
+   &#160;<span id="projectnumber">0.9.6</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -61,9 +61,9 @@
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Instance Methods</h2></td></tr>
-<tr class="memitem:af6250956d404b921e3beea93bbd1e64d"><td class="memItemLeft" align="right" valign="top">(id)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_superpowered_i_o_s_audio_i_o.html#af6250956d404b921e3beea93bbd1e64d">initWithDelegate:preferredBufferSize:preferredMinimumSamplerate:audioSessionCategory:channels:</a></td></tr>
-<tr class="memdesc:af6250956d404b921e3beea93bbd1e64d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the audio output instance.  <a href="#af6250956d404b921e3beea93bbd1e64d">More...</a><br /></td></tr>
-<tr class="separator:af6250956d404b921e3beea93bbd1e64d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f98441f6457f78b137887d32476181a"><td class="memItemLeft" align="right" valign="top">(id)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_superpowered_i_o_s_audio_i_o.html#a3f98441f6457f78b137887d32476181a">initWithDelegate:preferredBufferSize:preferredMinimumSamplerate:audioSessionCategory:channels:audioProcessingCallback:clientdata:</a></td></tr>
+<tr class="memdesc:a3f98441f6457f78b137887d32476181a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the audio output instance.  <a href="#a3f98441f6457f78b137887d32476181a">More...</a><br /></td></tr>
+<tr class="separator:a3f98441f6457f78b137887d32476181a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe7f8d2097684b5f0db47c3eaaa216f9"><td class="memItemLeft" align="right" valign="top">(bool)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_superpowered_i_o_s_audio_i_o.html#abe7f8d2097684b5f0db47c3eaaa216f9">start</a></td></tr>
 <tr class="memdesc:abe7f8d2097684b5f0db47c3eaaa216f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts audio processing.  <a href="#abe7f8d2097684b5f0db47c3eaaa216f9">More...</a><br /></td></tr>
 <tr class="separator:abe7f8d2097684b5f0db47c3eaaa216f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -75,11 +75,9 @@ Instance Methods</h2></td></tr>
 (void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_superpowered_i_o_s_audio_i_o.html#a32bd2402e4ed4afdca73293be9915372">mapChannels</a></td></tr>
 <tr class="memdesc:a32bd2402e4ed4afdca73293be9915372"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this to re-configure the channel mapping. <br /></td></tr>
 <tr class="separator:a32bd2402e4ed4afdca73293be9915372"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3de001450520a31796a2a1f3f4d903f9"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_superpowered_i_o_s_audio_i_o.html#a3de001450520a31796a2a1f3f4d903f9">setProcessingCallback_C:clientdata:</a></td></tr>
-<tr class="memdesc:a3de001450520a31796a2a1f3f4d903f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the audio processing callback to a C function, instead of the delegate's Objective-C method.  <a href="#a3de001450520a31796a2a1f3f4d903f9">More...</a><br /></td></tr>
-<tr class="separator:a3de001450520a31796a2a1f3f4d903f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a333354c7b9f80491efa41373aa57937c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a333354c7b9f80491efa41373aa57937c"></a>
-(void)&#160;</td><td class="memItemRight" valign="bottom">- <b>reconfigureWithAudioSessionCategory:</b></td></tr>
+(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_superpowered_i_o_s_audio_i_o.html#a333354c7b9f80491efa41373aa57937c">reconfigureWithAudioSessionCategory:</a></td></tr>
+<tr class="memdesc:a333354c7b9f80491efa41373aa57937c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this to re-configure the audio session category (such as enabling/disabling recording). <br /></td></tr>
 <tr class="separator:a333354c7b9f80491efa41373aa57937c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
@@ -96,7 +94,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section warning"><dt>Warning</dt><dd>All methods and setters should be called on the main thread only! </dd></dl>
 </div><h2 class="groupheader">Method Documentation</h2>
-<a class="anchor" id="af6250956d404b921e3beea93bbd1e64d"></a>
+<a class="anchor" id="a3f98441f6457f78b137887d32476181a"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -128,7 +126,19 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
           <td class="paramkey">channels:</td>
           <td></td>
           <td class="paramtype">(int)&#160;</td>
-          <td class="paramname"><em>channels</em>&#160;</td>
+          <td class="paramname"><em>channels</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">audioProcessingCallback:</td>
+          <td></td>
+          <td class="paramtype">(audioProcessingCallback)&#160;</td>
+          <td class="paramname"><em>callback</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">clientdata:</td>
+          <td></td>
+          <td class="paramtype">(void *)&#160;</td>
+          <td class="paramname"><em>clientdata</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -144,6 +154,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
     <tr><td class="paramname">preferredMinimumSamplerate</td><td>The preferred minimum sample rate. 44100 or 48000 are recommended for good sound quality. </td></tr>
     <tr><td class="paramname">audioSessionCategory</td><td>The audio session category. Audio input is enabled for the appropriate categories only! </td></tr>
     <tr><td class="paramname">channels</td><td>The number of channels in the audio processing callback. </td></tr>
+    <tr><td class="paramname">callback</td><td>The audio processing callback. </td></tr>
+    <tr><td class="paramname">clientdata</td><td>Custom data passed to the audio processing callback. </td></tr>
   </table>
   </dd>
 </dl>
@@ -163,40 +175,6 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
       </table>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>True if successful, false if failed. </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a3de001450520a31796a2a1f3f4d903f9"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (void) setProcessingCallback_C: </td>
-          <td></td>
-          <td class="paramtype">(audioProcessingCallback_C)&#160;</td>
-          <td class="paramname"><em>callback</em></td>
-        </tr>
-        <tr>
-          <td class="paramkey">clientdata:</td>
-          <td></td>
-          <td class="paramtype">(void *)&#160;</td>
-          <td class="paramname"><em>clientdata</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>99% of all audio apps work great with the Objective-C method, so you don't need to use this. Don't call this method after [start]!</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">callback</td><td>The callback function. </td></tr>
-    <tr><td class="paramname">clientdata</td><td>Some custom pointer for the C processing callback. You can set it to NULL. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>

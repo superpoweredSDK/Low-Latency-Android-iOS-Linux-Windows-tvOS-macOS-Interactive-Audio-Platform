@@ -38,13 +38,17 @@ public:
     bool setRateAndPitchShiftCents(float newRate, int newShiftCents);
     
 /**
- @brief Create a time-stretching instance with an audio buffer pool, the current sample rate and minimum rate value.
- 
- @see @c SuperpoweredAudiobufferPool
+ @brief Create a time-stretching with the current sample rate and minimum rate value.
  */
-    SuperpoweredTimeStretching(SuperpoweredAudiobufferPool *p, unsigned int samplerate, float minimumRate = 0.0f);
+    SuperpoweredTimeStretching(unsigned int samplerate, float minimumRate = 0.0f);
     ~SuperpoweredTimeStretching();
-    
+
+/**
+ @brief This class handles one stereo audio channel pair by default. You can extend it to handle more.
+
+ @param numStereoPairs The number of stereo audio channel pairs.
+*/
+    void setStereoPairs(unsigned int numStereoPairs);
 /**
  @brief Sets the sample rate.
  

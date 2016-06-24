@@ -91,6 +91,48 @@
     player->onMediaserverInterrupt(); // If the player plays Apple Lossless audio files, then we need this. Otherwise unnecessary.
 }
 
+// This is where the Superpowered magic happens.
+static bool audioProcessing(void *clientdata, float **buffers, unsigned int inputChannels, unsigned int outputChannels, unsigned int numberOfSamples, unsigned int samplerate, uint64_t hostTime) {
+    __unsafe_unretained Superpowered *self = (__bridge Superpowered *)clientdata;
+    uint64_t startTime = mach_absolute_time();
+
+    if (samplerate != self->lastSamplerate) { // Has samplerate changed?
+        self->lastSamplerate = samplerate;
+        self->player->setSamplerate(samplerate);
+        for (int n = 2; n < NUMFXUNITS; n++) self->effects[n]->setSamplerate(samplerate);
+    };
+
+    // We're keeping our Superpowered time-based effects in sync with the player... with one line of code. Not bad, eh?
+    ((SuperpoweredRoll *)self->effects[ROLLINDEX])->bpm = ((SuperpoweredFlanger *)self->effects[FLANGERINDEX])->bpm = ((SuperpoweredEcho *)self->effects[DELAYINDEX])->bpm = self->player->currentBpm;
+
+    /*
+     Let's process some audio.
+     If you'd like to change connections or tap into something, no abstract connection handling and no callbacks required!
+     */
+    bool silence = !self->player->process(self->stereoBuffer, false, numberOfSamples, 1.0f, 0.0f, -1.0);
+    if (self->effects[ROLLINDEX]->process(silence ? NULL : self->stereoBuffer, self->stereoBuffer, numberOfSamples)) silence = false;
+    self->effects[FILTERINDEX]->process(self->stereoBuffer, self->stereoBuffer, numberOfSamples);
+    self->effects[EQINDEX]->process(self->stereoBuffer, self->stereoBuffer, numberOfSamples);
+    self->effects[FLANGERINDEX]->process(self->stereoBuffer, self->stereoBuffer, numberOfSamples);
+    if (self->effects[DELAYINDEX]->process(silence ? NULL : self->stereoBuffer, self->stereoBuffer, numberOfSamples)) silence = false;
+    if (self->effects[REVERBINDEX]->process(silence ? NULL : self->stereoBuffer, self->stereoBuffer, numberOfSamples)) silence = false;
+
+    // CPU measurement code to show some nice numbers for the business guys.
+    uint64_t elapsedUnits = mach_absolute_time() - startTime;
+    if (elapsedUnits > self->maxTime) self->maxTime = elapsedUnits;
+    self->timeUnitsProcessed += elapsedUnits;
+    self->samplesProcessed += numberOfSamples;
+    if (self->samplesProcessed >= samplerate) {
+        self->avgUnitsPerSecond = self->timeUnitsProcessed;
+        self->maxUnitsPerSecond = (double(samplerate) / double(numberOfSamples)) * self->maxTime;
+        self->samplesProcessed = self->timeUnitsProcessed = self->maxTime = 0;
+    };
+
+    self->playing = self->player->playing;
+    if (!silence) SuperpoweredDeInterleave(self->stereoBuffer, buffers[0], buffers[1], numberOfSamples); // The stereoBuffer is ready now, let's put the finished audio into the requested buffers.
+    return !silence;
+}
+
 - (id)init {
     self = [super init];
     if (!self) return nil;
@@ -128,49 +170,8 @@
     eq->bands[2] = 2.0f;
     effects[EQINDEX] = eq;
 
-    output = [[SuperpoweredIOSAudioIO alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:12 preferredMinimumSamplerate:44100 audioSessionCategory:AVAudioSessionCategoryPlayback channels:2];
+    output = [[SuperpoweredIOSAudioIO alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:12 preferredMinimumSamplerate:44100 audioSessionCategory:AVAudioSessionCategoryPlayback channels:2 audioProcessingCallback:audioProcessing clientdata:(__bridge void *)self];
     return self;
-}
-
-// This is where the Superpowered magic happens.
-- (bool)audioProcessingCallback:(float **)buffers inputChannels:(unsigned int)inputChannels outputChannels:(unsigned int)outputChannels numberOfSamples:(unsigned int)numberOfSamples samplerate:(unsigned int)samplerate hostTime:(UInt64)hostTime {
-    uint64_t startTime = mach_absolute_time();
-
-    if (samplerate != lastSamplerate) { // Has samplerate changed?
-        lastSamplerate = samplerate;
-        player->setSamplerate(samplerate);
-        for (int n = 2; n < NUMFXUNITS; n++) effects[n]->setSamplerate(samplerate);
-    };
-    
-// We're keeping our Superpowered time-based effects in sync with the player... with one line of code. Not bad, eh?
-    ((SuperpoweredRoll *)effects[ROLLINDEX])->bpm = ((SuperpoweredFlanger *)effects[FLANGERINDEX])->bpm = ((SuperpoweredEcho *)effects[DELAYINDEX])->bpm = player->currentBpm;
-    
-/*
- Let's process some audio.
- If you'd like to change connections or tap into something, no abstract connection handling and no callbacks required!
-*/
-    bool silence = !player->process(stereoBuffer, false, numberOfSamples, 1.0f, 0.0f, -1.0);
-    if (effects[ROLLINDEX]->process(silence ? NULL : stereoBuffer, stereoBuffer, numberOfSamples)) silence = false;
-    effects[FILTERINDEX]->process(stereoBuffer, stereoBuffer, numberOfSamples);
-    effects[EQINDEX]->process(stereoBuffer, stereoBuffer, numberOfSamples);
-    effects[FLANGERINDEX]->process(stereoBuffer, stereoBuffer, numberOfSamples);
-    if (effects[DELAYINDEX]->process(silence ? NULL : stereoBuffer, stereoBuffer, numberOfSamples)) silence = false;
-    if (effects[REVERBINDEX]->process(silence ? NULL : stereoBuffer, stereoBuffer, numberOfSamples)) silence = false;
-    
-// CPU measurement code to show some nice numbers for the business guys.
-    uint64_t elapsedUnits = mach_absolute_time() - startTime;
-    if (elapsedUnits > maxTime) maxTime = elapsedUnits;
-    timeUnitsProcessed += elapsedUnits;
-    samplesProcessed += numberOfSamples;
-    if (samplesProcessed >= samplerate) {
-        avgUnitsPerSecond = timeUnitsProcessed;
-        maxUnitsPerSecond = (double(samplerate) / double(numberOfSamples)) * maxTime;
-        samplesProcessed = timeUnitsProcessed = maxTime = 0;
-    };
-    
-    playing = player->playing;
-    if (!silence) SuperpoweredDeInterleave(stereoBuffer, buffers[0], buffers[1], numberOfSamples); // The stereoBuffer is ready now, let's put the finished audio into the requested buffers.
-    return !silence;
 }
 
 @end

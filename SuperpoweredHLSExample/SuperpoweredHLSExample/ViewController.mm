@@ -55,13 +55,14 @@ static void playerEventCallback(void *clientData, SuperpoweredAdvancedAudioPlaye
 }
 
 // Called periodically by the operating system's audio stack to provide audio output.
-- (bool)audioProcessingCallback:(float **)buffers inputChannels:(unsigned int)inputChannels outputChannels:(unsigned int)outputChannels numberOfSamples:(unsigned int)numberOfSamples samplerate:(unsigned int)currentSamplerate hostTime:(UInt64)hostTime {
-    if (samplerate != currentSamplerate) {
-        samplerate = currentSamplerate;
-        player->setSamplerate(currentSamplerate);
+static bool audioProcessing(void *clientdata, float **buffers, unsigned int inputChannels, unsigned int outputChannels, unsigned int numberOfSamples, unsigned int samplerate, uint64_t hostTime) {
+    __unsafe_unretained ViewController *self = (__bridge ViewController *)clientdata;
+    if (self->samplerate != samplerate) {
+        self->samplerate = samplerate;
+        self->player->setSamplerate(self->samplerate);
     };
-    bool hasAudio = player->process(interleavedBuffer, false, numberOfSamples);
-    if (hasAudio) SuperpoweredDeInterleave(interleavedBuffer, buffers[0], buffers[1], numberOfSamples);
+    bool hasAudio = self->player->process(self->interleavedBuffer, false, numberOfSamples);
+    if (hasAudio) SuperpoweredDeInterleave(self->interleavedBuffer, buffers[0], buffers[1], numberOfSamples);
     return hasAudio;
 }
 
@@ -84,7 +85,7 @@ static void playerEventCallback(void *clientData, SuperpoweredAdvancedAudioPlaye
     player = new SuperpoweredAdvancedAudioPlayer((__bridge void *)self, playerEventCallback, samplerate, 0);
     interleavedBuffer = (float *)malloc(8192);
 
-    audioIO = [[SuperpoweredIOSAudioIO alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:12 preferredMinimumSamplerate:44100 audioSessionCategory:AVAudioSessionCategoryPlayback channels:2];
+    audioIO = [[SuperpoweredIOSAudioIO alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:12 preferredMinimumSamplerate:44100 audioSessionCategory:AVAudioSessionCategoryPlayback channels:2 audioProcessingCallback:audioProcessing clientdata:(__bridge void *)self];
     [audioIO start];
 
     [sources selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];

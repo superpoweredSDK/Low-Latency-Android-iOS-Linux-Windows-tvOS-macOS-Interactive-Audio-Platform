@@ -12,6 +12,27 @@
     unsigned int samplerate, samplesProcessedForOneDisplayFrame;
 }
 
+static bool audioProcessing(void *clientdata, float **buffers, unsigned int inputChannels, unsigned int outputChannels, unsigned int numberOfSamples, unsigned int samplerate, uint64_t hostTime) {
+    __unsafe_unretained Superpowered *self = (__bridge Superpowered *)clientdata;
+    if (samplerate != self->samplerate) {
+        self->samplerate = samplerate;
+        self->filters->setSamplerate(samplerate);
+    };
+
+    // Mix the non-interleaved input to interleaved.
+    float interleaved[numberOfSamples * 2 + 16];
+    SuperpoweredInterleave(buffers[0], buffers[1], interleaved, numberOfSamples);
+
+    // Detect frequency magnitudes.
+    float peak, sum;
+    pthread_mutex_lock(&self->mutex);
+    self->samplesProcessedForOneDisplayFrame += numberOfSamples;
+    self->filters->process(interleaved, self->bands, &peak, &sum, numberOfSamples);
+    pthread_mutex_unlock(&self->mutex);
+
+    return false;
+}
+
 - (id)init {
     self = [super init];
     if (!self) return nil;
@@ -26,7 +47,7 @@
     float widths[8] = { 1, 1, 1, 1, 1, 1, 1, 1 };
     filters = new SuperpoweredBandpassFilterbank(8, frequencies, widths, samplerate);
 
-    audioIO = [[SuperpoweredIOSAudioIO alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:12 preferredMinimumSamplerate:44100 audioSessionCategory:AVAudioSessionCategoryRecord channels:2];
+    audioIO = [[SuperpoweredIOSAudioIO alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:12 preferredMinimumSamplerate:44100 audioSessionCategory:AVAudioSessionCategoryRecord channels:2 audioProcessingCallback:audioProcessing clientdata:(__bridge void *)self];
     [audioIO start];
 
     return self;
@@ -42,26 +63,6 @@
 - (void)interruptionEnded {}
 - (void)recordPermissionRefused {}
 - (void)mapChannels:(multiOutputChannelMap *)outputMap inputMap:(multiInputChannelMap *)inputMap externalAudioDeviceName:(NSString *)externalAudioDeviceName outputsAndInputs:(NSString *)outputsAndInputs {}
-
-- (bool)audioProcessingCallback:(float **)buffers inputChannels:(unsigned int)inputChannels outputChannels:(unsigned int)outputChannels numberOfSamples:(unsigned int)numberOfSamples samplerate:(unsigned int)currentsamplerate hostTime:(UInt64)hostTime {
-    if (samplerate != currentsamplerate) {
-        samplerate = currentsamplerate;
-        filters->setSamplerate(samplerate);
-    };
-
-    // Mix the non-interleaved input to interleaved.
-    float interleaved[numberOfSamples * 2 + 16];
-    SuperpoweredInterleave(buffers[0], buffers[1], interleaved, numberOfSamples);
-
-    // Detect frequency magnitudes.
-    float peak, sum;
-    pthread_mutex_lock(&mutex);
-    samplesProcessedForOneDisplayFrame += numberOfSamples;
-    filters->process(interleaved, bands, &peak, &sum, numberOfSamples);
-    pthread_mutex_unlock(&mutex);
-
-    return false;
-}
 
 /*
  It's important to understand that the audio processing callback and the screen update (getFrequencies) are never in sync. 

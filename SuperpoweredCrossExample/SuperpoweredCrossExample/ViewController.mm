@@ -46,6 +46,41 @@ void playerEventCallbackB(void *clientData, SuperpoweredAdvancedAudioPlayerEvent
     };
 }
 
+// This is where the Superpowered magic happens.
+static bool audioProcessing(void *clientdata, float **buffers, unsigned int inputChannels, unsigned int outputChannels, unsigned int numberOfSamples, unsigned int samplerate, uint64_t hostTime) {
+    __unsafe_unretained ViewController *self = (__bridge ViewController *)clientdata;
+    if (samplerate != self->lastSamplerate) { // Has samplerate changed?
+        self->lastSamplerate = samplerate;
+        self->playerA->setSamplerate(samplerate);
+        self->playerB->setSamplerate(samplerate);
+        self->roll->setSamplerate(samplerate);
+        self->filter->setSamplerate(samplerate);
+        self->flanger->setSamplerate(samplerate);
+    };
+
+    pthread_mutex_lock(&self->mutex);
+
+    bool masterIsA = (self->crossValue <= 0.5f);
+    float masterBpm = masterIsA ? self->playerA->currentBpm : self->playerB->currentBpm; // Players will sync to this tempo.
+    double msElapsedSinceLastBeatA = self->playerA->msElapsedSinceLastBeat; // When playerB needs it, playerA has already stepped this value, so save it now.
+
+    bool silence = !self->playerA->process(self->stereoBuffer, false, numberOfSamples, self->volA, masterBpm, self->playerB->msElapsedSinceLastBeat);
+    if (self->playerB->process(self->stereoBuffer, !silence, numberOfSamples, self->volB, masterBpm, msElapsedSinceLastBeatA)) silence = false;
+
+    self->roll->bpm = self->flanger->bpm = masterBpm; // Syncing fx is one line.
+
+    if (self->roll->process(silence ? NULL : self->stereoBuffer, self->stereoBuffer, numberOfSamples) && silence) silence = false;
+    if (!silence) {
+        self->filter->process(self->stereoBuffer, self->stereoBuffer, numberOfSamples);
+        self->flanger->process(self->stereoBuffer, self->stereoBuffer, numberOfSamples);
+    };
+
+    pthread_mutex_unlock(&self->mutex);
+
+    if (!silence) SuperpoweredDeInterleave(self->stereoBuffer, buffers[0], buffers[1], numberOfSamples); // The stereoBuffer is ready now, let's put the finished audio into the requested buffers.
+    return !silence;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     lastSamplerate = activeFx = 0;
@@ -65,7 +100,7 @@ void playerEventCallbackB(void *clientData, SuperpoweredAdvancedAudioPlayerEvent
     filter = new SuperpoweredFilter(SuperpoweredFilter_Resonant_Lowpass, 44100);
     flanger = new SuperpoweredFlanger(44100);
 
-    output = [[SuperpoweredIOSAudioIO alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:12 preferredMinimumSamplerate:44100 audioSessionCategory:AVAudioSessionCategoryPlayback channels:2];
+    output = [[SuperpoweredIOSAudioIO alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:12 preferredMinimumSamplerate:44100 audioSessionCategory:AVAudioSessionCategoryPlayback channels:2 audioProcessingCallback:audioProcessing clientdata:(__bridge void *)self];
     [output start];
 }
 
@@ -87,40 +122,6 @@ void playerEventCallbackB(void *clientData, SuperpoweredAdvancedAudioPlayerEvent
 - (void)interruptionEnded { // If a player plays Apple Lossless audio files, then we need this. Otherwise unnecessary.
     playerA->onMediaserverInterrupt();
     playerB->onMediaserverInterrupt();
-}
-
-// This is where the Superpowered magic happens.
-- (bool)audioProcessingCallback:(float **)buffers inputChannels:(unsigned int)inputChannels outputChannels:(unsigned int)outputChannels numberOfSamples:(unsigned int)numberOfSamples samplerate:(unsigned int)samplerate hostTime:(UInt64)hostTime {
-    if (samplerate != lastSamplerate) { // Has samplerate changed?
-        lastSamplerate = samplerate;
-        playerA->setSamplerate(samplerate);
-        playerB->setSamplerate(samplerate);
-        roll->setSamplerate(samplerate);
-        filter->setSamplerate(samplerate);
-        flanger->setSamplerate(samplerate);
-    };
-    
-    pthread_mutex_lock(&mutex);
-    
-    bool masterIsA = (crossValue <= 0.5f);
-    float masterBpm = masterIsA ? playerA->currentBpm : playerB->currentBpm; // Players will sync to this tempo.
-    double msElapsedSinceLastBeatA = playerA->msElapsedSinceLastBeat; // When playerB needs it, playerA has already stepped this value, so save it now.
-    
-    bool silence = !playerA->process(stereoBuffer, false, numberOfSamples, volA, masterBpm, playerB->msElapsedSinceLastBeat);
-    if (playerB->process(stereoBuffer, !silence, numberOfSamples, volB, masterBpm, msElapsedSinceLastBeatA)) silence = false;
-
-    roll->bpm = flanger->bpm = masterBpm; // Syncing fx is one line.
-
-    if (roll->process(silence ? NULL : stereoBuffer, stereoBuffer, numberOfSamples) && silence) silence = false;
-    if (!silence) {
-        filter->process(stereoBuffer, stereoBuffer, numberOfSamples);
-        flanger->process(stereoBuffer, stereoBuffer, numberOfSamples);
-    };
-
-    pthread_mutex_unlock(&mutex);
-
-    if (!silence) SuperpoweredDeInterleave(stereoBuffer, buffers[0], buffers[1], numberOfSamples); // The stereoBuffer is ready now, let's put the finished audio into the requested buffers.
-    return !silence;
 }
 
 - (IBAction)onPlayPause:(id)sender {

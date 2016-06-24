@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.9.5</span>
+   &#160;<span id="projectnumber">0.9.6</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -86,9 +86,13 @@
 <div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;</div>
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_superpowered_simple_8h.html#a920e96664e06aea99dcec99b78b24e48">SuperpoweredCrossStereo</a>(<span class="keywordtype">float</span> *inputA, <span class="keywordtype">float</span> *inputB, <span class="keywordtype">float</span> *output, <span class="keywordtype">float</span> gainStart[4], <span class="keywordtype">float</span> gainEnd[4], <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numberOfSamples);</div>
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *<a class="code" href="_superpowered_simple_8h.html#abe7772f165043b851a9bf074771cf17a">SuperpoweredVersion</a>();</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="keywordtype">void</span> SuperpoweredAdd1(<span class="keywordtype">float</span> *input, <span class="keywordtype">float</span> *output, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numberOfValues);</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="keywordtype">void</span> SuperpoweredAdd2(<span class="keywordtype">float</span> *inputA, <span class="keywordtype">float</span> *inputB, <span class="keywordtype">float</span> *output, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numberOfValues);</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="keywordtype">void</span> SuperpoweredAdd4(<span class="keywordtype">float</span> *inputA, <span class="keywordtype">float</span> *inputB, <span class="keywordtype">float</span> *inputC, <span class="keywordtype">float</span> *inputD, <span class="keywordtype">float</span> *output, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numberOfValues);</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *<a class="code" href="_superpowered_simple_8h.html#abe7772f165043b851a9bf074771cf17a">SuperpoweredVersion</a>();</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="_superpowered_simple_8h_html_a438e7e7ff4d39b20585de4601f04dcf8"><div class="ttname"><a href="_superpowered_simple_8h.html#a438e7e7ff4d39b20585de4601f04dcf8">SuperpoweredDeInterleaveAdd</a></div><div class="ttdeci">void SuperpoweredDeInterleaveAdd(float *input, float *left, float *right, unsigned int numberOfSamples)</div><div class="ttdoc">Deinterleaves an interleaved input and adds the results to the output channels. </div></div>
 <div class="ttc" id="_superpowered_simple_8h_html_a9359d1c7a32f81c76466c91726954c8d"><div class="ttname"><a href="_superpowered_simple_8h.html#a9359d1c7a32f81c76466c91726954c8d">SuperpoweredDeInterleave</a></div><div class="ttdeci">void SuperpoweredDeInterleave(float *input, float *left, float *right, unsigned int numberOfSamples)</div><div class="ttdoc">Deinterleaves an interleaved input. </div></div>
 <div class="ttc" id="_superpowered_simple_8h_html_a41caf1456707ac946a1883191ad8c001"><div class="ttname"><a href="_superpowered_simple_8h.html#a41caf1456707ac946a1883191ad8c001">SuperpoweredStereoToMono2</a></div><div class="ttdeci">void SuperpoweredStereoToMono2(float *input, float *output0, float *output1, float leftGainStart, float leftGainEnd, float rightGainStart, float rightGainEnd, unsigned int numberOfSamples)</div><div class="ttdoc">Makes two mono outputs from stereo input. </div></div>

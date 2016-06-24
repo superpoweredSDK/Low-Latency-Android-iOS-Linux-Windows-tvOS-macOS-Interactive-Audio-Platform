@@ -225,6 +225,10 @@ void SuperpoweredCrossMono2(float *left, float *right, float *output0, float *ou
  */
 void SuperpoweredCrossStereo(float *inputA, float *inputB, float *output, float gainStart[4], float gainEnd[4], unsigned int numberOfSamples);
 
+void SuperpoweredAdd1(float *input, float *output, unsigned int numberOfValues);
+void SuperpoweredAdd2(float *inputA, float *inputB, float *output, unsigned int numberOfValues);
+void SuperpoweredAdd4(float *inputA, float *inputB, float *inputC, float *inputD, float *output, unsigned int numberOfValues);
+
 /**
  @fn SuperpoweredVersion()
  @return Returns with the current version of the Superpowered SDK.

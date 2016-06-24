@@ -43,7 +43,7 @@ model {
         platformVersion = 16
         stl = "c++_static"
         CFlags.addAll(["-O3", "-fsigned-char"]) // full optimization, char data type is signed
-        cppFlags.addAll(["-fexceptions", "-fsigned-char", "-I${superpowered_sdk_path}".toString()])
+        cppFlags.addAll(["-fsigned-char", "-I${superpowered_sdk_path}".toString()])
         ldLibs.addAll(["log", "android", "OpenSLES"]) // load these libraries: log, android, OpenSL ES (for audio)
         abiFilters.addAll(["armeabi-v7a", "arm64-v8a", "x86", "x86_64"]) // these platforms cover 99% percent of all Android devices
     }

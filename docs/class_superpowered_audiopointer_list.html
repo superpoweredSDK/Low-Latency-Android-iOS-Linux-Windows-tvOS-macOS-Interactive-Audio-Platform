@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.9.5</span>
+   &#160;<span id="projectnumber">0.9.6</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -59,9 +59,9 @@
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:abe169a595fe05696ea329bfd0d80b95a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_audiopointer_list.html#abe169a595fe05696ea329bfd0d80b95a">SuperpoweredAudiopointerList</a> (<a class="el" href="class_superpowered_audiobuffer_pool.html">SuperpoweredAudiobufferPool</a> *bufPool)</td></tr>
-<tr class="memdesc:abe169a595fe05696ea329bfd0d80b95a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an audio buffer list.  <a href="#abe169a595fe05696ea329bfd0d80b95a">More...</a><br /></td></tr>
-<tr class="separator:abe169a595fe05696ea329bfd0d80b95a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4895af29ebd025203ca1f619ac2baabe"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_audiopointer_list.html#a4895af29ebd025203ca1f619ac2baabe">SuperpoweredAudiopointerList</a> (unsigned int bytesPerSample, unsigned int typicalNumElements)</td></tr>
+<tr class="memdesc:a4895af29ebd025203ca1f619ac2baabe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an audio buffer list.  <a href="#a4895af29ebd025203ca1f619ac2baabe">More...</a><br /></td></tr>
+<tr class="separator:a4895af29ebd025203ca1f619ac2baabe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0f3e2c1579819ee8af9a3e55f5f606d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af0f3e2c1579819ee8af9a3e55f5f606d"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_audiopointer_list.html#af0f3e2c1579819ee8af9a3e55f5f606d">append</a> (<a class="el" href="struct_superpowered_audiobufferlist_element.html">SuperpoweredAudiobufferlistElement</a> *buffer)</td></tr>
 <tr class="memdesc:af0f3e2c1579819ee8af9a3e55f5f606d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Append a buffer to the end of the list. <br /></td></tr>
@@ -70,10 +70,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_audiopointer_list.html#afb17721250323442a689ac9660612fe5">insert</a> (<a class="el" href="struct_superpowered_audiobufferlist_element.html">SuperpoweredAudiobufferlistElement</a> *buffer)</td></tr>
 <tr class="memdesc:afb17721250323442a689ac9660612fe5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a buffer before the beginning of the list. <br /></td></tr>
 <tr class="separator:afb17721250323442a689ac9660612fe5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace05fa9533893d9def0cc2001038de4f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ace05fa9533893d9def0cc2001038de4f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_audiopointer_list.html#ace05fa9533893d9def0cc2001038de4f">markLastSamples</a> ()</td></tr>
-<tr class="memdesc:ace05fa9533893d9def0cc2001038de4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the last samples in the list to 1.0f, good for debugging purposes. <br /></td></tr>
-<tr class="separator:ace05fa9533893d9def0cc2001038de4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1ab0858fdadb207ef005dfff9a1ee06"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac1ab0858fdadb207ef005dfff9a1ee06"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_audiopointer_list.html#ac1ab0858fdadb207ef005dfff9a1ee06">clear</a> ()</td></tr>
 <tr class="memdesc:ac1ab0858fdadb207ef005dfff9a1ee06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove everything from the list. <br /></td></tr>
@@ -100,12 +96,8 @@ int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_audiopointer_list.html#a61d6cee3dc88f6a2772d025f30eda5bf">samplePositionOfSliceBeginning</a> ()</td></tr>
 <tr class="memdesc:a61d6cee3dc88f6a2772d025f30eda5bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the slice beginning's sample position in an audio file or stream. <br /></td></tr>
 <tr class="separator:a61d6cee3dc88f6a2772d025f30eda5bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af66443d8e07d69ad3367c057e29e45f4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_audiopointer_list.html#af66443d8e07d69ad3367c057e29e45f4">nextSliceItem</a> (float **audio, int *lengthSamples, float *samplesUsed=0)</td></tr>
-<tr class="memdesc:af66443d8e07d69ad3367c057e29e45f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">This the slice's forward enumerator method to go through all buffers in it.  <a href="#af66443d8e07d69ad3367c057e29e45f4">More...</a><br /></td></tr>
-<tr class="separator:af66443d8e07d69ad3367c057e29e45f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab939e0002c72ce652c26efa2e9b1b111"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_audiopointer_list.html#ab939e0002c72ce652c26efa2e9b1b111">nextSliceItem</a> (short int **audio, int *lengthSamples, float *samplesUsed=0)</td></tr>
-<tr class="memdesc:ab939e0002c72ce652c26efa2e9b1b111"><td class="mdescLeft">&#160;</td><td class="mdescRight">This the slice's forward enumerator method to go through all buffers in it.  <a href="#ab939e0002c72ce652c26efa2e9b1b111">More...</a><br /></td></tr>
-<tr class="separator:ab939e0002c72ce652c26efa2e9b1b111"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e9210d6be40194627de176bfc41d9f1"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_audiopointer_list.html#a4e9210d6be40194627de176bfc41d9f1">nextSliceItem</a> (int *lengthSamples, float *samplesUsed=0, int stereoPairIndex=0)</td></tr>
+<tr class="separator:a4e9210d6be40194627de176bfc41d9f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa79e72b81e380f24d1c1a9c2dc09623"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaa79e72b81e380f24d1c1a9c2dc09623"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_audiopointer_list.html#aaa79e72b81e380f24d1c1a9c2dc09623">rewindSlice</a> ()</td></tr>
 <tr class="memdesc:aaa79e72b81e380f24d1c1a9c2dc09623"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the slice enumerator to the first buffer. <br /></td></tr>
@@ -114,12 +106,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_audiopointer_list.html#a2230c3df8f6e75d522c9ca47fdfd690e">forwardToLastSliceBuffer</a> ()</td></tr>
 <tr class="memdesc:a2230c3df8f6e75d522c9ca47fdfd690e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Jumps the enumerator to the last buffer. <br /></td></tr>
 <tr class="separator:a2230c3df8f6e75d522c9ca47fdfd690e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a72ed283f0e83d4c2f9ed46f75bc444"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_audiopointer_list.html#a5a72ed283f0e83d4c2f9ed46f75bc444">prevSliceItem</a> (float **audio, int *lengthSamples, float *samplesUsed=0)</td></tr>
-<tr class="memdesc:a5a72ed283f0e83d4c2f9ed46f75bc444"><td class="mdescLeft">&#160;</td><td class="mdescRight">This the slice's backwards (reverse) enumerator method to go through all buffers in it.  <a href="#a5a72ed283f0e83d4c2f9ed46f75bc444">More...</a><br /></td></tr>
-<tr class="separator:a5a72ed283f0e83d4c2f9ed46f75bc444"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ead9436cb552108891dc8814f59368a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_audiopointer_list.html#a7ead9436cb552108891dc8814f59368a">prevSliceItem</a> (short int **audio, int *lengthSamples, float *samplesUsed=0)</td></tr>
-<tr class="memdesc:a7ead9436cb552108891dc8814f59368a"><td class="mdescLeft">&#160;</td><td class="mdescRight">This the slice's backwards (reverse) enumerator method to go through all buffers in it.  <a href="#a7ead9436cb552108891dc8814f59368a">More...</a><br /></td></tr>
-<tr class="separator:a7ead9436cb552108891dc8814f59368a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6ff1479f3c11b1bc166963c45ae436c"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_audiopointer_list.html#ac6ff1479f3c11b1bc166963c45ae436c">prevSliceItem</a> (int *lengthSamples, float *samplesUsed=0, int stereoPairIndex=0)</td></tr>
+<tr class="separator:ac6ff1479f3c11b1bc166963c45ae436c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -136,22 +124,33 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>sampleLength</b></td><
   </dd>
 </dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="abe169a595fe05696ea329bfd0d80b95a"></a>
+<a class="anchor" id="a4895af29ebd025203ca1f619ac2baabe"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">SuperpoweredAudiopointerList::SuperpoweredAudiopointerList </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_superpowered_audiobuffer_pool.html">SuperpoweredAudiobufferPool</a> *&#160;</td>
-          <td class="paramname"><em>bufPool</em></td><td>)</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>bytesPerSample</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>typicalNumElements</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">bufPool</td><td>The buffer pool, which will manage the memory allocation. </td></tr>
+    <tr><td class="paramname">bytesPerSample</td><td>Sample size. For example: 4 for 16-bit stereo, 8 for 32-bit stereo audio. </td></tr>
+    <tr><td class="paramname">typicalNumElements</td><td>Each list item uses 28 bytes memory on a 64-bit device. This number sets the initial memory usage of this list. </td></tr>
   </table>
   </dd>
 </dl>
@@ -225,19 +224,13 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>sampleLength</b></td><
 
 </div>
 </div>
-<a class="anchor" id="af66443d8e07d69ad3367c057e29e45f4"></a>
+<a class="anchor" id="a4e9210d6be40194627de176bfc41d9f1"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool SuperpoweredAudiopointerList::nextSliceItem </td>
+          <td class="memname">void* SuperpoweredAudiopointerList::nextSliceItem </td>
           <td>(</td>
-          <td class="paramtype">float **&#160;</td>
-          <td class="paramname"><em>audio</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">int *&#160;</td>
           <td class="paramname"><em>lengthSamples</em>, </td>
         </tr>
@@ -245,7 +238,13 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>sampleLength</b></td><
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float *&#160;</td>
-          <td class="paramname"><em>samplesUsed</em> = <code>0</code>&#160;</td>
+          <td class="paramname"><em>samplesUsed</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>stereoPairIndex</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -254,30 +253,25 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>sampleLength</b></td><
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>This the slice's forward enumerator method to go through all buffers in it. Returns with a pointer to the audio, or NULL.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">audio</td><td>The pointer to the audio. </td></tr>
     <tr><td class="paramname">lengthSamples</td><td>Returns with the number of samples in audio. </td></tr>
     <tr><td class="paramname">samplesUsed</td><td>Returns with the number of original number of samples, creating this chunk of audio. Good for time-stretching for example, to track the movement of the playhead. </td></tr>
+    <tr><td class="paramname">stereoPairIndex</td><td>Not implemented yet. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a class="anchor" id="ab939e0002c72ce652c26efa2e9b1b111"></a>
+<a class="anchor" id="ac6ff1479f3c11b1bc166963c45ae436c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool SuperpoweredAudiopointerList::nextSliceItem </td>
+          <td class="memname">void* SuperpoweredAudiopointerList::prevSliceItem </td>
           <td>(</td>
-          <td class="paramtype">short int **&#160;</td>
-          <td class="paramname"><em>audio</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">int *&#160;</td>
           <td class="paramname"><em>lengthSamples</em>, </td>
         </tr>
@@ -285,7 +279,13 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>sampleLength</b></td><
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float *&#160;</td>
-          <td class="paramname"><em>samplesUsed</em> = <code>0</code>&#160;</td>
+          <td class="paramname"><em>samplesUsed</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>stereoPairIndex</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -294,91 +294,12 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>sampleLength</b></td><
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>This the slice's backwards (reverse) enumerator method to go through all buffers in it. Returns with a pointer to the audio, or NULL.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">audio</td><td>The pointer to the audio. </td></tr>
     <tr><td class="paramname">lengthSamples</td><td>Returns with the number of samples in audio. </td></tr>
     <tr><td class="paramname">samplesUsed</td><td>Returns with the number of original number of samples, creating this chunk of audio. Good for time-stretching for example, to track the movement of the playhead. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a5a72ed283f0e83d4c2f9ed46f75bc444"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool SuperpoweredAudiopointerList::prevSliceItem </td>
-          <td>(</td>
-          <td class="paramtype">float **&#160;</td>
-          <td class="paramname"><em>audio</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int *&#160;</td>
-          <td class="paramname"><em>lengthSamples</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float *&#160;</td>
-          <td class="paramname"><em>samplesUsed</em> = <code>0</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">audio</td><td>The pointer to the audio. </td></tr>
-    <tr><td class="paramname">lengthSamples</td><td>Returns with the number of samples in audio. </td></tr>
-    <tr><td class="paramname">samplesUsed</td><td>Returns with the number of original number of samples, creating this chunk of audio. Good for time-stretching for example, to track the movement of the playhead. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a7ead9436cb552108891dc8814f59368a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool SuperpoweredAudiopointerList::prevSliceItem </td>
-          <td>(</td>
-          <td class="paramtype">short int **&#160;</td>
-          <td class="paramname"><em>audio</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int *&#160;</td>
-          <td class="paramname"><em>lengthSamples</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float *&#160;</td>
-          <td class="paramname"><em>samplesUsed</em> = <code>0</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">audio</td><td>The pointer to the audio. </td></tr>
-    <tr><td class="paramname">lengthSamples</td><td>Returns with the number of samples in audio. </td></tr>
-    <tr><td class="paramname">samplesUsed</td><td>Returns with the number of original number of samples, creating this chunk of audio. Good for time-stretching for example, to track the movement of the playhead. </td></tr>
+    <tr><td class="paramname">stereoPairIndex</td><td>Not implemented yet. </td></tr>
   </table>
   </dd>
 </dl>

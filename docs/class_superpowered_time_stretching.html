@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.9.5</span>
+   &#160;<span id="projectnumber">0.9.6</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -65,9 +65,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad3c80694e4ed40f4e1dee5bd41fa3070"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_time_stretching.html#ad3c80694e4ed40f4e1dee5bd41fa3070">setRateAndPitchShiftCents</a> (float newRate, int newShiftCents)</td></tr>
 <tr class="memdesc:ad3c80694e4ed40f4e1dee5bd41fa3070"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set rate and pitch shift with greater precision. Calling this method requires magnitudes more CPU than setRateAndPitchShift.  <a href="#ad3c80694e4ed40f4e1dee5bd41fa3070">More...</a><br /></td></tr>
 <tr class="separator:ad3c80694e4ed40f4e1dee5bd41fa3070"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe01aeaba0d45f0ec91b74f720e4a0d4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_time_stretching.html#abe01aeaba0d45f0ec91b74f720e4a0d4">SuperpoweredTimeStretching</a> (<a class="el" href="class_superpowered_audiobuffer_pool.html">SuperpoweredAudiobufferPool</a> *p, unsigned int samplerate, float minimumRate=0.0f)</td></tr>
-<tr class="memdesc:abe01aeaba0d45f0ec91b74f720e4a0d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a time-stretching instance with an audio buffer pool, the current sample rate and minimum rate value.  <a href="#abe01aeaba0d45f0ec91b74f720e4a0d4">More...</a><br /></td></tr>
-<tr class="separator:abe01aeaba0d45f0ec91b74f720e4a0d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17c47dda140fd55a90b08907d54ee5fa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a17c47dda140fd55a90b08907d54ee5fa"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_time_stretching.html#a17c47dda140fd55a90b08907d54ee5fa">SuperpoweredTimeStretching</a> (unsigned int samplerate, float minimumRate=0.0f)</td></tr>
+<tr class="memdesc:a17c47dda140fd55a90b08907d54ee5fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a time-stretching with the current sample rate and minimum rate value. <br /></td></tr>
+<tr class="separator:a17c47dda140fd55a90b08907d54ee5fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b89a7049a378e7b27ac14065b2cc61c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_time_stretching.html#a3b89a7049a378e7b27ac14065b2cc61c">setStereoPairs</a> (unsigned int numStereoPairs)</td></tr>
+<tr class="memdesc:a3b89a7049a378e7b27ac14065b2cc61c"><td class="mdescLeft">&#160;</td><td class="mdescRight">This class handles one stereo audio channel pair by default. You can extend it to handle more.  <a href="#a3b89a7049a378e7b27ac14065b2cc61c">More...</a><br /></td></tr>
+<tr class="separator:a3b89a7049a378e7b27ac14065b2cc61c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab72ba1a792003a907436bf1c57ff4694"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_time_stretching.html#ab72ba1a792003a907436bf1c57ff4694">setSampleRate</a> (unsigned int samplerate)</td></tr>
 <tr class="memdesc:ab72ba1a792003a907436bf1c57ff4694"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the sample rate.  <a href="#ab72ba1a792003a907436bf1c57ff4694">More...</a><br /></td></tr>
 <tr class="separator:ab72ba1a792003a907436bf1c57ff4694"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -108,41 +112,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>numberOfInputSamplesNe
   </table>
   </dd>
 </dl>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="abe01aeaba0d45f0ec91b74f720e4a0d4"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SuperpoweredTimeStretching::SuperpoweredTimeStretching </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_superpowered_audiobuffer_pool.html">SuperpoweredAudiobufferPool</a> *&#160;</td>
-          <td class="paramname"><em>p</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>samplerate</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>minimumRate</em> = <code>0.0f</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="section see"><dt>See also</dt><dd><code><a class="el" href="class_superpowered_audiobuffer_pool.html" title="This object manages an audio buffer pool. ">SuperpoweredAudiobufferPool</a></code> </dd></dl>
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a1d059bbc92713379dc5aad77006dd032"></a>
 <div class="memitem">
 <div class="memproto">
@@ -203,6 +173,28 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>numberOfInputSamplesNe
   <table class="params">
     <tr><td class="paramname">newRate</td><td>Limited to &gt;= 0.01f and &lt;= 4.0f. Values above 2.0f or below 0.5f are not recommended on mobile devices with low latency audio. </td></tr>
     <tr><td class="paramname">newShiftCents</td><td>Limited to &gt;= -2400 and &lt;= 2400. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a3b89a7049a378e7b27ac14065b2cc61c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SuperpoweredTimeStretching::setStereoPairs </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>numStereoPairs</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">numStereoPairs</td><td>The number of stereo audio channel pairs. </td></tr>
   </table>
   </dd>
 </dl>
