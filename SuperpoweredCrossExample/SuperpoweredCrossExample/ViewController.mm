@@ -6,7 +6,6 @@
 #import "SuperpoweredIOSAudioIO.h"
 #import "SuperpoweredSimple.h"
 #import <stdlib.h>
-#import <pthread.h>
 
 #define HEADROOM_DECIBEL 3.0f
 static const float headroom = powf(10.0f, -HEADROOM_DECIBEL * 0.025);
@@ -25,7 +24,6 @@ static const float headroom = powf(10.0f, -HEADROOM_DECIBEL * 0.025);
     unsigned char activeFx;
     float *stereoBuffer, crossValue, volA, volB;
     unsigned int lastSamplerate;
-    pthread_mutex_t mutex;
 }
 
 void playerEventCallbackA(void *clientData, SuperpoweredAdvancedAudioPlayerEvent event, void *value) {
@@ -58,8 +56,6 @@ static bool audioProcessing(void *clientdata, float **buffers, unsigned int inpu
         self->flanger->setSamplerate(samplerate);
     };
 
-    pthread_mutex_lock(&self->mutex);
-
     bool masterIsA = (self->crossValue <= 0.5f);
     float masterBpm = masterIsA ? self->playerA->currentBpm : self->playerB->currentBpm; // Players will sync to this tempo.
     double msElapsedSinceLastBeatA = self->playerA->msElapsedSinceLastBeat; // When playerB needs it, playerA has already stepped this value, so save it now.
@@ -75,8 +71,6 @@ static bool audioProcessing(void *clientdata, float **buffers, unsigned int inpu
         self->flanger->process(self->stereoBuffer, self->stereoBuffer, numberOfSamples);
     };
 
-    pthread_mutex_unlock(&self->mutex);
-
     if (!silence) SuperpoweredDeInterleave(self->stereoBuffer, buffers[0], buffers[1], numberOfSamples); // The stereoBuffer is ready now, let's put the finished audio into the requested buffers.
     return !silence;
 }
@@ -86,7 +80,6 @@ static bool audioProcessing(void *clientdata, float **buffers, unsigned int inpu
     lastSamplerate = activeFx = 0;
     crossValue = volB = 0.0f;
     volA = 1.0f * headroom;
-    pthread_mutex_init(&mutex, NULL); // This will keep our player volumes and playback states in sync.
     if (posix_memalign((void **)&stereoBuffer, 16, 4096 + 128) != 0) abort(); // Allocating memory, aligned to 16.
 
     playerA = new SuperpoweredAdvancedAudioPlayer((__bridge void *)self, playerEventCallbackA, 44100, 0);
@@ -108,7 +101,6 @@ static bool audioProcessing(void *clientdata, float **buffers, unsigned int inpu
     delete playerA;
     delete playerB;
     free(stereoBuffer);
-    pthread_mutex_destroy(&mutex);
 #if !__has_feature(objc_arc)
     [output release];
     [super dealloc];
@@ -126,7 +118,6 @@ static bool audioProcessing(void *clientdata, float **buffers, unsigned int inpu
 
 - (IBAction)onPlayPause:(id)sender {
     UIButton *button = (UIButton *)sender;
-    pthread_mutex_lock(&mutex);
     if (playerA->playing) {
         playerA->pause();
         playerB->pause();
@@ -135,12 +126,10 @@ static bool audioProcessing(void *clientdata, float **buffers, unsigned int inpu
         playerA->play(!masterIsA);
         playerB->play(masterIsA);
     };
-    pthread_mutex_unlock(&mutex);
     button.selected = playerA->playing;
 }
 
 - (IBAction)onCrossFader:(id)sender {
-    pthread_mutex_lock(&mutex);
     crossValue = ((UISlider *)sender).value;
     if (crossValue < 0.01f) {
         volA = 1.0f * headroom;
@@ -152,7 +141,6 @@ static bool audioProcessing(void *clientdata, float **buffers, unsigned int inpu
         volA = cosf(M_PI_2 * crossValue) * headroom;
         volB = cosf(M_PI_2 * (1.0f - crossValue)) * headroom;
     };
-    pthread_mutex_unlock(&mutex);
 }
 
 static inline float floatToFrequency(float value) {

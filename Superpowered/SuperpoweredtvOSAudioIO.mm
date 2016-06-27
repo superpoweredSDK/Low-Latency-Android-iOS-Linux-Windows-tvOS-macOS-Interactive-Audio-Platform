@@ -157,7 +157,7 @@ static void streamFormatChangedCallback(void *inRefCon, AudioUnit inUnit, AudioU
 }
 
 static OSStatus audioProcessingCallback(void *inRefCon, AudioUnitRenderActionFlags *ioActionFlags, const AudioTimeStamp *inTimeStamp, UInt32 inBusNumber, UInt32 inNumberFrames, AudioBufferList *ioData) {
-    SuperpoweredtvOSAudioIO *self = (__bridge SuperpoweredtvOSAudioIO *)inRefCon;
+    __unsafe_unretained SuperpoweredtvOSAudioIO *self = (__bridge SuperpoweredtvOSAudioIO *)inRefCon;
 
     div_t d = div(inNumberFrames, 8);
     if ((d.rem != 0) || (inNumberFrames < 32) || (inNumberFrames > 512) || (ioData->mNumberBuffers != self->numChannels)) {

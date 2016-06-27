@@ -29,7 +29,6 @@ static bool audioProcessing(void *clientdata, short int *audioIO, int numberOfSa
 }
 
 SuperpoweredExample::SuperpoweredExample(unsigned int samplerate, unsigned int buffersize, const char *path, int fileAoffset, int fileAlength, int fileBoffset, int fileBlength) : activeFx(0), crossValue(0.0f), volB(0.0f), volA(1.0f * headroom) {
-    pthread_mutex_init(&mutex, NULL); // This will keep our player volumes and playback states in sync.
     stereoBuffer = (float *)memalign(16, (buffersize + 16) * sizeof(float) * 2);
 
     playerA = new SuperpoweredAdvancedAudioPlayer(&playerA , playerEventCallbackA, samplerate, 0);
@@ -51,11 +50,9 @@ SuperpoweredExample::~SuperpoweredExample() {
     delete playerA;
     delete playerB;
     free(stereoBuffer);
-    pthread_mutex_destroy(&mutex);
 }
 
 void SuperpoweredExample::onPlayPause(bool play) {
-    pthread_mutex_lock(&mutex);
     if (!play) {
         playerA->pause();
         playerB->pause();
@@ -64,11 +61,9 @@ void SuperpoweredExample::onPlayPause(bool play) {
         playerA->play(!masterIsA);
         playerB->play(masterIsA);
     };
-    pthread_mutex_unlock(&mutex);
 }
 
 void SuperpoweredExample::onCrossfader(int value) {
-    pthread_mutex_lock(&mutex);
     crossValue = float(value) * 0.01f;
     if (crossValue < 0.01f) {
         volA = 1.0f * headroom;
@@ -80,7 +75,6 @@ void SuperpoweredExample::onCrossfader(int value) {
         volA = cosf(float(M_PI_2) * crossValue) * headroom;
         volB = cosf(float(M_PI_2) * (1.0f - crossValue)) * headroom;
     };
-    pthread_mutex_unlock(&mutex);
 }
 
 void SuperpoweredExample::onFxSelect(int value) {
@@ -132,8 +126,6 @@ void SuperpoweredExample::onFxValue(int ivalue) {
 }
 
 bool SuperpoweredExample::process(short int *output, unsigned int numberOfSamples) {
-    pthread_mutex_lock(&mutex);
-
     bool masterIsA = (crossValue <= 0.5f);
     double masterBpm = masterIsA ? playerA->currentBpm : playerB->currentBpm;
     double msElapsedSinceLastBeatA = playerA->msElapsedSinceLastBeat; // When playerB needs it, playerA has already stepped this value, so save it now.
@@ -148,8 +140,6 @@ bool SuperpoweredExample::process(short int *output, unsigned int numberOfSample
         filter->process(stereoBuffer, stereoBuffer, numberOfSamples);
         flanger->process(stereoBuffer, stereoBuffer, numberOfSamples);
     };
-
-    pthread_mutex_unlock(&mutex);
 
     // The stereoBuffer is ready now, let's put the finished audio into the requested buffers.
     if (!silence) SuperpoweredFloatToShortInt(stereoBuffer, output, numberOfSamples);

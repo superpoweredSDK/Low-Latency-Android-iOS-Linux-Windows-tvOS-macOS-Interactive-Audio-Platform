@@ -2,14 +2,12 @@
 #import "SuperpoweredIOSAudioIO.h"
 #include "SuperpoweredBandpassFilterbank.h"
 #include "SuperpoweredSimple.h"
-#include <pthread.h>
 
 @implementation Superpowered {
     SuperpoweredIOSAudioIO *audioIO;
     SuperpoweredBandpassFilterbank *filters;
-    float bands[8];
-    pthread_mutex_t mutex;
-    unsigned int samplerate, samplesProcessedForOneDisplayFrame;
+    float bands[128][8];
+    unsigned int samplerate, bandsWritePos, bandsReadPos, bandsPos, lastNumberOfSamples;
 }
 
 static bool audioProcessing(void *clientdata, float **buffers, unsigned int inputChannels, unsigned int outputChannels, unsigned int numberOfSamples, unsigned int samplerate, uint64_t hostTime) {
@@ -23,13 +21,18 @@ static bool audioProcessing(void *clientdata, float **buffers, unsigned int inpu
     float interleaved[numberOfSamples * 2 + 16];
     SuperpoweredInterleave(buffers[0], buffers[1], interleaved, numberOfSamples);
 
+    // Get the next position to write.
+    unsigned int writePos = self->bandsWritePos++ & 127;
+    memset(&self->bands[writePos][0], 0, 8 * sizeof(float));
+
     // Detect frequency magnitudes.
     float peak, sum;
-    pthread_mutex_lock(&self->mutex);
-    self->samplesProcessedForOneDisplayFrame += numberOfSamples;
-    self->filters->process(interleaved, self->bands, &peak, &sum, numberOfSamples);
-    pthread_mutex_unlock(&self->mutex);
+    self->filters->process(interleaved, &self->bands[writePos][0], &peak, &sum, numberOfSamples);
 
+    // Update position.
+    self->lastNumberOfSamples = numberOfSamples;
+    __sync_synchronize();
+    __sync_fetch_and_add(&self->bandsPos, 1);
     return false;
 }
 
@@ -37,11 +40,8 @@ static bool audioProcessing(void *clientdata, float **buffers, unsigned int inpu
     self = [super init];
     if (!self) return nil;
     samplerate = 44100;
-    samplesProcessedForOneDisplayFrame = 0;
-    memset(bands, 0, 8 * sizeof(float));
-
-    // We use a mutex to prevent simultaneous reading/writing of bands.
-    pthread_mutex_init(&mutex, NULL);
+    bandsWritePos = bandsReadPos = bandsPos = lastNumberOfSamples = 0;
+    memset(bands, 0, 128 * 8 * sizeof(float));
 
     float frequencies[8] = { 55, 110, 220, 440, 880, 1760, 3520, 7040 };
     float widths[8] = { 1, 1, 1, 1, 1, 1, 1, 1 };
@@ -55,7 +55,6 @@ static bool audioProcessing(void *clientdata, float **buffers, unsigned int inpu
 
 - (void)dealloc {
     delete filters;
-    pthread_mutex_destroy(&mutex);
     audioIO = nil;
 }
 
@@ -70,13 +69,16 @@ static bool audioProcessing(void *clientdata, float **buffers, unsigned int inpu
  */
 
 - (void)getFrequencies:(float *)freqs {
-    pthread_mutex_lock(&mutex);
-    if (samplesProcessedForOneDisplayFrame > 0) {
-        for (int n = 0; n < 8; n++) freqs[n] = bands[n] / float(samplesProcessedForOneDisplayFrame);
-        memset(bands, 0, 8 * sizeof(float));
-        samplesProcessedForOneDisplayFrame = 0;
-    } else memset(freqs, 0, 8 * sizeof(float));
-    pthread_mutex_unlock(&mutex);
+    memset(freqs, 0, 8 * sizeof(float));
+    unsigned int currentPosition = __sync_fetch_and_add(&bandsPos, 0);
+    if (currentPosition > bandsReadPos) {
+        unsigned int positionsElapsed = currentPosition - bandsReadPos;
+        float multiplier = 1.0f / float(positionsElapsed * lastNumberOfSamples);
+        while (positionsElapsed--) {
+            float *b = &bands[bandsReadPos++ & 127][0];
+            for (int n = 0; n < 8; n++) freqs[n] += b[n] * multiplier;
+        }
+    }
 }
 
 @end
