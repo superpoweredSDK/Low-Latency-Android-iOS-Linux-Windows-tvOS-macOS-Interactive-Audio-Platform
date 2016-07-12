@@ -168,6 +168,7 @@
         inputBuffer.samplesUsed = 0;
         inputBuffer.endSample = samplesDecoded; // <-- Important!
         inputBuffer.buffers[0] = SuperpoweredAudiobufferPool::getBuffer(samplesDecoded * 8 + 64);
+        inputBuffer.buffers[1] = inputBuffer.buffers[2] = inputBuffer.buffers[3] = NULL;
 
         // Convert the decoded PCM samples from 16-bit integer to 32-bit floating point.
         SuperpoweredShortIntToFloat(intBuffer, (float *)inputBuffer.buffers[0], samplesDecoded);

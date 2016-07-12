@@ -152,7 +152,6 @@ extern "C" JNIEXPORT void Java_com_superpowered_crossexample_MainActivity_Superp
     const char *path = javaEnvironment->GetStringUTFChars(apkPath, JNI_FALSE);
     example = new SuperpoweredExample((unsigned int)samplerate, (unsigned int)buffersize, path, fileAoffset, fileAlength, fileBoffset, fileBlength);
     javaEnvironment->ReleaseStringUTFChars(apkPath, path);
-
 }
 
 extern "C" JNIEXPORT void Java_com_superpowered_crossexample_MainActivity_onPlayPause(JNIEnv * __unused javaEnvironment, jobject __unused obj, jboolean play) {

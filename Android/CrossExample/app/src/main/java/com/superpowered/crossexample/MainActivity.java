@@ -1,6 +1,7 @@
 package com.superpowered.crossexample;
 
 import android.app.Instrumentation;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
