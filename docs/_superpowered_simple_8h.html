@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.9.7</span>
+   &#160;<span id="projectnumber">0.9.8</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -71,15 +71,36 @@ Functions</h2></td></tr>
 <tr class="separator:add941f69200b74e4802246e064e0eb14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41217bb454d79e1ca620da21e4a8d603"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#a41217bb454d79e1ca620da21e4a8d603">SuperpoweredPeak</a> (float *input, unsigned int numberOfValues)</td></tr>
 <tr class="separator:a41217bb454d79e1ca620da21e4a8d603"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae18fc625f3f80a30a9c33f58b8ad65f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#aae18fc625f3f80a30a9c33f58b8ad65f">SuperpoweredFloatToShortInt</a> (float *input, short int *output, unsigned int numberOfSamples)</td></tr>
-<tr class="memdesc:aae18fc625f3f80a30a9c33f58b8ad65f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a stereo interleaved 32-bit float input to stereo interleaved 16-bit signed integer output.  <a href="#aae18fc625f3f80a30a9c33f58b8ad65f">More...</a><br /></td></tr>
-<tr class="separator:aae18fc625f3f80a30a9c33f58b8ad65f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24331bcac896a5752a481c95bd7c602d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#a24331bcac896a5752a481c95bd7c602d">SuperpoweredCharToFloat</a> (signed char *input, float *output, unsigned int numberOfSamples, unsigned int numChannels=2)</td></tr>
+<tr class="memdesc:a24331bcac896a5752a481c95bd7c602d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts 8-bit audio to 32-bit floating point.  <a href="#a24331bcac896a5752a481c95bd7c602d">More...</a><br /></td></tr>
+<tr class="separator:a24331bcac896a5752a481c95bd7c602d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60bc65081ff429a7db76f728cbaa45a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#a60bc65081ff429a7db76f728cbaa45a9">SuperpoweredFloatToChar</a> (float *input, signed char *output, unsigned int numberOfSamples, unsigned int numChannels=2)</td></tr>
+<tr class="memdesc:a60bc65081ff429a7db76f728cbaa45a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts 32-bit floating point audio 8-bit audio.  <a href="#a60bc65081ff429a7db76f728cbaa45a9">More...</a><br /></td></tr>
+<tr class="separator:a60bc65081ff429a7db76f728cbaa45a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e8323723e698c5cca6cb5a766c416ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#a7e8323723e698c5cca6cb5a766c416ff">Superpowered24bitToFloat</a> (void *input, float *output, unsigned int numberOfSamples, unsigned int numChannels=2)</td></tr>
+<tr class="memdesc:a7e8323723e698c5cca6cb5a766c416ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts 24-bit audio to 32-bit floating point.  <a href="#a7e8323723e698c5cca6cb5a766c416ff">More...</a><br /></td></tr>
+<tr class="separator:a7e8323723e698c5cca6cb5a766c416ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79b0cf5c4dd675f0391cefa2b13d2893"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#a79b0cf5c4dd675f0391cefa2b13d2893">SuperpoweredFloatTo24bit</a> (float *input, void *output, unsigned int numberOfSamples, unsigned int numChannels=2)</td></tr>
+<tr class="memdesc:a79b0cf5c4dd675f0391cefa2b13d2893"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts 32-bit floating point audio to 24-bit.  <a href="#a79b0cf5c4dd675f0391cefa2b13d2893">More...</a><br /></td></tr>
+<tr class="separator:a79b0cf5c4dd675f0391cefa2b13d2893"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab345c78276b9eb7aa86525b597ed5e00"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#ab345c78276b9eb7aa86525b597ed5e00">SuperpoweredIntToFloat</a> (int *input, float *output, unsigned int numberOfSamples, unsigned int numChannels=2)</td></tr>
+<tr class="memdesc:ab345c78276b9eb7aa86525b597ed5e00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts 32-bit integer audio to 32-bit floating point.  <a href="#ab345c78276b9eb7aa86525b597ed5e00">More...</a><br /></td></tr>
+<tr class="separator:ab345c78276b9eb7aa86525b597ed5e00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd0fb4273037a2c5dc7464f681162821"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#abd0fb4273037a2c5dc7464f681162821">SuperpoweredFloatToInt</a> (float *input, int *output, unsigned int numberOfSamples, unsigned int numChannels=2)</td></tr>
+<tr class="memdesc:abd0fb4273037a2c5dc7464f681162821"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts 32-bit floating point audio to 32-bit integer.  <a href="#abd0fb4273037a2c5dc7464f681162821">More...</a><br /></td></tr>
+<tr class="separator:abd0fb4273037a2c5dc7464f681162821"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ace3bae21754e6156e421ccab86db62"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2ace3bae21754e6156e421ccab86db62"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SuperpoweredFloatToShortInt</b> (float *input, short int *output, unsigned int numberOfSamples, unsigned int numChannels=2)</td></tr>
+<tr class="separator:a2ace3bae21754e6156e421ccab86db62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a598751316ad9827094a0e235880cced5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#a598751316ad9827094a0e235880cced5">SuperpoweredFloatToShortInt</a> (float *inputLeft, float *inputRight, short int *output, unsigned int numberOfSamples)</td></tr>
 <tr class="memdesc:a598751316ad9827094a0e235880cced5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts two 32-bit float input channels to stereo interleaved 16-bit signed integer output.  <a href="#a598751316ad9827094a0e235880cced5">More...</a><br /></td></tr>
 <tr class="separator:a598751316ad9827094a0e235880cced5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62000edd55e14f26e36aed66a0cf2c13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#a62000edd55e14f26e36aed66a0cf2c13">SuperpoweredShortIntToFloat</a> (short int *input, float *output, unsigned int numberOfSamples, float *peaks=0)</td></tr>
-<tr class="memdesc:a62000edd55e14f26e36aed66a0cf2c13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a stereo interleaved 16-bit signed integer input to stereo interleaved 32-bit float output.  <a href="#a62000edd55e14f26e36aed66a0cf2c13">More...</a><br /></td></tr>
-<tr class="separator:a62000edd55e14f26e36aed66a0cf2c13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6376e26acdbe3359eb105dc87db20b89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#a6376e26acdbe3359eb105dc87db20b89">SuperpoweredShortIntToFloat</a> (short int *input, float *output, unsigned int numberOfSamples, float *peaks)</td></tr>
+<tr class="memdesc:a6376e26acdbe3359eb105dc87db20b89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a stereo interleaved 16-bit signed integer input to stereo interleaved 32-bit float output.  <a href="#a6376e26acdbe3359eb105dc87db20b89">More...</a><br /></td></tr>
+<tr class="separator:a6376e26acdbe3359eb105dc87db20b89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75f5692265c5a247310aebf08f51839a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#a75f5692265c5a247310aebf08f51839a">SuperpoweredShortIntToFloat</a> (short int *input, float *output, unsigned int numberOfSamples, unsigned int numChannels=2)</td></tr>
+<tr class="memdesc:a75f5692265c5a247310aebf08f51839a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts 16-bit signed integer input to 32-bit float output.  <a href="#a75f5692265c5a247310aebf08f51839a">More...</a><br /></td></tr>
+<tr class="separator:a75f5692265c5a247310aebf08f51839a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba4dddc17e9e853e6b82442b4e33e465"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#aba4dddc17e9e853e6b82442b4e33e465">SuperpoweredInterleave</a> (float *left, float *right, float *output, unsigned int numberOfSamples)</td></tr>
 <tr class="memdesc:aba4dddc17e9e853e6b82442b4e33e465"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes an interleaved output from two input channels.  <a href="#aba4dddc17e9e853e6b82442b4e33e465">More...</a><br /></td></tr>
 <tr class="separator:aba4dddc17e9e853e6b82442b4e33e465"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -373,27 +394,33 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SuperpoweredAdd4</b> 
 
 </div>
 </div>
-<a class="anchor" id="aae18fc625f3f80a30a9c33f58b8ad65f"></a>
+<a class="anchor" id="a24331bcac896a5752a481c95bd7c602d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">SuperpoweredFloatToShortInt </td>
+          <td class="memname">SuperpoweredCharToFloat </td>
           <td>(</td>
-          <td class="paramtype">float *&#160;</td>
+          <td class="paramtype">signed char *&#160;</td>
           <td class="paramname"><em>input</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">short int *&#160;</td>
+          <td class="paramtype">float *&#160;</td>
           <td class="paramname"><em>output</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>numberOfSamples</em>&#160;</td>
+          <td class="paramname"><em>numberOfSamples</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>numChannels</em> = <code>2</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -404,9 +431,245 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SuperpoweredAdd4</b> 
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">input</td><td>Stereo interleaved 32-bit input. Should be numberOfSamples * 2 + 16 big minimum. </td></tr>
-    <tr><td class="paramname">output</td><td>Stereo interleaved 16-bit output. Should be numberOfSamples * 2 + 16 big minimum. </td></tr>
+    <tr><td class="paramname">input</td><td>Input buffer. </td></tr>
+    <tr><td class="paramname">output</td><td>Output buffer. </td></tr>
     <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. </td></tr>
+    <tr><td class="paramname">numChannels</td><td>The number of channels. One sample may be 1 value (1 channels) or N values (N channels). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a60bc65081ff429a7db76f728cbaa45a9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SuperpoweredFloatToChar </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">signed char *&#160;</td>
+          <td class="paramname"><em>output</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>numberOfSamples</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>numChannels</em> = <code>2</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>Input buffer. </td></tr>
+    <tr><td class="paramname">output</td><td>Output buffer. </td></tr>
+    <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. </td></tr>
+    <tr><td class="paramname">numChannels</td><td>The number of channels. One sample may be 1 value (1 channels) or N values (N channels). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a7e8323723e698c5cca6cb5a766c416ff"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Superpowered24bitToFloat </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>output</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>numberOfSamples</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>numChannels</em> = <code>2</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>Input buffer. </td></tr>
+    <tr><td class="paramname">output</td><td>Output buffer. </td></tr>
+    <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. </td></tr>
+    <tr><td class="paramname">numChannels</td><td>The number of channels. One sample may be 1 value (1 channels) or N values (N channels). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a79b0cf5c4dd675f0391cefa2b13d2893"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SuperpoweredFloatTo24bit </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>output</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>numberOfSamples</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>numChannels</em> = <code>2</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>Input buffer. </td></tr>
+    <tr><td class="paramname">output</td><td>Output buffer. </td></tr>
+    <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. </td></tr>
+    <tr><td class="paramname">numChannels</td><td>The number of channels. One sample may be 1 value (1 channels) or N values (N channels). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ab345c78276b9eb7aa86525b597ed5e00"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SuperpoweredIntToFloat </td>
+          <td>(</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>output</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>numberOfSamples</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>numChannels</em> = <code>2</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>Input buffer. </td></tr>
+    <tr><td class="paramname">output</td><td>Output buffer. </td></tr>
+    <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. </td></tr>
+    <tr><td class="paramname">numChannels</td><td>The number of channels. One sample may be 1 value (1 channels) or N values (N channels). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="abd0fb4273037a2c5dc7464f681162821"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SuperpoweredFloatToInt </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>output</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>numberOfSamples</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>numChannels</em> = <code>2</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>Input buffer. </td></tr>
+    <tr><td class="paramname">output</td><td>Output buffer. </td></tr>
+    <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. </td></tr>
+    <tr><td class="paramname">numChannels</td><td>The number of channels. One sample may be 1 value (1 channels) or N values (N channels). </td></tr>
   </table>
   </dd>
 </dl>
@@ -460,7 +723,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SuperpoweredAdd4</b> 
 
 </div>
 </div>
-<a class="anchor" id="a62000edd55e14f26e36aed66a0cf2c13"></a>
+<a class="anchor" id="a6376e26acdbe3359eb105dc87db20b89"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -486,7 +749,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SuperpoweredAdd4</b> 
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float *&#160;</td>
-          <td class="paramname"><em>peaks</em> = <code>0</code>&#160;</td>
+          <td class="paramname"><em>peaks</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -500,7 +763,54 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SuperpoweredAdd4</b> 
     <tr><td class="paramname">input</td><td>Stereo interleaved 16-bit input. Should be numberOfSamples + 8 big minimum. </td></tr>
     <tr><td class="paramname">output</td><td>Stereo interleaved 32-bit output. Should be numberOfSamples + 8 big minimum. </td></tr>
     <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. </td></tr>
-    <tr><td class="paramname">peaks</td><td>Peak value result (2 floats: left peak, right peak). Can be NULL if you are not interested. </td></tr>
+    <tr><td class="paramname">peaks</td><td>Peak value result (2 floats: left peak, right peak). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a75f5692265c5a247310aebf08f51839a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SuperpoweredShortIntToFloat </td>
+          <td>(</td>
+          <td class="paramtype">short int *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>output</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>numberOfSamples</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>numChannels</em> = <code>2</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>Input buffer. </td></tr>
+    <tr><td class="paramname">output</td><td>Output buffer. </td></tr>
+    <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. </td></tr>
+    <tr><td class="paramname">numChannels</td><td>The number of channels. One sample may be 1 value (1 channels) or N values (N channels). </td></tr>
   </table>
   </dd>
 </dl>

@@ -1,0 +1,65 @@
+apply plugin: 'com.android.model.application'
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+def superpowered_sdk_path = properties.getProperty('superpowered.dir')
+
+model {
+    repositories {
+        libs(PrebuiltLibraries) {
+            superpowered { // this is where you declare the "superpowered" static library
+                headers.srcDir "${superpowered_sdk_path}"
+                binaries.withType(StaticLibraryBinary) { // attaching library files to each platform
+                    def platformName = targetPlatform.getName()
+                    if (platformName == "armeabi-v7a") {
+                        staticLibraryFile = file("${superpowered_sdk_path}/libSuperpoweredAndroidARM.a")
+                    } else if (platformName == "arm64-v8a") {
+                        staticLibraryFile = file("${superpowered_sdk_path}/libSuperpoweredAndroidARM64.a")
+                    } else if (platformName == "x86") {
+                        staticLibraryFile = file("${superpowered_sdk_path}/libSuperpoweredAndroidX86.a")
+                    } else if (platformName == "x86_64") {
+                        staticLibraryFile = file("${superpowered_sdk_path}/libSuperpoweredAndroidX86_64.a")
+                    }
+                }
+            }
+        }
+    }
+
+    android {
+        compileSdkVersion = 23
+        buildToolsVersion = "23.0.2"
+
+        defaultConfig {
+            applicationId "com.superpowered.complexusb"
+            minSdkVersion.apiLevel = 19
+            targetSdkVersion.apiLevel = 23
+            versionCode 1
+            versionName "1.0"
+        }
+    }
+
+    android.ndk {
+        moduleName = "complexusb"
+        platformVersion = 19
+        stl = "gnustl_static"
+        CFlags.addAll(["-O3", "-fsigned-char"]) // full optimization, char data type is signed
+        cppFlags.addAll(["-fexceptions", "-fsigned-char", "-I${superpowered_sdk_path}".toString()])
+        ldLibs.addAll(["log", "android", "OpenSLES"]) // load these libraries: log, android, OpenSL ES (for audio)
+        abiFilters.addAll(["armeabi-v7a", "arm64-v8a", "x86", "x86_64"]) // these platforms cover 99% percent of all Android devices
+    }
+
+    android.sources.main.jni {
+        source {
+            srcDir "jni"
+        }
+        dependencies {
+            library "superpowered" linkage "static" // this is where you attach the "superpowered" static library to your app
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:23.4.0'
+}
+

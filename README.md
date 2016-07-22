@@ -5,9 +5,9 @@ Low Latency Audio. Cross Platform. Free.
 
 # What is it?
 
-The Superpowered Audio SDK is a software development kit based on Superpowered IncÍs digital signal processing (DSP) technology. 
+The Superpowered Audio SDK is a software development kit based on Superpowered Incï¿½s digital signal processing (DSP) technology.
 
-Superpowered technology allows developers to build computationally intensive audio apps and embedded applications that process more quickly and use less power than other comparable solutions. 
+Superpowered technology allows developers to build computationally intensive audio apps and embedded applications that process more quickly and use less power than other comparable solutions.
 
 Superpowered DSP is designed and optimized, from scratch, to run on low-power mobile processors. Specifically, any device running ARM with the NEON extension (which covers 99% of all mobile devices manufactured). Intel CPU is supported too.
 
@@ -37,7 +37,7 @@ Simple 8-band frequency analyzer. Shows how to:
 
 - /SuperpoweredFrequencyDomain (iOS)
 Simple time domain to frequency domain transformation with buffering and windowing. Shows how to:
-	
+
 	* Use the SuperpoweredFrequencyDomain class.
 	* Process the magnitudes and phases of the audio input.
 
@@ -55,9 +55,9 @@ Advanced example. Decodes an audio file, applies an effect or time stretching an
 It compares several Superpowered features to Core Audio.
 
 	* Shows the differences between Superpowered and Core Audio.
-	* Syncs effects to the playerÍs bpm.
+	* Syncs effects to the playerï¿½s bpm.
 	* Shows how to use Objective-C++ in an Objective-C project.
-	
+
 	Swift note:
 	We have also tried creating this project in Swift, but it's not complete for audio and several features were impossible to implement (such as proper performance measurement). Swift is not designed for real-time audio. Fortunately, Objective-C++ files work great in Swift projects.
 - /Android/CrossExample (Android)
@@ -70,6 +70,25 @@ It compares several Superpowered features to Core Audio.
 
 - /Android/HLSExample (Android)
 HTTP Live Streaming example project.
+
+- /Android/SuperpoweredUSBExample (Android)
+This project comes with two example apps, a simple and a complex example app.
+
+Simple Example App:
+
+The simple example app demonstrates an easy audio setup, similar to how iOS handles USB audio devices. It also receives and displays MIDI. The audio functionality of the simple example app will cover most mobile audio use cases.
+
+Complex Example App:
+
+The complex example app demonstrates full USB audio discovery, for the use case of sophisticated DAW and recording apps. It displays the various input and output options, audio paths and hardware controls of a USB audio device. Hardware controls can be manipulated and advanced thru audio paths can be enabled.
+
+If an audio output is selected without an audio input, the complex example sends a sine wave to every output channel. If both audio output and audio input are selected, then loopback or round-trip latency measurement are available.
+
+This means that the complex example app is also a testing tool to discover a USB audio deviceâ€™s advanced features, test audio quality, glitches and latency.
+
+Remarks:
+
+Superpowered USB Audio classes for Android are compatible from Android 19 (KitKat 4.4) onwards. Thatâ€™s the first Android version where proper scheduling priorities were implemented for low latency audio. This covers more than 75% active Android devices today.
 
 
 # Android Studio
@@ -87,7 +106,7 @@ Prerequisites: latest Android SDK, Android NDK, Android Studio installed. Steps:
 4. Open build.gradle (Module: app), and change the applicationId (and moduleName if you like).
 
 
-# The Latest Version 
+# The Latest Version
 
 Details of the latest version can be found at http://superpowered.com/superpowered-audio-sdk/# Pricing and licensing
 

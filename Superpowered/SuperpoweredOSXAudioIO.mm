@@ -89,8 +89,8 @@ OSStatus defaultDeviceChangedCallback(AudioObjectID inObjectID, UInt32 inNumberA
         inputBufs1 = (float **)malloc(sizeof(float *) * numberOfChannels);
         if (!inputBuffers0 || !inputBuffers1 || !inputBufs0 || !inputBufs1) abort();
         for (int n = 0; n < numberOfChannels; n++) {
-            inputBuffers0->mBuffers[n].mData = malloc(MAXFRAMES * 4);
-            inputBuffers1->mBuffers[n].mData = malloc(MAXFRAMES * 4);
+            inputBuffers0->mBuffers[n].mData = calloc(1, MAXFRAMES * 4);
+            inputBuffers1->mBuffers[n].mData = calloc(1, MAXFRAMES * 4);
             if (!inputBuffers0->mBuffers[n].mData || !inputBuffers1->mBuffers[n].mData) abort();
             inputBufs0[n] = (float *)inputBuffers0->mBuffers[n].mData;
             inputBufs1[n] = (float *)inputBuffers1->mBuffers[n].mData;

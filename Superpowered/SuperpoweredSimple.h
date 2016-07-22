@@ -65,14 +65,81 @@ void SuperpoweredChangeVolumeAdd(float *input, float *output, float volumeStart,
 float SuperpoweredPeak(float *input, unsigned int numberOfValues);
 
 /**
- @fn SuperpoweredFloatToShortInt(float *input, short int *output, unsigned int numberOfSamples);
- @brief Converts a stereo interleaved 32-bit float input to stereo interleaved 16-bit signed integer output.
-
- @param input Stereo interleaved 32-bit input. Should be numberOfSamples * 2 + 16 big minimum.
- @param output Stereo interleaved 16-bit output. Should be numberOfSamples * 2 + 16 big minimum.
+ @fn SuperpoweredCharToFloat(signed char *input, float *output, unsigned int numberOfSamples, unsigned int numChannels);
+ @brief Converts 8-bit audio to 32-bit floating point.
+ 
+ @param input Input buffer.
+ @param output Output buffer.
  @param numberOfSamples The number of samples to process.
+ @param numChannels The number of channels. One sample may be 1 value (1 channels) or N values (N channels).
  */
-void SuperpoweredFloatToShortInt(float *input, short int *output, unsigned int numberOfSamples);
+void SuperpoweredCharToFloat(signed char *input, float *output, unsigned int numberOfSamples, unsigned int numChannels = 2);
+
+/**
+ @fn SuperpoweredFloatToChar(float *input, signed char *output, unsigned int numberOfSamples, unsigned int numChannels);
+ @brief Converts 32-bit floating point audio 8-bit audio.
+
+ @param input Input buffer.
+ @param output Output buffer.
+ @param numberOfSamples The number of samples to process.
+ @param numChannels The number of channels. One sample may be 1 value (1 channels) or N values (N channels).
+ */
+void SuperpoweredFloatToChar(float *input, signed char *output, unsigned int numberOfSamples, unsigned int numChannels = 2);
+
+/**
+ @fn Superpowered24bitToFloat(void *input, float *output, unsigned int numberOfSamples, unsigned int numChannels);
+ @brief Converts 24-bit audio to 32-bit floating point.
+
+ @param input Input buffer.
+ @param output Output buffer.
+ @param numberOfSamples The number of samples to process.
+ @param numChannels The number of channels. One sample may be 1 value (1 channels) or N values (N channels).
+ */
+void Superpowered24bitToFloat(void *input, float *output, unsigned int numberOfSamples, unsigned int numChannels = 2);
+
+/**
+ @fn SuperpoweredFloatTo24bit(float *input, void *output, unsigned int numberOfSamples, unsigned int numChannels);
+ @brief Converts 32-bit floating point audio to 24-bit.
+
+ @param input Input buffer.
+ @param output Output buffer.
+ @param numberOfSamples The number of samples to process.
+ @param numChannels The number of channels. One sample may be 1 value (1 channels) or N values (N channels).
+ */
+void SuperpoweredFloatTo24bit(float *input, void *output, unsigned int numberOfSamples, unsigned int numChannels = 2);
+
+/**
+ @fn SuperpoweredIntToFloat(int *input, float *output, unsigned int numberOfSamples, unsigned int numChannels);
+ @brief Converts 32-bit integer audio to 32-bit floating point.
+
+ @param input Input buffer.
+ @param output Output buffer.
+ @param numberOfSamples The number of samples to process.
+ @param numChannels The number of channels. One sample may be 1 value (1 channels) or N values (N channels).
+ */
+void SuperpoweredIntToFloat(int *input, float *output, unsigned int numberOfSamples, unsigned int numChannels = 2);
+
+/**
+ @fn SuperpoweredFloatToInt(float *input, int *output, unsigned int numberOfSamples, unsigned int numChannels);
+ @brief Converts 32-bit floating point audio to 32-bit integer.
+
+ @param input Input buffer.
+ @param output Output buffer.
+ @param numberOfSamples The number of samples to process.
+ @param numChannels The number of channels. One sample may be 1 value (1 channels) or N values (N channels).
+ */
+void SuperpoweredFloatToInt(float *input, int *output, unsigned int numberOfSamples, unsigned int numChannels = 2);
+
+/**
+ @fn SuperpoweredFloatToShortInt(float *input, short int *output, unsigned int numberOfSamples);
+ @brief Converts 32-bit float input to 16-bit signed integer output.
+
+ @param input Input buffer.
+ @param output Output buffer.
+ @param numberOfSamples The number of samples to process.
+ @param numChannels The number of channels. One sample may be 1 value (1 channels) or N values (N channels).
+ */
+void SuperpoweredFloatToShortInt(float *input, short int *output, unsigned int numberOfSamples, unsigned int numChannels = 2);
 
 /**
  @fn SuperpoweredFloatToShortInt(float *inputLeft, float *inputRight, short int *output, unsigned int numberOfSamples);
@@ -92,9 +159,20 @@ void SuperpoweredFloatToShortInt(float *inputLeft, float *inputRight, short int 
  @param input Stereo interleaved 16-bit input. Should be numberOfSamples + 8 big minimum.
  @param output Stereo interleaved 32-bit output. Should be numberOfSamples + 8 big minimum.
  @param numberOfSamples The number of samples to process.
- @param peaks Peak value result (2 floats: left peak, right peak). Can be NULL if you are not interested.
+ @param peaks Peak value result (2 floats: left peak, right peak).
  */
-void SuperpoweredShortIntToFloat(short int *input, float *output, unsigned int numberOfSamples, float *peaks = 0);
+void SuperpoweredShortIntToFloat(short int *input, float *output, unsigned int numberOfSamples, float *peaks);
+
+/**
+ @fn SuperpoweredShortIntToFloat(short int *input, float *output, unsigned int numberOfSamples, unsigned int numChannels);
+ @brief Converts 16-bit signed integer input to 32-bit float output.
+
+ @param input Input buffer.
+ @param output Output buffer.
+ @param numberOfSamples The number of samples to process.
+ @param numChannels The number of channels. One sample may be 1 value (1 channels) or N values (N channels).
+ */
+void SuperpoweredShortIntToFloat(short int *input, float *output, unsigned int numberOfSamples, unsigned int numChannels = 2);
 
 /**
  @fn SuperpoweredInterleave(float *left, float *right, float *output, unsigned int numberOfSamples);
