@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{F4FE2930-34FF-B15C-0E86-128FEF2D75A2}") = "SuperpoweredUnitySpatializer", "Assembly-CSharp.csproj", "{2F46A13B-E2DF-1DD3-0E7C-B0CF83E21800}"
+EndProject
+Project("{F4FE2930-34FF-B15C-0E86-128FEF2D75A2}") = "SuperpoweredUnitySpatializer", "Assembly-CSharp-Editor.csproj", "{13896681-F8FF-15F2-B7F9-62BAECE0E46E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2F46A13B-E2DF-1DD3-0E7C-B0CF83E21800}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F46A13B-E2DF-1DD3-0E7C-B0CF83E21800}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F46A13B-E2DF-1DD3-0E7C-B0CF83E21800}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F46A13B-E2DF-1DD3-0E7C-B0CF83E21800}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13896681-F8FF-15F2-B7F9-62BAECE0E46E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13896681-F8FF-15F2-B7F9-62BAECE0E46E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13896681-F8FF-15F2-B7F9-62BAECE0E46E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13896681-F8FF-15F2-B7F9-62BAECE0E46E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal

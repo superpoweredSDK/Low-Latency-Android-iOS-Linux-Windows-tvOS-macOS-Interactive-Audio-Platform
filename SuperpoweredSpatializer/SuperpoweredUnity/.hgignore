@@ -1,0 +1,30 @@
+syntax:glob # Beware: globs are not rooted but matches in any dir - don't make them too generic ... or use re
+
+.DS_Store
+*.orig
+*.bak
+*~
+*.tmp
+*.rej
+\#*\#
+*.sublime-workspace
+xcuserdata   # Xcode
+build
+CoreAudioUtilityClasses
+CoreAudioUtilityClasses.zip
+Library
+bin
+obj
+*.orig.*
+
+# vs:
+*.csproj.user   # except PlatformDependent/WinRT/Tests/VSUnitTests/Assembly-CSharp/Assembly-CSharp.csproj.user
+*.suo
+*.vcxproj.user
+*.sdf   # VS intellisense files next to solution file for C++ projects - global configuration should perhaps place it elsewhere
+*.opensdf   # temporary locking file for solution access
+*.sln.DotSettings.user   # resharper
+*.userprefs # MonoDevelop
+# ctags:
+.tags
+.tags_sorted_by_file

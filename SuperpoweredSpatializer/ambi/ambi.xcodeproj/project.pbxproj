@@ -1,0 +1,341 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1BC17B961C6DDBA700729263 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1BC17B951C6DDBA700729263 /* AppDelegate.mm */; };
+		1BC17B991C6DDBA700729263 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC17B981C6DDBA700729263 /* main.m */; };
+		1BC17B9B1C6DDBA700729263 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BC17B9A1C6DDBA700729263 /* Assets.xcassets */; };
+		1BC17B9E1C6DDBA700729263 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BC17B9C1C6DDBA700729263 /* MainMenu.xib */; };
+		1BC17BAF1C6DDCE400729263 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BC17BAE1C6DDCE400729263 /* AudioToolbox.framework */; };
+		1BC17BB11C6DDD0F00729263 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BC17BB01C6DDD0F00729263 /* CoreAudio.framework */; };
+		1BC17BB51C6DE48D00729263 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BC17BB41C6DE48D00729263 /* AVFoundation.framework */; };
+		1BC17BB71C6DE49700729263 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BC17BB61C6DE49700729263 /* CoreMedia.framework */; };
+		1BEC82C31D7DA3A400A4854D /* libSuperpoweredAudioOSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BEC82C21D7DA3A400A4854D /* libSuperpoweredAudioOSX.a */; };
+		1BEC82C61D7DA3AE00A4854D /* SuperpoweredOSXAudioIO.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1BEC82C51D7DA3AE00A4854D /* SuperpoweredOSXAudioIO.mm */; };
+		1BEC82CB1D7DA42E00A4854D /* ambi_01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1BEC82C71D7DA42E00A4854D /* ambi_01.mp3 */; };
+		1BEC82CC1D7DA42E00A4854D /* ambi_23.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1BEC82C81D7DA42E00A4854D /* ambi_23.mp3 */; };
+		1BEC82CD1D7DA42E00A4854D /* eight_positions_01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1BEC82C91D7DA42E00A4854D /* eight_positions_01.mp3 */; };
+		1BEC82CE1D7DA42E00A4854D /* eight_positions_23.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1BEC82CA1D7DA42E00A4854D /* eight_positions_23.mp3 */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1BC17B911C6DDBA700729263 /* ambi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ambi.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BC17B941C6DDBA700729263 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1BC17B951C6DDBA700729263 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
+		1BC17B981C6DDBA700729263 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1BC17B9A1C6DDBA700729263 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1BC17B9D1C6DDBA700729263 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		1BC17B9F1C6DDBA700729263 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1BC17BAE1C6DDCE400729263 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		1BC17BB01C6DDD0F00729263 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		1BC17BB41C6DE48D00729263 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		1BC17BB61C6DE49700729263 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		1BEC82BF1D7DA39D00A4854D /* SuperpoweredAdvancedAudioPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredAdvancedAudioPlayer.h; path = ../../Superpowered/SuperpoweredAdvancedAudioPlayer.h; sourceTree = "<group>"; };
+		1BEC82C01D7DA39D00A4854D /* SuperpoweredSimple.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredSimple.h; path = ../../Superpowered/SuperpoweredSimple.h; sourceTree = "<group>"; };
+		1BEC82C11D7DA39D00A4854D /* SuperpoweredSpatializer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredSpatializer.h; path = ../../Superpowered/SuperpoweredSpatializer.h; sourceTree = "<group>"; };
+		1BEC82C21D7DA3A400A4854D /* libSuperpoweredAudioOSX.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSuperpoweredAudioOSX.a; path = ../../Superpowered/libSuperpoweredAudioOSX.a; sourceTree = "<group>"; };
+		1BEC82C41D7DA3AE00A4854D /* SuperpoweredOSXAudioIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperpoweredOSXAudioIO.h; path = ../../Superpowered/SuperpoweredOSXAudioIO.h; sourceTree = "<group>"; };
+		1BEC82C51D7DA3AE00A4854D /* SuperpoweredOSXAudioIO.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SuperpoweredOSXAudioIO.mm; path = ../../Superpowered/SuperpoweredOSXAudioIO.mm; sourceTree = "<group>"; };
+		1BEC82C71D7DA42E00A4854D /* ambi_01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = ambi_01.mp3; path = ambi/ambi_01.mp3; sourceTree = "<group>"; };
+		1BEC82C81D7DA42E00A4854D /* ambi_23.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = ambi_23.mp3; path = ambi/ambi_23.mp3; sourceTree = "<group>"; };
+		1BEC82C91D7DA42E00A4854D /* eight_positions_01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = eight_positions_01.mp3; path = ambi/eight_positions_01.mp3; sourceTree = "<group>"; };
+		1BEC82CA1D7DA42E00A4854D /* eight_positions_23.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = eight_positions_23.mp3; path = ambi/eight_positions_23.mp3; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1BC17B8E1C6DDBA700729263 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BEC82C31D7DA3A400A4854D /* libSuperpoweredAudioOSX.a in Frameworks */,
+				1BC17BB71C6DE49700729263 /* CoreMedia.framework in Frameworks */,
+				1BC17BB51C6DE48D00729263 /* AVFoundation.framework in Frameworks */,
+				1BC17BB11C6DDD0F00729263 /* CoreAudio.framework in Frameworks */,
+				1BC17BAF1C6DDCE400729263 /* AudioToolbox.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1BC17B881C6DDBA700729263 = {
+			isa = PBXGroup;
+			children = (
+				1BEC82BF1D7DA39D00A4854D /* SuperpoweredAdvancedAudioPlayer.h */,
+				1BEC82C01D7DA39D00A4854D /* SuperpoweredSimple.h */,
+				1BEC82C11D7DA39D00A4854D /* SuperpoweredSpatializer.h */,
+				1BEC82C21D7DA3A400A4854D /* libSuperpoweredAudioOSX.a */,
+				1BEC82C41D7DA3AE00A4854D /* SuperpoweredOSXAudioIO.h */,
+				1BEC82C51D7DA3AE00A4854D /* SuperpoweredOSXAudioIO.mm */,
+				1BC17BB61C6DE49700729263 /* CoreMedia.framework */,
+				1BC17BB41C6DE48D00729263 /* AVFoundation.framework */,
+				1BC17BB01C6DDD0F00729263 /* CoreAudio.framework */,
+				1BC17BAE1C6DDCE400729263 /* AudioToolbox.framework */,
+				1BEC82C71D7DA42E00A4854D /* ambi_01.mp3 */,
+				1BEC82C81D7DA42E00A4854D /* ambi_23.mp3 */,
+				1BEC82C91D7DA42E00A4854D /* eight_positions_01.mp3 */,
+				1BEC82CA1D7DA42E00A4854D /* eight_positions_23.mp3 */,
+				1BC17B931C6DDBA700729263 /* ambi */,
+				1BC17B921C6DDBA700729263 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1BC17B921C6DDBA700729263 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1BC17B911C6DDBA700729263 /* ambi.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1BC17B931C6DDBA700729263 /* ambi */ = {
+			isa = PBXGroup;
+			children = (
+				1BC17B941C6DDBA700729263 /* AppDelegate.h */,
+				1BC17B951C6DDBA700729263 /* AppDelegate.mm */,
+				1BC17B9A1C6DDBA700729263 /* Assets.xcassets */,
+				1BC17B9C1C6DDBA700729263 /* MainMenu.xib */,
+				1BC17B9F1C6DDBA700729263 /* Info.plist */,
+				1BC17B971C6DDBA700729263 /* Supporting Files */,
+			);
+			path = ambi;
+			sourceTree = "<group>";
+		};
+		1BC17B971C6DDBA700729263 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1BC17B981C6DDBA700729263 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1BC17B901C6DDBA700729263 /* ambi */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1BC17BA21C6DDBA700729263 /* Build configuration list for PBXNativeTarget "ambi" */;
+			buildPhases = (
+				1BC17B8D1C6DDBA700729263 /* Sources */,
+				1BC17B8E1C6DDBA700729263 /* Frameworks */,
+				1BC17B8F1C6DDBA700729263 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ambi;
+			productName = ambi;
+			productReference = 1BC17B911C6DDBA700729263 /* ambi.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1BC17B891C6DDBA700729263 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = superpowered;
+				TargetAttributes = {
+					1BC17B901C6DDBA700729263 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 1BC17B8C1C6DDBA700729263 /* Build configuration list for PBXProject "ambi" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1BC17B881C6DDBA700729263;
+			productRefGroup = 1BC17B921C6DDBA700729263 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1BC17B901C6DDBA700729263 /* ambi */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1BC17B8F1C6DDBA700729263 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BEC82CE1D7DA42E00A4854D /* eight_positions_23.mp3 in Resources */,
+				1BC17B9B1C6DDBA700729263 /* Assets.xcassets in Resources */,
+				1BEC82CB1D7DA42E00A4854D /* ambi_01.mp3 in Resources */,
+				1BEC82CD1D7DA42E00A4854D /* eight_positions_01.mp3 in Resources */,
+				1BEC82CC1D7DA42E00A4854D /* ambi_23.mp3 in Resources */,
+				1BC17B9E1C6DDBA700729263 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1BC17B8D1C6DDBA700729263 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BC17B991C6DDBA700729263 /* main.m in Sources */,
+				1BC17B961C6DDBA700729263 /* AppDelegate.mm in Sources */,
+				1BEC82C61D7DA3AE00A4854D /* SuperpoweredOSXAudioIO.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1BC17B9C1C6DDBA700729263 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1BC17B9D1C6DDBA700729263 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1BC17BA01C6DDBA700729263 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		1BC17BA11C6DDBA700729263 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		1BC17BA31C6DDBA700729263 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ambi/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = ../../Superpowered;
+				PRODUCT_BUNDLE_IDENTIFIER = com.superpowered.ambi;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1BC17BA41C6DDBA700729263 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ambi/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = ../../Superpowered;
+				PRODUCT_BUNDLE_IDENTIFIER = com.superpowered.ambi;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1BC17B8C1C6DDBA700729263 /* Build configuration list for PBXProject "ambi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BC17BA01C6DDBA700729263 /* Debug */,
+				1BC17BA11C6DDBA700729263 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1BC17BA21C6DDBA700729263 /* Build configuration list for PBXNativeTarget "ambi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BC17BA31C6DDBA700729263 /* Debug */,
+				1BC17BA41C6DDBA700729263 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1BC17B891C6DDBA700729263 /* Project object */;
+}

@@ -59,7 +59,7 @@ It compares several Superpowered features to Core Audio.
 	* Shows how to use Objective-C++ in an Objective-C project.
 
 	Swift note:
-	We have also tried creating this project in Swift, but it's not complete for audio and several features were impossible to implement (such as proper performance measurement). Swift is not designed for real-time audio. Fortunately, Objective-C++ files work great in Swift projects.
+	We have also tried creating this project in Swift, but it's not complete for audio and several features were impossible to implement (such as proper performance measurement). Swift is not designed for real-time audio. Fortunately, Objective-C++ files work great in Swift projects.- /SuperpoweredSpatializer/SuperpoweredUnity (Unity)	* A Unity example project with one scene having a spatialized sound and a wall.	* Check SuperpoweredSpatializer.cs on how occlusion was implemented.- /SuperpoweredSpatializer/src (Unity, Android, OSX)	* The source code for the Superpowered Spatializer and Global Reverb plugins for Unity.	* Shows how to use Superpowered in the Unity Native Audio Plugin SDK.- /SuperpoweredSpatializer/Android/jni (Unity, Android)Builds the spatializer plugins for Unity->Android.- /SuperpoweredSpatializer/Xcode (Unity, OSX)Builds the spatializer plugins for Unity->OSX.- /SuperpoweredSpatializer/ambi (OSX)Simple ambisonics implementation based on the SuperpoweredSpatializer.
 - /Android/CrossExample (Android)
 	* Android NDK sample project, similar to SuperpoweredCrossExample.
 	* Also shows how to use SuperpoweredAndroidAudioIO for output only.
