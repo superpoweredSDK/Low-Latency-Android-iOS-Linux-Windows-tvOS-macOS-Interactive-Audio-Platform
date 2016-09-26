@@ -167,7 +167,11 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
             if (audioUnitRunning) [self performSelectorOnMainThread:@selector(startDelegateInterruption) withObject:nil waitUntilDone:NO];
             [self beginInterruption];
             break;
-        case AVAudioSessionInterruptionTypeEnded: [self endInterruption]; break;
+        case AVAudioSessionInterruptionTypeEnded:
+            NSNumber *shouldResume = [notification.userInfo objectForKey:AVAudioSessionInterruptionOptionKey];
+            if ((shouldResume == nil) || [shouldResume unsignedIntegerValue] == AVAudioSessionInterruptionOptionShouldResume)
+                [self endInterruption];
+            break;
     };
 }
 
