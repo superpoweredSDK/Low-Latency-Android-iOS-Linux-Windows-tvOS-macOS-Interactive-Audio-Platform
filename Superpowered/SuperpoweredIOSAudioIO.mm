@@ -41,7 +41,7 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
     bool audioUnitRunning, iOS6, background, inputEnabled;
 }
 
-@synthesize preferredBufferSizeMs, saveBatteryInBackground;
+@synthesize preferredBufferSizeMs, saveBatteryInBackground, activateSessionOnForeground;
 
 - (void)createAudioBuffersForRecordingCategory {
     inputBufferListForRecordingCategory = (AudioBufferList *)malloc(sizeof(AudioBufferList) + (sizeof(AudioBuffer) * numChannels));
@@ -64,6 +64,7 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
         audioSessionCategory = category;
 #endif
         saveBatteryInBackground = true;
+        activateSessionOnForeground = true;
         preferredBufferSizeMs = preferredBufferSize;
         preferredMinimumSamplerate = prefsamplerate;
         bool recordOnly = [category isEqualToString:AVAudioSessionCategoryRecord];
@@ -178,7 +179,8 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
 - (void)onForeground { // App comes foreground.
     if (background) {
         background = false;
-        [self endInterruption];
+        if (activateSessionOnForeground)
+            [self endInterruption];
     };
 }
 
@@ -409,6 +411,7 @@ static OSStatus coreAudioProcessingCallback(void *inRefCon, AudioUnitRenderActio
     if (audioUnit == NULL) return false;
     if (AudioOutputUnitStart(audioUnit)) return false;
     audioUnitRunning = true;
+    [[AVAudioSession sharedInstance] setActive:YES error:nil];
     return true;
 }
 

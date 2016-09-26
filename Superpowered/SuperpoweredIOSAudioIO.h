@@ -88,13 +88,15 @@ typedef bool (*audioProcessingCallback) (void *clientdata, float **buffers, unsi
  */
 @interface SuperpoweredIOSAudioIO: NSObject {
     int preferredBufferSizeMs;
-    bool saveBatteryInBackground;
+    bool saveBatteryInBackground, activateSessionOnForeground;
 }
 
 /** @brief The preferred buffer size. Recommended: 12. */
 @property (nonatomic, assign) int preferredBufferSizeMs;
 /** @brief Save battery if output is silence and the app runs in background mode. True by default. */
 @property (nonatomic, assign) bool saveBatteryInBackground;
+/** @brief If true, when your app returns to the foreground, other music player apps will immediately stop playing.  True by default. */
+@property (nonatomic, assign) bool activateSessionOnForeground;
 
 /**
  @brief Creates the audio output instance.
