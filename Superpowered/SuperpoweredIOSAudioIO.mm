@@ -13,6 +13,10 @@ code;                                                               \
 _Pragma("clang diagnostic pop")                                     \
 }
 
+#ifndef SUPERPOWERED_USES_MICROPHONE
+#define SUPERPOWERED_USES_MICROPHONE 1
+#endif
+
 typedef enum audioDeviceType {
     audioDeviceType_USB = 1, audioDeviceType_headphone = 2, audioDeviceType_HDMI = 3, audioDeviceType_other = 4
 } audioDeviceType;
@@ -67,8 +71,13 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
         activateSessionOnForeground = true;
         preferredBufferSizeMs = preferredBufferSize;
         preferredMinimumSamplerate = prefsamplerate;
-        bool recordOnly = [category isEqualToString:AVAudioSessionCategoryRecord];
+        bool recordOnly = false;
+#if (SUPERPOWERED_USES_MICROPHONE == 1)
+        recordOnly = [category isEqualToString:AVAudioSessionCategoryRecord];
         inputEnabled = recordOnly || [category isEqualToString:AVAudioSessionCategoryPlayAndRecord];
+#else
+        inputEnabled = false;
+#endif
         processingCallback = callback;
         processingClientdata = clientdata;
         delegate = d;
@@ -460,6 +469,8 @@ static OSStatus coreAudioProcessingCallback(void *inRefCon, AudioUnitRenderActio
 #else
     audioSessionCategory = category;
 #endif
+    
+#if (SUPERPOWERED_USES_MICROPHONE == 1)
     bool recordOnly = [category isEqualToString:AVAudioSessionCategoryRecord];
     if (recordOnly && !inputBufferListForRecordingCategory) [self createAudioBuffersForRecordingCategory];
     inputEnabled = recordOnly || [category isEqualToString:AVAudioSessionCategoryPlayAndRecord];
@@ -472,6 +483,10 @@ static OSStatus coreAudioProcessingCallback(void *inRefCon, AudioUnitRenderActio
             }];
         };
     } else [self onMediaServerReset:nil];
+#else
+    inputEnabled = false;
+    [self onMediaServerReset:nil];
+#endif
 }
 
 @end
