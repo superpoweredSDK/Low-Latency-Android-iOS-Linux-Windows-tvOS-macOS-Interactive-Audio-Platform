@@ -1,12 +1,8 @@
 package com.superpowered.frequencydomain;
 
-import android.Manifest;
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.media.AudioManager;
 import android.os.Build;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -29,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         if (samplerateString == null) samplerateString = "44100";
         if (buffersizeString == null) buffersizeString = "512";
 
-        System.loadLibrary("FrequencyDomain");
+        System.loadLibrary("SuperpoweredExample");
         FrequencyDomain(Integer.parseInt(samplerateString), Integer.parseInt(buffersizeString));
     }
 

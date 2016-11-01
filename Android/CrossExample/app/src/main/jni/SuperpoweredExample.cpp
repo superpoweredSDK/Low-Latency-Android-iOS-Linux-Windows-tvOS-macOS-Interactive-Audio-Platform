@@ -1,5 +1,6 @@
 #include "SuperpoweredExample.h"
 #include <SuperpoweredSimple.h>
+#include <SuperpoweredCPU.h>
 #include <jni.h>
 #include <stdio.h>
 #include <android/log.h>
@@ -61,6 +62,7 @@ void SuperpoweredExample::onPlayPause(bool play) {
         playerA->play(!masterIsA);
         playerB->play(masterIsA);
     };
+    SuperpoweredCPU::setSustainedPerformanceMode(play); // <-- Important to prevent audio dropouts.
 }
 
 void SuperpoweredExample::onCrossfader(int value) {

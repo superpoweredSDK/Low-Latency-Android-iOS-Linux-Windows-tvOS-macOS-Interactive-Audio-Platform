@@ -1,20 +1,15 @@
 package com.superpowered.complexusb;
 
-import android.app.Instrumentation;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.os.Handler;
 import android.widget.Toast;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity implements SuperpoweredUSBAudioHandler, CustomAdapterHandler {
     private ListView list;
@@ -33,7 +28,6 @@ public class MainActivity extends AppCompatActivity implements SuperpoweredUSBAu
     private int latencyIndex;
     private int deviceID;
     private boolean hasDevice;
-    private Timer fakeTouchTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,19 +99,6 @@ public class MainActivity extends AppCompatActivity implements SuperpoweredUSBAu
                 MainActivity.this.onItemClick(ki[0], ki[1], position);
             }
         });
-
-        TimerTask fakeTouchTask = new TimerTask() {
-            public void run() {
-                try {
-                    Instrumentation instrumentation = new Instrumentation();
-                    instrumentation.sendKeyDownUpSync(KeyEvent.KEYCODE_BACKSLASH);
-                } catch(java.lang.Exception e) {
-                    assert true;
-                }
-            }
-        };
-        fakeTouchTimer = new Timer();
-        fakeTouchTimer.schedule(fakeTouchTask, 1000, 1000);
     }
 
     public void onUSBMIDIDeviceAttached(int deviceIdentifier) {
@@ -128,8 +109,6 @@ public class MainActivity extends AppCompatActivity implements SuperpoweredUSBAu
         if (deviceIdentifier == deviceID) {
             list.setAdapter(waitingAdapter);
             hasDevice = false;
-            fakeTouchTimer.cancel();
-            fakeTouchTimer.purge();
         }
     }
 
@@ -342,6 +321,6 @@ public class MainActivity extends AppCompatActivity implements SuperpoweredUSBAu
     public native int getLatencyMs();
 
     static {
-        System.loadLibrary("complexusb");
+        System.loadLibrary("SuperpoweredExample");
     }
 }

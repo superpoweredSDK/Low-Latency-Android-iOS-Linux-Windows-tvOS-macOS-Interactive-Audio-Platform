@@ -102,8 +102,8 @@ Prerequisites: latest Android SDK, Android NDK, Android Studio installed. Steps:
 
 1. Create a new project in Android Studio.
 2. Create the jni folder inside the project's folder: app/src/main/jni
-3. Copy the contents of the following files from one of the example projects: gradle/wrapper/gradle-wrapper.properties, local.properties, build.gradle, app/build.gradle
-4. Open build.gradle (Module: app), and change the applicationId (and moduleName if you like).
+3. Copy the contents of the following files from one of the example projects: gradle/wrapper/gradle-wrapper.properties, local.properties, build.gradle, app/build.gradle, app/src/main/jni/CMakeLists.txt
+4. Open build.gradle (Module: app), and change the applicationId
 
 
 # The Latest Version

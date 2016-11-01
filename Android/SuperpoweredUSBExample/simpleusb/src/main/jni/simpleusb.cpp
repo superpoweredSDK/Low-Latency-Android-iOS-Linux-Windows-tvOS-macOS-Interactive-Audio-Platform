@@ -1,5 +1,6 @@
 #include <jni.h>
 #include <math.h>
+#include <SuperpoweredCPU.h>
 #include <AndroidIO/SuperpoweredUSBAudio.h>
 #include <malloc.h>
 #include <pthread.h>
@@ -96,6 +97,7 @@ JNI(jint, onConnect, PID)(JNIEnv *env, jobject __unused obj, jint deviceID, jint
         if (swo) {
             swo->mul = 0.0f;
             swo->step = 0;
+            SuperpoweredCPU::setSustainedPerformanceMode(true);
             // Our preferred settings: 44100 Hz, 16 bits, 0 input channels, 256 output channels, low latency.
             // Superpowered will set up the audio device as close as it can to these.
             SuperpoweredUSBAudio::easyIO(deviceID, 44100, 16, 0, 256, SuperpoweredUSBLatency_Low, swo, audioProcessing);
@@ -107,6 +109,7 @@ JNI(jint, onConnect, PID)(JNIEnv *env, jobject __unused obj, jint deviceID, jint
 // This is called by the SuperpoweredUSBAudio Java object when a USB device is disconnected.
 JNI(void, onDisconnect, PID)(JNIEnv * __unused env, jobject __unused obj, jint deviceID) {
     SuperpoweredUSBSystem::onDisconnect(deviceID);
+    SuperpoweredCPU::setSustainedPerformanceMode(false);
 }
 
 #undef PID

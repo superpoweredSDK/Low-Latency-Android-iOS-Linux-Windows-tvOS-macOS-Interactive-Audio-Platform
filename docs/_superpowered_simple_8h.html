@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">0.9.9</span>
+   &#160;<span id="projectnumber">1.0.0</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -92,9 +92,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a2ace3bae21754e6156e421ccab86db62"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2ace3bae21754e6156e421ccab86db62"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>SuperpoweredFloatToShortInt</b> (float *input, short int *output, unsigned int numberOfSamples, unsigned int numChannels=2)</td></tr>
 <tr class="separator:a2ace3bae21754e6156e421ccab86db62"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a598751316ad9827094a0e235880cced5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#a598751316ad9827094a0e235880cced5">SuperpoweredFloatToShortInt</a> (float *inputLeft, float *inputRight, short int *output, unsigned int numberOfSamples)</td></tr>
-<tr class="memdesc:a598751316ad9827094a0e235880cced5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts two 32-bit float input channels to stereo interleaved 16-bit signed integer output.  <a href="#a598751316ad9827094a0e235880cced5">More...</a><br /></td></tr>
-<tr class="separator:a598751316ad9827094a0e235880cced5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35e4e58cd3bf7596a64c95c7d68b7f26"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#a35e4e58cd3bf7596a64c95c7d68b7f26">SuperpoweredFloatToShortIntInterleave</a> (float *inputLeft, float *inputRight, short int *output, unsigned int numberOfSamples)</td></tr>
+<tr class="memdesc:a35e4e58cd3bf7596a64c95c7d68b7f26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts two 32-bit float input channels to stereo interleaved 16-bit signed integer output.  <a href="#a35e4e58cd3bf7596a64c95c7d68b7f26">More...</a><br /></td></tr>
+<tr class="separator:a35e4e58cd3bf7596a64c95c7d68b7f26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6376e26acdbe3359eb105dc87db20b89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#a6376e26acdbe3359eb105dc87db20b89">SuperpoweredShortIntToFloat</a> (short int *input, float *output, unsigned int numberOfSamples, float *peaks)</td></tr>
 <tr class="memdesc:a6376e26acdbe3359eb105dc87db20b89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a stereo interleaved 16-bit signed integer input to stereo interleaved 32-bit float output.  <a href="#a6376e26acdbe3359eb105dc87db20b89">More...</a><br /></td></tr>
 <tr class="separator:a6376e26acdbe3359eb105dc87db20b89"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -104,6 +104,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SuperpoweredFloatToSh
 <tr class="memitem:aba4dddc17e9e853e6b82442b4e33e465"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#aba4dddc17e9e853e6b82442b4e33e465">SuperpoweredInterleave</a> (float *left, float *right, float *output, unsigned int numberOfSamples)</td></tr>
 <tr class="memdesc:aba4dddc17e9e853e6b82442b4e33e465"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes an interleaved output from two input channels.  <a href="#aba4dddc17e9e853e6b82442b4e33e465">More...</a><br /></td></tr>
 <tr class="separator:aba4dddc17e9e853e6b82442b4e33e465"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab72aed101b700ee7acc8ce5dbb13758e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#ab72aed101b700ee7acc8ce5dbb13758e">SuperpoweredInterleaveAdd</a> (float *left, float *right, float *output, unsigned int numberOfSamples)</td></tr>
+<tr class="memdesc:ab72aed101b700ee7acc8ce5dbb13758e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes an interleaved audio from two input channels and adds the result to the output.  <a href="#ab72aed101b700ee7acc8ce5dbb13758e">More...</a><br /></td></tr>
+<tr class="separator:ab72aed101b700ee7acc8ce5dbb13758e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a3bac6f65efb1d289d7893feb62d587"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#a9a3bac6f65efb1d289d7893feb62d587">SuperpoweredInterleaveAndGetPeaks</a> (float *left, float *right, float *output, unsigned int numberOfSamples, float *peaks)</td></tr>
 <tr class="memdesc:a9a3bac6f65efb1d289d7893feb62d587"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes an interleaved output from two input channels, and measures the input volume.  <a href="#a9a3bac6f65efb1d289d7893feb62d587">More...</a><br /></td></tr>
 <tr class="separator:a9a3bac6f65efb1d289d7893feb62d587"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -676,12 +679,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SuperpoweredAdd4</b> 
 
 </div>
 </div>
-<a class="anchor" id="a598751316ad9827094a0e235880cced5"></a>
+<a class="anchor" id="a35e4e58cd3bf7596a64c95c7d68b7f26"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">SuperpoweredFloatToShortInt </td>
+          <td class="memname">SuperpoweredFloatToShortIntInterleave </td>
           <td>(</td>
           <td class="paramtype">float *&#160;</td>
           <td class="paramname"><em>inputLeft</em>, </td>
@@ -823,6 +826,53 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SuperpoweredAdd4</b> 
       <table class="memname">
         <tr>
           <td class="memname">SuperpoweredInterleave </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>left</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>right</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>output</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>numberOfSamples</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">left</td><td>Input for left channel. </td></tr>
+    <tr><td class="paramname">right</td><td>Input for right channel. </td></tr>
+    <tr><td class="paramname">output</td><td>Interleaved output. </td></tr>
+    <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ab72aed101b700ee7acc8ce5dbb13758e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SuperpoweredInterleaveAdd </td>
           <td>(</td>
           <td class="paramtype">float *&#160;</td>
           <td class="paramname"><em>left</em>, </td>

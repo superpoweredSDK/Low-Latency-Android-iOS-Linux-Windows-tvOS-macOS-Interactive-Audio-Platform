@@ -2,6 +2,7 @@
 #include <malloc.h>
 #include <math.h>
 #include <AndroidIO/SuperpoweredUSBAudio.h>
+#include <SuperpoweredCPU.h>
 #include "latencyMeasurer.h"
 
 // Called when the application is initialized. You can initialize SuperpoweredUSBSystem at any time btw.
@@ -255,11 +256,13 @@ JNI(void, startIO, PID)(JNIEnv * __unused env, jobject __unused obj, jint device
         case 2: sl = SuperpoweredUSBLatency_High; break;
         default: sl = SuperpoweredUSBLatency_Low;
     }
+    SuperpoweredCPU::setSustainedPerformanceMode(true);
     SuperpoweredUSBAudio::startIO(deviceID, inputIOIndex, outputIOIndex, sl, job, audioProcessing);
 }
 
 JNI(void, stopIO, PID)(JNIEnv * __unused env, jobject __unused obj) {
     SuperpoweredUSBAudio::stopIO(lastDeviceID);
+    SuperpoweredCPU::setSustainedPerformanceMode(false);
     latencyMs = -1;
 }
 

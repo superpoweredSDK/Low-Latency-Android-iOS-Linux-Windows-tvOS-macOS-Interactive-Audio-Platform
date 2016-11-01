@@ -1,10 +1,7 @@
 package com.superpowered.crossexample;
 
-import android.app.Instrumentation;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.media.AudioManager;
@@ -18,12 +15,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Button;
 import android.view.View;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
     boolean playing = false;
-    private Timer fakeTouchTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,27 +87,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void SuperpoweredExample_PlayPause(View button) {  // Play/pause.
         playing = !playing;
-
-        // Sending fake touches every second helps sustaining CPU rate.
-        // This is not necessary for this little app, but might be helpful for projects with big audio processing needs.
-        if (playing) {
-            TimerTask fakeTouchTask = new TimerTask() {
-                public void run() {
-                    try {
-                        Instrumentation instrumentation = new Instrumentation();
-                        instrumentation.sendKeyDownUpSync(KeyEvent.KEYCODE_BACKSLASH);
-                    } catch(java.lang.Exception e) {
-                        assert true;
-                    }
-                }
-            };
-            fakeTouchTimer = new Timer();
-            fakeTouchTimer.schedule(fakeTouchTask, 1000, 1000);
-        } else {
-            fakeTouchTimer.cancel();
-            fakeTouchTimer.purge();
-        }
-
         onPlayPause(playing);
         Button b = (Button) findViewById(R.id.playPause);
         if (b != null) b.setText(playing ? "Pause" : "Play");

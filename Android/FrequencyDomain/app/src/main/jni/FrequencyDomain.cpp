@@ -3,6 +3,7 @@
 #include <SuperpoweredFrequencyDomain.h>
 #include <AndroidIO/SuperpoweredAndroidAudioIO.h>
 #include <SuperpoweredSimple.h>
+#include <SuperpoweredCPU.h>
 #include <SLES/OpenSLES.h>
 #include <SLES/OpenSLES_AndroidConfiguration.h>
 
@@ -65,5 +66,7 @@ extern "C" JNIEXPORT void Java_com_superpowered_frequencydomain_MainActivity_Fre
     fifoOutput = (float *)malloc(fifoCapacity * sizeof(float) * 2 + 128);
 
     inputBufferFloat = (float *)malloc(buffersize * sizeof(float) * 2 + 128);
+
+    SuperpoweredCPU::setSustainedPerformanceMode(true);
     new SuperpoweredAndroidAudioIO(samplerate, buffersize, true, true, audioProcessing, NULL, -1, SL_ANDROID_STREAM_MEDIA, buffersize * 2); // Start audio input/output.
 }

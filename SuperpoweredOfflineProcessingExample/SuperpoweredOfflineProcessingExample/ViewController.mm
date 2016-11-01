@@ -83,7 +83,7 @@
     // Create a buffer for the 16-bit integer samples coming from the decoder.
     short int *intBuffer = (short int *)malloc(decoder->samplesPerFrame * 2 * sizeof(short int) + 16384);
     // Create a buffer for the 32-bit floating point samples required by the effect.
-    float *floatBuffer = (float *)malloc(decoder->samplesPerFrame * 2 * sizeof(float) + 1024);
+    float *floatBuffer = (float *)malloc(decoder->samplesPerFrame * 2 * sizeof(float) + 16384);
 
     // Processing.
     while (true) {
@@ -228,7 +228,7 @@
     // Create a buffer for the 16-bit integer samples coming from the decoder.
     short int *intBuffer = (short int *)malloc(decoder->samplesPerFrame * 2 * sizeof(short int) + 16384);
     // Create a buffer for the 32-bit floating point samples required by the effect.
-    float *floatBuffer = (float *)malloc(decoder->samplesPerFrame * 2 * sizeof(float) + 1024);
+    float *floatBuffer = (float *)malloc(decoder->samplesPerFrame * 2 * sizeof(float) + 16384);
 
     // Processing.
     while (true) {

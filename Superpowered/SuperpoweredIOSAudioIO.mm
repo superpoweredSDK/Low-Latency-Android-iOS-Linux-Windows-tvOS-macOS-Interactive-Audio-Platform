@@ -13,6 +13,8 @@ code;                                                               \
 _Pragma("clang diagnostic pop")                                     \
 }
 
+#define USES_AUDIO_INPUT 1
+
 typedef enum audioDeviceType {
     audioDeviceType_USB = 1, audioDeviceType_headphone = 2, audioDeviceType_HDMI = 3, audioDeviceType_other = 4
 } audioDeviceType;
@@ -66,8 +68,13 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
         saveBatteryInBackground = true;
         preferredBufferSizeMs = preferredBufferSize;
         preferredMinimumSamplerate = prefsamplerate;
+#if (USES_AUDIO_INPUT == 1)
         bool recordOnly = [category isEqualToString:AVAudioSessionCategoryRecord];
         inputEnabled = recordOnly || [category isEqualToString:AVAudioSessionCategoryPlayAndRecord];
+#else
+        bool recordOnly = false;
+        inputEnabled = false;
+#endif
         processingCallback = callback;
         processingClientdata = clientdata;
         delegate = d;
@@ -167,7 +174,10 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
             if (audioUnitRunning) [self performSelectorOnMainThread:@selector(startDelegateInterruption) withObject:nil waitUntilDone:NO];
             [self beginInterruption];
             break;
-        case AVAudioSessionInterruptionTypeEnded: [self endInterruption]; break;
+        case AVAudioSessionInterruptionTypeEnded:
+            NSNumber *shouldResume = [notification.userInfo objectForKey:AVAudioSessionInterruptionOptionKey];
+            if ((shouldResume == nil) || [shouldResume unsignedIntegerValue] == AVAudioSessionInterruptionOptionShouldResume) [self endInterruption];
+            break;
     };
 }
 
@@ -405,6 +415,7 @@ static OSStatus coreAudioProcessingCallback(void *inRefCon, AudioUnitRenderActio
     if (audioUnit == NULL) return false;
     if (AudioOutputUnitStart(audioUnit)) return false;
     audioUnitRunning = true;
+    [[AVAudioSession sharedInstance] setActive:YES error:nil];
     return true;
 }
 
@@ -453,6 +464,8 @@ static OSStatus coreAudioProcessingCallback(void *inRefCon, AudioUnitRenderActio
 #else
     audioSessionCategory = category;
 #endif
+
+#if (USES_AUDIO_INPUT == 1)
     bool recordOnly = [category isEqualToString:AVAudioSessionCategoryRecord];
     if (recordOnly && !inputBufferListForRecordingCategory) [self createAudioBuffersForRecordingCategory];
     inputEnabled = recordOnly || [category isEqualToString:AVAudioSessionCategoryPlayAndRecord];
@@ -465,6 +478,9 @@ static OSStatus coreAudioProcessingCallback(void *inRefCon, AudioUnitRenderActio
             }];
         };
     } else [self onMediaServerReset:nil];
+#else
+    [self onMediaServerReset:nil];
+#endif
 }
 
 @end

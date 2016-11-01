@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     // some HLS stream url-title pairs
     private String[] urls = new String[] {
             "https://devimages.apple.com.edgekey.net/streaming/examples/bipbop_16x9/bipbop_16x9_variant.m3u8", "Apple Advanced Example Stream",
-            "http://vevoplaylist-live.hls.adaptive.level3.net/vevo/ch1/appleman.m3u8", "Vevo LIVE Channel 1",
+            "http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8", "Back to the Mac",
             "http://playertest.longtailvideo.com/adaptive/bbbfull/bbbfull.m3u8", "JW Player Test",
             "http://playertest.longtailvideo.com/adaptive/oceans_aes/oceans_aes.m3u8", "JW AES Encrypted"
     };
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         if (samplerateString == null) samplerateString = "44100";
         if (buffersizeString == null) buffersizeString = "512";
 
-        System.loadLibrary("HLSExample");
+        System.loadLibrary("SuperpoweredExample");
         SetTempFolder(getCacheDir().getAbsolutePath());
         StartAudio(Integer.parseInt(samplerateString), Integer.parseInt(buffersizeString));
 

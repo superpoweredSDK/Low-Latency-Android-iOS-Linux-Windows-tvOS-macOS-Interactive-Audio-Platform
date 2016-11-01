@@ -142,7 +142,7 @@ void SuperpoweredFloatToInt(float *input, int *output, unsigned int numberOfSamp
 void SuperpoweredFloatToShortInt(float *input, short int *output, unsigned int numberOfSamples, unsigned int numChannels = 2);
 
 /**
- @fn SuperpoweredFloatToShortInt(float *inputLeft, float *inputRight, short int *output, unsigned int numberOfSamples);
+ @fn SuperpoweredFloatToShortIntInterleave(float *inputLeft, float *inputRight, short int *output, unsigned int numberOfSamples);
  @brief Converts two 32-bit float input channels to stereo interleaved 16-bit signed integer output.
 
  @param inputLeft 32-bit input for the left side. Should be numberOfSamples + 8 big minimum.
@@ -150,7 +150,7 @@ void SuperpoweredFloatToShortInt(float *input, short int *output, unsigned int n
  @param output Stereo interleaved 16-bit output. Should be numberOfSamples * 2 + 16 big minimum.
  @param numberOfSamples The number of samples to process.
  */
-void SuperpoweredFloatToShortInt(float *inputLeft, float *inputRight, short int *output, unsigned int numberOfSamples);
+void SuperpoweredFloatToShortIntInterleave(float *inputLeft, float *inputRight, short int *output, unsigned int numberOfSamples);
 
 /**
  @fn SuperpoweredShortIntToFloat(short int *input, float *output, unsigned int numberOfSamples, float *peaks);
@@ -184,6 +184,17 @@ void SuperpoweredShortIntToFloat(short int *input, float *output, unsigned int n
  @param numberOfSamples The number of samples to process.
  */
 void SuperpoweredInterleave(float *left, float *right, float *output, unsigned int numberOfSamples);
+
+/**
+ @fn SuperpoweredInterleaveAdd(float *left, float *right, float *output, unsigned int numberOfSamples);
+ @brief Makes an interleaved audio from two input channels and adds the result to the output.
+
+ @param left Input for left channel.
+ @param right Input for right channel.
+ @param output Interleaved output.
+ @param numberOfSamples The number of samples to process.
+ */
+void SuperpoweredInterleaveAdd(float *left, float *right, float *output, unsigned int numberOfSamples);
 
 /**
  @fn SuperpoweredInterleaveAndGetPeaks(float *left, float *right, float *output, unsigned int numberOfSamples, float *peaks);

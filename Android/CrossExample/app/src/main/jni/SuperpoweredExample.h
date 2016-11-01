@@ -28,7 +28,6 @@ public:
 	void onFxValue(int value);
 
 private:
-    pthread_mutex_t mutex;
     SuperpoweredAndroidAudioIO *audioSystem;
     SuperpoweredAdvancedAudioPlayer *playerA, *playerB;
     SuperpoweredRoll *roll;

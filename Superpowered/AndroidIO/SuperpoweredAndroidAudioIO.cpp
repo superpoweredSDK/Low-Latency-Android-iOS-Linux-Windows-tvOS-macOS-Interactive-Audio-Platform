@@ -1,6 +1,7 @@
 #include "SuperpoweredAndroidAudioIO.h"
 #include <SLES/OpenSLES.h>
 #include <SLES/OpenSLES_Android.h>
+#include <SLES/OpenSLES_AndroidConfiguration.h>
 #include <pthread.h>
 #include <unistd.h>
 

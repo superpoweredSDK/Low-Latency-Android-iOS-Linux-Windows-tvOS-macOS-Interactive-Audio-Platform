@@ -1,0 +1,21 @@
+Executable : /android/sdk/cmake/3.6.3155560/bin/cmake
+arguments : 
+-H/Volumes/iMect/iphone/SuperpoweredSDK/Android/FrequencyDomain/app/src/main/jni
+-B/Volumes/iMect/iphone/SuperpoweredSDK/Android/FrequencyDomain/app/.externalNativeBuild/cmake/release/x86_64
+-GAndroid Gradle - Ninja
+-DANDROID_ABI=x86_64
+-DANDROID_NDK=/android/ndk
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=/Volumes/iMect/iphone/SuperpoweredSDK/Android/FrequencyDomain/app/build/intermediates/cmake/release/obj/x86_64
+-DCMAKE_BUILD_TYPE=Release
+-DCMAKE_MAKE_PROGRAM=/android/sdk/cmake/3.6.3155560/bin/ninja
+-DCMAKE_TOOLCHAIN_FILE=/android/ndk/build/cmake/android.toolchain.cmake
+-DANDROID_NATIVE_API_LEVEL=21
+-DCMAKE_C_FLAGS=-O3 -fsigned-char
+-DCMAKE_CXX_FLAGS=-fsigned-char -I/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered
+-DANDROID_PLATFORM=android-16
+-DANDROID_TOOLCHAIN=clang
+-DANDROID_ARM_NEON=TRUE
+-DANDROID_STL=gnustl_static
+-DPATH_TO_SUPERPOWERED:STRING=/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered
+jvmArgs : 
+

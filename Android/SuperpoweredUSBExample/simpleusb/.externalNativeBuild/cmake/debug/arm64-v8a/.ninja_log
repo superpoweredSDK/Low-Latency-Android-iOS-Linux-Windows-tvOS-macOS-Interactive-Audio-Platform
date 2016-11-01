@@ -1,0 +1,13 @@
+# ninja log v5
+1	133	0	CMakeFiles/SuperpoweredExample.dir/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/AndroidIO/SuperpoweredAndroidAudioIO.cpp.o	e08fd9def475ae50
+0	148	0	CMakeFiles/SuperpoweredExample.dir/simpleusb.cpp.o	a0763e4c0cb00173
+148	234	0	/Volumes/iMect/iphone/SuperpoweredSDK/Android/SuperpoweredUSBExample/simpleusb/build/intermediates/cmake/debug/obj/arm64-v8a/libSuperpoweredExample.so	fa79905ccdff2f3c
+2	187	0	CMakeFiles/SuperpoweredExample.dir/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/AndroidIO/SuperpoweredAndroidAudioIO.cpp.o	e08fd9def475ae50
+0	193	0	CMakeFiles/SuperpoweredExample.dir/simpleusb.cpp.o	a0763e4c0cb00173
+193	370	0	/Volumes/iMect/iphone/SuperpoweredSDK/Android/SuperpoweredUSBExample/simpleusb/build/intermediates/cmake/debug/obj/arm64-v8a/libSuperpoweredExample.so	fa79905ccdff2f3c
+0	105	0	CMakeFiles/SuperpoweredExample.dir/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/AndroidIO/SuperpoweredAndroidAudioIO.cpp.o	e08fd9def475ae50
+0	120	0	CMakeFiles/SuperpoweredExample.dir/simpleusb.cpp.o	a0763e4c0cb00173
+120	204	0	/Volumes/iMect/iphone/SuperpoweredSDK/Android/SuperpoweredUSBExample/simpleusb/build/intermediates/cmake/debug/obj/arm64-v8a/libSuperpoweredExample.so	fa79905ccdff2f3c
+2	142	0	CMakeFiles/SuperpoweredExample.dir/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/AndroidIO/SuperpoweredAndroidAudioIO.cpp.o	e08fd9def475ae50
+1	162	0	CMakeFiles/SuperpoweredExample.dir/simpleusb.cpp.o	a0763e4c0cb00173
+162	293	0	/Volumes/iMect/iphone/SuperpoweredSDK/Android/SuperpoweredUSBExample/simpleusb/build/intermediates/cmake/debug/obj/arm64-v8a/libSuperpoweredExample.so	fa79905ccdff2f3c

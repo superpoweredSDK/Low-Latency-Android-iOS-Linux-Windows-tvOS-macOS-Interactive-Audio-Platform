@@ -1,0 +1,3 @@
+/Volumes/iMect/iphone/SuperpoweredSDK/Android/FrequencyDomain/app/.externalNativeBuild/cmake/release/x86_64/CMakeFiles/edit_cache.dir
+/Volumes/iMect/iphone/SuperpoweredSDK/Android/FrequencyDomain/app/.externalNativeBuild/cmake/release/x86_64/CMakeFiles/rebuild_cache.dir
+/Volumes/iMect/iphone/SuperpoweredSDK/Android/FrequencyDomain/app/.externalNativeBuild/cmake/release/x86_64/CMakeFiles/SuperpoweredExample.dir

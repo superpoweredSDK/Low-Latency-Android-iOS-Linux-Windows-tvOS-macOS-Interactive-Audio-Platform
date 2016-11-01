@@ -1,0 +1,47 @@
+
+{
+	"buildFiles" : 
+	[
+		"/Volumes/iMect/iphone/SuperpoweredSDK/Android/FrequencyDomain/app/src/main/jni/CMakeLists.txt"
+	],
+	"cleanCommands" : 
+	[
+		"/android/sdk/cmake/3.6.3155560/bin/cmake --build /Volumes/iMect/iphone/SuperpoweredSDK/Android/FrequencyDomain/app/.externalNativeBuild/cmake/debug/x86 --target clean"
+	],
+	"cppFileExtensions" : [ "cpp" ],
+	"libraries" : 
+	{
+		"SuperpoweredExample-Debug-x86" : 
+		{
+			"abi" : "x86",
+			"artifactName" : "SuperpoweredExample",
+			"buildCommand" : "/android/sdk/cmake/3.6.3155560/bin/cmake --build /Volumes/iMect/iphone/SuperpoweredSDK/Android/FrequencyDomain/app/.externalNativeBuild/cmake/debug/x86 --target SuperpoweredExample",
+			"buildType" : "debug",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  -target i686-none-linux-android -gcc-toolchain /android/ndk/toolchains/x86-4.9/prebuilt/darwin-x86_64 --sysroot=/android/ndk/platforms/android-16/arch-x86  -DSuperpoweredExample_EXPORTS -I/Volumes/iMect/iphone/SuperpoweredSDK/Android/FrequencyDomain/app/src/main/jni/src/main/jni -I/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered -isystem /android/ndk/sources/cxx-stl/gnu-libstdc++/4.9/include -isystem /android/ndk/sources/cxx-stl/gnu-libstdc++/4.9/libs/x86/include -isystem /android/ndk/sources/cxx-stl/gnu-libstdc++/4.9/include/backward  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -fsigned-char -I/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered -O0 -fno-limit-debug-info -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "/Volumes/iMect/iphone/SuperpoweredSDK/Android/FrequencyDomain/app/src/main/jni/FrequencyDomain.cpp",
+					"workingDirectory" : "/Volumes/iMect/iphone/SuperpoweredSDK/Android/FrequencyDomain/app/.externalNativeBuild/cmake/debug/x86"
+				},
+				
+				{
+					"flags" : "  -target i686-none-linux-android -gcc-toolchain /android/ndk/toolchains/x86-4.9/prebuilt/darwin-x86_64 --sysroot=/android/ndk/platforms/android-16/arch-x86  -DSuperpoweredExample_EXPORTS -I/Volumes/iMect/iphone/SuperpoweredSDK/Android/FrequencyDomain/app/src/main/jni/src/main/jni -I/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered -isystem /android/ndk/sources/cxx-stl/gnu-libstdc++/4.9/include -isystem /android/ndk/sources/cxx-stl/gnu-libstdc++/4.9/libs/x86/include -isystem /android/ndk/sources/cxx-stl/gnu-libstdc++/4.9/include/backward  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -fsigned-char -I/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered -O0 -fno-limit-debug-info -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/AndroidIO/SuperpoweredAndroidAudioIO.cpp",
+					"workingDirectory" : "/Volumes/iMect/iphone/SuperpoweredSDK/Android/FrequencyDomain/app/.externalNativeBuild/cmake/debug/x86"
+				}
+			],
+			"output" : "/Volumes/iMect/iphone/SuperpoweredSDK/Android/FrequencyDomain/app/build/intermediates/cmake/debug/obj/x86/libSuperpoweredExample.so",
+			"toolchain" : "15660216537762243581"
+		}
+	},
+	"toolchains" : 
+	{
+		"15660216537762243581" : 
+		{
+			"cCompilerExecutable" : "/android/ndk/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang",
+			"cppCompilerExecutable" : "/android/ndk/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++"
+		}
+	}
+}

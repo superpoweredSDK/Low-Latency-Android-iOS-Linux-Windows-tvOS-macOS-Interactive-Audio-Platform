@@ -3,6 +3,7 @@
 #include <SuperpoweredAdvancedAudioPlayer.h>
 #include <AndroidIO/SuperpoweredAndroidAudioIO.h>
 #include <SuperpoweredSimple.h>
+#include <SuperpoweredCPU.h>
 #include <android/log.h>
 #include <SLES/OpenSLES.h>
 #include <SLES/OpenSLES_AndroidConfiguration.h>
@@ -71,6 +72,7 @@ extern "C" JNIEXPORT void Java_com_superpowered_hlsexample_MainActivity_SetDownl
 
 extern "C" JNIEXPORT void Java_com_superpowered_hlsexample_MainActivity_PlayPause(JNIEnv * __unused javaEnvironment, jobject __unused obj) {
     player->togglePlayback();
+    SuperpoweredCPU::setSustainedPerformanceMode(player->playing);
 }
 
 extern "C" JNIEXPORT void Java_com_superpowered_hlsexample_MainActivity_SetSpeed(JNIEnv * __unused javaEnvironment, jobject __unused obj, jboolean fast) {
