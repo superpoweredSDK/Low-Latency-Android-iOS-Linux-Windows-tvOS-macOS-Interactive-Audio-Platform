@@ -304,8 +304,12 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
             };
         }
     };
-
+#ifdef ALLOW_BLUETOOTH
+    if (multiRoute)  [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryMultiRoute error:NULL];
+    else [[AVAudioSession sharedInstance] setCategory:audioSessionCategory withOptions:AVAudioSessionCategoryOptionAllowBluetooth | AVAudioSessionCategoryOptionAllowBluetoothA2DP error:NULL];
+#else
     [[AVAudioSession sharedInstance] setCategory:multiRoute ? AVAudioSessionCategoryMultiRoute : audioSessionCategory error:NULL];
+#endif
     [[AVAudioSession sharedInstance] setMode:AVAudioSessionModeDefault error:NULL];
     [self setSamplerateAndBuffersize];
     [[AVAudioSession sharedInstance] setActive:YES error:NULL];
@@ -340,7 +344,6 @@ static OSStatus coreAudioProcessingCallback(void *inRefCon, AudioUnitRenderActio
 
     // Get audio input.
     unsigned int inputChannels = (self->inputEnabled && !AudioUnitRender(self->audioUnit, ioActionFlags, inTimeStamp, 1, inNumberFrames, ioData)) ? self->numChannels : 0;
-
     float *bufs[self->numChannels];
     for (int n = 0; n < self->numChannels; n++) bufs[n] = (float *)ioData->mBuffers[n].mData;
     bool silence = true;

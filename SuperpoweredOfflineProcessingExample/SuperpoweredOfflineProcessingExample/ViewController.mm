@@ -81,9 +81,9 @@
     filter->enable(true);
 
     // Create a buffer for the 16-bit integer samples coming from the decoder.
-    short int *intBuffer = (short int *)malloc(decoder->samplesPerFrame * 2 * sizeof(short int) + 16384);
+    short int *intBuffer = (short int *)malloc(decoder->samplesPerFrame * 2 * sizeof(short int) + 32768);
     // Create a buffer for the 32-bit floating point samples required by the effect.
-    float *floatBuffer = (float *)malloc(decoder->samplesPerFrame * 2 * sizeof(float) + 16384);
+    float *floatBuffer = (float *)malloc(decoder->samplesPerFrame * 2 * sizeof(float) + 32768);
 
     // Processing.
     while (true) {
@@ -152,7 +152,7 @@
     SuperpoweredAudiopointerList *outputBuffers = new SuperpoweredAudiopointerList(8, 16);
 
     // Create a buffer for the 16-bit integer samples.
-    short int *intBuffer = (short int *)malloc(decoder->samplesPerFrame * 2 * sizeof(short int) + 16384);
+    short int *intBuffer = (short int *)malloc(decoder->samplesPerFrame * 2 * sizeof(short int) + 32768);
 
     // Processing.
     while (true) {
@@ -226,9 +226,9 @@
     SuperpoweredOfflineAnalyzer *analyzer = new SuperpoweredOfflineAnalyzer(decoder->samplerate, 0, decoder->durationSeconds);
 
     // Create a buffer for the 16-bit integer samples coming from the decoder.
-    short int *intBuffer = (short int *)malloc(decoder->samplesPerFrame * 2 * sizeof(short int) + 16384);
+    short int *intBuffer = (short int *)malloc(decoder->samplesPerFrame * 2 * sizeof(short int) + 32768);
     // Create a buffer for the 32-bit floating point samples required by the effect.
-    float *floatBuffer = (float *)malloc(decoder->samplesPerFrame * 2 * sizeof(float) + 16384);
+    float *floatBuffer = (float *)malloc(decoder->samplesPerFrame * 2 * sizeof(float) + 32768);
 
     // Processing.
     while (true) {

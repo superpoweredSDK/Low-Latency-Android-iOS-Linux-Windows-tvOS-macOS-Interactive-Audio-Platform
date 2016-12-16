@@ -50,6 +50,9 @@ SuperpoweredExample::~SuperpoweredExample() {
     delete audioSystem;
     delete playerA;
     delete playerB;
+    delete roll;
+    delete filter;
+    delete flanger;
     free(stereoBuffer);
 }
 

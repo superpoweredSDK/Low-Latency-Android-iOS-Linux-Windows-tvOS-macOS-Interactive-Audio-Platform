@@ -26,6 +26,7 @@ public:
 	void onFxSelect(int value);
 	void onFxOff();
 	void onFxValue(int value);
+    void onEQBand(unsigned int index, int gain);
 
 private:
     SuperpoweredAndroidAudioIO *audioSystem;

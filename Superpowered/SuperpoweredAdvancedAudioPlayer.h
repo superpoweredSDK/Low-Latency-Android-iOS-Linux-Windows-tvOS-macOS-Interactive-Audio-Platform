@@ -218,8 +218,9 @@ public:
  @param samplerate The current samplerate.
  @param cachedPointCount Sets how many positions can be cached in the memory. Jumping to a cached point happens with 0 latency. Loops are automatically cached.
  @param internalBufferSizeSeconds The number of seconds to buffer internally for playback and cached points. Minimum 2, maximum 60. Default: 2.
+ @param negativeSeconds The number of seconds of silence in the negative direction, before the beginning of the track.
 */
-    SuperpoweredAdvancedAudioPlayer(void *clientData, SuperpoweredAdvancedAudioPlayerCallback callback, unsigned int samplerate, unsigned int cachedPointCount, unsigned int internalBufferSizeSeconds = 2);
+    SuperpoweredAdvancedAudioPlayer(void *clientData, SuperpoweredAdvancedAudioPlayerCallback callback, unsigned int samplerate, unsigned int cachedPointCount, unsigned int internalBufferSizeSeconds = 2, unsigned int negativeSeconds = 0);
     ~SuperpoweredAdvancedAudioPlayer();
 /**
  @brief Opens a new audio file, with playback paused. 
@@ -305,8 +306,10 @@ public:
     bool loopBetween(double startMs, double endMs, bool jumpToStartMs, unsigned char pointID, bool synchronisedStart);
 /**
  @brief Exits from the current loop.
+ 
+ @param synchronisedStart Synchronized start after the loop exit.
  */
-    void exitLoop();
+    void exitLoop(bool synchronisedStart = false);
 /**
  @brief Checks if ms fall into the current loop.
  
@@ -331,9 +334,9 @@ public:
  @brief Shows you where the closest beat is to a specific position.
  
  @param ms The position in milliseconds.
- @param beatIndex Set to 0 if beat index is not important, 1-4 otherwise.
+ @param beatIndex Pointer to a beat index value. Set to NULL if beat index is not important. Set to 0 if you want to retrieve the beat index of the position. Set to 1-4 if beat index is important.
 */
-    double closestBeatMs(double ms, unsigned char beatIndex);
+    double closestBeatMs(double ms, unsigned char *beatIndex);
     
 /**
  @brief "Virtual jog wheel" or "virtual turntable" handling. 
