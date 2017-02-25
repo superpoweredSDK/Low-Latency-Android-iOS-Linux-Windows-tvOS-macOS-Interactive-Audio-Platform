@@ -1,5 +1,5 @@
-#ifndef Header__SuperpoweredAnalyzer
-#define Header__SuperpoweredAnalyzer
+#ifndef Header_SuperpoweredAnalyzer
+#define Header_SuperpoweredAnalyzer
 
 #define SUPERPOWERED_WAVEFORM_POINTS_PER_SEC 150
 

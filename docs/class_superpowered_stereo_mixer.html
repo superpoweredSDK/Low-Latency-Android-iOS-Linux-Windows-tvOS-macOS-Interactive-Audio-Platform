@@ -18,9 +18,9 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.0.1</span>
+   &#160;<span id="projectnumber">1.0.2</span>
    </div>
-   <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
+   <div id="projectbrief">Pain-free Audio Infrastructure for iOS, Android, Mac OSX and Linux</div>
   </td>
  </tr>
  </tbody>
@@ -58,10 +58,11 @@
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a96b3998d77c67f254cb7e22a8325325c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a96b3998d77c67f254cb7e22a8325325c"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_stereo_mixer.html#a96b3998d77c67f254cb7e22a8325325c">SuperpoweredStereoMixer</a> ()</td></tr>
-<tr class="memdesc:a96b3998d77c67f254cb7e22a8325325c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a stereo mixer instance. <br /></td></tr>
+<tr class="memitem:a96b3998d77c67f254cb7e22a8325325c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_stereo_mixer.html#a96b3998d77c67f254cb7e22a8325325c">SuperpoweredStereoMixer</a> ()</td></tr>
+<tr class="memdesc:a96b3998d77c67f254cb7e22a8325325c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a stereo mixer instance.  <a href="#a96b3998d77c67f254cb7e22a8325325c">More...</a><br /></td></tr>
 <tr class="separator:a96b3998d77c67f254cb7e22a8325325c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af910d05a42ad614e677c97a3e060c6de"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_stereo_mixer.html#af910d05a42ad614e677c97a3e060c6de">~SuperpoweredStereoMixer</a> ()</td></tr>
+<tr class="separator:af910d05a42ad614e677c97a3e060c6de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d536046ca8182f1ef8542251bf86806"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_stereo_mixer.html#a1d536046ca8182f1ef8542251bf86806">process</a> (float *inputs[4], float *outputs[2], float inputLevels[8], float outputLevels[2], float inputMeters[8], float outputMeters[2], unsigned int numberOfSamples)</td></tr>
 <tr class="memdesc:a1d536046ca8182f1ef8542251bf86806"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mixes max. 4 interleaved stereo inputs into a stereo output.  <a href="#a1d536046ca8182f1ef8542251bf86806">More...</a><br /></td></tr>
 <tr class="separator:a1d536046ca8182f1ef8542251bf86806"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -70,9 +71,43 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aa828c180846291625227d656e9b63e54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Mixes max. 4 interleaved stereo inputs together. Output can be interleaved or non-interleaved (split). Separate input channel levels (good for gain and pan), separate output channel levels (master gain and pan). Returns maximum values for metering.</p>
+<div class="textblock"><p>Mixer and splitter. </p>
+<p>Mixes max. 4 interleaved stereo inputs together. Output can be interleaved or non-interleaved (split). Separate input channel levels (good for gain and pan), separate output channel levels (master gain and pan). Returns maximum values for metering.</p>
 <p>One instance allocates just a few bytes of memory. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a96b3998d77c67f254cb7e22a8325325c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SuperpoweredStereoMixer::SuperpoweredStereoMixer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates a stereo mixer instance. </p>
+
+</div>
+</div>
+<a class="anchor" id="af910d05a42ad614e677c97a3e060c6de"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SuperpoweredStereoMixer::~SuperpoweredStereoMixer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a1d536046ca8182f1ef8542251bf86806"></a>
 <div class="memitem">
 <div class="memproto">
@@ -126,6 +161,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Mixes max. 4 interleaved stereo inputs into a stereo output. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">inputs</td><td>Four pointers to stereo interleaved input buffers. Any pointer can be NULL. </td></tr>
@@ -182,6 +219,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Mixes max. 4 interleaved stereo channels into a stereo output and changes volume in the channels as well. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">channels</td><td>Four pointers to stereo interleaved input/output buffers. Every pointer should not be NULL. </td></tr>
@@ -195,12 +234,7 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/<a class="el" href="_superpowered_mixer_8h_source.html">SuperpoweredMixer.h</a></li>
+</ul>
 </div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.7
-</small></address>
-</body>
-</html>

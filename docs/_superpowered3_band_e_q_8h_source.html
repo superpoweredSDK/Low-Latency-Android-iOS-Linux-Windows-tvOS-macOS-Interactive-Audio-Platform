@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.7"/>
-<title>Superpowered: Superpowered3BandEQ.h Source File</title>
+<title>Superpowered: /Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/Superpowered3BandEQ.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -18,9 +18,9 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.0.1</span>
+   &#160;<span id="projectnumber">1.0.2</span>
    </div>
-   <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
+   <div id="projectbrief">Pain-free Audio Infrastructure for iOS, Android, Mac OSX and Linux</div>
   </td>
  </tr>
  </tbody>
@@ -41,26 +41,30 @@
       <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_9662013f0ffc9b7f055f98fe8981fec6.html">SuperpoweredSDK</a></li><li class="navelem"><a class="el" href="dir_35bee368f85ebda59b1084bf3af9e072.html">Superpowered</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">Superpowered3BandEQ.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef Header_Superpowered3BandEQ</span></div>
+<a href="_superpowered3_band_e_q_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef Header_Superpowered3BandEQ</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define Header_Superpowered3BandEQ</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;SuperpoweredFX.h&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_superpowered_f_x_8h.html">SuperpoweredFX.h</a>&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">struct </span>eqInternals;</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
 <div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_superpowered3_band_e_q.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_superpowered3_band_e_q.html">Superpowered3BandEQ</a>: <span class="keyword">public</span> <a class="code" href="class_superpowered_f_x.html">SuperpoweredFX</a> {</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">float</span> bands[3]; <span class="comment">// READ-WRITE parameter.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_superpowered3_band_e_q.html#abb71542b51c1f374a1474f67cc013857">   17</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="class_superpowered3_band_e_q.html#abb71542b51c1f374a1474f67cc013857">bands</a>[3]; <span class="comment">// READ-WRITE parameter.</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered3_band_e_q.html#a1bce6c9b36f6817e1e5d699cc7c86498">enable</a>(<span class="keywordtype">bool</span> flag);</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    </div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="class_superpowered3_band_e_q.html#a7c346fef574e777488c09990774f0a5c">Superpowered3BandEQ</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> samplerate);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    ~<a class="code" href="class_superpowered3_band_e_q.html">Superpowered3BandEQ</a>();</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="class_superpowered3_band_e_q.html#a1aadf41f33afc0f1d3308b4efb17d9b3">~Superpowered3BandEQ</a>();</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    </div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered3_band_e_q.html#af36b575e7df2b849b8a6a849eb99f8b3">setSamplerate</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> samplerate);</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered3_band_e_q.html#afd09932da4564e671066c0e843b266b8">reset</a>();</div>
@@ -76,17 +80,12 @@
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="class_superpowered3_band_e_q_html_a49d3f505ae87c11f3543b0e5e96aa9db"><div class="ttname"><a href="class_superpowered3_band_e_q.html#a49d3f505ae87c11f3543b0e5e96aa9db">Superpowered3BandEQ::process</a></div><div class="ttdeci">bool process(float *input, float *output, unsigned int numberOfSamples)</div><div class="ttdoc">Processes the audio. </div></div>
 <div class="ttc" id="class_superpowered3_band_e_q_html_a7c346fef574e777488c09990774f0a5c"><div class="ttname"><a href="class_superpowered3_band_e_q.html#a7c346fef574e777488c09990774f0a5c">Superpowered3BandEQ::Superpowered3BandEQ</a></div><div class="ttdeci">Superpowered3BandEQ(unsigned int samplerate)</div><div class="ttdoc">Create an eq instance with the current sample rate value. </div></div>
+<div class="ttc" id="class_superpowered3_band_e_q_html_abb71542b51c1f374a1474f67cc013857"><div class="ttname"><a href="class_superpowered3_band_e_q.html#abb71542b51c1f374a1474f67cc013857">Superpowered3BandEQ::bands</a></div><div class="ttdeci">float bands[3]</div><div class="ttdef"><b>Definition:</b> Superpowered3BandEQ.h:17</div></div>
 <div class="ttc" id="class_superpowered3_band_e_q_html_af36b575e7df2b849b8a6a849eb99f8b3"><div class="ttname"><a href="class_superpowered3_band_e_q.html#af36b575e7df2b849b8a6a849eb99f8b3">Superpowered3BandEQ::setSamplerate</a></div><div class="ttdeci">void setSamplerate(unsigned int samplerate)</div><div class="ttdoc">Sets the sample rate. </div></div>
-<div class="ttc" id="class_superpowered_f_x_html"><div class="ttname"><a href="class_superpowered_f_x.html">SuperpoweredFX</a></div><div class="ttdoc">This is the base class for Superpowered effects. </div><div class="ttdef"><b>Definition:</b> SuperpoweredFX.h:10</div></div>
+<div class="ttc" id="class_superpowered_f_x_html"><div class="ttname"><a href="class_superpowered_f_x.html">SuperpoweredFX</a></div><div class="ttdoc">This is the base class for Superpowered effects. </div><div class="ttdef"><b>Definition:</b> SuperpoweredFX.h:9</div></div>
 <div class="ttc" id="class_superpowered3_band_e_q_html"><div class="ttname"><a href="class_superpowered3_band_e_q.html">Superpowered3BandEQ</a></div><div class="ttdoc">Classic three-band equalizer with unique characteristics and total kills. </div><div class="ttdef"><b>Definition:</b> Superpowered3BandEQ.h:15</div></div>
 <div class="ttc" id="class_superpowered3_band_e_q_html_a1bce6c9b36f6817e1e5d699cc7c86498"><div class="ttname"><a href="class_superpowered3_band_e_q.html#a1bce6c9b36f6817e1e5d699cc7c86498">Superpowered3BandEQ::enable</a></div><div class="ttdeci">void enable(bool flag)</div><div class="ttdoc">Turns the effect on/off. </div></div>
 <div class="ttc" id="class_superpowered3_band_e_q_html_afd09932da4564e671066c0e843b266b8"><div class="ttname"><a href="class_superpowered3_band_e_q.html#afd09932da4564e671066c0e843b266b8">Superpowered3BandEQ::reset</a></div><div class="ttdeci">void reset()</div><div class="ttdoc">Reset all internals, sets the instance as good as new and turns it off. </div></div>
+<div class="ttc" id="class_superpowered3_band_e_q_html_a1aadf41f33afc0f1d3308b4efb17d9b3"><div class="ttname"><a href="class_superpowered3_band_e_q.html#a1aadf41f33afc0f1d3308b4efb17d9b3">Superpowered3BandEQ::~Superpowered3BandEQ</a></div><div class="ttdeci">~Superpowered3BandEQ()</div></div>
+<div class="ttc" id="_superpowered_f_x_8h_html"><div class="ttname"><a href="_superpowered_f_x_8h.html">SuperpoweredFX.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.7
-</small></address>
-</body>
-</html>

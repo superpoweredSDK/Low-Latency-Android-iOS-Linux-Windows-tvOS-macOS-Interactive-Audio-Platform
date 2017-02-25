@@ -18,9 +18,9 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.0.1</span>
+   &#160;<span id="projectnumber">1.0.2</span>
    </div>
-   <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
+   <div id="projectbrief">Pain-free Audio Infrastructure for iOS, Android, Mac OSX and Linux</div>
   </td>
  </tr>
  </tbody>
@@ -59,21 +59,24 @@
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a7618642ac4fa1b07ccb37973043c26a3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_clipper.html#a7618642ac4fa1b07ccb37973043c26a3">SuperpoweredClipper</a> ()</td></tr>
+<tr class="separator:a7618642ac4fa1b07ccb37973043c26a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a039f1b9e3bdf6eee73137a14f158a6c4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_clipper.html#a039f1b9e3bdf6eee73137a14f158a6c4">~SuperpoweredClipper</a> ()</td></tr>
+<tr class="separator:a039f1b9e3bdf6eee73137a14f158a6c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0f5a04dd7860b82fedba12bd956d6ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_clipper.html#ab0f5a04dd7860b82fedba12bd956d6ac">process</a> (float *input, float *output, unsigned int numberOfSamples)</td></tr>
 <tr class="memdesc:ab0f5a04dd7860b82fedba12bd956d6ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes the audio.  <a href="#ab0f5a04dd7860b82fedba12bd956d6ac">More...</a><br /></td></tr>
 <tr class="separator:ab0f5a04dd7860b82fedba12bd956d6ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a5dd06794e8c7254fa19241cbc38ef074"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5dd06794e8c7254fa19241cbc38ef074"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>thresholdDb</b></td></tr>
+<tr class="memitem:a5dd06794e8c7254fa19241cbc38ef074"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_clipper.html#a5dd06794e8c7254fa19241cbc38ef074">thresholdDb</a></td></tr>
 <tr class="separator:a5dd06794e8c7254fa19241cbc38ef074"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf9117433fcaffc8a523be93100db0db"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abf9117433fcaffc8a523be93100db0db"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>maximumDb</b></td></tr>
+<tr class="memitem:abf9117433fcaffc8a523be93100db0db"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_clipper.html#abf9117433fcaffc8a523be93100db0db">maximumDb</a></td></tr>
 <tr class="separator:abf9117433fcaffc8a523be93100db0db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>It doesn't allocate any internal buffers and needs just a few bytes of memory.</p>
+<div class="textblock"><p>Hard knee clipping with 0 latency. </p>
+<p>It doesn't allocate any internal buffers and needs just a few bytes of memory.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">thresholdDb</td><td>Audio below this will be unchanged, above this will be attenuated. Limited between -100.0f and 0.0f. </td></tr>
@@ -81,7 +84,38 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>maximumDb</b></td></
   </table>
   </dd>
 </dl>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a7618642ac4fa1b07ccb37973043c26a3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SuperpoweredClipper::SuperpoweredClipper </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a039f1b9e3bdf6eee73137a14f158a6c4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SuperpoweredClipper::~SuperpoweredClipper </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="ab0f5a04dd7860b82fedba12bd956d6ac"></a>
 <div class="memitem">
 <div class="memproto">
@@ -111,6 +145,8 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>maximumDb</b></td></
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Processes the audio. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">input</td><td>32-bit interleaved stereo input buffer. Can point to the same location with output (in-place processing). </td></tr>
@@ -122,12 +158,32 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>maximumDb</b></td></
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="abf9117433fcaffc8a523be93100db0db"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float SuperpoweredClipper::maximumDb</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a5dd06794e8c7254fa19241cbc38ef074"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float SuperpoweredClipper::thresholdDb</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/<a class="el" href="_superpowered_clipper_8h_source.html">SuperpoweredClipper.h</a></li>
+</ul>
 </div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.7
-</small></address>
-</body>
-</html>

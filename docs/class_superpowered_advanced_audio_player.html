@@ -18,9 +18,9 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.0.1</span>
+   &#160;<span id="projectnumber">1.0.2</span>
    </div>
-   <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
+   <div id="projectbrief">Pain-free Audio Infrastructure for iOS, Android, Mac OSX and Linux</div>
   </td>
  </tr>
  </tbody>
@@ -60,9 +60,11 @@
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a18a43566246fba7fc52d8bc8d704cd8a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a18a43566246fba7fc52d8bc8d704cd8a">SuperpoweredAdvancedAudioPlayer</a> (void *clientData, SuperpoweredAdvancedAudioPlayerCallback callback, unsigned int samplerate, unsigned int cachedPointCount, unsigned int internalBufferSizeSeconds=2, unsigned int negativeSeconds=0)</td></tr>
+<tr class="memitem:a18a43566246fba7fc52d8bc8d704cd8a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a18a43566246fba7fc52d8bc8d704cd8a">SuperpoweredAdvancedAudioPlayer</a> (void *clientData, <a class="el" href="_superpowered_advanced_audio_player_8h.html#ada5d090f8447d736bb8ac2b1927a8021">SuperpoweredAdvancedAudioPlayerCallback</a> callback, unsigned int samplerate, unsigned int cachedPointCount, unsigned int internalBufferSizeSeconds=2, unsigned int negativeSeconds=0)</td></tr>
 <tr class="memdesc:a18a43566246fba7fc52d8bc8d704cd8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a player instance with the current sample rate value.  <a href="#a18a43566246fba7fc52d8bc8d704cd8a">More...</a><br /></td></tr>
 <tr class="separator:a18a43566246fba7fc52d8bc8d704cd8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac56489851f514cb95ef6cc0cb6979a1c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#ac56489851f514cb95ef6cc0cb6979a1c">~SuperpoweredAdvancedAudioPlayer</a> ()</td></tr>
+<tr class="separator:ac56489851f514cb95ef6cc0cb6979a1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa89c18c1abe220991b73d64aef3e2bc6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#aa89c18c1abe220991b73d64aef3e2bc6">open</a> (const char *path, char **customHTTPHeaders=0)</td></tr>
 <tr class="memdesc:aa89c18c1abe220991b73d64aef3e2bc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a new audio file, with playback paused.  <a href="#aa89c18c1abe220991b73d64aef3e2bc6">More...</a><br /></td></tr>
 <tr class="separator:aa89c18c1abe220991b73d64aef3e2bc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -75,13 +77,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a78a17466269d4ff682ecaba541724d9b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a78a17466269d4ff682ecaba541724d9b">pause</a> (float decelerateSeconds=0, unsigned int slipMs=0)</td></tr>
 <tr class="memdesc:a78a17466269d4ff682ecaba541724d9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pause playback.  <a href="#a78a17466269d4ff682ecaba541724d9b">More...</a><br /></td></tr>
 <tr class="separator:a78a17466269d4ff682ecaba541724d9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac72c412ef5bee200bd7c90d4abafa3f6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac72c412ef5bee200bd7c90d4abafa3f6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#ac72c412ef5bee200bd7c90d4abafa3f6">togglePlayback</a> ()</td></tr>
-<tr class="memdesc:ac72c412ef5bee200bd7c90d4abafa3f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggle play/pause. <br /></td></tr>
+<tr class="memitem:ac72c412ef5bee200bd7c90d4abafa3f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#ac72c412ef5bee200bd7c90d4abafa3f6">togglePlayback</a> ()</td></tr>
+<tr class="memdesc:ac72c412ef5bee200bd7c90d4abafa3f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggle play/pause.  <a href="#ac72c412ef5bee200bd7c90d4abafa3f6">More...</a><br /></td></tr>
 <tr class="separator:ac72c412ef5bee200bd7c90d4abafa3f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab8ae38606f72c79ece0a92be2eeec729"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab8ae38606f72c79ece0a92be2eeec729"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#ab8ae38606f72c79ece0a92be2eeec729">seek</a> (double percent)</td></tr>
-<tr class="memdesc:ab8ae38606f72c79ece0a92be2eeec729"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simple seeking to a percentage. <br /></td></tr>
+<tr class="memitem:ab8ae38606f72c79ece0a92be2eeec729"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#ab8ae38606f72c79ece0a92be2eeec729">seek</a> (double percent)</td></tr>
+<tr class="memdesc:ab8ae38606f72c79ece0a92be2eeec729"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simple seeking to a percentage.  <a href="#ab8ae38606f72c79ece0a92be2eeec729">More...</a><br /></td></tr>
 <tr class="separator:ab8ae38606f72c79ece0a92be2eeec729"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7cc9eb513c1a9761f58033908cd8aaa1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a7cc9eb513c1a9761f58033908cd8aaa1">setPosition</a> (double ms, bool andStop, bool synchronisedStart)</td></tr>
 <tr class="memdesc:a7cc9eb513c1a9761f58033908cd8aaa1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Precise seeking.  <a href="#a7cc9eb513c1a9761f58033908cd8aaa1">More...</a><br /></td></tr>
@@ -107,10 +107,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a4fbae56279945d88be4fe93ec1104063"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a4fbae56279945d88be4fe93ec1104063">setFirstBeatMs</a> (double ms)</td></tr>
 <tr class="memdesc:a4fbae56279945d88be4fe93ec1104063"><td class="mdescLeft">&#160;</td><td class="mdescRight">Beat-sync works only if the first beat's position is known. Set it here.  <a href="#a4fbae56279945d88be4fe93ec1104063">More...</a><br /></td></tr>
 <tr class="separator:a4fbae56279945d88be4fe93ec1104063"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a863a7141c807b2eef98d0b900ce3bb5e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a863a7141c807b2eef98d0b900ce3bb5e">closestBeatMs</a> (double ms, unsigned char *beatIndex)</td></tr>
+<tr class="memitem:a863a7141c807b2eef98d0b900ce3bb5e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a863a7141c807b2eef98d0b900ce3bb5e">closestBeatMs</a> (double ms, unsigned char *<a class="el" href="class_superpowered_advanced_audio_player.html#acf4d29457881f3817f3f1db39ff9b677">beatIndex</a>)</td></tr>
 <tr class="memdesc:a863a7141c807b2eef98d0b900ce3bb5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shows you where the closest beat is to a specific position.  <a href="#a863a7141c807b2eef98d0b900ce3bb5e">More...</a><br /></td></tr>
 <tr class="separator:a863a7141c807b2eef98d0b900ce3bb5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa281903a538f79cbf4d6a9b04d1665e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#aa281903a538f79cbf4d6a9b04d1665e6">jogTouchBegin</a> (int ticksPerTurn, SuperpoweredAdvancedAudioPlayerJogMode mode, unsigned int scratchSlipMs)</td></tr>
+<tr class="memitem:aa281903a538f79cbf4d6a9b04d1665e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#aa281903a538f79cbf4d6a9b04d1665e6">jogTouchBegin</a> (int ticksPerTurn, <a class="el" href="_superpowered_advanced_audio_player_8h.html#af087b9048901241abde7b2bf41d6d9c1">SuperpoweredAdvancedAudioPlayerJogMode</a> mode, unsigned int scratchSlipMs)</td></tr>
 <tr class="memdesc:aa281903a538f79cbf4d6a9b04d1665e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">"Virtual jog wheel" or "virtual turntable" handling.  <a href="#aa281903a538f79cbf4d6a9b04d1665e6">More...</a><br /></td></tr>
 <tr class="separator:aa281903a538f79cbf4d6a9b04d1665e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a80f42efde112dd369f383555daf6f422"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a80f42efde112dd369f383555daf6f422">jogTick</a> (int value, bool bendStretch, float bendMaxPercent, unsigned int bendHoldMs, bool parameterMode)</td></tr>
@@ -119,24 +119,23 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a14366cf970bd7d21d9ea04934a23d76c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a14366cf970bd7d21d9ea04934a23d76c">jogTouchEnd</a> (float decelerate, bool synchronisedStart)</td></tr>
 <tr class="memdesc:a14366cf970bd7d21d9ea04934a23d76c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this when the jog touch ends.  <a href="#a14366cf970bd7d21d9ea04934a23d76c">More...</a><br /></td></tr>
 <tr class="separator:a14366cf970bd7d21d9ea04934a23d76c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a209579fba6164afb75e7d714737b537c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a209579fba6164afb75e7d714737b537c">setTempo</a> (double tempo, bool masterTempo)</td></tr>
+<tr class="memitem:a209579fba6164afb75e7d714737b537c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a209579fba6164afb75e7d714737b537c">setTempo</a> (double <a class="el" href="class_superpowered_advanced_audio_player.html#a228309c458a5e7c8ab3dc5809855821b">tempo</a>, bool <a class="el" href="class_superpowered_advanced_audio_player.html#a409f7bba39bd9ebef240b2fdbaae9e8d">masterTempo</a>)</td></tr>
 <tr class="memdesc:a209579fba6164afb75e7d714737b537c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the relative tempo of the playback.  <a href="#a209579fba6164afb75e7d714737b537c">More...</a><br /></td></tr>
 <tr class="separator:a209579fba6164afb75e7d714737b537c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab6d79450ba83b760fd5721af4b9b28a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#ab6d79450ba83b760fd5721af4b9b28a1">setPitchShift</a> (int pitchShift)</td></tr>
+<tr class="memitem:ab6d79450ba83b760fd5721af4b9b28a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#ab6d79450ba83b760fd5721af4b9b28a1">setPitchShift</a> (int <a class="el" href="class_superpowered_advanced_audio_player.html#a64d2b25e485265913a39dad735fc2a48">pitchShift</a>)</td></tr>
 <tr class="memdesc:ab6d79450ba83b760fd5721af4b9b28a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the pitch shift value. Needs masterTempo enabled.  <a href="#ab6d79450ba83b760fd5721af4b9b28a1">More...</a><br /></td></tr>
 <tr class="separator:ab6d79450ba83b760fd5721af4b9b28a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb26ec22146323e50dfc366084c00555"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#abb26ec22146323e50dfc366084c00555">setPitchShiftCents</a> (int pitchShiftCents)</td></tr>
+<tr class="memitem:abb26ec22146323e50dfc366084c00555"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#abb26ec22146323e50dfc366084c00555">setPitchShiftCents</a> (int <a class="el" href="class_superpowered_advanced_audio_player.html#afb75752a79d576fd40801f7fd03bd33e">pitchShiftCents</a>)</td></tr>
 <tr class="memdesc:abb26ec22146323e50dfc366084c00555"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the pitch shift value with greater precision. Calling this method requires magnitudes more CPU than setPitchShift.  <a href="#abb26ec22146323e50dfc366084c00555">More...</a><br /></td></tr>
 <tr class="separator:abb26ec22146323e50dfc366084c00555"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e173db9b802f2cdfc953d6117246ea8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a8e173db9b802f2cdfc953d6117246ea8">setReverse</a> (bool reverse, unsigned int slipMs)</td></tr>
+<tr class="memitem:a8e173db9b802f2cdfc953d6117246ea8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a8e173db9b802f2cdfc953d6117246ea8">setReverse</a> (bool <a class="el" href="class_superpowered_advanced_audio_player.html#ab05053ee0d049e24acdd74413eb0a067">reverse</a>, unsigned int slipMs)</td></tr>
 <tr class="memdesc:a8e173db9b802f2cdfc953d6117246ea8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets playback direction.  <a href="#a8e173db9b802f2cdfc953d6117246ea8">More...</a><br /></td></tr>
 <tr class="separator:a8e173db9b802f2cdfc953d6117246ea8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26467a6ea38b8a38a01cb9cf3dffe7ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a26467a6ea38b8a38a01cb9cf3dffe7ff">pitchBend</a> (float maxPercent, bool bendStretch, bool faster, unsigned int holdMs)</td></tr>
 <tr class="memdesc:a26467a6ea38b8a38a01cb9cf3dffe7ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pitch bend (temporary tempo change).  <a href="#a26467a6ea38b8a38a01cb9cf3dffe7ff">More...</a><br /></td></tr>
 <tr class="separator:a26467a6ea38b8a38a01cb9cf3dffe7ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a867d9125d0fc8616b267a0775e39cf07"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a867d9125d0fc8616b267a0775e39cf07"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a867d9125d0fc8616b267a0775e39cf07">endContinuousPitchBend</a> ()</td></tr>
-<tr class="memdesc:a867d9125d0fc8616b267a0775e39cf07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ends pitch bend. <br /></td></tr>
+<tr class="memitem:a867d9125d0fc8616b267a0775e39cf07"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a867d9125d0fc8616b267a0775e39cf07">endContinuousPitchBend</a> ()</td></tr>
+<tr class="memdesc:a867d9125d0fc8616b267a0775e39cf07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ends pitch bend.  <a href="#a867d9125d0fc8616b267a0775e39cf07">More...</a><br /></td></tr>
 <tr class="separator:a867d9125d0fc8616b267a0775e39cf07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4151f9ec2e00fd3de7c7bbd4845661af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a4151f9ec2e00fd3de7c7bbd4845661af">startScratch</a> (unsigned int slipMs, bool stopImmediately)</td></tr>
 <tr class="memdesc:a4151f9ec2e00fd3de7c7bbd4845661af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call when scratching starts.  <a href="#a4151f9ec2e00fd3de7c7bbd4845661af">More...</a><br /></td></tr>
@@ -147,9 +146,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a1e209a757de737fb450295dbbf6d7e83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a1e209a757de737fb450295dbbf6d7e83">endScratch</a> (bool returnToStateBeforeScratch)</td></tr>
 <tr class="memdesc:a1e209a757de737fb450295dbbf6d7e83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ends scratching.  <a href="#a1e209a757de737fb450295dbbf6d7e83">More...</a><br /></td></tr>
 <tr class="separator:a1e209a757de737fb450295dbbf6d7e83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac78737adad9c6f4b733c263bb04d0986"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac78737adad9c6f4b733c263bb04d0986"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#ac78737adad9c6f4b733c263bb04d0986">lastProcessMs</a> ()</td></tr>
-<tr class="memdesc:ac78737adad9c6f4b733c263bb04d0986"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the last <a class="el" href="class_superpowered_advanced_audio_player.html#adf07eaeeb9a86836325aa5677a034ede" title="Processes the audio, stereo version. ">process()</a> numberOfSamples converted to milliseconds. <br /></td></tr>
+<tr class="memitem:ac78737adad9c6f4b733c263bb04d0986"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#ac78737adad9c6f4b733c263bb04d0986">lastProcessMs</a> ()</td></tr>
+<tr class="memdesc:ac78737adad9c6f4b733c263bb04d0986"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the last <a class="el" href="class_superpowered_advanced_audio_player.html#adf07eaeeb9a86836325aa5677a034ede" title="Processes the audio, stereo version. ">process()</a> numberOfSamples converted to milliseconds.  <a href="#ac78737adad9c6f4b733c263bb04d0986">More...</a><br /></td></tr>
 <tr class="separator:ac78737adad9c6f4b733c263bb04d0986"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acee23ff2aee1da7b01f71afa8f24b3c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#acee23ff2aee1da7b01f71afa8f24b3c1">setSamplerate</a> (unsigned int samplerate)</td></tr>
 <tr class="memdesc:acee23ff2aee1da7b01f71afa8f24b3c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the sample rate.  <a href="#acee23ff2aee1da7b01f71afa8f24b3c1">More...</a><br /></td></tr>
@@ -169,118 +167,84 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a1e7c8628aef83898eca5e572204d24bd"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a1e7c8628aef83898eca5e572204d24bd">setTempFolder</a> (const char *path)</td></tr>
 <tr class="memdesc:a1e7c8628aef83898eca5e572204d24bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the folder path for temporary files. Used for HLS only.  <a href="#a1e7c8628aef83898eca5e572204d24bd">More...</a><br /></td></tr>
 <tr class="separator:a1e7c8628aef83898eca5e572204d24bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e9915a31077c584b29d976e8789f7ca"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6e9915a31077c584b29d976e8789f7ca"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a6e9915a31077c584b29d976e8789f7ca">clearTempFolder</a> ()</td></tr>
-<tr class="memdesc:a6e9915a31077c584b29d976e8789f7ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove the temp folder. Use this when your program ends. <br /></td></tr>
+<tr class="memitem:a6e9915a31077c584b29d976e8789f7ca"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a6e9915a31077c584b29d976e8789f7ca">clearTempFolder</a> ()</td></tr>
+<tr class="memdesc:a6e9915a31077c584b29d976e8789f7ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove the temp folder. Use this when your program ends.  <a href="#a6e9915a31077c584b29d976e8789f7ca">More...</a><br /></td></tr>
 <tr class="separator:a6e9915a31077c584b29d976e8789f7ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a7b2873dee08939499ccd72e4fc777d6f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7b2873dee08939499ccd72e4fc777d6f"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>positionMs</b></td></tr>
+<tr class="memitem:a7b2873dee08939499ccd72e4fc777d6f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a7b2873dee08939499ccd72e4fc777d6f">positionMs</a></td></tr>
 <tr class="separator:a7b2873dee08939499ccd72e4fc777d6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d497849df6ab9c2d92cb08a00759d11"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3d497849df6ab9c2d92cb08a00759d11"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>positionPercent</b></td></tr>
+<tr class="memitem:a3d497849df6ab9c2d92cb08a00759d11"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a3d497849df6ab9c2d92cb08a00759d11">positionPercent</a></td></tr>
 <tr class="separator:a3d497849df6ab9c2d92cb08a00759d11"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a315a8a3fc27e22d0b998c8bd2890f15e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a315a8a3fc27e22d0b998c8bd2890f15e"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>positionSeconds</b></td></tr>
+<tr class="memitem:a315a8a3fc27e22d0b998c8bd2890f15e"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a315a8a3fc27e22d0b998c8bd2890f15e">positionSeconds</a></td></tr>
 <tr class="separator:a315a8a3fc27e22d0b998c8bd2890f15e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1afb7ed93c27b949504545c0888ce623"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1afb7ed93c27b949504545c0888ce623"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>displayPositionMs</b></td></tr>
+<tr class="memitem:a1afb7ed93c27b949504545c0888ce623"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a1afb7ed93c27b949504545c0888ce623">displayPositionMs</a></td></tr>
 <tr class="separator:a1afb7ed93c27b949504545c0888ce623"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8010242b557d23ef302bfc886e095dde"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8010242b557d23ef302bfc886e095dde"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>durationMs</b></td></tr>
+<tr class="memitem:a8010242b557d23ef302bfc886e095dde"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a8010242b557d23ef302bfc886e095dde">durationMs</a></td></tr>
 <tr class="separator:a8010242b557d23ef302bfc886e095dde"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a80aae242b7875dac7dd01f142dc859c7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a80aae242b7875dac7dd01f142dc859c7"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>durationSeconds</b></td></tr>
+<tr class="memitem:a80aae242b7875dac7dd01f142dc859c7"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a80aae242b7875dac7dd01f142dc859c7">durationSeconds</a></td></tr>
 <tr class="separator:a80aae242b7875dac7dd01f142dc859c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea057b7cef6cbfda0a44b011d0f32bbe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aea057b7cef6cbfda0a44b011d0f32bbe"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>waitingForBuffering</b></td></tr>
+<tr class="memitem:aea057b7cef6cbfda0a44b011d0f32bbe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#aea057b7cef6cbfda0a44b011d0f32bbe">waitingForBuffering</a></td></tr>
 <tr class="separator:aea057b7cef6cbfda0a44b011d0f32bbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a344f312201332134f5ce0440d91888ca"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a344f312201332134f5ce0440d91888ca"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>playing</b></td></tr>
+<tr class="memitem:a344f312201332134f5ce0440d91888ca"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a344f312201332134f5ce0440d91888ca">playing</a></td></tr>
 <tr class="separator:a344f312201332134f5ce0440d91888ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a228309c458a5e7c8ab3dc5809855821b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a228309c458a5e7c8ab3dc5809855821b"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>tempo</b></td></tr>
+<tr class="memitem:a228309c458a5e7c8ab3dc5809855821b"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a228309c458a5e7c8ab3dc5809855821b">tempo</a></td></tr>
 <tr class="separator:a228309c458a5e7c8ab3dc5809855821b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a409f7bba39bd9ebef240b2fdbaae9e8d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a409f7bba39bd9ebef240b2fdbaae9e8d"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>masterTempo</b></td></tr>
+<tr class="memitem:a409f7bba39bd9ebef240b2fdbaae9e8d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a409f7bba39bd9ebef240b2fdbaae9e8d">masterTempo</a></td></tr>
 <tr class="separator:a409f7bba39bd9ebef240b2fdbaae9e8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64d2b25e485265913a39dad735fc2a48"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a64d2b25e485265913a39dad735fc2a48"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>pitchShift</b></td></tr>
+<tr class="memitem:a64d2b25e485265913a39dad735fc2a48"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a64d2b25e485265913a39dad735fc2a48">pitchShift</a></td></tr>
 <tr class="separator:a64d2b25e485265913a39dad735fc2a48"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb75752a79d576fd40801f7fd03bd33e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afb75752a79d576fd40801f7fd03bd33e"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>pitchShiftCents</b></td></tr>
+<tr class="memitem:afb75752a79d576fd40801f7fd03bd33e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#afb75752a79d576fd40801f7fd03bd33e">pitchShiftCents</a></td></tr>
 <tr class="separator:afb75752a79d576fd40801f7fd03bd33e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63b396340565bd33c3f250686dfaf8b0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a63b396340565bd33c3f250686dfaf8b0"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>bpm</b></td></tr>
+<tr class="memitem:a63b396340565bd33c3f250686dfaf8b0"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a63b396340565bd33c3f250686dfaf8b0">bpm</a></td></tr>
 <tr class="separator:a63b396340565bd33c3f250686dfaf8b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abdced97b0c43714b64ecbadafd531cb6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abdced97b0c43714b64ecbadafd531cb6"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>currentBpm</b></td></tr>
+<tr class="memitem:abdced97b0c43714b64ecbadafd531cb6"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#abdced97b0c43714b64ecbadafd531cb6">currentBpm</a></td></tr>
 <tr class="separator:abdced97b0c43714b64ecbadafd531cb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0cd9bbfd9de8eeb683848c5d2699f81"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab0cd9bbfd9de8eeb683848c5d2699f81"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>slip</b></td></tr>
+<tr class="memitem:ab0cd9bbfd9de8eeb683848c5d2699f81"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#ab0cd9bbfd9de8eeb683848c5d2699f81">slip</a></td></tr>
 <tr class="separator:ab0cd9bbfd9de8eeb683848c5d2699f81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a602ec1522d6cdab001e240f431061839"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a602ec1522d6cdab001e240f431061839"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>scratching</b></td></tr>
+<tr class="memitem:a602ec1522d6cdab001e240f431061839"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a602ec1522d6cdab001e240f431061839">scratching</a></td></tr>
 <tr class="separator:a602ec1522d6cdab001e240f431061839"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab05053ee0d049e24acdd74413eb0a067"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab05053ee0d049e24acdd74413eb0a067"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>reverse</b></td></tr>
+<tr class="memitem:ab05053ee0d049e24acdd74413eb0a067"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#ab05053ee0d049e24acdd74413eb0a067">reverse</a></td></tr>
 <tr class="separator:ab05053ee0d049e24acdd74413eb0a067"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b09b2db896d2dfa75d36565419f9c97"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0b09b2db896d2dfa75d36565419f9c97"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>looping</b></td></tr>
+<tr class="memitem:a0b09b2db896d2dfa75d36565419f9c97"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a0b09b2db896d2dfa75d36565419f9c97">looping</a></td></tr>
 <tr class="separator:a0b09b2db896d2dfa75d36565419f9c97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad70d81b4c3be05d4375365204f01fae6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad70d81b4c3be05d4375365204f01fae6"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>firstBeatMs</b></td></tr>
+<tr class="memitem:ad70d81b4c3be05d4375365204f01fae6"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#ad70d81b4c3be05d4375365204f01fae6">firstBeatMs</a></td></tr>
 <tr class="separator:ad70d81b4c3be05d4375365204f01fae6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5a8824457f388b9ded3851c17dd4467"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af5a8824457f388b9ded3851c17dd4467"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>msElapsedSinceLastBeat</b></td></tr>
+<tr class="memitem:af5a8824457f388b9ded3851c17dd4467"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#af5a8824457f388b9ded3851c17dd4467">msElapsedSinceLastBeat</a></td></tr>
 <tr class="separator:af5a8824457f388b9ded3851c17dd4467"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf4d29457881f3817f3f1db39ff9b677"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acf4d29457881f3817f3f1db39ff9b677"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>beatIndex</b></td></tr>
+<tr class="memitem:acf4d29457881f3817f3f1db39ff9b677"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#acf4d29457881f3817f3f1db39ff9b677">beatIndex</a></td></tr>
 <tr class="separator:acf4d29457881f3817f3f1db39ff9b677"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af111717a0cc9ce33089632827ffbd104"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af111717a0cc9ce33089632827ffbd104"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>bufferStartPercent</b></td></tr>
+<tr class="memitem:af111717a0cc9ce33089632827ffbd104"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#af111717a0cc9ce33089632827ffbd104">bufferStartPercent</a></td></tr>
 <tr class="separator:af111717a0cc9ce33089632827ffbd104"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61ed25d49b13638c1e73b634ccb78c9a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a61ed25d49b13638c1e73b634ccb78c9a"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>bufferEndPercent</b></td></tr>
+<tr class="memitem:a61ed25d49b13638c1e73b634ccb78c9a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a61ed25d49b13638c1e73b634ccb78c9a">bufferEndPercent</a></td></tr>
 <tr class="separator:a61ed25d49b13638c1e73b634ccb78c9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aebf49b92885caddbaf4c5e933b8347e7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aebf49b92885caddbaf4c5e933b8347e7"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>currentBps</b></td></tr>
+<tr class="memitem:aebf49b92885caddbaf4c5e933b8347e7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#aebf49b92885caddbaf4c5e933b8347e7">currentBps</a></td></tr>
 <tr class="separator:aebf49b92885caddbaf4c5e933b8347e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64224f1d5ba11c6ccbb2e5dd02983f35"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a64224f1d5ba11c6ccbb2e5dd02983f35"></a>
-SuperpoweredAdvancedAudioPlayerSyncMode&#160;</td><td class="memItemRight" valign="bottom"><b>syncMode</b></td></tr>
+<tr class="memitem:a64224f1d5ba11c6ccbb2e5dd02983f35"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_superpowered_advanced_audio_player_8h.html#af2e366576dc9573e9c81a20ea324a310">SuperpoweredAdvancedAudioPlayerSyncMode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a64224f1d5ba11c6ccbb2e5dd02983f35">syncMode</a></td></tr>
 <tr class="separator:a64224f1d5ba11c6ccbb2e5dd02983f35"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36cf8048cf94ba721fefc522009197dd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a36cf8048cf94ba721fefc522009197dd"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>fixDoubleOrHalfBPM</b></td></tr>
+<tr class="memitem:a36cf8048cf94ba721fefc522009197dd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a36cf8048cf94ba721fefc522009197dd">fixDoubleOrHalfBPM</a></td></tr>
 <tr class="separator:a36cf8048cf94ba721fefc522009197dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4fb7177780b993de058c082ee1b5d85c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4fb7177780b993de058c082ee1b5d85c"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>waitForNextBeatWithBeatSync</b></td></tr>
+<tr class="memitem:a4fb7177780b993de058c082ee1b5d85c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a4fb7177780b993de058c082ee1b5d85c">waitForNextBeatWithBeatSync</a></td></tr>
 <tr class="separator:a4fb7177780b993de058c082ee1b5d85c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45f5b5e2ef978c9c63f432924fc02887"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a45f5b5e2ef978c9c63f432924fc02887"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>dynamicHLSAlternativeSwitching</b></td></tr>
+<tr class="memitem:a45f5b5e2ef978c9c63f432924fc02887"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a45f5b5e2ef978c9c63f432924fc02887">dynamicHLSAlternativeSwitching</a></td></tr>
 <tr class="separator:a45f5b5e2ef978c9c63f432924fc02887"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3e8f2cde64156984e7fdd0ff10b0a96"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac3e8f2cde64156984e7fdd0ff10b0a96"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>reverseToForwardAtLoopStart</b></td></tr>
+<tr class="memitem:ac3e8f2cde64156984e7fdd0ff10b0a96"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#ac3e8f2cde64156984e7fdd0ff10b0a96">reverseToForwardAtLoopStart</a></td></tr>
 <tr class="separator:ac3e8f2cde64156984e7fdd0ff10b0a96"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a913d11f6be74cc2a2afefb6e2703ef87"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a913d11f6be74cc2a2afefb6e2703ef87"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>downloadSecondsAhead</b></td></tr>
+<tr class="memitem:a913d11f6be74cc2a2afefb6e2703ef87"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a913d11f6be74cc2a2afefb6e2703ef87">downloadSecondsAhead</a></td></tr>
 <tr class="separator:a913d11f6be74cc2a2afefb6e2703ef87"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa511ff9ecb333fe02b7dca91626e1cb7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa511ff9ecb333fe02b7dca91626e1cb7"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>maxDownloadAttempts</b></td></tr>
+<tr class="memitem:aa511ff9ecb333fe02b7dca91626e1cb7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#aa511ff9ecb333fe02b7dca91626e1cb7">maxDownloadAttempts</a></td></tr>
 <tr class="separator:aa511ff9ecb333fe02b7dca91626e1cb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ead90927942a10897fb7a4bdfe3de03"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2ead90927942a10897fb7a4bdfe3de03"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>minTimeStretchingTempo</b></td></tr>
+<tr class="memitem:a2ead90927942a10897fb7a4bdfe3de03"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a2ead90927942a10897fb7a4bdfe3de03">minTimeStretchingTempo</a></td></tr>
 <tr class="separator:a2ead90927942a10897fb7a4bdfe3de03"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46f717bcac4e81102ff192f1ab0245f1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a46f717bcac4e81102ff192f1ab0245f1"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>maxTimeStretchingTempo</b></td></tr>
+<tr class="memitem:a46f717bcac4e81102ff192f1ab0245f1"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a46f717bcac4e81102ff192f1ab0245f1">maxTimeStretchingTempo</a></td></tr>
 <tr class="separator:a46f717bcac4e81102ff192f1ab0245f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a519b44d218c6719b6e5fb89804f657ff"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a519b44d218c6719b6e5fb89804f657ff"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>handleStems</b></td></tr>
+<tr class="memitem:a519b44d218c6719b6e5fb89804f657ff"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a519b44d218c6719b6e5fb89804f657ff">handleStems</a></td></tr>
 <tr class="separator:a519b44d218c6719b6e5fb89804f657ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><ul>
+<div class="textblock"><p>High performance advanced audio player with: </p>
+<ul>
 <li>time-stretching and pitch shifting,</li>
 <li>beat and tempo sync,</li>
 <li>scratching,</li>
@@ -355,7 +319,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>handleStems</b></td><
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">SuperpoweredAdvancedAudioPlayerCallback&#160;</td>
+          <td class="paramtype"><a class="el" href="_superpowered_advanced_audio_player_8h.html#ada5d090f8447d736bb8ac2b1927a8021">SuperpoweredAdvancedAudioPlayerCallback</a>&#160;</td>
           <td class="paramname"><em>callback</em>, </td>
         </tr>
         <tr>
@@ -389,6 +353,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>handleStems</b></td><
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Create a player instance with the current sample rate value. </p>
 <p>Example: <a class="el" href="class_superpowered_advanced_audio_player.html" title="High performance advanced audio player with: ">SuperpoweredAdvancedAudioPlayer</a> player = new <a class="el" href="class_superpowered_advanced_audio_player.html" title="High performance advanced audio player with: ">SuperpoweredAdvancedAudioPlayer(this, playerCallback, 44100, 4)</a>;</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -404,216 +370,22 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>handleStems</b></td><
 
 </div>
 </div>
+<a class="anchor" id="ac56489851f514cb95ef6cc0cb6979a1c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SuperpoweredAdvancedAudioPlayer::~SuperpoweredAdvancedAudioPlayer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a1e7c8628aef83898eca5e572204d24bd"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void SuperpoweredAdvancedAudioPlayer::setTempFolder </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>path</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Call this first before any player instance is created. It will create a subfolder with the name "SuperpoweredHLS" in this folder.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">path</td><td>File system path of the folder. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="aa89c18c1abe220991b73d64aef3e2bc6"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SuperpoweredAdvancedAudioPlayer::open </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>path</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char **&#160;</td>
-          <td class="paramname"><em>customHTTPHeaders</em> = <code>0</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Tempo, pitchShift, masterTempo and syncMode are NOT changed if you open a new one.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">path</td><td>The full file system path of the audio file. </td></tr>
-    <tr><td class="paramname">customHTTPHeaders</td><td>NULL terminated list of custom headers for http communication. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a13aea6cc01341c1333754d617e0aa20c"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SuperpoweredAdvancedAudioPlayer::open </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>path</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>offset</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>length</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char **&#160;</td>
-          <td class="paramname"><em>customHTTPHeaders</em> = <code>0</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Tempo, pitchShift, masterTempo and syncMode are NOT changed if you open a new one.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">path</td><td>The full file system path of the file. </td></tr>
-    <tr><td class="paramname">offset</td><td>The byte offset inside the file. </td></tr>
-    <tr><td class="paramname">length</td><td>The byte length from the offset. </td></tr>
-    <tr><td class="paramname">customHTTPHeaders</td><td>NULL terminated list of custom headers for http communication. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="af42b558cfd477552c4e7e65fd72d6dcc"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SuperpoweredAdvancedAudioPlayer::play </td>
-          <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>synchronised</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">synchronised</td><td>Set it to true for a beat-synced or tempo-synced start. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a78a17466269d4ff682ecaba541724d9b"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SuperpoweredAdvancedAudioPlayer::pause </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>decelerateSeconds</em> = <code>0</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>slipMs</em> = <code>0</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>There is no need for a "stop" method, this player is very efficient with the battery and has no significant "stand-by" processing.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">decelerateSeconds</td><td>Optional momentum. 0 means pause immediately. </td></tr>
-    <tr><td class="paramname">slipMs</td><td>Enable slip mode for a specific amount of time, or 0 to not slip. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a7cc9eb513c1a9761f58033908cd8aaa1"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SuperpoweredAdvancedAudioPlayer::setPosition </td>
-          <td>(</td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>ms</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>andStop</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>synchronisedStart</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ms</td><td>Position in milliseconds. </td></tr>
-    <tr><td class="paramname">andStop</td><td>If true, stops playback. </td></tr>
-    <tr><td class="paramname">synchronisedStart</td><td>If andStop is false, a beat-synced start is possible. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a class="anchor" id="aaf9b8d92f477a9a7b7d46162fa752f11"></a>
 <div class="memitem">
 <div class="memproto">
@@ -637,6 +409,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>handleStems</b></td><
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Cache a position for zero latency seeking. It will cache around +/- 1 second around this point. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ms</td><td>Position in milliseconds. </td></tr>
@@ -644,6 +418,282 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>handleStems</b></td><
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a class="anchor" id="a6e9915a31077c584b29d976e8789f7ca"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void SuperpoweredAdvancedAudioPlayer::clearTempFolder </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Remove the temp folder. Use this when your program ends. </p>
+
+</div>
+</div>
+<a class="anchor" id="a863a7141c807b2eef98d0b900ce3bb5e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double SuperpoweredAdvancedAudioPlayer::closestBeatMs </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ms</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char *&#160;</td>
+          <td class="paramname"><em>beatIndex</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Shows you where the closest beat is to a specific position. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ms</td><td>The position in milliseconds. </td></tr>
+    <tr><td class="paramname">beatIndex</td><td>Pointer to a beat index value. Set to NULL if beat index is not important. Set to 0 if you want to retrieve the beat index of the position. Set to 1-4 if beat index is important. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a867d9125d0fc8616b267a0775e39cf07"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SuperpoweredAdvancedAudioPlayer::endContinuousPitchBend </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ends pitch bend. </p>
+
+</div>
+</div>
+<a class="anchor" id="a1e209a757de737fb450295dbbf6d7e83"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SuperpoweredAdvancedAudioPlayer::endScratch </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>returnToStateBeforeScratch</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ends scratching. </p>
+<dl class="section warning"><dt>Warning</dt><dd>This is an advanced method, use it only if you don't want the jogT... methods.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">returnToStateBeforeScratch</td><td>Return to the previous playback state (direction, speed) or not. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a22dc5a46af309eb4eed6518ab5cd1f34"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SuperpoweredAdvancedAudioPlayer::exitLoop </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>synchronisedStart</em> = <code>false</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Exits from the current loop. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">synchronisedStart</td><td>Synchronized start after the loop exit. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a80f42efde112dd369f383555daf6f422"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SuperpoweredAdvancedAudioPlayer::jogTick </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>bendStretch</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>bendMaxPercent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>bendHoldMs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>parameterMode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A jog wheel should send some "ticks" according to the movement. A waveform's movement in pixels for example. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>The cumulated ticks value. </td></tr>
+    <tr><td class="paramname">bendStretch</td><td>Use time-stretching for bending or not (false makes it "audible"). </td></tr>
+    <tr><td class="paramname">bendMaxPercent</td><td>The maximum tempo change for pitch bend, should be between 0.01f and 0.3f (1% and 30%). </td></tr>
+    <tr><td class="paramname">bendHoldMs</td><td>How long to maintain the bended state. A value &gt;= 1000 will hold until endContinuousPitchBend is called. </td></tr>
+    <tr><td class="paramname">parameterMode</td><td>True: if there was no jogTouchBegin, SuperpoweredAdvancedAudioPlayerJogMode_Parameter applies. False: if there was no jogTouchBegin, SuperpoweredAdvancedAudioPlayerJogMode_PitchBend applies. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aa281903a538f79cbf4d6a9b04d1665e6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SuperpoweredAdvancedAudioPlayer::jogTouchBegin </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ticksPerTurn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_superpowered_advanced_audio_player_8h.html#af087b9048901241abde7b2bf41d6d9c1">SuperpoweredAdvancedAudioPlayerJogMode</a>&#160;</td>
+          <td class="paramname"><em>mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>scratchSlipMs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>"Virtual jog wheel" or "virtual turntable" handling. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ticksPerTurn</td><td>Sets the sensitivity of the virtual wheel. Use around 2300 for pixel-perfect touchscreen waveform control. </td></tr>
+    <tr><td class="paramname">mode</td><td>Jog wheel mode (scratching, pitch bend, or parameter set in the range 0.0 to 1.0). </td></tr>
+    <tr><td class="paramname">scratchSlipMs</td><td>Enable slip mode for a specific amount of time for scratching, or 0 to not slip. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a14366cf970bd7d21d9ea04934a23d76c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SuperpoweredAdvancedAudioPlayer::jogTouchEnd </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>decelerate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>synchronisedStart</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Call this when the jog touch ends. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">decelerate</td><td>The decelerating rate for momentum. Set to 0.0f for automatic. </td></tr>
+    <tr><td class="paramname">synchronisedStart</td><td>Beat-synced start after decelerating. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ac78737adad9c6f4b733c263bb04d0986"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double SuperpoweredAdvancedAudioPlayer::lastProcessMs </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the last <a class="el" href="class_superpowered_advanced_audio_player.html#adf07eaeeb9a86836325aa5677a034ede" title="Processes the audio, stereo version. ">process()</a> numberOfSamples converted to milliseconds. </p>
 
 </div>
 </div>
@@ -688,6 +738,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>handleStems</b></td><
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Loop from a start point with some length. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">startMs</td><td>Loop from this millisecond. </td></tr>
@@ -742,6 +794,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>handleStems</b></td><
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Loop from a start to an end point. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">startMs</td><td>Loop from this millisecond. </td></tr>
@@ -749,28 +803,6 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>handleStems</b></td><
     <tr><td class="paramname">jumpToStartMs</td><td>If the playhead is within the loop, jump to startMs or not. </td></tr>
     <tr><td class="paramname">pointID</td><td>Looping caches startMs, so you can specify a pointID too (or set to 255 if you don't care). </td></tr>
     <tr><td class="paramname">synchronisedStart</td><td>Beat-synced start. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a22dc5a46af309eb4eed6518ab5cd1f34"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SuperpoweredAdvancedAudioPlayer::exitLoop </td>
-          <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>synchronisedStart</em> = <code>false</code></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">synchronisedStart</td><td>Synchronized start after the loop exit. </td></tr>
   </table>
   </dd>
 </dl>
@@ -790,6 +822,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>handleStems</b></td><
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Checks if ms fall into the current loop. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ms</td><td>The position to check in milliseconds. </td></tr>
@@ -799,61 +833,39 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>handleStems</b></td><
 
 </div>
 </div>
-<a class="anchor" id="a406cb7ead42f0dade5eb349ba6ead8ea"></a>
+<a class="anchor" id="ac5fc6e04104d60f18eb2e090cbe7f854"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void SuperpoweredAdvancedAudioPlayer::setBpm </td>
+          <td class="memname">void SuperpoweredAdvancedAudioPlayer::onMediaserverInterrupt </td>
           <td>(</td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>newBpm</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Should be called after a successful <a class="el" href="class_superpowered_advanced_audio_player.html#aa89c18c1abe220991b73d64aef3e2bc6" title="Opens a new audio file, with playback paused. ">open()</a>.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">newBpm</td><td>The bpm value. A number below 10.0f means "bpm unknown", and sync will not work. </td></tr>
-  </table>
-  </dd>
-</dl>
+
+<p>Call this on a phone call or other interruption. </p>
+<p>Apple's built-in codec may be used in some cases, for example ALAC files. Call this after a media server reset or audio session interrupt to resume playback. </p>
 
 </div>
 </div>
-<a class="anchor" id="a4fbae56279945d88be4fe93ec1104063"></a>
+<a class="anchor" id="aa89c18c1abe220991b73d64aef3e2bc6"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void SuperpoweredAdvancedAudioPlayer::setFirstBeatMs </td>
+          <td class="memname">void SuperpoweredAdvancedAudioPlayer::open </td>
           <td>(</td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>ms</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Should be called after a successful <a class="el" href="class_superpowered_advanced_audio_player.html#aa89c18c1abe220991b73d64aef3e2bc6" title="Opens a new audio file, with playback paused. ">open()</a>. </p>
-
-</div>
-</div>
-<a class="anchor" id="a863a7141c807b2eef98d0b900ce3bb5e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double SuperpoweredAdvancedAudioPlayer::closestBeatMs </td>
-          <td>(</td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>ms</em>, </td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">unsigned char *&#160;</td>
-          <td class="paramname"><em>beatIndex</em>&#160;</td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>customHTTPHeaders</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -862,89 +874,46 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>handleStems</b></td><
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Opens a new audio file, with playback paused. </p>
+<p>Tempo, pitchShift, masterTempo and syncMode are NOT changed if you open a new one.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ms</td><td>The position in milliseconds. </td></tr>
-    <tr><td class="paramname">beatIndex</td><td>Pointer to a beat index value. Set to NULL if beat index is not important. Set to 0 if you want to retrieve the beat index of the position. Set to 1-4 if beat index is important. </td></tr>
+    <tr><td class="paramname">path</td><td>The full file system path of the audio file. </td></tr>
+    <tr><td class="paramname">customHTTPHeaders</td><td>NULL terminated list of custom headers for http communication. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a class="anchor" id="aa281903a538f79cbf4d6a9b04d1665e6"></a>
+<a class="anchor" id="a13aea6cc01341c1333754d617e0aa20c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void SuperpoweredAdvancedAudioPlayer::jogTouchBegin </td>
+          <td class="memname">void SuperpoweredAdvancedAudioPlayer::open </td>
           <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>ticksPerTurn</em>, </td>
+          <td class="paramname"><em>offset</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">SuperpoweredAdvancedAudioPlayerJogMode&#160;</td>
-          <td class="paramname"><em>mode</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>scratchSlipMs</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ticksPerTurn</td><td>Sets the sensitivity of the virtual wheel. Use around 2300 for pixel-perfect touchscreen waveform control. </td></tr>
-    <tr><td class="paramname">mode</td><td>Jog wheel mode (scratching, pitch bend, or parameter set in the range 0.0 to 1.0). </td></tr>
-    <tr><td class="paramname">scratchSlipMs</td><td>Enable slip mode for a specific amount of time for scratching, or 0 to not slip. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a80f42efde112dd369f383555daf6f422"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SuperpoweredAdvancedAudioPlayer::jogTick </td>
-          <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>value</em>, </td>
+          <td class="paramname"><em>length</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>bendStretch</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>bendMaxPercent</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>bendHoldMs</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>parameterMode</em>&#160;</td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>customHTTPHeaders</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -953,144 +922,36 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>handleStems</b></td><
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Opens a file, with playback paused. </p>
+<p>Tempo, pitchShift, masterTempo and syncMode are NOT changed if you open a new one.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">value</td><td>The cumulated ticks value. </td></tr>
-    <tr><td class="paramname">bendStretch</td><td>Use time-stretching for bending or not (false makes it "audible"). </td></tr>
-    <tr><td class="paramname">bendMaxPercent</td><td>The maximum tempo change for pitch bend, should be between 0.01f and 0.3f (1% and 30%). </td></tr>
-    <tr><td class="paramname">bendHoldMs</td><td>How long to maintain the bended state. A value &gt;= 1000 will hold until endContinuousPitchBend is called. </td></tr>
-    <tr><td class="paramname">parameterMode</td><td>True: if there was no jogTouchBegin, SuperpoweredAdvancedAudioPlayerJogMode_Parameter applies. False: if there was no jogTouchBegin, SuperpoweredAdvancedAudioPlayerJogMode_PitchBend applies. </td></tr>
+    <tr><td class="paramname">path</td><td>The full file system path of the file. </td></tr>
+    <tr><td class="paramname">offset</td><td>The byte offset inside the file. </td></tr>
+    <tr><td class="paramname">length</td><td>The byte length from the offset. </td></tr>
+    <tr><td class="paramname">customHTTPHeaders</td><td>NULL terminated list of custom headers for http communication. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a class="anchor" id="a14366cf970bd7d21d9ea04934a23d76c"></a>
+<a class="anchor" id="a78a17466269d4ff682ecaba541724d9b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void SuperpoweredAdvancedAudioPlayer::jogTouchEnd </td>
+          <td class="memname">void SuperpoweredAdvancedAudioPlayer::pause </td>
           <td>(</td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>decelerate</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>synchronisedStart</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">decelerate</td><td>The decelerating rate for momentum. Set to 0.0f for automatic. </td></tr>
-    <tr><td class="paramname">synchronisedStart</td><td>Beat-synced start after decelerating. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a209579fba6164afb75e7d714737b537c"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SuperpoweredAdvancedAudioPlayer::setTempo </td>
-          <td>(</td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>tempo</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>masterTempo</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">tempo</td><td>1.0f is "original speed". </td></tr>
-    <tr><td class="paramname">masterTempo</td><td>Enable or disable time-stretching. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="ab6d79450ba83b760fd5721af4b9b28a1"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SuperpoweredAdvancedAudioPlayer::setPitchShift </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>pitchShift</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pitchShift</td><td>Note offset from -12 to 12. 0 means no pitch shift. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="abb26ec22146323e50dfc366084c00555"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SuperpoweredAdvancedAudioPlayer::setPitchShiftCents </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>pitchShiftCents</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pitchShiftCents</td><td>Limited to &gt;= -1200 and &lt;= 1200. 0 means no pitch shift. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a8e173db9b802f2cdfc953d6117246ea8"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SuperpoweredAdvancedAudioPlayer::setReverse </td>
-          <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>reverse</em>, </td>
+          <td class="paramname"><em>decelerateSeconds</em> = <code>0</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>slipMs</em>&#160;</td>
+          <td class="paramname"><em>slipMs</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1099,9 +960,12 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>handleStems</b></td><
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Pause playback. </p>
+<p>There is no need for a "stop" method, this player is very efficient with the battery and has no significant "stand-by" processing.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">reverse</td><td>Playback direction. </td></tr>
+    <tr><td class="paramname">decelerateSeconds</td><td>Optional momentum. 0 means pause immediately. </td></tr>
     <tr><td class="paramname">slipMs</td><td>Enable slip mode for a specific amount of time, or 0 to not slip. </td></tr>
   </table>
   </dd>
@@ -1144,6 +1008,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>handleStems</b></td><
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Pitch bend (temporary tempo change). </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">maxPercent</td><td>The maximum tempo change for pitch bend, should be between 0.01f and 0.3f (1% and 30%). </td></tr>
@@ -1156,132 +1022,27 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>handleStems</b></td><
 
 </div>
 </div>
-<a class="anchor" id="a4151f9ec2e00fd3de7c7bbd4845661af"></a>
+<a class="anchor" id="af42b558cfd477552c4e7e65fd72d6dcc"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void SuperpoweredAdvancedAudioPlayer::startScratch </td>
-          <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>slipMs</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>stopImmediately</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="section warning"><dt>Warning</dt><dd>This is an advanced method, use it only if you don't want the jogT... methods.</dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">slipMs</td><td>Enable slip mode for a specific amount of time for scratching, or 0 to not slip. </td></tr>
-    <tr><td class="paramname">stopImmediately</td><td>Stop now or not. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="ad0586295280d3ce5b41b7bfe2675445c"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SuperpoweredAdvancedAudioPlayer::scratch </td>
-          <td>(</td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>pitch</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>smoothing</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="section warning"><dt>Warning</dt><dd>This is an advanced method, use it only if you don't want the jogT... methods.</dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pitch</td><td>The current speed. </td></tr>
-    <tr><td class="paramname">smoothing</td><td>Should be between 0.05f (max. smoothing) and 1.0f (no smoothing). </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a1e209a757de737fb450295dbbf6d7e83"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SuperpoweredAdvancedAudioPlayer::endScratch </td>
+          <td class="memname">void SuperpoweredAdvancedAudioPlayer::play </td>
           <td>(</td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>returnToStateBeforeScratch</em></td><td>)</td>
+          <td class="paramname"><em>synchronised</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section warning"><dt>Warning</dt><dd>This is an advanced method, use it only if you don't want the jogT... methods.</dd></dl>
+
+<p>Starts playback. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">returnToStateBeforeScratch</td><td>Return to the previous playback state (direction, speed) or not. </td></tr>
+    <tr><td class="paramname">synchronised</td><td>Set it to true for a beat-synced or tempo-synced start. </td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a class="anchor" id="acee23ff2aee1da7b01f71afa8f24b3c1"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SuperpoweredAdvancedAudioPlayer::setSamplerate </td>
-          <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>samplerate</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">samplerate</td><td>44100, 48000, etc. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="ac5fc6e04104d60f18eb2e090cbe7f854"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SuperpoweredAdvancedAudioPlayer::onMediaserverInterrupt </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Apple's built-in codec may be used in some cases, for example ALAC files. Call this after a media server reset or audio session interrupt to resume playback. </p>
 
 </div>
 </div>
@@ -1332,6 +1093,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>handleStems</b></td><
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Processes the audio, stereo version. </p>
 <dl class="section return"><dt>Returns</dt><dd>Put something into output or not.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -1394,6 +1157,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>handleStems</b></td><
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Processes the audio, multi-channel version. </p>
 <dl class="section return"><dt>Returns</dt><dd>Put something into output or not.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -1409,12 +1174,784 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>handleStems</b></td><
 
 </div>
 </div>
+<a class="anchor" id="ad0586295280d3ce5b41b7bfe2675445c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SuperpoweredAdvancedAudioPlayer::scratch </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>pitch</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>smoothing</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Scratch movement. </p>
+<dl class="section warning"><dt>Warning</dt><dd>This is an advanced method, use it only if you don't want the jogT... methods.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pitch</td><td>The current speed. </td></tr>
+    <tr><td class="paramname">smoothing</td><td>Should be between 0.05f (max. smoothing) and 1.0f (no smoothing). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ab8ae38606f72c79ece0a92be2eeec729"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SuperpoweredAdvancedAudioPlayer::seek </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>percent</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Simple seeking to a percentage. </p>
+
+</div>
+</div>
+<a class="anchor" id="a406cb7ead42f0dade5eb349ba6ead8ea"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SuperpoweredAdvancedAudioPlayer::setBpm </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>newBpm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>There is no auto-bpm detection inside, you must set the original bpm of the track with this for syncing. </p>
+<p>Should be called after a successful <a class="el" href="class_superpowered_advanced_audio_player.html#aa89c18c1abe220991b73d64aef3e2bc6" title="Opens a new audio file, with playback paused. ">open()</a>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">newBpm</td><td>The bpm value. A number below 10.0f means "bpm unknown", and sync will not work. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a4fbae56279945d88be4fe93ec1104063"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SuperpoweredAdvancedAudioPlayer::setFirstBeatMs </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ms</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Beat-sync works only if the first beat's position is known. Set it here. </p>
+<p>Should be called after a successful <a class="el" href="class_superpowered_advanced_audio_player.html#aa89c18c1abe220991b73d64aef3e2bc6" title="Opens a new audio file, with playback paused. ">open()</a>. </p>
+
+</div>
+</div>
+<a class="anchor" id="ab6d79450ba83b760fd5721af4b9b28a1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SuperpoweredAdvancedAudioPlayer::setPitchShift </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pitchShift</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the pitch shift value. Needs masterTempo enabled. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pitchShift</td><td>Note offset from -12 to 12. 0 means no pitch shift. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="abb26ec22146323e50dfc366084c00555"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SuperpoweredAdvancedAudioPlayer::setPitchShiftCents </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pitchShiftCents</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the pitch shift value with greater precision. Calling this method requires magnitudes more CPU than setPitchShift. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pitchShiftCents</td><td>Limited to &gt;= -1200 and &lt;= 1200. 0 means no pitch shift. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a7cc9eb513c1a9761f58033908cd8aaa1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SuperpoweredAdvancedAudioPlayer::setPosition </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ms</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>andStop</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>synchronisedStart</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Precise seeking. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ms</td><td>Position in milliseconds. </td></tr>
+    <tr><td class="paramname">andStop</td><td>If true, stops playback. </td></tr>
+    <tr><td class="paramname">synchronisedStart</td><td>If andStop is false, a beat-synced start is possible. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a8e173db9b802f2cdfc953d6117246ea8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SuperpoweredAdvancedAudioPlayer::setReverse </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>reverse</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>slipMs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets playback direction. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reverse</td><td>Playback direction. </td></tr>
+    <tr><td class="paramname">slipMs</td><td>Enable slip mode for a specific amount of time, or 0 to not slip. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="acee23ff2aee1da7b01f71afa8f24b3c1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SuperpoweredAdvancedAudioPlayer::setSamplerate </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>samplerate</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the sample rate. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">samplerate</td><td>44100, 48000, etc. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a1e7c8628aef83898eca5e572204d24bd"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void SuperpoweredAdvancedAudioPlayer::setTempFolder </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the folder path for temporary files. Used for HLS only. </p>
+<p>Call this first before any player instance is created. It will create a subfolder with the name "SuperpoweredHLS" in this folder.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>File system path of the folder. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a209579fba6164afb75e7d714737b537c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SuperpoweredAdvancedAudioPlayer::setTempo </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>tempo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>masterTempo</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the relative tempo of the playback. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tempo</td><td>1.0f is "original speed". </td></tr>
+    <tr><td class="paramname">masterTempo</td><td>Enable or disable time-stretching. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a4151f9ec2e00fd3de7c7bbd4845661af"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SuperpoweredAdvancedAudioPlayer::startScratch </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>slipMs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>stopImmediately</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Call when scratching starts. </p>
+<dl class="section warning"><dt>Warning</dt><dd>This is an advanced method, use it only if you don't want the jogT... methods.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">slipMs</td><td>Enable slip mode for a specific amount of time for scratching, or 0 to not slip. </td></tr>
+    <tr><td class="paramname">stopImmediately</td><td>Stop now or not. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ac72c412ef5bee200bd7c90d4abafa3f6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SuperpoweredAdvancedAudioPlayer::togglePlayback </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Toggle play/pause. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="acf4d29457881f3817f3f1db39ff9b677"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float SuperpoweredAdvancedAudioPlayer::beatIndex</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a63b396340565bd33c3f250686dfaf8b0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double SuperpoweredAdvancedAudioPlayer::bpm</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a61ed25d49b13638c1e73b634ccb78c9a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float SuperpoweredAdvancedAudioPlayer::bufferEndPercent</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="af111717a0cc9ce33089632827ffbd104"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float SuperpoweredAdvancedAudioPlayer::bufferStartPercent</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="abdced97b0c43714b64ecbadafd531cb6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double SuperpoweredAdvancedAudioPlayer::currentBpm</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aebf49b92885caddbaf4c5e933b8347e7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int SuperpoweredAdvancedAudioPlayer::currentBps</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a1afb7ed93c27b949504545c0888ce623"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double SuperpoweredAdvancedAudioPlayer::displayPositionMs</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a913d11f6be74cc2a2afefb6e2703ef87"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int SuperpoweredAdvancedAudioPlayer::downloadSecondsAhead</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a8010242b557d23ef302bfc886e095dde"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int SuperpoweredAdvancedAudioPlayer::durationMs</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a80aae242b7875dac7dd01f142dc859c7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int SuperpoweredAdvancedAudioPlayer::durationSeconds</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a45f5b5e2ef978c9c63f432924fc02887"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SuperpoweredAdvancedAudioPlayer::dynamicHLSAlternativeSwitching</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ad70d81b4c3be05d4375365204f01fae6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double SuperpoweredAdvancedAudioPlayer::firstBeatMs</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a36cf8048cf94ba721fefc522009197dd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SuperpoweredAdvancedAudioPlayer::fixDoubleOrHalfBPM</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a519b44d218c6719b6e5fb89804f657ff"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SuperpoweredAdvancedAudioPlayer::handleStems</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a0b09b2db896d2dfa75d36565419f9c97"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SuperpoweredAdvancedAudioPlayer::looping</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a409f7bba39bd9ebef240b2fdbaae9e8d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SuperpoweredAdvancedAudioPlayer::masterTempo</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aa511ff9ecb333fe02b7dca91626e1cb7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int SuperpoweredAdvancedAudioPlayer::maxDownloadAttempts</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a46f717bcac4e81102ff192f1ab0245f1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float SuperpoweredAdvancedAudioPlayer::maxTimeStretchingTempo</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a2ead90927942a10897fb7a4bdfe3de03"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float SuperpoweredAdvancedAudioPlayer::minTimeStretchingTempo</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="af5a8824457f388b9ded3851c17dd4467"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double SuperpoweredAdvancedAudioPlayer::msElapsedSinceLastBeat</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a64d2b25e485265913a39dad735fc2a48"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int SuperpoweredAdvancedAudioPlayer::pitchShift</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="afb75752a79d576fd40801f7fd03bd33e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int SuperpoweredAdvancedAudioPlayer::pitchShiftCents</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a344f312201332134f5ce0440d91888ca"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SuperpoweredAdvancedAudioPlayer::playing</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a7b2873dee08939499ccd72e4fc777d6f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double SuperpoweredAdvancedAudioPlayer::positionMs</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a3d497849df6ab9c2d92cb08a00759d11"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float SuperpoweredAdvancedAudioPlayer::positionPercent</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a315a8a3fc27e22d0b998c8bd2890f15e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int SuperpoweredAdvancedAudioPlayer::positionSeconds</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ab05053ee0d049e24acdd74413eb0a067"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SuperpoweredAdvancedAudioPlayer::reverse</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac3e8f2cde64156984e7fdd0ff10b0a96"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SuperpoweredAdvancedAudioPlayer::reverseToForwardAtLoopStart</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a602ec1522d6cdab001e240f431061839"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SuperpoweredAdvancedAudioPlayer::scratching</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ab0cd9bbfd9de8eeb683848c5d2699f81"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SuperpoweredAdvancedAudioPlayer::slip</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a64224f1d5ba11c6ccbb2e5dd02983f35"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_superpowered_advanced_audio_player_8h.html#af2e366576dc9573e9c81a20ea324a310">SuperpoweredAdvancedAudioPlayerSyncMode</a> SuperpoweredAdvancedAudioPlayer::syncMode</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a228309c458a5e7c8ab3dc5809855821b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double SuperpoweredAdvancedAudioPlayer::tempo</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a4fb7177780b993de058c082ee1b5d85c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SuperpoweredAdvancedAudioPlayer::waitForNextBeatWithBeatSync</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aea057b7cef6cbfda0a44b011d0f32bbe"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SuperpoweredAdvancedAudioPlayer::waitingForBuffering</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/<a class="el" href="_superpowered_advanced_audio_player_8h_source.html">SuperpoweredAdvancedAudioPlayer.h</a></li>
+</ul>
 </div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.7
-</small></address>
-</body>
-</html>

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.7"/>
-<title>Superpowered: SuperpoweredtvOSAudioIO.h Source File</title>
+<title>Superpowered: /Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/SuperpoweredtvOSAudioIO.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -18,9 +18,9 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.0.1</span>
+   &#160;<span id="projectnumber">1.0.2</span>
    </div>
-   <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
+   <div id="projectbrief">Pain-free Audio Infrastructure for iOS, Android, Mac OSX and Linux</div>
   </td>
  </tr>
  </tbody>
@@ -41,17 +41,21 @@
       <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_9662013f0ffc9b7f055f98fe8981fec6.html">SuperpoweredSDK</a></li><li class="navelem"><a class="el" href="dir_35bee368f85ebda59b1084bf3af9e072.html">Superpowered</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">SuperpoweredtvOSAudioIO.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#import &lt;AVFoundation/AVAudioSession.h&gt;</span></div>
+<a href="_superpoweredtv_o_s_audio_i_o_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#import &lt;AVFoundation/AVAudioSession.h&gt;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">@protocol </span><a class="code" href="protocol_superpoweredtv_o_s_audio_i_o_delegate-p.html">SuperpoweredtvOSAudioIODelegate</a>;</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">typedef</span> bool (*audioProcessingCallback_C) (<span class="keywordtype">void</span> *clientdata, <span class="keywordtype">float</span> **buffers, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> outputChannels, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numberOfSamples, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> samplerate, uint64_t hostTime);</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="_superpoweredtv_o_s_audio_i_o_8h.html#a07cbc298cae8d68d457269f832db5e0b">   18</a></span>&#160;<span class="keyword">typedef</span> bool (*<a class="code" href="_superpoweredtv_o_s_audio_i_o_8h.html#a07cbc298cae8d68d457269f832db5e0b">audioProcessingCallback_C</a>) (<span class="keywordtype">void</span> *clientdata, <span class="keywordtype">float</span> **buffers, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> outputChannels, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numberOfSamples, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> samplerate, uint64_t hostTime);</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
 <div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="interface_superpoweredtv_o_s_audio_i_o.html">   25</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_superpoweredtv_o_s_audio_i_o.html">SuperpoweredtvOSAudioIO</a>: NSObject {</div>
 <div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="interface_superpoweredtv_o_s_audio_i_o.html#a1bf522c708d5bbcf36108816bef9b971">   26</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="interface_superpoweredtv_o_s_audio_i_o.html#a1bf522c708d5bbcf36108816bef9b971">preferredBufferSizeMs</a>;</div>
@@ -65,7 +69,7 @@
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;- (void)stop;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;- (void)setProcessingCallback_C:(audioProcessingCallback_C)callback clientdata:(<span class="keywordtype">void</span> *)clientdata;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;- (void)setProcessingCallback_C:(<a class="code" href="_superpoweredtv_o_s_audio_i_o_8h.html#a07cbc298cae8d68d457269f832db5e0b">audioProcessingCallback_C</a>)callback clientdata:(<span class="keywordtype">void</span> *)clientdata;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;- (void)reconfigureWithAudioSessionCategory:(NSString *)audioSessionCategory;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
@@ -78,20 +82,14 @@
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;- (void)<a class="code" href="protocol_superpoweredtv_o_s_audio_i_o_delegate-p.html#ab0e432032209a10a202411af08c8619c">interruptionEnded</a>;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;- (bool)audioProcessingCallback:(<span class="keywordtype">float</span> **)buffers outputChannels:(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)outputChannels numberOfSamples:(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)numberOfSamples samplerate:(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)samplerate hostTime:(UInt64)hostTime;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;- (bool)<a class="code" href="_superpowered_android_audio_i_o_8h.html#a72a69e6355230d0bcb5f68c8bec06a4c">audioProcessingCallback</a>:(<span class="keywordtype">float</span> **)buffers outputChannels:(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)outputChannels numberOfSamples:(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)numberOfSamples samplerate:(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)samplerate hostTime:(UInt64)hostTime;</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keyword">@end</span></div>
 <div class="ttc" id="protocol_superpoweredtv_o_s_audio_i_o_delegate-p_html_a51ff3fa75c9e9af1cd22f8c1fcd82c32"><div class="ttname"><a href="protocol_superpoweredtv_o_s_audio_i_o_delegate-p.html#a51ff3fa75c9e9af1cd22f8c1fcd82c32">-[SuperpoweredtvOSAudioIODelegate-p interruptionStarted]</a></div><div class="ttdeci">void interruptionStarted()</div><div class="ttdoc">The audio session may be interrupted by a phone call, etc. This method is called on the main thread w...</div></div>
 <div class="ttc" id="interface_superpoweredtv_o_s_audio_i_o_html_a1bf522c708d5bbcf36108816bef9b971"><div class="ttname"><a href="interface_superpoweredtv_o_s_audio_i_o.html#a1bf522c708d5bbcf36108816bef9b971">SuperpoweredtvOSAudioIO::preferredBufferSizeMs</a></div><div class="ttdeci">int preferredBufferSizeMs</div><div class="ttdoc">The preferred buffer size. Recommended: 12. </div><div class="ttdef"><b>Definition:</b> SuperpoweredtvOSAudioIO.h:26</div></div>
+<div class="ttc" id="_superpoweredtv_o_s_audio_i_o_8h_html_a07cbc298cae8d68d457269f832db5e0b"><div class="ttname"><a href="_superpoweredtv_o_s_audio_i_o_8h.html#a07cbc298cae8d68d457269f832db5e0b">audioProcessingCallback_C</a></div><div class="ttdeci">bool(* audioProcessingCallback_C)(void *clientdata, float **buffers, unsigned int outputChannels, unsigned int numberOfSamples, unsigned int samplerate, uint64_t hostTime)</div><div class="ttdoc">You can have an audio processing callback with the delegate (Objective-C) or pure C...</div><div class="ttdef"><b>Definition:</b> SuperpoweredtvOSAudioIO.h:18</div></div>
+<div class="ttc" id="_superpowered_android_audio_i_o_8h_html_a72a69e6355230d0bcb5f68c8bec06a4c"><div class="ttname"><a href="_superpowered_android_audio_i_o_8h.html#a72a69e6355230d0bcb5f68c8bec06a4c">audioProcessingCallback</a></div><div class="ttdeci">bool(* audioProcessingCallback)(void *clientdata, short int *audioIO, int numberOfSamples, int samplerate)</div><div class="ttdoc">This is the prototype of an audio processing callback function. </div><div class="ttdef"><b>Definition:</b> SuperpoweredAndroidAudioIO.h:16</div></div>
 <div class="ttc" id="protocol_superpoweredtv_o_s_audio_i_o_delegate-p_html_ab0e432032209a10a202411af08c8619c"><div class="ttname"><a href="protocol_superpoweredtv_o_s_audio_i_o_delegate-p.html#ab0e432032209a10a202411af08c8619c">-[SuperpoweredtvOSAudioIODelegate-p interruptionEnded]</a></div><div class="ttdeci">void interruptionEnded()</div><div class="ttdoc">The audio session may be interrupted by a phone call, etc. This method is called on the main thread w...</div></div>
 <div class="ttc" id="interface_superpoweredtv_o_s_audio_i_o_html"><div class="ttname"><a href="interface_superpoweredtv_o_s_audio_i_o.html">SuperpoweredtvOSAudioIO</a></div><div class="ttdoc">Handles all audio session, audio lifecycle (interruptions), output, buffer size, samplerate and routi...</div><div class="ttdef"><b>Definition:</b> SuperpoweredtvOSAudioIO.h:25</div></div>
 <div class="ttc" id="protocol_superpoweredtv_o_s_audio_i_o_delegate-p_html"><div class="ttname"><a href="protocol_superpoweredtv_o_s_audio_i_o_delegate-p.html">SuperpoweredtvOSAudioIODelegate-p</a></div><div class="ttdoc">You must implement this protocol to make SuperpoweredtvOSAudioIO work. </div><div class="ttdef"><b>Definition:</b> SuperpoweredtvOSAudioIO.h:73</div></div>
 </div><!-- fragment --></div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.7
-</small></address>
-</body>
-</html>

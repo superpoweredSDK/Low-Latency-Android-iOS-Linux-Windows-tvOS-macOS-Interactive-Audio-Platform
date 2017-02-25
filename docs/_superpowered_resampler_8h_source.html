@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.7"/>
-<title>Superpowered: SuperpoweredResampler.h Source File</title>
+<title>Superpowered: /Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/SuperpoweredResampler.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -18,9 +18,9 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.0.1</span>
+   &#160;<span id="projectnumber">1.0.2</span>
    </div>
-   <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
+   <div id="projectbrief">Pain-free Audio Infrastructure for iOS, Android, Mac OSX and Linux</div>
   </td>
  </tr>
  </tbody>
@@ -41,23 +41,27 @@
       <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_9662013f0ffc9b7f055f98fe8981fec6.html">SuperpoweredSDK</a></li><li class="navelem"><a class="el" href="dir_35bee368f85ebda59b1084bf3af9e072.html">Superpowered</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">SuperpoweredResampler.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef Header_SuperpoweredResampler</span></div>
+<a href="_superpowered_resampler_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef Header_SuperpoweredResampler</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define Header_SuperpoweredResampler</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">struct </span>resamplerInternals;</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
 <div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_superpowered_resampler.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_superpowered_resampler.html">SuperpoweredResampler</a> {</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">float</span> rate;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_superpowered_resampler.html#a47f0ad0ae9921fff88dbd8526c2ccf02">   15</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="class_superpowered_resampler.html#a47f0ad0ae9921fff88dbd8526c2ccf02">rate</a>;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="class_superpowered_resampler.html">SuperpoweredResampler</a>();</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    ~<a class="code" href="class_superpowered_resampler.html">SuperpoweredResampler</a>();</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="class_superpowered_resampler.html#a988e5d1f650d592df592a7fcdd7c432b">SuperpoweredResampler</a>();</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="class_superpowered_resampler.html#a01651389fcff428ec45442a73aa5c8cb">~SuperpoweredResampler</a>();</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_resampler.html#a244d612ccca287670a299f5362740495">reset</a>();</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    </div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_superpowered_resampler.html#aabe39474f9d1d236c1f8145867e8ffc6">process</a>(<span class="keywordtype">short</span> <span class="keywordtype">int</span> *input, <span class="keywordtype">float</span> *output, <span class="keywordtype">int</span> numberOfSamples, <span class="keywordtype">bool</span> reverse = <span class="keyword">false</span>, <span class="keywordtype">bool</span> highQuality = <span class="keyword">false</span>, <span class="keywordtype">float</span> rateAdd = 0.0f);</div>
@@ -66,7 +70,7 @@
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    </div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    resamplerInternals *internals;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="class_superpowered_resampler.html">SuperpoweredResampler</a>(<span class="keyword">const</span> <a class="code" href="class_superpowered_resampler.html">SuperpoweredResampler</a>&amp;);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="class_superpowered_resampler.html#a988e5d1f650d592df592a7fcdd7c432b">SuperpoweredResampler</a>(<span class="keyword">const</span> <a class="code" href="class_superpowered_resampler.html">SuperpoweredResampler</a>&amp;);</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="class_superpowered_resampler.html">SuperpoweredResampler</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="class_superpowered_resampler.html">SuperpoweredResampler</a>&amp;);</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;};</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
@@ -74,12 +78,7 @@
 <div class="ttc" id="class_superpowered_resampler_html"><div class="ttname"><a href="class_superpowered_resampler.html">SuperpoweredResampler</a></div><div class="ttdoc">Linear or 6-point resampler, audio reverser and 16-bit to 32-bit audio converter. ...</div><div class="ttdef"><b>Definition:</b> SuperpoweredResampler.h:13</div></div>
 <div class="ttc" id="class_superpowered_resampler_html_a244d612ccca287670a299f5362740495"><div class="ttname"><a href="class_superpowered_resampler.html#a244d612ccca287670a299f5362740495">SuperpoweredResampler::reset</a></div><div class="ttdeci">void reset()</div><div class="ttdoc">Reset all internals. Doesn&#39;t change rate. </div></div>
 <div class="ttc" id="class_superpowered_resampler_html_aabe39474f9d1d236c1f8145867e8ffc6"><div class="ttname"><a href="class_superpowered_resampler.html#aabe39474f9d1d236c1f8145867e8ffc6">SuperpoweredResampler::process</a></div><div class="ttdeci">int process(short int *input, float *output, int numberOfSamples, bool reverse=false, bool highQuality=false, float rateAdd=0.0f)</div><div class="ttdoc">Processes the audio. </div></div>
+<div class="ttc" id="class_superpowered_resampler_html_a47f0ad0ae9921fff88dbd8526c2ccf02"><div class="ttname"><a href="class_superpowered_resampler.html#a47f0ad0ae9921fff88dbd8526c2ccf02">SuperpoweredResampler::rate</a></div><div class="ttdeci">float rate</div><div class="ttdef"><b>Definition:</b> SuperpoweredResampler.h:15</div></div>
+<div class="ttc" id="class_superpowered_resampler_html_a01651389fcff428ec45442a73aa5c8cb"><div class="ttname"><a href="class_superpowered_resampler.html#a01651389fcff428ec45442a73aa5c8cb">SuperpoweredResampler::~SuperpoweredResampler</a></div><div class="ttdeci">~SuperpoweredResampler()</div></div>
+<div class="ttc" id="class_superpowered_resampler_html_a988e5d1f650d592df592a7fcdd7c432b"><div class="ttname"><a href="class_superpowered_resampler.html#a988e5d1f650d592df592a7fcdd7c432b">SuperpoweredResampler::SuperpoweredResampler</a></div><div class="ttdeci">SuperpoweredResampler()</div></div>
 </div><!-- fragment --></div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.7
-</small></address>
-</body>
-</html>

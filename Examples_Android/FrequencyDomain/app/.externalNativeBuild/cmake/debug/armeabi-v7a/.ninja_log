@@ -1,0 +1,12 @@
+# ninja log v5
+0	320	0	CMakeFiles/SuperpoweredExample.dir/FrequencyDomain.cpp.o	5df054eb902fdf5f
+2	320	0	CMakeFiles/SuperpoweredExample.dir/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/AndroidIO/SuperpoweredAndroidAudioIO.cpp.o	72613efae483fe1f
+321	536	0	/Volumes/iMect/iphone/SuperpoweredSDK/Android/FrequencyDomain/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libSuperpoweredExample.so	d2387be993c6808c
+0	304	0	CMakeFiles/SuperpoweredExample.dir/FrequencyDomain.cpp.o	5df054eb902fdf5f
+1	304	0	CMakeFiles/SuperpoweredExample.dir/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/AndroidIO/SuperpoweredAndroidAudioIO.cpp.o	72613efae483fe1f
+304	432	0	/Volumes/iMect/iphone/SuperpoweredSDK/Android/FrequencyDomain/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libSuperpoweredExample.so	d2387be993c6808c
+0	212	0	CMakeFiles/SuperpoweredExample.dir/FrequencyDomain.cpp.o	5df054eb902fdf5f
+212	368	0	/Volumes/iMect/iphone/SuperpoweredSDK/Android/FrequencyDomain/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libSuperpoweredExample.so	d2387be993c6808c
+0	245	0	CMakeFiles/SuperpoweredExample.dir/FrequencyDomain.cpp.o	5df054eb902fdf5f
+2	250	0	CMakeFiles/SuperpoweredExample.dir/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/AndroidIO/SuperpoweredAndroidAudioIO.cpp.o	72613efae483fe1f
+250	450	0	/Volumes/iMect/iphone/SuperpoweredSDK/Android/FrequencyDomain/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libSuperpoweredExample.so	d2387be993c6808c

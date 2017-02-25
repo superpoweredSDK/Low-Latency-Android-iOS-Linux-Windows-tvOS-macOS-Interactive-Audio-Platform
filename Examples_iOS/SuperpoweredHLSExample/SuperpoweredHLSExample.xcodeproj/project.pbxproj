@@ -1,0 +1,357 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1B3F0B8F1B15A04100F50B00 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3F0B8E1B15A04100F50B00 /* main.m */; };
+		1B3F0B921B15A04100F50B00 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3F0B911B15A04100F50B00 /* AppDelegate.m */; };
+		1B3F0B951B15A04100F50B00 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1B3F0B941B15A04100F50B00 /* ViewController.mm */; };
+		1B3F0B981B15A04100F50B00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B3F0B961B15A04100F50B00 /* Main.storyboard */; };
+		1B3F0B9A1B15A04100F50B00 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B3F0B991B15A04100F50B00 /* Images.xcassets */; };
+		1B3F0B9D1B15A04100F50B00 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B3F0B9B1B15A04100F50B00 /* LaunchScreen.xib */; };
+		1B3F0BB91B15A6DD00F50B00 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B3F0BB81B15A6DD00F50B00 /* AVFoundation.framework */; };
+		1B3F0BBB1B15A6EB00F50B00 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B3F0BBA1B15A6EB00F50B00 /* AudioToolbox.framework */; };
+		1B3F0BBD1B15A6FA00F50B00 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B3F0BBC1B15A6FA00F50B00 /* MediaPlayer.framework */; };
+		1B3F0BC01B15A90400F50B00 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B3F0BBF1B15A90400F50B00 /* CoreMedia.framework */; };
+		1B3F0BCD1B16071300F50B00 /* libSuperpoweredAudioIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B3F0BC81B16071300F50B00 /* libSuperpoweredAudioIOS.a */; };
+		1B5298511C05BCBA00647594 /* SuperpoweredIOSAudioIO.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1B5298501C05BCBA00647594 /* SuperpoweredIOSAudioIO.mm */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1B3F0B891B15A04100F50B00 /* SuperpoweredHLSExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperpoweredHLSExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B3F0B8D1B15A04100F50B00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B3F0B8E1B15A04100F50B00 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1B3F0B901B15A04100F50B00 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1B3F0B911B15A04100F50B00 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1B3F0B931B15A04100F50B00 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		1B3F0B941B15A04100F50B00 /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
+		1B3F0B971B15A04100F50B00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1B3F0B991B15A04100F50B00 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		1B3F0B9C1B15A04100F50B00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		1B3F0BB81B15A6DD00F50B00 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		1B3F0BBA1B15A6EB00F50B00 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		1B3F0BBC1B15A6FA00F50B00 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		1B3F0BBF1B15A90400F50B00 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		1B3F0BC81B16071300F50B00 /* libSuperpoweredAudioIOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSuperpoweredAudioIOS.a; path = ../../Superpowered/libSuperpoweredAudioIOS.a; sourceTree = "<group>"; };
+		1B3F0BC91B16071300F50B00 /* SuperpoweredAdvancedAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperpoweredAdvancedAudioPlayer.h; path = ../../Superpowered/SuperpoweredAdvancedAudioPlayer.h; sourceTree = "<group>"; };
+		1B3F0BCC1B16071300F50B00 /* SuperpoweredSimple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperpoweredSimple.h; path = ../../Superpowered/SuperpoweredSimple.h; sourceTree = "<group>"; };
+		1B52984F1C05BCBA00647594 /* SuperpoweredIOSAudioIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperpoweredIOSAudioIO.h; path = ../../Superpowered/SuperpoweredIOSAudioIO.h; sourceTree = "<group>"; };
+		1B5298501C05BCBA00647594 /* SuperpoweredIOSAudioIO.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SuperpoweredIOSAudioIO.mm; path = ../../Superpowered/SuperpoweredIOSAudioIO.mm; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1B3F0B861B15A04100F50B00 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B3F0BC01B15A90400F50B00 /* CoreMedia.framework in Frameworks */,
+				1B3F0BBD1B15A6FA00F50B00 /* MediaPlayer.framework in Frameworks */,
+				1B3F0BBB1B15A6EB00F50B00 /* AudioToolbox.framework in Frameworks */,
+				1B3F0BCD1B16071300F50B00 /* libSuperpoweredAudioIOS.a in Frameworks */,
+				1B3F0BB91B15A6DD00F50B00 /* AVFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1B3F0B801B15A04100F50B00 = {
+			isa = PBXGroup;
+			children = (
+				1B3F0BBF1B15A90400F50B00 /* CoreMedia.framework */,
+				1B3F0BBC1B15A6FA00F50B00 /* MediaPlayer.framework */,
+				1B3F0BBA1B15A6EB00F50B00 /* AudioToolbox.framework */,
+				1B3F0BB81B15A6DD00F50B00 /* AVFoundation.framework */,
+				1B3F0BC81B16071300F50B00 /* libSuperpoweredAudioIOS.a */,
+				1B3F0BC91B16071300F50B00 /* SuperpoweredAdvancedAudioPlayer.h */,
+				1B52984F1C05BCBA00647594 /* SuperpoweredIOSAudioIO.h */,
+				1B5298501C05BCBA00647594 /* SuperpoweredIOSAudioIO.mm */,
+				1B3F0BCC1B16071300F50B00 /* SuperpoweredSimple.h */,
+				1B3F0B8B1B15A04100F50B00 /* SuperpoweredHLSExample */,
+				1B3F0B8A1B15A04100F50B00 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1B3F0B8A1B15A04100F50B00 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1B3F0B891B15A04100F50B00 /* SuperpoweredHLSExample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1B3F0B8B1B15A04100F50B00 /* SuperpoweredHLSExample */ = {
+			isa = PBXGroup;
+			children = (
+				1B3F0B901B15A04100F50B00 /* AppDelegate.h */,
+				1B3F0B911B15A04100F50B00 /* AppDelegate.m */,
+				1B3F0B931B15A04100F50B00 /* ViewController.h */,
+				1B3F0B941B15A04100F50B00 /* ViewController.mm */,
+				1B3F0B961B15A04100F50B00 /* Main.storyboard */,
+				1B3F0B8C1B15A04100F50B00 /* Supporting Files */,
+			);
+			path = SuperpoweredHLSExample;
+			sourceTree = "<group>";
+		};
+		1B3F0B8C1B15A04100F50B00 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1B3F0B991B15A04100F50B00 /* Images.xcassets */,
+				1B3F0B9B1B15A04100F50B00 /* LaunchScreen.xib */,
+				1B3F0B8D1B15A04100F50B00 /* Info.plist */,
+				1B3F0B8E1B15A04100F50B00 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1B3F0B881B15A04100F50B00 /* SuperpoweredHLSExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1B3F0BAC1B15A04100F50B00 /* Build configuration list for PBXNativeTarget "SuperpoweredHLSExample" */;
+			buildPhases = (
+				1B3F0B851B15A04100F50B00 /* Sources */,
+				1B3F0B861B15A04100F50B00 /* Frameworks */,
+				1B3F0B871B15A04100F50B00 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SuperpoweredHLSExample;
+			productName = SuperpoweredHLSExample;
+			productReference = 1B3F0B891B15A04100F50B00 /* SuperpoweredHLSExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1B3F0B811B15A04100F50B00 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = imect;
+				TargetAttributes = {
+					1B3F0B881B15A04100F50B00 = {
+						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = AP4SQ5L535;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 1B3F0B841B15A04100F50B00 /* Build configuration list for PBXProject "SuperpoweredHLSExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1B3F0B801B15A04100F50B00;
+			productRefGroup = 1B3F0B8A1B15A04100F50B00 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1B3F0B881B15A04100F50B00 /* SuperpoweredHLSExample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1B3F0B871B15A04100F50B00 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B3F0B981B15A04100F50B00 /* Main.storyboard in Resources */,
+				1B3F0B9D1B15A04100F50B00 /* LaunchScreen.xib in Resources */,
+				1B3F0B9A1B15A04100F50B00 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1B3F0B851B15A04100F50B00 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B5298511C05BCBA00647594 /* SuperpoweredIOSAudioIO.mm in Sources */,
+				1B3F0B951B15A04100F50B00 /* ViewController.mm in Sources */,
+				1B3F0B921B15A04100F50B00 /* AppDelegate.m in Sources */,
+				1B3F0B8F1B15A04100F50B00 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1B3F0B961B15A04100F50B00 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1B3F0B971B15A04100F50B00 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1B3F0B9B1B15A04100F50B00 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1B3F0B9C1B15A04100F50B00 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1B3F0BAA1B15A04100F50B00 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		1B3F0BAB1B15A04100F50B00 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1B3F0BAD1B15A04100F50B00 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = AP4SQ5L535;
+				INFOPLIST_FILE = SuperpoweredHLSExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../../Superpowered",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.imect.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1B3F0BAE1B15A04100F50B00 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = AP4SQ5L535;
+				INFOPLIST_FILE = SuperpoweredHLSExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../../Superpowered",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.imect.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1B3F0B841B15A04100F50B00 /* Build configuration list for PBXProject "SuperpoweredHLSExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B3F0BAA1B15A04100F50B00 /* Debug */,
+				1B3F0BAB1B15A04100F50B00 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1B3F0BAC1B15A04100F50B00 /* Build configuration list for PBXNativeTarget "SuperpoweredHLSExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B3F0BAD1B15A04100F50B00 /* Debug */,
+				1B3F0BAE1B15A04100F50B00 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1B3F0B811B15A04100F50B00 /* Project object */;
+}

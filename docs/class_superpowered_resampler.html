@@ -18,9 +18,9 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.0.1</span>
+   &#160;<span id="projectnumber">1.0.2</span>
    </div>
-   <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
+   <div id="projectbrief">Pain-free Audio Infrastructure for iOS, Android, Mac OSX and Linux</div>
   </td>
  </tr>
  </tbody>
@@ -59,9 +59,12 @@
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a244d612ccca287670a299f5362740495"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a244d612ccca287670a299f5362740495"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_resampler.html#a244d612ccca287670a299f5362740495">reset</a> ()</td></tr>
-<tr class="memdesc:a244d612ccca287670a299f5362740495"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset all internals. Doesn't change rate. <br /></td></tr>
+<tr class="memitem:a988e5d1f650d592df592a7fcdd7c432b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_resampler.html#a988e5d1f650d592df592a7fcdd7c432b">SuperpoweredResampler</a> ()</td></tr>
+<tr class="separator:a988e5d1f650d592df592a7fcdd7c432b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01651389fcff428ec45442a73aa5c8cb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_resampler.html#a01651389fcff428ec45442a73aa5c8cb">~SuperpoweredResampler</a> ()</td></tr>
+<tr class="separator:a01651389fcff428ec45442a73aa5c8cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a244d612ccca287670a299f5362740495"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_resampler.html#a244d612ccca287670a299f5362740495">reset</a> ()</td></tr>
+<tr class="memdesc:a244d612ccca287670a299f5362740495"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset all internals. Doesn't change rate.  <a href="#a244d612ccca287670a299f5362740495">More...</a><br /></td></tr>
 <tr class="separator:a244d612ccca287670a299f5362740495"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabe39474f9d1d236c1f8145867e8ffc6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_resampler.html#aabe39474f9d1d236c1f8145867e8ffc6">process</a> (short int *input, float *output, int numberOfSamples, bool reverse=false, bool highQuality=false, float rateAdd=0.0f)</td></tr>
 <tr class="memdesc:aabe39474f9d1d236c1f8145867e8ffc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes the audio.  <a href="#aabe39474f9d1d236c1f8145867e8ffc6">More...</a><br /></td></tr>
@@ -72,19 +75,50 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a47f0ad0ae9921fff88dbd8526c2ccf02"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a47f0ad0ae9921fff88dbd8526c2ccf02"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>rate</b></td></tr>
+<tr class="memitem:a47f0ad0ae9921fff88dbd8526c2ccf02"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_resampler.html#a47f0ad0ae9921fff88dbd8526c2ccf02">rate</a></td></tr>
 <tr class="separator:a47f0ad0ae9921fff88dbd8526c2ccf02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>It doesn't allocate any internal buffers and needs just a few bytes of memory.</p>
+<div class="textblock"><p>Linear or 6-point resampler, audio reverser and 16-bit to 32-bit audio converter. </p>
+<p>It doesn't allocate any internal buffers and needs just a few bytes of memory.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">rate</td><td>Read-write. Default: 1.0f. </td></tr>
   </table>
   </dd>
 </dl>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a988e5d1f650d592df592a7fcdd7c432b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SuperpoweredResampler::SuperpoweredResampler </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a01651389fcff428ec45442a73aa5c8cb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SuperpoweredResampler::~SuperpoweredResampler </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="aabe39474f9d1d236c1f8145867e8ffc6"></a>
 <div class="memitem">
 <div class="memproto">
@@ -132,6 +166,8 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>rate</b></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Processes the audio. </p>
 <dl class="section return"><dt>Returns</dt><dd>The number of output frames (samples).</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -200,6 +236,8 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>rate</b></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Processes the audio. </p>
 <dl class="section return"><dt>Returns</dt><dd>The number of output frames (samples).</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -216,12 +254,37 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>rate</b></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a244d612ccca287670a299f5362740495"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SuperpoweredResampler::reset </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reset all internals. Doesn't change rate. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a47f0ad0ae9921fff88dbd8526c2ccf02"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float SuperpoweredResampler::rate</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/<a class="el" href="_superpowered_resampler_8h_source.html">SuperpoweredResampler.h</a></li>
+</ul>
 </div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.7
-</small></address>
-</body>
-</html>

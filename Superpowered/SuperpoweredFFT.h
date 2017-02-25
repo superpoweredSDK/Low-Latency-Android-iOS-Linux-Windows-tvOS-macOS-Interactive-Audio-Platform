@@ -39,7 +39,7 @@ void SuperpoweredFFTReal(float *real, float *imag, int logSize, bool forward);
 
 
 /**
- @fn SuperpoweredPolarFFT(float *mag, float *phase, int logSize, bool forward);
+ @fn SuperpoweredPolarFFT(float *mag, float *phase, int logSize, bool forward, float valueOfPi);
  @brief Polar FFT.
  
  Data packing is same as Apple's vDSP. Check the "Using Fourier Transforms" page of Apple's vDSP documentation ("Data Packing for Real FFTs").

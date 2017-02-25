@@ -131,7 +131,7 @@ void SuperpoweredIntToFloat(int *input, float *output, unsigned int numberOfSamp
 void SuperpoweredFloatToInt(float *input, int *output, unsigned int numberOfSamples, unsigned int numChannels = 2);
 
 /**
- @fn SuperpoweredFloatToShortInt(float *input, short int *output, unsigned int numberOfSamples);
+ @fn SuperpoweredFloatToShortInt(float *input, short int *output, unsigned int numberOfSamples, unsigned int numChannels);
  @brief Converts 32-bit float input to 16-bit signed integer output.
 
  @param input Input buffer.
@@ -314,8 +314,38 @@ void SuperpoweredCrossMono2(float *left, float *right, float *output0, float *ou
  */
 void SuperpoweredCrossStereo(float *inputA, float *inputB, float *output, float gainStart[4], float gainEnd[4], unsigned int numberOfSamples);
 
+/**
+ @fn SuperpoweredAdd1(float *input, float *output, unsigned int numberOfValues)
+ @brief Adds input to output.
+ 
+ @param input Input data.
+ @param output Output data.
+ @param numberOfValues The length of input.
+ */
 void SuperpoweredAdd1(float *input, float *output, unsigned int numberOfValues);
+
+/**
+ @fn SuperpoweredAdd2(float *inputA, float *inputB, float *output, unsigned int numberOfValues)
+ @brief Adds two inputs to an output.
+
+ @param inputA Input data.
+ @param inputB Input data.
+ @param output Output data.
+ @param numberOfValues The length of input.
+ */
 void SuperpoweredAdd2(float *inputA, float *inputB, float *output, unsigned int numberOfValues);
+
+/**
+ @fn SuperpoweredAdd4(float *inputA, float *inputB, float *inputC, float *inputD, float *output, unsigned int numberOfValues)
+ @brief Adds 4 inputs to an output.
+
+ @param inputA Input data.
+ @param inputB Input data.
+ @param inputC Input data.
+ @param inputD Input data.
+ @param output Output data.
+ @param numberOfValues The length of input.
+ */
 void SuperpoweredAdd4(float *inputA, float *inputB, float *inputC, float *inputD, float *output, unsigned int numberOfValues);
 
 /**

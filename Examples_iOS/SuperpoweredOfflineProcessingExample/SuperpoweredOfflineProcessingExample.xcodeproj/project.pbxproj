@@ -1,0 +1,375 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1B3F0BD01B160A5F00F50B00 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B3F0BCF1B160A5F00F50B00 /* MediaPlayer.framework */; };
+		1B98E0041B14BE2600617EF9 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B98E0031B14BE2600617EF9 /* CoreMedia.framework */; };
+		1B98E0061B14BE5400617EF9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B98E0051B14BE5400617EF9 /* AVFoundation.framework */; };
+		1BF94B3619765521001FFAC9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BF94B3519765521001FFAC9 /* Foundation.framework */; };
+		1BF94B3819765521001FFAC9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BF94B3719765521001FFAC9 /* CoreGraphics.framework */; };
+		1BF94B3A19765521001FFAC9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BF94B3919765521001FFAC9 /* UIKit.framework */; };
+		1BF94B4019765521001FFAC9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1BF94B3E19765521001FFAC9 /* InfoPlist.strings */; };
+		1BF94B4219765521001FFAC9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF94B4119765521001FFAC9 /* main.m */; };
+		1BF94B4619765521001FFAC9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF94B4519765521001FFAC9 /* AppDelegate.m */; };
+		1BF94B4919765521001FFAC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BF94B4719765521001FFAC9 /* Main.storyboard */; };
+		1BF94B4C19765521001FFAC9 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1BF94B4B19765521001FFAC9 /* ViewController.mm */; };
+		1BF94B4E19765521001FFAC9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BF94B4D19765521001FFAC9 /* Images.xcassets */; };
+		1BF94B6B19765615001FFAC9 /* libSuperpoweredAudioIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BF94B6A19765615001FFAC9 /* libSuperpoweredAudioIOS.a */; };
+		1BF94B6F19765833001FFAC9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BF94B6E19765833001FFAC9 /* AudioToolbox.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1B1050791BB2F586002A3F93 /* SuperpoweredFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredFilter.h; path = ../../Superpowered/SuperpoweredFilter.h; sourceTree = "<group>"; };
+		1B3F0BCF1B160A5F00F50B00 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		1B468B4B1AE662C50099A7DD /* SuperpoweredSimple.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredSimple.h; path = ../../Superpowered/SuperpoweredSimple.h; sourceTree = "<group>"; };
+		1B74E6D51CEB615400DF0B3D /* SuperpoweredAnalyzer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredAnalyzer.h; path = ../../Superpowered/SuperpoweredAnalyzer.h; sourceTree = "<group>"; };
+		1B98E0031B14BE2600617EF9 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		1B98E0051B14BE5400617EF9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		1BEB178A19E2DEEA003A0203 /* SuperpoweredRecorder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredRecorder.h; path = ../../Superpowered/SuperpoweredRecorder.h; sourceTree = "<group>"; };
+		1BEB178B19E2DF81003A0203 /* SuperpoweredTimeStretching.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredTimeStretching.h; path = ../../Superpowered/SuperpoweredTimeStretching.h; sourceTree = "<group>"; };
+		1BEB178C19E2DFB3003A0203 /* SuperpoweredAudioBuffers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredAudioBuffers.h; path = ../../Superpowered/SuperpoweredAudioBuffers.h; sourceTree = "<group>"; };
+		1BF94B3219765521001FFAC9 /* SuperpoweredOfflineProcessingExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperpoweredOfflineProcessingExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BF94B3519765521001FFAC9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1BF94B3719765521001FFAC9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1BF94B3919765521001FFAC9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1BF94B3D19765521001FFAC9 /* SuperpoweredOfflineProcessingExample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SuperpoweredOfflineProcessingExample-Info.plist"; sourceTree = "<group>"; };
+		1BF94B3F19765521001FFAC9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1BF94B4119765521001FFAC9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1BF94B4319765521001FFAC9 /* SuperpoweredOfflineProcessingExample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SuperpoweredOfflineProcessingExample-Prefix.pch"; sourceTree = "<group>"; };
+		1BF94B4419765521001FFAC9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = SuperpoweredOfflineProcessingExample/AppDelegate.h; sourceTree = "<group>"; };
+		1BF94B4519765521001FFAC9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = SuperpoweredOfflineProcessingExample/AppDelegate.m; sourceTree = "<group>"; };
+		1BF94B4819765521001FFAC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1BF94B4A19765521001FFAC9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = SuperpoweredOfflineProcessingExample/ViewController.h; sourceTree = "<group>"; };
+		1BF94B4B19765521001FFAC9 /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = ViewController.mm; path = SuperpoweredOfflineProcessingExample/ViewController.mm; sourceTree = "<group>"; };
+		1BF94B4D19765521001FFAC9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SuperpoweredOfflineProcessingExample/Images.xcassets; sourceTree = "<group>"; };
+		1BF94B6A19765615001FFAC9 /* libSuperpoweredAudioIOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSuperpoweredAudioIOS.a; path = ../../Superpowered/libSuperpoweredAudioIOS.a; sourceTree = "<group>"; };
+		1BF94B6C19765644001FFAC9 /* SuperpoweredDecoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredDecoder.h; path = ../../Superpowered/SuperpoweredDecoder.h; sourceTree = "<group>"; };
+		1BF94B6E19765833001FFAC9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1BF94B2F19765521001FFAC9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B3F0BD01B160A5F00F50B00 /* MediaPlayer.framework in Frameworks */,
+				1B98E0061B14BE5400617EF9 /* AVFoundation.framework in Frameworks */,
+				1B98E0041B14BE2600617EF9 /* CoreMedia.framework in Frameworks */,
+				1BF94B6F19765833001FFAC9 /* AudioToolbox.framework in Frameworks */,
+				1BF94B3819765521001FFAC9 /* CoreGraphics.framework in Frameworks */,
+				1BF94B3A19765521001FFAC9 /* UIKit.framework in Frameworks */,
+				1BF94B3619765521001FFAC9 /* Foundation.framework in Frameworks */,
+				1BF94B6B19765615001FFAC9 /* libSuperpoweredAudioIOS.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1BF94B2919765521001FFAC9 = {
+			isa = PBXGroup;
+			children = (
+				1BF94B6A19765615001FFAC9 /* libSuperpoweredAudioIOS.a */,
+				1B74E6D51CEB615400DF0B3D /* SuperpoweredAnalyzer.h */,
+				1BF94B6C19765644001FFAC9 /* SuperpoweredDecoder.h */,
+				1B1050791BB2F586002A3F93 /* SuperpoweredFilter.h */,
+				1B468B4B1AE662C50099A7DD /* SuperpoweredSimple.h */,
+				1BEB178A19E2DEEA003A0203 /* SuperpoweredRecorder.h */,
+				1BEB178B19E2DF81003A0203 /* SuperpoweredTimeStretching.h */,
+				1BEB178C19E2DFB3003A0203 /* SuperpoweredAudioBuffers.h */,
+				1BF94B3C19765521001FFAC9 /* Supporting Files */,
+				1BF94B4419765521001FFAC9 /* AppDelegate.h */,
+				1BF94B4519765521001FFAC9 /* AppDelegate.m */,
+				1BF94B4719765521001FFAC9 /* Main.storyboard */,
+				1BF94B4A19765521001FFAC9 /* ViewController.h */,
+				1BF94B4B19765521001FFAC9 /* ViewController.mm */,
+				1BF94B4D19765521001FFAC9 /* Images.xcassets */,
+				1BF94B3419765521001FFAC9 /* Frameworks */,
+				1BF94B3319765521001FFAC9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1BF94B3319765521001FFAC9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1BF94B3219765521001FFAC9 /* SuperpoweredOfflineProcessingExample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1BF94B3419765521001FFAC9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1B3F0BCF1B160A5F00F50B00 /* MediaPlayer.framework */,
+				1B98E0051B14BE5400617EF9 /* AVFoundation.framework */,
+				1B98E0031B14BE2600617EF9 /* CoreMedia.framework */,
+				1BF94B6E19765833001FFAC9 /* AudioToolbox.framework */,
+				1BF94B3519765521001FFAC9 /* Foundation.framework */,
+				1BF94B3719765521001FFAC9 /* CoreGraphics.framework */,
+				1BF94B3919765521001FFAC9 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1BF94B3C19765521001FFAC9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1BF94B3D19765521001FFAC9 /* SuperpoweredOfflineProcessingExample-Info.plist */,
+				1BF94B3E19765521001FFAC9 /* InfoPlist.strings */,
+				1BF94B4119765521001FFAC9 /* main.m */,
+				1BF94B4319765521001FFAC9 /* SuperpoweredOfflineProcessingExample-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			path = SuperpoweredOfflineProcessingExample;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1BF94B3119765521001FFAC9 /* SuperpoweredOfflineProcessingExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1BF94B6419765521001FFAC9 /* Build configuration list for PBXNativeTarget "SuperpoweredOfflineProcessingExample" */;
+			buildPhases = (
+				1BF94B2E19765521001FFAC9 /* Sources */,
+				1BF94B2F19765521001FFAC9 /* Frameworks */,
+				1BF94B3019765521001FFAC9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SuperpoweredOfflineProcessingExample;
+			productName = SuperpoweredOfflineProcessingExample;
+			productReference = 1BF94B3219765521001FFAC9 /* SuperpoweredOfflineProcessingExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1BF94B2A19765521001FFAC9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = imect;
+				TargetAttributes = {
+					1BF94B3119765521001FFAC9 = {
+						DevelopmentTeam = AP4SQ5L535;
+					};
+				};
+			};
+			buildConfigurationList = 1BF94B2D19765521001FFAC9 /* Build configuration list for PBXProject "SuperpoweredOfflineProcessingExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1BF94B2919765521001FFAC9;
+			productRefGroup = 1BF94B3319765521001FFAC9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1BF94B3119765521001FFAC9 /* SuperpoweredOfflineProcessingExample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1BF94B3019765521001FFAC9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BF94B4E19765521001FFAC9 /* Images.xcassets in Resources */,
+				1BF94B4019765521001FFAC9 /* InfoPlist.strings in Resources */,
+				1BF94B4919765521001FFAC9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1BF94B2E19765521001FFAC9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BF94B4C19765521001FFAC9 /* ViewController.mm in Sources */,
+				1BF94B4619765521001FFAC9 /* AppDelegate.m in Sources */,
+				1BF94B4219765521001FFAC9 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1BF94B3E19765521001FFAC9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1BF94B3F19765521001FFAC9 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1BF94B4719765521001FFAC9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1BF94B4819765521001FFAC9 /* Base */,
+			);
+			name = Main.storyboard;
+			path = SuperpoweredOfflineProcessingExample;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1BF94B6219765521001FFAC9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		1BF94B6319765521001FFAC9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1BF94B6519765521001FFAC9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = AP4SQ5L535;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SuperpoweredOfflineProcessingExample/SuperpoweredOfflineProcessingExample-Prefix.pch";
+				INFOPLIST_FILE = "SuperpoweredOfflineProcessingExample/SuperpoweredOfflineProcessingExample-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../../Superpowered",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.imect.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 arm64 i386 x86_64";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		1BF94B6619765521001FFAC9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = AP4SQ5L535;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SuperpoweredOfflineProcessingExample/SuperpoweredOfflineProcessingExample-Prefix.pch";
+				INFOPLIST_FILE = "SuperpoweredOfflineProcessingExample/SuperpoweredOfflineProcessingExample-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../../Superpowered",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.imect.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 arm64 i386 x86_64";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1BF94B2D19765521001FFAC9 /* Build configuration list for PBXProject "SuperpoweredOfflineProcessingExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BF94B6219765521001FFAC9 /* Debug */,
+				1BF94B6319765521001FFAC9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1BF94B6419765521001FFAC9 /* Build configuration list for PBXNativeTarget "SuperpoweredOfflineProcessingExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BF94B6519765521001FFAC9 /* Debug */,
+				1BF94B6619765521001FFAC9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1BF94B2A19765521001FFAC9 /* Project object */;
+}

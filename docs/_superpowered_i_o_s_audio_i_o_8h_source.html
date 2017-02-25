@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.7"/>
-<title>Superpowered: SuperpoweredIOSAudioIO.h Source File</title>
+<title>Superpowered: /Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/SuperpoweredIOSAudioIO.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -18,9 +18,9 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.0.1</span>
+   &#160;<span id="projectnumber">1.0.2</span>
    </div>
-   <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
+   <div id="projectbrief">Pain-free Audio Infrastructure for iOS, Android, Mac OSX and Linux</div>
   </td>
  </tr>
  </tbody>
@@ -41,33 +41,37 @@
       <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_9662013f0ffc9b7f055f98fe8981fec6.html">SuperpoweredSDK</a></li><li class="navelem"><a class="el" href="dir_35bee368f85ebda59b1084bf3af9e072.html">Superpowered</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">SuperpoweredIOSAudioIO.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#import &lt;AVFoundation/AVAudioSession.h&gt;</span></div>
+<a href="_superpowered_i_o_s_audio_i_o_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#import &lt;AVFoundation/AVAudioSession.h&gt;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
 <div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="structmulti_output_channel_map.html">   38</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structmulti_output_channel_map.html">multiOutputChannelMap</a> {</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="comment">// Information you provide:</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">int</span> deviceChannels[2];</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">int</span> HDMIChannels[8];</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">int</span> USBChannels[32];</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="structmulti_output_channel_map.html#aa2c8751516c5303245b640ba1651cd98">   40</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structmulti_output_channel_map.html#aa2c8751516c5303245b640ba1651cd98">deviceChannels</a>[2];</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="structmulti_output_channel_map.html#ae3e3fdd5243f918928f0c53e02c0e07d">   41</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structmulti_output_channel_map.html#ae3e3fdd5243f918928f0c53e02c0e07d">HDMIChannels</a>[8];</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="structmulti_output_channel_map.html#ad22333916fad38862c7ade56ee822022">   42</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structmulti_output_channel_map.html#ad22333916fad38862c7ade56ee822022">USBChannels</a>[32];</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="comment">// READ ONLY information:</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">int</span> numberOfHDMIChannelsAvailable, numberOfUSBChannelsAvailable;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">bool</span> headphoneAvailable;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;} <a class="code" href="structmulti_output_channel_map.html">multiOutputChannelMap</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="structmulti_output_channel_map.html#a98cc633c5fab125cc17c3940e268b4d3">   45</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structmulti_output_channel_map.html#a61633a537bfe3c0e8afd262edba006d8">numberOfHDMIChannelsAvailable</a>, <a class="code" href="structmulti_output_channel_map.html#a98cc633c5fab125cc17c3940e268b4d3">numberOfUSBChannelsAvailable</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="structmulti_output_channel_map.html#a90409b8a2018ca9a09eeaae70f4865ef">   46</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structmulti_output_channel_map.html#a90409b8a2018ca9a09eeaae70f4865ef">headphoneAvailable</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;} <a class="code" href="_superpowered_i_o_s_audio_i_o_8h.html#a0b498189c500f7e0d14c669a9cdb1960">multiOutputChannelMap</a>;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
 <div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="structmulti_input_channel_map.html">   62</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structmulti_input_channel_map.html">multiInputChannelMap</a> {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">int</span> USBChannels[32]; <span class="comment">// You provide this.</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">int</span> numberOfUSBChannelsAvailable; <span class="comment">// READ ONLY</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;} <a class="code" href="structmulti_input_channel_map.html">multiInputChannelMap</a>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="structmulti_input_channel_map.html#a8eb176ede91226e0b94a13a3fe8ff50a">   63</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structmulti_input_channel_map.html#a8eb176ede91226e0b94a13a3fe8ff50a">USBChannels</a>[32]; <span class="comment">// You provide this.</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="structmulti_input_channel_map.html#ab32746f26b2c4ce71625b92c426edfd7">   64</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structmulti_input_channel_map.html#ab32746f26b2c4ce71625b92c426edfd7">numberOfUSBChannelsAvailable</a>; <span class="comment">// READ ONLY</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;} <a class="code" href="_superpowered_i_o_s_audio_i_o_8h.html#a760899a0cdcb52bf70649bf37dce2f28">multiInputChannelMap</a>;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">@protocol </span><a class="code" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html">SuperpoweredIOSAudioIODelegate</a>;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">typedef</span> bool (*audioProcessingCallback) (<span class="keywordtype">void</span> *clientdata, <span class="keywordtype">float</span> **buffers, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> inputChannels, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> outputChannels, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numberOfSamples, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> samplerate, uint64_t hostTime);</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="_superpowered_i_o_s_audio_i_o_8h.html#a99a4175bed2cb0fe3a5dfc4f7c7db61c">   82</a></span>&#160;<span class="keyword">typedef</span> bool (*<a class="code" href="_superpowered_i_o_s_audio_i_o_8h.html#a99a4175bed2cb0fe3a5dfc4f7c7db61c">audioProcessingCallback</a>) (<span class="keywordtype">void</span> *clientdata, <span class="keywordtype">float</span> **buffers, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> inputChannels, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> outputChannels, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numberOfSamples, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> samplerate, uint64_t hostTime);</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
 <div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="interface_superpowered_i_o_s_audio_i_o.html">   89</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_superpowered_i_o_s_audio_i_o.html">SuperpoweredIOSAudioIO</a>: NSObject {</div>
 <div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="interface_superpowered_i_o_s_audio_i_o.html#a10d9a6b8855c1241b51d9cd06e8e0f86">   90</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="interface_superpowered_i_o_s_audio_i_o.html#a10d9a6b8855c1241b51d9cd06e8e0f86">preferredBufferSizeMs</a>;</div>
@@ -77,7 +81,7 @@
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keyword">@property</span> (nonatomic, assign) <span class="keywordtype">int</span> preferredBufferSizeMs;</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keyword">@property</span> (nonatomic, assign) <span class="keywordtype">bool</span> saveBatteryInBackground;</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;- (id)initWithDelegate:(<span class="keywordtype">id</span>&lt;<a class="code" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html">SuperpoweredIOSAudioIODelegate</a>&gt;)delegate preferredBufferSize:(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)preferredBufferSize preferredMinimumSamplerate:(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)preferredMinimumSamplerate audioSessionCategory:(NSString *)audioSessionCategory channels:(<span class="keywordtype">int</span>)channels audioProcessingCallback:(audioProcessingCallback)callback clientdata:(<span class="keywordtype">void</span> *)clientdata;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;- (id)initWithDelegate:(<span class="keywordtype">id</span>&lt;<a class="code" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html">SuperpoweredIOSAudioIODelegate</a>&gt;)delegate preferredBufferSize:(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)preferredBufferSize preferredMinimumSamplerate:(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)preferredMinimumSamplerate audioSessionCategory:(NSString *)audioSessionCategory channels:(<span class="keywordtype">int</span>)channels audioProcessingCallback:(<a class="code" href="_superpowered_i_o_s_audio_i_o_8h.html#a99a4175bed2cb0fe3a5dfc4f7c7db61c">audioProcessingCallback</a>)callback clientdata:(<span class="keywordtype">void</span> *)clientdata;</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;- (bool)start;</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
@@ -101,21 +105,24 @@
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;- (void)mapChannels:(<a class="code" href="structmulti_output_channel_map.html">multiOutputChannelMap</a> *)outputMap inputMap:(<a class="code" href="structmulti_input_channel_map.html">multiInputChannelMap</a> *)inputMap externalAudioDeviceName:(NSString *)externalAudioDeviceName outputsAndInputs:(NSString *)outputsAndInputs;</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="keyword">@end</span></div>
+<div class="ttc" id="structmulti_output_channel_map_html_ae3e3fdd5243f918928f0c53e02c0e07d"><div class="ttname"><a href="structmulti_output_channel_map.html#ae3e3fdd5243f918928f0c53e02c0e07d">multiOutputChannelMap::HDMIChannels</a></div><div class="ttdeci">int HDMIChannels[8]</div><div class="ttdef"><b>Definition:</b> SuperpoweredIOSAudioIO.h:41</div></div>
+<div class="ttc" id="structmulti_output_channel_map_html_aa2c8751516c5303245b640ba1651cd98"><div class="ttname"><a href="structmulti_output_channel_map.html#aa2c8751516c5303245b640ba1651cd98">multiOutputChannelMap::deviceChannels</a></div><div class="ttdeci">int deviceChannels[2]</div><div class="ttdef"><b>Definition:</b> SuperpoweredIOSAudioIO.h:40</div></div>
 <div class="ttc" id="protocol_superpowered_i_o_s_audio_i_o_delegate-p_html_aae55829bbcf8176b34d1c567a27c9eeb"><div class="ttname"><a href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html#aae55829bbcf8176b34d1c567a27c9eeb">-[SuperpoweredIOSAudioIODelegate-p interruptionStarted]</a></div><div class="ttdeci">void interruptionStarted()</div><div class="ttdoc">The audio session may be interrupted by a phone call, etc. This method is called on the main thread w...</div></div>
+<div class="ttc" id="structmulti_output_channel_map_html_ad22333916fad38862c7ade56ee822022"><div class="ttname"><a href="structmulti_output_channel_map.html#ad22333916fad38862c7ade56ee822022">multiOutputChannelMap::USBChannels</a></div><div class="ttdeci">int USBChannels[32]</div><div class="ttdef"><b>Definition:</b> SuperpoweredIOSAudioIO.h:42</div></div>
 <div class="ttc" id="interface_superpowered_i_o_s_audio_i_o_html"><div class="ttname"><a href="interface_superpowered_i_o_s_audio_i_o.html">SuperpoweredIOSAudioIO</a></div><div class="ttdoc">Handles all audio session, audio lifecycle (interruptions), output, buffer size, samplerate and routi...</div><div class="ttdef"><b>Definition:</b> SuperpoweredIOSAudioIO.h:89</div></div>
+<div class="ttc" id="structmulti_output_channel_map_html_a90409b8a2018ca9a09eeaae70f4865ef"><div class="ttname"><a href="structmulti_output_channel_map.html#a90409b8a2018ca9a09eeaae70f4865ef">multiOutputChannelMap::headphoneAvailable</a></div><div class="ttdeci">bool headphoneAvailable</div><div class="ttdef"><b>Definition:</b> SuperpoweredIOSAudioIO.h:46</div></div>
+<div class="ttc" id="structmulti_input_channel_map_html_ab32746f26b2c4ce71625b92c426edfd7"><div class="ttname"><a href="structmulti_input_channel_map.html#ab32746f26b2c4ce71625b92c426edfd7">multiInputChannelMap::numberOfUSBChannelsAvailable</a></div><div class="ttdeci">int numberOfUSBChannelsAvailable</div><div class="ttdef"><b>Definition:</b> SuperpoweredIOSAudioIO.h:64</div></div>
 <div class="ttc" id="structmulti_output_channel_map_html"><div class="ttname"><a href="structmulti_output_channel_map.html">multiOutputChannelMap</a></div><div class="ttdoc">Output channel mapping. </div><div class="ttdef"><b>Definition:</b> SuperpoweredIOSAudioIO.h:38</div></div>
 <div class="ttc" id="protocol_superpowered_i_o_s_audio_i_o_delegate-p_html_a41192d288bd5cbed0ff2d9d6c8a88d41"><div class="ttname"><a href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html#a41192d288bd5cbed0ff2d9d6c8a88d41">-[SuperpoweredIOSAudioIODelegate-p recordPermissionRefused]</a></div><div class="ttdeci">void recordPermissionRefused()</div><div class="ttdoc">Called if the user did not grant a recording permission for the app. </div></div>
 <div class="ttc" id="protocol_superpowered_i_o_s_audio_i_o_delegate-p_html_ac371788ed59085810a0633aae0f12c9c"><div class="ttname"><a href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html#ac371788ed59085810a0633aae0f12c9c">-[SuperpoweredIOSAudioIODelegate-p interruptionEnded]</a></div><div class="ttdeci">void interruptionEnded()</div><div class="ttdoc">The audio session may be interrupted by a phone call, etc. This method is called on the main thread w...</div></div>
 <div class="ttc" id="structmulti_input_channel_map_html"><div class="ttname"><a href="structmulti_input_channel_map.html">multiInputChannelMap</a></div><div class="ttdoc">Input channel mapping. </div><div class="ttdef"><b>Definition:</b> SuperpoweredIOSAudioIO.h:62</div></div>
+<div class="ttc" id="_superpowered_i_o_s_audio_i_o_8h_html_a99a4175bed2cb0fe3a5dfc4f7c7db61c"><div class="ttname"><a href="_superpowered_i_o_s_audio_i_o_8h.html#a99a4175bed2cb0fe3a5dfc4f7c7db61c">audioProcessingCallback</a></div><div class="ttdeci">bool(* audioProcessingCallback)(void *clientdata, float **buffers, unsigned int inputChannels, unsigned int outputChannels, unsigned int numberOfSamples, unsigned int samplerate, uint64_t hostTime)</div><div class="ttdoc">The audio processing callback prototype. </div><div class="ttdef"><b>Definition:</b> SuperpoweredIOSAudioIO.h:82</div></div>
+<div class="ttc" id="_superpowered_i_o_s_audio_i_o_8h_html_a760899a0cdcb52bf70649bf37dce2f28"><div class="ttname"><a href="_superpowered_i_o_s_audio_i_o_8h.html#a760899a0cdcb52bf70649bf37dce2f28">multiInputChannelMap</a></div><div class="ttdeci">struct multiInputChannelMap multiInputChannelMap</div><div class="ttdoc">Input channel mapping. </div></div>
+<div class="ttc" id="structmulti_output_channel_map_html_a98cc633c5fab125cc17c3940e268b4d3"><div class="ttname"><a href="structmulti_output_channel_map.html#a98cc633c5fab125cc17c3940e268b4d3">multiOutputChannelMap::numberOfUSBChannelsAvailable</a></div><div class="ttdeci">int numberOfUSBChannelsAvailable</div><div class="ttdef"><b>Definition:</b> SuperpoweredIOSAudioIO.h:45</div></div>
+<div class="ttc" id="structmulti_output_channel_map_html_a61633a537bfe3c0e8afd262edba006d8"><div class="ttname"><a href="structmulti_output_channel_map.html#a61633a537bfe3c0e8afd262edba006d8">multiOutputChannelMap::numberOfHDMIChannelsAvailable</a></div><div class="ttdeci">int numberOfHDMIChannelsAvailable</div><div class="ttdef"><b>Definition:</b> SuperpoweredIOSAudioIO.h:45</div></div>
+<div class="ttc" id="_superpowered_i_o_s_audio_i_o_8h_html_a0b498189c500f7e0d14c669a9cdb1960"><div class="ttname"><a href="_superpowered_i_o_s_audio_i_o_8h.html#a0b498189c500f7e0d14c669a9cdb1960">multiOutputChannelMap</a></div><div class="ttdeci">struct multiOutputChannelMap multiOutputChannelMap</div><div class="ttdoc">Output channel mapping. </div></div>
 <div class="ttc" id="interface_superpowered_i_o_s_audio_i_o_html_a10d9a6b8855c1241b51d9cd06e8e0f86"><div class="ttname"><a href="interface_superpowered_i_o_s_audio_i_o.html#a10d9a6b8855c1241b51d9cd06e8e0f86">SuperpoweredIOSAudioIO::preferredBufferSizeMs</a></div><div class="ttdeci">int preferredBufferSizeMs</div><div class="ttdoc">The preferred buffer size. Recommended: 12. </div><div class="ttdef"><b>Definition:</b> SuperpoweredIOSAudioIO.h:90</div></div>
+<div class="ttc" id="structmulti_input_channel_map_html_a8eb176ede91226e0b94a13a3fe8ff50a"><div class="ttname"><a href="structmulti_input_channel_map.html#a8eb176ede91226e0b94a13a3fe8ff50a">multiInputChannelMap::USBChannels</a></div><div class="ttdeci">int USBChannels[32]</div><div class="ttdef"><b>Definition:</b> SuperpoweredIOSAudioIO.h:63</div></div>
 <div class="ttc" id="interface_superpowered_i_o_s_audio_i_o_html_ae9fca8e0025fb2a21de1ab27ebe0e8fb"><div class="ttname"><a href="interface_superpowered_i_o_s_audio_i_o.html#ae9fca8e0025fb2a21de1ab27ebe0e8fb">SuperpoweredIOSAudioIO::saveBatteryInBackground</a></div><div class="ttdeci">bool saveBatteryInBackground</div><div class="ttdoc">Save battery if output is silence and the app runs in background mode. True by default. </div><div class="ttdef"><b>Definition:</b> SuperpoweredIOSAudioIO.h:91</div></div>
 <div class="ttc" id="protocol_superpowered_i_o_s_audio_i_o_delegate-p_html"><div class="ttname"><a href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html">SuperpoweredIOSAudioIODelegate-p</a></div><div class="ttdoc">You must implement this protocol to make SuperpoweredIOSAudioIO work. </div><div class="ttdef"><b>Definition:</b> SuperpoweredIOSAudioIO.h:140</div></div>
 </div><!-- fragment --></div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.7
-</small></address>
-</body>
-</html>

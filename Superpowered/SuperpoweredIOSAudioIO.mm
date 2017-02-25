@@ -39,7 +39,7 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
     multiOutputChannelMap outputChannelMap;
     multiInputChannelMap inputChannelMap;
     audioDeviceType RemoteIOOutputChannelMap[64];
-    int numChannels, silenceFrames, samplerate, preferredMinimumSamplerate;
+    int numChannels, silenceFrames, samplerate, minimumNumberOfFrames, maximumNumberOfFrames, preferredMinimumSamplerate;
     bool audioUnitRunning, iOS6, background, inputEnabled;
 }
 
@@ -81,7 +81,7 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
         audioSystemInfo = [[NSMutableString alloc] initWithCapacity:256];
         silenceFrames = 0;
         background = audioUnitRunning = false;
-        samplerate = 0;
+        samplerate = minimumNumberOfFrames = maximumNumberOfFrames = 0;
         externalAudioDeviceName = nil;
         audioUnit = NULL;
         if (recordOnly) [self createAudioBuffersForRecordingCategory]; else inputBufferListForRecordingCategory = NULL;
@@ -306,7 +306,7 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
     };
 #ifdef ALLOW_BLUETOOTH
     if (multiRoute)  [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryMultiRoute error:NULL];
-    else [[AVAudioSession sharedInstance] setCategory:audioSessionCategory withOptions:AVAudioSessionCategoryOptionAllowBluetooth | AVAudioSessionCategoryOptionAllowBluetoothA2DP error:NULL];
+    else [[AVAudioSession sharedInstance] setCategory:audioSessionCategory withOptions:AVAudioSessionCategoryOptionAllowBluetoothA2DP | AVAudioSessionCategoryOptionMixWithOthers error:NULL];
 #else
     [[AVAudioSession sharedInstance] setCategory:multiRoute ? AVAudioSessionCategoryMultiRoute : audioSessionCategory error:NULL];
 #endif
@@ -322,15 +322,27 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
 
 // RemoteIO
 static void streamFormatChangedCallback(void *inRefCon, AudioUnit inUnit, AudioUnitPropertyID inID, AudioUnitScope inScope, AudioUnitElement inElement) {
+    AudioStreamBasicDescription format;
+    format.mSampleRate = 0;
+
     if ((inScope == kAudioUnitScope_Output) && (inElement == 0)) {
         UInt32 size = 0;
         AudioUnitGetPropertyInfo(inUnit, kAudioUnitProperty_StreamFormat, kAudioUnitScope_Output, 0, &size, NULL);
-        AudioStreamBasicDescription format;
         AudioUnitGetProperty(inUnit, kAudioUnitProperty_StreamFormat, kAudioUnitScope_Output, 0, &format, &size);
+    } else if ((inScope == kAudioUnitScope_Input) && (inElement == 1)) {
+        UInt32 size = 0;
+        AudioUnitGetPropertyInfo(inUnit, kAudioUnitProperty_StreamFormat, kAudioUnitScope_Input, 1, &size, NULL);
+        AudioUnitGetProperty(inUnit, kAudioUnitProperty_StreamFormat, kAudioUnitScope_Input, 1, &format, &size);
+    }
+
+    if (format.mSampleRate != 0) {
         __unsafe_unretained SuperpoweredIOSAudioIO *self = (__bridge SuperpoweredIOSAudioIO *)inRefCon;
         self->samplerate = (int)format.mSampleRate;
+        int minimum = int(self->samplerate * 0.001f), maximum = int(self->samplerate * 0.015f);
+        self->minimumNumberOfFrames = (minimum >> 3) << 3;
+        self->maximumNumberOfFrames = (maximum >> 3) << 3;
         [self performSelectorOnMainThread:@selector(setSamplerateAndBuffersize) withObject:nil waitUntilDone:NO];
-    };
+    }
 }
 
 static OSStatus coreAudioProcessingCallback(void *inRefCon, AudioUnitRenderActionFlags *ioActionFlags, const AudioTimeStamp *inTimeStamp, UInt32 inBusNumber, UInt32 inNumberFrames, AudioBufferList *ioData) {
@@ -338,7 +350,7 @@ static OSStatus coreAudioProcessingCallback(void *inRefCon, AudioUnitRenderActio
     if (!ioData) ioData = self->inputBufferListForRecordingCategory;
 
     div_t d = div(inNumberFrames, 8);
-    if ((d.rem != 0) || (inNumberFrames < 32) || (inNumberFrames > 512) || (ioData->mNumberBuffers != self->numChannels)) {
+    if ((d.rem != 0) || (inNumberFrames < self->minimumNumberOfFrames) || (inNumberFrames > self->maximumNumberOfFrames) || (ioData->mNumberBuffers != self->numChannels)) {
         return kAudioUnitErr_InvalidParameter;
     };
 

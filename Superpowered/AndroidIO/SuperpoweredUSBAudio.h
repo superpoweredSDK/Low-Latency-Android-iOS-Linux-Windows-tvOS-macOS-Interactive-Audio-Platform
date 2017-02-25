@@ -97,6 +97,13 @@ typedef bool (*SuperpoweredUSBAudioProcessingCallback)(void *clientdata, int dev
 
 /**
  @brief Information about an audio input or output.
+ 
+ @param name User-friendly name.
+ @param numChannels Number of channels.
+ @param bitsPerSample Bits per sample.
+ @param samplerate Sample rate.
+ @param interface Number of the interface the input or output belongs to.
+ @param isInput Input or output.
  */
 typedef struct SuperpoweredUSBAudioIOInfo {
     char *name;

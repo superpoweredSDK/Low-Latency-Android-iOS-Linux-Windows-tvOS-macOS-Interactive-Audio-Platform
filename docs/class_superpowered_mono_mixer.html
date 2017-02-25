@@ -18,9 +18,9 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.0.1</span>
+   &#160;<span id="projectnumber">1.0.2</span>
    </div>
-   <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
+   <div id="projectbrief">Pain-free Audio Infrastructure for iOS, Android, Mac OSX and Linux</div>
   </td>
  </tr>
  </tbody>
@@ -58,17 +58,52 @@
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2700f844143970180c6fbf877d8c108d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2700f844143970180c6fbf877d8c108d"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_mono_mixer.html#a2700f844143970180c6fbf877d8c108d">SuperpoweredMonoMixer</a> ()</td></tr>
-<tr class="memdesc:a2700f844143970180c6fbf877d8c108d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a mono mixer instance. <br /></td></tr>
+<tr class="memitem:a2700f844143970180c6fbf877d8c108d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_mono_mixer.html#a2700f844143970180c6fbf877d8c108d">SuperpoweredMonoMixer</a> ()</td></tr>
+<tr class="memdesc:a2700f844143970180c6fbf877d8c108d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a mono mixer instance.  <a href="#a2700f844143970180c6fbf877d8c108d">More...</a><br /></td></tr>
 <tr class="separator:a2700f844143970180c6fbf877d8c108d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94fcd42a7ee3a92cdfa6ac450a79bf47"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_mono_mixer.html#a94fcd42a7ee3a92cdfa6ac450a79bf47">~SuperpoweredMonoMixer</a> ()</td></tr>
+<tr class="separator:a94fcd42a7ee3a92cdfa6ac450a79bf47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e3e56ff98a9ea799afcf4d3d043d8ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_mono_mixer.html#a1e3e56ff98a9ea799afcf4d3d043d8ac">process</a> (float **inputs, void *output, float *inputLevels, float outputGain, unsigned int numberOfSamples)</td></tr>
 <tr class="memdesc:a1e3e56ff98a9ea799afcf4d3d043d8ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes the audio.  <a href="#a1e3e56ff98a9ea799afcf4d3d043d8ac">More...</a><br /></td></tr>
 <tr class="separator:a1e3e56ff98a9ea799afcf4d3d043d8ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>One instance allocates just a few bytes of memory. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<div class="textblock"><p>Mixes max. 4 mono inputs into a mono output. </p>
+<p>One instance allocates just a few bytes of memory. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a2700f844143970180c6fbf877d8c108d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SuperpoweredMonoMixer::SuperpoweredMonoMixer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates a mono mixer instance. </p>
+
+</div>
+</div>
+<a class="anchor" id="a94fcd42a7ee3a92cdfa6ac450a79bf47"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SuperpoweredMonoMixer::~SuperpoweredMonoMixer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a1e3e56ff98a9ea799afcf4d3d043d8ac"></a>
 <div class="memitem">
 <div class="memproto">
@@ -110,6 +145,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Processes the audio. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">inputs</td><td>Four pointers to input buffers. Any pointer can be NULL. </td></tr>
@@ -123,12 +160,7 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/<a class="el" href="_superpowered_mixer_8h_source.html">SuperpoweredMixer.h</a></li>
+</ul>
 </div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.7
-</small></address>
-</body>
-</html>

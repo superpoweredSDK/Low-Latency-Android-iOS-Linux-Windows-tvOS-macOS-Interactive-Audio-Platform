@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.7"/>
-<title>Superpowered: SuperpoweredAudioBuffers.h Source File</title>
+<title>Superpowered: /Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/SuperpoweredAudioBuffers.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -18,9 +18,9 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.0.1</span>
+   &#160;<span id="projectnumber">1.0.2</span>
    </div>
-   <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
+   <div id="projectbrief">Pain-free Audio Infrastructure for iOS, Android, Mac OSX and Linux</div>
   </td>
  </tr>
  </tbody>
@@ -41,13 +41,17 @@
       <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_9662013f0ffc9b7f055f98fe8981fec6.html">SuperpoweredSDK</a></li><li class="navelem"><a class="el" href="dir_35bee368f85ebda59b1084bf3af9e072.html">Superpowered</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">SuperpoweredAudioBuffers.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef Header_SuperpoweredAudioBuffers</span></div>
+<a href="_superpowered_audio_buffers_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef Header_SuperpoweredAudioBuffers</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define Header_SuperpoweredAudioBuffers</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
@@ -73,10 +77,10 @@
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
 <div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="class_superpowered_audiopointer_list.html">   78</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_superpowered_audiopointer_list.html">SuperpoweredAudiopointerList</a> {</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">public</span>:    </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">int</span> sampleLength;</div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="class_superpowered_audiopointer_list.html#a903563e22f232d9c0cde1aae394a41d9">   80</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_superpowered_audiopointer_list.html#a903563e22f232d9c0cde1aae394a41d9">sampleLength</a>;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    </div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <a class="code" href="class_superpowered_audiopointer_list.html#a4895af29ebd025203ca1f619ac2baabe">SuperpoweredAudiopointerList</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> bytesPerSample, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> typicalNumElements);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    ~<a class="code" href="class_superpowered_audiopointer_list.html">SuperpoweredAudiopointerList</a>();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="class_superpowered_audiopointer_list.html#a58d21367255e5953c96d1d1dbf0d4648">~SuperpoweredAudiopointerList</a>();</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    </div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_audiopointer_list.html#af0f3e2c1579819ee8af9a3e55f5f606d">append</a>(<a class="code" href="struct_superpowered_audiobufferlist_element.html">SuperpoweredAudiobufferlistElement</a> *buffer);</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_audiopointer_list.html#afb17721250323442a689ac9660612fe5">insert</a>(<a class="code" href="struct_superpowered_audiobufferlist_element.html">SuperpoweredAudiobufferlistElement</a> *buffer);</div>
@@ -100,21 +104,24 @@
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;};</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
 <div class="line"><a name="l00174"></a><span class="lineno"><a class="line" href="struct_superpowered_audiobufferlist_element.html">  174</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct_superpowered_audiobufferlist_element.html">SuperpoweredAudiobufferlistElement</a> {</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keywordtype">void</span> *buffers[4];</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    int64_t samplePosition;</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="keywordtype">int</span> startSample, endSample;</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <span class="keywordtype">float</span> samplesUsed;</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;} <a class="code" href="struct_superpowered_audiobufferlist_element.html">SuperpoweredAudiobufferlistElement</a>;</div>
+<div class="line"><a name="l00175"></a><span class="lineno"><a class="line" href="struct_superpowered_audiobufferlist_element.html#acb90fec8159e2861d0969b71fc184717">  175</a></span>&#160;    <span class="keywordtype">void</span> *<a class="code" href="struct_superpowered_audiobufferlist_element.html#acb90fec8159e2861d0969b71fc184717">buffers</a>[4];</div>
+<div class="line"><a name="l00176"></a><span class="lineno"><a class="line" href="struct_superpowered_audiobufferlist_element.html#a05c791bf2d4c165ed6563ce535eeb9f8">  176</a></span>&#160;    int64_t <a class="code" href="struct_superpowered_audiobufferlist_element.html#a05c791bf2d4c165ed6563ce535eeb9f8">samplePosition</a>;</div>
+<div class="line"><a name="l00177"></a><span class="lineno"><a class="line" href="struct_superpowered_audiobufferlist_element.html#a258e89466c74cfe792ce04b83ba3c06e">  177</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="struct_superpowered_audiobufferlist_element.html#a258e89466c74cfe792ce04b83ba3c06e">startSample</a>, <a class="code" href="struct_superpowered_audiobufferlist_element.html#aa8a5937d22e03a4147e4a09c0a340ea1">endSample</a>;</div>
+<div class="line"><a name="l00178"></a><span class="lineno"><a class="line" href="struct_superpowered_audiobufferlist_element.html#a38aa48cc7c66c73c12675bb45bc2a06f">  178</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="struct_superpowered_audiobufferlist_element.html#a38aa48cc7c66c73c12675bb45bc2a06f">samplesUsed</a>;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;} <a class="code" href="_superpowered_audio_buffers_8h.html#a30895f83cfa944accb6aa5288a7a4f75">SuperpoweredAudiobufferlistElement</a>;</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="class_superpowered_audiobuffer_pool_html_a9828b96ea77f021466a12c7bd33faa0d"><div class="ttname"><a href="class_superpowered_audiobuffer_pool.html#a9828b96ea77f021466a12c7bd33faa0d">SuperpoweredAudiobufferPool::getBuffer</a></div><div class="ttdeci">static void * getBuffer(unsigned int sizeBytes)</div><div class="ttdoc">Creates a buffer with retain count set to 1. </div></div>
 <div class="ttc" id="class_superpowered_audiopointer_list_html_ac1ab0858fdadb207ef005dfff9a1ee06"><div class="ttname"><a href="class_superpowered_audiopointer_list.html#ac1ab0858fdadb207ef005dfff9a1ee06">SuperpoweredAudiopointerList::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdoc">Remove everything from the list. </div></div>
 <div class="ttc" id="class_superpowered_audiopointer_list_html_a24fbde4697557d98282681b9f44970d9"><div class="ttname"><a href="class_superpowered_audiopointer_list.html#a24fbde4697557d98282681b9f44970d9">SuperpoweredAudiopointerList::startSamplePosition</a></div><div class="ttdeci">int64_t startSamplePosition()</div><div class="ttdoc">Returns the buffer list beginning&#39;s sample position in an audio file or stream. </div></div>
+<div class="ttc" id="struct_superpowered_audiobufferlist_element_html_aa8a5937d22e03a4147e4a09c0a340ea1"><div class="ttname"><a href="struct_superpowered_audiobufferlist_element.html#aa8a5937d22e03a4147e4a09c0a340ea1">SuperpoweredAudiobufferlistElement::endSample</a></div><div class="ttdeci">int endSample</div><div class="ttdef"><b>Definition:</b> SuperpoweredAudioBuffers.h:177</div></div>
 <div class="ttc" id="class_superpowered_audiopointer_list_html_afb17721250323442a689ac9660612fe5"><div class="ttname"><a href="class_superpowered_audiopointer_list.html#afb17721250323442a689ac9660612fe5">SuperpoweredAudiopointerList::insert</a></div><div class="ttdeci">void insert(SuperpoweredAudiobufferlistElement *buffer)</div><div class="ttdoc">Insert a buffer before the beginning of the list. </div></div>
 <div class="ttc" id="class_superpowered_audiopointer_list_html_a4895af29ebd025203ca1f619ac2baabe"><div class="ttname"><a href="class_superpowered_audiopointer_list.html#a4895af29ebd025203ca1f619ac2baabe">SuperpoweredAudiopointerList::SuperpoweredAudiopointerList</a></div><div class="ttdeci">SuperpoweredAudiopointerList(unsigned int bytesPerSample, unsigned int typicalNumElements)</div><div class="ttdoc">Creates an audio buffer list. </div></div>
+<div class="ttc" id="struct_superpowered_audiobufferlist_element_html_a05c791bf2d4c165ed6563ce535eeb9f8"><div class="ttname"><a href="struct_superpowered_audiobufferlist_element.html#a05c791bf2d4c165ed6563ce535eeb9f8">SuperpoweredAudiobufferlistElement::samplePosition</a></div><div class="ttdeci">int64_t samplePosition</div><div class="ttdef"><b>Definition:</b> SuperpoweredAudioBuffers.h:176</div></div>
 <div class="ttc" id="class_superpowered_audiobuffer_pool_html_a649f34e706c5cc6f54b7bd51b5abf9ab"><div class="ttname"><a href="class_superpowered_audiobuffer_pool.html#a649f34e706c5cc6f54b7bd51b5abf9ab">SuperpoweredAudiobufferPool::releaseBuffer</a></div><div class="ttdeci">static void releaseBuffer(void *buffer)</div><div class="ttdoc">Release a buffer, similar to Objective-C. </div></div>
 <div class="ttc" id="class_superpowered_audiopointer_list_html_af0f3e2c1579819ee8af9a3e55f5f606d"><div class="ttname"><a href="class_superpowered_audiopointer_list.html#af0f3e2c1579819ee8af9a3e55f5f606d">SuperpoweredAudiopointerList::append</a></div><div class="ttdeci">void append(SuperpoweredAudiobufferlistElement *buffer)</div><div class="ttdoc">Append a buffer to the end of the list. </div></div>
 <div class="ttc" id="class_superpowered_audiobuffer_pool_html_abf513c3919a292e5f0c5dd9cc9cb09b9"><div class="ttname"><a href="class_superpowered_audiobuffer_pool.html#abf513c3919a292e5f0c5dd9cc9cb09b9">SuperpoweredAudiobufferPool::retainBuffer</a></div><div class="ttdeci">static void retainBuffer(void *buffer)</div><div class="ttdoc">Retain a buffer, similar to Objective-C. </div></div>
+<div class="ttc" id="class_superpowered_audiopointer_list_html_a58d21367255e5953c96d1d1dbf0d4648"><div class="ttname"><a href="class_superpowered_audiopointer_list.html#a58d21367255e5953c96d1d1dbf0d4648">SuperpoweredAudiopointerList::~SuperpoweredAudiopointerList</a></div><div class="ttdeci">~SuperpoweredAudiopointerList()</div></div>
 <div class="ttc" id="class_superpowered_audiobuffer_pool_html_a386d3622109450761d1414a9411bb6d5"><div class="ttname"><a href="class_superpowered_audiobuffer_pool.html#a386d3622109450761d1414a9411bb6d5">SuperpoweredAudiobufferPool::ping</a></div><div class="ttdeci">static void ping()</div><div class="ttdoc">Let the system know that we are start using this class. </div></div>
 <div class="ttc" id="class_superpowered_audiopointer_list_html_a4e9210d6be40194627de176bfc41d9f1"><div class="ttname"><a href="class_superpowered_audiopointer_list.html#a4e9210d6be40194627de176bfc41d9f1">SuperpoweredAudiopointerList::nextSliceItem</a></div><div class="ttdeci">void * nextSliceItem(int *lengthSamples, float *samplesUsed=0, int stereoPairIndex=0)</div></div>
 <div class="ttc" id="class_superpowered_audiopointer_list_html"><div class="ttname"><a href="class_superpowered_audiopointer_list.html">SuperpoweredAudiopointerList</a></div><div class="ttdoc">This object manages an audio buffer list. </div><div class="ttdef"><b>Definition:</b> SuperpoweredAudioBuffers.h:78</div></div>
@@ -125,16 +132,13 @@
 <div class="ttc" id="struct_superpowered_audiobufferlist_element_html"><div class="ttname"><a href="struct_superpowered_audiobufferlist_element.html">SuperpoweredAudiobufferlistElement</a></div><div class="ttdoc">An audio buffer list item. </div><div class="ttdef"><b>Definition:</b> SuperpoweredAudioBuffers.h:174</div></div>
 <div class="ttc" id="class_superpowered_audiopointer_list_html_ac16b85ba4f66b32e248ec6de1ad69340"><div class="ttname"><a href="class_superpowered_audiopointer_list.html#ac16b85ba4f66b32e248ec6de1ad69340">SuperpoweredAudiopointerList::nextSamplePosition</a></div><div class="ttdeci">int64_t nextSamplePosition()</div><div class="ttdoc">Returns the buffer list end&#39;s sample position in an audio file or stream, plus 1. ...</div></div>
 <div class="ttc" id="class_superpowered_audiopointer_list_html_a61d6cee3dc88f6a2772d025f30eda5bf"><div class="ttname"><a href="class_superpowered_audiopointer_list.html#a61d6cee3dc88f6a2772d025f30eda5bf">SuperpoweredAudiopointerList::samplePositionOfSliceBeginning</a></div><div class="ttdeci">int64_t samplePositionOfSliceBeginning()</div><div class="ttdoc">Returns the slice beginning&#39;s sample position in an audio file or stream. </div></div>
+<div class="ttc" id="struct_superpowered_audiobufferlist_element_html_acb90fec8159e2861d0969b71fc184717"><div class="ttname"><a href="struct_superpowered_audiobufferlist_element.html#acb90fec8159e2861d0969b71fc184717">SuperpoweredAudiobufferlistElement::buffers</a></div><div class="ttdeci">void * buffers[4]</div><div class="ttdef"><b>Definition:</b> SuperpoweredAudioBuffers.h:175</div></div>
+<div class="ttc" id="_superpowered_audio_buffers_8h_html_a30895f83cfa944accb6aa5288a7a4f75"><div class="ttname"><a href="_superpowered_audio_buffers_8h.html#a30895f83cfa944accb6aa5288a7a4f75">SuperpoweredAudiobufferlistElement</a></div><div class="ttdeci">struct SuperpoweredAudiobufferlistElement SuperpoweredAudiobufferlistElement</div><div class="ttdoc">An audio buffer list item. </div></div>
+<div class="ttc" id="struct_superpowered_audiobufferlist_element_html_a258e89466c74cfe792ce04b83ba3c06e"><div class="ttname"><a href="struct_superpowered_audiobufferlist_element.html#a258e89466c74cfe792ce04b83ba3c06e">SuperpoweredAudiobufferlistElement::startSample</a></div><div class="ttdeci">int startSample</div><div class="ttdef"><b>Definition:</b> SuperpoweredAudioBuffers.h:177</div></div>
 <div class="ttc" id="class_superpowered_audiopointer_list_html_a5574b012c670fde7dc76918a585e925e"><div class="ttname"><a href="class_superpowered_audiopointer_list.html#a5574b012c670fde7dc76918a585e925e">SuperpoweredAudiopointerList::truncate</a></div><div class="ttdeci">void truncate(int numSamples, bool fromTheBeginning)</div><div class="ttdoc">Removes samples from the beginning or the end. </div></div>
+<div class="ttc" id="class_superpowered_audiopointer_list_html_a903563e22f232d9c0cde1aae394a41d9"><div class="ttname"><a href="class_superpowered_audiopointer_list.html#a903563e22f232d9c0cde1aae394a41d9">SuperpoweredAudiopointerList::sampleLength</a></div><div class="ttdeci">int sampleLength</div><div class="ttdef"><b>Definition:</b> SuperpoweredAudioBuffers.h:80</div></div>
 <div class="ttc" id="class_superpowered_audiopointer_list_html_a2230c3df8f6e75d522c9ca47fdfd690e"><div class="ttname"><a href="class_superpowered_audiopointer_list.html#a2230c3df8f6e75d522c9ca47fdfd690e">SuperpoweredAudiopointerList::forwardToLastSliceBuffer</a></div><div class="ttdeci">void forwardToLastSliceBuffer()</div><div class="ttdoc">Jumps the enumerator to the last buffer. </div></div>
 <div class="ttc" id="class_superpowered_audiopointer_list_html_aaa79e72b81e380f24d1c1a9c2dc09623"><div class="ttname"><a href="class_superpowered_audiopointer_list.html#aaa79e72b81e380f24d1c1a9c2dc09623">SuperpoweredAudiopointerList::rewindSlice</a></div><div class="ttdeci">void rewindSlice()</div><div class="ttdoc">Returns the slice enumerator to the first buffer. </div></div>
 <div class="ttc" id="class_superpowered_audiobuffer_pool_html_afcf9caaab0018c54fa74ff8a1a4c08d8"><div class="ttname"><a href="class_superpowered_audiobuffer_pool.html#afcf9caaab0018c54fa74ff8a1a4c08d8">SuperpoweredAudiobufferPool::allocBuffer</a></div><div class="ttdeci">static void * allocBuffer(unsigned int sizeBytes)</div><div class="ttdoc">Allocates a buffer using malloc, aligned to 16 bytes. Retain count will be set to 1...</div></div>
+<div class="ttc" id="struct_superpowered_audiobufferlist_element_html_a38aa48cc7c66c73c12675bb45bc2a06f"><div class="ttname"><a href="struct_superpowered_audiobufferlist_element.html#a38aa48cc7c66c73c12675bb45bc2a06f">SuperpoweredAudiobufferlistElement::samplesUsed</a></div><div class="ttdeci">float samplesUsed</div><div class="ttdef"><b>Definition:</b> SuperpoweredAudioBuffers.h:178</div></div>
 </div><!-- fragment --></div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.7
-</small></address>
-</body>
-</html>

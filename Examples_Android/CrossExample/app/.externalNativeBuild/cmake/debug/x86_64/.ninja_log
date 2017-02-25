@@ -1,0 +1,4 @@
+# ninja log v5
+2	226	0	CMakeFiles/SuperpoweredExample.dir/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/AndroidIO/SuperpoweredAndroidAudioIO.cpp.o	a9cdd214d60012fd
+0	343	0	CMakeFiles/SuperpoweredExample.dir/SuperpoweredExample.cpp.o	478c88c65799bbe8
+343	721	0	/Volumes/iMect/iphone/SuperpoweredSDK/examples_Android/CrossExample/app/build/intermediates/cmake/debug/obj/x86_64/libSuperpoweredExample.so	1aa9c9c560efb80b

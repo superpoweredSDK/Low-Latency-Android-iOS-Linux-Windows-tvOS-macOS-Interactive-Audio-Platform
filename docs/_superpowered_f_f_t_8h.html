@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.7"/>
-<title>Superpowered: SuperpoweredFFT.h File Reference</title>
+<title>Superpowered: /Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/SuperpoweredFFT.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -18,9 +18,9 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.0.1</span>
+   &#160;<span id="projectnumber">1.0.2</span>
    </div>
-   <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
+   <div id="projectbrief">Pain-free Audio Infrastructure for iOS, Android, Mac OSX and Linux</div>
   </td>
  </tr>
  </tbody>
@@ -41,6 +41,10 @@
       <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_9662013f0ffc9b7f055f98fe8981fec6.html">SuperpoweredSDK</a></li><li class="navelem"><a class="el" href="dir_35bee368f85ebda59b1084bf3af9e072.html">Superpowered</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
@@ -63,12 +67,13 @@ Functions</h2></td></tr>
 <tr class="memitem:ab4c8d9807a510b92beaaa173a154691f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_f_f_t_8h.html#ab4c8d9807a510b92beaaa173a154691f">SuperpoweredFFTReal</a> (float *real, float *imag, int logSize, bool forward)</td></tr>
 <tr class="memdesc:ab4c8d9807a510b92beaaa173a154691f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Real in-place FFT.  <a href="#ab4c8d9807a510b92beaaa173a154691f">More...</a><br /></td></tr>
 <tr class="separator:ab4c8d9807a510b92beaaa173a154691f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad4e287dfefacfae3e9182353652a5428"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad4e287dfefacfae3e9182353652a5428"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SuperpoweredPolarFFT</b> (float *mag, float *phase, int logSize, bool forward, float valueOfPi=0)</td></tr>
-<tr class="separator:ad4e287dfefacfae3e9182353652a5428"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a354e759186aa1ff3402c0a872b031a04"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_f_f_t_8h.html#a354e759186aa1ff3402c0a872b031a04">SuperpoweredPolarFFT</a> (float *mag, float *phase, int logSize, bool forward, float valueOfPi=0)</td></tr>
+<tr class="memdesc:a354e759186aa1ff3402c0a872b031a04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Polar FFT.  <a href="#a354e759186aa1ff3402c0a872b031a04">More...</a><br /></td></tr>
+<tr class="separator:a354e759186aa1ff3402c0a872b031a04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Single threaded, not thread safe.</p>
+<div class="textblock"><p>Super fast FFT. </p>
+<p>Single threaded, not thread safe.</p>
 <dl class="section remark"><dt>Remarks</dt><dd>Superpowered FFT benefits from ideas in Construction of a High-Performance FFT by Eric Postpischil (<a href="http://edp.org/resume.htm">http://edp.org/resume.htm</a>). </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="aed38bde106533ddd34aee00bb60c9215"></a>
@@ -106,6 +111,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SuperpoweredPolarFFT<
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Complex in-place FFT. </p>
 <p>Data packing is same as Apple's vDSP. Check the "Using Fourier Transforms" page of Apple's vDSP documentation ("Data Packing for Real FFTs").</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -154,6 +161,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SuperpoweredPolarFFT<
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Real in-place FFT. </p>
 <p>Data packing is same as Apple's vDSP. Check the "Using Fourier Transforms" page of Apple's vDSP documentation ("Data Packing for Real FFTs").</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -167,12 +176,61 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SuperpoweredPolarFFT<
 
 </div>
 </div>
+<a class="anchor" id="a354e759186aa1ff3402c0a872b031a04"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SuperpoweredPolarFFT </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>mag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>phase</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>logSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>forward</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>valueOfPi</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Polar FFT. </p>
+<p>Data packing is same as Apple's vDSP. Check the "Using Fourier Transforms" page of Apple's vDSP documentation ("Data Packing for Real FFTs").</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mag</td><td>Input: split real part. Output: magnitudes. </td></tr>
+    <tr><td class="paramname">phase</td><td>Input: split real part. Output: phases. </td></tr>
+    <tr><td class="paramname">logSize</td><td>Should be 5 - 13 (FFT sizes 32 - 8192). </td></tr>
+    <tr><td class="paramname">forward</td><td>Forward or inverse. </td></tr>
+    <tr><td class="paramname">valueOfPi</td><td>The function can translate pi to any value (Google: the tau manifesto). Leave it at 0 for M_PI. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 </div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.7
-</small></address>
-</body>
-</html>

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.7"/>
-<title>Superpowered: SuperpoweredGate.h Source File</title>
+<title>Superpowered: /Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/SuperpoweredGate.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -18,9 +18,9 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.0.1</span>
+   &#160;<span id="projectnumber">1.0.2</span>
    </div>
-   <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
+   <div id="projectbrief">Pain-free Audio Infrastructure for iOS, Android, Mac OSX and Linux</div>
   </td>
  </tr>
  </tbody>
@@ -41,29 +41,33 @@
       <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_9662013f0ffc9b7f055f98fe8981fec6.html">SuperpoweredSDK</a></li><li class="navelem"><a class="el" href="dir_35bee368f85ebda59b1084bf3af9e072.html">Superpowered</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">SuperpoweredGate.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef Header_SuperpoweredGate</span></div>
+<a href="_superpowered_gate_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef Header_SuperpoweredGate</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define Header_SuperpoweredGate</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;SuperpoweredFX.h&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_superpowered_f_x_8h.html">SuperpoweredFX.h</a>&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">struct </span>gateInternals;</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
 <div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_superpowered_gate.html">   16</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_superpowered_gate.html">SuperpoweredGate</a>: <span class="keyword">public</span> <a class="code" href="class_superpowered_f_x.html">SuperpoweredFX</a> {</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">// READ-WRITE parameters, thread safe (change from any thread)</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">float</span> wet;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">float</span> bpm;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">float</span> beats;</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_superpowered_gate.html#a766ea6c77dcd30831d42013e15df327f">   19</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="class_superpowered_gate.html#a766ea6c77dcd30831d42013e15df327f">wet</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_superpowered_gate.html#a463d5b2dd501e48739917c40ea7809a8">   20</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="class_superpowered_gate.html#a463d5b2dd501e48739917c40ea7809a8">bpm</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_superpowered_gate.html#a258a0a521f4a5e71ec96ea789ca14ca4">   21</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="class_superpowered_gate.html#a258a0a521f4a5e71ec96ea789ca14ca4">beats</a>;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    </div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_gate.html#a8b04bb3997778905bad303d4943b246d">enable</a>(<span class="keywordtype">bool</span> flag);</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="class_superpowered_gate.html#a4325e6576cb480441f77900575cdca8f">SuperpoweredGate</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> samplerate);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    ~<a class="code" href="class_superpowered_gate.html">SuperpoweredGate</a>();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="class_superpowered_gate.html#a9e87fd9d99bf1358b49e0b59974934ee">~SuperpoweredGate</a>();</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    </div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_gate.html#a67b3045794e4c861134e6bd19aab346b">setSamplerate</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> samplerate);</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_gate.html#af57ec345524fbd6960e062eb8a42543e">reset</a>();</div>
@@ -77,19 +81,16 @@
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;};</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="class_superpowered_f_x_html"><div class="ttname"><a href="class_superpowered_f_x.html">SuperpoweredFX</a></div><div class="ttdoc">This is the base class for Superpowered effects. </div><div class="ttdef"><b>Definition:</b> SuperpoweredFX.h:10</div></div>
+<div class="ttc" id="class_superpowered_gate_html_a463d5b2dd501e48739917c40ea7809a8"><div class="ttname"><a href="class_superpowered_gate.html#a463d5b2dd501e48739917c40ea7809a8">SuperpoweredGate::bpm</a></div><div class="ttdeci">float bpm</div><div class="ttdef"><b>Definition:</b> SuperpoweredGate.h:20</div></div>
+<div class="ttc" id="class_superpowered_f_x_html"><div class="ttname"><a href="class_superpowered_f_x.html">SuperpoweredFX</a></div><div class="ttdoc">This is the base class for Superpowered effects. </div><div class="ttdef"><b>Definition:</b> SuperpoweredFX.h:9</div></div>
 <div class="ttc" id="class_superpowered_gate_html_a4325e6576cb480441f77900575cdca8f"><div class="ttname"><a href="class_superpowered_gate.html#a4325e6576cb480441f77900575cdca8f">SuperpoweredGate::SuperpoweredGate</a></div><div class="ttdeci">SuperpoweredGate(unsigned int samplerate)</div><div class="ttdoc">Create a gate instance with the current sample rate value. </div></div>
 <div class="ttc" id="class_superpowered_gate_html"><div class="ttname"><a href="class_superpowered_gate.html">SuperpoweredGate</a></div><div class="ttdoc">Simple gate effect. </div><div class="ttdef"><b>Definition:</b> SuperpoweredGate.h:16</div></div>
+<div class="ttc" id="class_superpowered_gate_html_a258a0a521f4a5e71ec96ea789ca14ca4"><div class="ttname"><a href="class_superpowered_gate.html#a258a0a521f4a5e71ec96ea789ca14ca4">SuperpoweredGate::beats</a></div><div class="ttdeci">float beats</div><div class="ttdef"><b>Definition:</b> SuperpoweredGate.h:21</div></div>
 <div class="ttc" id="class_superpowered_gate_html_af57ec345524fbd6960e062eb8a42543e"><div class="ttname"><a href="class_superpowered_gate.html#af57ec345524fbd6960e062eb8a42543e">SuperpoweredGate::reset</a></div><div class="ttdeci">void reset()</div><div class="ttdoc">Reset all internals, sets the instance as good as new and turns it off. </div></div>
 <div class="ttc" id="class_superpowered_gate_html_a67b3045794e4c861134e6bd19aab346b"><div class="ttname"><a href="class_superpowered_gate.html#a67b3045794e4c861134e6bd19aab346b">SuperpoweredGate::setSamplerate</a></div><div class="ttdeci">void setSamplerate(unsigned int samplerate)</div><div class="ttdoc">Sets the sample rate. </div></div>
+<div class="ttc" id="_superpowered_f_x_8h_html"><div class="ttname"><a href="_superpowered_f_x_8h.html">SuperpoweredFX.h</a></div></div>
+<div class="ttc" id="class_superpowered_gate_html_a9e87fd9d99bf1358b49e0b59974934ee"><div class="ttname"><a href="class_superpowered_gate.html#a9e87fd9d99bf1358b49e0b59974934ee">SuperpoweredGate::~SuperpoweredGate</a></div><div class="ttdeci">~SuperpoweredGate()</div></div>
 <div class="ttc" id="class_superpowered_gate_html_a8b04bb3997778905bad303d4943b246d"><div class="ttname"><a href="class_superpowered_gate.html#a8b04bb3997778905bad303d4943b246d">SuperpoweredGate::enable</a></div><div class="ttdeci">void enable(bool flag)</div><div class="ttdoc">Turns the effect on/off. </div></div>
 <div class="ttc" id="class_superpowered_gate_html_a60758477c6a840099ebfec598af17f17"><div class="ttname"><a href="class_superpowered_gate.html#a60758477c6a840099ebfec598af17f17">SuperpoweredGate::process</a></div><div class="ttdeci">bool process(float *input, float *output, unsigned int numberOfSamples)</div><div class="ttdoc">Processes the audio. </div></div>
+<div class="ttc" id="class_superpowered_gate_html_a766ea6c77dcd30831d42013e15df327f"><div class="ttname"><a href="class_superpowered_gate.html#a766ea6c77dcd30831d42013e15df327f">SuperpoweredGate::wet</a></div><div class="ttdeci">float wet</div><div class="ttdef"><b>Definition:</b> SuperpoweredGate.h:19</div></div>
 </div><!-- fragment --></div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.7
-</small></address>
-</body>
-</html>

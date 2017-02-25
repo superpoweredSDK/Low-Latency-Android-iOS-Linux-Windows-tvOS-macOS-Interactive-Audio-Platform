@@ -18,9 +18,9 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.0.1</span>
+   &#160;<span id="projectnumber">1.0.2</span>
    </div>
-   <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
+   <div id="projectbrief">Pain-free Audio Infrastructure for iOS, Android, Mac OSX and Linux</div>
   </td>
  </tr>
  </tbody>
@@ -52,7 +52,7 @@
 
 <p>This is the complete list of members for <a class="el" href="class_superpowered_u_s_b_audio.html">SuperpoweredUSBAudio</a>, including all inherited members.</p>
 <table class="directory">
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>easyIO</b>(int deviceID, int samplerate, int bitsPerSample, int numInputChannels, int numOutputChannels, SuperpoweredUSBAudioLatency latency, void *clientdata, SuperpoweredUSBAudioProcessingCallback callback) (defined in <a class="el" href="class_superpowered_u_s_b_audio.html">SuperpoweredUSBAudio</a>)</td><td class="entry"><a class="el" href="class_superpowered_u_s_b_audio.html">SuperpoweredUSBAudio</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_superpowered_u_s_b_audio.html#aa24c6317b29104f2574af4e41fd22a95">easyIO</a>(int deviceID, int samplerate, int bitsPerSample, int numInputChannels, int numOutputChannels, SuperpoweredUSBAudioLatency latency, void *clientdata, SuperpoweredUSBAudioProcessingCallback callback)</td><td class="entry"><a class="el" href="class_superpowered_u_s_b_audio.html">SuperpoweredUSBAudio</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
   <tr><td class="entry"><a class="el" href="class_superpowered_u_s_b_audio.html#a252787c677ff14b0b4553d4985b67ef4">getBestIO</a>(int deviceID, int *inputIOindex, int *outputIOindex, int samplerate, int bitsPerSample, int numInputChannels, int numOutputChannels, bool strict)</td><td class="entry"><a class="el" href="class_superpowered_u_s_b_audio.html">SuperpoweredUSBAudio</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_superpowered_u_s_b_audio.html#a7774eb3efc191f318ea5317ab42d60a2">getConfigurationInfo</a>(int deviceID, int *numConfigurations, char ***configurationNames)</td><td class="entry"><a class="el" href="class_superpowered_u_s_b_audio.html">SuperpoweredUSBAudio</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
   <tr><td class="entry"><a class="el" href="class_superpowered_u_s_b_audio.html#a42b5a5f6809681af913248263606efac">getInfo</a>(int deviceID, const char **manufacturer, const char **product, const char **info)</td><td class="entry"><a class="el" href="class_superpowered_u_s_b_audio.html">SuperpoweredUSBAudio</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
@@ -61,16 +61,8 @@
   <tr class="even"><td class="entry"><a class="el" href="class_superpowered_u_s_b_audio.html#a8203b41194453f1079976aee9047e851">getOutputs</a>(int deviceID, SuperpoweredUSBAudioIOInfo **info)</td><td class="entry"><a class="el" href="class_superpowered_u_s_b_audio.html">SuperpoweredUSBAudio</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
   <tr><td class="entry"><a class="el" href="class_superpowered_u_s_b_audio.html#a5cc1a1a4dfb0b75725342ce64fb47aba">getPathInfo</a>(int deviceID, int pathIndex, int *numFeatures, float **minVolumes, float **maxVolumes, float **curVolumes, char **mutes)</td><td class="entry"><a class="el" href="class_superpowered_u_s_b_audio.html">SuperpoweredUSBAudio</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_superpowered_u_s_b_audio.html#af9d05a2776e7701a478a19f9a9ee0f03">setConfiguration</a>(int deviceID, int configurationIndex)</td><td class="entry"><a class="el" href="class_superpowered_u_s_b_audio.html">SuperpoweredUSBAudio</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>setMute</b>(int deviceID, int pathIndex, int channel, bool mute) (defined in <a class="el" href="class_superpowered_u_s_b_audio.html">SuperpoweredUSBAudio</a>)</td><td class="entry"><a class="el" href="class_superpowered_u_s_b_audio.html">SuperpoweredUSBAudio</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>setVolume</b>(int deviceID, int pathIndex, int channel, float db) (defined in <a class="el" href="class_superpowered_u_s_b_audio.html">SuperpoweredUSBAudio</a>)</td><td class="entry"><a class="el" href="class_superpowered_u_s_b_audio.html">SuperpoweredUSBAudio</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>startIO</b>(int deviceID, int inputIOindex, int outputIOindex, SuperpoweredUSBAudioLatency latency, void *clientdata, SuperpoweredUSBAudioProcessingCallback callback) (defined in <a class="el" href="class_superpowered_u_s_b_audio.html">SuperpoweredUSBAudio</a>)</td><td class="entry"><a class="el" href="class_superpowered_u_s_b_audio.html">SuperpoweredUSBAudio</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>stopIO</b>(int deviceID) (defined in <a class="el" href="class_superpowered_u_s_b_audio.html">SuperpoweredUSBAudio</a>)</td><td class="entry"><a class="el" href="class_superpowered_u_s_b_audio.html">SuperpoweredUSBAudio</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_superpowered_u_s_b_audio.html#ae2b16ffb54c7cc392b682de0a8710b55">setMute</a>(int deviceID, int pathIndex, int channel, bool mute)</td><td class="entry"><a class="el" href="class_superpowered_u_s_b_audio.html">SuperpoweredUSBAudio</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_superpowered_u_s_b_audio.html#a8a4fc5a9d5e632e0bdee7628b054eed5">setVolume</a>(int deviceID, int pathIndex, int channel, float db)</td><td class="entry"><a class="el" href="class_superpowered_u_s_b_audio.html">SuperpoweredUSBAudio</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_superpowered_u_s_b_audio.html#a4b88a09fd9f944141f1415eb9128dff2">startIO</a>(int deviceID, int inputIOindex, int outputIOindex, SuperpoweredUSBAudioLatency latency, void *clientdata, SuperpoweredUSBAudioProcessingCallback callback)</td><td class="entry"><a class="el" href="class_superpowered_u_s_b_audio.html">SuperpoweredUSBAudio</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_superpowered_u_s_b_audio.html#a377fc4c8443164233a062e10b3511eba">stopIO</a>(int deviceID)</td><td class="entry"><a class="el" href="class_superpowered_u_s_b_audio.html">SuperpoweredUSBAudio</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
 </table></div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.7
-</small></address>
-</body>
-</html>

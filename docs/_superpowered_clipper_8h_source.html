@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.7"/>
-<title>Superpowered: SuperpoweredClipper.h Source File</title>
+<title>Superpowered: /Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/SuperpoweredClipper.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -18,9 +18,9 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.0.1</span>
+   &#160;<span id="projectnumber">1.0.2</span>
    </div>
-   <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
+   <div id="projectbrief">Pain-free Audio Infrastructure for iOS, Android, Mac OSX and Linux</div>
   </td>
  </tr>
  </tbody>
@@ -41,24 +41,28 @@
       <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_9662013f0ffc9b7f055f98fe8981fec6.html">SuperpoweredSDK</a></li><li class="navelem"><a class="el" href="dir_35bee368f85ebda59b1084bf3af9e072.html">Superpowered</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">SuperpoweredClipper.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef Header_SuperpoweredClipper</span></div>
+<a href="_superpowered_clipper_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef Header_SuperpoweredClipper</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define Header_SuperpoweredClipper</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">struct </span>clipperInternals;</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
 <div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="class_superpowered_clipper.html">   14</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_superpowered_clipper.html">SuperpoweredClipper</a> {</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">float</span> thresholdDb;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">float</span> maximumDb;</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_superpowered_clipper.html#a5dd06794e8c7254fa19241cbc38ef074">   16</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="class_superpowered_clipper.html#a5dd06794e8c7254fa19241cbc38ef074">thresholdDb</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_superpowered_clipper.html#abf9117433fcaffc8a523be93100db0db">   17</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="class_superpowered_clipper.html#abf9117433fcaffc8a523be93100db0db">maximumDb</a>;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="class_superpowered_clipper.html">SuperpoweredClipper</a>();</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    ~<a class="code" href="class_superpowered_clipper.html">SuperpoweredClipper</a>();</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="class_superpowered_clipper.html#a7618642ac4fa1b07ccb37973043c26a3">SuperpoweredClipper</a>();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="class_superpowered_clipper.html#a039f1b9e3bdf6eee73137a14f158a6c4">~SuperpoweredClipper</a>();</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_clipper.html#ab0f5a04dd7860b82fedba12bd956d6ac">process</a>(<span class="keywordtype">float</span> *input, <span class="keywordtype">float</span> *output, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numberOfSamples);</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
@@ -68,13 +72,9 @@
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="class_superpowered_clipper_html"><div class="ttname"><a href="class_superpowered_clipper.html">SuperpoweredClipper</a></div><div class="ttdoc">Hard knee clipping with 0 latency. </div><div class="ttdef"><b>Definition:</b> SuperpoweredClipper.h:14</div></div>
+<div class="ttc" id="class_superpowered_clipper_html_a039f1b9e3bdf6eee73137a14f158a6c4"><div class="ttname"><a href="class_superpowered_clipper.html#a039f1b9e3bdf6eee73137a14f158a6c4">SuperpoweredClipper::~SuperpoweredClipper</a></div><div class="ttdeci">~SuperpoweredClipper()</div></div>
 <div class="ttc" id="class_superpowered_clipper_html_ab0f5a04dd7860b82fedba12bd956d6ac"><div class="ttname"><a href="class_superpowered_clipper.html#ab0f5a04dd7860b82fedba12bd956d6ac">SuperpoweredClipper::process</a></div><div class="ttdeci">void process(float *input, float *output, unsigned int numberOfSamples)</div><div class="ttdoc">Processes the audio. </div></div>
+<div class="ttc" id="class_superpowered_clipper_html_a7618642ac4fa1b07ccb37973043c26a3"><div class="ttname"><a href="class_superpowered_clipper.html#a7618642ac4fa1b07ccb37973043c26a3">SuperpoweredClipper::SuperpoweredClipper</a></div><div class="ttdeci">SuperpoweredClipper()</div></div>
+<div class="ttc" id="class_superpowered_clipper_html_a5dd06794e8c7254fa19241cbc38ef074"><div class="ttname"><a href="class_superpowered_clipper.html#a5dd06794e8c7254fa19241cbc38ef074">SuperpoweredClipper::thresholdDb</a></div><div class="ttdeci">float thresholdDb</div><div class="ttdef"><b>Definition:</b> SuperpoweredClipper.h:16</div></div>
+<div class="ttc" id="class_superpowered_clipper_html_abf9117433fcaffc8a523be93100db0db"><div class="ttname"><a href="class_superpowered_clipper.html#abf9117433fcaffc8a523be93100db0db">SuperpoweredClipper::maximumDb</a></div><div class="ttdeci">float maximumDb</div><div class="ttdef"><b>Definition:</b> SuperpoweredClipper.h:17</div></div>
 </div><!-- fragment --></div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.7
-</small></address>
-</body>
-</html>

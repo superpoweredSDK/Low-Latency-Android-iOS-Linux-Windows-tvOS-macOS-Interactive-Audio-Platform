@@ -18,9 +18,9 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.0.1</span>
+   &#160;<span id="projectnumber">1.0.2</span>
    </div>
-   <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
+   <div id="projectbrief">Pain-free Audio Infrastructure for iOS, Android, Mac OSX and Linux</div>
   </td>
  </tr>
  </tbody>
@@ -54,7 +54,7 @@
 <div class="contents">
 
 <p>Efficient bandpass filter bank for real-time, zero latency frequency analysation.  
-</p>
+ <a href="class_superpowered_bandpass_filterbank.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -62,6 +62,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5865784cff17f89cb9998b992740b71d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf8a410a87b2565b6e7175f60aef7f0e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_bandpass_filterbank.html#aaf8a410a87b2565b6e7175f60aef7f0e">SuperpoweredBandpassFilterbank</a> (int numGroups, int numBandsInGroup, float *frequencies, float *widths, unsigned int samplerate)</td></tr>
 <tr class="separator:aaf8a410a87b2565b6e7175f60aef7f0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fe65a253887941a7472e0d5c560c0c4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_bandpass_filterbank.html#a0fe65a253887941a7472e0d5c560c0c4">~SuperpoweredBandpassFilterbank</a> ()</td></tr>
+<tr class="separator:a0fe65a253887941a7472e0d5c560c0c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab69461ac253a510b1f6d5baa2381809c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_bandpass_filterbank.html#ab69461ac253a510b1f6d5baa2381809c">setSamplerate</a> (unsigned int samplerate)</td></tr>
 <tr class="memdesc:ab69461ac253a510b1f6d5baa2381809c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the sample rate.  <a href="#ab69461ac253a510b1f6d5baa2381809c">More...</a><br /></td></tr>
 <tr class="separator:ab69461ac253a510b1f6d5baa2381809c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -72,7 +74,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aa6f38e959ee98ec833542fa89ade00c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes the audio.  <a href="#aa6f38e959ee98ec833542fa89ade00c9">More...</a><br /></td></tr>
 <tr class="separator:aa6f38e959ee98ec833542fa89ade00c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Efficient bandpass filter bank for real-time, zero latency frequency analysation. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a5865784cff17f89cb9998b992740b71d"></a>
 <div class="memitem">
 <div class="memproto">
@@ -176,29 +180,22 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="ab69461ac253a510b1f6d5baa2381809c"></a>
+<a class="anchor" id="a0fe65a253887941a7472e0d5c560c0c4"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void SuperpoweredBandpassFilterbank::setSamplerate </td>
+          <td class="memname">SuperpoweredBandpassFilterbank::~SuperpoweredBandpassFilterbank </td>
           <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>samplerate</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">samplerate</td><td>44100, 48000, etc. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a020b66a35f26f2aa6ddbf6d68b21a331"></a>
 <div class="memitem">
 <div class="memproto">
@@ -246,6 +243,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Processes the audio. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">input</td><td>32-bit interleaved stereo input buffer. </td></tr>
@@ -307,6 +306,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Processes the audio. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">input</td><td>32-bit interleaved stereo input buffer. </td></tr>
@@ -321,12 +322,31 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ab69461ac253a510b1f6d5baa2381809c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SuperpoweredBandpassFilterbank::setSamplerate </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>samplerate</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the sample rate. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">samplerate</td><td>44100, 48000, etc. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/<a class="el" href="_superpowered_bandpass_filterbank_8h_source.html">SuperpoweredBandpassFilterbank.h</a></li>
+</ul>
 </div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.7
-</small></address>
-</body>
-</html>

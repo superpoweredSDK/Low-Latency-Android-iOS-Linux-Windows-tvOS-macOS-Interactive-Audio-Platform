@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.7"/>
-<title>Superpowered: SuperpoweredBandpassFilterbank.h Source File</title>
+<title>Superpowered: /Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/SuperpoweredBandpassFilterbank.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -18,9 +18,9 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.0.1</span>
+   &#160;<span id="projectnumber">1.0.2</span>
    </div>
-   <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
+   <div id="projectbrief">Pain-free Audio Infrastructure for iOS, Android, Mac OSX and Linux</div>
   </td>
  </tr>
  </tbody>
@@ -41,13 +41,17 @@
       <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_9662013f0ffc9b7f055f98fe8981fec6.html">SuperpoweredSDK</a></li><li class="navelem"><a class="el" href="dir_35bee368f85ebda59b1084bf3af9e072.html">Superpowered</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">SuperpoweredBandpassFilterbank.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef Header_SuperpoweredBandpassFilterBank</span></div>
+<a href="_superpowered_bandpass_filterbank_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef Header_SuperpoweredBandpassFilterBank</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define Header_SuperpoweredBandpassFilterBank</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">struct </span>bandpassFilterbankInternals;</div>
@@ -57,7 +61,7 @@
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="class_superpowered_bandpass_filterbank.html#a5865784cff17f89cb9998b992740b71d">SuperpoweredBandpassFilterbank</a>(<span class="keywordtype">int</span> numBands, <span class="keywordtype">float</span> *frequencies, <span class="keywordtype">float</span> *widths, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> samplerate);</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="class_superpowered_bandpass_filterbank.html#a5865784cff17f89cb9998b992740b71d">SuperpoweredBandpassFilterbank</a>(<span class="keywordtype">int</span> numGroups, <span class="keywordtype">int</span> numBandsInGroup, <span class="keywordtype">float</span> *frequencies, <span class="keywordtype">float</span> *widths, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> samplerate);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    ~<a class="code" href="class_superpowered_bandpass_filterbank.html">SuperpoweredBandpassFilterbank</a>();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="class_superpowered_bandpass_filterbank.html#a0fe65a253887941a7472e0d5c560c0c4">~SuperpoweredBandpassFilterbank</a>();</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_superpowered_bandpass_filterbank.html#ab69461ac253a510b1f6d5baa2381809c">setSamplerate</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> samplerate);</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
@@ -73,15 +77,8 @@
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="class_superpowered_bandpass_filterbank_html_aa6f38e959ee98ec833542fa89ade00c9"><div class="ttname"><a href="class_superpowered_bandpass_filterbank.html#aa6f38e959ee98ec833542fa89ade00c9">SuperpoweredBandpassFilterbank::processNoAdd</a></div><div class="ttdeci">void processNoAdd(float *input, float *bands, float *peak, float *sum, unsigned int numberOfSamples, int group=0)</div><div class="ttdoc">Processes the audio. </div></div>
 <div class="ttc" id="class_superpowered_bandpass_filterbank_html_a5865784cff17f89cb9998b992740b71d"><div class="ttname"><a href="class_superpowered_bandpass_filterbank.html#a5865784cff17f89cb9998b992740b71d">SuperpoweredBandpassFilterbank::SuperpoweredBandpassFilterbank</a></div><div class="ttdeci">SuperpoweredBandpassFilterbank(int numBands, float *frequencies, float *widths, unsigned int samplerate)</div></div>
+<div class="ttc" id="class_superpowered_bandpass_filterbank_html_a0fe65a253887941a7472e0d5c560c0c4"><div class="ttname"><a href="class_superpowered_bandpass_filterbank.html#a0fe65a253887941a7472e0d5c560c0c4">SuperpoweredBandpassFilterbank::~SuperpoweredBandpassFilterbank</a></div><div class="ttdeci">~SuperpoweredBandpassFilterbank()</div></div>
 <div class="ttc" id="class_superpowered_bandpass_filterbank_html_ab69461ac253a510b1f6d5baa2381809c"><div class="ttname"><a href="class_superpowered_bandpass_filterbank.html#ab69461ac253a510b1f6d5baa2381809c">SuperpoweredBandpassFilterbank::setSamplerate</a></div><div class="ttdeci">void setSamplerate(unsigned int samplerate)</div><div class="ttdoc">Sets the sample rate. </div></div>
 <div class="ttc" id="class_superpowered_bandpass_filterbank_html"><div class="ttname"><a href="class_superpowered_bandpass_filterbank.html">SuperpoweredBandpassFilterbank</a></div><div class="ttdoc">Efficient bandpass filter bank for real-time, zero latency frequency analysation. ...</div><div class="ttdef"><b>Definition:</b> SuperpoweredBandpassFilterbank.h:9</div></div>
 <div class="ttc" id="class_superpowered_bandpass_filterbank_html_a020b66a35f26f2aa6ddbf6d68b21a331"><div class="ttname"><a href="class_superpowered_bandpass_filterbank.html#a020b66a35f26f2aa6ddbf6d68b21a331">SuperpoweredBandpassFilterbank::process</a></div><div class="ttdeci">void process(float *input, float *bands, float *peak, float *sum, unsigned int numberOfSamples, int group=0)</div><div class="ttdoc">Processes the audio. </div></div>
 </div><!-- fragment --></div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.7
-</small></address>
-</body>
-</html>

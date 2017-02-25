@@ -1,0 +1,7 @@
+# ninja log v5
+1	126	0	CMakeFiles/SuperpoweredExample.dir/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/AndroidIO/SuperpoweredAndroidAudioIO.cpp.o	b4c30546b13dd7a2
+0	133	0	CMakeFiles/SuperpoweredExample.dir/HLSExample.cpp.o	d4034a37c9f7d161
+133	366	0	/Volumes/iMect/iphone/SuperpoweredSDK/Android/HLSExample/app/build/intermediates/cmake/debug/obj/x86_64/libSuperpoweredExample.so	443ef94f1f6b1c71
+2	225	0	CMakeFiles/SuperpoweredExample.dir/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/AndroidIO/SuperpoweredAndroidAudioIO.cpp.o	b4c30546b13dd7a2
+1	245	0	CMakeFiles/SuperpoweredExample.dir/HLSExample.cpp.o	d4034a37c9f7d161
+245	495	0	/Volumes/iMect/iphone/SuperpoweredSDK/Android/HLSExample/app/build/intermediates/cmake/debug/obj/x86_64/libSuperpoweredExample.so	443ef94f1f6b1c71
