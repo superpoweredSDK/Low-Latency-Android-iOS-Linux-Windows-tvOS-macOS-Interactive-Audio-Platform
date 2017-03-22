@@ -1,4 +1,18 @@
 # ninja log v5
-2	562	0	CMakeFiles/SuperpoweredExample.dir/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/AndroidIO/SuperpoweredAndroidAudioIO.cpp.o	2b479f731a60eecc
-0	676	0	CMakeFiles/SuperpoweredExample.dir/SuperpoweredExample.cpp.o	dc014a5ad5c5f06
-677	1068	0	/Volumes/iMect/iphone/SuperpoweredSDK/examples_Android/CrossExample/app/build/intermediates/cmake/debug/obj/x86/libSuperpoweredExample.so	83781f5140cd609a
+1	266	0	CMakeFiles/SuperpoweredExample.dir/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/AndroidIO/SuperpoweredAndroidAudioIO.cpp.o	5a1b8fcd058b59c0
+0	353	0	CMakeFiles/SuperpoweredExample.dir/SuperpoweredExample.cpp.o	4f38e70301aa473e
+353	545	0	/Volumes/iMect/iphone/SuperpoweredSDK/Examples_Android/CrossExample/app/build/intermediates/cmake/debug/obj/x86/libSuperpoweredExample.so	7cce55c8de79051
+1	796	0	CMakeFiles/SuperpoweredExample.dir/SuperpoweredExample.cpp.o	4f38e70301aa473e
+796	1053	0	/Volumes/iMect/iphone/SuperpoweredSDK/Examples_Android/CrossExample/app/build/intermediates/cmake/debug/obj/x86/libSuperpoweredExample.so	7cce55c8de79051
+1	188	0	CMakeFiles/SuperpoweredExample.dir/SuperpoweredExample.cpp.o	4f38e70301aa473e
+188	284	0	/Volumes/iMect/iphone/SuperpoweredSDK/Examples_Android/CrossExample/app/build/intermediates/cmake/debug/obj/x86/libSuperpoweredExample.so	7cce55c8de79051
+1	119	0	CMakeFiles/SuperpoweredExample.dir/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/AndroidIO/SuperpoweredAndroidAudioIO.cpp.o	5a1b8fcd058b59c0
+119	218	0	/Volumes/iMect/iphone/SuperpoweredSDK/Examples_Android/CrossExample/app/build/intermediates/cmake/debug/obj/x86/libSuperpoweredExample.so	7cce55c8de79051
+1	391	0	CMakeFiles/SuperpoweredExample.dir/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/AndroidIO/SuperpoweredAndroidAudioIO.cpp.o	5a1b8fcd058b59c0
+0	413	0	CMakeFiles/SuperpoweredExample.dir/SuperpoweredExample.cpp.o	4f38e70301aa473e
+413	601	0	/Volumes/iMect/iphone/SuperpoweredSDK/Examples_Android/CrossExample/app/build/intermediates/cmake/debug/obj/x86/libSuperpoweredExample.so	7cce55c8de79051
+2	900	0	CMakeFiles/SuperpoweredExample.dir/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/AndroidIO/SuperpoweredAndroidAudioIO.cpp.o	5a1b8fcd058b59c0
+900	1645	0	/Volumes/iMect/iphone/SuperpoweredSDK/Examples_Android/CrossExample/app/build/intermediates/cmake/debug/obj/x86/libSuperpoweredExample.so	7cce55c8de79051
+1	397	0	CMakeFiles/SuperpoweredExample.dir/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/AndroidIO/SuperpoweredAndroidAudioIO.cpp.o	5a1b8fcd058b59c0
+1	425	0	CMakeFiles/SuperpoweredExample.dir/SuperpoweredExample.cpp.o	4f38e70301aa473e
+425	635	0	/Volumes/iMect/iphone/SuperpoweredSDK/Examples_Android/CrossExample/app/build/intermediates/cmake/debug/obj/x86/libSuperpoweredExample.so	7cce55c8de79051

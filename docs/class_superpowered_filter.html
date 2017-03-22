@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.0.2</span>
+   &#160;<span id="projectnumber">1.0.3</span>
    </div>
    <div id="projectbrief">Pain-free Audio Infrastructure for iOS, Android, Mac OSX and Linux</div>
   </td>
@@ -101,6 +101,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa23883554450b321bbb10d98c1ced805"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_filter.html#aa23883554450b321bbb10d98c1ced805">process</a> (float *input, float *output, unsigned int numberOfSamples)</td></tr>
 <tr class="memdesc:aa23883554450b321bbb10d98c1ced805"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes interleaved audio.  <a href="#aa23883554450b321bbb10d98c1ced805">More...</a><br /></td></tr>
 <tr class="separator:aa23883554450b321bbb10d98c1ced805"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b13e3d16293e3f5785cbe714278f243"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_filter.html#a0b13e3d16293e3f5785cbe714278f243">processMono</a> (float *input, float *output, unsigned int numberOfSamples)</td></tr>
+<tr class="memdesc:a0b13e3d16293e3f5785cbe714278f243"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes mono audio.  <a href="#a0b13e3d16293e3f5785cbe714278f243">More...</a><br /></td></tr>
+<tr class="separator:a0b13e3d16293e3f5785cbe714278f243"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_superpowered_f_x"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_superpowered_f_x')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_superpowered_f_x.html">SuperpoweredFX</a></td></tr>
 <tr class="memitem:a47ffe36f69b8e49959a3e83197790eec inherit pub_methods_class_superpowered_f_x"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_f_x.html#a47ffe36f69b8e49959a3e83197790eec">~SuperpoweredFX</a> ()</td></tr>
 <tr class="separator:a47ffe36f69b8e49959a3e83197790eec inherit pub_methods_class_superpowered_f_x"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -321,6 +324,49 @@ Protected Attributes</h2></td></tr>
 </dl>
 
 <p>Implements <a class="el" href="class_superpowered_f_x.html#a633194e7def93e260d7b7c820fb946a8">SuperpoweredFX</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0b13e3d16293e3f5785cbe714278f243"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SuperpoweredFilter::processMono </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>output</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>numberOfSamples</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Processes mono audio. </p>
+<dl class="section return"><dt>Returns</dt><dd>Put something into output or not.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>32-bit input buffer. Can point to the same location with output (in-place processing). </td></tr>
+    <tr><td class="paramname">output</td><td>32-bit output buffer. Can point to the same location with input (in-place processing). </td></tr>
+    <tr><td class="paramname">numberOfSamples</td><td>Should be 32 minimum. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

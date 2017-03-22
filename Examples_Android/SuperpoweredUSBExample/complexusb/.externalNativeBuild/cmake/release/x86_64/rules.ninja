@@ -42,7 +42,7 @@ rule CXX_SHARED_LIBRARY_LINKER__SuperpoweredExample
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /android/sdk/cmake/3.6.3155560/bin/cmake -H/Volumes/iMect/iphone/SuperpoweredSDK/Android/SuperpoweredUSBExample/complexusb/src/main/jni -B/Volumes/iMect/iphone/SuperpoweredSDK/Android/SuperpoweredUSBExample/complexusb/.externalNativeBuild/cmake/release/x86_64
+  command = /android/sdk/cmake/3.6.3155560/bin/cmake -H/Volumes/iMect/iphone/SuperpoweredSDK/Examples_Android/SuperpoweredUSBExample/complexusb/src/main/jni -B/Volumes/iMect/iphone/SuperpoweredSDK/Examples_Android/SuperpoweredUSBExample/complexusb/.externalNativeBuild/cmake/release/x86_64
   description = Re-running CMake...
   generator = 1
 

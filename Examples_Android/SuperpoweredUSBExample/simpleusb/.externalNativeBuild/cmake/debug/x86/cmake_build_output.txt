@@ -12,5 +12,4 @@
 -- Detecting CXX compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: /Volumes/iMect/iphone/SuperpoweredSDK/Android/SuperpoweredUSBExample/simpleusb/.externalNativeBuild/cmake/debug/x86
-x86
+-- Build files have been written to: /Volumes/iMect/iphone/SuperpoweredSDK/Examples_Android/SuperpoweredUSBExample/simpleusb/.externalNativeBuild/cmake/debug/x86

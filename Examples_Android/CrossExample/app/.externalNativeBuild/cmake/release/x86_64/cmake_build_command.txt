@@ -1,11 +1,11 @@
 Executable : /android/sdk/cmake/3.6.3155560/bin/cmake
 arguments : 
--H/Volumes/iMect/iphone/SuperpoweredSDK/examples_Android/CrossExample/app/src/main/jni
--B/Volumes/iMect/iphone/SuperpoweredSDK/examples_Android/CrossExample/app/.externalNativeBuild/cmake/release/x86_64
+-H/Volumes/iMect/iphone/SuperpoweredSDK/Examples_Android/CrossExample/app/src/main/jni
+-B/Volumes/iMect/iphone/SuperpoweredSDK/Examples_Android/CrossExample/app/.externalNativeBuild/cmake/release/x86_64
 -GAndroid Gradle - Ninja
 -DANDROID_ABI=x86_64
 -DANDROID_NDK=/android/ndk
--DCMAKE_LIBRARY_OUTPUT_DIRECTORY=/Volumes/iMect/iphone/SuperpoweredSDK/examples_Android/CrossExample/app/build/intermediates/cmake/release/obj/x86_64
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=/Volumes/iMect/iphone/SuperpoweredSDK/Examples_Android/CrossExample/app/build/intermediates/cmake/release/obj/x86_64
 -DCMAKE_BUILD_TYPE=Release
 -DCMAKE_MAKE_PROGRAM=/android/sdk/cmake/3.6.3155560/bin/ninja
 -DCMAKE_TOOLCHAIN_FILE=/android/ndk/build/cmake/android.toolchain.cmake

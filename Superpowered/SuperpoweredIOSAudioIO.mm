@@ -43,7 +43,7 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
     bool audioUnitRunning, iOS6, background, inputEnabled;
 }
 
-@synthesize preferredBufferSizeMs, saveBatteryInBackground;
+@synthesize preferredBufferSizeMs, saveBatteryInBackground, started;
 
 - (void)createAudioBuffersForRecordingCategory {
     inputBufferListForRecordingCategory = (AudioBufferList *)malloc(sizeof(AudioBufferList) + (sizeof(AudioBuffer) * numChannels));
@@ -66,6 +66,7 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
         audioSessionCategory = category;
 #endif
         saveBatteryInBackground = true;
+        started = false;
         preferredBufferSizeMs = preferredBufferSize;
         preferredMinimumSamplerate = prefsamplerate;
 #if (USES_AUDIO_INPUT == 1)
@@ -150,7 +151,7 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
 }
 
 - (void)endInterruption {
-    if (audioUnitRunning) return;
+    if (audioUnitRunning || !started) return;
     if (![NSThread isMainThread]) [self performSelectorOnMainThread:@selector(endInterruption) withObject:nil waitUntilDone:NO];
     else for (int n = 0; n < 2; n++) if ([[AVAudioSession sharedInstance] setActive:YES error:nil] && [self start]) { // Need to try twice sometimes. Don't know why.
         [delegate interruptionEnded];
@@ -348,7 +349,6 @@ static void streamFormatChangedCallback(void *inRefCon, AudioUnit inUnit, AudioU
 static OSStatus coreAudioProcessingCallback(void *inRefCon, AudioUnitRenderActionFlags *ioActionFlags, const AudioTimeStamp *inTimeStamp, UInt32 inBusNumber, UInt32 inNumberFrames, AudioBufferList *ioData) {
     __unsafe_unretained SuperpoweredIOSAudioIO *self = (__bridge SuperpoweredIOSAudioIO *)inRefCon;
     if (!ioData) ioData = self->inputBufferListForRecordingCategory;
-
     div_t d = div(inNumberFrames, 8);
     if ((d.rem != 0) || (inNumberFrames < self->minimumNumberOfFrames) || (inNumberFrames > self->maximumNumberOfFrames) || (ioData->mNumberBuffers != self->numChannels)) {
         return kAudioUnitErr_InvalidParameter;
@@ -427,6 +427,7 @@ static OSStatus coreAudioProcessingCallback(void *inRefCon, AudioUnitRenderActio
 
 // Public methods
 - (bool)start {
+    started = true;
     if (audioUnit == NULL) return false;
     if (AudioOutputUnitStart(audioUnit)) return false;
     audioUnitRunning = true;
@@ -435,6 +436,7 @@ static OSStatus coreAudioProcessingCallback(void *inRefCon, AudioUnitRenderActio
 }
 
 - (void)stop {
+    started = false;
     if (audioUnit != NULL) AudioOutputUnitStop(audioUnit);
 }
 
