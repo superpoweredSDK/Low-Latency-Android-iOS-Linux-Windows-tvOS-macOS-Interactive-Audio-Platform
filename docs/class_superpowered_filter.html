@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.0.3</span>
+   &#160;<span id="projectnumber">1.0.4</span>
    </div>
    <div id="projectbrief">Pain-free Audio Infrastructure for iOS, Android, Mac OSX and Linux</div>
   </td>
@@ -84,6 +84,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac4c6e5dd8c5c6b52992370312d0dc0f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_filter.html#ac4c6e5dd8c5c6b52992370312d0dc0f2">setBandlimitedParametersAndType</a> (float <a class="el" href="class_superpowered_filter.html#a10cf236a7b40415cfb6d39be73ddb95f">frequency</a>, float octaveWidth, <a class="el" href="_superpowered_filter_8h.html#a66e54917eacd73c305280d25df9800b4">SuperpoweredFilterType</a> <a class="el" href="class_superpowered_filter.html#af09eec04c0e5ebd32b0aebfa4b13e1bc">type</a>)</td></tr>
 <tr class="memdesc:ac4c6e5dd8c5c6b52992370312d0dc0f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set params and type at once for bandlimited filters.  <a href="#ac4c6e5dd8c5c6b52992370312d0dc0f2">More...</a><br /></td></tr>
 <tr class="separator:ac4c6e5dd8c5c6b52992370312d0dc0f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc08b8511ce879e2f143dc2d74f8bc37"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_filter.html#adc08b8511ce879e2f143dc2d74f8bc37">setCustomCoefficients</a> (float *coefficients)</td></tr>
+<tr class="memdesc:adc08b8511ce879e2f143dc2d74f8bc37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set custom coefficients for the filter.  <a href="#adc08b8511ce879e2f143dc2d74f8bc37">More...</a><br /></td></tr>
+<tr class="separator:adc08b8511ce879e2f143dc2d74f8bc37"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af69a99327cad30be497c9dc7dd3b7f06"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_filter.html#af69a99327cad30be497c9dc7dd3b7f06">enable</a> (bool flag)</td></tr>
 <tr class="memdesc:af69a99327cad30be497c9dc7dd3b7f06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turns the effect on/off.  <a href="#af69a99327cad30be497c9dc7dd3b7f06">More...</a><br /></td></tr>
 <tr class="separator:af69a99327cad30be497c9dc7dd3b7f06"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -461,6 +464,31 @@ Protected Attributes</h2></td></tr>
     <tr><td class="paramname">frequency</td><td>The frequency in Hz. </td></tr>
     <tr><td class="paramname">octaveWidth</td><td>Width in octave. </td></tr>
     <tr><td class="paramname">type</td><td>Must be bandpass or notch. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="adc08b8511ce879e2f143dc2d74f8bc37"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SuperpoweredFilter::setCustomCoefficients </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>coefficients</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set custom coefficients for the filter. </p>
+<p>Coefficient changes will be smoothly handled.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">coefficients</td><td>Pointer to the 5 coefficients of the first direct form IIR filter. </td></tr>
   </table>
   </dd>
 </dl>

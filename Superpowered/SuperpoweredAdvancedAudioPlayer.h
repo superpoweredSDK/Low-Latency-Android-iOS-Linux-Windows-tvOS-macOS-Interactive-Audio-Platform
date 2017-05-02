@@ -215,12 +215,12 @@ public:
  
  @param clientData A custom pointer your callback receives.
  @param callback Your callback to receive player events.
- @param samplerate The current samplerate.
+ @param sampleRate The current sample rate.
  @param cachedPointCount Sets how many positions can be cached in the memory. Jumping to a cached point happens with 0 latency. Loops are automatically cached.
  @param internalBufferSizeSeconds The number of seconds to buffer internally for playback and cached points. Minimum 2, maximum 60. Default: 2.
  @param negativeSeconds The number of seconds of silence in the negative direction, before the beginning of the track.
 */
-    SuperpoweredAdvancedAudioPlayer(void *clientData, SuperpoweredAdvancedAudioPlayerCallback callback, unsigned int samplerate, unsigned int cachedPointCount, unsigned int internalBufferSizeSeconds = 2, unsigned int negativeSeconds = 0);
+    SuperpoweredAdvancedAudioPlayer(void *clientData, SuperpoweredAdvancedAudioPlayerCallback callback, unsigned int sampleRate, unsigned int cachedPointCount, unsigned int internalBufferSizeSeconds = 2, unsigned int negativeSeconds = 0);
     ~SuperpoweredAdvancedAudioPlayer();
 /**
  @brief Opens a new audio file, with playback paused. 
@@ -437,9 +437,9 @@ public:
 /**
  @brief Sets the sample rate.
      
- @param samplerate 44100, 48000, etc.
+ @param sampleRate 44100, 48000, etc.
 */
-    void setSamplerate(unsigned int samplerate);
+    void setSamplerate(unsigned int sampleRate);
 /**
  @brief Call this on a phone call or other interruption.
  

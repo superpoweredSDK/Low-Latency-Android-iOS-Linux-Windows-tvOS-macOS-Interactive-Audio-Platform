@@ -12,7 +12,7 @@ struct flangerInternals;
  @param wet 0.0f to 1.0f. Read only.
  @param depthMs Depth in milliseconds, 0.3f to 8.0f (0.3 ms to 8 ms). Read only.
  @param depth 0.0f to 1.0f (0.0 is 0.3 ms, 1.0 is 8 ms). Read only.
- @param lfoBeats The length in beats between the "lowest" and the "highest" jet sound, >= 0.25f and <= 64.0f. Read only.
+ @param lfoBeats The length in beats between the "lowest" and the "highest" jet sound, >= 0.25f and <= 128.0f. Read only.
  @param bpm Set this right for a nice sounding lfo. Limited to >= 60.0f and <= 240.0f. Read-write.
  @param clipperThresholdDb The flanger has a SuperpoweredClipper inside to prevent overdrive. This is it's thresholdDb parameter.
  @param clipperMaximumDb The flanger has a SuperpoweredClipper inside to prevent overdrive. This is it's maximumDb parameter.

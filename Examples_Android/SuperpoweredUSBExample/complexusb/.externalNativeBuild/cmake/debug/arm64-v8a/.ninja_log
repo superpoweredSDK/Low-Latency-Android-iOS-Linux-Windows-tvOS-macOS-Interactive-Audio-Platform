@@ -3,3 +3,7 @@
 1	143	0	CMakeFiles/SuperpoweredExample.dir/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/AndroidIO/SuperpoweredAndroidAudioIO.cpp.o	1f818a6a01535c13
 0	172	0	CMakeFiles/SuperpoweredExample.dir/complexusb.cpp.o	3d6bb6ca69da5116
 172	383	0	/Volumes/iMect/iphone/SuperpoweredSDK/Examples_Android/SuperpoweredUSBExample/complexusb/build/intermediates/cmake/debug/obj/arm64-v8a/libSuperpoweredExample.so	373cde21d00cf6b9
+1	176	0	CMakeFiles/SuperpoweredExample.dir/latencyMeasurer.cpp.o	e2b3ceb667353bf0
+2	244	0	CMakeFiles/SuperpoweredExample.dir/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/AndroidIO/SuperpoweredAndroidAudioIO.cpp.o	1f818a6a01535c13
+0	277	0	CMakeFiles/SuperpoweredExample.dir/complexusb.cpp.o	3d6bb6ca69da5116
+277	639	0	/Volumes/iMect/iphone/SuperpoweredSDK/Examples_Android/SuperpoweredUSBExample/complexusb/build/intermediates/cmake/debug/obj/arm64-v8a/libSuperpoweredExample.so	373cde21d00cf6b9

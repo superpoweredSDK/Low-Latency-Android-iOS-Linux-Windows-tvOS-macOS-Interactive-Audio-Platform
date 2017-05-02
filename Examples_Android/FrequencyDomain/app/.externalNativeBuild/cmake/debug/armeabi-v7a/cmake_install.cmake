@@ -1,4 +1,4 @@
-# Install script for directory: /Volumes/iMect/iphone/SuperpoweredSDK/Android/FrequencyDomain/app/src/main/jni
+# Install script for directory: /Volumes/iMect/iphone/SuperpoweredSDK/Examples_Android/FrequencyDomain/app/src/main/jni
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Volumes/iMect/iphone/SuperpoweredSDK/Android/FrequencyDomain/app/.externalNativeBuild/cmake/debug/armeabi-v7a/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Volumes/iMect/iphone/SuperpoweredSDK/Examples_Android/FrequencyDomain/app/.externalNativeBuild/cmake/debug/armeabi-v7a/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

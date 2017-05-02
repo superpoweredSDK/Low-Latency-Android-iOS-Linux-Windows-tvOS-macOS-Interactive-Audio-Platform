@@ -12,5 +12,4 @@
 -- Detecting CXX compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: /Volumes/iMect/iphone/SuperpoweredSDK/Android/HLSExample/app/.externalNativeBuild/cmake/debug/x86_64
-x86_64
+-- Build files have been written to: /Volumes/iMect/iphone/SuperpoweredSDK/Examples_Android/HLSExample/app/.externalNativeBuild/cmake/debug/x86_64

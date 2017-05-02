@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.0.3</span>
+   &#160;<span id="projectnumber">1.0.4</span>
    </div>
    <div id="projectbrief">Pain-free Audio Infrastructure for iOS, Android, Mac OSX and Linux</div>
   </td>
@@ -58,8 +58,8 @@
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a7883e53eb95d5cee5cd4720b85f63d70"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_offline_analyzer.html#a7883e53eb95d5cee5cd4720b85f63d70">SuperpoweredOfflineAnalyzer</a> (unsigned int samplerate, float bpm=0, int lengthSeconds=0)</td></tr>
-<tr class="separator:a7883e53eb95d5cee5cd4720b85f63d70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedb3cf0371f948c497709dd8f250d8b9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_offline_analyzer.html#aedb3cf0371f948c497709dd8f250d8b9">SuperpoweredOfflineAnalyzer</a> (unsigned int samplerate, float bpm=0, int lengthSeconds=0, float minimumBpm=60.0f, float maximumBpm=200.0f)</td></tr>
+<tr class="separator:aedb3cf0371f948c497709dd8f250d8b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a82290dcaa8ce7b821485b5e2719ad3d8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_offline_analyzer.html#a82290dcaa8ce7b821485b5e2719ad3d8">~SuperpoweredOfflineAnalyzer</a> ()</td></tr>
 <tr class="separator:a82290dcaa8ce7b821485b5e2719ad3d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3536e107857d03c400b4d7cac52b39c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_offline_analyzer.html#a3536e107857d03c400b4d7cac52b39c6">process</a> (float *input, unsigned int numberOfSamples)</td></tr>
@@ -72,7 +72,7 @@ Public Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Performs bpm and key detection, loudness/peak analysis. Provides compact waveform data (150 points/sec and 1 point/sec resolution), beatgrid information. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a7883e53eb95d5cee5cd4720b85f63d70"></a>
+<a class="anchor" id="aedb3cf0371f948c497709dd8f250d8b9"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -92,7 +92,19 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>lengthSeconds</em> = <code>0</code>&#160;</td>
+          <td class="paramname"><em>lengthSeconds</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>minimumBpm</em> = <code>60.0f</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>maximumBpm</em> = <code>200.0f</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -106,6 +118,8 @@ Public Member Functions</h2></td></tr>
     <tr><td class="paramname">samplerate</td><td>The sample rate of the source. </td></tr>
     <tr><td class="paramname">bpm</td><td>If you know the accurate bpm value in advance, set it here. 0 means the analyzer will detect bpm. </td></tr>
     <tr><td class="paramname">lengthSeconds</td><td>The source's length in seconds. </td></tr>
+    <tr><td class="paramname">minimumBpm</td><td>Detected bpm will be more than or equal to this. </td></tr>
+    <tr><td class="paramname">maximumBpm</td><td>Detected bpm will be less than or equal to this. </td></tr>
   </table>
   </dd>
 </dl>

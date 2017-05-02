@@ -16,8 +16,10 @@ public:
  @param samplerate The sample rate of the source.
  @param bpm If you know the accurate bpm value in advance, set it here. 0 means the analyzer will detect bpm.
  @param lengthSeconds The source's length in seconds.
+ @param minimumBpm Detected bpm will be more than or equal to this.
+ @param maximumBpm Detected bpm will be less than or equal to this.
  */
-    SuperpoweredOfflineAnalyzer(unsigned int samplerate, float bpm = 0, int lengthSeconds = 0);
+    SuperpoweredOfflineAnalyzer(unsigned int samplerate, float bpm = 0, int lengthSeconds = 0, float minimumBpm = 60.0f, float maximumBpm = 200.0f);
     ~SuperpoweredOfflineAnalyzer();
 
 /**
