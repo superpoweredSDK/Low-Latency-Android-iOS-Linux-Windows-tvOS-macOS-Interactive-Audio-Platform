@@ -1,4 +1,4 @@
-#import <AVFoundation/AVAudioSession.h>
+#import <AVFoundation/AVFoundation.h>
 
 /**
  @brief Output channel mapping.
