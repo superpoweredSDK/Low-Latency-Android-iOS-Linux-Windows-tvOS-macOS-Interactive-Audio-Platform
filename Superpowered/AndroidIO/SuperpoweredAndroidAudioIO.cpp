@@ -117,15 +117,16 @@ SuperpoweredAndroidAudioIO::SuperpoweredAndroidAudioIO(int samplerate, int buffe
     internals->hasOutput = enableOutput;
     internals->foreground = true;
     internals->started = false;
-    internals->silence = (short int *)malloc((size_t)buffersize * NUM_CHANNELS * 2);
+    internals->silence = new short int[buffersize * NUM_CHANNELS];
     memset(internals->silence, 0, (size_t)buffersize * NUM_CHANNELS * 2);
     internals->latencySamples = latencySamples < buffersize ? buffersize : latencySamples;
 
     internals->numBuffers = (internals->latencySamples / buffersize) * 2;
     if (internals->numBuffers < 16) internals->numBuffers = 16;
     internals->bufferStep = (buffersize + 64) * NUM_CHANNELS;
-    size_t fifoBufferSizeBytes = internals->numBuffers * internals->bufferStep * sizeof(short int);
-    internals->fifobuffer = (short int *)malloc(fifoBufferSizeBytes);
+    size_t fifoBufferSize = (size_t)(internals->numBuffers * internals->bufferStep);
+    size_t fifoBufferSizeBytes = fifoBufferSize * sizeof(short int);
+    internals->fifobuffer = new short int[fifoBufferSize];
     memset(internals->fifobuffer, 0, fifoBufferSizeBytes);
 
     // Create the OpenSL ES engine.
@@ -218,7 +219,7 @@ SuperpoweredAndroidAudioIO::~SuperpoweredAndroidAudioIO() {
     if (internals->inputBufferQueue) (*internals->inputBufferQueue)->Destroy(internals->inputBufferQueue);
     (*internals->outputMix)->Destroy(internals->outputMix);
     (*internals->openSLEngine)->Destroy(internals->openSLEngine);
-    free(internals->fifobuffer);
-    free(internals->silence);
+    delete[] internals->fifobuffer;
+    delete[] internals->silence;
     delete internals;
 }
