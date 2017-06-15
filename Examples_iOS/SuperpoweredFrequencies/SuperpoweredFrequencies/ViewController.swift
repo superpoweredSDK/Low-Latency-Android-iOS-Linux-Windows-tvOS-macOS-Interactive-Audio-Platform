@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         displayLink.add(to: RunLoop.current, forMode: RunLoopMode.commonModes)
     }
 
-    func onDisplayLink() {
+    @objc func onDisplayLink() {
         // Get the frequency values.
         let frequencies = UnsafeMutablePointer<Float>.allocate(capacity: 8)
         superpowered.getFrequencies(frequencies)

@@ -1,6 +1,7 @@
 #include "latencyMeasurer.h"
 #include <math.h>
 #include <stdlib.h>
+#include <string.h>
 
 /*
  Cross-platform class measuring round-trip audio latency.

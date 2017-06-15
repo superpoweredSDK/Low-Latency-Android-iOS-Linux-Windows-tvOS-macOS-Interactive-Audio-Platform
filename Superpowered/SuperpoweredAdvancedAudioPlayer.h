@@ -45,7 +45,8 @@ typedef enum SuperpoweredAdvancedAudioPlayerJogMode {
 typedef enum SuperpoweredAdvancedAudioPlayerEvent {
     SuperpoweredAdvancedAudioPlayerEvent_LoadSuccess,
     SuperpoweredAdvancedAudioPlayerEvent_LoadError,
-    SuperpoweredAdvancedAudioPlayerEvent_NetworkError,
+    SuperpoweredAdvancedAudioPlayerEvent_HLSNetworkError,
+    SuperpoweredAdvancedAudioPlayerEvent_ProgressiveDownloadError,
     SuperpoweredAdvancedAudioPlayerEvent_EOF,
     SuperpoweredAdvancedAudioPlayerEvent_JogParameter,
     SuperpoweredAdvancedAudioPlayerEvent_DurationChanged,
@@ -64,7 +65,7 @@ typedef struct hlsStreamAlternative {
 /**
  @brief Events happen asynchronously, implement this callback to get notified.
  
- LoadSuccess, LoadError and NetworkError are called from an internal thread of this object.
+ LoadSuccess, LoadError, HLSNetworkError and ProgressiveDownloadError are called from an internal thread of this object.
  
  EOF (end of file) and ScratchControl are called from the (probably real-time) audio processing thread, you shouldn't do any expensive there.
  
@@ -101,7 +102,7 @@ typedef void (* SuperpoweredAdvancedAudioPlayerCallback) (void *clientData, Supe
  
  - 0 latency, real-time operation,
  
- - low memory usage (5300 kb plus 200 kb for every cached point),
+ - low memory usage,
  
  - thread safety (all methods are thread-safe),
  
@@ -149,6 +150,8 @@ typedef void (* SuperpoweredAdvancedAudioPlayerCallback) (void *clientData, Supe
  @param minTimeStretchingTempo Will not time-stretch, just resample below this tempo. Default: 0.501f (recommended value for low CPU on older mobile devices, such as the first iPad). Set this before an open() call. 
  @param maxTimeStretchingTempo Will not time-stretch, just resample above this tempo. Default: 2.0f (recommended value for low CPU on older mobile devices, such as the first iPad).
  @param handleStems Output 4 distinct stereo pairs for Native Instruments STEMS format. Default: false (output stem 0 for STEMS).
+ @param fullyDownloadedFilePath The file system path of the fully downloaded audio file for progressive downloads. Progressive downloads are automatically removed if no SuperpoweredAdvancedAudioPlayer instance is active for the same url. This parameter provides an alternative to save the file.
+ @param tempFolderPath The path for temporary files.
 */
 class SuperpoweredAdvancedAudioPlayer {
 public:
@@ -182,6 +185,9 @@ public:
     float bufferEndPercent;
     int currentBps;
 
+    char *fullyDownloadedFilePath;
+    static char *tempFolderPath;
+
 // READ-WRITE parameters
     SuperpoweredAdvancedAudioPlayerSyncMode syncMode;
     bool fixDoubleOrHalfBPM;
@@ -195,9 +201,9 @@ public:
     bool handleStems;
 
 /**
- @brief Set the folder path for temporary files. Used for HLS only. 
+ @brief Set the folder path for temporary files. Used for HLS and progressive download only.
  
- Call this first before any player instance is created. It will create a subfolder with the name "SuperpoweredHLS" in this folder.
+ Call this first before any player instance is created. It will create a subfolder with the name "SuperpoweredAAP" in this folder.
  
  @param path File system path of the folder.
  */
@@ -220,29 +226,38 @@ public:
  @param internalBufferSizeSeconds The number of seconds to buffer internally for playback and cached points. Minimum 2, maximum 60. Default: 2.
  @param negativeSeconds The number of seconds of silence in the negative direction, before the beginning of the track.
 */
-    SuperpoweredAdvancedAudioPlayer(void *clientData, SuperpoweredAdvancedAudioPlayerCallback callback, unsigned int sampleRate, unsigned int cachedPointCount, unsigned int internalBufferSizeSeconds = 2, unsigned int negativeSeconds = 0);
+    SuperpoweredAdvancedAudioPlayer(void *clientData, SuperpoweredAdvancedAudioPlayerCallback callback, unsigned int sampleRate, unsigned char cachedPointCount, unsigned int internalBufferSizeSeconds = 2, unsigned int negativeSeconds = 0);
     ~SuperpoweredAdvancedAudioPlayer();
 /**
- @brief Opens a new audio file, with playback paused. 
+ @brief Opens an audio file with playback paused.
  
  Tempo, pitchShift, masterTempo and syncMode are NOT changed if you open a new one.
  
- @param path The full file system path of the audio file.
+ @param path Full file system path or progressive download path (http or https).
  @param customHTTPHeaders NULL terminated list of custom headers for http communication.
 */
     void open(const char *path, char **customHTTPHeaders = 0);
     
 /**
- @brief Opens a file, with playback paused.
+ @brief Opens an audio file with playback paused.
  
  Tempo, pitchShift, masterTempo and syncMode are NOT changed if you open a new one.
  
- @param path The full file system path of the file.
+ @param path Full file system path or progressive download path (http or https).
  @param offset The byte offset inside the file.
  @param length The byte length from the offset.
  @param customHTTPHeaders NULL terminated list of custom headers for http communication.
 */
     void open(const char *path, int offset, int length, char **customHTTPHeaders = 0);
+/**
+ @brief Opens a HTTP Live Streaming stream with playback paused.
+ 
+ Tempo, pitchShift, masterTempo and syncMode are NOT changed if you open a new one.
+ 
+ @param url URL of the stream.
+ @param customHTTPHeaders NULL terminated list of custom headers for http communication.
+ */
+    void openHLS(const char *url, char **customHTTPHeaders = 0);
 
 /**
  @brief Starts playback.

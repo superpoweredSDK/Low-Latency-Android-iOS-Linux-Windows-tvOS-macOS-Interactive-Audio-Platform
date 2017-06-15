@@ -27,8 +27,9 @@ public:
 
  @param input 32-bit interleaved floating-point input.
  @param numberOfSamples How many samples to process.
+ @param lengthSeconds If the source's length may change, set this to it's current value, otherwise leave it at -1.
  */
-    void process(float *input, unsigned int numberOfSamples);
+    void process(float *input, unsigned int numberOfSamples, int lengthSeconds = -1);
 
 /**
  @brief Get results. Call this method ONCE, after all samples are processed.
@@ -112,8 +113,9 @@ public:
 
  @param input 32-bit interleaved floating-point input.
  @param numberOfSamples How many samples to process.
+ @param lengthSeconds If the source's length may change, set this to it's current value, otherwise leave it at -1.
 */
-    void process(float *input, unsigned int numberOfSamples);
+    void process(float *input, unsigned int numberOfSamples, int lengthSeconds = -1);
 
 /**
  @return Returns with 150 points/sec waveform data displaying the peak volume. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory).

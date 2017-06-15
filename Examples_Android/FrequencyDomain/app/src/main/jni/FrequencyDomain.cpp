@@ -1,5 +1,6 @@
 #include <jni.h>
 #include <stdlib.h>
+#include <string.h>
 #include <SuperpoweredFrequencyDomain.h>
 #include <AndroidIO/SuperpoweredAndroidAudioIO.h>
 #include <SuperpoweredSimple.h>

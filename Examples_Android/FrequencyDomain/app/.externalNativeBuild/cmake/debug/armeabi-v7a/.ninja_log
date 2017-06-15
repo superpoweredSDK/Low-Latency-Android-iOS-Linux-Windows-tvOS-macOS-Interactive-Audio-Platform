@@ -1,4 +1,0 @@
-# ninja log v5
-0	315	0	CMakeFiles/SuperpoweredExample.dir/FrequencyDomain.cpp.o	2df80ef032046b68
-1	321	0	CMakeFiles/SuperpoweredExample.dir/Volumes/iMect/iphone/SuperpoweredSDK/Superpowered/AndroidIO/SuperpoweredAndroidAudioIO.cpp.o	d77f4278d3190971
-321	635	0	/Volumes/iMect/iphone/SuperpoweredSDK/Examples_Android/FrequencyDomain/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libSuperpoweredExample.so	2f66d3757153ea38

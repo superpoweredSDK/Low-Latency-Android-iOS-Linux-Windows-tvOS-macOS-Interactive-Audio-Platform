@@ -112,9 +112,9 @@ JNI(void, getIOOptions, PID)(JNIEnv * __unused env, jobject __unused obj, jint d
 // Check MainActivity.java how to handle this.
 JNI(jintArray, getIOOptionsInt, PID)(JNIEnv *env, jobject __unused obj, jint outputInputThru) {
     jintArray ints = env->NewIntArray(nums[outputInputThru]);
-    jint *i = env->GetIntArrayElements(ints, NULL);
+    jint *i = env->GetIntArrayElements(ints, 0);
     for (int n = 0; n < nums[outputInputThru]; n++) i[n] = paths[outputInputThru][n];
-    env->ReleaseIntArrayElements(ints, i, NULL);
+    env->ReleaseIntArrayElements(ints, i, 0);
     return ints;
 }
 
@@ -142,7 +142,7 @@ JNI(jfloatArray, getPathInfo, PID)(JNIEnv *env, jobject __unused obj, jint devic
     SuperpoweredUSBAudio::getPathInfo(deviceID, pathIndex, &numFeatures, &minVolumes, &maxVolumes, &curVolumes, &mutes);
 
     jfloatArray floats = env->NewFloatArray(numFeatures * 4);
-    jfloat *f = env->GetFloatArrayElements(floats, NULL), *ff = f;
+    jfloat *f = env->GetFloatArrayElements(floats, 0), *ff = f;
 
     for (int n = 0; n < numFeatures; n++) {
         *ff++ = minVolumes[n];
@@ -151,7 +151,7 @@ JNI(jfloatArray, getPathInfo, PID)(JNIEnv *env, jobject __unused obj, jint devic
         *ff++ = mutes[n];
     }
 
-    env->ReleaseFloatArrayElements(floats, f, NULL);
+    env->ReleaseFloatArrayElements(floats, f, 0);
     free(minVolumes);
     free(maxVolumes);
     free(curVolumes);
@@ -174,7 +174,7 @@ typedef struct audioJob { // A helper structure for audio processing.
     unsigned int step;
     latencyMeasurer *measurer;
     short int *intBuf;
-};
+} audioJob;
 
 static int lastDeviceID = 0;
 static int latencyMs = -1;

@@ -95,7 +95,7 @@ static bool audioProcessing(void *clientdata, float **buffers, unsigned int inpu
 - (void)open:(NSInteger)row {
     currentTime.hidden = playPause.hidden = seekSlider.hidden = YES;
     duration.text = @"Loading...";
-    player->open(urls[row]);
+    player->openHLS(urls[row]);
 }
 
 - (void)dealloc {

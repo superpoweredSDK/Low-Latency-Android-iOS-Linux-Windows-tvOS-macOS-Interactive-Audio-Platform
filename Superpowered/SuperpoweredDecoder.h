@@ -42,7 +42,10 @@ typedef void (* SuperpoweredDecoderID3Callback) (void *clientData, void *frameNa
  @param samplePosition The current position in samples. May change after each decode() or seekTo(). Read only.
  @param samplerate The sample rate of the current file. Read only.
  @param samplesPerFrame How many samples are in one frame of the source file. For example: 1152 in mp3 files.
+ @param bufferStartPercent Indicates which part of the file has fast access. For local files it will always be 0.0f.
+ @param bufferEndPercent Indicates which part of the file has fast access. For local files it will always be 1.0f.
  @param kind The format of the current file.
+ @param fullyDownloadedFilePath The file system path of the fully downloaded audio file for progressive downloads. Progressive downloads are automatically removed if no SuperpoweredDecoder instance is active for the same url. This parameter provides an alternative to save the file.
 */
 class SuperpoweredDecoder {
 public:
@@ -50,24 +53,27 @@ public:
     double durationSeconds;
     int64_t durationSamples, samplePosition;
     unsigned int samplerate, samplesPerFrame;
+    float bufferStartPercent, bufferEndPercent;
     SuperpoweredDecoder_Kind kind;
+    char *fullyDownloadedFilePath;
     
 /**
  @brief Opens a file for decoding.
  
- @param path Full file system path.
+ @param path Full file system path or progressive download path (http or https).
  @param metaOnly If true, it opens the file for fast metadata reading only, not for decoding audio. Available for fully available local files only (no network access).
  @param offset Byte offset in the file.
  @param length Byte length from offset. Set offset and length to 0 to read the entire file.
  @param stemsIndex Stems track index for Native Instruments Stems format.
+ @param customHTTPHeaders NULL terminated list of custom headers for http communication.
 
  @return NULL if successful, or an error string.
  */
-    const char *open(const char *path, bool metaOnly = false, int offset = 0, int length = 0, int stemsIndex = 0);
+    const char *open(const char *path, bool metaOnly = false, int offset = 0, int length = 0, int stemsIndex = 0, char **customHTTPHeaders = 0);
 /**
  @brief Decodes the requested number of samples.
  
- @return End of file (0), ok (1) or error (2).
+ @return End of file (0), ok (1), error (2) or buffering(3).
  
  @param pcmOutput The buffer to put uncompressed audio. Must be at least this big: (*samples * 4) + 16384 bytes.
  @param samples On input, the requested number of samples. Should be >= samplesPerFrame. On return, the samples decoded.
@@ -76,19 +82,20 @@ public:
 /**
  @brief Jumps to a specific position.
  
- @return The new position.
+ @return ok (1), error (2) or buffering(3)
  
- @param sample The position (a sample index).
+ @param sample The requested position (a sample index). The actual position (samplePosition) may be different after calling this method.
  @param precise Some codecs may not jump precisely due internal framing. Set precise to true if you want exact positioning (for a little performance penalty of 1 memmove).
 */
-    int64_t seekTo(int64_t sample, bool precise);
+    unsigned char seek(int64_t sample, bool precise);
 /**
- @return Returns with the position where audio starts. This function changes position!
+ @return End of file (0), ok (1), error (2) or buffering(3). This function changes position!
  
  @param limitSamples How far to search for. 0 means "the entire audio file".
  @param decibel Optional loudness threshold in decibel. 0 means "any non-zero audio sample". The value -49 is useful for vinyl rips.
+ @param startSample Returns with the position where audio starts.
  */
-    unsigned int audioStartSample(unsigned int limitSamples = 0, int decibel = 0);
+    unsigned char getAudioStartSample(unsigned int *startSample, unsigned int limitSamples = 0, int decibel = 0);
 /**
  @brief Call this on a phone call or other interruption.
  

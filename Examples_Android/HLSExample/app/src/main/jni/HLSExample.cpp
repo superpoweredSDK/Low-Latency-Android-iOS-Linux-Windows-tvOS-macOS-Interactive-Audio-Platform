@@ -53,7 +53,7 @@ extern "C" JNIEXPORT void Java_com_superpowered_hlsexample_MainActivity_onBackgr
 
 extern "C" JNIEXPORT void Java_com_superpowered_hlsexample_MainActivity_Open(JNIEnv *javaEnvironment, jobject __unused obj, jstring url) {
     const char *str = javaEnvironment->GetStringUTFChars(url, 0);
-    player->open(str);
+    player->openHLS(str);
     javaEnvironment->ReleaseStringUTFChars(url, str);
 }
 

@@ -22,7 +22,7 @@ __unused void JNI_OnUnload(JavaVM * __unused vm, void * __unused reserved) {
 typedef struct sineWaveOutput { // A helper structure for sine wave output.
     float mul;
     unsigned int step;
-};
+} sineWaveOutput;
 
 // This is called periodically for audio I/O. Audio is always 32-bit floating point, regardless of the bit depth preference.
 static bool audioProcessing(void *clientdata, int __unused deviceID, float *audioIO, int numberOfSamples, int samplerate, int __unused numInputChannels, int numOutputChannels) {
@@ -118,13 +118,13 @@ JNI(void, onDisconnect, PID)(JNIEnv * __unused env, jobject __unused obj, jint d
 // This is called by the MainActivity Java object periodically.
 JNI(jintArray, getLatestMidiMessage, PID)(JNIEnv *env, jobject __unused obj) {
     jintArray ints = env->NewIntArray(4);
-    jint *i = env->GetIntArrayElements(ints, NULL);
+    jint *i = env->GetIntArrayElements(ints, 0);
     pthread_mutex_lock(&mutex);
     i[0] = latestMidiCommand;
     i[1] = latestMidiChannel;
     i[2] = latestMidiNumber;
     i[3] = latestMidiValue;
     pthread_mutex_unlock(&mutex);
-    env->ReleaseIntArrayElements(ints, i, NULL);
+    env->ReleaseIntArrayElements(ints, i, 0);
     return ints;
 }

@@ -4,6 +4,7 @@
 #include <SLES/OpenSLES_AndroidConfiguration.h>
 #include <pthread.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 #define NUM_CHANNELS 2
 

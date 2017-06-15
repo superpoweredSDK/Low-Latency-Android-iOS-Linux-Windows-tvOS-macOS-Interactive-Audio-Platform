@@ -36,6 +36,8 @@ class SuperpoweredRecorder {
 public:
     /**
      @brief Creates a recorder instance.
+     
+     @warning Filesystem paths in C are different than paths in Java. /sdcard becomes /mnt/sdcard for example.
 
      @param tempPath The full filesystem path of a temporarily file.
      @param samplerate The current samplerate.

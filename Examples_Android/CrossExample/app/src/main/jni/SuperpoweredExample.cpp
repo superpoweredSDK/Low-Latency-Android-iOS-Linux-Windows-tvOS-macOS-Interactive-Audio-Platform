@@ -4,6 +4,7 @@
 #include <jni.h>
 #include <stdio.h>
 #include <android/log.h>
+#include <stdlib.h>
 #include <SLES/OpenSLES.h>
 #include <SLES/OpenSLES_AndroidConfiguration.h>
 

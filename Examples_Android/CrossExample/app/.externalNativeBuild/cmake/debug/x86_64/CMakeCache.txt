@@ -38,6 +38,15 @@ ANDROID_TOOLCHAIN:UNINITIALIZED=clang
 //Path to a program.
 CMAKE_AR:FILEPATH=/android/ndk/toolchains/x86_64-4.9/prebuilt/darwin-x86_64/bin/x86_64-linux-android-ar
 
+//Flags used by the compiler during all build types.
+CMAKE_ASM_FLAGS:STRING=
+
+//Flags used by the compiler during debug builds.
+CMAKE_ASM_FLAGS_DEBUG:STRING=
+
+//Flags used by the compiler during release builds.
+CMAKE_ASM_FLAGS_RELEASE:STRING=
+
 //Choose the type of build, options are: None(CMAKE_CXX_FLAGS or
 // CMAKE_C_FLAGS used) Debug Release RelWithDebInfo MinSizeRel.
 CMAKE_BUILD_TYPE:STRING=Debug

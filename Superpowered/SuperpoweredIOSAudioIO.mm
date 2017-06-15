@@ -28,6 +28,9 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
 
 // Initialization
 @implementation SuperpoweredIOSAudioIO {
+#if __has_feature(objc_arc)
+    __weak
+#endif
     id<SuperpoweredIOSAudioIODelegate>delegate;
     NSString *externalAudioDeviceName, *audioSessionCategory;
     NSTimer *stopTimer;
@@ -236,14 +239,16 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
         else if (type == audioDeviceType_HDMI) {
             outputChannelMap.numberOfHDMIChannelsAvailable = channels;
 #if !__has_feature(objc_arc)
-            [externalAudioDeviceName release], externalAudioDeviceName = [port.portName retain];
+            [externalAudioDeviceName release];
+            externalAudioDeviceName = [port.portName retain];
 #else
             externalAudioDeviceName = port.portName;
 #endif
         } else if (type == audioDeviceType_USB) { // iOS can handle one USB audio device only
             outputChannelMap.numberOfUSBChannelsAvailable = channels;
 #if !__has_feature(objc_arc)
-            [externalAudioDeviceName release], externalAudioDeviceName = [port.portName retain];
+            [externalAudioDeviceName release];
+            externalAudioDeviceName = [port.portName retain];
 #else
             externalAudioDeviceName = port.portName;
 #endif
@@ -477,7 +482,8 @@ static OSStatus coreAudioProcessingCallback(void *inRefCon, AudioUnitRenderActio
         return;
     };
 #if !__has_feature(objc_arc)
-    [audioSessionCategory release], audioSessionCategory = [category retain];
+    [audioSessionCategory release];
+    audioSessionCategory = [category retain];
 #else
     audioSessionCategory = category;
 #endif

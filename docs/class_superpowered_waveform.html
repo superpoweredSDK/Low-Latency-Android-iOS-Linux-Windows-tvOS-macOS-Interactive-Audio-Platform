@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.0.4</span>
+   &#160;<span id="projectnumber">1.0.5</span>
    </div>
    <div id="projectbrief">Pain-free Audio Infrastructure for iOS, Android, Mac OSX and Linux</div>
   </td>
@@ -62,9 +62,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a67e757cceba2a87e29c1ac1e098d5bdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a13b5515f54ad6ea0dc929cfb2b8d22c2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_waveform.html#a13b5515f54ad6ea0dc929cfb2b8d22c2">~SuperpoweredWaveform</a> ()</td></tr>
 <tr class="separator:a13b5515f54ad6ea0dc929cfb2b8d22c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1ee7f8a3e3c4fc0f90620c5882afc0e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_waveform.html#a1ee7f8a3e3c4fc0f90620c5882afc0e8">process</a> (float *input, unsigned int numberOfSamples)</td></tr>
-<tr class="memdesc:a1ee7f8a3e3c4fc0f90620c5882afc0e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes a chunk of audio.  <a href="#a1ee7f8a3e3c4fc0f90620c5882afc0e8">More...</a><br /></td></tr>
-<tr class="separator:a1ee7f8a3e3c4fc0f90620c5882afc0e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac50c49780a7aa9021c87184a838064cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_waveform.html#ac50c49780a7aa9021c87184a838064cf">process</a> (float *input, unsigned int numberOfSamples, int lengthSeconds=-1)</td></tr>
+<tr class="memdesc:ac50c49780a7aa9021c87184a838064cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes a chunk of audio.  <a href="#ac50c49780a7aa9021c87184a838064cf">More...</a><br /></td></tr>
+<tr class="separator:ac50c49780a7aa9021c87184a838064cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98800196f486918545573097a37627d3"><td class="memItemLeft" align="right" valign="top">unsigned char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_waveform.html#a98800196f486918545573097a37627d3">getresult</a> (int *size)</td></tr>
 <tr class="separator:a98800196f486918545573097a37627d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -143,7 +143,7 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a1ee7f8a3e3c4fc0f90620c5882afc0e8"></a>
+<a class="anchor" id="ac50c49780a7aa9021c87184a838064cf"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -157,7 +157,13 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>numberOfSamples</em>&#160;</td>
+          <td class="paramname"><em>numberOfSamples</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>lengthSeconds</em> = <code>-1</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -172,6 +178,7 @@ Public Member Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">input</td><td>32-bit interleaved floating-point input. </td></tr>
     <tr><td class="paramname">numberOfSamples</td><td>How many samples to process. </td></tr>
+    <tr><td class="paramname">lengthSeconds</td><td>If the source's length may change, set this to it's current value, otherwise leave it at -1. </td></tr>
   </table>
   </dd>
 </dl>

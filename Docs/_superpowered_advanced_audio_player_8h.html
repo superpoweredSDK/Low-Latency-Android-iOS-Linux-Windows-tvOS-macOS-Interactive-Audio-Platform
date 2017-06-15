@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.0.4</span>
+   &#160;<span id="projectnumber">1.0.5</span>
    </div>
    <div id="projectbrief">Pain-free Audio Infrastructure for iOS, Android, Mac OSX and Linux</div>
   </td>
@@ -120,10 +120,11 @@ Enumerations</h2></td></tr>
 <tr class="memitem:ae3f6423c774174eb55b113efebd322e9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_advanced_audio_player_8h.html#ae3f6423c774174eb55b113efebd322e9">SuperpoweredAdvancedAudioPlayerEvent</a> { <br />
 &#160;&#160;<a class="el" href="_superpowered_advanced_audio_player_8h.html#ae3f6423c774174eb55b113efebd322e9a4e81ae9058a7239dca3cc4cce73d09dd">SuperpoweredAdvancedAudioPlayerEvent_LoadSuccess</a>, 
 <a class="el" href="_superpowered_advanced_audio_player_8h.html#ae3f6423c774174eb55b113efebd322e9a66f7ceb9801d1f359b07b0bbfb464f8b">SuperpoweredAdvancedAudioPlayerEvent_LoadError</a>, 
-<a class="el" href="_superpowered_advanced_audio_player_8h.html#ae3f6423c774174eb55b113efebd322e9adb46c733bb44656308e6ea5b1d7b4a18">SuperpoweredAdvancedAudioPlayerEvent_NetworkError</a>, 
-<a class="el" href="_superpowered_advanced_audio_player_8h.html#ae3f6423c774174eb55b113efebd322e9ab735e00f92c6121f81c6574ef677aa36">SuperpoweredAdvancedAudioPlayerEvent_EOF</a>, 
+<a class="el" href="_superpowered_advanced_audio_player_8h.html#ae3f6423c774174eb55b113efebd322e9a150daa0ff3c93daecf586927c1dcd5c1">SuperpoweredAdvancedAudioPlayerEvent_HLSNetworkError</a>, 
+<a class="el" href="_superpowered_advanced_audio_player_8h.html#ae3f6423c774174eb55b113efebd322e9a3a0b88fb1ff0eec24130d8bc5771b53f">SuperpoweredAdvancedAudioPlayerEvent_ProgressiveDownloadError</a>, 
 <br />
-&#160;&#160;<a class="el" href="_superpowered_advanced_audio_player_8h.html#ae3f6423c774174eb55b113efebd322e9abd660c7074336fcc112fdbd6b21c18ec">SuperpoweredAdvancedAudioPlayerEvent_JogParameter</a>, 
+&#160;&#160;<a class="el" href="_superpowered_advanced_audio_player_8h.html#ae3f6423c774174eb55b113efebd322e9ab735e00f92c6121f81c6574ef677aa36">SuperpoweredAdvancedAudioPlayerEvent_EOF</a>, 
+<a class="el" href="_superpowered_advanced_audio_player_8h.html#ae3f6423c774174eb55b113efebd322e9abd660c7074336fcc112fdbd6b21c18ec">SuperpoweredAdvancedAudioPlayerEvent_JogParameter</a>, 
 <a class="el" href="_superpowered_advanced_audio_player_8h.html#ae3f6423c774174eb55b113efebd322e9a275dfb0dd9514d86510eebe716e943f0">SuperpoweredAdvancedAudioPlayerEvent_DurationChanged</a>, 
 <a class="el" href="_superpowered_advanced_audio_player_8h.html#ae3f6423c774174eb55b113efebd322e9aa50aed180da99174c59dcc4a18cd621c">SuperpoweredAdvancedAudioPlayerEvent_LoopEnd</a>
 <br />
@@ -228,7 +229,7 @@ Enumerations</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Events happen asynchronously, implement this callback to get notified. </p>
-<p>LoadSuccess, LoadError and NetworkError are called from an internal thread of this object.</p>
+<p>LoadSuccess, LoadError, HLSNetworkError and ProgressiveDownloadError are called from an internal thread of this object.</p>
 <p>EOF (end of file) and ScratchControl are called from the (probably real-time) audio processing thread, you shouldn't do any expensive there.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -292,7 +293,9 @@ Enumerations</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a class="anchor" id="ae3f6423c774174eb55b113efebd322e9a66f7ceb9801d1f359b07b0bbfb464f8b"></a>SuperpoweredAdvancedAudioPlayerEvent_LoadError&#160;</td><td class="fielddoc">
 </td></tr>
-<tr><td class="fieldname"><a class="anchor" id="ae3f6423c774174eb55b113efebd322e9adb46c733bb44656308e6ea5b1d7b4a18"></a>SuperpoweredAdvancedAudioPlayerEvent_NetworkError&#160;</td><td class="fielddoc">
+<tr><td class="fieldname"><a class="anchor" id="ae3f6423c774174eb55b113efebd322e9a150daa0ff3c93daecf586927c1dcd5c1"></a>SuperpoweredAdvancedAudioPlayerEvent_HLSNetworkError&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="ae3f6423c774174eb55b113efebd322e9a3a0b88fb1ff0eec24130d8bc5771b53f"></a>SuperpoweredAdvancedAudioPlayerEvent_ProgressiveDownloadError&#160;</td><td class="fielddoc">
 </td></tr>
 <tr><td class="fieldname"><a class="anchor" id="ae3f6423c774174eb55b113efebd322e9ab735e00f92c6121f81c6574ef677aa36"></a>SuperpoweredAdvancedAudioPlayerEvent_EOF&#160;</td><td class="fielddoc">
 </td></tr>

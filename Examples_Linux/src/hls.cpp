@@ -283,7 +283,7 @@ int main(int argc, char *argv[]) {
 
     SuperpoweredAdvancedAudioPlayer::setTempFolder("/tmp/");
     player = new SuperpoweredAdvancedAudioPlayer(NULL, playerEventCallback, context.samplerate, 0);
-    player->open("http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8");
+    player->openHLS("http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8");
 
     bool init = true;
 

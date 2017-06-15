@@ -1,3 +1,0 @@
-/Volumes/iMect/iphone/SuperpoweredSDK/Examples_Android/HLSExample/app/.externalNativeBuild/cmake/release/x86_64/CMakeFiles/edit_cache.dir
-/Volumes/iMect/iphone/SuperpoweredSDK/Examples_Android/HLSExample/app/.externalNativeBuild/cmake/release/x86_64/CMakeFiles/rebuild_cache.dir
-/Volumes/iMect/iphone/SuperpoweredSDK/Examples_Android/HLSExample/app/.externalNativeBuild/cmake/release/x86_64/CMakeFiles/SuperpoweredExample.dir
