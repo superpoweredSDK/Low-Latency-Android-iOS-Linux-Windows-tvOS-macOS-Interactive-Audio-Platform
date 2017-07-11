@@ -156,11 +156,18 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
 - (void)endInterruption {
     if (audioUnitRunning || !started) return;
     if (![NSThread isMainThread]) [self performSelectorOnMainThread:@selector(endInterruption) withObject:nil waitUntilDone:NO];
-    else for (int n = 0; n < 2; n++) if ([[AVAudioSession sharedInstance] setActive:YES error:nil] && [self start]) { // Need to try twice sometimes. Don't know why.
-        [delegate interruptionEnded];
-        audioUnitRunning = true;
-        break;
-    };
+    else {
+        for (int n = 0; n < 2; n++) if ([[AVAudioSession sharedInstance] setActive:YES error:nil] && [self start]) { // Need to try twice sometimes. Don't know why.
+            [delegate interruptionEnded];
+            audioUnitRunning = true;
+            break;
+        };
+        if (!audioUnitRunning) {
+            [[AVAudioSession sharedInstance] setActive:NO error:nil];
+            [self resetAudio];
+            [self start];
+        }
+    }
  }
 
 - (void)endInterruptionWithFlags:(NSUInteger)flags {

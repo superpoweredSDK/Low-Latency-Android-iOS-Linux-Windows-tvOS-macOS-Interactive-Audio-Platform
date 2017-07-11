@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.0.5</span>
+   &#160;<span id="projectnumber">1.0.6</span>
    </div>
    <div id="projectbrief">Pain-free Audio Infrastructure for iOS, Android, Mac OSX and Linux</div>
   </td>
@@ -233,7 +233,7 @@ Enumerations</h2></td></tr>
 <p>EOF (end of file) and ScratchControl are called from the (probably real-time) audio processing thread, you shouldn't do any expensive there.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">clientData</td><td>Some custom pointer you set when you created a <a class="el" href="class_superpowered_advanced_audio_player.html" title="High performance advanced audio player with: ">SuperpoweredAdvancedAudioPlayer</a> instance. </td></tr>
+    <tr><td class="paramname">clientData</td><td>Some custom pointer you set when you created the <a class="el" href="class_superpowered_advanced_audio_player.html" title="High performance advanced audio player with: ">SuperpoweredAdvancedAudioPlayer</a> instance. </td></tr>
     <tr><td class="paramname">event</td><td>What happened (load success, load error, end of file, jog parameter). </td></tr>
     <tr><td class="paramname">value</td><td>A pointer to a <a class="el" href="structstems_info.html">stemsInfo</a> structure or NULL for LoadSuccess (you take ownership over the strings). (const char *) for LoadError, pointing to the error message. (double *) for JogParameter in the range of 0.0 to 1.0. (bool *) for EOF, set it to true to pause playback. (bool *) for LoopEnd, set it to false to exit the loop. Don't call this instance's methods from an EOF event callback! </td></tr>
   </table>

@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.0.5</span>
+   &#160;<span id="projectnumber">1.0.6</span>
    </div>
    <div id="projectbrief">Pain-free Audio Infrastructure for iOS, Android, Mac OSX and Linux</div>
   </td>
@@ -91,8 +91,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a61d6cee3dc88f6a2772d025f30eda5bf"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_audiopointer_list.html#a61d6cee3dc88f6a2772d025f30eda5bf">samplePositionOfSliceBeginning</a> ()</td></tr>
 <tr class="memdesc:a61d6cee3dc88f6a2772d025f30eda5bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the slice beginning's sample position in an audio file or stream.  <a href="#a61d6cee3dc88f6a2772d025f30eda5bf">More...</a><br /></td></tr>
 <tr class="separator:a61d6cee3dc88f6a2772d025f30eda5bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e9210d6be40194627de176bfc41d9f1"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_audiopointer_list.html#a4e9210d6be40194627de176bfc41d9f1">nextSliceItem</a> (int *lengthSamples, float *samplesUsed=0, int stereoPairIndex=0)</td></tr>
-<tr class="separator:a4e9210d6be40194627de176bfc41d9f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad22085927e3629c84ce233961898213b"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_audiopointer_list.html#ad22085927e3629c84ce233961898213b">nextSliceItem</a> (int *lengthSamples, float *samplesUsed=0, int stereoPairIndex=0, int64_t *<a class="el" href="class_superpowered_audiopointer_list.html#ac16b85ba4f66b32e248ec6de1ad69340">nextSamplePosition</a>=0)</td></tr>
+<tr class="separator:ad22085927e3629c84ce233961898213b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa79e72b81e380f24d1c1a9c2dc09623"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_audiopointer_list.html#aaa79e72b81e380f24d1c1a9c2dc09623">rewindSlice</a> ()</td></tr>
 <tr class="memdesc:aaa79e72b81e380f24d1c1a9c2dc09623"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the slice enumerator to the first buffer.  <a href="#aaa79e72b81e380f24d1c1a9c2dc09623">More...</a><br /></td></tr>
 <tr class="separator:aaa79e72b81e380f24d1c1a9c2dc09623"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -308,7 +308,7 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a4e9210d6be40194627de176bfc41d9f1"></a>
+<a class="anchor" id="ad22085927e3629c84ce233961898213b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -328,7 +328,13 @@ Public Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>stereoPairIndex</em> = <code>0</code>&#160;</td>
+          <td class="paramname"><em>stereoPairIndex</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int64_t *&#160;</td>
+          <td class="paramname"><em>nextSamplePosition</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -343,6 +349,7 @@ Public Attributes</h2></td></tr>
     <tr><td class="paramname">lengthSamples</td><td>Returns with the number of samples in audio. </td></tr>
     <tr><td class="paramname">samplesUsed</td><td>Returns with the number of original number of samples, creating this chunk of audio. Good for time-stretching for example, to track the movement of the playhead. </td></tr>
     <tr><td class="paramname">stereoPairIndex</td><td>Not implemented yet. </td></tr>
+    <tr><td class="paramname">nextSamplePosition</td><td>Not implemented yet. </td></tr>
   </table>
   </dd>
 </dl>

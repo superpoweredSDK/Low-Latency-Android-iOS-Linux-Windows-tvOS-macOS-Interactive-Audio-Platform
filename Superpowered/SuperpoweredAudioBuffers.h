@@ -131,15 +131,16 @@ public:
  @brief Returns the slice beginning's sample position in an audio file or stream.
  */
     int64_t samplePositionOfSliceBeginning();
-    
+
 /**
  @return This the slice's forward enumerator method to go through all buffers in it. Returns with a pointer to the audio, or NULL.
 
  @param lengthSamples Returns with the number of samples in audio.
  @param samplesUsed Returns with the number of original number of samples, creating this chunk of audio. Good for time-stretching for example, to track the movement of the playhead.
  @param stereoPairIndex Not implemented yet.
+ @param nextSamplePosition Not implemented yet.
  */
-    void *nextSliceItem(int *lengthSamples, float *samplesUsed = 0, int stereoPairIndex = 0);
+    void *nextSliceItem(int *lengthSamples, float *samplesUsed = 0, int stereoPairIndex = 0, int64_t *nextSamplePosition = 0);
 /**
  @brief Returns the slice enumerator to the first buffer.
  */

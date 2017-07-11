@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.0.5</span>
+   &#160;<span id="projectnumber">1.0.6</span>
    </div>
    <div id="projectbrief">Pain-free Audio Infrastructure for iOS, Android, Mac OSX and Linux</div>
   </td>
@@ -93,12 +93,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aaf9b8d92f477a9a7b7d46162fa752f11"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#aaf9b8d92f477a9a7b7d46162fa752f11">cachePosition</a> (double ms, unsigned char pointID)</td></tr>
 <tr class="memdesc:aaf9b8d92f477a9a7b7d46162fa752f11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cache a position for zero latency seeking. It will cache around +/- 1 second around this point.  <a href="#aaf9b8d92f477a9a7b7d46162fa752f11">More...</a><br /></td></tr>
 <tr class="separator:aaf9b8d92f477a9a7b7d46162fa752f11"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43f7a1acba40b1e30367990a1935df9b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a43f7a1acba40b1e30367990a1935df9b">loop</a> (double startMs, double lengthMs, bool jumpToStartMs, unsigned char pointID, bool synchronisedStart)</td></tr>
-<tr class="memdesc:a43f7a1acba40b1e30367990a1935df9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loop from a start point with some length.  <a href="#a43f7a1acba40b1e30367990a1935df9b">More...</a><br /></td></tr>
-<tr class="separator:a43f7a1acba40b1e30367990a1935df9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d910e194d67b7285d528f14c83ed001"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a0d910e194d67b7285d528f14c83ed001">loopBetween</a> (double startMs, double endMs, bool jumpToStartMs, unsigned char pointID, bool synchronisedStart)</td></tr>
-<tr class="memdesc:a0d910e194d67b7285d528f14c83ed001"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loop from a start to an end point.  <a href="#a0d910e194d67b7285d528f14c83ed001">More...</a><br /></td></tr>
-<tr class="separator:a0d910e194d67b7285d528f14c83ed001"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefba2005f65fa89d8eb3fd4480788ac6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#aefba2005f65fa89d8eb3fd4480788ac6">loop</a> (double startMs, double lengthMs, bool jumpToStartMs, unsigned char pointID, bool synchronisedStart, bool forceDefaultQuantum=false)</td></tr>
+<tr class="memdesc:aefba2005f65fa89d8eb3fd4480788ac6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loop from a start point with some length.  <a href="#aefba2005f65fa89d8eb3fd4480788ac6">More...</a><br /></td></tr>
+<tr class="separator:aefba2005f65fa89d8eb3fd4480788ac6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2be08a9b46f0d20b0e78406316222bf8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a2be08a9b46f0d20b0e78406316222bf8">loopBetween</a> (double startMs, double endMs, bool jumpToStartMs, unsigned char pointID, bool synchronisedStart, bool forceDefaultQuantum=false)</td></tr>
+<tr class="memdesc:a2be08a9b46f0d20b0e78406316222bf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loop from a start to an end point.  <a href="#a2be08a9b46f0d20b0e78406316222bf8">More...</a><br /></td></tr>
+<tr class="separator:a2be08a9b46f0d20b0e78406316222bf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a22dc5a46af309eb4eed6518ab5cd1f34"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a22dc5a46af309eb4eed6518ab5cd1f34">exitLoop</a> (bool synchronisedStart=false)</td></tr>
 <tr class="memdesc:a22dc5a46af309eb4eed6518ab5cd1f34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exits from the current loop.  <a href="#a22dc5a46af309eb4eed6518ab5cd1f34">More...</a><br /></td></tr>
 <tr class="separator:a22dc5a46af309eb4eed6518ab5cd1f34"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -141,6 +141,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a867d9125d0fc8616b267a0775e39cf07"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a867d9125d0fc8616b267a0775e39cf07">endContinuousPitchBend</a> ()</td></tr>
 <tr class="memdesc:a867d9125d0fc8616b267a0775e39cf07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ends pitch bend.  <a href="#a867d9125d0fc8616b267a0775e39cf07">More...</a><br /></td></tr>
 <tr class="separator:a867d9125d0fc8616b267a0775e39cf07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ab58dc5dd39734b9a2ef32f4bf28585"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a7ab58dc5dd39734b9a2ef32f4bf28585">resetBendMsOffset</a> ()</td></tr>
+<tr class="memdesc:a7ab58dc5dd39734b9a2ef32f4bf28585"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reserved for future use.  <a href="#a7ab58dc5dd39734b9a2ef32f4bf28585">More...</a><br /></td></tr>
+<tr class="separator:a7ab58dc5dd39734b9a2ef32f4bf28585"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4151f9ec2e00fd3de7c7bbd4845661af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a4151f9ec2e00fd3de7c7bbd4845661af">startScratch</a> (unsigned int slipMs, bool stopImmediately)</td></tr>
 <tr class="memdesc:a4151f9ec2e00fd3de7c7bbd4845661af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call when scratching starts.  <a href="#a4151f9ec2e00fd3de7c7bbd4845661af">More...</a><br /></td></tr>
 <tr class="separator:a4151f9ec2e00fd3de7c7bbd4845661af"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -151,7 +154,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a1e209a757de737fb450295dbbf6d7e83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ends scratching.  <a href="#a1e209a757de737fb450295dbbf6d7e83">More...</a><br /></td></tr>
 <tr class="separator:a1e209a757de737fb450295dbbf6d7e83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac78737adad9c6f4b733c263bb04d0986"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#ac78737adad9c6f4b733c263bb04d0986">lastProcessMs</a> ()</td></tr>
-<tr class="memdesc:ac78737adad9c6f4b733c263bb04d0986"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the last <a class="el" href="class_superpowered_advanced_audio_player.html#adf07eaeeb9a86836325aa5677a034ede" title="Processes the audio, stereo version. ">process()</a> numberOfSamples converted to milliseconds.  <a href="#ac78737adad9c6f4b733c263bb04d0986">More...</a><br /></td></tr>
+<tr class="memdesc:ac78737adad9c6f4b733c263bb04d0986"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the last <a class="el" href="class_superpowered_advanced_audio_player.html#a289ae8982aaea7cc1d28b3ffe1be5dc9" title="Processes the audio, stereo version. ">process()</a> numberOfSamples converted to milliseconds.  <a href="#ac78737adad9c6f4b733c263bb04d0986">More...</a><br /></td></tr>
 <tr class="separator:ac78737adad9c6f4b733c263bb04d0986"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4cb4934772e9ec9d1f9b929b3f4b22cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a4cb4934772e9ec9d1f9b929b3f4b22cb">setSamplerate</a> (unsigned int sampleRate)</td></tr>
 <tr class="memdesc:a4cb4934772e9ec9d1f9b929b3f4b22cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the sample rate.  <a href="#a4cb4934772e9ec9d1f9b929b3f4b22cb">More...</a><br /></td></tr>
@@ -159,12 +162,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac5fc6e04104d60f18eb2e090cbe7f854"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#ac5fc6e04104d60f18eb2e090cbe7f854">onMediaserverInterrupt</a> ()</td></tr>
 <tr class="memdesc:ac5fc6e04104d60f18eb2e090cbe7f854"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this on a phone call or other interruption.  <a href="#ac5fc6e04104d60f18eb2e090cbe7f854">More...</a><br /></td></tr>
 <tr class="separator:ac5fc6e04104d60f18eb2e090cbe7f854"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf07eaeeb9a86836325aa5677a034ede"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#adf07eaeeb9a86836325aa5677a034ede">process</a> (float *buffer, bool bufferAdd, unsigned int numberOfSamples, float volume=1.0f, double masterBpm=0.0f, double masterMsElapsedSinceLastBeat=-1.0)</td></tr>
-<tr class="memdesc:adf07eaeeb9a86836325aa5677a034ede"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes the audio, stereo version.  <a href="#adf07eaeeb9a86836325aa5677a034ede">More...</a><br /></td></tr>
-<tr class="separator:adf07eaeeb9a86836325aa5677a034ede"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeab823e0903db2ec65908c76c066ebec"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#aeab823e0903db2ec65908c76c066ebec">processMulti</a> (float **buffers, bool *bufferAdds, unsigned int numberOfSamples, float *volumes, double masterBpm=0.0f, double masterMsElapsedSinceLastBeat=-1.0)</td></tr>
-<tr class="memdesc:aeab823e0903db2ec65908c76c066ebec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes the audio, multi-channel version.  <a href="#aeab823e0903db2ec65908c76c066ebec">More...</a><br /></td></tr>
-<tr class="separator:aeab823e0903db2ec65908c76c066ebec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d5113122c2c2abd93da9854ffd540c4"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a3d5113122c2c2abd93da9854ffd540c4">getMsDifference</a> (double <a class="el" href="class_superpowered_advanced_audio_player.html#ae5971774aa064f67bb5fa5b09861fbc1">phase</a>, double <a class="el" href="class_superpowered_advanced_audio_player.html#a5634377f6d9635b3dee7f7c1dc17c047">quantum</a>)</td></tr>
+<tr class="memdesc:a3d5113122c2c2abd93da9854ffd540c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reserved for future use.  <a href="#a3d5113122c2c2abd93da9854ffd540c4">More...</a><br /></td></tr>
+<tr class="separator:a3d5113122c2c2abd93da9854ffd540c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a289ae8982aaea7cc1d28b3ffe1be5dc9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a289ae8982aaea7cc1d28b3ffe1be5dc9">process</a> (float *buffer, bool bufferAdd, unsigned int numberOfSamples, float volume=1.0f, double masterBpm=0.0f, double masterMsElapsedSinceLastBeat=-1.0, double phase=-1.0, double quantum=-1.0)</td></tr>
+<tr class="memdesc:a289ae8982aaea7cc1d28b3ffe1be5dc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes the audio, stereo version.  <a href="#a289ae8982aaea7cc1d28b3ffe1be5dc9">More...</a><br /></td></tr>
+<tr class="separator:a289ae8982aaea7cc1d28b3ffe1be5dc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81ad0ac6c729340a754374ac2eb939f8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a81ad0ac6c729340a754374ac2eb939f8">processMulti</a> (float **buffers, bool *bufferAdds, unsigned int numberOfSamples, float *volumes, double masterBpm=0.0f, double masterMsElapsedSinceLastBeat=-1.0, double phase=-1.0, double quantum=-1.0)</td></tr>
+<tr class="memdesc:a81ad0ac6c729340a754374ac2eb939f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes the audio, multi-channel version.  <a href="#a81ad0ac6c729340a754374ac2eb939f8">More...</a><br /></td></tr>
+<tr class="separator:a81ad0ac6c729340a754374ac2eb939f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -181,8 +187,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a7b2873dee08939499ccd72e4fc777d6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d497849df6ab9c2d92cb08a00759d11"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a3d497849df6ab9c2d92cb08a00759d11">positionPercent</a></td></tr>
 <tr class="separator:a3d497849df6ab9c2d92cb08a00759d11"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a315a8a3fc27e22d0b998c8bd2890f15e"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a315a8a3fc27e22d0b998c8bd2890f15e">positionSeconds</a></td></tr>
-<tr class="separator:a315a8a3fc27e22d0b998c8bd2890f15e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a5fb72acf77bc90fbd49007182513fd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a9a5fb72acf77bc90fbd49007182513fd">positionSeconds</a></td></tr>
+<tr class="separator:a9a5fb72acf77bc90fbd49007182513fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1afb7ed93c27b949504545c0888ce623"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a1afb7ed93c27b949504545c0888ce623">displayPositionMs</a></td></tr>
 <tr class="separator:a1afb7ed93c27b949504545c0888ce623"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8010242b557d23ef302bfc886e095dde"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a8010242b557d23ef302bfc886e095dde">durationMs</a></td></tr>
@@ -217,6 +223,12 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ad70d81b4c3be05d4375365204f01fae6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5a8824457f388b9ded3851c17dd4467"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#af5a8824457f388b9ded3851c17dd4467">msElapsedSinceLastBeat</a></td></tr>
 <tr class="separator:af5a8824457f388b9ded3851c17dd4467"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5971774aa064f67bb5fa5b09861fbc1"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#ae5971774aa064f67bb5fa5b09861fbc1">phase</a></td></tr>
+<tr class="separator:ae5971774aa064f67bb5fa5b09861fbc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5634377f6d9635b3dee7f7c1dc17c047"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a5634377f6d9635b3dee7f7c1dc17c047">quantum</a></td></tr>
+<tr class="separator:a5634377f6d9635b3dee7f7c1dc17c047"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa79c4fead199b06074c02c837c5aaa1b"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#aa79c4fead199b06074c02c837c5aaa1b">bendMsOffset</a></td></tr>
+<tr class="separator:aa79c4fead199b06074c02c837c5aaa1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf4d29457881f3817f3f1db39ff9b677"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#acf4d29457881f3817f3f1db39ff9b677">beatIndex</a></td></tr>
 <tr class="separator:acf4d29457881f3817f3f1db39ff9b677"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af111717a0cc9ce33089632827ffbd104"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#af111717a0cc9ce33089632827ffbd104">bufferStartPercent</a></td></tr>
@@ -247,6 +259,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a46f717bcac4e81102ff192f1ab0245f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a519b44d218c6719b6e5fb89804f657ff"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#a519b44d218c6719b6e5fb89804f657ff">handleStems</a></td></tr>
 <tr class="separator:a519b44d218c6719b6e5fb89804f657ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1c9f6f770402e53ba778e8006a7da27"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_advanced_audio_player.html#ad1c9f6f770402e53ba778e8006a7da27">defaultQuantum</a></td></tr>
+<tr class="separator:ad1c9f6f770402e53ba778e8006a7da27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -299,6 +313,9 @@ Static Public Attributes</h2></td></tr>
     <tr><td class="paramname">looping</td><td>Indicates if looping is enabled. Read only. </td></tr>
     <tr><td class="paramname">firstBeatMs</td><td>Tells where the first beat (the beatgrid) begins. Must be correct for syncing. Read only. </td></tr>
     <tr><td class="paramname">msElapsedSinceLastBeat</td><td>How many milliseconds elapsed since the last beat. Read only. </td></tr>
+    <tr><td class="paramname">phase</td><td>Reserved for future use. </td></tr>
+    <tr><td class="paramname">quantum</td><td>Reserved for future use. </td></tr>
+    <tr><td class="paramname">bendMsOffset</td><td>Reserved for future use. </td></tr>
     <tr><td class="paramname">beatIndex</td><td>Which beat has just happened (1 [1.0f-1.999f], 2 [2.0f-2.999f], 3 [3.0f-3.99f], 4 [4.0f-4.99f]). A value of 0 means "don't know". Read only. </td></tr>
     <tr><td class="paramname">bufferStartPercent</td><td>What is buffered from the original source, start point. Will always be 0 for non-network sources (files). Read only. </td></tr>
     <tr><td class="paramname">bufferEndPercent</td><td>What is buffered from the original source, end point. Will always be 1.0f for non-network sources (files). Read only. </td></tr>
@@ -313,6 +330,7 @@ Static Public Attributes</h2></td></tr>
     <tr><td class="paramname">minTimeStretchingTempo</td><td>Will not time-stretch, just resample below this tempo. Default: 0.501f (recommended value for low CPU on older mobile devices, such as the first iPad). Set this before an <a class="el" href="class_superpowered_advanced_audio_player.html#aa89c18c1abe220991b73d64aef3e2bc6" title="Opens an audio file with playback paused. ">open()</a> call. </td></tr>
     <tr><td class="paramname">maxTimeStretchingTempo</td><td>Will not time-stretch, just resample above this tempo. Default: 2.0f (recommended value for low CPU on older mobile devices, such as the first iPad). </td></tr>
     <tr><td class="paramname">handleStems</td><td>Output 4 distinct stereo pairs for Native Instruments STEMS format. Default: false (output stem 0 for STEMS). </td></tr>
+    <tr><td class="paramname">defaultQuantum</td><td>Reserved for future use. </td></tr>
     <tr><td class="paramname">fullyDownloadedFilePath</td><td>The file system path of the fully downloaded audio file for progressive downloads. Progressive downloads are automatically removed if no <a class="el" href="class_superpowered_advanced_audio_player.html" title="High performance advanced audio player with: ">SuperpoweredAdvancedAudioPlayer</a> instance is active for the same url. This parameter provides an alternative to save the file. </td></tr>
     <tr><td class="paramname">tempFolderPath</td><td>The path for temporary files. </td></tr>
   </table>
@@ -560,6 +578,41 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a3d5113122c2c2abd93da9854ffd540c4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double SuperpoweredAdvancedAudioPlayer::getMsDifference </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>phase</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>quantum</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reserved for future use. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">phase</td><td>Reserved for future use. </td></tr>
+    <tr><td class="paramname">quantum</td><td>Reserved for future use. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a80f42efde112dd369f383555daf6f422"></a>
 <div class="memitem">
 <div class="memproto">
@@ -706,11 +759,11 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Returns the last <a class="el" href="class_superpowered_advanced_audio_player.html#adf07eaeeb9a86836325aa5677a034ede" title="Processes the audio, stereo version. ">process()</a> numberOfSamples converted to milliseconds. </p>
+<p>Returns the last <a class="el" href="class_superpowered_advanced_audio_player.html#a289ae8982aaea7cc1d28b3ffe1be5dc9" title="Processes the audio, stereo version. ">process()</a> numberOfSamples converted to milliseconds. </p>
 
 </div>
 </div>
-<a class="anchor" id="a43f7a1acba40b1e30367990a1935df9b"></a>
+<a class="anchor" id="aefba2005f65fa89d8eb3fd4480788ac6"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -742,7 +795,13 @@ Static Public Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>synchronisedStart</em>&#160;</td>
+          <td class="paramname"><em>synchronisedStart</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>forceDefaultQuantum</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -760,13 +819,14 @@ Static Public Attributes</h2></td></tr>
     <tr><td class="paramname">jumpToStartMs</td><td>If the playhead is within the loop, jump to startMs or not. </td></tr>
     <tr><td class="paramname">pointID</td><td>Looping caches startMs, so you can specify a pointID too (or set to 255 if you don't care). </td></tr>
     <tr><td class="paramname">synchronisedStart</td><td>Beat-synced start. </td></tr>
+    <tr><td class="paramname">forceDefaultQuantum</td><td>Reserved for future use. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a class="anchor" id="a0d910e194d67b7285d528f14c83ed001"></a>
+<a class="anchor" id="a2be08a9b46f0d20b0e78406316222bf8"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -798,7 +858,13 @@ Static Public Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>synchronisedStart</em>&#160;</td>
+          <td class="paramname"><em>synchronisedStart</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>forceDefaultQuantum</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -816,6 +882,7 @@ Static Public Attributes</h2></td></tr>
     <tr><td class="paramname">jumpToStartMs</td><td>If the playhead is within the loop, jump to startMs or not. </td></tr>
     <tr><td class="paramname">pointID</td><td>Looping caches startMs, so you can specify a pointID too (or set to 255 if you don't care). </td></tr>
     <tr><td class="paramname">synchronisedStart</td><td>Beat-synced start. </td></tr>
+    <tr><td class="paramname">forceDefaultQuantum</td><td>Reserved for future use. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1095,7 +1162,7 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="adf07eaeeb9a86836325aa5677a034ede"></a>
+<a class="anchor" id="a289ae8982aaea7cc1d28b3ffe1be5dc9"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -1133,7 +1200,19 @@ Static Public Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>masterMsElapsedSinceLastBeat</em> = <code>-1.0</code>&#160;</td>
+          <td class="paramname"><em>masterMsElapsedSinceLastBeat</em> = <code>-1.0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>phase</em> = <code>-1.0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>quantum</em> = <code>-1.0</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1153,13 +1232,15 @@ Static Public Attributes</h2></td></tr>
     <tr><td class="paramname">volume</td><td>0.0f is silence, 1.0f is "original volume". Changes are automatically smoothed between consecutive processes. </td></tr>
     <tr><td class="paramname">masterBpm</td><td>A bpm value to sync with. Use 0.0f for no syncing. </td></tr>
     <tr><td class="paramname">masterMsElapsedSinceLastBeat</td><td>How many milliseconds elapsed since the last beat on the other stuff we are syncing to. Use -1.0 to ignore. </td></tr>
+    <tr><td class="paramname">phase</td><td>Reserved for future use. </td></tr>
+    <tr><td class="paramname">quantum</td><td>Reserved for future use. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a class="anchor" id="aeab823e0903db2ec65908c76c066ebec"></a>
+<a class="anchor" id="a81ad0ac6c729340a754374ac2eb939f8"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -1197,7 +1278,19 @@ Static Public Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>masterMsElapsedSinceLastBeat</em> = <code>-1.0</code>&#160;</td>
+          <td class="paramname"><em>masterMsElapsedSinceLastBeat</em> = <code>-1.0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>phase</em> = <code>-1.0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>quantum</em> = <code>-1.0</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1217,9 +1310,28 @@ Static Public Attributes</h2></td></tr>
     <tr><td class="paramname">volumes</td><td>0.0f is silence, 1.0f is "original volume". Changes are automatically smoothed between consecutive processes. </td></tr>
     <tr><td class="paramname">masterBpm</td><td>A bpm value to sync with. Use 0.0f for no syncing. </td></tr>
     <tr><td class="paramname">masterMsElapsedSinceLastBeat</td><td>How many milliseconds elapsed since the last beat on the other stuff we are syncing to. Use -1.0 to ignore. </td></tr>
+    <tr><td class="paramname">phase</td><td>Reserved for future use. </td></tr>
+    <tr><td class="paramname">quantum</td><td>Reserved for future use. </td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a class="anchor" id="a7ab58dc5dd39734b9a2ef32f4bf28585"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SuperpoweredAdvancedAudioPlayer::resetBendMsOffset </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reserved for future use. </p>
 
 </div>
 </div>
@@ -1604,6 +1716,18 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="aa79c4fead199b06074c02c837c5aaa1b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double SuperpoweredAdvancedAudioPlayer::bendMsOffset</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a63b396340565bd33c3f250686dfaf8b0"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1658,6 +1782,18 @@ Static Public Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">int SuperpoweredAdvancedAudioPlayer::currentBps</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ad1c9f6f770402e53ba778e8006a7da27"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double SuperpoweredAdvancedAudioPlayer::defaultQuantum</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1844,6 +1980,18 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ae5971774aa064f67bb5fa5b09861fbc1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double SuperpoweredAdvancedAudioPlayer::phase</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a64d2b25e485265913a39dad735fc2a48"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1904,12 +2052,24 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a315a8a3fc27e22d0b998c8bd2890f15e"></a>
+<a class="anchor" id="a9a5fb72acf77bc90fbd49007182513fd"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int SuperpoweredAdvancedAudioPlayer::positionSeconds</td>
+          <td class="memname">int SuperpoweredAdvancedAudioPlayer::positionSeconds</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a5634377f6d9635b3dee7f7c1dc17c047"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double SuperpoweredAdvancedAudioPlayer::quantum</td>
         </tr>
       </table>
 </div><div class="memdoc">
