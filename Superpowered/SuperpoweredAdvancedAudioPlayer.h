@@ -124,6 +124,8 @@ typedef void (* SuperpoweredAdvancedAudioPlayerCallback) (void *clientData, Supe
  @param durationSeconds The duration of the current track in seconds. Equals to UINT_MAX for live streams. Read only.
  @param waitingForBuffering Indicates if the player waits for audio data to be bufferred. Read only.
  @param playing Indicates if the player is playing or paused. Read only.
+ @param waitingForSyncMs The player is waiting silently for this amount of time from now. Default: 0 (not waiting).
+ @param willSyncMs The player is playing and waiting for this amount of time from now to sync. Default: 0 (not waiting).
  @param tempo The current tempo. Read only.
  @param masterTempo Time-stretching is enabled or not. Read only.
  @param pitchShift Note offset from -12 to 12. 0 means no pitch shift. Read only.
@@ -168,6 +170,8 @@ public:
     unsigned int durationSeconds;
     bool waitingForBuffering;
     bool playing;
+    double waitingForSyncMs;
+    double willSyncMs;
 
     double tempo;
     bool masterTempo;
@@ -298,8 +302,10 @@ public:
  @param ms Position in milliseconds.
  @param andStop If true, stops playback.
  @param synchronisedStart If andStop is false, a beat-synced start is possible.
+ @param forceDefaultQuantum Reserved for future use.
+ @param preferWaitingforSynchronisedStart Wait or start immediately when synchronized.
  */
-    void setPosition(double ms, bool andStop, bool synchronisedStart);
+    void setPosition(double ms, bool andStop, bool synchronisedStart, bool forceDefaultQuantum = false, bool preferWaitingforSynchronisedStart = false);
 /**
  @brief Cache a position for zero latency seeking. It will cache around +/- 1 second around this point.
  
@@ -316,8 +322,9 @@ public:
  @param pointID Looping caches startMs, so you can specify a pointID too (or set to 255 if you don't care).
  @param synchronisedStart Beat-synced start.
  @param forceDefaultQuantum Reserved for future use.
+ @param preferWaitingforSynchronisedStart Wait or start immediately when synchronized.
  */
-    bool loop(double startMs, double lengthMs, bool jumpToStartMs, unsigned char pointID, bool synchronisedStart, bool forceDefaultQuantum = false);
+    bool loop(double startMs, double lengthMs, bool jumpToStartMs, unsigned char pointID, bool synchronisedStart, bool forceDefaultQuantum = false, bool preferWaitingforSynchronisedStart = false);
 /**
  @brief Loop from a start to an end point.
      
@@ -327,8 +334,9 @@ public:
  @param pointID Looping caches startMs, so you can specify a pointID too (or set to 255 if you don't care).
  @param synchronisedStart Beat-synced start.
  @param forceDefaultQuantum Reserved for future use.
+ @param preferWaitingforSynchronisedStart Wait or start immediately when synchronized.
 */
-    bool loopBetween(double startMs, double endMs, bool jumpToStartMs, unsigned char pointID, bool synchronisedStart, bool forceDefaultQuantum = false);
+    bool loopBetween(double startMs, double endMs, bool jumpToStartMs, unsigned char pointID, bool synchronisedStart, bool forceDefaultQuantum = false, bool preferWaitingforSynchronisedStart = false);
 /**
  @brief Exits from the current loop.
  

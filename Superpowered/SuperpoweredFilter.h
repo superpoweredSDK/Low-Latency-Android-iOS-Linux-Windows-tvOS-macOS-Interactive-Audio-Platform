@@ -16,7 +16,9 @@ typedef enum SuperpoweredFilterType {
 } SuperpoweredFilterType;
 
 /**
- @brief IIR filters.
+ @brief SuperpoweredFilter is an IIR filter based on the typical direct form 1 formula:
+ 
+ y[n] = (b0/a0)*x[n] + (b1/a0)*x[n-1] + (b2/a0)*x[n-2] - (a1/a0)*y[n-1] - (a2/a0)*y[n-2]
  
  It doesn't allocate any internal buffers and needs just a few bytes of memory.
  
@@ -39,18 +41,32 @@ public:
     
 /**
  @brief Change parameters for resonant filters.
+
+ @param frequency The frequency in Hz.
+ @param resonance Resonance value.
  */
     void setResonantParameters(float frequency, float resonance);
 /**
  @brief Change parameters for shelving filters.
+
+ @param frequency The frequency in Hz.
+ @param slope Slope.
+ @param dbGain Gain in decibel.
  */
     void setShelfParameters(float frequency, float slope, float dbGain);
 /**
  @brief Change parameters for bandlimited filters.
+
+ @param frequency The center frequency in Hz.
+ @param octaveWidth Width in octave.
  */
     void setBandlimitedParameters(float frequency, float octaveWidth);
 /**
  @brief Change parameters for parametric filters.
+
+ @param frequency The center frequency in Hz.
+ @param octaveWidth Width in octave.
+ @param dbGain Gain in decibel.
  */
     void setParametricParameters(float frequency, float octaveWidth, float dbGain);
     
@@ -75,7 +91,7 @@ public:
 /**
  @brief Set params and type at once for bandlimited filters.
  
- @param frequency The frequency in Hz.
+ @param frequency The center frequency in Hz.
  @param octaveWidth Width in octave.
  @param type Must be bandpass or notch.
  */

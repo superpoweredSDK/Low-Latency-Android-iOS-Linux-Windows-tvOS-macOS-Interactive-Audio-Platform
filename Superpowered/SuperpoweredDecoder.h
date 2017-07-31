@@ -5,6 +5,7 @@
 struct decoderInternals;
 struct stemsCompressor;
 struct stemsLimiter;
+class SuperpoweredDecoder;
 
 #define SUPERPOWEREDDECODER_EOF 0
 #define SUPERPOWEREDDECODER_OK 1
@@ -25,6 +26,13 @@ typedef enum SuperpoweredDecoder_Kind {
  @param frameDataSize Data size in bytes.
  */
 typedef void (* SuperpoweredDecoderID3Callback) (void *clientData, void *frameName, void *frameData, int frameDataSize);
+/**
+ @brief Callback for progressive download completion.
+
+ @clientData Some custom pointer you set when you created the decoder instance.
+ @decoder The decoder instance sending the callback.
+ */
+typedef void (* SuperpoweredDecoderFullyDownloadedCallback) (void *clientData, SuperpoweredDecoder *decoder);
 
 /**
  @brief Audio file decoder. Provides uncompresses PCM samples from various compressed formats.
@@ -56,6 +64,14 @@ public:
     float bufferStartPercent, bufferEndPercent;
     SuperpoweredDecoder_Kind kind;
     char *fullyDownloadedFilePath;
+
+/**
+ @brief Creates an instance of SuperpoweredDecoder.
+
+ @param downloadedCallback Callback for progressive download completion.
+ @param clientData Custom pointer for the downloadedCallback.
+ */
+    SuperpoweredDecoder(SuperpoweredDecoderFullyDownloadedCallback downloadedCallback = 0, void *clientData = 0);
     
 /**
  @brief Opens a file for decoding.
@@ -126,7 +142,6 @@ public:
 */
     bool getStemsInfo(char *names[4] = 0, char *colors[4] = 0, stemsCompressor *compressor = 0, stemsLimiter *limiter = 0);
 
-    SuperpoweredDecoder();
     ~SuperpoweredDecoder();
     
 private:

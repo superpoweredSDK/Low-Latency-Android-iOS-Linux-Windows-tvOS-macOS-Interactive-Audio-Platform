@@ -157,16 +157,10 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
     if (audioUnitRunning || !started) return;
     if (![NSThread isMainThread]) [self performSelectorOnMainThread:@selector(endInterruption) withObject:nil waitUntilDone:NO];
     else {
-        for (int n = 0; n < 2; n++) if ([[AVAudioSession sharedInstance] setActive:YES error:nil] && [self start]) { // Need to try twice sometimes. Don't know why.
-            [delegate interruptionEnded];
-            audioUnitRunning = true;
-            break;
-        };
-        if (!audioUnitRunning) {
-            [[AVAudioSession sharedInstance] setActive:NO error:nil];
-            [self resetAudio];
-            [self start];
-        }
+        [delegate interruptionEnded];
+        [[AVAudioSession sharedInstance] setActive:NO error:nil];
+        [self resetAudio];
+        [self start];
     }
  }
 
@@ -181,14 +175,17 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
 - (void)onAudioSessionInterrupted:(NSNotification *)notification {
     NSNumber *interruption = [notification.userInfo objectForKey:AVAudioSessionInterruptionTypeKey];
     if (interruption) switch ([interruption intValue]) {
-        case AVAudioSessionInterruptionTypeBegan:
-            if (audioUnitRunning) [self performSelectorOnMainThread:@selector(startDelegateInterruption) withObject:nil waitUntilDone:NO];
-            [self beginInterruption];
-            break;
-        case AVAudioSessionInterruptionTypeEnded:
+        case AVAudioSessionInterruptionTypeBegan: {
+            NSNumber *wasSuspended = [notification.userInfo objectForKey:AVAudioSessionInterruptionWasSuspendedKey];
+            if (!(wasSuspended && ([wasSuspended boolValue] == TRUE))) {
+                if (audioUnitRunning) [self performSelectorOnMainThread:@selector(startDelegateInterruption) withObject:nil waitUntilDone:NO];
+                [self beginInterruption];
+            }
+        } break;
+        case AVAudioSessionInterruptionTypeEnded: {
             NSNumber *shouldResume = [notification.userInfo objectForKey:AVAudioSessionInterruptionOptionKey];
             if ((shouldResume == nil) || [shouldResume unsignedIntegerValue] == AVAudioSessionInterruptionOptionShouldResume) [self endInterruption];
-            break;
+        } break;
     };
 }
 

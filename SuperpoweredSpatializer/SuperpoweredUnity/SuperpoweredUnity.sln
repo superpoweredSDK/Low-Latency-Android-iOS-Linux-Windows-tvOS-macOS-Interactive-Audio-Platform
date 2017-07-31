@@ -1,7 +1,7 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{BA29A0D7-1DBC-7BD8-4531-943282C47F46}") = "SuperpoweredUnity", "Assembly-CSharp.csproj", "{46D30BD2-BFDA-319A-47F2-A74AC9D4EA5C}"
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperpoweredUnity", "Assembly-CSharp.csproj", "{46D30BD2-BFDA-319A-47F2-A74AC9D4EA5C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
