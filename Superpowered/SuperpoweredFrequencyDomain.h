@@ -27,7 +27,7 @@ public:
 /**
  @brief Creates an instance.
  
- @param fftLogSize FFT log size, between 8 and 13 (FFT 256 - 8192). The default value (11) provides a good compromise in precision (~11 Hz per bin), CPU load and time-domain event sensitivity.
+ @param fftLogSize FFT log size, between 8 and 13 (FFT 256 - 8192). The default value (11) provides a good compromise in precision (~22 Hz per bin), CPU load and time-domain event sensitivity.
  @param maxOverlap Maximum overlap:1 (default: 4:1).
 */
     SuperpoweredFrequencyDomain(int fftLogSize = 11, int maxOverlap = 4);

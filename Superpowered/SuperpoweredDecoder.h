@@ -40,7 +40,7 @@ typedef void (* SuperpoweredDecoderFullyDownloadedCallback) (void *clientData, S
  Thread safety: single threaded, not thread safe. After a succesful open(), samplePosition and duration may change.
  Supported file types:
  - Stereo or mono pcm WAV and AIFF (16-bit int, 24-bit int, 32-bit int or 32-bit IEEE float).
- - MP3 (all kind).
+ - MP3: MPEG-1 Layer III (sample rates: 32000 Hz, 44100 Hz, 48000 Hz). MPEG-2 is not supported.
  - AAC-LC in M4A container (iTunes).
  - AAC-LC in ADTS container (.aac).
  - Apple Lossless (on iOS only).

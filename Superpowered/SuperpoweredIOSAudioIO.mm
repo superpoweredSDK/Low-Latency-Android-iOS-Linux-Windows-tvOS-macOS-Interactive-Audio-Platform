@@ -176,8 +176,12 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
     NSNumber *interruption = [notification.userInfo objectForKey:AVAudioSessionInterruptionTypeKey];
     if (interruption) switch ([interruption intValue]) {
         case AVAudioSessionInterruptionTypeBegan: {
-            NSNumber *wasSuspended = [notification.userInfo objectForKey:AVAudioSessionInterruptionWasSuspendedKey];
-            if (!(wasSuspended && ([wasSuspended boolValue] == TRUE))) {
+            bool wasSuspended = false;
+            if (&AVAudioSessionInterruptionWasSuspendedKey != NULL) {
+                NSNumber *obj = [notification.userInfo objectForKey:AVAudioSessionInterruptionWasSuspendedKey];
+                if (obj && ([obj boolValue] == TRUE)) wasSuspended = true;
+            }
+            if (!wasSuspended) {
                 if (audioUnitRunning) [self performSelectorOnMainThread:@selector(startDelegateInterruption) withObject:nil waitUntilDone:NO];
                 [self beginInterruption];
             }
@@ -348,7 +352,7 @@ static void streamFormatChangedCallback(void *inRefCon, AudioUnit inUnit, AudioU
     if (format.mSampleRate != 0) {
         __unsafe_unretained SuperpoweredIOSAudioIO *self = (__bridge SuperpoweredIOSAudioIO *)inRefCon;
         self->samplerate = (int)format.mSampleRate;
-        int minimum = int(self->samplerate * 0.001f), maximum = int(self->samplerate * 0.015f);
+        int minimum = int(self->samplerate * 0.001f), maximum = int(self->samplerate * 0.025f);
         self->minimumNumberOfFrames = (minimum >> 3) << 3;
         self->maximumNumberOfFrames = (maximum >> 3) << 3;
         [self performSelectorOnMainThread:@selector(setSamplerateAndBuffersize) withObject:nil waitUntilDone:NO];
