@@ -123,7 +123,7 @@ SuperpoweredAndroidAudioIO::SuperpoweredAndroidAudioIO(int samplerate, int buffe
     internals->latencySamples = latencySamples < buffersize ? buffersize : latencySamples;
 
     internals->numBuffers = (internals->latencySamples / buffersize) * 2;
-    if (internals->numBuffers < 16) internals->numBuffers = 16;
+    if (internals->numBuffers < 32) internals->numBuffers = 32;
     internals->bufferStep = (buffersize + 64) * NUM_CHANNELS;
     size_t fifoBufferSizeBytes = internals->numBuffers * internals->bufferStep * sizeof(short int);
     internals->fifobuffer = (short int *)malloc(fifoBufferSizeBytes);

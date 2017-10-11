@@ -83,7 +83,7 @@ public:
  @param stemsIndex Stems track index for Native Instruments Stems format.
  @param customHTTPHeaders NULL terminated list of custom headers for http communication.
 
- @return NULL if successful, or an error string.
+ @return NULL if successful, or an error string. If the returned error string equals to "@", it means that the open method needs more time opening an audio file from the network. In this case, iterate over open() until it returns something else than "@". It's recommended to sleep 50-100 ms in every iteration to allow the network stack doing its job without blowing up the CPU.
  */
     const char *open(const char *path, bool metaOnly = false, int offset = 0, int length = 0, int stemsIndex = 0, char **customHTTPHeaders = 0);
 /**

@@ -177,7 +177,10 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
     if (interruption) switch ([interruption intValue]) {
         case AVAudioSessionInterruptionTypeBegan: {
             bool wasSuspended = false;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wtautological-pointer-compare"
             if (&AVAudioSessionInterruptionWasSuspendedKey != NULL) {
+#pragma clang diagnostic pop
                 NSNumber *obj = [notification.userInfo objectForKey:AVAudioSessionInterruptionWasSuspendedKey];
                 if (obj && ([obj boolValue] == TRUE)) wasSuspended = true;
             }

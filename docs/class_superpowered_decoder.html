@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.0.7.1</span>
+   &#160;<span id="projectnumber">1.1.0</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
   </td>
@@ -225,7 +225,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>fullyDownloadedFile
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>NULL if successful, or an error string. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>NULL if successful, or an error string. If the returned error string equals to "@", it means that the open method needs more time opening an audio file from the network. In this case, iterate over <a class="el" href="class_superpowered_decoder.html#a2360a5a335d34f7a39ac9bff871ef353" title="Opens a file for decoding. ">open()</a> until it returns something else than "@". It's recommended to sleep 50-100 ms in every iteration to allow the network stack doing its job without blowing up the CPU. </dd></dl>
 
 </div>
 </div>
