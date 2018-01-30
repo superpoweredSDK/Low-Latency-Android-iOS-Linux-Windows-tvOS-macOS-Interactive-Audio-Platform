@@ -5,11 +5,7 @@
 #include <pthread.h>
 #include <unistd.h>
 #include <stdlib.h>
-<<<<<<< HEAD
 #include <string.h>
-=======
-#include <cstring>
->>>>>>> 5823fffbef363175c0d7080b9d79dfabdbac97fc
 
 #define NUM_CHANNELS 2
 
