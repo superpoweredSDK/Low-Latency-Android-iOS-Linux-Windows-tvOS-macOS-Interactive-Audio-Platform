@@ -19,9 +19,9 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.1.0</span>
+   &#160;<span id="projectnumber">1.2.0</span>
    </div>
-   <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
+   <div id="projectbrief">Pain-free Audio Development for Windows, Android, iOS, Mac OSX, tvOS and Linux</div>
   </td>
  </tr>
  </tbody>
@@ -65,8 +65,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8711833aa2966f8dca9421dc6b577e0f"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#a8711833aa2966f8dca9421dc6b577e0f">seek</a> (int64_t sample, bool precise)</td></tr>
 <tr class="memdesc:a8711833aa2966f8dca9421dc6b577e0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Jumps to a specific position.  <a href="#a8711833aa2966f8dca9421dc6b577e0f">More...</a><br /></td></tr>
 <tr class="separator:a8711833aa2966f8dca9421dc6b577e0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae4e1cfd58da0e76a2bbee8e16c1686cd"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#ae4e1cfd58da0e76a2bbee8e16c1686cd">getAudioStartSample</a> (unsigned int *startSample, unsigned int limitSamples=0, int decibel=0)</td></tr>
-<tr class="separator:ae4e1cfd58da0e76a2bbee8e16c1686cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48c6fb42a73eb8889877a11d6f788fd6"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#a48c6fb42a73eb8889877a11d6f788fd6">getAudioStartSample</a> (unsigned int *startSample, unsigned int limitSamples=0, int decibel=0, unsigned int *cancelIfBuffering=0)</td></tr>
+<tr class="separator:a48c6fb42a73eb8889877a11d6f788fd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0544563f5ee1d11f660aa8cd994d72b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#ae0544563f5ee1d11f660aa8cd994d72b">reconnectToMediaserver</a> ()</td></tr>
 <tr class="memdesc:ae0544563f5ee1d11f660aa8cd994d72b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this on a phone call or other interruption.  <a href="#ae0544563f5ee1d11f660aa8cd994d72b">More...</a><br /></td></tr>
 <tr class="separator:ae0544563f5ee1d11f660aa8cd994d72b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -301,8 +301,8 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>fullyDownloadedFile
 
 </div>
 </div>
-<a id="ae4e1cfd58da0e76a2bbee8e16c1686cd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae4e1cfd58da0e76a2bbee8e16c1686cd">&#9670;&nbsp;</a></span>getAudioStartSample()</h2>
+<a id="a48c6fb42a73eb8889877a11d6f788fd6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48c6fb42a73eb8889877a11d6f788fd6">&#9670;&nbsp;</a></span>getAudioStartSample()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -323,7 +323,13 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>fullyDownloadedFile
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>decibel</em> = <code>0</code>&#160;</td>
+          <td class="paramname"><em>decibel</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int *&#160;</td>
+          <td class="paramname"><em>cancelIfBuffering</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -335,9 +341,10 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>fullyDownloadedFile
 <dl class="section return"><dt>Returns</dt><dd>End of file (0), ok (1), error (2) or buffering(3). This function changes position!</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">startSample</td><td>Returns with the position where audio starts. </td></tr>
     <tr><td class="paramname">limitSamples</td><td>How far to search for. 0 means "the entire audio file". </td></tr>
     <tr><td class="paramname">decibel</td><td>Optional loudness threshold in decibel. 0 means "any non-zero audio sample". The value -49 is useful for vinyl rips. </td></tr>
-    <tr><td class="paramname">startSample</td><td>Returns with the position where audio starts. </td></tr>
+    <tr><td class="paramname">cancelIfBuffering</td><td>Optional. If the decoder is waiting for more data from the network, set this variable to nonzero to cancel and return with error. </td></tr>
   </table>
   </dd>
 </dl>

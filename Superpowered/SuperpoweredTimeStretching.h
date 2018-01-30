@@ -39,14 +39,18 @@ public:
     
 /**
  @brief Create a time-stretching with the current sample rate and minimum rate value.
+ 
+ @param samplerate The current sample rate.
+ @param minimumRate The minimum tempo. Example: if you know you don't need tempo below 0.5f, setting minimum tempo to 0.5f will save computing power and memory.
+ @param sound Experimental feature to be used with drastically low rates. Valid values are: 0 (default), 1, 2.
  */
-    SuperpoweredTimeStretching(unsigned int samplerate, float minimumRate = 0.0f);
+    SuperpoweredTimeStretching(unsigned int samplerate, float minimumRate = 0.0f, unsigned char sound = 0);
     ~SuperpoweredTimeStretching();
 
 /**
  @brief This class handles one stereo audio channel pair by default. You can extend it to handle more.
 
- @param numStereoPairs The number of stereo audio channel pairs.
+ @param numStereoPairs The number of stereo audio channel pairs. Maximum value: 8.
 */
     void setStereoPairs(unsigned int numStereoPairs);
 /**

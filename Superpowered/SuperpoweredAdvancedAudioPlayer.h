@@ -4,6 +4,9 @@
 struct SuperpoweredAdvancedAudioPlayerInternals;
 struct SuperpoweredAdvancedAudioPlayerBase;
 
+/**
+ @brief The compressor settings of the STEMS format.
+ */
 typedef struct stemsCompressor {
     bool enabled;
     float inputGainDb;
@@ -16,6 +19,9 @@ typedef struct stemsCompressor {
     float hpCutoffHz;
 } stemsCompressor;
 
+/**
+ @brief The limiter settings of the STEMS format.
+ */
 typedef struct stemsLimiter {
     bool enabled;
     float releaseSec;
@@ -23,6 +29,9 @@ typedef struct stemsLimiter {
     float ceilingDb;
 } stemsLimiter;
 
+/**
+ @brief Complete information about a STEMS file.
+ */
 typedef struct stemsInfo {
     char *names[4];
     char *colors[4];
@@ -51,8 +60,12 @@ typedef enum SuperpoweredAdvancedAudioPlayerEvent {
     SuperpoweredAdvancedAudioPlayerEvent_JogParameter,
     SuperpoweredAdvancedAudioPlayerEvent_DurationChanged,
     SuperpoweredAdvancedAudioPlayerEvent_LoopEnd,
+    SuperpoweredAdvancedAudioPlayerEvent_LoopStartReverse
 } SuperpoweredAdvancedAudioPlayerEvent;
 
+/**
+ @brief Represents the properties of a HLS stream alternative.
+ */
 typedef struct hlsStreamAlternative {
     char *uri, *name, *language, *groupid;
     int bps;
@@ -67,11 +80,11 @@ typedef struct hlsStreamAlternative {
  
  LoadSuccess, LoadError, HLSNetworkError and ProgressiveDownloadError are called from an internal thread of this object.
  
- EOF (end of file) and ScratchControl are called from the (probably real-time) audio processing thread, you shouldn't do any expensive there.
+ EOF (end of file), LoopEnd, LoopStartReverse and ScratchControl are called from the (probably real-time) audio processing thread while actually producing/processing samples, therefore: don't do any expensive or blocking, and don't expect the player's properties updated yet (such as position).
  
  @param clientData Some custom pointer you set when you created the SuperpoweredAdvancedAudioPlayer instance.
  @param event What happened (load success, load error, end of file, jog parameter).
- @param value A pointer to a stemsInfo structure or NULL for LoadSuccess (you take ownership over the strings). (const char *) for LoadError, pointing to the error message. (double *) for JogParameter in the range of 0.0 to 1.0. (bool *) for EOF, set it to true to pause playback. (bool *) for LoopEnd, set it to false to exit the loop. Don't call this instance's methods from an EOF event callback!
+ @param value A pointer to a stemsInfo structure or NULL for LoadSuccess (you take ownership over the strings). (const char *) for LoadError, pointing to the error message. (double *) for JogParameter in the range of 0.0 to 1.0. (bool *) for EOF, set it to true to pause playback. (bool *) for LoopEnd and LoopStartReverse, set it to false to exit the loop. Don't call this instance's methods from an EOF event callback!
  */
 typedef void (* SuperpoweredAdvancedAudioPlayerCallback) (void *clientData, SuperpoweredAdvancedAudioPlayerEvent event, void *value);
 
@@ -126,6 +139,7 @@ typedef void (* SuperpoweredAdvancedAudioPlayerCallback) (void *clientData, Supe
  @param playing Indicates if the player is playing or paused. Read only.
  @param waitingForSyncMs The player is waiting silently for this amount of time from now. Default: 0 (not waiting).
  @param willSyncMs The player is playing and waiting for this amount of time from now to sync. Default: 0 (not waiting).
+ @param audioStartMs The length of the silence at the beginning of the file.
  @param tempo The current tempo. Read only.
  @param masterTempo Time-stretching is enabled or not. Read only.
  @param pitchShift Note offset from -12 to 12. 0 means no pitch shift. Read only.
@@ -150,6 +164,7 @@ typedef void (* SuperpoweredAdvancedAudioPlayerCallback) (void *clientData, Supe
  @param waitForNextBeatWithBeatSync Wait for the next beat if beat-syncing is enabled. False by default.
  @param dynamicHLSAlternativeSwitching Dynamicly changing the current HLS alternative to match the available network bandwidth. Default is true.
  @param reverseToForwardAtLoopStart If looping and playback direction is reverse, reaching the beginning of the loop will change direction to forward. False by default.
+ @param getAudioStartMs If enabled, the player will try to detect the length of the silence at the beginning of the file during open() (up to 10 seconds), and set the audioStartSampleMs property accordingly.
  @param downloadSecondsAhead The HLS content download strategy: how many seconds ahead of the playback position to download. Default is HLS_DOWNLOAD_REMAINING, meaning it will download everything after the playback position, until the end. HLS_DOWNLOAD_EVERYTHING downloads before the playback position too.
  @param maxDownloadAttempts If HLS download fails, how many times to try until sleep. Default: 100. After sleep, NetworkError is called continously.
  @param minTimeStretchingTempo Will not time-stretch, just resample below this tempo. Default: 0.501f (recommended value for low CPU on older mobile devices, such as the first iPad). Set this before an open() call. 
@@ -172,6 +187,7 @@ public:
     bool playing;
     double waitingForSyncMs;
     double willSyncMs;
+    double audioStartMs;
 
     double tempo;
     bool masterTempo;
@@ -205,6 +221,7 @@ public:
     bool waitForNextBeatWithBeatSync;
     bool dynamicHLSAlternativeSwitching;
     bool reverseToForwardAtLoopStart;
+    bool getAudioStartMs;
     int downloadSecondsAhead;
     int maxDownloadAttempts;
     float minTimeStretchingTempo;
@@ -243,7 +260,7 @@ public:
 /**
  @brief Opens an audio file with playback paused.
  
- Tempo, pitchShift, masterTempo and syncMode are NOT changed if you open a new one.
+ Tempo, pitchShift, masterTempo and syncMode are NOT changed if you open a new one. Do not call open() in the audio processing callback.
  
  @param path Full file system path or progressive download path (http or https).
  @param customHTTPHeaders NULL terminated list of custom headers for http communication.
@@ -253,7 +270,7 @@ public:
 /**
  @brief Opens an audio file with playback paused.
  
- Tempo, pitchShift, masterTempo and syncMode are NOT changed if you open a new one.
+ Tempo, pitchShift, masterTempo and syncMode are NOT changed if you open a new one. Do not call open() in the audio processing callback.
  
  @param path Full file system path or progressive download path (http or https).
  @param offset The byte offset inside the file.
@@ -264,7 +281,7 @@ public:
 /**
  @brief Opens a HTTP Live Streaming stream with playback paused.
  
- Tempo, pitchShift, masterTempo and syncMode are NOT changed if you open a new one.
+ Tempo, pitchShift, masterTempo and syncMode are NOT changed if you open a new one. Do not call openHLS() in the audio processing callback.
  
  @param url URL of the stream.
  @param customHTTPHeaders NULL terminated list of custom headers for http communication.

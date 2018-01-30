@@ -19,9 +19,9 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.1.0</span>
+   &#160;<span id="projectnumber">1.2.0</span>
    </div>
-   <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
+   <div id="projectbrief">Pain-free Audio Development for Windows, Android, iOS, Mac OSX, tvOS and Linux</div>
   </td>
  </tr>
  </tbody>
@@ -47,7 +47,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Input channel mapping.  
+<p>Input channel mapping for iOS audio I/O.  
  <a href="structmulti_input_channel_map.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -63,7 +63,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>numberOfUSBChannelsAva
 <div class="textblock"><p>Similar to the output channels, you can map the input channels too. It works with USB only.</p>
 <p>Let's say you set the channel count to 4, so RemoteIO provides 4 input channel buffers. Using this struct, you can map which USB input channel appears on the specific buffer positions.</p>
 <dl class="section since"><dt>Since</dt><dd>Available in iOS 6.0 and later. </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><code><a class="el" href="structmulti_output_channel_map.html" title="Output channel mapping. ">multiOutputChannelMap</a></code> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><code><a class="el" href="structmulti_output_channel_map.html" title="Output channel mapping for iOS audio I/O. ">multiOutputChannelMap</a></code> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">USBChannels</td><td>Example: set USBChannels[0] to 3, to receive the input of the third USB channel on the first buffer. </td></tr>

@@ -19,9 +19,9 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.1.0</span>
+   &#160;<span id="projectnumber">1.2.0</span>
    </div>
-   <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
+   <div id="projectbrief">Pain-free Audio Development for Windows, Android, iOS, Mac OSX, tvOS and Linux</div>
   </td>
  </tr>
  </tbody>
@@ -59,10 +59,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad3c80694e4ed40f4e1dee5bd41fa3070"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_time_stretching.html#ad3c80694e4ed40f4e1dee5bd41fa3070">setRateAndPitchShiftCents</a> (float newRate, int newShiftCents)</td></tr>
 <tr class="memdesc:ad3c80694e4ed40f4e1dee5bd41fa3070"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set rate and pitch shift with greater precision. Calling this method requires magnitudes more CPU than setRateAndPitchShift.  <a href="#ad3c80694e4ed40f4e1dee5bd41fa3070">More...</a><br /></td></tr>
 <tr class="separator:ad3c80694e4ed40f4e1dee5bd41fa3070"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17c47dda140fd55a90b08907d54ee5fa"><td class="memItemLeft" align="right" valign="top"><a id="a17c47dda140fd55a90b08907d54ee5fa"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_time_stretching.html#a17c47dda140fd55a90b08907d54ee5fa">SuperpoweredTimeStretching</a> (unsigned int samplerate, float minimumRate=0.0f)</td></tr>
-<tr class="memdesc:a17c47dda140fd55a90b08907d54ee5fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a time-stretching with the current sample rate and minimum rate value. <br /></td></tr>
-<tr class="separator:a17c47dda140fd55a90b08907d54ee5fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a319cfe3cd1470dd09c8f9e0e4974ef8f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_time_stretching.html#a319cfe3cd1470dd09c8f9e0e4974ef8f">SuperpoweredTimeStretching</a> (unsigned int samplerate, float minimumRate=0.0f, unsigned char sound=0)</td></tr>
+<tr class="memdesc:a319cfe3cd1470dd09c8f9e0e4974ef8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a time-stretching with the current sample rate and minimum rate value.  <a href="#a319cfe3cd1470dd09c8f9e0e4974ef8f">More...</a><br /></td></tr>
+<tr class="separator:a319cfe3cd1470dd09c8f9e0e4974ef8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b89a7049a378e7b27ac14065b2cc61c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_time_stretching.html#a3b89a7049a378e7b27ac14065b2cc61c">setStereoPairs</a> (unsigned int numStereoPairs)</td></tr>
 <tr class="memdesc:a3b89a7049a378e7b27ac14065b2cc61c"><td class="mdescLeft">&#160;</td><td class="mdescRight">This class handles one stereo audio channel pair by default. You can extend it to handle more.  <a href="#a3b89a7049a378e7b27ac14065b2cc61c">More...</a><br /></td></tr>
 <tr class="separator:a3b89a7049a378e7b27ac14065b2cc61c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -106,7 +105,50 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>numberOfInputSamplesNe
   </table>
   </dd>
 </dl>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a319cfe3cd1470dd09c8f9e0e4974ef8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a319cfe3cd1470dd09c8f9e0e4974ef8f">&#9670;&nbsp;</a></span>SuperpoweredTimeStretching()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SuperpoweredTimeStretching::SuperpoweredTimeStretching </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>samplerate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>minimumRate</em> = <code>0.0f</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>sound</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">samplerate</td><td>The current sample rate. </td></tr>
+    <tr><td class="paramname">minimumRate</td><td>The minimum tempo. Example: if you know you don't need tempo below 0.5f, setting minimum tempo to 0.5f will save computing power and memory. </td></tr>
+    <tr><td class="paramname">sound</td><td>Experimental feature to be used with drastically low rates. Valid values are: 0 (default), 1, 2. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a1d059bbc92713379dc5aad77006dd032"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1d059bbc92713379dc5aad77006dd032">&#9670;&nbsp;</a></span>setRateAndPitchShift()</h2>
 
@@ -194,7 +236,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>numberOfInputSamplesNe
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">numStereoPairs</td><td>The number of stereo audio channel pairs. </td></tr>
+    <tr><td class="paramname">numStereoPairs</td><td>The number of stereo audio channel pairs. Maximum value: 8. </td></tr>
   </table>
   </dd>
 </dl>

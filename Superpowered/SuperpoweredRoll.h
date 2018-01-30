@@ -10,7 +10,7 @@ struct rollInternals;
  One instance allocates around 1600 kb memory.
  
  @param wet Limited to >= 0.0f and <= 1.0f.
- @param bpm Limited to >= 60.0f and <= 240.0f
+ @param bpm Limited to >= 40.0f and <= 250.0f
  @param beats Limit: 1/64 beats to 4 beats. (>= 0.015625f and <= 4.0f)
 */
 class SuperpoweredRoll: public SuperpoweredFX {
@@ -53,7 +53,7 @@ public:
  
  @param input 32-bit interleaved stereo input buffer. Can point to the same location with output (in-place processing). Special case: can be NULL, roll will loop what's "recorded" before.
  @param output 32-bit interleaved stereo output buffer. Can point to the same location with input (in-place processing).
- @param numberOfSamples Should be 16 minimum.
+ @param numberOfSamples Number of frames to process. Recommendations for best performance: minimum 64.
 */
     bool process(float *input, float *output, unsigned int numberOfSamples);
     

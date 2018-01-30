@@ -19,9 +19,9 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.1.0</span>
+   &#160;<span id="projectnumber">1.2.0</span>
    </div>
-   <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
+   <div id="projectbrief">Pain-free Audio Development for Windows, Android, iOS, Mac OSX, tvOS and Linux</div>
   </td>
  </tr>
  </tbody>
@@ -211,6 +211,9 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>waitingForSyncMs</b
 <tr class="memitem:a3e53b87698f522b922b7ccc99fa02305"><td class="memItemLeft" align="right" valign="top"><a id="a3e53b87698f522b922b7ccc99fa02305"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><b>willSyncMs</b></td></tr>
 <tr class="separator:a3e53b87698f522b922b7ccc99fa02305"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b3d3137a582901af0ff8833fe51fa87"><td class="memItemLeft" align="right" valign="top"><a id="a4b3d3137a582901af0ff8833fe51fa87"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>audioStartMs</b></td></tr>
+<tr class="separator:a4b3d3137a582901af0ff8833fe51fa87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a228309c458a5e7c8ab3dc5809855821b"><td class="memItemLeft" align="right" valign="top"><a id="a228309c458a5e7c8ab3dc5809855821b"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><b>tempo</b></td></tr>
 <tr class="separator:a228309c458a5e7c8ab3dc5809855821b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -286,6 +289,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>dynamicHLSAlternative
 <tr class="memitem:ac3e8f2cde64156984e7fdd0ff10b0a96"><td class="memItemLeft" align="right" valign="top"><a id="ac3e8f2cde64156984e7fdd0ff10b0a96"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>reverseToForwardAtLoopStart</b></td></tr>
 <tr class="separator:ac3e8f2cde64156984e7fdd0ff10b0a96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b9d87d7b476aa06139ccdd417a4722a"><td class="memItemLeft" align="right" valign="top"><a id="a5b9d87d7b476aa06139ccdd417a4722a"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>getAudioStartMs</b></td></tr>
+<tr class="separator:a5b9d87d7b476aa06139ccdd417a4722a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a913d11f6be74cc2a2afefb6e2703ef87"><td class="memItemLeft" align="right" valign="top"><a id="a913d11f6be74cc2a2afefb6e2703ef87"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>downloadSecondsAhead</b></td></tr>
 <tr class="separator:a913d11f6be74cc2a2afefb6e2703ef87"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -346,6 +352,7 @@ static char *&#160;</td><td class="memItemRight" valign="bottom"><b>tempFolderPa
     <tr><td class="paramname">playing</td><td>Indicates if the player is playing or paused. Read only. </td></tr>
     <tr><td class="paramname">waitingForSyncMs</td><td>The player is waiting silently for this amount of time from now. Default: 0 (not waiting). </td></tr>
     <tr><td class="paramname">willSyncMs</td><td>The player is playing and waiting for this amount of time from now to sync. Default: 0 (not waiting). </td></tr>
+    <tr><td class="paramname">audioStartMs</td><td>The length of the silence at the beginning of the file. </td></tr>
     <tr><td class="paramname">tempo</td><td>The current tempo. Read only. </td></tr>
     <tr><td class="paramname">masterTempo</td><td>Time-stretching is enabled or not. Read only. </td></tr>
     <tr><td class="paramname">pitchShift</td><td>Note offset from -12 to 12. 0 means no pitch shift. Read only. </td></tr>
@@ -370,6 +377,7 @@ static char *&#160;</td><td class="memItemRight" valign="bottom"><b>tempFolderPa
     <tr><td class="paramname">waitForNextBeatWithBeatSync</td><td>Wait for the next beat if beat-syncing is enabled. False by default. </td></tr>
     <tr><td class="paramname">dynamicHLSAlternativeSwitching</td><td>Dynamicly changing the current HLS alternative to match the available network bandwidth. Default is true. </td></tr>
     <tr><td class="paramname">reverseToForwardAtLoopStart</td><td>If looping and playback direction is reverse, reaching the beginning of the loop will change direction to forward. False by default. </td></tr>
+    <tr><td class="paramname">getAudioStartMs</td><td>If enabled, the player will try to detect the length of the silence at the beginning of the file during <a class="el" href="class_superpowered_advanced_audio_player.html#aa89c18c1abe220991b73d64aef3e2bc6" title="Opens an audio file with playback paused. ">open()</a> (up to 10 seconds), and set the audioStartSampleMs property accordingly. </td></tr>
     <tr><td class="paramname">downloadSecondsAhead</td><td>The HLS content download strategy: how many seconds ahead of the playback position to download. Default is HLS_DOWNLOAD_REMAINING, meaning it will download everything after the playback position, until the end. HLS_DOWNLOAD_EVERYTHING downloads before the playback position too. </td></tr>
     <tr><td class="paramname">maxDownloadAttempts</td><td>If HLS download fails, how many times to try until sleep. Default: 100. After sleep, NetworkError is called continously. </td></tr>
     <tr><td class="paramname">minTimeStretchingTempo</td><td>Will not time-stretch, just resample below this tempo. Default: 0.501f (recommended value for low CPU on older mobile devices, such as the first iPad). Set this before an <a class="el" href="class_superpowered_advanced_audio_player.html#aa89c18c1abe220991b73d64aef3e2bc6" title="Opens an audio file with playback paused. ">open()</a> call. </td></tr>
@@ -505,7 +513,7 @@ static char *&#160;</td><td class="memItemRight" valign="bottom"><b>tempFolderPa
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Tempo, pitchShift, masterTempo and syncMode are NOT changed if you open a new one.</p>
+<p>Tempo, pitchShift, masterTempo and syncMode are NOT changed if you open a new one. Do not call <a class="el" href="class_superpowered_advanced_audio_player.html#aa89c18c1abe220991b73d64aef3e2bc6" title="Opens an audio file with playback paused. ">open()</a> in the audio processing callback.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">path</td><td>Full file system path or progressive download path (http or https). </td></tr>
@@ -553,7 +561,7 @@ static char *&#160;</td><td class="memItemRight" valign="bottom"><b>tempFolderPa
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Tempo, pitchShift, masterTempo and syncMode are NOT changed if you open a new one.</p>
+<p>Tempo, pitchShift, masterTempo and syncMode are NOT changed if you open a new one. Do not call <a class="el" href="class_superpowered_advanced_audio_player.html#aa89c18c1abe220991b73d64aef3e2bc6" title="Opens an audio file with playback paused. ">open()</a> in the audio processing callback.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">path</td><td>Full file system path or progressive download path (http or https). </td></tr>
@@ -591,7 +599,7 @@ static char *&#160;</td><td class="memItemRight" valign="bottom"><b>tempFolderPa
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Tempo, pitchShift, masterTempo and syncMode are NOT changed if you open a new one.</p>
+<p>Tempo, pitchShift, masterTempo and syncMode are NOT changed if you open a new one. Do not call <a class="el" href="class_superpowered_advanced_audio_player.html#a259b6c2567917880beceebd15320a984" title="Opens a HTTP Live Streaming stream with playback paused. ">openHLS()</a> in the audio processing callback.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">url</td><td>URL of the stream. </td></tr>

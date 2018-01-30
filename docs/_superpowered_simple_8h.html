@@ -19,9 +19,9 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.1.0</span>
+   &#160;<span id="projectnumber">1.2.0</span>
    </div>
-   <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
+   <div id="projectbrief">Pain-free Audio Development for Windows, Android, iOS, Mac OSX, tvOS and Linux</div>
   </td>
  </tr>
  </tbody>
@@ -109,9 +109,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a9359d1c7a32f81c76466c91726954c8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#a9359d1c7a32f81c76466c91726954c8d">SuperpoweredDeInterleave</a> (float *input, float *left, float *right, unsigned int numberOfSamples)</td></tr>
 <tr class="memdesc:a9359d1c7a32f81c76466c91726954c8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deinterleaves an interleaved input.  <a href="#a9359d1c7a32f81c76466c91726954c8d">More...</a><br /></td></tr>
 <tr class="separator:a9359d1c7a32f81c76466c91726954c8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56b64cd6e53004e6a8c9603efa27ea7a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#a56b64cd6e53004e6a8c9603efa27ea7a">SuperpoweredDeInterleaveMultiply</a> (float *input, float *left, float *right, unsigned int numberOfSamples, float multiplier)</td></tr>
+<tr class="memdesc:a56b64cd6e53004e6a8c9603efa27ea7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deinterleaves an interleaved input and multiplies the output.  <a href="#a56b64cd6e53004e6a8c9603efa27ea7a">More...</a><br /></td></tr>
+<tr class="separator:a56b64cd6e53004e6a8c9603efa27ea7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a438e7e7ff4d39b20585de4601f04dcf8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#a438e7e7ff4d39b20585de4601f04dcf8">SuperpoweredDeInterleaveAdd</a> (float *input, float *left, float *right, unsigned int numberOfSamples)</td></tr>
 <tr class="memdesc:a438e7e7ff4d39b20585de4601f04dcf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deinterleaves an interleaved input and adds the results to the output channels.  <a href="#a438e7e7ff4d39b20585de4601f04dcf8">More...</a><br /></td></tr>
 <tr class="separator:a438e7e7ff4d39b20585de4601f04dcf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a986aa18e49050fbb9d922b846cd80a77"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#a986aa18e49050fbb9d922b846cd80a77">SuperpoweredDeInterleaveMultiplyAdd</a> (float *input, float *left, float *right, unsigned int numberOfSamples, float multiplier)</td></tr>
+<tr class="memdesc:a986aa18e49050fbb9d922b846cd80a77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deinterleaves an interleaved input, multiplies the results and adds them to the output channels.  <a href="#a986aa18e49050fbb9d922b846cd80a77">More...</a><br /></td></tr>
+<tr class="separator:a986aa18e49050fbb9d922b846cd80a77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afed02e7f7896f13097548f29205f39c5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#afed02e7f7896f13097548f29205f39c5">SuperpoweredHasNonFinite</a> (float *buffer, unsigned int numberOfValues)</td></tr>
 <tr class="memdesc:afed02e7f7896f13097548f29205f39c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the samples has non-valid samples, such as infinity or NaN (not a number).  <a href="#afed02e7f7896f13097548f29205f39c5">More...</a><br /></td></tr>
 <tr class="separator:afed02e7f7896f13097548f29205f39c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -139,6 +145,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a68769f9a1e36db2961e30081de810894"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#a68769f9a1e36db2961e30081de810894">SuperpoweredAdd4</a> (float *inputA, float *inputB, float *inputC, float *inputD, float *output, unsigned int numberOfValues)</td></tr>
 <tr class="memdesc:a68769f9a1e36db2961e30081de810894"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds 4 inputs to an output.  <a href="#a68769f9a1e36db2961e30081de810894">More...</a><br /></td></tr>
 <tr class="separator:a68769f9a1e36db2961e30081de810894"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3a71a9373de41c81c8cfb42cf7480a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#aa3a71a9373de41c81c8cfb42cf7480a6">SuperpoweredStereoToMidSide</a> (float *input, float *output, unsigned int numberOfFrames)</td></tr>
+<tr class="memdesc:aa3a71a9373de41c81c8cfb42cf7480a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a stereo signal to mid-side.  <a href="#aa3a71a9373de41c81c8cfb42cf7480a6">More...</a><br /></td></tr>
+<tr class="separator:aa3a71a9373de41c81c8cfb42cf7480a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23281da10344cea10058d7e5bdd25924"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#a23281da10344cea10058d7e5bdd25924">SuperpoweredMidSideToStereo</a> (float *input, float *output, unsigned int numberOfFrames)</td></tr>
+<tr class="memdesc:a23281da10344cea10058d7e5bdd25924"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a mid-side signal to stereo.  <a href="#a23281da10344cea10058d7e5bdd25924">More...</a><br /></td></tr>
+<tr class="separator:a23281da10344cea10058d7e5bdd25924"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe7772f165043b851a9bf074771cf17a"><td class="memItemLeft" align="right" valign="top">const unsigned char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#abe7772f165043b851a9bf074771cf17a">SuperpoweredVersion</a> ()</td></tr>
 <tr class="separator:abe7772f165043b851a9bf074771cf17a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -1088,8 +1100,64 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">input</td><td>Interleaved input. </td></tr>
     <tr><td class="paramname">left</td><td>Output for left channel. </td></tr>
-    <tr><td class="paramname">right</td><td>Output for right channel.</td></tr>
+    <tr><td class="paramname">right</td><td>Output for right channel. </td></tr>
     <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a56b64cd6e53004e6a8c9603efa27ea7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56b64cd6e53004e6a8c9603efa27ea7a">&#9670;&nbsp;</a></span>SuperpoweredDeInterleaveMultiply()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SuperpoweredDeInterleaveMultiply </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>left</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>right</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>numberOfSamples</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>multiplier</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>Interleaved input. </td></tr>
+    <tr><td class="paramname">left</td><td>Output for left channel. </td></tr>
+    <tr><td class="paramname">right</td><td>Output for right channel. </td></tr>
+    <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. </td></tr>
+    <tr><td class="paramname">multiplier</td><td>Multiply each output sample with this value. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1137,8 +1205,64 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">input</td><td>Interleaved input. </td></tr>
     <tr><td class="paramname">left</td><td>Output for left channel. </td></tr>
-    <tr><td class="paramname">right</td><td>Output for right channel.</td></tr>
+    <tr><td class="paramname">right</td><td>Output for right channel. </td></tr>
     <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a986aa18e49050fbb9d922b846cd80a77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a986aa18e49050fbb9d922b846cd80a77">&#9670;&nbsp;</a></span>SuperpoweredDeInterleaveMultiplyAdd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SuperpoweredDeInterleaveMultiplyAdd </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>left</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>right</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>numberOfSamples</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>multiplier</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>Interleaved input. </td></tr>
+    <tr><td class="paramname">left</td><td>Output for left channel. </td></tr>
+    <tr><td class="paramname">right</td><td>Output for right channel. </td></tr>
+    <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. </td></tr>
+    <tr><td class="paramname">multiplier</td><td>Multiply each output sample with this value. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1699,6 +1823,90 @@ Functions</h2></td></tr>
     <tr><td class="paramname">inputD</td><td>Input data. </td></tr>
     <tr><td class="paramname">output</td><td>Output data. </td></tr>
     <tr><td class="paramname">numberOfValues</td><td>The length of input. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa3a71a9373de41c81c8cfb42cf7480a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3a71a9373de41c81c8cfb42cf7480a6">&#9670;&nbsp;</a></span>SuperpoweredStereoToMidSide()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SuperpoweredStereoToMidSide </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>output</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>numberOfFrames</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>Input buffer. </td></tr>
+    <tr><td class="paramname">output</td><td>Output buffer. Can be equal to input (in-place processing). </td></tr>
+    <tr><td class="paramname">numberOfFrames</td><td>The number of frames to process. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a23281da10344cea10058d7e5bdd25924"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23281da10344cea10058d7e5bdd25924">&#9670;&nbsp;</a></span>SuperpoweredMidSideToStereo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SuperpoweredMidSideToStereo </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>output</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>numberOfFrames</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>Input buffer. </td></tr>
+    <tr><td class="paramname">output</td><td>Output buffer. Can be equal to input (in-place processing). </td></tr>
+    <tr><td class="paramname">numberOfFrames</td><td>The number of frames to process. </td></tr>
   </table>
   </dd>
 </dl>

@@ -10,7 +10,7 @@ struct gateInternals;
  It doesn't allocate any internal buffers and needs just a few bytes of memory.
  
  @param wet Limited to >= 0.0f and <= 1.0f.
- @param bpm Limited to >= 60.0f and <= 240.0f
+ @param bpm Limited to >= 40.0f and <= 250.0f
  @param beats The rhythm in beats to open/close the "gate". From 1/64 beats to 4 beats. (>= 0.015625f and <= 4.0f)
  */
 class SuperpoweredGate: public SuperpoweredFX {
@@ -53,7 +53,7 @@ public:
  
  @param input 32-bit interleaved stereo input buffer. Can point to the same location with output (in-place processing).
  @param output 32-bit interleaved stereo output buffer. Can point to the same location with input (in-place processing).
- @param numberOfSamples Should be 16 minimum.
+ @param numberOfSamples Number of frames to process. Recommendations for best performance: minimum 64.
  */
     bool process(float *input, float *output, unsigned int numberOfSamples);
     

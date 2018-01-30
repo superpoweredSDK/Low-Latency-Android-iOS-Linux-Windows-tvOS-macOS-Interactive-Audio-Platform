@@ -1,7 +1,7 @@
 #import <AVFoundation/AVFoundation.h>
 
 /**
- @brief Output channel mapping.
+ @brief Output channel mapping for iOS audio I/O.
 
  This structure maps the channels you provide in the audio processing callback to the appropriate output channels.
 
@@ -47,7 +47,7 @@ typedef struct multiOutputChannelMap {
 } multiOutputChannelMap;
 
 /**
- @brief Input channel mapping.
+ @brief Input channel mapping for iOS audio I/O.
 
  Similar to the output channels, you can map the input channels too. It works with USB only.
 

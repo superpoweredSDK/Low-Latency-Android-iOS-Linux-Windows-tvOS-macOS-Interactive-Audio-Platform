@@ -19,9 +19,9 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.1.0</span>
+   &#160;<span id="projectnumber">1.2.0</span>
    </div>
-   <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
+   <div id="projectbrief">Pain-free Audio Development for Windows, Android, iOS, Mac OSX, tvOS and Linux</div>
   </td>
  </tr>
  </tbody>
@@ -466,7 +466,7 @@ filterInternals *&#160;</td><td class="memItemRight" valign="bottom"><b>internal
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">frequency</td><td>The center frequency in Hz. </td></tr>
-    <tr><td class="paramname">octaveWidth</td><td>Width in octave. </td></tr>
+    <tr><td class="paramname">octaveWidth</td><td>Width in octave. (Min 0.1, max 5.) </td></tr>
     <tr><td class="paramname">type</td><td>Must be bandpass or notch. </td></tr>
   </table>
   </dd>
@@ -492,7 +492,7 @@ filterInternals *&#160;</td><td class="memItemRight" valign="bottom"><b>internal
 <p>Coefficient changes will be smoothly handled.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">coefficients</td><td>Pointer to the 5 coefficients of the first direct form IIR filter. </td></tr>
+    <tr><td class="paramname">coefficients</td><td>Pointer to the 5 coefficients of the first direct form IIR filter in this order: b0, b1, b2, a0, a1 </td></tr>
   </table>
   </dd>
 </dl>
@@ -577,7 +577,7 @@ filterInternals *&#160;</td><td class="memItemRight" valign="bottom"><b>internal
   <table class="params">
     <tr><td class="paramname">input</td><td>32-bit interleaved stereo input buffer. Can point to the same location with output (in-place processing). </td></tr>
     <tr><td class="paramname">output</td><td>32-bit interleaved stereo output buffer. Can point to the same location with input (in-place processing). </td></tr>
-    <tr><td class="paramname">numberOfSamples</td><td>Should be 32 minimum and exactly divisible with 8. </td></tr>
+    <tr><td class="paramname">numberOfSamples</td><td>Number of frames to process. Recommendations for best performance: multiply of 4, minimum 64. </td></tr>
   </table>
   </dd>
 </dl>
@@ -622,7 +622,7 @@ filterInternals *&#160;</td><td class="memItemRight" valign="bottom"><b>internal
   <table class="params">
     <tr><td class="paramname">input</td><td>32-bit input buffer. Can point to the same location with output (in-place processing). </td></tr>
     <tr><td class="paramname">output</td><td>32-bit output buffer. Can point to the same location with input (in-place processing). </td></tr>
-    <tr><td class="paramname">numberOfSamples</td><td>Should be 32 minimum and exactly divisible with 8. </td></tr>
+    <tr><td class="paramname">numberOfSamples</td><td>Number of frames to process. Recommendations for best performance: multiply of 8, minimum 64. </td></tr>
   </table>
   </dd>
 </dl>

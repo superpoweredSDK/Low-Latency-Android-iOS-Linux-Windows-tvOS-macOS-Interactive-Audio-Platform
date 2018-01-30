@@ -92,7 +92,7 @@ public:
  @brief Set params and type at once for bandlimited filters.
  
  @param frequency The center frequency in Hz.
- @param octaveWidth Width in octave.
+ @param octaveWidth Width in octave. (Min 0.1, max 5.)
  @param type Must be bandpass or notch.
  */
     void setBandlimitedParametersAndType(float frequency, float octaveWidth, SuperpoweredFilterType type);
@@ -102,7 +102,7 @@ public:
  
  Coefficient changes will be smoothly handled.
  
- @param coefficients Pointer to the 5 coefficients of the first direct form IIR filter.
+ @param coefficients Pointer to the 5 coefficients of the first direct form IIR filter in this order: b0, b1, b2, a0, a1
  */
     void setCustomCoefficients(float *coefficients);
     
@@ -137,7 +137,7 @@ public:
  
  @param input 32-bit interleaved stereo input buffer. Can point to the same location with output (in-place processing).
  @param output 32-bit interleaved stereo output buffer. Can point to the same location with input (in-place processing).
- @param numberOfSamples Should be 32 minimum and exactly divisible with 8.
+ @param numberOfSamples Number of frames to process. Recommendations for best performance: multiply of 4, minimum 64.
 */
     bool process(float *input, float *output, unsigned int numberOfSamples);
 
@@ -148,7 +148,7 @@ public:
 
  @param input 32-bit input buffer. Can point to the same location with output (in-place processing).
  @param output 32-bit output buffer. Can point to the same location with input (in-place processing).
- @param numberOfSamples Should be 32 minimum and exactly divisible with 8.
+ @param numberOfSamples Number of frames to process. Recommendations for best performance: multiply of 8, minimum 64.
 */
     bool processMono(float *input, float *output, unsigned int numberOfSamples);
 

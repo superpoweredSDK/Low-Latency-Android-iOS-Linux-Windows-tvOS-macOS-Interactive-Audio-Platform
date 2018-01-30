@@ -2,7 +2,7 @@
 #define Header_SuperpoweredCPU
 
 /**
- Utility class to keep the CPU running near the maximum frequency for all cores ("sustained performance mode"). Useful for pro audio applications to prevent audio dropouts, in both foreground and background states. Use this primarily on mobile devices.
+ @brief Utility class to keep the CPU running near the maximum frequency for all cores ("sustained performance mode"). Useful for pro audio applications to prevent audio dropouts, in both foreground and background states. Use this primarily on mobile devices.
  
  Supports:
  - all versions of iOS and Android,

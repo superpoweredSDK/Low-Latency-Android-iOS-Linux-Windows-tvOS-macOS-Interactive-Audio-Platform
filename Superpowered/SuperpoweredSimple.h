@@ -215,10 +215,21 @@ void SuperpoweredInterleaveAndGetPeaks(float *left, float *right, float *output,
  @param input Interleaved input.
  @param left Output for left channel.
  @param right Output for right channel.
-
  @param numberOfSamples The number of samples to process.
  */
 void SuperpoweredDeInterleave(float *input, float *left, float *right, unsigned int numberOfSamples);
+
+/**
+ @fn SuperpoweredDeInterleaveMultiply(float *input, float *left, float *right, unsigned int numberOfSamples, float multiplier);
+ @brief Deinterleaves an interleaved input and multiplies the output.
+ 
+ @param input Interleaved input.
+ @param left Output for left channel.
+ @param right Output for right channel.
+ @param numberOfSamples The number of samples to process.
+ @param multiplier Multiply each output sample with this value.
+ */
+void SuperpoweredDeInterleaveMultiply(float *input, float *left, float *right, unsigned int numberOfSamples, float multiplier);
 
 /**
  @fn SuperpoweredDeInterleaveAdd(float *input, float *left, float *right, unsigned int numberOfSamples);
@@ -227,10 +238,21 @@ void SuperpoweredDeInterleave(float *input, float *left, float *right, unsigned 
  @param input Interleaved input.
  @param left Output for left channel.
  @param right Output for right channel.
-
  @param numberOfSamples The number of samples to process.
  */
 void SuperpoweredDeInterleaveAdd(float *input, float *left, float *right, unsigned int numberOfSamples);
+
+/**
+ @fn SuperpoweredDeInterleaveMultiplyAdd(float *input, float *left, float *right, unsigned int numberOfSamples, float multiplier);
+ @brief Deinterleaves an interleaved input, multiplies the results and adds them to the output channels.
+ 
+ @param input Interleaved input.
+ @param left Output for left channel.
+ @param right Output for right channel.
+ @param numberOfSamples The number of samples to process.
+ @param multiplier Multiply each output sample with this value.
+ */
+void SuperpoweredDeInterleaveMultiplyAdd(float *input, float *left, float *right, unsigned int numberOfSamples, float multiplier);
 
 /**
  @fn SuperpoweredHasNonFinite(float *buffer, unsigned int numberOfValues);
@@ -347,6 +369,26 @@ void SuperpoweredAdd2(float *inputA, float *inputB, float *output, unsigned int 
  @param numberOfValues The length of input.
  */
 void SuperpoweredAdd4(float *inputA, float *inputB, float *inputC, float *inputD, float *output, unsigned int numberOfValues);
+
+/**
+ @fn SuperpoweredStereoToMidSide(float *input, float *output, unsigned int numberOfFrames)
+ @brief Converts a stereo signal to mid-side.
+ 
+ @param input Input buffer.
+ @param output Output buffer. Can be equal to input (in-place processing).
+ @param numberOfFrames The number of frames to process.
+ */
+void SuperpoweredStereoToMidSide(float *input, float *output, unsigned int numberOfFrames);
+
+/**
+ @fn SuperpoweredMidSideToStereo(float *input, float *output, unsigned int numberOfFrames)
+ @brief Converts a mid-side signal to stereo.
+ 
+ @param input Input buffer.
+ @param output Output buffer. Can be equal to input (in-place processing).
+ @param numberOfFrames The number of frames to process.
+ */
+void SuperpoweredMidSideToStereo(float *input, float *output, unsigned int numberOfFrames);
 
 /**
  @fn SuperpoweredVersion()

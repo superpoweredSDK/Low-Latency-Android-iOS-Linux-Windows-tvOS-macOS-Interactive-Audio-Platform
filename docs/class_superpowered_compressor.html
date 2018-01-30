@@ -19,9 +19,9 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.1.0</span>
+   &#160;<span id="projectnumber">1.2.0</span>
    </div>
-   <div id="projectbrief">Pain-free Audio Development for iOS and Android.</div>
+   <div id="projectbrief">Pain-free Audio Development for Windows, Android, iOS, Mac OSX, tvOS and Linux</div>
   </td>
  </tr>
  </tbody>
@@ -113,8 +113,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>enabled</b></td></tr>
     <tr><td class="paramname">inputGainDb</td><td>Input gain in decibels, limited between -24.0f and 24.0f. Default: 0. </td></tr>
     <tr><td class="paramname">outputGainDb</td><td>Output gain in decibels, limited between -24.0f and 24.0f. Default: 0. </td></tr>
     <tr><td class="paramname">wet</td><td>Dry/wet ratio, limited between 0.0f (completely dry) and 1.0f (completely wet). Default: 1.0f. </td></tr>
-    <tr><td class="paramname">attackSec</td><td>Attack in seconds (not milliseconds!). Limited between 0.0001f and 0.03f. Default: 0.003f (3 ms). </td></tr>
-    <tr><td class="paramname">releaseSec</td><td>Release in seconds (not milliseconds!). Limited between 0.1f and 1.6f. Default: 0.3f (300 ms). </td></tr>
+    <tr><td class="paramname">attackSec</td><td>Attack in seconds (not milliseconds!). Limited between 0.0001f and 1.0f. Default: 0.003f (3 ms). </td></tr>
+    <tr><td class="paramname">releaseSec</td><td>Release in seconds (not milliseconds!). Limited between 0.1f and 4.0f. Default: 0.3f (300 ms). </td></tr>
     <tr><td class="paramname">ratio</td><td>Ratio, rounded to 1.5f, 2.0f, 3.0f, 4.0f, 5.0f or 10.0f. Default: 3.0f. </td></tr>
     <tr><td class="paramname">thresholdDb</td><td>Threshold in decibels, limited between 0.0f and -40.0f. Default: 0. </td></tr>
     <tr><td class="paramname">hpCutOffHz</td><td>Key highpass filter frequency, limited between 1.0f and 10000.0f. Default: 1.0f. </td></tr>
@@ -239,7 +239,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>enabled</b></td></tr>
   <table class="params">
     <tr><td class="paramname">input</td><td>32-bit interleaved stereo input buffer. Can point to the same location with output (in-place processing). </td></tr>
     <tr><td class="paramname">output</td><td>32-bit interleaved stereo output buffer. Can point to the same location with input (in-place processing). </td></tr>
-    <tr><td class="paramname">numberOfSamples</td><td>Should be 32 minimum. </td></tr>
+    <tr><td class="paramname">numberOfSamples</td><td>Number of frames to process. Recommendations for best performance: multiply of 4, minimum 64. </td></tr>
   </table>
   </dd>
 </dl>

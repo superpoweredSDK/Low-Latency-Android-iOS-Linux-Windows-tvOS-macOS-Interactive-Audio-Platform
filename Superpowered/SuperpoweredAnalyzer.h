@@ -32,7 +32,7 @@ public:
     void process(float *input, unsigned int numberOfSamples, int lengthSeconds = -1);
 
 /**
- @brief Get results. Call this method ONCE, after all samples are processed.
+ @brief Get results. Call this method ONCE, after all samples are processed. Delete the analyzer after this, the same instance can not be used further.
  
  @param averageWaveform 150 points/sec waveform data displaying the average volume. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory).
  @param peakWaveform 150 points/sec waveform data displaying the peak volume. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory).

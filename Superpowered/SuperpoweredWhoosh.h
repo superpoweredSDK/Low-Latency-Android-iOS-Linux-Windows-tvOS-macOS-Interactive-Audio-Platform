@@ -52,7 +52,7 @@ public:
  
  @param input 32-bit interleaved stereo input buffer. Can point to the same location with output (in-place processing).
  @param output 32-bit interleaved stereo output buffer. Can point to the same location with input (in-place processing).
- @param numberOfSamples Should be 16 minimum.
+ @param numberOfSamples Number of frames to process. Recommendations for best performance: multiply of 4, minimum 64.
  */
     bool process(float *input, float *output, unsigned int numberOfSamples);
     

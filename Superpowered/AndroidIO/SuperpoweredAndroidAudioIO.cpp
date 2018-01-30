@@ -5,8 +5,15 @@
 #include <pthread.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define NUM_CHANNELS 2
+
+#if NUM_CHANNELS == 1
+    #define CHANNELMASK SL_SPEAKER_FRONT_CENTER
+#elif NUM_CHANNELS == 2
+    #define CHANNELMASK (SL_SPEAKER_FRONT_LEFT | SL_SPEAKER_FRONT_RIGHT)
+#endif
 
 typedef struct SuperpoweredAndroidAudioIOInternals {
     void *clientdata;
@@ -143,7 +150,7 @@ SuperpoweredAndroidAudioIO::SuperpoweredAndroidAudioIO(int samplerate, int buffe
         SLDataLocator_IODevice deviceInputLocator = { SL_DATALOCATOR_IODEVICE, SL_IODEVICE_AUDIOINPUT, SL_DEFAULTDEVICEID_AUDIOINPUT, NULL };
         SLDataSource inputSource = { &deviceInputLocator, NULL };
         SLDataLocator_AndroidSimpleBufferQueue inputLocator = { SL_DATALOCATOR_ANDROIDSIMPLEBUFFERQUEUE, 1 };
-        SLDataFormat_PCM inputFormat = { SL_DATAFORMAT_PCM, NUM_CHANNELS, (SLuint32)samplerate * 1000, SL_PCMSAMPLEFORMAT_FIXED_16, SL_PCMSAMPLEFORMAT_FIXED_16, SL_SPEAKER_FRONT_LEFT | SL_SPEAKER_FRONT_RIGHT, SL_BYTEORDER_LITTLEENDIAN };
+        SLDataFormat_PCM inputFormat = { SL_DATAFORMAT_PCM, NUM_CHANNELS, (SLuint32)samplerate * 1000, SL_PCMSAMPLEFORMAT_FIXED_16, SL_PCMSAMPLEFORMAT_FIXED_16, CHANNELMASK, SL_BYTEORDER_LITTLEENDIAN };
         SLDataSink inputSink = { &inputLocator, &inputFormat };
         const SLInterfaceID inputInterfaces[2] = { SL_IID_ANDROIDSIMPLEBUFFERQUEUE, SL_IID_ANDROIDCONFIGURATION };
         (*openSLEngineInterface)->CreateAudioRecorder(openSLEngineInterface, &internals->inputBufferQueue, &inputSource, &inputSink, 2, inputInterfaces, requireds);
@@ -162,7 +169,7 @@ SuperpoweredAndroidAudioIO::SuperpoweredAndroidAudioIO(int samplerate, int buffe
 
     if (enableOutput) { // Create the audio output buffer queue.
         SLDataLocator_AndroidSimpleBufferQueue outputLocator = { SL_DATALOCATOR_ANDROIDSIMPLEBUFFERQUEUE, 1 };
-        SLDataFormat_PCM outputFormat = { SL_DATAFORMAT_PCM, NUM_CHANNELS, (SLuint32)samplerate * 1000, SL_PCMSAMPLEFORMAT_FIXED_16, SL_PCMSAMPLEFORMAT_FIXED_16, SL_SPEAKER_FRONT_LEFT | SL_SPEAKER_FRONT_RIGHT, SL_BYTEORDER_LITTLEENDIAN };
+        SLDataFormat_PCM outputFormat = { SL_DATAFORMAT_PCM, NUM_CHANNELS, (SLuint32)samplerate * 1000, SL_PCMSAMPLEFORMAT_FIXED_16, SL_PCMSAMPLEFORMAT_FIXED_16, CHANNELMASK, SL_BYTEORDER_LITTLEENDIAN };
         SLDataSource outputSource = { &outputLocator, &outputFormat };
         const SLInterfaceID outputInterfaces[2] = { SL_IID_BUFFERQUEUE, SL_IID_ANDROIDCONFIGURATION };
         SLDataSink outputSink = { &outputMixLocator, NULL };

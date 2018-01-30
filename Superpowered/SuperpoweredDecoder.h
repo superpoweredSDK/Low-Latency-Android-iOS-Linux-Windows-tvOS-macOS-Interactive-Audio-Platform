@@ -107,11 +107,12 @@ public:
 /**
  @return End of file (0), ok (1), error (2) or buffering(3). This function changes position!
  
+ @param startSample Returns with the position where audio starts.
  @param limitSamples How far to search for. 0 means "the entire audio file".
  @param decibel Optional loudness threshold in decibel. 0 means "any non-zero audio sample". The value -49 is useful for vinyl rips.
- @param startSample Returns with the position where audio starts.
+ @param cancelIfBuffering Optional. If the decoder is waiting for more data from the network, set this variable to nonzero to cancel and return with error.
  */
-    unsigned char getAudioStartSample(unsigned int *startSample, unsigned int limitSamples = 0, int decibel = 0);
+    unsigned char getAudioStartSample(unsigned int *startSample, unsigned int limitSamples = 0, int decibel = 0, unsigned int *cancelIfBuffering = 0);
 /**
  @brief Call this on a phone call or other interruption.
  

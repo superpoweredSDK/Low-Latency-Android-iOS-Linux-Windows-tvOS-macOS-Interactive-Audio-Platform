@@ -33,7 +33,7 @@ public:
     void process(float *inputs[4], float *outputs[2], float inputLevels[8], float outputLevels[2], float inputMeters[8], float outputMeters[2], unsigned int numberOfSamples);
 
 /**
- @brief Mixes max. 4 interleaved stereo channels into a stereo output and changes volume in the channels as well.
+ @brief Mixes max. 4 interleaved stereo channels into a stereo output and changes volume in the channels as well. Deprecated, will be removed soon.
 
  @param channels Four pointers to stereo interleaved input/output buffers. Every pointer should not be NULL.
  @param outputs If outputs[1] is NULL, output is interleaved stereo in outputs[0]. If outputs[1] is not NULL, output is non-interleaved (left side in outputs[0], right side in outputs[1]).
