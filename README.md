@@ -1,15 +1,15 @@
-![Superpowered!](http://superpowered.com/images/superpowered-github.gif)
+<p align="center"><img width="450" src="http://superpowered.com/images/superpowered-animated.svg"></p>
 
-Superpowered Audio Platform for Desktop, Mobile, IoT and Embedded Applications.
+Superpowered Interactive Audio Platform for Desktop, Mobile, IoT and Embedded Applications.
 
-Fully featured for interactive audio for Games, VOIP, DAWs, Music Apps, Hi-Res Audio, Voice Assistants, Virtual, Augmented and Mixed Reality use-cases.
+Fully featured interactive audio for Games, VOIP, DAWs, Music Apps, Hi-Res Audio, Voice Assistants, Virtual, Augmented and Mixed Reality use-cases.
 
 Cross Platform on Android, iOS, macOS, tvOS, Linux and Windows.
 
 
 # What is it?
 
-Superpowered features audio players, audio decoders, Fx, audio I/O, streaming, music analysis and spatialization, all optimized for interactive audio. This means low-power, real-time latency and cross-platform.
+Low-power, real-time latency and cross-platform audio players, audio decoders, Fx, audio I/O, streaming, music analysis and spatialization, all optimized for interactive audio. 
 
 
 # Supported Platforms
@@ -19,12 +19,12 @@ Superpowered is cross-platform: ALL SUPERPOWERED C++ CODE CAN BE COPY-PASTED bet
 
 # Superpowered Technologies
 
-Superpowered Inc develops the following mobile audio infrastructure:
+Superpowered Inc develops the following interactive audio infrastructure:
 
 
 ### 1. Superpowered Audio SDK for Android, iOS, macOS, tvOS, Linux and Windows.
 
-A fully-featured audio platform with players, decoders, audio filters, effects and lower-level functions like FFT or mixing.
+A fully-featured interactive audio platform with audio players, decoders, audio filters, effects and lower-level functions like FFTs and mixing.
 
 For the most recent and up-to-date feature list, see: http://superpowered.com/#comptable
 
@@ -232,15 +232,48 @@ Prerequisites: latest Android SDK, Android NDK, Android Studio installed. Steps:
 Details of the latest version can be found at http://superpowered.com/superpowered-audio-sdk/
 
 
-# Pricing and licensing
+# Licensing
 
-The Superpowered Audio SDK is completely free for most developers. Please see the included license pdf.
+The Superpowered Audio SDK offers free and paid licenses. Most apps qualify for a free license. 
+
+For details, please see: http://superpowered.com/license
+
+For licensing inquiries, please email licensing@superpowered.com.
+
+
+# Support
+
+Superpowered offers multiple support options.
+
+Email: support@superpowered.zendesk.com
+
+Knowledge base: https://superpowered.zendesk.com/hc/en-us
+
+StackOverflow: https://stackoverflow.com/search?tab=newest&q=superpowered
+
+YouTube: https://www.youtube.com/playlist?list=PLtRKsB6a4xFMXJrZ9wjscOow3nASBoEbU
+
+Developer Documentation: http://superpowered.com/docs/index.html
+
+Paid support options: http://superpowered.com/support
+
+
+# Custom Application Development Services
+
+Superpowered offers custom development services focusing on low-latency, interactive audio applications for mobile, desktop and embedded. 
+
+For development inquiries, please email customdev@superpowered.com.
+
+
+# Contact
+
+If you want to be informed about new code releases, bug fixes, general news and information about Superpowered, please email hello@superpowered.com.
+
+For licensing inquiries, please email licensing@superpowered.com.
+
+
+# Notes
 
 Superpowered FFT benefits from ideas in Construction of a High-Performance FFT by Eric Postpischil (http://edp.org/resume.htm).
 
 The Superpowered MP3 and AAC decoder benefits from optimizations by Ken Cooke.
-
-
-# Contacts
-
-If you want to be informed about new code releases, bug fixes, general news and information about Superpowered, please email hello@superpowered.com.

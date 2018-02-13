@@ -314,7 +314,7 @@ int main(int argc, char *argv[]) {
             if (error < 0) {
                 if (!underrunRecovery(context.handle, error)) {
                     printf("underrun recovery write error: %s\n", snd_strerror(error));
-                    run = 0;
+                    run = false;
                     break;
                 }
                 init = true;

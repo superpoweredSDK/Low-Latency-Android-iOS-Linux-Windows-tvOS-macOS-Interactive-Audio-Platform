@@ -54,7 +54,7 @@ public:
 */
     void setStereoPairs(unsigned int numStereoPairs);
 /**
- @brief Sets the sample rate.
+ @brief Sets the input and output sample rate.
  
  @param samplerate 44100, 48000, etc.
  */
