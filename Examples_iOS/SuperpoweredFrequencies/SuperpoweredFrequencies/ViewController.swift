@@ -1,5 +1,9 @@
 import UIKit
 
+// Recommended tutorial:
+// "Swift and Objective-C in the Same Project"
+// https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html
+
 class ViewController: UIViewController {
     var superpowered:Superpowered!
     var displayLink:CADisplayLink!

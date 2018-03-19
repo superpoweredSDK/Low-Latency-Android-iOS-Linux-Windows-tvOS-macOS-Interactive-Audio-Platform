@@ -67,6 +67,7 @@ void MainPage::Toggle(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventAr
 		button->Content = "Stop";
 	} else {
 		audioIO->stop();
+		delete audioIO;
 		audioIO = NULL;
 		button->Content = "Start";
 	}

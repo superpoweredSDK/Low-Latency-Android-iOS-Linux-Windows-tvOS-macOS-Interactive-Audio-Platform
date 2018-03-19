@@ -7,23 +7,60 @@
 
 #define NUMCHANNELS 2
 
+static void channelConversion(float *input, float *output, int inputNumberOfChannels, int outputNumberOfChannels, int numberOfFrames) {
+    if ((inputNumberOfChannels == 1) && (outputNumberOfChannels == 2)) { // Mono to stereo.
+        while (numberOfFrames--) {
+            *output++ = *input;
+            *output++ = *input++;
+        }
+    } else if ((inputNumberOfChannels == 2) && (outputNumberOfChannels == 1)) { // Stereo to mono.
+        while (numberOfFrames--) {
+            *output++ = (input[0] + input[1]) * 0.5f;
+            input += 2;
+        }
+    } else if (inputNumberOfChannels < outputNumberOfChannels) { // Copy all input channels, zero the output channels above.
+        int zeroBytes = (outputNumberOfChannels - inputNumberOfChannels) * sizeof(float);
+        while (numberOfFrames--) {
+            memcpy(output, input, inputNumberOfChannels * sizeof(float));
+            memset(output + inputNumberOfChannels, 0, zeroBytes);
+            input += inputNumberOfChannels;
+            output += outputNumberOfChannels;
+        }
+    } else { // Copy the channels fit into output.
+        while (numberOfFrames--) {
+            memcpy(output, input, outputNumberOfChannels * sizeof(float));
+            input += inputNumberOfChannels;
+            output += outputNumberOfChannels;
+        }
+    }
+}
+
 // If both audio input and output are enabled, this class handles a non-blocking buffer between input and output.
 // It can resample too (in a simple way) if the sample rate of the input is different to the output.
 class inputToOutputHandler {
 public:
-    inputToOutputHandler(int samplerate) : outputSamplerate(samplerate), resampleBuffer(NULL), slopeCount(0), invSlopeCount(1.0f), afterUnderrun(true) {
-        buffer = (float *)_aligned_malloc(NUMCHANNELS * 4 * samplerate, 16); // Can store 1 second of audio.
-        memset(prev, 0, NUMCHANNELS * 4);
+    inputToOutputHandler(int samplerate, int inChannels, int outChannels) : outputSamplerate(samplerate), inputNumberOfChannels(inChannels), outputNumberOfChannels(outChannels), resampleBuffer(NULL), channelConvBuffer(NULL), slopeCount(0), invSlopeCount(1.0f), afterUnderrun(true) {
+        buffer = (float *)_aligned_malloc(outputNumberOfChannels * 4 * samplerate, 16); // Can store 1 second of audio.
+        prev = (float *)_aligned_malloc(outputNumberOfChannels * 4, 16);
+        if (prev) memset(prev, 0, outputNumberOfChannels * 4);
     }
     
     ~inputToOutputHandler() {
         _aligned_free(buffer);
+        _aligned_free(prev);
         if (resampleBuffer) _aligned_free(resampleBuffer);
+        if (channelConvBuffer) _aligned_free(channelConvBuffer);
     }
     
     void handleInput(BYTE *input, int numFrames, int samplerate) {
+        if (inputNumberOfChannels != outputNumberOfChannels) { // Converting number of channels if needed.
+            if (!channelConvBuffer) channelConvBuffer = (float *)_aligned_malloc(outputNumberOfChannels * 4 * samplerate, 16); // With the hope of numFrames will never be as much as samplerate.
+            channelConversion((float *)input, channelConvBuffer, inputNumberOfChannels, outputNumberOfChannels, numFrames);
+            input = (BYTE *)channelConvBuffer;
+        }
+        
         if (samplerate != outputSamplerate) { // Resampling if needed.
-            resampleBuffer = (float *)_aligned_malloc(NUMCHANNELS * 4 * samplerate, 16);
+            if (!resampleBuffer) resampleBuffer = (float *)_aligned_malloc(outputNumberOfChannels * 4 * samplerate, 16);
             numFrames = resample((float *)input, resampleBuffer, float(samplerate) / float(outputSamplerate), numFrames);
             input = (BYTE *)resampleBuffer;
 		}
@@ -31,13 +68,15 @@ public:
         int spaceLeft = outputSamplerate - writePos;
         
         if (spaceLeft < numFrames) { // End of buffer.
-            memcpy(buffer + writePos * NUMCHANNELS, input, spaceLeft * NUMCHANNELS * 4);
-            input += spaceLeft * NUMCHANNELS * 4;
+            if (input) { // Makes Code Analysis happy.
+                memcpy(buffer + writePos * outputNumberOfChannels, input, spaceLeft * outputNumberOfChannels * 4);
+                input += spaceLeft * outputNumberOfChannels * 4;
+            }
             numFrames -= spaceLeft;
             writePos = 0;
         }
         
-        memcpy(buffer + writePos * NUMCHANNELS, input, numFrames * NUMCHANNELS * 4);
+        if (input) memcpy(buffer + writePos * outputNumberOfChannels, input, numFrames * outputNumberOfChannels * 4);
         writePos += numFrames;
     }
     
@@ -48,27 +87,27 @@ public:
 
         if (inputFramesAvailable < minFramesShouldBe) { // Underrun, not enough audio input frames are available.
             afterUnderrun = true;
-            memset(output, 0, numFrames * 4 * NUMCHANNELS);
+            memset(output, 0, numFrames * 4 * outputNumberOfChannels);
         } else {
             afterUnderrun = false;
             int spaceLeft = outputSamplerate - readPos;
             
             if (spaceLeft < numFrames) { // End of buffer.
-                memcpy(output, buffer + readPos * NUMCHANNELS, spaceLeft * NUMCHANNELS * 4);
-                output += spaceLeft * NUMCHANNELS * 4;
+                memcpy(output, buffer + readPos * outputNumberOfChannels, spaceLeft * outputNumberOfChannels * 4);
+                output += spaceLeft * outputNumberOfChannels * 4;
                 numFrames -= spaceLeft;
                 readPos = 0;
             }
             
-            memcpy(output, buffer + readPos * NUMCHANNELS, numFrames * NUMCHANNELS * 4);
+            memcpy(output, buffer + readPos * outputNumberOfChannels, numFrames * outputNumberOfChannels * 4);
             readPos += numFrames;
         }
     }
     
 private:
-    float *buffer, *resampleBuffer;
-    float slopeCount, invSlopeCount, prev[NUMCHANNELS];
-    int outputSamplerate, readPos, writePos;
+    float *buffer, *resampleBuffer, *channelConvBuffer, *prev;
+    float slopeCount, invSlopeCount;
+    int outputSamplerate, inputNumberOfChannels, outputNumberOfChannels, readPos, writePos;
     bool afterUnderrun;
     
     int resample(float *input, float *output, float rate, int numFrames) {
@@ -81,12 +120,12 @@ private:
                 invSlopeCount = 1.0f - slopeCount;
                 if (!numFrames) return outFrames;
                 
-                memcpy(prev, input, NUMCHANNELS * 4);
-                input += NUMCHANNELS;
+                memcpy(prev, input, outputNumberOfChannels * 4);
+                input += outputNumberOfChannels;
             }
             
-            for (int ch = 0; ch < NUMCHANNELS; ch++) *output++ = invSlopeCount * prev[ch] + slopeCount * input[ch];
-            memcpy(prev, input, NUMCHANNELS * 4);
+            for (int ch = 0; ch < outputNumberOfChannels; ch++) *output++ = invSlopeCount * prev[ch] + slopeCount * input[ch];
+            memcpy(prev, input, outputNumberOfChannels * 4);
             outFrames++;
             slopeCount += rate;
             invSlopeCount = 1.0f - slopeCount;
@@ -95,6 +134,7 @@ private:
 };
 
 typedef struct inputOrOutputHandlerInternals {
+    float *channelConvBuffer;
     audioProcessingCallback callback;
     void *clientdata;
     inputToOutputHandler **ioHandler;
@@ -105,7 +145,7 @@ typedef struct inputOrOutputHandlerInternals {
     HANDLE sampleReadyEvent;
     MFWORKITEM_KEY cancelKey;
     DWORD workQueueId;
-    int bufferSize, numberOfSamples, samplerate;
+    int bufferSize, numberOfSamples, samplerate, numberOfChannels;
     bool raw, stop, input, hasOtherHandler;
 } inputOrOutputHandlerInternals;
 
@@ -114,7 +154,7 @@ class inputOrOutputHandler: public Microsoft::WRL::RuntimeClass<Microsoft::WRL::
 public:
     bool running;
     
-    inputOrOutputHandler(bool input, bool hasOtherHandler, inputToOutputHandler **ioHandler,  DWORD workQueueIdentifier, bool rawProcessingSupported, audioProcessingCallback cb, void *cd) : running(false) {
+    inputOrOutputHandler(bool input, bool hasOtherHandler, inputToOutputHandler **ioHandler, DWORD workQueueIdentifier, bool rawProcessingSupported, audioProcessingCallback cb, void *cd) : running(false) {
         internals = new inputOrOutputHandlerInternals;
         memset(internals, 0, sizeof(inputOrOutputHandlerInternals));
         internals->input = input;
@@ -158,12 +198,15 @@ public:
                 BYTE *buffer;
                 DWORD captureFlags;
                 if (SUCCEEDED(internals->captureClient->GetBuffer(&buffer, &framesAvailable, &captureFlags, &devicePosition, &qpcPosition))) {
-                    if (captureFlags & AUDCLNT_BUFFERFLAGS_SILENT) memset(buffer, 0, framesAvailable * 4 * NUMCHANNELS);
+                    if (captureFlags & AUDCLNT_BUFFERFLAGS_SILENT) memset(buffer, 0, framesAvailable * sizeof(float) * internals->numberOfChannels);
                     
                     if (internals->hasOtherHandler) {
                         if (*(internals->ioHandler)) (*(internals->ioHandler))->handleInput(buffer, framesAvailable, internals->samplerate);
                     } else {
-                        internals->callback(internals->clientdata, (float *)buffer, internals->numberOfSamples, internals->samplerate);
+                        if (internals->numberOfChannels != NUMCHANNELS) {
+                            channelConversion((float *)buffer, internals->channelConvBuffer, internals->numberOfChannels, NUMCHANNELS, (int)framesAvailable);
+                            internals->callback(internals->clientdata, internals->channelConvBuffer, internals->numberOfSamples, internals->samplerate);
+                        } else internals->callback(internals->clientdata, (float *)buffer, internals->numberOfSamples, internals->samplerate);
                     }
                    
                     internals->captureClient->ReleaseBuffer(framesAvailable);
@@ -186,14 +229,28 @@ public:
                 bool silence = true;
                 int framesWritten = 0;
                 
-                while (framesLeft >= internals->numberOfSamples) {
-                    if (internals->hasOtherHandler) (*(internals->ioHandler))->handleOutput(buffer, internals->numberOfSamples);
-                    
-                    if (!internals->callback(internals->clientdata, (float *)buffer, internals->numberOfSamples, internals->samplerate)) memset(buffer, 0, internals->numberOfSamples * 4 * NUMCHANNELS); else silence = false;
-                    
-                    framesLeft -= internals->numberOfSamples;
-                    framesWritten += internals->numberOfSamples;
-                    buffer += internals->numberOfSamples * 4 * NUMCHANNELS;
+                if (internals->channelConvBuffer) {
+                    while (framesLeft >= internals->numberOfSamples) {
+                        if (internals->hasOtherHandler) (*(internals->ioHandler))->handleOutput((BYTE *)internals->channelConvBuffer, internals->numberOfSamples);
+                        
+                        if (!internals->callback(internals->clientdata, internals->channelConvBuffer, internals->numberOfSamples, internals->samplerate)) memset(internals->channelConvBuffer, 0, internals->numberOfSamples * sizeof(float) * NUMCHANNELS); else silence = false;
+                        
+                        channelConversion(internals->channelConvBuffer, (float *)buffer, NUMCHANNELS, internals->numberOfChannels, internals->numberOfSamples);
+                        
+                        framesLeft -= internals->numberOfSamples;
+                        framesWritten += internals->numberOfSamples;
+                        buffer += internals->numberOfSamples * sizeof(float) * internals->numberOfChannels;
+                    }
+                } else {
+                    while (framesLeft >= internals->numberOfSamples) {
+                        if (internals->hasOtherHandler) (*(internals->ioHandler))->handleOutput(buffer, internals->numberOfSamples);
+                        
+                        if (!internals->callback(internals->clientdata, (float *)buffer, internals->numberOfSamples, internals->samplerate)) memset(buffer, 0, internals->numberOfSamples * sizeof(float) * internals->numberOfChannels); else silence = false;
+                        
+                        framesLeft -= internals->numberOfSamples;
+                        framesWritten += internals->numberOfSamples;
+                        buffer += internals->numberOfSamples * sizeof(float) * internals->numberOfChannels;
+                    }
                 }
                 
                 internals->renderClient->ReleaseBuffer(framesWritten, silence ? AUDCLNT_BUFFERFLAGS_SILENT : 0);
@@ -235,8 +292,11 @@ public:
 	
         internals->samplerate = format->nSamplesPerSec;
         internals->numberOfSamples = minPeriodFrames;
-        format->nChannels = NUMCHANNELS;
-        if (internals->hasOtherHandler && !internals->input) *internals->ioHandler = new inputToOutputHandler(internals->samplerate);
+        internals->numberOfChannels = format->nChannels;
+        // format->nChannels = 2; Some drivers (such as Sound Blaster) are not able to perform channel count conversion.
+        // We need to perform channel count conversion. Allocate a buffer for channel count conversion with the hope of numFrames will never be as much as samplerate.
+        if (internals->numberOfChannels != NUMCHANNELS) internals->channelConvBuffer = (float *)_aligned_malloc(NUMCHANNELS * sizeof(float) * internals->samplerate, 16);
+        if (internals->hasOtherHandler && !internals->input) *internals->ioHandler = new inputToOutputHandler(internals->samplerate, format->nChannels, NUMCHANNELS);
         
 		hr = internals->client->InitializeSharedAudioStream(AUDCLNT_STREAMFLAGS_EVENTCALLBACK, minPeriodFrames, format, nullptr);
 		CoTaskMemFree(format);
@@ -278,6 +338,7 @@ private:
         if (internals->sampleReadyAsyncResult) internals->sampleReadyAsyncResult->Release();
         if (internals->sampleReadyEvent != INVALID_HANDLE_VALUE) CloseHandle(internals->sampleReadyEvent);
         internals->callback(internals->clientdata, NULL, 0, code);
+        if (internals->channelConvBuffer) _aligned_free(internals->channelConvBuffer);
         delete internals;
         return E_FAIL;
     }

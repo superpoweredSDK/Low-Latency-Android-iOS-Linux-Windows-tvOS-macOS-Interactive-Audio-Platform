@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.2.1</span>
+   &#160;<span id="projectnumber">1.2.2</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -52,14 +52,15 @@ $(function() {
   <tr bgcolor="#f0f0f0"><td class="entry"><b>dry</b> (defined in <a class="el" href="class_superpowered_echo.html">SuperpoweredEcho</a>)</td><td class="entry"><a class="el" href="class_superpowered_echo.html">SuperpoweredEcho</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_superpowered_echo.html#ab77b0d270a11ad3544f8736e57e08681">enable</a>(bool flag)</td><td class="entry"><a class="el" href="class_superpowered_echo.html">SuperpoweredEcho</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>enabled</b> (defined in <a class="el" href="class_superpowered_f_x.html">SuperpoweredFX</a>)</td><td class="entry"><a class="el" href="class_superpowered_f_x.html">SuperpoweredFX</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_superpowered_echo.html#a72984c9a5930eb4e2208df2dc506fa00">process</a>(float *input, float *output, unsigned int numberOfSamples)</td><td class="entry"><a class="el" href="class_superpowered_echo.html">SuperpoweredEcho</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_superpowered_echo.html#a74add2dd31ab61e9d68d737760551fd9">reset</a>()</td><td class="entry"><a class="el" href="class_superpowered_echo.html">SuperpoweredEcho</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_superpowered_echo.html#aa64150f05c31434e07033a91724fe6ce">setMix</a>(float mix)</td><td class="entry"><a class="el" href="class_superpowered_echo.html">SuperpoweredEcho</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="class_superpowered_echo.html#a9beca059ce9e5522560870c8b290c9f0">setSamplerate</a>(unsigned int samplerate)</td><td class="entry"><a class="el" href="class_superpowered_echo.html">SuperpoweredEcho</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_superpowered_echo.html#a82dd5b8eb4d17eddbce3448f11b5d303">SuperpoweredEcho</a>(unsigned int samplerate)</td><td class="entry"><a class="el" href="class_superpowered_echo.html">SuperpoweredEcho</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>wet</b> (defined in <a class="el" href="class_superpowered_echo.html">SuperpoweredEcho</a>)</td><td class="entry"><a class="el" href="class_superpowered_echo.html">SuperpoweredEcho</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>~SuperpoweredEcho</b>() (defined in <a class="el" href="class_superpowered_echo.html">SuperpoweredEcho</a>)</td><td class="entry"><a class="el" href="class_superpowered_echo.html">SuperpoweredEcho</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>~SuperpoweredFX</b>() (defined in <a class="el" href="class_superpowered_f_x.html">SuperpoweredFX</a>)</td><td class="entry"><a class="el" href="class_superpowered_f_x.html">SuperpoweredFX</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_superpowered_echo.html#a53f6ec560bb4d215c7493bceb74d4d1c">process</a>(float *input, float *output, unsigned int numberOfFrames)</td><td class="entry"><a class="el" href="class_superpowered_echo.html">SuperpoweredEcho</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_superpowered_echo.html#a31163f79b95d4dc4c00c81e1a787ad43">process</a>(float *input, float *output, unsigned int numberOfFrames, SuperpoweredFX *fx)</td><td class="entry"><a class="el" href="class_superpowered_echo.html">SuperpoweredEcho</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_superpowered_echo.html#a74add2dd31ab61e9d68d737760551fd9">reset</a>()</td><td class="entry"><a class="el" href="class_superpowered_echo.html">SuperpoweredEcho</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_superpowered_echo.html#aa64150f05c31434e07033a91724fe6ce">setMix</a>(float mix)</td><td class="entry"><a class="el" href="class_superpowered_echo.html">SuperpoweredEcho</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_superpowered_echo.html#a9beca059ce9e5522560870c8b290c9f0">setSamplerate</a>(unsigned int samplerate)</td><td class="entry"><a class="el" href="class_superpowered_echo.html">SuperpoweredEcho</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_superpowered_echo.html#ac2852a9ac6c2b1ee71c3bbf25255386c">SuperpoweredEcho</a>(unsigned int samplerate, unsigned int maximumSamplerate=96000)</td><td class="entry"><a class="el" href="class_superpowered_echo.html">SuperpoweredEcho</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>wet</b> (defined in <a class="el" href="class_superpowered_echo.html">SuperpoweredEcho</a>)</td><td class="entry"><a class="el" href="class_superpowered_echo.html">SuperpoweredEcho</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>~SuperpoweredEcho</b>() (defined in <a class="el" href="class_superpowered_echo.html">SuperpoweredEcho</a>)</td><td class="entry"><a class="el" href="class_superpowered_echo.html">SuperpoweredEcho</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>~SuperpoweredFX</b>() (defined in <a class="el" href="class_superpowered_f_x.html">SuperpoweredFX</a>)</td><td class="entry"><a class="el" href="class_superpowered_f_x.html">SuperpoweredFX</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

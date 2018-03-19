@@ -15,6 +15,8 @@ struct reverbInternals;
  @param width >= 0.0f and <= 1.0f. Read only.
  @param damp >= 0.0f and <= 1.0f. Read only.
  @param roomSize >= 0.0f and <= 1.0f. Read only.
+ @param predelayMs Pre-delay in milliseconds. 0.0f to 500.0f. Read only.
+ @param lowCutHz Frequency of a low cut (-12 db). Default: 0 (no low frequency cut). Read only.
  */
 class SuperpoweredReverb: public SuperpoweredFX {
 public:
@@ -24,6 +26,8 @@ public:
     float width;
     float damp;
     float roomSize;
+    float predelayMs;
+    float lowCutHz;
     
 /**
  @brief You can set dry and wet independently, but don't use setMix in this case.
@@ -62,6 +66,18 @@ public:
  */
     void setRoomSize(float value);
 /**
+ @brief Set pre-delay.
+ 
+ @param ms Milliseconds.
+ */
+    void setPredelay(float ms);
+/**
+ @brief Set low-cut frequency.
+ 
+ @param hz Frequency hz.
+ */
+    void setLowCut(float hz);
+/**
  @brief Turns the effect on/off.
  */
     void enable(bool flag);
@@ -70,8 +86,11 @@ public:
  @brief Create a reverb instance with the current sample rate value.
  
  Enabled is false by default, use enable(true) to enable.
+ 
+ @param samplerate The current sample rate.
+ @param maximumSamplerate The maximum sample rate this effect will be operated. Affects memory usage.
  */
-    SuperpoweredReverb(unsigned int samplerate);
+    SuperpoweredReverb(unsigned int samplerate, unsigned int maximumSamplerate = 96000);
     ~SuperpoweredReverb();
     
 /**

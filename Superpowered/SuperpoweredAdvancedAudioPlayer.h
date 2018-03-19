@@ -161,7 +161,6 @@ typedef void (* SuperpoweredAdvancedAudioPlayerCallback) (void *clientData, Supe
  @param currentBps The current download speed.
  @param syncMode The current sync mode (off, tempo, or tempo and beat).
  @param fixDoubleOrHalfBPM If tempo is >1.4f or <0.6f, it will treat the bpm as half or double. Good for certain genres. False by default.
- @param waitForNextBeatWithBeatSync Wait for the next beat if beat-syncing is enabled. False by default.
  @param dynamicHLSAlternativeSwitching Dynamicly changing the current HLS alternative to match the available network bandwidth. Default is true.
  @param reverseToForwardAtLoopStart If looping and playback direction is reverse, reaching the beginning of the loop will change direction to forward. False by default.
  @param getAudioStartMs If enabled, the player will try to detect the length of the silence at the beginning of the file during open() (up to 10 seconds), and set the audioStartSampleMs property accordingly.
@@ -218,7 +217,6 @@ public:
 // READ-WRITE parameters
     SuperpoweredAdvancedAudioPlayerSyncMode syncMode;
     bool fixDoubleOrHalfBPM;
-    bool waitForNextBeatWithBeatSync;
     bool dynamicHLSAlternativeSwitching;
     bool reverseToForwardAtLoopStart;
     bool getAudioStartMs;

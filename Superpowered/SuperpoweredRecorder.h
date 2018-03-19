@@ -46,7 +46,7 @@ public:
      
      @warning Filesystem paths in C are different than paths in Java. /sdcard becomes /mnt/sdcard for example.
 
-     @param tempPath The full filesystem path of a temporarily file.
+     @param tempPath The full filesystem path of a temporary file.
      @param samplerate The current samplerate.
      @param minSeconds The minimum length of a recording. If the number of recorded seconds is lower, then a file will not be saved.
      @param numChannels The number of channels.
@@ -60,7 +60,7 @@ public:
      @brief Starts recording.
      @return False, if another recording is still active or not closed yet.
 
-     @param destinationPath The full filesystem path of the successfully finished recording.
+     @param destinationPath The full filesystem path of the successfully finished recording. .wav will be appended, don't include ".wav" in this.
      */
     bool start(const char *destinationPath);
     /**

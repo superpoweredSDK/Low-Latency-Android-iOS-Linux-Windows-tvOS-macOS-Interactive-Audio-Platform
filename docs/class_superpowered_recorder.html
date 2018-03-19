@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.2.1</span>
+   &#160;<span id="projectnumber">1.2.2</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -136,7 +136,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <dl class="section warning"><dt>Warning</dt><dd>Filesystem paths in C are different than paths in Java. /sdcard becomes /mnt/sdcard for example.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tempPath</td><td>The full filesystem path of a temporarily file. </td></tr>
+    <tr><td class="paramname">tempPath</td><td>The full filesystem path of a temporary file. </td></tr>
     <tr><td class="paramname">samplerate</td><td>The current samplerate. </td></tr>
     <tr><td class="paramname">minSeconds</td><td>The minimum length of a recording. If the number of recorded seconds is lower, then a file will not be saved. </td></tr>
     <tr><td class="paramname">numChannels</td><td>The number of channels. </td></tr>
@@ -168,7 +168,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <dl class="section return"><dt>Returns</dt><dd>False, if another recording is still active or not closed yet.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">destinationPath</td><td>The full filesystem path of the successfully finished recording. </td></tr>
+    <tr><td class="paramname">destinationPath</td><td>The full filesystem path of the successfully finished recording. .wav will be appended, don't include ".wav" in this. </td></tr>
   </table>
   </dd>
 </dl>

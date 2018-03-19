@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.2.1</span>
+   &#160;<span id="projectnumber">1.2.2</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -280,9 +280,6 @@ SuperpoweredAdvancedAudioPlayerSyncMode&#160;</td><td class="memItemRight" valig
 <tr class="memitem:a36cf8048cf94ba721fefc522009197dd"><td class="memItemLeft" align="right" valign="top"><a id="a36cf8048cf94ba721fefc522009197dd"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>fixDoubleOrHalfBPM</b></td></tr>
 <tr class="separator:a36cf8048cf94ba721fefc522009197dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4fb7177780b993de058c082ee1b5d85c"><td class="memItemLeft" align="right" valign="top"><a id="a4fb7177780b993de058c082ee1b5d85c"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>waitForNextBeatWithBeatSync</b></td></tr>
-<tr class="separator:a4fb7177780b993de058c082ee1b5d85c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45f5b5e2ef978c9c63f432924fc02887"><td class="memItemLeft" align="right" valign="top"><a id="a45f5b5e2ef978c9c63f432924fc02887"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>dynamicHLSAlternativeSwitching</b></td></tr>
 <tr class="separator:a45f5b5e2ef978c9c63f432924fc02887"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -374,7 +371,6 @@ static char *&#160;</td><td class="memItemRight" valign="bottom"><b>tempFolderPa
     <tr><td class="paramname">currentBps</td><td>The current download speed. </td></tr>
     <tr><td class="paramname">syncMode</td><td>The current sync mode (off, tempo, or tempo and beat). </td></tr>
     <tr><td class="paramname">fixDoubleOrHalfBPM</td><td>If tempo is &gt;1.4f or &lt;0.6f, it will treat the bpm as half or double. Good for certain genres. False by default. </td></tr>
-    <tr><td class="paramname">waitForNextBeatWithBeatSync</td><td>Wait for the next beat if beat-syncing is enabled. False by default. </td></tr>
     <tr><td class="paramname">dynamicHLSAlternativeSwitching</td><td>Dynamicly changing the current HLS alternative to match the available network bandwidth. Default is true. </td></tr>
     <tr><td class="paramname">reverseToForwardAtLoopStart</td><td>If looping and playback direction is reverse, reaching the beginning of the loop will change direction to forward. False by default. </td></tr>
     <tr><td class="paramname">getAudioStartMs</td><td>If enabled, the player will try to detect the length of the silence at the beginning of the file during <a class="el" href="class_superpowered_advanced_audio_player.html#aa89c18c1abe220991b73d64aef3e2bc6" title="Opens an audio file with playback paused. ">open()</a> (up to 10 seconds), and set the audioStartSampleMs property accordingly. </td></tr>

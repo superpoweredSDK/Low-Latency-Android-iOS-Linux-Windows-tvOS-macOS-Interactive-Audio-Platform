@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.2.1</span>
+   &#160;<span id="projectnumber">1.2.2</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -73,13 +73,19 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1e0d48dc55927e6f95a09a5f9f2693cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_reverb.html#a1e0d48dc55927e6f95a09a5f9f2693cd">setRoomSize</a> (float value)</td></tr>
 <tr class="memdesc:a1e0d48dc55927e6f95a09a5f9f2693cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adjust room size.  <a href="#a1e0d48dc55927e6f95a09a5f9f2693cd">More...</a><br /></td></tr>
 <tr class="separator:a1e0d48dc55927e6f95a09a5f9f2693cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20766585ddb8d4bc90a65eaaff466785"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_reverb.html#a20766585ddb8d4bc90a65eaaff466785">setPredelay</a> (float ms)</td></tr>
+<tr class="memdesc:a20766585ddb8d4bc90a65eaaff466785"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set pre-delay.  <a href="#a20766585ddb8d4bc90a65eaaff466785">More...</a><br /></td></tr>
+<tr class="separator:a20766585ddb8d4bc90a65eaaff466785"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63528939bb8970f7b9cd3eea9532e4ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_reverb.html#a63528939bb8970f7b9cd3eea9532e4ff">setLowCut</a> (float hz)</td></tr>
+<tr class="memdesc:a63528939bb8970f7b9cd3eea9532e4ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set low-cut frequency.  <a href="#a63528939bb8970f7b9cd3eea9532e4ff">More...</a><br /></td></tr>
+<tr class="separator:a63528939bb8970f7b9cd3eea9532e4ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95508c0f8c88eaabf6c34a83d3159152"><td class="memItemLeft" align="right" valign="top"><a id="a95508c0f8c88eaabf6c34a83d3159152"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_reverb.html#a95508c0f8c88eaabf6c34a83d3159152">enable</a> (bool flag)</td></tr>
 <tr class="memdesc:a95508c0f8c88eaabf6c34a83d3159152"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turns the effect on/off. <br /></td></tr>
 <tr class="separator:a95508c0f8c88eaabf6c34a83d3159152"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98dcf53b3f2668e4b39850ffe4a65d69"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_reverb.html#a98dcf53b3f2668e4b39850ffe4a65d69">SuperpoweredReverb</a> (unsigned int samplerate)</td></tr>
-<tr class="memdesc:a98dcf53b3f2668e4b39850ffe4a65d69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a reverb instance with the current sample rate value.  <a href="#a98dcf53b3f2668e4b39850ffe4a65d69">More...</a><br /></td></tr>
-<tr class="separator:a98dcf53b3f2668e4b39850ffe4a65d69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af25b96d069ca78862d3ae2cc03760489"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_reverb.html#af25b96d069ca78862d3ae2cc03760489">SuperpoweredReverb</a> (unsigned int samplerate, unsigned int maximumSamplerate=96000)</td></tr>
+<tr class="memdesc:af25b96d069ca78862d3ae2cc03760489"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a reverb instance with the current sample rate value.  <a href="#af25b96d069ca78862d3ae2cc03760489">More...</a><br /></td></tr>
+<tr class="separator:af25b96d069ca78862d3ae2cc03760489"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0837a80b64079af9ec0d4961523a55b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_reverb.html#ad0837a80b64079af9ec0d4961523a55b">setSamplerate</a> (unsigned int samplerate)</td></tr>
 <tr class="memdesc:ad0837a80b64079af9ec0d4961523a55b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the sample rate.  <a href="#ad0837a80b64079af9ec0d4961523a55b">More...</a><br /></td></tr>
 <tr class="separator:ad0837a80b64079af9ec0d4961523a55b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -111,6 +117,12 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>damp</b></td></tr>
 <tr class="memitem:a0254d16962da7bdd801f1194ad48fc7a"><td class="memItemLeft" align="right" valign="top"><a id="a0254d16962da7bdd801f1194ad48fc7a"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>roomSize</b></td></tr>
 <tr class="separator:a0254d16962da7bdd801f1194ad48fc7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1673123ac9ed2de58244d9ed7c752b7"><td class="memItemLeft" align="right" valign="top"><a id="aa1673123ac9ed2de58244d9ed7c752b7"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>predelayMs</b></td></tr>
+<tr class="separator:aa1673123ac9ed2de58244d9ed7c752b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0dd79f88511ddf3f5b221f9e498cf9ac"><td class="memItemLeft" align="right" valign="top"><a id="a0dd79f88511ddf3f5b221f9e498cf9ac"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>lowCutHz</b></td></tr>
+<tr class="separator:a0dd79f88511ddf3f5b221f9e498cf9ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_class_superpowered_f_x"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_class_superpowered_f_x')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_superpowered_f_x.html">SuperpoweredFX</a></td></tr>
 <tr class="memitem:a898cb808ada61ebe11dddac0afa9194e inherit pub_attribs_class_superpowered_f_x"><td class="memItemLeft" align="right" valign="top"><a id="a898cb808ada61ebe11dddac0afa9194e"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>enabled</b></td></tr>
@@ -126,12 +138,14 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>enabled</b></td></tr>
     <tr><td class="paramname">width</td><td>&gt;= 0.0f and &lt;= 1.0f. Read only. </td></tr>
     <tr><td class="paramname">damp</td><td>&gt;= 0.0f and &lt;= 1.0f. Read only. </td></tr>
     <tr><td class="paramname">roomSize</td><td>&gt;= 0.0f and &lt;= 1.0f. Read only. </td></tr>
+    <tr><td class="paramname">predelayMs</td><td>Pre-delay in milliseconds. 0.0f to 500.0f. Read only. </td></tr>
+    <tr><td class="paramname">lowCutHz</td><td>Frequency of a low cut (-12 db). Default: 0 (no low frequency cut). Read only. </td></tr>
   </table>
   </dd>
 </dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a98dcf53b3f2668e4b39850ffe4a65d69"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a98dcf53b3f2668e4b39850ffe4a65d69">&#9670;&nbsp;</a></span>SuperpoweredReverb()</h2>
+<a id="af25b96d069ca78862d3ae2cc03760489"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af25b96d069ca78862d3ae2cc03760489">&#9670;&nbsp;</a></span>SuperpoweredReverb()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -140,12 +154,29 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>enabled</b></td></tr>
           <td class="memname">SuperpoweredReverb::SuperpoweredReverb </td>
           <td>(</td>
           <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>samplerate</em></td><td>)</td>
+          <td class="paramname"><em>samplerate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>maximumSamplerate</em> = <code>96000</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Enabled is false by default, use enable(true) to enable. </p>
+<p>Enabled is false by default, use enable(true) to enable.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">samplerate</td><td>The current sample rate. </td></tr>
+    <tr><td class="paramname">maximumSamplerate</td><td>The maximum sample rate this effect will be operated. Affects memory usage. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -288,6 +319,54 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>enabled</b></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">value</td><td>Limited to &gt;= 0.0f and &lt;= 1.0f. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a20766585ddb8d4bc90a65eaaff466785"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20766585ddb8d4bc90a65eaaff466785">&#9670;&nbsp;</a></span>setPredelay()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SuperpoweredReverb::setPredelay </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>ms</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ms</td><td>Milliseconds. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a63528939bb8970f7b9cd3eea9532e4ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63528939bb8970f7b9cd3eea9532e4ff">&#9670;&nbsp;</a></span>setLowCut()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SuperpoweredReverb::setLowCut </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>hz</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hz</td><td>Frequency hz. </td></tr>
   </table>
   </dd>
 </dl>

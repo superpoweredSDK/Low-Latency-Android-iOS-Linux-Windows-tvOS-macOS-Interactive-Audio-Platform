@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.2.1</span>
+   &#160;<span id="projectnumber">1.2.2</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -62,9 +62,9 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_echo.html#ab77b0d270a11ad3544f8736e57e08681">enable</a> (bool flag)</td></tr>
 <tr class="memdesc:ab77b0d270a11ad3544f8736e57e08681"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turns the effect on/off. <br /></td></tr>
 <tr class="separator:ab77b0d270a11ad3544f8736e57e08681"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82dd5b8eb4d17eddbce3448f11b5d303"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_echo.html#a82dd5b8eb4d17eddbce3448f11b5d303">SuperpoweredEcho</a> (unsigned int samplerate)</td></tr>
-<tr class="memdesc:a82dd5b8eb4d17eddbce3448f11b5d303"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an echo instance with the current sample rate value.  <a href="#a82dd5b8eb4d17eddbce3448f11b5d303">More...</a><br /></td></tr>
-<tr class="separator:a82dd5b8eb4d17eddbce3448f11b5d303"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2852a9ac6c2b1ee71c3bbf25255386c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_echo.html#ac2852a9ac6c2b1ee71c3bbf25255386c">SuperpoweredEcho</a> (unsigned int samplerate, unsigned int maximumSamplerate=96000)</td></tr>
+<tr class="memdesc:ac2852a9ac6c2b1ee71c3bbf25255386c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an echo instance with the current sample rate value.  <a href="#ac2852a9ac6c2b1ee71c3bbf25255386c">More...</a><br /></td></tr>
+<tr class="separator:ac2852a9ac6c2b1ee71c3bbf25255386c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9beca059ce9e5522560870c8b290c9f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_echo.html#a9beca059ce9e5522560870c8b290c9f0">setSamplerate</a> (unsigned int samplerate)</td></tr>
 <tr class="memdesc:a9beca059ce9e5522560870c8b290c9f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the sample rate.  <a href="#a9beca059ce9e5522560870c8b290c9f0">More...</a><br /></td></tr>
 <tr class="separator:a9beca059ce9e5522560870c8b290c9f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -72,9 +72,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_echo.html#a74add2dd31ab61e9d68d737760551fd9">reset</a> ()</td></tr>
 <tr class="memdesc:a74add2dd31ab61e9d68d737760551fd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset all internals, sets the instance as good as new and turns it off. <br /></td></tr>
 <tr class="separator:a74add2dd31ab61e9d68d737760551fd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72984c9a5930eb4e2208df2dc506fa00"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_echo.html#a72984c9a5930eb4e2208df2dc506fa00">process</a> (float *input, float *output, unsigned int numberOfSamples)</td></tr>
-<tr class="memdesc:a72984c9a5930eb4e2208df2dc506fa00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes the audio.  <a href="#a72984c9a5930eb4e2208df2dc506fa00">More...</a><br /></td></tr>
-<tr class="separator:a72984c9a5930eb4e2208df2dc506fa00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53f6ec560bb4d215c7493bceb74d4d1c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_echo.html#a53f6ec560bb4d215c7493bceb74d4d1c">process</a> (float *input, float *output, unsigned int numberOfFrames)</td></tr>
+<tr class="memdesc:a53f6ec560bb4d215c7493bceb74d4d1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes the audio.  <a href="#a53f6ec560bb4d215c7493bceb74d4d1c">More...</a><br /></td></tr>
+<tr class="separator:a53f6ec560bb4d215c7493bceb74d4d1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31163f79b95d4dc4c00c81e1a787ad43"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_echo.html#a31163f79b95d4dc4c00c81e1a787ad43">process</a> (float *input, float *output, unsigned int numberOfFrames, <a class="el" href="class_superpowered_f_x.html">SuperpoweredFX</a> *fx)</td></tr>
+<tr class="memdesc:a31163f79b95d4dc4c00c81e1a787ad43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes the audio.  <a href="#a31163f79b95d4dc4c00c81e1a787ad43">More...</a><br /></td></tr>
+<tr class="separator:a31163f79b95d4dc4c00c81e1a787ad43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -111,8 +114,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>enabled</b></td></tr>
   </dd>
 </dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a82dd5b8eb4d17eddbce3448f11b5d303"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a82dd5b8eb4d17eddbce3448f11b5d303">&#9670;&nbsp;</a></span>SuperpoweredEcho()</h2>
+<a id="ac2852a9ac6c2b1ee71c3bbf25255386c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2852a9ac6c2b1ee71c3bbf25255386c">&#9670;&nbsp;</a></span>SuperpoweredEcho()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -121,12 +124,29 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>enabled</b></td></tr>
           <td class="memname">SuperpoweredEcho::SuperpoweredEcho </td>
           <td>(</td>
           <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>samplerate</em></td><td>)</td>
+          <td class="paramname"><em>samplerate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>maximumSamplerate</em> = <code>96000</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Enabled is false by default, use enable(true) to enable. </p>
+<p>Enabled is false by default, use enable(true) to enable.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">samplerate</td><td>The current sample rate. </td></tr>
+    <tr><td class="paramname">maximumSamplerate</td><td>Maximum sample rate to support. Affects memory usage. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -189,8 +209,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>enabled</b></td></tr>
 
 </div>
 </div>
-<a id="a72984c9a5930eb4e2208df2dc506fa00"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a72984c9a5930eb4e2208df2dc506fa00">&#9670;&nbsp;</a></span>process()</h2>
+<a id="a53f6ec560bb4d215c7493bceb74d4d1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53f6ec560bb4d215c7493bceb74d4d1c">&#9670;&nbsp;</a></span>process() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -214,7 +234,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>enabled</b></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>numberOfSamples</em>&#160;</td>
+          <td class="paramname"><em>numberOfFrames</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -228,18 +248,69 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>enabled</b></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>It's not locked when you call other methods from other threads, and they not interfere with <a class="el" href="class_superpowered_echo.html#a72984c9a5930eb4e2208df2dc506fa00" title="Processes the audio. ">process()</a> at all.</p>
+<p>It's not locked when you call other methods from other threads, and they not interfere with <a class="el" href="class_superpowered_echo.html#a53f6ec560bb4d215c7493bceb74d4d1c" title="Processes the audio. ">process()</a> at all.</p>
 <dl class="section return"><dt>Returns</dt><dd>Put something into output or not.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">input</td><td>32-bit interleaved stereo input buffer. Can point to the same location with output (in-place processing). Special case: input can be NULL, echo will output the tail only this case. </td></tr>
     <tr><td class="paramname">output</td><td>32-bit interleaved stereo output buffer. Can point to the same location with input (in-place processing). </td></tr>
-    <tr><td class="paramname">numberOfSamples</td><td>Number of frames to process. Recommendations for best performance: multiply of 4, minimum 64. </td></tr>
+    <tr><td class="paramname">numberOfFrames</td><td>Number of frames to process. Recommendations for best performance: multiply of 4, minimum 64. </td></tr>
   </table>
   </dd>
 </dl>
 
 <p>Implements <a class="el" href="class_superpowered_f_x.html#a633194e7def93e260d7b7c820fb946a8">SuperpoweredFX</a>.</p>
+
+</div>
+</div>
+<a id="a31163f79b95d4dc4c00c81e1a787ad43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31163f79b95d4dc4c00c81e1a787ad43">&#9670;&nbsp;</a></span>process() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SuperpoweredEcho::process </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>output</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>numberOfFrames</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_superpowered_f_x.html">SuperpoweredFX</a> *&#160;</td>
+          <td class="paramname"><em>fx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>It's not locked when you call other methods from other threads, and they not interfere with <a class="el" href="class_superpowered_echo.html#a53f6ec560bb4d215c7493bceb74d4d1c" title="Processes the audio. ">process()</a> at all.</p>
+<dl class="section return"><dt>Returns</dt><dd>Put something into output or not.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>32-bit interleaved stereo input buffer. Can point to the same location with output (in-place processing). Special case: input can be NULL, echo will output the tail only this case. </td></tr>
+    <tr><td class="paramname">output</td><td>32-bit interleaved stereo output buffer. Can point to the same location with input (in-place processing). </td></tr>
+    <tr><td class="paramname">numberOfFrames</td><td>Number of frames to process. Recommendations for best performance: multiply of 4, minimum 64. </td></tr>
+    <tr><td class="paramname">fx</td><td>Optional. If not NULL, the audio processing of fx (such as a <a class="el" href="class_superpowered_filter.html" title="SuperpoweredFilter is an IIR filter based on the typical direct form 1 formula: ">SuperpoweredFilter</a>) will be used to pass audio from input to the internal buffer. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
