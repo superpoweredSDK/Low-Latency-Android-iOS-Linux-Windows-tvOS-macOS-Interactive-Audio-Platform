@@ -82,10 +82,11 @@ public:
  @param length Byte length from offset. Set offset and length to 0 to read the entire file.
  @param stemsIndex Stems track index for Native Instruments Stems format.
  @param customHTTPHeaders NULL terminated list of custom headers for http communication.
+ @param errorCode Open error code in HTTP style, such as 404 = not found or 401 = unauthorized.
 
  @return NULL if successful, or an error string. If the returned error string equals to "@", it means that the open method needs more time opening an audio file from the network. In this case, iterate over open() until it returns something else than "@". It's recommended to sleep 50-100 ms in every iteration to allow the network stack doing its job without blowing up the CPU.
  */
-    const char *open(const char *path, bool metaOnly = false, int offset = 0, int length = 0, int stemsIndex = 0, char **customHTTPHeaders = 0);
+    const char *open(const char *path, bool metaOnly = false, int offset = 0, int length = 0, int stemsIndex = 0, char **customHTTPHeaders = 0, int *errorCode = 0);
 /**
  @brief Decodes the requested number of samples.
  
@@ -107,7 +108,7 @@ public:
 /**
  @return End of file (0), ok (1), error (2) or buffering(3). This function changes position!
  
- @param startSample Returns with the position where audio starts.
+ @param startSample Returns the position where audio starts.
  @param limitSamples How far to search for. 0 means "the entire audio file".
  @param decibel Optional loudness threshold in decibel. 0 means "any non-zero audio sample". The value -49 is useful for vinyl rips.
  @param cancelIfBuffering Optional. If the decoder is waiting for more data from the network, set this variable to nonzero to cancel and return with error.
@@ -121,10 +122,11 @@ public:
  */
     void reconnectToMediaserver();
 /**
- @brief Returns with often used metadata.
+ @brief Returns often used metadata.
  
  @param artist Artist, set to NULL if you're not interested. Returns NULL if can not be retrieved. Ownership passed (you must free memory after finished using it).
  @param title Title, set to NULL if you're not interested. Returns NULL if can not be retrieved. Ownership passed (you must free memory after finished using it).
+ @param album Album, set to NULL if you're not interested. Returns NULL if can not be retrieved. Ownership passed (you must free memory after finished using it).
  @param image Raw image data (usually PNG or JPG). Set to NULL if you're not interested. Returns NULL if can not be retrieved. Ownership passed (you must free memory after finished using it).
  @param imageSizeBytes Size of the raw image data. Set to NULL if you're not interested.
  @param bpm Tempo in beats per minute. Set to NULL if you're not interested.
@@ -132,12 +134,12 @@ public:
  @param clientData A custom pointer the callback receives.
  @param maxFrameDataSize The maximum frame size in bytes to receive by the callback, if the decoder can not memory map the entire audio file. Affects memory usage.
  */
-    void getMetaData(char **artist, char **title, void **image, int *imageSizeBytes, float *bpm, SuperpoweredDecoderID3Callback callback, void *clientData, int maxFrameDataSize);
+    void getMetaData(char **artist, char **title, char **album, void **image, int *imageSizeBytes, float *bpm, SuperpoweredDecoderID3Callback callback, void *clientData, int maxFrameDataSize);
 /**
  @return True if the file is Native Instruments Stems format.
  
- @param names Returns with 4 pointers of 0 terminated stem name strings or NULL if the file is not Stems. You take ownership (must free memory after used.).
- @param colors Returns with 4 pointers of 0 terminated stem color strings or NULL if the file is not Stems. You take ownership (must free memory after used.).
+ @param names Returns 4 pointers of 0 terminated stem name strings or NULL if the file is not Stems. You take ownership (must free memory after used.).
+ @param colors Returns 4 pointers of 0 terminated stem color strings or NULL if the file is not Stems. You take ownership (must free memory after used.).
  @param compressor Struct to receive compressor DSP settings. Can be NULL.
  @param limiter Struct to receive limiter DSP settings. Can be NULL;
 */

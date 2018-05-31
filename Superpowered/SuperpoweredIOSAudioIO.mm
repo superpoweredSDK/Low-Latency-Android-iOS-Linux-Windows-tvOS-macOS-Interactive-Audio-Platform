@@ -508,7 +508,7 @@ static OSStatus coreAudioProcessingCallback(void *inRefCon, AudioUnitRenderActio
         if ([[AVAudioSession sharedInstance] recordPermission] == AVAudioSessionRecordPermissionGranted) [self onMediaServerReset:nil];
         else {
             [[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) {
-                if (granted) [self onMediaServerReset:nil]; else [delegate recordPermissionRefused];
+                if (granted) [self onMediaServerReset:nil]; else [self->delegate recordPermissionRefused];
             }];
         };
     } else [self onMediaServerReset:nil];

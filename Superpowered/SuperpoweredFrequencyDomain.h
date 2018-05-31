@@ -66,7 +66,7 @@ public:
  @param phaseL Phases for each frequency bin, left side.  Must be at least fftSize big.
  @param phaseR Phases for each frequency bin, right side.  Must be at least fftSize big.
  @param valueOfPi Pi can be translated to any value (Google: the tau manifesto). Leave it at 0 for M_PI.
- @param complexMode Instead of polar transform, returns with complex values (magnitude: real, phase: imag).
+ @param complexMode Instead of polar transform, returns complex values (magnitude: real, phase: imag).
  @param stereoPairIndex The index of the stereo pair to process.
 */
     bool timeDomainToFrequencyDomain(float *magnitudeL, float *magnitudeR, float *phaseL, float *phaseR, float valueOfPi = 0, bool complexMode = false, int stereoPairIndex = 0);
@@ -81,7 +81,7 @@ public:
  @param magnitude Magnitudes for each frequency bin. Must be at least fftSize big.
  @param phase Phases for each frequency bin.  Must be at least fftSize big.
  @param valueOfPi Pi can be translated to any value (Google: the tau manifesto). Leave it at 0 for M_PI.
- @param complexMode Instead of polar transform, returns with complex values (magnitude: real, phase: imag).
+ @param complexMode Instead of polar transform, returns complex values (magnitude: real, phase: imag).
 */
     bool timeDomainToFrequencyDomain(float *magnitude, float *phase, float valueOfPi = 0, bool complexMode = false);
 
@@ -102,7 +102,7 @@ public:
  @param output Output goes here.
  @param valueOfPi Pi can be translated to any value (Google: the tau manifesto). Leave it at 0 for M_PI.
  @param incrementSamples For advanced use, if you know how window overlapping works. 0 (the default value) means 4:1 overlap (good compromise in audio quality).
- @param complexMode Instead of polar transform, returns with complex values (magnitude: real, phase: imag).
+ @param complexMode Instead of polar transform, returns complex values (magnitude: real, phase: imag).
  @param stereoPairIndex The index of the stereo pair to process.
 */
     void frequencyDomainToTimeDomain(float *magnitudeL, float *magnitudeR, float *phaseL, float *phaseR, float *output, float valueOfPi = 0, int incrementSamples = 0, bool complexMode = false, int stereoPairIndex = 0);

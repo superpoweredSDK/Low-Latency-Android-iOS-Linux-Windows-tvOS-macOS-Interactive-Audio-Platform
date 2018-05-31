@@ -51,7 +51,7 @@ class ViewController: UIViewController {
         }
 
         CATransaction.commit()
-        frequencies.deallocate(capacity: 8)
+        frequencies.deallocate()
     }
 }
 

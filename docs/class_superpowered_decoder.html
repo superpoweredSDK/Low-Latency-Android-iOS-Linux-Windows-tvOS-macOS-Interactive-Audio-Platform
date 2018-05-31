@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.2.2</span>
+   &#160;<span id="projectnumber">1.2.3</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -56,9 +56,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a186dc1767e389a56dc9b653758e0c1c6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#a186dc1767e389a56dc9b653758e0c1c6">SuperpoweredDecoder</a> (SuperpoweredDecoderFullyDownloadedCallback downloadedCallback=0, void *clientData=0)</td></tr>
 <tr class="memdesc:a186dc1767e389a56dc9b653758e0c1c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an instance of <a class="el" href="class_superpowered_decoder.html" title="Audio file decoder. Provides uncompresses PCM samples from various compressed formats. ">SuperpoweredDecoder</a>.  <a href="#a186dc1767e389a56dc9b653758e0c1c6">More...</a><br /></td></tr>
 <tr class="separator:a186dc1767e389a56dc9b653758e0c1c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2360a5a335d34f7a39ac9bff871ef353"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#a2360a5a335d34f7a39ac9bff871ef353">open</a> (const char *path, bool metaOnly=false, int offset=0, int length=0, int stemsIndex=0, char **customHTTPHeaders=0)</td></tr>
-<tr class="memdesc:a2360a5a335d34f7a39ac9bff871ef353"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a file for decoding.  <a href="#a2360a5a335d34f7a39ac9bff871ef353">More...</a><br /></td></tr>
-<tr class="separator:a2360a5a335d34f7a39ac9bff871ef353"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17d678b8edcbf9402c274194d2fec0b8"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#a17d678b8edcbf9402c274194d2fec0b8">open</a> (const char *path, bool metaOnly=false, int offset=0, int length=0, int stemsIndex=0, char **customHTTPHeaders=0, int *errorCode=0)</td></tr>
+<tr class="memdesc:a17d678b8edcbf9402c274194d2fec0b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a file for decoding.  <a href="#a17d678b8edcbf9402c274194d2fec0b8">More...</a><br /></td></tr>
+<tr class="separator:a17d678b8edcbf9402c274194d2fec0b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28fef6e884182f746d8b21316d04c5cc"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#a28fef6e884182f746d8b21316d04c5cc">decode</a> (short int *pcmOutput, unsigned int *samples)</td></tr>
 <tr class="memdesc:a28fef6e884182f746d8b21316d04c5cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decodes the requested number of samples.  <a href="#a28fef6e884182f746d8b21316d04c5cc">More...</a><br /></td></tr>
 <tr class="separator:a28fef6e884182f746d8b21316d04c5cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -70,9 +70,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae0544563f5ee1d11f660aa8cd994d72b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#ae0544563f5ee1d11f660aa8cd994d72b">reconnectToMediaserver</a> ()</td></tr>
 <tr class="memdesc:ae0544563f5ee1d11f660aa8cd994d72b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this on a phone call or other interruption.  <a href="#ae0544563f5ee1d11f660aa8cd994d72b">More...</a><br /></td></tr>
 <tr class="separator:ae0544563f5ee1d11f660aa8cd994d72b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad4c4d71c5f2523f4c783a48e0cec7a22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#ad4c4d71c5f2523f4c783a48e0cec7a22">getMetaData</a> (char **artist, char **title, void **image, int *imageSizeBytes, float *bpm, SuperpoweredDecoderID3Callback callback, void *clientData, int maxFrameDataSize)</td></tr>
-<tr class="memdesc:ad4c4d71c5f2523f4c783a48e0cec7a22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns with often used metadata.  <a href="#ad4c4d71c5f2523f4c783a48e0cec7a22">More...</a><br /></td></tr>
-<tr class="separator:ad4c4d71c5f2523f4c783a48e0cec7a22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09bbcebd1564490235728de49017a608"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#a09bbcebd1564490235728de49017a608">getMetaData</a> (char **artist, char **title, char **album, void **image, int *imageSizeBytes, float *bpm, SuperpoweredDecoderID3Callback callback, void *clientData, int maxFrameDataSize)</td></tr>
+<tr class="memdesc:a09bbcebd1564490235728de49017a608"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns often used metadata.  <a href="#a09bbcebd1564490235728de49017a608">More...</a><br /></td></tr>
+<tr class="separator:a09bbcebd1564490235728de49017a608"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca1d27f188131c87c4c8df008956a281"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#aca1d27f188131c87c4c8df008956a281">getStemsInfo</a> (char *names[4]=0, char *colors[4]=0, <a class="el" href="structstems_compressor.html">stemsCompressor</a> *compressor=0, <a class="el" href="structstems_limiter.html">stemsLimiter</a> *limiter=0)</td></tr>
 <tr class="separator:aca1d27f188131c87c4c8df008956a281"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -107,7 +107,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>fullyDownloadedFile
 <tr class="separator:aa417fc0f6f69cd76ca4bc9149601a903"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Thread safety: single threaded, not thread safe. After a succesful <a class="el" href="class_superpowered_decoder.html#a2360a5a335d34f7a39ac9bff871ef353" title="Opens a file for decoding. ">open()</a>, samplePosition and duration may change. Supported file types:</p><ul>
+<div class="textblock"><p>Thread safety: single threaded, not thread safe. After a succesful <a class="el" href="class_superpowered_decoder.html#a17d678b8edcbf9402c274194d2fec0b8" title="Opens a file for decoding. ">open()</a>, samplePosition and duration may change. Supported file types:</p><ul>
 <li>Stereo or mono pcm WAV and AIFF (16-bit int, 24-bit int, 32-bit int or 32-bit IEEE float).</li>
 <li>MP3: MPEG-1 Layer III (sample rates: 32000 Hz, 44100 Hz, 48000 Hz). MPEG-2 is not supported.</li>
 <li>AAC-LC in M4A container (iTunes).</li>
@@ -165,8 +165,8 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>fullyDownloadedFile
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a2360a5a335d34f7a39ac9bff871ef353"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2360a5a335d34f7a39ac9bff871ef353">&#9670;&nbsp;</a></span>open()</h2>
+<a id="a17d678b8edcbf9402c274194d2fec0b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17d678b8edcbf9402c274194d2fec0b8">&#9670;&nbsp;</a></span>open()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -205,7 +205,13 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>fullyDownloadedFile
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">char **&#160;</td>
-          <td class="paramname"><em>customHTTPHeaders</em> = <code>0</code>&#160;</td>
+          <td class="paramname"><em>customHTTPHeaders</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>errorCode</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -221,11 +227,12 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>fullyDownloadedFile
     <tr><td class="paramname">offset</td><td>Byte offset in the file. </td></tr>
     <tr><td class="paramname">length</td><td>Byte length from offset. Set offset and length to 0 to read the entire file. </td></tr>
     <tr><td class="paramname">stemsIndex</td><td>Stems track index for Native Instruments Stems format. </td></tr>
-    <tr><td class="paramname">customHTTPHeaders</td><td>NULL terminated list of custom headers for http communication.</td></tr>
+    <tr><td class="paramname">customHTTPHeaders</td><td>NULL terminated list of custom headers for http communication. </td></tr>
+    <tr><td class="paramname">errorCode</td><td>Open error code in HTTP style, such as 404 = not found or 401 = unauthorized.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>NULL if successful, or an error string. If the returned error string equals to "@", it means that the open method needs more time opening an audio file from the network. In this case, iterate over <a class="el" href="class_superpowered_decoder.html#a2360a5a335d34f7a39ac9bff871ef353" title="Opens a file for decoding. ">open()</a> until it returns something else than "@". It's recommended to sleep 50-100 ms in every iteration to allow the network stack doing its job without blowing up the CPU. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>NULL if successful, or an error string. If the returned error string equals to "@", it means that the open method needs more time opening an audio file from the network. In this case, iterate over <a class="el" href="class_superpowered_decoder.html#a17d678b8edcbf9402c274194d2fec0b8" title="Opens a file for decoding. ">open()</a> until it returns something else than "@". It's recommended to sleep 50-100 ms in every iteration to allow the network stack doing its job without blowing up the CPU. </dd></dl>
 
 </div>
 </div>
@@ -341,7 +348,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>fullyDownloadedFile
 <dl class="section return"><dt>Returns</dt><dd>End of file (0), ok (1), error (2) or buffering(3). This function changes position!</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">startSample</td><td>Returns with the position where audio starts. </td></tr>
+    <tr><td class="paramname">startSample</td><td>Returns the position where audio starts. </td></tr>
     <tr><td class="paramname">limitSamples</td><td>How far to search for. 0 means "the entire audio file". </td></tr>
     <tr><td class="paramname">decibel</td><td>Optional loudness threshold in decibel. 0 means "any non-zero audio sample". The value -49 is useful for vinyl rips. </td></tr>
     <tr><td class="paramname">cancelIfBuffering</td><td>Optional. If the decoder is waiting for more data from the network, set this variable to nonzero to cancel and return with error. </td></tr>
@@ -369,8 +376,8 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>fullyDownloadedFile
 
 </div>
 </div>
-<a id="ad4c4d71c5f2523f4c783a48e0cec7a22"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad4c4d71c5f2523f4c783a48e0cec7a22">&#9670;&nbsp;</a></span>getMetaData()</h2>
+<a id="a09bbcebd1564490235728de49017a608"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09bbcebd1564490235728de49017a608">&#9670;&nbsp;</a></span>getMetaData()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -386,6 +393,12 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>fullyDownloadedFile
           <td></td>
           <td class="paramtype">char **&#160;</td>
           <td class="paramname"><em>title</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>album</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -434,6 +447,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>fullyDownloadedFile
   <table class="params">
     <tr><td class="paramname">artist</td><td>Artist, set to NULL if you're not interested. Returns NULL if can not be retrieved. Ownership passed (you must free memory after finished using it). </td></tr>
     <tr><td class="paramname">title</td><td>Title, set to NULL if you're not interested. Returns NULL if can not be retrieved. Ownership passed (you must free memory after finished using it). </td></tr>
+    <tr><td class="paramname">album</td><td>Album, set to NULL if you're not interested. Returns NULL if can not be retrieved. Ownership passed (you must free memory after finished using it). </td></tr>
     <tr><td class="paramname">image</td><td>Raw image data (usually PNG or JPG). Set to NULL if you're not interested. Returns NULL if can not be retrieved. Ownership passed (you must free memory after finished using it). </td></tr>
     <tr><td class="paramname">imageSizeBytes</td><td>Size of the raw image data. Set to NULL if you're not interested. </td></tr>
     <tr><td class="paramname">bpm</td><td>Tempo in beats per minute. Set to NULL if you're not interested. </td></tr>
@@ -486,8 +500,8 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>fullyDownloadedFile
 <dl class="section return"><dt>Returns</dt><dd>True if the file is Native Instruments Stems format.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">names</td><td>Returns with 4 pointers of 0 terminated stem name strings or NULL if the file is not Stems. You take ownership (must free memory after used.). </td></tr>
-    <tr><td class="paramname">colors</td><td>Returns with 4 pointers of 0 terminated stem color strings or NULL if the file is not Stems. You take ownership (must free memory after used.). </td></tr>
+    <tr><td class="paramname">names</td><td>Returns 4 pointers of 0 terminated stem name strings or NULL if the file is not Stems. You take ownership (must free memory after used.). </td></tr>
+    <tr><td class="paramname">colors</td><td>Returns 4 pointers of 0 terminated stem color strings or NULL if the file is not Stems. You take ownership (must free memory after used.). </td></tr>
     <tr><td class="paramname">compressor</td><td>Struct to receive compressor DSP settings. Can be NULL. </td></tr>
     <tr><td class="paramname">limiter</td><td>Struct to receive limiter DSP settings. Can be NULL; </td></tr>
   </table>

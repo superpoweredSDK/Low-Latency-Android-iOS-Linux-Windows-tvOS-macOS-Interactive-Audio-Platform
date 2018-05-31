@@ -159,6 +159,7 @@ typedef void (* SuperpoweredAdvancedAudioPlayerCallback) (void *clientData, Supe
  @param bufferStartPercent What is buffered from the original source, start point. Will always be 0 for non-network sources (files). Read only.
  @param bufferEndPercent What is buffered from the original source, end point. Will always be 1.0f for non-network sources (files). Read only.
  @param currentBps The current download speed.
+ @param loadErrorCode HTTP error code for SuperpoweredAdvancedAudioPlayerEvent_LoadError. The value of 1 means no internet connection.
  @param syncMode The current sync mode (off, tempo, or tempo and beat).
  @param fixDoubleOrHalfBPM If tempo is >1.4f or <0.6f, it will treat the bpm as half or double. Good for certain genres. False by default.
  @param dynamicHLSAlternativeSwitching Dynamicly changing the current HLS alternative to match the available network bandwidth. Default is true.
@@ -210,6 +211,7 @@ public:
     float bufferStartPercent;
     float bufferEndPercent;
     int currentBps;
+    int loadErrorCode;
 
     char *fullyDownloadedFilePath;
     static char *tempFolderPath;
@@ -400,7 +402,7 @@ public:
  @param value The cumulated ticks value.
  @param bendStretch Use time-stretching for bending or not (false makes it "audible").
  @param bendMaxPercent The maximum tempo change for pitch bend, should be between 0.01f and 0.3f (1% and 30%).
- @param bendHoldMs How long to maintain the bended state. A value >= 1000 will hold until endContinuousPitchBend is called.
+ @param bendHoldMs How long to maintain the bent state. A value >= 1000 will hold until endContinuousPitchBend is called.
  @param parameterMode True: if there was no jogTouchBegin, SuperpoweredAdvancedAudioPlayerJogMode_Parameter applies. False: if there was no jogTouchBegin, SuperpoweredAdvancedAudioPlayerJogMode_PitchBend applies.
 */
     void jogTick(int value, bool bendStretch, float bendMaxPercent, unsigned int bendHoldMs, bool parameterMode);
@@ -445,7 +447,7 @@ public:
  @param maxPercent The maximum tempo change for pitch bend, should be between 0.01f and 0.3f (1% and 30%).
  @param bendStretch Use time-stretching for bending or not (false makes it "audible").
  @param faster Playback speed change direction.
- @param holdMs How long to maintain the bended state. A value >= 1000 will hold until endContinuousPitchBend is called.
+ @param holdMs How long to maintain the bent state. A value >= 1000 will hold until endContinuousPitchBend is called.
 */
     void pitchBend(float maxPercent, bool bendStretch, bool faster, unsigned int holdMs);
 /**
@@ -533,7 +535,7 @@ public:
  @param numberOfSamples The number of samples to provide.
  @param volumes 0.0f is silence, 1.0f is "original volume". Changes are automatically smoothed between consecutive processes.
  @param masterBpm A bpm value to sync with. Use 0.0f for no syncing.
- @param masterMsElapsedSinceLastBeat How many milliseconds elapsed since the last beat on the other stuff we are syncing to. Use -1.0 to ignore.
+ @param masterMsElapsedSinceLastBeat How many milliseconds elapsed since the last beat on the other audio we are syncing to. Use -1.0 to ignore.
  @param phase Reserved for future use.
  @param quantum Reserved for future use.
  */

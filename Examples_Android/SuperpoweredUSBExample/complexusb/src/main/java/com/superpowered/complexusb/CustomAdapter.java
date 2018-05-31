@@ -15,6 +15,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Locale;
 
+@SuppressWarnings("WeakerAccess")
+
 // This provides the data for the ListView.
 public class CustomAdapter extends BaseAdapter {
     private class ItemData {
@@ -148,10 +150,10 @@ public class CustomAdapter extends BaseAdapter {
             viewData = new RowViewData();
             if (item.kind == VOLUMEMUTEITEM) {
                 rowView = inflater.inflate(R.layout.volume_list_item, parent, false);
-                viewData.textView = (TextView)rowView.findViewById(R.id.name);
-                viewData.volumeControl = (SeekBar)rowView.findViewById(R.id.volume);
-                viewData.muteControl = (CheckBox)rowView.findViewById(R.id.mute);
-                viewData.volumeView = (TextView)rowView.findViewById(R.id.cur);
+                viewData.textView = rowView.findViewById(R.id.name);
+                viewData.volumeControl = rowView.findViewById(R.id.volume);
+                viewData.muteControl = rowView.findViewById(R.id.mute);
+                viewData.volumeView = rowView.findViewById(R.id.cur);
                 viewData.volumeControl.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                     @Override
                     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -181,7 +183,7 @@ public class CustomAdapter extends BaseAdapter {
                 });
             } else {
                 rowView = inflater.inflate(android.R.layout.simple_list_item_1, null);
-                viewData.textView = (TextView)rowView.findViewById(android.R.id.text1);
+                viewData.textView = rowView.findViewById(android.R.id.text1);
                 if (item.kind == SECTIONHEADERITEM) viewData.textView.setBackgroundColor(sectionHeaderBackgroundColor);
                 viewData.volumeControl = null;
                 viewData.muteControl = null;

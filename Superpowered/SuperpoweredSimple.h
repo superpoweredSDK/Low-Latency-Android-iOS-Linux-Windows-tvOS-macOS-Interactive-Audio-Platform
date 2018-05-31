@@ -57,7 +57,7 @@ void SuperpoweredChangeVolumeAdd(float *input, float *output, float volumeStart,
 
 /**
  @fn SuperpoweredPeak(float *input, unsigned int numberOfValues);
- @return Returns with the peak value.
+ @return Returns the peak value.
 
  @param input An array of floating point values.
  @param numberOfValues The number of values to process. (2 * numberOfSamples for stereo input) Must be a multiply of 8.
@@ -392,7 +392,7 @@ void SuperpoweredMidSideToStereo(float *input, float *output, unsigned int numbe
 
 /**
  @fn SuperpoweredVersion()
- @return Returns with the current version of the Superpowered SDK.
+ @return Returns the current version of the Superpowered SDK.
  
  The returned value is 3 unsigned chars: major,minor,revision Example: 1,0,0 means 1.0.0
  */

@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.2.2</span>
+   &#160;<span id="projectnumber">1.2.3</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -128,8 +128,8 @@ Public Member Functions</h2></td></tr>
     <tr><td class="paramname">outputs</td><td>If outputs[1] is NULL, output is interleaved stereo in outputs[0]. If outputs[1] is not NULL, output is non-interleaved (left side in outputs[0], right side in outputs[1]). </td></tr>
     <tr><td class="paramname">inputLevels</td><td>Input volume level for each channel. Value changes between consecutive processes are automatically smoothed. </td></tr>
     <tr><td class="paramname">outputLevels</td><td>Output levels [left, right]. Value changes between consecutive processes are automatically smoothed. </td></tr>
-    <tr><td class="paramname">inputMeters</td><td>Returns with the maximum values for metering. Can be NULL. </td></tr>
-    <tr><td class="paramname">outputMeters</td><td>Returns with the maximum values for metering. Can be NULL. </td></tr>
+    <tr><td class="paramname">inputMeters</td><td>Returns the maximum values for metering. Can be NULL. </td></tr>
+    <tr><td class="paramname">outputMeters</td><td>Returns the maximum values for metering. Can be NULL. </td></tr>
     <tr><td class="paramname">numberOfSamples</td><td>The number of samples to process. Minimum 2, maximum 2048, must be exactly divisible with 2. </td></tr>
   </table>
   </dd>

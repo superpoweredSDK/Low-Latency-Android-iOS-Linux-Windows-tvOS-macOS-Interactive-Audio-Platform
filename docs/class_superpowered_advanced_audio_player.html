@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.2.2</span>
+   &#160;<span id="projectnumber">1.2.3</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -271,6 +271,9 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>bufferEndPercent</b>
 <tr class="memitem:aebf49b92885caddbaf4c5e933b8347e7"><td class="memItemLeft" align="right" valign="top"><a id="aebf49b92885caddbaf4c5e933b8347e7"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>currentBps</b></td></tr>
 <tr class="separator:aebf49b92885caddbaf4c5e933b8347e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab90c508cf3501663936b122239feaf54"><td class="memItemLeft" align="right" valign="top"><a id="ab90c508cf3501663936b122239feaf54"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>loadErrorCode</b></td></tr>
+<tr class="separator:ab90c508cf3501663936b122239feaf54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab61a795218b6d082506d81996cf07bfd"><td class="memItemLeft" align="right" valign="top"><a id="ab61a795218b6d082506d81996cf07bfd"></a>
 char *&#160;</td><td class="memItemRight" valign="bottom"><b>fullyDownloadedFilePath</b></td></tr>
 <tr class="separator:ab61a795218b6d082506d81996cf07bfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -369,6 +372,7 @@ static char *&#160;</td><td class="memItemRight" valign="bottom"><b>tempFolderPa
     <tr><td class="paramname">bufferStartPercent</td><td>What is buffered from the original source, start point. Will always be 0 for non-network sources (files). Read only. </td></tr>
     <tr><td class="paramname">bufferEndPercent</td><td>What is buffered from the original source, end point. Will always be 1.0f for non-network sources (files). Read only. </td></tr>
     <tr><td class="paramname">currentBps</td><td>The current download speed. </td></tr>
+    <tr><td class="paramname">loadErrorCode</td><td>HTTP error code for SuperpoweredAdvancedAudioPlayerEvent_LoadError. The value of 1 means no internet connection. </td></tr>
     <tr><td class="paramname">syncMode</td><td>The current sync mode (off, tempo, or tempo and beat). </td></tr>
     <tr><td class="paramname">fixDoubleOrHalfBPM</td><td>If tempo is &gt;1.4f or &lt;0.6f, it will treat the bpm as half or double. Good for certain genres. False by default. </td></tr>
     <tr><td class="paramname">dynamicHLSAlternativeSwitching</td><td>Dynamicly changing the current HLS alternative to match the available network bandwidth. Default is true. </td></tr>
@@ -1114,7 +1118,7 @@ static char *&#160;</td><td class="memItemRight" valign="bottom"><b>tempFolderPa
     <tr><td class="paramname">value</td><td>The cumulated ticks value. </td></tr>
     <tr><td class="paramname">bendStretch</td><td>Use time-stretching for bending or not (false makes it "audible"). </td></tr>
     <tr><td class="paramname">bendMaxPercent</td><td>The maximum tempo change for pitch bend, should be between 0.01f and 0.3f (1% and 30%). </td></tr>
-    <tr><td class="paramname">bendHoldMs</td><td>How long to maintain the bended state. A value &gt;= 1000 will hold until endContinuousPitchBend is called. </td></tr>
+    <tr><td class="paramname">bendHoldMs</td><td>How long to maintain the bent state. A value &gt;= 1000 will hold until endContinuousPitchBend is called. </td></tr>
     <tr><td class="paramname">parameterMode</td><td>True: if there was no jogTouchBegin, SuperpoweredAdvancedAudioPlayerJogMode_Parameter applies. False: if there was no jogTouchBegin, SuperpoweredAdvancedAudioPlayerJogMode_PitchBend applies. </td></tr>
   </table>
   </dd>
@@ -1317,7 +1321,7 @@ static char *&#160;</td><td class="memItemRight" valign="bottom"><b>tempFolderPa
     <tr><td class="paramname">maxPercent</td><td>The maximum tempo change for pitch bend, should be between 0.01f and 0.3f (1% and 30%). </td></tr>
     <tr><td class="paramname">bendStretch</td><td>Use time-stretching for bending or not (false makes it "audible"). </td></tr>
     <tr><td class="paramname">faster</td><td>Playback speed change direction. </td></tr>
-    <tr><td class="paramname">holdMs</td><td>How long to maintain the bended state. A value &gt;= 1000 will hold until endContinuousPitchBend is called. </td></tr>
+    <tr><td class="paramname">holdMs</td><td>How long to maintain the bent state. A value &gt;= 1000 will hold until endContinuousPitchBend is called. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1645,7 +1649,7 @@ static char *&#160;</td><td class="memItemRight" valign="bottom"><b>tempFolderPa
     <tr><td class="paramname">numberOfSamples</td><td>The number of samples to provide. </td></tr>
     <tr><td class="paramname">volumes</td><td>0.0f is silence, 1.0f is "original volume". Changes are automatically smoothed between consecutive processes. </td></tr>
     <tr><td class="paramname">masterBpm</td><td>A bpm value to sync with. Use 0.0f for no syncing. </td></tr>
-    <tr><td class="paramname">masterMsElapsedSinceLastBeat</td><td>How many milliseconds elapsed since the last beat on the other stuff we are syncing to. Use -1.0 to ignore. </td></tr>
+    <tr><td class="paramname">masterMsElapsedSinceLastBeat</td><td>How many milliseconds elapsed since the last beat on the other audio we are syncing to. Use -1.0 to ignore. </td></tr>
     <tr><td class="paramname">phase</td><td>Reserved for future use. </td></tr>
     <tr><td class="paramname">quantum</td><td>Reserved for future use. </td></tr>
   </table>

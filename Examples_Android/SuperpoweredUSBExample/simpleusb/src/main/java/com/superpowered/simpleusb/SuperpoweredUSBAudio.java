@@ -9,6 +9,8 @@ import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbDeviceConnection;
 import android.hardware.usb.UsbManager;
 
+@SuppressWarnings("WeakerAccess")
+
 // This class handles USB device permissions, attaching and detaching a device.
 public class SuperpoweredUSBAudio {
     private static final String ACTION_USB_PERMISSION = "com.superpowered.USBAudio.USB_PERMISSION";
@@ -63,8 +65,12 @@ public class SuperpoweredUSBAudio {
         if (connection != null) {
             int id = device.getDeviceId();
             switch (onConnect(id, connection.getFileDescriptor(), connection.getRawDescriptors())) {
-                case 1: if (handler != null) handler.onUSBAudioDeviceAttached(id); break; // Audio device.
-                case 2: if (handler != null) handler.onUSBMIDIDeviceAttached(id); break; // MIDI device.
+                case 1: // Audio device.
+                    if (handler != null) handler.onUSBAudioDeviceAttached(id);
+                    break;
+                case 2: // MIDI device.
+                    if (handler != null) handler.onUSBMIDIDeviceAttached(id);
+                    break;
                 case 3: // Audio and MIDI device.
                     if (handler != null) handler.onUSBAudioDeviceAttached(id);
                     if (handler != null) handler.onUSBMIDIDeviceAttached(id);
@@ -76,9 +82,13 @@ public class SuperpoweredUSBAudio {
     private native int onConnect(int deviceID, int fd, byte[] rawDescriptor);
     private native void onDisconnect(int deviceID);
 
-    // This can be called after an instance of SuperpoweredUSBAudio is created in order to recognize already connected devices.
+    // This can be called after an instance of SuperpoweredUSBAudio is created in order to
+    // recognize already connected devices.
     public void check() {
         UsbManager manager = (UsbManager)context.getSystemService(Context.USB_SERVICE);
-        if (manager != null) for (UsbDevice device : manager.getDeviceList().values()) addUSBDevice(device);
+        if (manager != null) {
+            // iterate through devices
+            for (UsbDevice device : manager.getDeviceList().values()) addUSBDevice(device);
+        }
     }
 }

@@ -155,14 +155,14 @@ public:
      */
     static void setConfiguration(int deviceID, int configurationIndex);
     /**
-     @return Get information about a device's inputs. Returns with the number of inputs.
+     @return Get information about a device's inputs. Returns the number of inputs.
      
      @param deviceID Device identifier.
      @param info Array of SuperpoweredUSBAudioIOInfo for each input.
     */
     static int getInputs(int deviceID, SuperpoweredUSBAudioIOInfo **info);
     /**
-     @return Get information about a device's outputs. Returns with the number of outputs.
+     @return Get information about a device's outputs. Returns the number of outputs.
 
      @param deviceID Device identifier.
      @param info Array of SuperpoweredUSBAudioIOInfo for each output.
@@ -172,8 +172,8 @@ public:
      @brief Gets the best input and output index for some audio parameters.
      
      @param deviceID Device identifier.
-     @param inputIOindex Returns with the best input index.
-     @param outputIOindex Returns with the best output index.
+     @param inputIOindex Returns the best input index.
+     @param outputIOindex Returns the best output index.
      @param samplerate Sample rate in Hz.
      @param bitsPerSample Bit depth.
      @param numInputChannels Number of input channels. Set to 0 if you are not interested in input.
@@ -187,12 +187,12 @@ public:
      @param deviceID Device identifier.
      @param input True for input, false for output.
      @param IOindex The index of the input or output.
-     @param paths Returns with the path indexes.
-     @param pathNames Returns with the path names.
-     @param numPaths Returns with the number of paths.
-     @param thruPaths Returns with the audio-thru path indexes (input only).
-     @param thruPathNames Returns with the audio-thru path names (input only).
-     @param numThruPaths Returns with tnumber of audio-thru paths (input only).
+     @param paths Returns the path indexes.
+     @param pathNames Returns the path names.
+     @param numPaths Returns the number of paths.
+     @param thruPaths Returns the audio-thru path indexes (input only).
+     @param thruPathNames Returns the audio-thru path names (input only).
+     @param numThruPaths Returns the number of audio-thru paths (input only).
      */
     static void getIOOptions(int deviceID, bool input, int IOindex, int **paths, char ***pathNames, int *numPaths, int **thruPaths, char ***thruPathNames, int *numThruPaths);
     /**
@@ -200,7 +200,7 @@ public:
      
      @param deviceID Device identifier.
      @param pathIndex Path index.
-     @param numFeatures Returns with the number of features (the size of the minVolumes, maxVolumes, curVolumes and mutes arrays).
+     @param numFeatures Returns the number of features (the size of the minVolumes, maxVolumes, curVolumes and mutes arrays).
      @param minVolumes Minimum volume values in db.
      @param maxVolumes Maximum volume values in db.
      @param curVolumes Current volume values in db.
@@ -208,7 +208,7 @@ public:
      */
     static void getPathInfo(int deviceID, int pathIndex, int *numFeatures, float **minVolumes, float **maxVolumes, float **curVolumes, char **mutes);
     /*
-     @return Sets volume and returns with the current volume in db.
+     @return Sets volume and returns the current volume in db.
      
      @param deviceID Device identifier.
      @param pathIndex Path index.
@@ -217,7 +217,7 @@ public:
      */
     static float setVolume(int deviceID, int pathIndex, int channel, float db);
     /*
-     @return Sets mute and returns with the current state.
+     @return Sets mute and returns the current state.
      
      @param deviceID Device identifier.
      @param pathIndex Path index.
@@ -226,7 +226,7 @@ public:
      */
     static bool setMute(int deviceID, int pathIndex, int channel, bool mute);
     /*
-     @return Starts audio input/output and returns with success.
+     @return Starts audio input/output and returns success.
     
      @param deviceID Device identifier.
      @param inputIOindex Input index.
@@ -237,7 +237,7 @@ public:
      */
     static bool startIO(int deviceID, int inputIOindex, int outputIOindex, SuperpoweredUSBAudioLatency latency, void *clientdata, SuperpoweredUSBAudioProcessingCallback callback);
     /*
-     @return Starts audio input/output and returns with success.
+     @return Starts audio input/output and returns success.
 
      @param deviceID Device identifier.
      @param samplerate Preferred sample rate in Hz.
@@ -273,7 +273,7 @@ typedef void (*SuperpoweredUSBMIDIReceivedCallback)(void *clientdata, int device
 class SuperpoweredUSBMIDI {
 public:
     /**
-     @return Starts MIDI input/output and returns with success.
+     @return Starts MIDI input/output and returns success.
      
      @param deviceID Device identifier.
      @param clientdata Custom pointer for the callback.

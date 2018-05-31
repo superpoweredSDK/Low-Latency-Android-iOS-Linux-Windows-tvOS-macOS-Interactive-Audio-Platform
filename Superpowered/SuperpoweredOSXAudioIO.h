@@ -7,7 +7,7 @@
  
  @return Return false when you did no audio processing (silence).
 
- @param clientData A custom pointer your callback receives.
+ @param clientdata A custom pointer your callback receives.
  @param inputBuffers Input buffers.
  @param inputChannels The number of input channels.
  @param outputBuffers Output buffers.

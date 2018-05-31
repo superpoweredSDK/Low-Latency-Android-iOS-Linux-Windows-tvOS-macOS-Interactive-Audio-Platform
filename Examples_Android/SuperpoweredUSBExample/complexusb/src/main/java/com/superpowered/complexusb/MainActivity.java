@@ -41,8 +41,9 @@ public class MainActivity extends AppCompatActivity implements SuperpoweredUSBAu
         hasDevice = false;
         SuperpoweredUSBAudio usbAudio = new SuperpoweredUSBAudio(getApplicationContext(), this);
 
-        waitingAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, new String[] { "Please connect a USB audio or MIDI device."});
-        list = (ListView)findViewById(R.id.list);
+        waitingAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,
+                new String[] { "Please connect a USB audio or MIDI device."});
+        list = findViewById(R.id.list);
         if (list != null) list.setAdapter(waitingAdapter);
         adapter = new CustomAdapter(this);
 
@@ -102,7 +103,6 @@ public class MainActivity extends AppCompatActivity implements SuperpoweredUSBAu
     }
 
     public void onUSBMIDIDeviceAttached(int deviceIdentifier) {
-
     }
 
     public void onUSBDeviceDetached(int deviceIdentifier) {
@@ -153,12 +153,12 @@ public class MainActivity extends AppCompatActivity implements SuperpoweredUSBAu
 
     private void updateIOOptions(boolean updateList) {
         getIOOptions(deviceID, inputIndex, outputIndex);
-        int outputPathIndexes[] = getIOOptionsInt(0);
-        int inputPathIndexes[] = getIOOptionsInt(1);
-        int thruPathIndexes[] = getIOOptionsInt(2);
+        int outputPathIndexes[]  = getIOOptionsInt(0);
+        int inputPathIndexes[]   = getIOOptionsInt(1);
+        int thruPathIndexes[]    = getIOOptionsInt(2);
         String outputPathNames[] = getIOOptionsString(0);
-        String inputPathNames[] = getIOOptionsString(1);
-        String thruPathNames[] = getIOOptionsString(2);
+        String inputPathNames[]  = getIOOptionsString(1);
+        String thruPathNames[]   = getIOOptionsString(2);
         getIOOptionsEnd();
 
         adapter.selectItemInSection(CustomAdapter.INPUTITEM, inputIndex);
@@ -170,23 +170,29 @@ public class MainActivity extends AppCompatActivity implements SuperpoweredUSBAu
         int scrollto = -1;
         if (outputPathIndexes.length > 0) {
             scrollto = adapter.addSectionHeader("Select Output Path");
-            for (int n = 0; n < outputPathIndexes.length; n++) adapter.addItem(outputPathNames[n], CustomAdapter.OUTPUTPATHITEM, outputPathIndexes[n]);
+            for (int n = 0; n < outputPathIndexes.length; n++)
+                adapter.addItem(outputPathNames[n], CustomAdapter.OUTPUTPATHITEM, outputPathIndexes[n]);
         }
         if (inputPathIndexes.length > 0) {
             int pos = adapter.addSectionHeader("Select Input Path");
             if (scrollto == -1) scrollto = pos;
-            for (int n = 0; n < inputPathIndexes.length; n++) adapter.addItem(inputPathNames[n], CustomAdapter.INPUTPATHITEM, inputPathIndexes[n]);
+            for (int n = 0; n < inputPathIndexes.length; n++)
+                adapter.addItem(inputPathNames[n], CustomAdapter.INPUTPATHITEM, inputPathIndexes[n]);
         }
         if (thruPathIndexes.length > 0) {
             int pos = adapter.addSectionHeader("Select Thru Path");
             if (scrollto == -1) scrollto = pos;
-            for (int n = 0; n < thruPathIndexes.length; n++) adapter.addItem(thruPathNames[n], CustomAdapter.THRUPATHITEM, thruPathIndexes[n]);
+            for (int n = 0; n < thruPathIndexes.length; n++)
+                adapter.addItem(thruPathNames[n], CustomAdapter.THRUPATHITEM, thruPathIndexes[n]);
         }
 
         inputFeatures = outputFeatures = thruFeatures = null;
-        if (outputPathIndexes.length == 1) setPath(CustomAdapter.OUTPUTPATHITEM, outputPathIndexes[0], false);
-        if (inputPathIndexes.length == 1) setPath(CustomAdapter.INPUTPATHITEM, inputPathIndexes[0], false);
-        if (thruPathIndexes.length == 1) setPath(CustomAdapter.THRUPATHITEM, thruPathIndexes[0], false);
+        if (outputPathIndexes.length == 1)
+            setPath(CustomAdapter.OUTPUTPATHITEM, outputPathIndexes[0], false);
+        if (inputPathIndexes.length == 1)
+            setPath(CustomAdapter.INPUTPATHITEM, inputPathIndexes[0], false);
+        if (thruPathIndexes.length == 1)
+            setPath(CustomAdapter.THRUPATHITEM, thruPathIndexes[0], false);
 
         if (updateList) {
             adapter.notifyDataSetChanged();
@@ -278,7 +284,8 @@ public class MainActivity extends AppCompatActivity implements SuperpoweredUSBAu
                             int latencyMs = getLatencyMs();
                             if (latencyMs != lastLatencyMs) {
                                 lastLatencyMs = latencyMs;
-                                Toast.makeText(getApplicationContext(), "Round-trip audio latency: " + latencyMs + " ms.", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(),
+                                        "Round-trip audio latency: " + latencyMs + " ms.", Toast.LENGTH_LONG).show();
                             }
                             handler.postDelayed(this, 100);
                         }
@@ -304,6 +311,7 @@ public class MainActivity extends AppCompatActivity implements SuperpoweredUSBAu
         if (updateList) adapter.notifyDataSetChanged();
     }
 
+    // Functions implemented in the native library.
     public native String[] getUSBAudioDeviceInfo(int deviceID);
     public native String[] getConfigurationInfo(int deviceID);
     public native void setConfiguration(int deviceID, int index);

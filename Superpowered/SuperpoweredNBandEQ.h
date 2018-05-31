@@ -32,7 +32,7 @@ public:
 /**
  @brief Create an eq instance.
 
- Enabled is false by default, use enable(true) to enable. Example: SuperpoweredNBandEQ eq = new SuperpoweredNBandEQ(44100);
+ Enabled is false by default, use enable(true) to enable. Example: SuperpoweredNBandEQ eq = new SuperpoweredNBandEQ(44100, ...);
 
  @param samplerate 44100, 48000, etc.
  @param frequencies 0-terminated list of frequency bands.

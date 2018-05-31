@@ -43,7 +43,7 @@ public:
  @brief Change parameters for resonant filters.
 
  @param frequency The frequency in Hz.
- @param resonance Resonance value.
+ @param resonance Resonance value. Resonance = Q / 10.
  */
     void setResonantParameters(float frequency, float resonance);
 /**

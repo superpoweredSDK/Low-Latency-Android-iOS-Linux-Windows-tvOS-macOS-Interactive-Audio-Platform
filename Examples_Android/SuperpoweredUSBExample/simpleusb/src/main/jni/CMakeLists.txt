@@ -1,14 +1,14 @@
 cmake_minimum_required(VERSION 3.4.1)
 
-set(
-	PATH_TO_SUPERPOWERED
-	CACHE STRING ""
-)
+# convert SDK path to forward slashes on Windows
+file(TO_CMAKE_PATH ${PATH_TO_SUPERPOWERED} PATH_TO_SUPERPOWERED)
 
-message(${ANDROID_ABI})
+include_directories(src/main/jni)
+include_directories(${PATH_TO_SUPERPOWERED})
 
 file(GLOB CPP_FILES "*.cpp")
 
+# compile USB example to a native library
 add_library(
 	SuperpoweredExample
 	SHARED
@@ -16,9 +16,7 @@ add_library(
 	${PATH_TO_SUPERPOWERED}/AndroidIO/SuperpoweredAndroidAudioIO.cpp
 )
 
-include_directories(src/main/jni)
-include_directories(${PATH_TO_SUPERPOWERED})
-
+# link the native library against the following libraries
 target_link_libraries(
     SuperpoweredExample
     log

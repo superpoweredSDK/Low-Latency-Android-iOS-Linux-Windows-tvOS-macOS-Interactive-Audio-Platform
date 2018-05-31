@@ -26,8 +26,8 @@ public:
  @param outputs If outputs[1] is NULL, output is interleaved stereo in outputs[0]. If outputs[1] is not NULL, output is non-interleaved (left side in outputs[0], right side in outputs[1]).
  @param inputLevels Input volume level for each channel. Value changes between consecutive processes are automatically smoothed.
  @param outputLevels Output levels [left, right]. Value changes between consecutive processes are automatically smoothed.
- @param inputMeters Returns with the maximum values for metering. Can be NULL.
- @param outputMeters Returns with the maximum values for metering. Can be NULL.
+ @param inputMeters Returns the maximum values for metering. Can be NULL.
+ @param outputMeters Returns the maximum values for metering. Can be NULL.
  @param numberOfSamples The number of samples to process. Minimum 2, maximum 2048, must be exactly divisible with 2.
  */
     void process(float *inputs[4], float *outputs[2], float inputLevels[8], float outputLevels[2], float inputMeters[8], float outputMeters[2], unsigned int numberOfSamples);

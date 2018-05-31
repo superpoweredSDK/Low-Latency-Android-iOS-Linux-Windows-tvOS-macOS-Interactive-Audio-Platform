@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.2.2</span>
+   &#160;<span id="projectnumber">1.2.3</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -280,7 +280,7 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>stopIO</b> (in
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Get information about a device's inputs. Returns with the number of inputs.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Get information about a device's inputs. Returns the number of inputs.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">deviceID</td><td>Device identifier. </td></tr>
@@ -324,7 +324,7 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>stopIO</b> (in
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Get information about a device's outputs. Returns with the number of outputs.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Get information about a device's outputs. Returns the number of outputs.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">deviceID</td><td>Device identifier. </td></tr>
@@ -407,8 +407,8 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>stopIO</b> (in
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">deviceID</td><td>Device identifier. </td></tr>
-    <tr><td class="paramname">inputIOindex</td><td>Returns with the best input index. </td></tr>
-    <tr><td class="paramname">outputIOindex</td><td>Returns with the best output index. </td></tr>
+    <tr><td class="paramname">inputIOindex</td><td>Returns the best input index. </td></tr>
+    <tr><td class="paramname">outputIOindex</td><td>Returns the best output index. </td></tr>
     <tr><td class="paramname">samplerate</td><td>Sample rate in Hz. </td></tr>
     <tr><td class="paramname">bitsPerSample</td><td>Bit depth. </td></tr>
     <tr><td class="paramname">numInputChannels</td><td>Number of input channels. Set to 0 if you are not interested in input. </td></tr>
@@ -500,12 +500,12 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>stopIO</b> (in
     <tr><td class="paramname">deviceID</td><td>Device identifier. </td></tr>
     <tr><td class="paramname">input</td><td>True for input, false for output. </td></tr>
     <tr><td class="paramname">IOindex</td><td>The index of the input or output. </td></tr>
-    <tr><td class="paramname">paths</td><td>Returns with the path indexes. </td></tr>
-    <tr><td class="paramname">pathNames</td><td>Returns with the path names. </td></tr>
-    <tr><td class="paramname">numPaths</td><td>Returns with the number of paths. </td></tr>
-    <tr><td class="paramname">thruPaths</td><td>Returns with the audio-thru path indexes (input only). </td></tr>
-    <tr><td class="paramname">thruPathNames</td><td>Returns with the audio-thru path names (input only). </td></tr>
-    <tr><td class="paramname">numThruPaths</td><td>Returns with tnumber of audio-thru paths (input only). </td></tr>
+    <tr><td class="paramname">paths</td><td>Returns the path indexes. </td></tr>
+    <tr><td class="paramname">pathNames</td><td>Returns the path names. </td></tr>
+    <tr><td class="paramname">numPaths</td><td>Returns the number of paths. </td></tr>
+    <tr><td class="paramname">thruPaths</td><td>Returns the audio-thru path indexes (input only). </td></tr>
+    <tr><td class="paramname">thruPathNames</td><td>Returns the audio-thru path names (input only). </td></tr>
+    <tr><td class="paramname">numThruPaths</td><td>Returns the number of audio-thru paths (input only). </td></tr>
   </table>
   </dd>
 </dl>
@@ -579,7 +579,7 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>stopIO</b> (in
   <table class="params">
     <tr><td class="paramname">deviceID</td><td>Device identifier. </td></tr>
     <tr><td class="paramname">pathIndex</td><td>Path index. </td></tr>
-    <tr><td class="paramname">numFeatures</td><td>Returns with the number of features (the size of the minVolumes, maxVolumes, curVolumes and mutes arrays). </td></tr>
+    <tr><td class="paramname">numFeatures</td><td>Returns the number of features (the size of the minVolumes, maxVolumes, curVolumes and mutes arrays). </td></tr>
     <tr><td class="paramname">minVolumes</td><td>Minimum volume values in db. </td></tr>
     <tr><td class="paramname">maxVolumes</td><td>Maximum volume values in db. </td></tr>
     <tr><td class="paramname">curVolumes</td><td>Current volume values in db. </td></tr>

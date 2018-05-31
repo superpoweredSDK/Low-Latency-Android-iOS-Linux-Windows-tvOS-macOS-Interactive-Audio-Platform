@@ -3,13 +3,16 @@
 
 #define SUPERPOWERED_WAVEFORM_POINTS_PER_SEC 150
 
-struct offlineAnalyzerInternals;
+struct analyzerInternals;
 struct waveformInternals;
+struct liveAnalyzerInternals;
+
+#define SuperpoweredOfflineAnalyzer SuperpoweredAnalyzer
 
 /**
  @brief Performs bpm and key detection, loudness/peak analysis. Provides compact waveform data (150 points/sec and 1 point/sec resolution), beatgrid information.
  */
-class SuperpoweredOfflineAnalyzer {
+class SuperpoweredAnalyzer {
 public:
 
 /**
@@ -19,20 +22,20 @@ public:
  @param minimumBpm Detected bpm will be more than or equal to this.
  @param maximumBpm Detected bpm will be less than or equal to this.
  */
-    SuperpoweredOfflineAnalyzer(unsigned int samplerate, float bpm = 0, int lengthSeconds = 0, float minimumBpm = 60.0f, float maximumBpm = 200.0f);
-    ~SuperpoweredOfflineAnalyzer();
+    SuperpoweredAnalyzer(unsigned int samplerate, float bpm = 0, int lengthSeconds = 0, float minimumBpm = 60.0f, float maximumBpm = 200.0f);
+    ~SuperpoweredAnalyzer();
 
 /**
- @brief Processes a chunk of audio.
+ @brief Processes a chunk of audio. This method can be used in a real-time audio thread if lengthSeconds is -1.
 
- @param input 32-bit interleaved floating-point input.
- @param numberOfSamples How many samples to process.
- @param lengthSeconds If the source's length may change, set this to it's current value, otherwise leave it at -1.
+ @param input 32-bit interleaved stereo floating-point input.
+ @param numberOfFrames How many frames to process.
+ @param lengthSeconds If the source's length may change, set this to it's current value, leave it at -1 otherwise. If this value is not -1, this method can NOT be used in a real-time audio thread.
  */
-    void process(float *input, unsigned int numberOfSamples, int lengthSeconds = -1);
+    void process(float *input, unsigned int numberOfFrames, int lengthSeconds = -1);
 
 /**
- @brief Get results. Call this method ONCE, after all samples are processed. Delete the analyzer after this, the same instance can not be used further.
+ @brief Get results. Call this method ONCE, after all samples are processed. Delete the analyzer after this, the same instance can not be used further. This method should NOT be used in a real-time audio thread.
  
  @param averageWaveform 150 points/sec waveform data displaying the average volume. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory).
  @param peakWaveform 150 points/sec waveform data displaying the peak volume. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory).
@@ -49,13 +52,14 @@ public:
  @param bpm Beats per minute.
  @param beatgridStartMs The position where the beatgrid starts. Important! On input set it to 0, or the ms position of the first audio sample.
  @param keyIndex The dominant key (chord) of the music. 0..11 are major keys from A to G#, 12..23 are minor keys from A to G#. Check the static constants in this header for musical, Camelot and Open Key notations.
+ @param previousBpm If the analyzer is used in a "live" situation (measuring periodically), submit the previously measured bpm here. 0.0f means no previously measured bpm.
  */
-    void getresults(unsigned char **averageWaveform, unsigned char **peakWaveform, unsigned char **lowWaveform, unsigned char **midWaveform, unsigned char **highWaveform, unsigned char **notes, int *waveformSize, char **overviewWaveform, int *overviewSize, float *averageDecibel, float *loudpartsAverageDecibel, float *peakDecibel, float *bpm, float *beatgridStartMs, int *keyIndex);
+    void getresults(unsigned char **averageWaveform, unsigned char **peakWaveform, unsigned char **lowWaveform, unsigned char **midWaveform, unsigned char **highWaveform, unsigned char **notes, int *waveformSize, char **overviewWaveform, int *overviewSize, float *averageDecibel, float *loudpartsAverageDecibel, float *peakDecibel, float *bpm, float *beatgridStartMs, int *keyIndex, float previousBpm = 0.0f);
 
 private:
-    offlineAnalyzerInternals *internals;
-    SuperpoweredOfflineAnalyzer(const SuperpoweredOfflineAnalyzer&);
-    SuperpoweredOfflineAnalyzer& operator=(const SuperpoweredOfflineAnalyzer&);
+    analyzerInternals *internals;
+    SuperpoweredAnalyzer(const SuperpoweredAnalyzer&);
+    SuperpoweredAnalyzer& operator=(const SuperpoweredAnalyzer&);
 };
 
 /**
@@ -109,16 +113,16 @@ public:
     ~SuperpoweredWaveform();
 
 /**
- @brief Processes a chunk of audio.
+ @brief Processes a chunk of audio. This method can be used in a real-time audio thread if lengthSeconds is -1.
 
  @param input 32-bit interleaved floating-point input.
- @param numberOfSamples How many samples to process.
- @param lengthSeconds If the source's length may change, set this to it's current value, otherwise leave it at -1.
+ @param numberOfFrames How many frames to process.
+ @param lengthSeconds If the source's length may change, set this to it's current value, leave it at -1 otherwise. If this value is not -1, this method can NOT be used in a real-time audio thread.
 */
-    void process(float *input, unsigned int numberOfSamples, int lengthSeconds = -1);
+    void process(float *input, unsigned int numberOfFrames, int lengthSeconds = -1);
 
 /**
- @return Returns with 150 points/sec waveform data displaying the peak volume. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory).
+ @return Returns the 150 points/sec waveform data displaying the peak volume. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory). This method should NOT be used in a real-time audio thread.
  
  @param size The number of points in the waveform data.
  */
@@ -129,5 +133,52 @@ private:
     SuperpoweredWaveform(const SuperpoweredWaveform&);
     SuperpoweredWaveform& operator=(const SuperpoweredWaveform&);
 };
+
+class SuperpoweredLiveAnalyzer {
+public:
+    float bpm;
+    int keyIndex; // READ ONLY
+    bool silence; // READ ONLY
+    
+/**
+ @param samplerate The sample rate of the source.
+*/
+    SuperpoweredLiveAnalyzer(unsigned int samplerate);
+    ~SuperpoweredLiveAnalyzer();
+    
+/**
+ @brief Processes a chunk of audio. This method can be used in a real-time audio thread.
+     
+ @param input 32-bit interleaved stereo floating-point input.
+ @param numberOfFrames How many frames to process.
+*/
+    void process(float *input, unsigned int numberOfFrames);
+    
+/**
+ @brief Sets the sample rate.
+     
+ @param samplerate 44100, 48000, etc.
+ */
+    void setSamplerate(unsigned int samplerate);
+    
+private:
+    liveAnalyzerInternals *internals;
+    SuperpoweredLiveAnalyzer(const SuperpoweredLiveAnalyzer&);
+    SuperpoweredLiveAnalyzer& operator=(const SuperpoweredLiveAnalyzer&);
+};
+/**
+ @brief Performs bpm and key detection continuously. The update frequency is 2 seconds.
+ 
+ @warning High memory usage! This class allocates 320 * samplerate bytes. Example: 48000 Hz * 320 = 15 MB
+ 
+ @param bpm Current beats per minute. If the current result is too far from the reality you can do three things:
+ 
+ 1. Set bpm to zero. This forces the analyzer to "forget" the last bpm and may find the correct value within 10 seconds.
+ 2. Set bpm to an estimated value (if you can estimate). This forces the analyzer to "forget" the last bpm and use your estimate instead. It may find the correct value within 4 seconds.
+ 3. Set bpm to a negative value. This will "hard reset" the analyzer and so it will start fresh.
+ 
+ @param keyIndex The dominant key (chord) of the music. 0..11 are major keys from A to G#, 12..23 are minor keys from A to G#. -1: unknown. Check the static constants in this header for musical, Camelot and Open Key notations. READ ONLY.
+ @param silence Bpm and key detection is paused, because the analyzer detects a longer silence period (more than 1 seconds of digital silence or 8 seconds below -48 decibels). READ ONLY.
+ */
 
 #endif

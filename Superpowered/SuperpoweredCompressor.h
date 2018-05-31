@@ -56,7 +56,7 @@ public:
     void reset();
 
 /**
- @return Returns with the maximum gain reduction in decibels since the last getGainReductionDb() call.
+ @return Returns the maximum gain reduction in decibels since the last getGainReductionDb() call.
  
  This method uses the log10f function, which is CPU intensive. Call it when you must update your user interface.
  */

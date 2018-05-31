@@ -20,7 +20,7 @@ public:
  */
     static void ping();
 /**
- @brief Creates a buffer with retain count set to 1.
+ @brief Creates a buffer with retain count set to 1, similar to an NSObject in Objective-C. Use releaseBuffer() to release.
  
  @return The buffer.
  
@@ -32,7 +32,7 @@ public:
  */
     static void *getBuffer(unsigned int sizeBytes);
 /**
- @brief Allocates a buffer using malloc, aligned to 16 bytes.  Retain count will be set to 1.
+ @brief Allocates a buffer using malloc, aligned to 16 bytes. Retain count will be set to 1, similar to an NSObject in Objective-C. Use releaseBuffer() to release.
  
  Don't use this function in a realtime thread, as it calls malloc.
  The returned buffer however can safely be used and released in any kind of thread.
@@ -44,7 +44,7 @@ public:
  */
     static void *allocBuffer(unsigned int sizeBytes);
 /**
- @brief Release a buffer, similar to Objective-C.
+ @brief Release a buffer, similar to an NSObject in Objective-C (decreases the retain count by 1, the memory will be freed after retain count reaches 0).
  
  Never blocks, never locks, very fast and safe to use in a realtime thread. Can be called concurrently.
  
@@ -52,7 +52,7 @@ public:
  */
     static void releaseBuffer(void *buffer);
 /**
- @brief Retain a buffer, similar to Objective-C.
+ @brief Retain a buffer, similar to Objective-C (increases the retain count by 1, similar to an NSObject in Objective-C).
  
  Never blocks, never locks, very fast and safe to use in a realtime thread. Can be called concurrently.
  
@@ -89,23 +89,23 @@ public:
     ~SuperpoweredAudiopointerList();
     
 /**
- @brief Append a buffer to the end of the list.
+ @brief Append a buffer to the end of the list. The list will increase the retain count of the buffer by 1, similar to Objective-C.
  */
     void append(SuperpoweredAudiobufferlistElement *buffer);
 /**
- @brief Insert a buffer before the beginning of the list.
+ @brief Insert a buffer before the beginning of the list. The list will increase the retain count of the buffer by 1, similar to Objective-C.
  */
     void insert(SuperpoweredAudiobufferlistElement *buffer);
 /**
- @brief Remove everything from the list.
+ @brief Remove everything from the list. It will decrease the retain count of all buffers by 1.
  */
     void clear();
 /**
- @brief Appends all buffers to another buffer list.
+ @brief Appends all buffers to another buffer list. The anotherList will increase the retain count of all buffers by 1.
  */
     void copyAllBuffersTo(SuperpoweredAudiopointerList *anotherList);
 /**
- @brief Removes samples from the beginning or the end.
+ @brief Removes samples from the beginning or the end. If a buffer is fully truncated from this list, it will decrease the buffer's retain count by 1.
  
  @param numSamples The number of samples to remove.
  @param fromTheBeginning From the end or the beginning.
@@ -133,10 +133,10 @@ public:
     int64_t samplePositionOfSliceBeginning();
 
 /**
- @return This the slice's forward enumerator method to go through all buffers in it. Returns with a pointer to the audio, or NULL.
+ @return This the slice's forward enumerator method to go through all buffers in it. Returns a pointer to the audio, or NULL.
 
- @param lengthSamples Returns with the number of samples in audio.
- @param samplesUsed Returns with the number of original number of samples, creating this chunk of audio. Good for time-stretching for example, to track the movement of the playhead.
+ @param lengthSamples Returns the number of samples in audio.
+ @param samplesUsed Returns the number of original number of samples, creating this chunk of audio. Good for time-stretching for example, to track the movement of the playhead.
  @param stereoPairIndex Not implemented yet.
  @param nextSamplePosition Not implemented yet.
  */
@@ -150,10 +150,10 @@ public:
  */
     void forwardToLastSliceBuffer();
 /**
- @return This the slice's backwards (reverse) enumerator method to go through all buffers in it. Returns with a pointer to the audio, or NULL.
+ @return This the slice's backwards (reverse) enumerator method to go through all buffers in it. Returns a pointer to the audio, or NULL.
 
- @param lengthSamples Returns with the number of samples in audio.
- @param samplesUsed Returns with the number of original number of samples, creating this chunk of audio. Good for time-stretching for example, to track the movement of the playhead.
+ @param lengthSamples Returns the number of samples in audio.
+ @param samplesUsed Returns the number of original number of samples, creating this chunk of audio. Good for time-stretching for example, to track the movement of the playhead.
  @param stereoPairIndex Not implemented yet.
 */
     void *prevSliceItem(int *lengthSamples, float *samplesUsed = 0, int stereoPairIndex = 0);
