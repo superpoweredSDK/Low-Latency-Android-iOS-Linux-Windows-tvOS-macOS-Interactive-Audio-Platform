@@ -29,13 +29,14 @@ static OSStatus audioInputCallback(void *inRefCon, AudioUnitRenderActionFlags *i
 
     self->inputFrames = inNumberFrames;
     self->hasInput = !AudioUnitRender(self->inputUnit, ioActionFlags, inTimeStamp, inBusNumber, inNumberFrames, self->inputEven ? self->inputBuffers0 : self->inputBuffers1);
-    self->inputEven = !self->inputEven;
     
     if (self->hasInput && !self->outputEnabled) {
-        float **inputBufs = self->outputEven ? self->inputBufs0 : self->inputBufs1;
+        float **inputBufs = self->inputEven ? self->inputBufs0 : self->inputBufs1;
         if (self->processingCallback) self->processingCallback(self->processingClientdata, inputBufs, self->inputChannels, NULL, self->numberOfChannels, inNumberFrames, self->samplerate, inTimeStamp->mHostTime);
         else if (self->delegate) [self->delegate audioProcessingCallback:inputBufs inputChannels:self->inputChannels outputBuffers:NULL outputChannels:self->numberOfChannels numberOfSamples:inNumberFrames samplerate:self->samplerate hostTime:inTimeStamp->mHostTime];
     }
+    
+    self->inputEven = !self->inputEven;
 	return noErr;
 }
 
