@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.2.3</span>
+   &#160;<span id="projectnumber">1.2.4</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -55,9 +55,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Instance Methods</h2></td></tr>
-<tr class="memitem:aa10908699a8ddb3a7d049f78d863017e"><td class="memItemLeft" align="right" valign="top">(id)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_superpowered_i_o_s_audio_i_o.html#aa10908699a8ddb3a7d049f78d863017e">initWithDelegate:preferredBufferSize:preferredMinimumSamplerate:audioSessionCategory:channels:audioProcessingCallback:clientdata:</a></td></tr>
-<tr class="memdesc:aa10908699a8ddb3a7d049f78d863017e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the audio output instance.  <a href="#aa10908699a8ddb3a7d049f78d863017e">More...</a><br /></td></tr>
-<tr class="separator:aa10908699a8ddb3a7d049f78d863017e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53cfc21827656db9db3453fdddd1394c"><td class="memItemLeft" align="right" valign="top">(id)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_superpowered_i_o_s_audio_i_o.html#a53cfc21827656db9db3453fdddd1394c">initWithDelegate:preferredBufferSize:preferredSamplerate:audioSessionCategory:channels:audioProcessingCallback:clientdata:</a></td></tr>
+<tr class="memdesc:a53cfc21827656db9db3453fdddd1394c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the audio output instance.  <a href="#a53cfc21827656db9db3453fdddd1394c">More...</a><br /></td></tr>
+<tr class="separator:a53cfc21827656db9db3453fdddd1394c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe7f8d2097684b5f0db47c3eaaa216f9"><td class="memItemLeft" align="right" valign="top">(bool)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_superpowered_i_o_s_audio_i_o.html#abe7f8d2097684b5f0db47c3eaaa216f9">start</a></td></tr>
 <tr class="memdesc:abe7f8d2097684b5f0db47c3eaaa216f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts audio processing.  <a href="#abe7f8d2097684b5f0db47c3eaaa216f9">More...</a><br /></td></tr>
 <tr class="separator:abe7f8d2097684b5f0db47c3eaaa216f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -80,6 +80,10 @@ Protected Attributes</h2></td></tr>
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_superpowered_i_o_s_audio_i_o.html#a10d9a6b8855c1241b51d9cd06e8e0f86">preferredBufferSizeMs</a></td></tr>
 <tr class="memdesc:a10d9a6b8855c1241b51d9cd06e8e0f86"><td class="mdescLeft">&#160;</td><td class="mdescRight">The preferred buffer size. Recommended: 12. <br /></td></tr>
 <tr class="separator:a10d9a6b8855c1241b51d9cd06e8e0f86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cd7ffbecec9701da4c171e1f2dac1e8"><td class="memItemLeft" align="right" valign="top"><a id="a9cd7ffbecec9701da4c171e1f2dac1e8"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_superpowered_i_o_s_audio_i_o.html#a9cd7ffbecec9701da4c171e1f2dac1e8">preferredSamplerate</a></td></tr>
+<tr class="memdesc:a9cd7ffbecec9701da4c171e1f2dac1e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The preferred sample rate. <br /></td></tr>
+<tr class="separator:a9cd7ffbecec9701da4c171e1f2dac1e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9fca8e0025fb2a21de1ab27ebe0e8fb"><td class="memItemLeft" align="right" valign="top"><a id="ae9fca8e0025fb2a21de1ab27ebe0e8fb"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_superpowered_i_o_s_audio_i_o.html#ae9fca8e0025fb2a21de1ab27ebe0e8fb">saveBatteryInBackground</a></td></tr>
 <tr class="memdesc:ae9fca8e0025fb2a21de1ab27ebe0e8fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save battery if output is silence and the app runs in background mode. True by default. <br /></td></tr>
@@ -92,8 +96,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section warning"><dt>Warning</dt><dd>All methods and setters should be called on the main thread only! </dd></dl>
 </div><h2 class="groupheader">Method Documentation</h2>
-<a id="aa10908699a8ddb3a7d049f78d863017e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa10908699a8ddb3a7d049f78d863017e">&#9670;&nbsp;</a></span>initWithDelegate:preferredBufferSize:preferredMinimumSamplerate:audioSessionCategory:channels:audioProcessingCallback:clientdata:()</h2>
+<a id="a53cfc21827656db9db3453fdddd1394c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53cfc21827656db9db3453fdddd1394c">&#9670;&nbsp;</a></span>initWithDelegate:preferredBufferSize:preferredSamplerate:audioSessionCategory:channels:audioProcessingCallback:clientdata:()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -111,10 +115,10 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
           <td class="paramname"><em>preferredBufferSize</em></td>
         </tr>
         <tr>
-          <td class="paramkey">preferredMinimumSamplerate:</td>
+          <td class="paramkey">preferredSamplerate:</td>
           <td></td>
           <td class="paramtype">(unsigned int)&#160;</td>
-          <td class="paramname"><em>preferredMinimumSamplerate</em></td>
+          <td class="paramname"><em>preferredSamplerate</em></td>
         </tr>
         <tr>
           <td class="paramkey">audioSessionCategory:</td>
@@ -151,7 +155,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
   <table class="params">
     <tr><td class="paramname">delegate</td><td>The object fully implementing the <a class="el" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html" title="You must implement this protocol to make SuperpoweredIOSAudioIO work. ">SuperpoweredIOSAudioIODelegate</a> protocol. Not retained. </td></tr>
     <tr><td class="paramname">preferredBufferSize</td><td>The initial value for preferredBufferSizeMs. 12 is good for every iOS device (512 samples). </td></tr>
-    <tr><td class="paramname">preferredMinimumSamplerate</td><td>The preferred minimum sample rate. 44100 or 48000 are recommended for good sound quality. </td></tr>
+    <tr><td class="paramname">preferredSamplerate</td><td>The preferred sample rate. 44100 or 48000 are recommended for good sound quality. </td></tr>
     <tr><td class="paramname">audioSessionCategory</td><td>The audio session category. Audio input is enabled for the appropriate categories only! </td></tr>
     <tr><td class="paramname">channels</td><td>The number of channels in the audio processing callback. </td></tr>
     <tr><td class="paramname">callback</td><td>The audio processing callback. </td></tr>

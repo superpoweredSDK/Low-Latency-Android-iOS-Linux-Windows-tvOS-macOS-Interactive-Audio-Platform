@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.2.3</span>
+   &#160;<span id="projectnumber">1.2.4</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -371,7 +371,7 @@ static char *&#160;</td><td class="memItemRight" valign="bottom"><b>tempFolderPa
     <tr><td class="paramname">beatIndex</td><td>Which beat has just happened (1 [1.0f-1.999f], 2 [2.0f-2.999f], 3 [3.0f-3.99f], 4 [4.0f-4.99f]). A value of 0 means "don't know". Read only. </td></tr>
     <tr><td class="paramname">bufferStartPercent</td><td>What is buffered from the original source, start point. Will always be 0 for non-network sources (files). Read only. </td></tr>
     <tr><td class="paramname">bufferEndPercent</td><td>What is buffered from the original source, end point. Will always be 1.0f for non-network sources (files). Read only. </td></tr>
-    <tr><td class="paramname">currentBps</td><td>The current download speed. </td></tr>
+    <tr><td class="paramname">currentBps</td><td>For HLS only. Updated after each segment download to indicate the actual network throughput (for best stream selection). </td></tr>
     <tr><td class="paramname">loadErrorCode</td><td>HTTP error code for SuperpoweredAdvancedAudioPlayerEvent_LoadError. The value of 1 means no internet connection. </td></tr>
     <tr><td class="paramname">syncMode</td><td>The current sync mode (off, tempo, or tempo and beat). </td></tr>
     <tr><td class="paramname">fixDoubleOrHalfBPM</td><td>If tempo is &gt;1.4f or &lt;0.6f, it will treat the bpm as half or double. Good for certain genres. False by default. </td></tr>

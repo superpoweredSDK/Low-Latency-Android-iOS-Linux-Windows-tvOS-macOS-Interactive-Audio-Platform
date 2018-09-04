@@ -37,14 +37,14 @@ public:
 /**
  @brief Get results. Call this method ONCE, after all samples are processed. Delete the analyzer after this, the same instance can not be used further. This method should NOT be used in a real-time audio thread.
  
- @param averageWaveform 150 points/sec waveform data displaying the average volume. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory).
- @param peakWaveform 150 points/sec waveform data displaying the peak volume. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory).
- @param lowWaveform 150 points/sec waveform data displaying the low frequencies. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory).
- @param midWaveform 150 points/sec waveform data displaying the mid frequencies. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory).
- @param highWaveform 150 points/sec waveform data displaying the high frequencies. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory).
- @param notes 150 points/sec data displaying the bass and mid keys. Upper 4 bits are the bass notes 0 to 11, lower 4 bits are the mid notes 0 to 11 (C, C#, D, D#, E, F, F#, G, G#, A, A#, B). The note value is 12 means "unknown note due low volume". You take ownership on this (must free memory).
+ @param averageWaveform 150 points/sec waveform data displaying the average volume. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory, _aligned_free() on Windows).
+ @param peakWaveform 150 points/sec waveform data displaying the peak volume. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory, _aligned_free() on Windows).
+ @param lowWaveform 150 points/sec waveform data displaying the low frequencies. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory, _aligned_free() on Windows).
+ @param midWaveform 150 points/sec waveform data displaying the mid frequencies. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory, _aligned_free() on Windows).
+ @param highWaveform 150 points/sec waveform data displaying the high frequencies. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory, _aligned_free() on Windows).
+ @param notes 150 points/sec data displaying the bass and mid keys. Upper 4 bits are the bass notes 0 to 11, lower 4 bits are the mid notes 0 to 11 (C, C#, D, D#, E, F, F#, G, G#, A, A#, B). The note value is 12 means "unknown note due low volume". You take ownership on this (must free memory, _aligned_free() on Windows).
  @param waveformSize The number of points in averageWaveform, peakWaveform or lowMidHighWaveform.
- @param overviewWaveform 1 point/sec waveform data displaying the average volume in decibels. Useful for displaying the overall structure of a track. Each sample is a signed char, from -128 to 0 decibel. You take ownership on this (must free memory).
+ @param overviewWaveform 1 point/sec waveform data displaying the average volume in decibels. Useful for displaying the overall structure of a track. Each sample is a signed char, from -128 to 0 decibel. You take ownership on this (must free memory, _aligned_free() on Windows).
  @param overviewSize The number points in overviewWaveform.
  @param averageDecibel The average loudness of all samples processed in decibel.
  @param loudpartsAverageDecibel The average loudness of the "loud" parts in the music in decibel. (Breakdowns and other quiet parts are excluded.)

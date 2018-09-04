@@ -93,7 +93,7 @@ static bool audioProcessing(void *clientdata, float **buffers, unsigned int inpu
     filter = new SuperpoweredFilter(SuperpoweredFilter_Resonant_Lowpass, 44100);
     flanger = new SuperpoweredFlanger(44100);
 
-    output = [[SuperpoweredIOSAudioIO alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:12 preferredMinimumSamplerate:44100 audioSessionCategory:AVAudioSessionCategoryPlayback channels:2 audioProcessingCallback:audioProcessing clientdata:(__bridge void *)self];
+    output = [[SuperpoweredIOSAudioIO alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:12 preferredSamplerate:44100 audioSessionCategory:AVAudioSessionCategoryPlayback channels:2 audioProcessingCallback:audioProcessing clientdata:(__bridge void *)self];
     [output start];
 }
 

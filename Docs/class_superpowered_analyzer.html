@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.2.3</span>
+   &#160;<span id="projectnumber">1.2.4</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -272,14 +272,14 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">averageWaveform</td><td>150 points/sec waveform data displaying the average volume. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory). </td></tr>
-    <tr><td class="paramname">peakWaveform</td><td>150 points/sec waveform data displaying the peak volume. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory). </td></tr>
-    <tr><td class="paramname">lowWaveform</td><td>150 points/sec waveform data displaying the low frequencies. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory). </td></tr>
-    <tr><td class="paramname">midWaveform</td><td>150 points/sec waveform data displaying the mid frequencies. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory). </td></tr>
-    <tr><td class="paramname">highWaveform</td><td>150 points/sec waveform data displaying the high frequencies. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory). </td></tr>
-    <tr><td class="paramname">notes</td><td>150 points/sec data displaying the bass and mid keys. Upper 4 bits are the bass notes 0 to 11, lower 4 bits are the mid notes 0 to 11 (C, C#, D, D#, E, F, F#, G, G#, A, A#, B). The note value is 12 means "unknown note due low volume". You take ownership on this (must free memory). </td></tr>
+    <tr><td class="paramname">averageWaveform</td><td>150 points/sec waveform data displaying the average volume. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory, _aligned_free() on Windows). </td></tr>
+    <tr><td class="paramname">peakWaveform</td><td>150 points/sec waveform data displaying the peak volume. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory, _aligned_free() on Windows). </td></tr>
+    <tr><td class="paramname">lowWaveform</td><td>150 points/sec waveform data displaying the low frequencies. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory, _aligned_free() on Windows). </td></tr>
+    <tr><td class="paramname">midWaveform</td><td>150 points/sec waveform data displaying the mid frequencies. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory, _aligned_free() on Windows). </td></tr>
+    <tr><td class="paramname">highWaveform</td><td>150 points/sec waveform data displaying the high frequencies. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory, _aligned_free() on Windows). </td></tr>
+    <tr><td class="paramname">notes</td><td>150 points/sec data displaying the bass and mid keys. Upper 4 bits are the bass notes 0 to 11, lower 4 bits are the mid notes 0 to 11 (C, C#, D, D#, E, F, F#, G, G#, A, A#, B). The note value is 12 means "unknown note due low volume". You take ownership on this (must free memory, _aligned_free() on Windows). </td></tr>
     <tr><td class="paramname">waveformSize</td><td>The number of points in averageWaveform, peakWaveform or lowMidHighWaveform. </td></tr>
-    <tr><td class="paramname">overviewWaveform</td><td>1 point/sec waveform data displaying the average volume in decibels. Useful for displaying the overall structure of a track. Each sample is a signed char, from -128 to 0 decibel. You take ownership on this (must free memory). </td></tr>
+    <tr><td class="paramname">overviewWaveform</td><td>1 point/sec waveform data displaying the average volume in decibels. Useful for displaying the overall structure of a track. Each sample is a signed char, from -128 to 0 decibel. You take ownership on this (must free memory, _aligned_free() on Windows). </td></tr>
     <tr><td class="paramname">overviewSize</td><td>The number points in overviewWaveform. </td></tr>
     <tr><td class="paramname">averageDecibel</td><td>The average loudness of all samples processed in decibel. </td></tr>
     <tr><td class="paramname">loudpartsAverageDecibel</td><td>The average loudness of the "loud" parts in the music in decibel. (Breakdowns and other quiet parts are excluded.) </td></tr>

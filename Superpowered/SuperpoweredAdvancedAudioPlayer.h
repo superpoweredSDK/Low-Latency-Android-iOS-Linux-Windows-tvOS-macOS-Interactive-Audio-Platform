@@ -158,7 +158,7 @@ typedef void (* SuperpoweredAdvancedAudioPlayerCallback) (void *clientData, Supe
  @param beatIndex Which beat has just happened (1 [1.0f-1.999f], 2 [2.0f-2.999f], 3 [3.0f-3.99f], 4 [4.0f-4.99f]). A value of 0 means "don't know". Read only.
  @param bufferStartPercent What is buffered from the original source, start point. Will always be 0 for non-network sources (files). Read only.
  @param bufferEndPercent What is buffered from the original source, end point. Will always be 1.0f for non-network sources (files). Read only.
- @param currentBps The current download speed.
+ @param currentBps For HLS only. Updated after each segment download to indicate the actual network throughput (for best stream selection).
  @param loadErrorCode HTTP error code for SuperpoweredAdvancedAudioPlayerEvent_LoadError. The value of 1 means no internet connection.
  @param syncMode The current sync mode (off, tempo, or tempo and beat).
  @param fixDoubleOrHalfBPM If tempo is >1.4f or <0.6f, it will treat the bpm as half or double. Good for certain genres. False by default.

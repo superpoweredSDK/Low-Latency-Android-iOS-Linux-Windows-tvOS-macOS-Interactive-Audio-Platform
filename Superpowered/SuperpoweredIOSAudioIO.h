@@ -88,12 +88,15 @@ typedef bool (*audioProcessingCallback) (void *clientdata, float **buffers, unsi
  */
 @interface SuperpoweredIOSAudioIO: NSObject {
     int preferredBufferSizeMs;
+    int preferredSamplerate;
     bool saveBatteryInBackground;
     bool started;
 }
 
 /** @brief The preferred buffer size. Recommended: 12. */
 @property (nonatomic, assign) int preferredBufferSizeMs;
+/** @brief The preferred sample rate. */
+@property (nonatomic, assign) int preferredSamplerate;
 /** @brief Save battery if output is silence and the app runs in background mode. True by default. */
 @property (nonatomic, assign) bool saveBatteryInBackground;
 /** @brief Indicates if the instance has been started. */
@@ -104,13 +107,13 @@ typedef bool (*audioProcessingCallback) (void *clientdata, float **buffers, unsi
   
  @param delegate The object fully implementing the SuperpoweredIOSAudioIODelegate protocol. Not retained.
  @param preferredBufferSize The initial value for preferredBufferSizeMs. 12 is good for every iOS device (512 samples).
- @param preferredMinimumSamplerate The preferred minimum sample rate. 44100 or 48000 are recommended for good sound quality.
+ @param preferredSamplerate The preferred sample rate. 44100 or 48000 are recommended for good sound quality.
  @param audioSessionCategory The audio session category. Audio input is enabled for the appropriate categories only!
  @param channels The number of channels in the audio processing callback.
  @param callback The audio processing callback.
  @param clientdata Custom data passed to the audio processing callback.
  */
-- (id)initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)delegate preferredBufferSize:(unsigned int)preferredBufferSize preferredMinimumSamplerate:(unsigned int)preferredMinimumSamplerate audioSessionCategory:(NSString *)audioSessionCategory channels:(int)channels audioProcessingCallback:(audioProcessingCallback)callback clientdata:(void *)clientdata;
+- (id)initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)delegate preferredBufferSize:(unsigned int)preferredBufferSize preferredSamplerate:(unsigned int)preferredSamplerate audioSessionCategory:(NSString *)audioSessionCategory channels:(int)channels audioProcessingCallback:(audioProcessingCallback)callback clientdata:(void *)clientdata;
 
 /**
  @brief Starts audio processing.
