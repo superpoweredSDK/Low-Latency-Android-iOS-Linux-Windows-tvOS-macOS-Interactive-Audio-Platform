@@ -3,6 +3,7 @@
 #import <AudioUnit/AudioUnit.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <pthread.h>
+#include <mach/mach_time.h>
 
 // Helpers
 #define SILENCE_DEPRECATION(code)                                   \
@@ -42,6 +43,7 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
     multiOutputChannelMap outputChannelMap;
     multiInputChannelMap inputChannelMap;
     audioDeviceType RemoteIOOutputChannelMap[64];
+    uint64_t lastCallbackTime;
     int numChannels, silenceFrames, samplerate, minimumNumberOfFrames, maximumNumberOfFrames;
     bool audioUnitRunning, iOS6, background, inputEnabled;
 }
@@ -93,7 +95,7 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
         [self resetAudio];
 
         // Need to listen for a few app and audio session related events.
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onForeground) name:UIApplicationDidBecomeActiveNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
         if (iOS6) {
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onMediaServerReset:) name:AVAudioSessionMediaServicesWereResetNotification object:[AVAudioSession sharedInstance]];
@@ -142,6 +144,18 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
     if (silenceFrames > samplerate) {
         [self beginInterruption];
         silenceFrames = 0;
+    } else if (!background && audioUnitRunning && started) { // If it should run...
+        mach_timebase_info_data_t timebase;
+        mach_timebase_info(&timebase);
+        uint64_t diff = mach_absolute_time() - lastCallbackTime;
+        diff *= timebase.numer;
+        diff /= timebase.denom;
+        if (diff > 1000000000) { // But it didn't call the audio processing callback in the past second.
+            audioUnitRunning = false;
+            [[AVAudioSession sharedInstance] setActive:NO error:nil];
+            [self resetAudio];
+            [self start];
+        }
     }
 }
 
@@ -371,6 +385,8 @@ static void streamFormatChangedCallback(void *inRefCon, AudioUnit inUnit, AudioU
 
 static OSStatus coreAudioProcessingCallback(void *inRefCon, AudioUnitRenderActionFlags *ioActionFlags, const AudioTimeStamp *inTimeStamp, UInt32 inBusNumber, UInt32 inNumberFrames, AudioBufferList *ioData) {
     __unsafe_unretained SuperpoweredIOSAudioIO *self = (__bridge SuperpoweredIOSAudioIO *)inRefCon;
+    self->lastCallbackTime = mach_absolute_time();
+    
     if (!ioData) ioData = self->inputBufferListForRecordingCategory;
     div_t d = div(inNumberFrames, 8);
     if ((d.rem != 0) || ((int)inNumberFrames < self->minimumNumberOfFrames) || ((int)inNumberFrames > self->maximumNumberOfFrames) || ((int)ioData->mNumberBuffers != self->numChannels)) {
