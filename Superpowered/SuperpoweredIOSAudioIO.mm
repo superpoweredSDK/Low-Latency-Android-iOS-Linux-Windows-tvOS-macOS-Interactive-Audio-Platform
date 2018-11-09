@@ -34,7 +34,7 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
 #endif
     id<SuperpoweredIOSAudioIODelegate>delegate;
     NSString *externalAudioDeviceName, *audioSessionCategory;
-    NSTimer *stopTimer;
+    dispatch_source_t stopTimer;
     NSMutableString *audioSystemInfo;
     audioProcessingCallback processingCallback;
     void *processingClientdata;
@@ -91,7 +91,7 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
         externalAudioDeviceName = nil;
         audioUnit = NULL;
         if (recordOnly) [self createAudioBuffersForRecordingCategory]; else inputBufferListForRecordingCategory = NULL;
-        stopTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(everySecond) userInfo:nil repeats:YES];
+        [self setStopTimer];
         [self resetAudio];
 
         // Need to listen for a few app and audio session related events.
@@ -109,8 +109,33 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
     return self;
 }
 
+/**
+ @brief Set and start a dispatch timer to check for silence and save battery.
+ 
+ The previously used NSTimer target kept a strong reference of `self`, resulting on a retaining cycle.
+ With a dispatch timer, it doesn't happen anymore.
+ 
+ @author Luiz Veloso
+ @date 11/09/2018
+ */
+- (void)setStopTimer {
+    
+    typeof(self) __weak weakSelf = self;
+    
+    
+    stopTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue());
+    
+    dispatch_source_set_timer(stopTimer, DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC, 0 * NSEC_PER_SEC);
+    
+    dispatch_source_set_event_handler(stopTimer, ^{
+        [weakSelf everySecond];
+    });
+    
+    dispatch_resume(stopTimer);
+    
+}
+
 - (void)dealloc {
-    [stopTimer invalidate];
     if (audioUnit != NULL) {
         AudioUnitUninitialize(audioUnit);
         AudioComponentInstanceDispose(audioUnit);
