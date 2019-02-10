@@ -9,9 +9,20 @@ import android.view.View;
 import android.util.Log;
 import android.os.Build;
 import android.os.Bundle;
+
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class MainActivity extends AppCompatActivity {
+
+    // Used to load the 'webp-jni-lib' library on application startup.
+    static {
+        System.loadLibrary("PlayerExample");    // load native library
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +54,27 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             Log.e("PlayerExample", "Close error.");
         }
-        String path = getPackageResourcePath();         // get path to APK package
-        System.loadLibrary("PlayerExample");    // load native library
         StartAudio(samplerate, buffersize);             // start audio engine
-        OpenFile(path, fileOffset, fileLength);         // open audio file from APK
+        try {
+            InputStream inputStream = getResources().openRawResource(R.raw.track);
+            FileOutputStream outputFile = new FileOutputStream(getExternalFilesDir(null) + "track.mp3");
+            copyStream(inputStream, outputFile);
+        } catch (IOException e) {
+            Log.e("PlayerExample", "Copy error.");
+        }
+        OpenFile(getExternalFilesDir(null) + "track.mp3");         // open audio file from APK
+    }
+
+    public static void copyStream(InputStream input, OutputStream output)
+            throws IOException
+    {
+        byte[] buffer = new byte[1024]; // Adjust if you want
+        int bytesRead;
+        while ((bytesRead = input.read(buffer)) != -1) // test for EOF
+        {
+            output.write(buffer, 0, bytesRead);
+        }
+        output.close();
     }
 
     // Handle Play/Pause button toggle.
@@ -76,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Functions implemented in the native library.
     private native void StartAudio(int samplerate, int buffersize);
-    private native void OpenFile(String path, int offset, int length);
+    private native void OpenFile(String path);
     private native void TogglePlayback();
     private native void onForeground();
     private native void onBackground();

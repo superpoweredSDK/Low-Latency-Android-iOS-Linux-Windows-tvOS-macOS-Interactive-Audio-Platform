@@ -87,12 +87,10 @@ extern "C" JNIEXPORT void
 Java_com_superpowered_playerexample_MainActivity_OpenFile (
         JNIEnv *env,
         jobject __unused obj,
-        jstring path,       // path to APK file
-        jint offset,        // offset of audio file
-        jint length         // length of audio file
+        jstring path       // path to APK file
 ) {
     const char *str = env->GetStringUTFChars(path, 0);
-    player->open(str, offset, length);
+    player->open(str);
     env->ReleaseStringUTFChars(path, str);
 }
 

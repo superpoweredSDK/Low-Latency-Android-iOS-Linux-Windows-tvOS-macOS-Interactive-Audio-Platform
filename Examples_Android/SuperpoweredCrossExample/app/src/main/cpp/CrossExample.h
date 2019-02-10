@@ -15,7 +15,7 @@ static const float headroom = powf(10.0f, -HEADROOM_DECIBEL * 0.025f);
 class CrossExample {
 public:
 
-	CrossExample(unsigned int samplerate, unsigned int buffersize, const char *path, int fileAoffset, int fileAlength, int fileBoffset, int fileBlength);
+	CrossExample(unsigned int samplerate, unsigned int buffersize, const char *pathA, const char *pathB);
 	~CrossExample();
 
 	bool process(short int *output, unsigned int numberOfSamples);
