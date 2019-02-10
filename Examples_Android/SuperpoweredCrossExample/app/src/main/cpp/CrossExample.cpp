@@ -54,11 +54,8 @@ static bool audioProcessing (
 CrossExample::CrossExample (
 		unsigned int samplerate,    // sampling rate
 		unsigned int buffersize,    // buffer size
-        const char *path,           // path to APK package
-		int fileAoffset,            // offset of file A in APK
-		int fileAlength,            // length of file A
-		int fileBoffset,            // offset of file B in APK
-		int fileBlength             // length of file B
+        const char *pathA,          // path to resource file
+        const char *pathB          // path to resource file
 ) : activeFx(0), crossValue(0.0f), volB(0.0f), volA(1.0f * headroom)
 {
     // Allocate aligned memory for floating point buffer.
@@ -66,9 +63,9 @@ CrossExample::CrossExample (
 
     // Initialize players and open audio files.
     playerA = new SuperpoweredAdvancedAudioPlayer(&playerA, playerEventCallbackA, samplerate, 0);
-    playerA->open(path, fileAoffset, fileAlength);
+    playerA->open(pathA);
     playerB = new SuperpoweredAdvancedAudioPlayer(&playerB, playerEventCallbackB, samplerate, 0);
-    playerB->open(path, fileBoffset, fileBlength);
+    playerB->open(pathB);
 
     playerA->syncMode = playerB->syncMode = SuperpoweredAdvancedAudioPlayerSyncMode_TempoAndBeat;
 
@@ -233,16 +230,16 @@ Java_com_superpowered_crossexample_MainActivity_CrossExample (
 		jobject __unused obj,
 		jint samplerate,        // sampling rate
 		jint buffersize,        // buffer size
-		jstring apkPath,        // path to APK package
-		jint fileAoffset,       // offset of file A in APK
-		jint fileAlength,       // length of file A
-		jint fileBoffset,       // offset of file B in APK
-		jint fileBlength        // length of file B
+		jstring jPathA,        // path to internal storage
+        jstring jPathB        // path to internal storage
+
 ) {
-    const char *path = env->GetStringUTFChars(apkPath, JNI_FALSE);
+    const char *pathA = env->GetStringUTFChars(jPathA, JNI_FALSE);
+    const char *pathB = env->GetStringUTFChars(jPathB, JNI_FALSE);
     example = new CrossExample((unsigned int)samplerate, (unsigned int)buffersize,
-			path, fileAoffset, fileAlength, fileBoffset, fileBlength);
-    env->ReleaseStringUTFChars(apkPath, path);
+			pathA, pathB);
+    env->ReleaseStringUTFChars(jPathA, pathA);
+    env->ReleaseStringUTFChars(jPathB, pathB);
 }
 
 // onPlayPause - Toggle playback state of player.

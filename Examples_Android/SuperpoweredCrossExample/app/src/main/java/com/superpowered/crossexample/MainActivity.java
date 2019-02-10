@@ -4,14 +4,19 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.media.AudioManager;
 import android.content.Context;
-import android.content.res.AssetFileDescriptor;
 import android.content.pm.PackageManager;
+
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.widget.SeekBar;
@@ -24,6 +29,11 @@ import android.Manifest;
 
 public class MainActivity extends AppCompatActivity {
     private boolean playing = false;
+
+    // Used to load the native 'CrossExample' library on application startup.
+    static {
+        System.loadLibrary("CrossExample");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,30 +88,27 @@ public class MainActivity extends AppCompatActivity {
 
         // Files under res/raw are not zipped, just copied into the APK.
 		// Get the offset and length to know where our files are located.
-        String apkPath = getPackageResourcePath();
-        AssetFileDescriptor fd0 = getResources().openRawResourceFd(R.raw.lycka);
-		AssetFileDescriptor fd1 = getResources().openRawResourceFd(R.raw.nuyorica);
-        int fileAoffset = (int)fd0.getStartOffset();
-		int fileAlength = (int)fd0.getLength();
-		int fileBoffset = (int)fd1.getStartOffset();
-		int fileBlength = (int)fd1.getLength();
         try {
-            fd0.getParcelFileDescriptor().close();
-            fd1.getParcelFileDescriptor().close();
+            InputStream inputStream = getResources().openRawResource(R.raw.lycka);
+            FileOutputStream outputFile = new FileOutputStream(getExternalFilesDir(null) + "lycka.mp3");
+            copyStream(inputStream, outputFile);
         } catch (IOException e) {
-            android.util.Log.d("", "Close error.");
+            Log.e("PlayerExample", "Copy error.");
+        }
+        try {
+            InputStream inputStream = getResources().openRawResource(R.raw.nuyorica);
+            FileOutputStream outputFile = new FileOutputStream(getExternalFilesDir(null) + "nuyorica.m4a");
+            copyStream(inputStream, outputFile);
+        } catch (IOException e) {
+            Log.e("PlayerExample", "Copy error.");
         }
 
         // Initialize the players and effects, and start the audio engine.
-        System.loadLibrary("CrossExample");
         CrossExample(
                 samplerate,     // sampling rate
                 buffersize,     // buffer size
-                apkPath,        // path to .apk package
-			    fileAoffset,    // offset (start) of file A in the APK
-			    fileAlength,    // length of file A
-			    fileBoffset,    // offset (start) of file B in the APK
-			    fileBlength     // length of file B
+                getExternalFilesDir(null) + "lycka.mp3",
+                getExternalFilesDir(null) + "nuyorica.m4a"
         );
 
         // Setup crossfader events
@@ -138,6 +145,18 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public static void copyStream(InputStream input, OutputStream output)
+            throws IOException
+    {
+        byte[] buffer = new byte[1024]; // Adjust if you want
+        int bytesRead;
+        while ((bytesRead = input.read(buffer)) != -1) // test for EOF
+        {
+            output.write(buffer, 0, bytesRead);
+        }
+        output.close();
+    }
+
     // PlayPause - Toggle playback state of the player.
     public void CrossExample_PlayPause(View button) {
         playing = !playing;
@@ -169,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Functions implemented in the native library.
-    private native void CrossExample(int samplerate, int buffersize, String apkPath, int fileAoffset, int fileAlength, int fileBoffset, int fileBlength);
+    private native void CrossExample(int samplerate, int buffersize, String pathA, String pathB);
     private native void onPlayPause(boolean play);
     private native void onCrossfader(int value);
     private native void onFxSelect(int value);
