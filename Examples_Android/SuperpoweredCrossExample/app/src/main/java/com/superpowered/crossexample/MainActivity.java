@@ -30,6 +30,11 @@ import android.Manifest;
 public class MainActivity extends AppCompatActivity {
     private boolean playing = false;
 
+    // Used to load the native 'CrossExample' library on application startup.
+    static {
+        System.loadLibrary("CrossExample");
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Initialize the players and effects, and start the audio engine.
-        System.loadLibrary("CrossExample");
         CrossExample(
                 samplerate,     // sampling rate
                 buffersize,     // buffer size
@@ -140,17 +144,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-/*
-        try {
-        InputStream inputStream = getResources().openRawResource(R.raw.track);
-        FileOutputStream outputFile = new FileOutputStream(getExternalFilesDir(null) + "track.mp3");
-        copyStream(inputStream, outputFile);
-    } catch (IOException e) {
-        Log.e("PlayerExample", "Copy error.");
-    }
-    OpenFile(getExternalFilesDir(null) + "track.mp3");         // open audio file from APK
-*/
 
     public static void copyStream(InputStream input, OutputStream output)
             throws IOException

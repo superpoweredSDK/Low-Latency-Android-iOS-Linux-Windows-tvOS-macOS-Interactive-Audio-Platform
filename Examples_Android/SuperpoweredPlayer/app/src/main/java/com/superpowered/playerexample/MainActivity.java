@@ -19,9 +19,9 @@ import java.nio.file.Path;
 
 public class MainActivity extends AppCompatActivity {
 
-    // Used to load the 'webp-jni-lib' library on application startup.
+    // Used to load the native 'PlayerExample' library on application startup.
     static {
-        System.loadLibrary("PlayerExample");    // load native library
+        System.loadLibrary("PlayerExample");
     }
 
     @Override

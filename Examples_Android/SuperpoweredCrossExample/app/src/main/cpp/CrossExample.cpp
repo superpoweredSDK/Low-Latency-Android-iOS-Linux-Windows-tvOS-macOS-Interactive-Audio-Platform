@@ -3,7 +3,6 @@
 #include <SuperpoweredCPU.h>
 #include <jni.h>
 #include <stdio.h>
-#include <string.h>
 #include <android/log.h>
 #include <stdlib.h>
 #include <SLES/OpenSLES.h>
