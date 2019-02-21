@@ -4,16 +4,15 @@ def superpowered_sdk_path = new File(projectDir, '../../../Superpowered')
 
 android { // main settings for your application
     compileSdkVersion = 28
-    buildToolsVersion = '28.0.2'
 
     defaultConfig {
         applicationId "com.superpowered.complexusb"
-        minSdkVersion 19 //more than 87% of all active Android devices
+        minSdkVersion 19 //more than 96.5% of all active Android devices
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
 
-        ndk { // these platforms cover 99% percent of all Android devices
+        ndk { // these platforms cover 99.9% percent of all Android devices
             abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
         }
 
@@ -35,5 +34,5 @@ android { // main settings for your application
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
 }

@@ -55,14 +55,14 @@ static void playerEventCallback(void *clientData, SuperpoweredAdvancedAudioPlaye
 }
 
 // Called periodically by the operating system's audio stack to provide audio output.
-static bool audioProcessing(void *clientdata, float **buffers, unsigned int inputChannels, unsigned int outputChannels, unsigned int numberOfSamples, unsigned int samplerate, uint64_t hostTime) {
+static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int inputChannels, float **outputBuffers, unsigned int outputChannels, unsigned int numberOfSamples, unsigned int samplerate, uint64_t hostTime) {
     __unsafe_unretained ViewController *self = (__bridge ViewController *)clientdata;
     if (self->samplerate != samplerate) {
         self->samplerate = samplerate;
         self->player->setSamplerate(self->samplerate);
     };
     bool hasAudio = self->player->process(self->interleavedBuffer, false, numberOfSamples);
-    if (hasAudio) SuperpoweredDeInterleave(self->interleavedBuffer, buffers[0], buffers[1], numberOfSamples);
+    if (hasAudio) SuperpoweredDeInterleave(self->interleavedBuffer, outputBuffers[0], outputBuffers[1], numberOfSamples);
     return hasAudio;
 }
 

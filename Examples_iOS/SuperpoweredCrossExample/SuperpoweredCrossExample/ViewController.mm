@@ -8,7 +8,7 @@
 #import <stdlib.h>
 
 #define HEADROOM_DECIBEL 3.0f
-static const float headroom = powf(10.0f, -HEADROOM_DECIBEL * 0.025);
+static const float headroom = powf(10.0f, -HEADROOM_DECIBEL * 0.05);
 
 /*
  This is a .mm file, meaning it's Objective-C++.
@@ -45,7 +45,7 @@ void playerEventCallbackB(void *clientData, SuperpoweredAdvancedAudioPlayerEvent
 }
 
 // This is where the Superpowered magic happens.
-static bool audioProcessing(void *clientdata, float **buffers, unsigned int inputChannels, unsigned int outputChannels, unsigned int numberOfSamples, unsigned int samplerate, uint64_t hostTime) {
+static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int inputChannels, float **outputBuffers, unsigned int outputChannels, unsigned int numberOfSamples, unsigned int samplerate, uint64_t hostTime) {
     __unsafe_unretained ViewController *self = (__bridge ViewController *)clientdata;
     if (samplerate != self->lastSamplerate) { // Has samplerate changed?
         self->lastSamplerate = samplerate;
@@ -71,7 +71,7 @@ static bool audioProcessing(void *clientdata, float **buffers, unsigned int inpu
         self->flanger->process(self->stereoBuffer, self->stereoBuffer, numberOfSamples);
     };
 
-    if (!silence) SuperpoweredDeInterleave(self->stereoBuffer, buffers[0], buffers[1], numberOfSamples); // The stereoBuffer is ready now, let's put the finished audio into the requested buffers.
+    if (!silence) SuperpoweredDeInterleave(self->stereoBuffer, outputBuffers[0], outputBuffers[1], numberOfSamples); // The stereoBuffer is ready now, let's put the finished audio into the requested buffers.
     return !silence;
 }
 

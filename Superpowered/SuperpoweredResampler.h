@@ -31,9 +31,11 @@ public:
  @param numberOfSamples Number of samples to process.
  @param reverse Plays backwards.
  @param highQuality Enables more sophisticated processing to reduce interpolation noise. Good for scratching for example, but not recommended for continous music playback above 0.5f rate.
+ @param hqTemp Improves scratching sound quality when used together with highQuality=true and hqSamplerate. A temporary buffer capable of holding numberOfSamples of 32-bit floating point stereo audio.
+ @param hqSamplerate Improves scratching sound quality when used together with highQuality=true and hqTemp. The sample rate of the input.
  @param rateAdd Changes rate during process(), good for scratching or super smooth rate changes. After process(), rate will be near the desired value.
 */
-    int process(short int *input, float *output, int numberOfSamples, bool reverse = false, bool highQuality = false, float rateAdd = 0.0f);
+    int process(short int *input, float *output, int numberOfSamples, bool reverse = false, bool highQuality = false, float *hqTemp = 0, unsigned int hqSamplerate = 0, float rateAdd = 0.0f);
 
 /**
  @brief Processes the audio.
@@ -46,9 +48,11 @@ public:
  @param numberOfSamples Number of samples to process.
  @param reverse Plays backwards.
  @param highQuality Enables more sophisticated processing to reduce interpolation noise. Good for scratching for example, but not recommended for continous music playback above 0.5f rate.
+ @param hqTemp Improves scratching sound quality when used together with highQuality=true and hqSamplerate. A temporary buffer capable of holding numberOfSamples of 32-bit floating point stereo audio.
+ @param hqSamplerate Improves scratching sound quality when used together with highQuality=true and hqTemp. The sample rate of the input.
  @param rateAdd Changes rate during process(), good for scratching or super smooth rate changes. After process(), rate will be near the desired value.
 */
-    int process(short int *input, float *temp, short int *output, int numberOfSamples, bool reverse = false, bool highQuality = false, float rateAdd = 0.0f);
+    int process(short int *input, float *temp, short int *output, int numberOfSamples, bool reverse = false, bool highQuality = false, float *hqTemp = 0, unsigned int hqSamplerate = 0, float rateAdd = 0.0f);
     
 private:
     resamplerInternals *internals;

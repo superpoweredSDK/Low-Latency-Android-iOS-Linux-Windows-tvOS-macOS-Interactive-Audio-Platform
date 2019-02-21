@@ -19,6 +19,7 @@ static bool audioProcessing (
     SuperpoweredShortIntToFloat(audio, floatBuffer, (unsigned int)numberOfFrames);
     reverb->process(floatBuffer, floatBuffer, (unsigned int)numberOfFrames);
     SuperpoweredFloatToShortInt(floatBuffer, audio, (unsigned int)numberOfFrames);
+    //memset(audio, 0, numberOfFrames * 4);
     return true;
 }
 
@@ -46,8 +47,7 @@ Java_com_superpowered_effect_MainActivity_StartAudio (
             audioProcessing,                // process callback function
             NULL,                           // clientData
             -1,                             // inputStreamType (-1 = default)
-            -1,                             // outputStreamType (-1 = default)
-            buffersize * 2                  // latencySamples
+            -1                              // outputStreamType (-1 = default)
     );
 }
 

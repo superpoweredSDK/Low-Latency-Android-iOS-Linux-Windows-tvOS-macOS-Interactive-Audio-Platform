@@ -1,16 +1,10 @@
 <p align="center"><img width="450" src="http://superpowered.com/images/superpowered-animated.svg"></p>
 
-Superpowered Interactive Audio Platform for Desktop, Mobile, IoT and Embedded Applications.
+Superpowered Audio SDK is the leading C++ Audio Library featuring low-power, real-time latency and cross-platform audio players, audio decoders, Fx, audio I/O, streaming, music analysis and spatialization.
 
-Fully featured interactive audio for Games, VOIP, DAWs, Music Apps, Hi-Res Audio, Voice Assistants, Virtual, Augmented and Mixed Reality use-cases.
+With builds for Desktop, Mobile, IoT and Embedded Devices, portable and cross-platform on Android, iOS, macOS, tvOS, Linux and Windows as well as processor-specific builds for ARM32, ARM64, x86, and x64.
 
-Cross Platform on Android, iOS, macOS, tvOS, Linux and Windows.
-
-
-# What is it?
-
-Low-power, real-time latency and cross-platform audio players, audio decoders, Fx, audio I/O, streaming, music analysis and spatialization, all optimized for interactive audio. 
-
+Fully featured interactive audio for Games, VOIP, DAWs, Music Apps, Hi-Res Audio, Voice Assistants, Virtual, Augmented and Mixed Reality use-cases, powering tens of thousands of apps and billions of app-installs. 
 
 # Supported Platforms
 

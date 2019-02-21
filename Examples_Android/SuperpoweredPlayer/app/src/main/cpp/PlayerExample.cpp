@@ -77,8 +77,7 @@ Java_com_superpowered_playerexample_MainActivity_StartAudio (
             audioProcessing,                // process callback function
             NULL,                           // clientData
             -1,                             // inputStreamType (-1 = default)
-            SL_ANDROID_STREAM_MEDIA,        // outputStreamType (-1 = default)
-            buffersize * 2                  // latencySamples
+            SL_ANDROID_STREAM_MEDIA         // outputStreamType (-1 = default)
     );
 }
 

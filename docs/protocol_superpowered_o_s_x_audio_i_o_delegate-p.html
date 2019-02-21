@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.2.4</span>
+   &#160;<span id="projectnumber">1.3.0</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -52,16 +52,25 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Instance Methods</h2></td></tr>
-<tr class="memitem:a0b430c4da750c9b83e60058baf8dd400"><td class="memItemLeft" align="right" valign="top">(bool)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpowered_o_s_x_audio_i_o_delegate-p.html#a0b430c4da750c9b83e60058baf8dd400">audioProcessingCallback:inputChannels:outputBuffers:outputChannels:numberOfSamples:samplerate:hostTime:</a></td></tr>
-<tr class="memdesc:a0b430c4da750c9b83e60058baf8dd400"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process audio here.  <a href="#a0b430c4da750c9b83e60058baf8dd400">More...</a><br /></td></tr>
-<tr class="separator:a0b430c4da750c9b83e60058baf8dd400"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8989d08a79075d83e006bdaea6a8f105"><td class="memItemLeft" align="right" valign="top">(bool)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpowered_o_s_x_audio_i_o_delegate-p.html#a8989d08a79075d83e006bdaea6a8f105">audioProcessingCallback:inputChannels:outputBuffers:outputChannels:numberOfSamples:samplerate:hostTime:</a></td></tr>
+<tr class="memdesc:a8989d08a79075d83e006bdaea6a8f105"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process audio here.  <a href="#a8989d08a79075d83e006bdaea6a8f105">More...</a><br /></td></tr>
+<tr class="separator:a8989d08a79075d83e006bdaea6a8f105"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7e48d063cc76306b2237e8be359c60f"><td class="memItemLeft" align="right" valign="top"><a id="ac7e48d063cc76306b2237e8be359c60f"></a>
+(void)&#160;</td><td class="memItemRight" valign="bottom">- <b>mapChannels:numOutputChannels:outputMap:input:numInputChannels:inputMap:</b></td></tr>
+<tr class="separator:ac7e48d063cc76306b2237e8be359c60f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af98cb6d89d7ffa7b4d9d41c888e05106"><td class="memItemLeft" align="right" valign="top"><a id="af98cb6d89d7ffa7b4d9d41c888e05106"></a>
+(void)&#160;</td><td class="memItemRight" valign="bottom">- <b>audioDevicesChanged:</b></td></tr>
+<tr class="separator:af98cb6d89d7ffa7b4d9d41c888e05106"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Method Documentation</h2>
-<a id="a0b430c4da750c9b83e60058baf8dd400"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0b430c4da750c9b83e60058baf8dd400">&#9670;&nbsp;</a></span>audioProcessingCallback:inputChannels:outputBuffers:outputChannels:numberOfSamples:samplerate:hostTime:()</h2>
+<a id="a8989d08a79075d83e006bdaea6a8f105"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8989d08a79075d83e006bdaea6a8f105">&#9670;&nbsp;</a></span>audioProcessingCallback:inputChannels:outputBuffers:outputChannels:numberOfSamples:samplerate:hostTime:()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">- (bool) audioProcessingCallback: </td>
@@ -102,7 +111,7 @@ Instance Methods</h2></td></tr>
         <tr>
           <td class="paramkey">hostTime:</td>
           <td></td>
-          <td class="paramtype">(UInt64)&#160;</td>
+          <td class="paramtype">(unsigned long long int)&#160;</td>
           <td class="paramname"><em>hostTime</em>&#160;</td>
         </tr>
         <tr>
@@ -111,6 +120,11 @@ Instance Methods</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">optional</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>Return false when you did no audio processing (silence).</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>

@@ -4,7 +4,6 @@ def superpowered_sdk_path = new File(projectDir, '../../../Superpowered')
 
 android { // main settings for your application
     compileSdkVersion = 28
-    buildToolsVersion = '28.0.2'
 
     defaultConfig {
         applicationId "com.superpowered.playerexample"
@@ -13,8 +12,12 @@ android { // main settings for your application
         versionCode 1
         versionName "1.0"
 
-        ndk { // these platforms cover 99% percent of all Android devices
+        ndk { // these platforms cover 99.9% percent of all Android devices
             abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+        }
+
+        compileOptions {
+            incremental false
         }
 
         externalNativeBuild {
@@ -22,6 +25,7 @@ android { // main settings for your application
                 arguments '-DANDROID_PLATFORM=android-16', '-DANDROID_TOOLCHAIN=clang', '-DANDROID_ARM_NEON=TRUE', '-DANDROID_STL=c++_static', "-DPATH_TO_SUPERPOWERED:STRING=${superpowered_sdk_path}"
                 cFlags '-O3', '-fsigned-char' // full optimization, char data type is signed
                 cppFlags '-fsigned-char', "-I${superpowered_sdk_path}"
+
             }
         }
     }
@@ -35,6 +39,6 @@ android { // main settings for your application
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 }

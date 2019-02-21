@@ -94,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Initialize the players and effects, and start the audio engine.
         System.loadLibrary("CrossExample");
+        // If the application crashes, please disable Instant Run under Build, Execution, Deployment in preferences.
         CrossExample(
                 samplerate,     // sampling rate
                 buffersize,     // buffer size

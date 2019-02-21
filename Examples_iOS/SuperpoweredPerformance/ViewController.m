@@ -13,7 +13,7 @@
     UISlider *seekSlider;
     UIColor *disabledColor, *enabledColor, *enabledBackgroundColor;
     CoreAudio *coreAudio;
-    Superpowered *superpowered;
+    SuperpoweredAudio *superpowered;
     bool SuperpoweredEnabled, fxEnabled[NUMFXUNITS], canCompare;
     uint64_t *superpoweredAvgUnits, *superpoweredMaxUnits, *coreaudioAvgUnits, *coreaudioMaxUnits;
     int frame, config;
@@ -64,7 +64,7 @@
     ticksToCPUPercent = ticksToSeconds * 100.0;
     
     // Let's create two objects here, one to handle Superpowered, and the other to handle Core Audio.
-    superpowered = [[Superpowered alloc] init];
+    superpowered = [[SuperpoweredAudio alloc] init];
     coreAudio = [[CoreAudio alloc] init];
     
     SuperpoweredEnabled = true;

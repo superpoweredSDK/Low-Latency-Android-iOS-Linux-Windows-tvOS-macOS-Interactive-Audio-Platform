@@ -90,8 +90,14 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
         samplerate = minimumNumberOfFrames = maximumNumberOfFrames = 0;
         externalAudioDeviceName = nil;
         audioUnit = NULL;
-        if (recordOnly) [self createAudioBuffersForRecordingCategory]; else inputBufferListForRecordingCategory = NULL;
+        inputBufferListForRecordingCategory = NULL;
+#if (USES_AUDIO_INPUT == 1)
+        if (recordOnly) [self createAudioBuffersForRecordingCategory];
+#endif
         stopTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(everySecond) userInfo:nil repeats:YES];
+#if !__has_feature(objc_arc)
+        [self release]; // to prevent NSTimer retaining this
+#endif
         [self resetAudio];
 
         // Need to listen for a few app and audio session related events.
@@ -105,6 +111,14 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
             AVAudioSession *s = [AVAudioSession sharedInstance];
             SILENCE_DEPRECATION(s.delegate = (id<AVAudioSessionDelegate>)self); // iOS 5 compatibility
         };
+        
+#if (USES_AUDIO_INPUT == 1)
+        if ((recordOnly || [category isEqualToString:AVAudioSessionCategoryPlayAndRecord]) && [[AVAudioSession sharedInstance] respondsToSelector:@selector(recordPermission)] && [[AVAudioSession sharedInstance] respondsToSelector:@selector(requestRecordPermission:)] && ([[AVAudioSession sharedInstance] recordPermission] != AVAudioSessionRecordPermissionGranted)) {
+            [[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) {
+                if (granted) [self onMediaServerReset:nil]; else [self->delegate recordPermissionRefused];
+            }];
+        };
+#endif
     };
     return self;
 }
@@ -389,7 +403,16 @@ static OSStatus coreAudioProcessingCallback(void *inRefCon, AudioUnitRenderActio
     
     if (!ioData) ioData = self->inputBufferListForRecordingCategory;
     div_t d = div(inNumberFrames, 8);
-    if ((d.rem != 0) || ((int)inNumberFrames < self->minimumNumberOfFrames) || ((int)inNumberFrames > self->maximumNumberOfFrames) || ((int)ioData->mNumberBuffers != self->numChannels)) {
+    if (d.rem != 0) {
+        // Core Audio performs sample rate conversion, but received no streamFormatChangedCallback. Recreate audio I/O for perfect match with hardware.
+        if (self->audioUnitRunning) {
+            self->audioUnitRunning = false;
+            [self performSelectorOnMainThread:@selector(onMediaServerReset:) withObject:nil waitUntilDone:NO];
+        }
+        return kAudioUnitErr_InvalidParameter;
+    }
+    
+    if (((int)inNumberFrames < self->minimumNumberOfFrames) || ((int)inNumberFrames > self->maximumNumberOfFrames) || ((int)ioData->mNumberBuffers != self->numChannels)) {
         return kAudioUnitErr_InvalidParameter;
     };
 
@@ -400,7 +423,7 @@ static OSStatus coreAudioProcessingCallback(void *inRefCon, AudioUnitRenderActio
     bool silence = true;
 
     // Make audio output.
-    silence = !self->processingCallback(self->processingClientdata, bufs, inputChannels, self->numChannels, inNumberFrames, self->samplerate, inTimeStamp->mHostTime);
+    silence = !self->processingCallback(self->processingClientdata, bufs, inputChannels, bufs, self->numChannels, inNumberFrames, self->samplerate, inTimeStamp->mHostTime);
 
     if (silence) { // Despite of ioActionFlags, it outputs garbage sometimes, so must zero the buffers:
         *ioActionFlags |= kAudioUnitRenderAction_OutputIsSilence;

@@ -13,11 +13,11 @@
 #define FFT_LOG_SIZE 11 // 2^11 = 2048
 
 // This callback is called periodically by the audio system.
-static bool audioProcessing(void *clientdata, float **buffers, unsigned int inputChannels, unsigned int outputChannels, unsigned int numberOfSamples, unsigned int samplerate, uint64_t hostTime) {
+static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int inputChannels, float **outputBuffers, unsigned int outputChannels, unsigned int numberOfSamples, unsigned int samplerate, uint64_t hostTime) {
     __unsafe_unretained ViewController *self = (__bridge ViewController *)clientdata;
     // Input goes to the frequency domain.
     float interleaved[numberOfSamples * 2 + 16];
-    SuperpoweredInterleave(buffers[0], buffers[1], interleaved, numberOfSamples);
+    SuperpoweredInterleave(inputBuffers[0], inputBuffers[1], interleaved, numberOfSamples);
     self->frequencyDomain->addInput(interleaved, numberOfSamples);
 
     // In the frequency domain we are working with 1024 magnitudes and phases for every channel (left, right), if the fft size is 2048.
@@ -46,7 +46,7 @@ static bool audioProcessing(void *clientdata, float **buffers, unsigned int inpu
 
     // If we have enough samples in the fifo output buffer, pass them to the audio output.
     if (self->fifoOutputLastSample - self->fifoOutputFirstSample >= numberOfSamples) {
-        SuperpoweredDeInterleave(self->fifoOutput + self->fifoOutputFirstSample * 2, buffers[0], buffers[1], numberOfSamples);
+        SuperpoweredDeInterleave(self->fifoOutput + self->fifoOutputFirstSample * 2, outputBuffers[0], outputBuffers[1], numberOfSamples);
         // buffers[0] and buffer[1] now have time domain audio output (left and right channels)
         self->fifoOutputFirstSample += numberOfSamples;
         return true;

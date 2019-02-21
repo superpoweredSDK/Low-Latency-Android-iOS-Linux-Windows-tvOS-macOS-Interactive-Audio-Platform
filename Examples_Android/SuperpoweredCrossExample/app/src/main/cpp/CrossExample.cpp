@@ -86,8 +86,7 @@ CrossExample::CrossExample (
 			audioProcessing,                // audio callback function
 			this,                           // clientData
 			-1,                             // inputStreamType (-1 = default)
-			SL_ANDROID_STREAM_MEDIA,        // outputStreamType (-1 = default)
-			buffersize * 2                  // latency (frames)
+			SL_ANDROID_STREAM_MEDIA         // outputStreamType (-1 = default)
 	);
 }
 

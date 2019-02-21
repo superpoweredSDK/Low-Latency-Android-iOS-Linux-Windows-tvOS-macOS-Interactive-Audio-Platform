@@ -1,5 +1,17 @@
 #import <Cocoa/Cocoa.h>
 
+typedef struct audioDevice {
+    audioDevice *next;
+    char *name;
+    unsigned int deviceID, numInputChannels, numOutputChannels;
+    
+    void dealloc() {
+        if (next) next->dealloc();
+        if (name) free(name);
+        free(this);
+    }
+} audioDevice;
+
 @protocol SuperpoweredOSXAudioIODelegate;
 
 /**
@@ -24,6 +36,7 @@ typedef bool (*audioProcessingCallback_C) (void *clientdata, float **inputBuffer
  @warning All methods and setters should be called on the main thread only!
  */
 @interface SuperpoweredOSXAudioIO: NSObject {
+    unsigned int audioDeviceID;
     int preferredBufferSizeMs;
     bool inputEnabled, outputEnabled;
 }
@@ -35,7 +48,7 @@ typedef bool (*audioProcessingCallback_C) (void *clientdata, float **inputBuffer
 /** @brief Set this to true to enable audio output. */
 @property (nonatomic, assign) bool outputEnabled;
 /**
- @brief Creates the audio output instance.
+ @brief Creates an audio IO instance using the default system audio input and/or output.
   
  @param delegate The object fully implementing the SuperpoweredOSXAudioIODelegate protocol. Not retained.
  @param preferredBufferSizeMs The initial value for preferredBufferSizeMs. 12 is good for every device (512 samples).
@@ -44,6 +57,25 @@ typedef bool (*audioProcessingCallback_C) (void *clientdata, float **inputBuffer
  @param enableOutput Enable audio output.
  */
 - (id)initWithDelegate:(id<SuperpoweredOSXAudioIODelegate>)delegate preferredBufferSizeMs:(unsigned int)preferredBufferSizeMs numberOfChannels:(int)numberOfChannels enableInput:(bool)enableInput enableOutput:(bool)enableOutput;
+
+/**
+ @brief Creates an audio output instance using a specific audio device.
+ 
+ @param delegate The object fully implementing the SuperpoweredOSXAudioIODelegate protocol. Not retained.
+ @param preferredBufferSizeMs The initial value for preferredBufferSizeMs. 12 is good for every device (512 samples).
+ @param numberOfChannels The number of channels you provide in the audio processing callback.
+ @param enableInput Enable audio input.
+ @param enableOutput Enable audio output.
+ @param audioDeviceID The device identifier of the audio device. Equals to AudioDeviceID of Core Audio.
+ */
+- (id)initWithDelegate:(id<SuperpoweredOSXAudioIODelegate>)delegate preferredBufferSizeMs:(unsigned int)preferredBufferSizeMs numberOfChannels:(int)numberOfChannels enableInput:(bool)enableInput enableOutput:(bool)enableOutput audioDeviceID:(unsigned int)audioDeviceID;
+
+/**
+ @brief Changes the audio device.
+ 
+ @param audioDeviceID The device identifier of the audio device (equals to AudioDeviceID of Core Audio) or UINT_MAX to use the default system audio device.
+ */
+- (void)setAudioDevice:(unsigned int)audioDeviceID;
 
 /**
  @brief Starts audio processing.
@@ -58,6 +90,11 @@ typedef bool (*audioProcessingCallback_C) (void *clientdata, float **inputBuffer
 - (void)stop;
 
 /**
+ @brief Call this to re-configure the channel mapping.
+ */
+- (void)mapChannels;
+
+/**
  @brief Set the audio processing callback to a C function, instead of the delegate's Objective-C method.
  
  99% of all audio apps work great with the Objective-C method, so you don't need to use this. Don't call this method after [start]!
@@ -67,6 +104,13 @@ typedef bool (*audioProcessingCallback_C) (void *clientdata, float **inputBuffer
  */
 - (void)setProcessingCallback_C:(audioProcessingCallback_C)callback clientdata:(void *)clientdata;
 
+/**
+ @brief Get a list of the current audio input and output devices.
+ 
+ @return A linked list of audioDevice structs.
+ */
++ (audioDevice *)getAudioDevices;
+
 @end
 
 
@@ -74,6 +118,7 @@ typedef bool (*audioProcessingCallback_C) (void *clientdata, float **inputBuffer
  @brief You must implement this protocol to make SuperpoweredOSXAudioIODelegate work.
  */
 @protocol SuperpoweredOSXAudioIODelegate
+@optional
 
 /**
  @brief Process audio here.
@@ -90,6 +135,10 @@ typedef bool (*audioProcessingCallback_C) (void *clientdata, float **inputBuffer
  
  @warning It's called on a high priority real-time audio thread, so please take care of blocking and processing time to prevent audio dropouts.
  */
-- (bool)audioProcessingCallback:(float **)inputBuffers inputChannels:(unsigned int)inputChannels outputBuffers:(float **)outputBuffers outputChannels:(unsigned int)outputChannels numberOfSamples:(unsigned int)numberOfSamples samplerate:(unsigned int)samplerate hostTime:(UInt64)hostTime;
+- (bool)audioProcessingCallback:(float **)inputBuffers inputChannels:(unsigned int)inputChannels outputBuffers:(float **)outputBuffers outputChannels:(unsigned int)outputChannels numberOfSamples:(unsigned int)numberOfSamples samplerate:(unsigned int)samplerate hostTime:(unsigned long long int)hostTime;
+
+- (void)mapChannels:(NSString *)outputDeviceName numOutputChannels:(int)numOutputChannels outputMap:(int *)outputMap input:(NSString *)inputDeviceName numInputChannels:(int)numInputChannels inputMap:(int *)inputMap;
+
+- (void)audioDevicesChanged:(audioDevice *)devices;
 
 @end

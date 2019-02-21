@@ -1,6 +1,8 @@
 #ifndef Header_SuperpoweredDecoder
 #define Header_SuperpoweredDecoder
 
+#include "SuperpoweredHTTP.h"
+
 #include <stdint.h>
 struct decoderInternals;
 struct stemsCompressor;
@@ -81,12 +83,12 @@ public:
  @param offset Byte offset in the file.
  @param length Byte length from offset. Set offset and length to 0 to read the entire file.
  @param stemsIndex Stems track index for Native Instruments Stems format.
- @param customHTTPHeaders NULL terminated list of custom headers for http communication.
- @param errorCode Open error code in HTTP style, such as 404 = not found or 401 = unauthorized.
+ @param customHTTPRequest If custom HTTP communication is required (such as sending http headers for authorization), pass a fully prepared http request object. The player will take ownership of this.
+ @param httpStatusCode @see @c Superpowered::httpResponse
 
- @return NULL if successful, or an error string. If the returned error string equals to "@", it means that the open method needs more time opening an audio file from the network. In this case, iterate over open() until it returns something else than "@". It's recommended to sleep 50-100 ms in every iteration to allow the network stack doing its job without blowing up the CPU.
+ @return NULL if successful, or an error string. If the returned status code equals to StatusCode_Progress, it means that the open method needs more time opening an audio file from the network. In this case, iterate over open() until it returns something else than StatusCode_Progress. It's recommended to sleep 50-100 ms in every iteration to allow the network stack doing its job without blowing up the CPU.
  */
-    const char *open(const char *path, bool metaOnly = false, int offset = 0, int length = 0, int stemsIndex = 0, char **customHTTPHeaders = 0, int *errorCode = 0);
+    const char *open(const char *path, bool metaOnly = false, int offset = 0, int length = 0, int stemsIndex = 0, Superpowered::httpRequest *customHTTPRequest = 0, int *httpStatusCode = 0);
 /**
  @brief Decodes the requested number of samples.
  

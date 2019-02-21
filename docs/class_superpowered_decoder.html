@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.2.4</span>
+   &#160;<span id="projectnumber">1.3.0</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -56,9 +56,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a186dc1767e389a56dc9b653758e0c1c6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#a186dc1767e389a56dc9b653758e0c1c6">SuperpoweredDecoder</a> (SuperpoweredDecoderFullyDownloadedCallback downloadedCallback=0, void *clientData=0)</td></tr>
 <tr class="memdesc:a186dc1767e389a56dc9b653758e0c1c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an instance of <a class="el" href="class_superpowered_decoder.html" title="Audio file decoder. Provides uncompresses PCM samples from various compressed formats. ">SuperpoweredDecoder</a>.  <a href="#a186dc1767e389a56dc9b653758e0c1c6">More...</a><br /></td></tr>
 <tr class="separator:a186dc1767e389a56dc9b653758e0c1c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17d678b8edcbf9402c274194d2fec0b8"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#a17d678b8edcbf9402c274194d2fec0b8">open</a> (const char *path, bool metaOnly=false, int offset=0, int length=0, int stemsIndex=0, char **customHTTPHeaders=0, int *errorCode=0)</td></tr>
-<tr class="memdesc:a17d678b8edcbf9402c274194d2fec0b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a file for decoding.  <a href="#a17d678b8edcbf9402c274194d2fec0b8">More...</a><br /></td></tr>
-<tr class="separator:a17d678b8edcbf9402c274194d2fec0b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9acceff57ef2de5b9d7ae443cb96175d"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#a9acceff57ef2de5b9d7ae443cb96175d">open</a> (const char *path, bool metaOnly=false, int offset=0, int length=0, int stemsIndex=0, <a class="el" href="class_superpowered_1_1http_request.html">Superpowered::httpRequest</a> *customHTTPRequest=0, int *httpStatusCode=0)</td></tr>
+<tr class="memdesc:a9acceff57ef2de5b9d7ae443cb96175d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a file for decoding.  <a href="#a9acceff57ef2de5b9d7ae443cb96175d">More...</a><br /></td></tr>
+<tr class="separator:a9acceff57ef2de5b9d7ae443cb96175d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28fef6e884182f746d8b21316d04c5cc"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_decoder.html#a28fef6e884182f746d8b21316d04c5cc">decode</a> (short int *pcmOutput, unsigned int *samples)</td></tr>
 <tr class="memdesc:a28fef6e884182f746d8b21316d04c5cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decodes the requested number of samples.  <a href="#a28fef6e884182f746d8b21316d04c5cc">More...</a><br /></td></tr>
 <tr class="separator:a28fef6e884182f746d8b21316d04c5cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -107,7 +107,7 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>fullyDownloadedFile
 <tr class="separator:aa417fc0f6f69cd76ca4bc9149601a903"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Thread safety: single threaded, not thread safe. After a succesful <a class="el" href="class_superpowered_decoder.html#a17d678b8edcbf9402c274194d2fec0b8" title="Opens a file for decoding. ">open()</a>, samplePosition and duration may change. Supported file types:</p><ul>
+<div class="textblock"><p>Thread safety: single threaded, not thread safe. After a succesful <a class="el" href="class_superpowered_decoder.html#a9acceff57ef2de5b9d7ae443cb96175d" title="Opens a file for decoding. ">open()</a>, samplePosition and duration may change. Supported file types:</p><ul>
 <li>Stereo or mono pcm WAV and AIFF (16-bit int, 24-bit int, 32-bit int or 32-bit IEEE float).</li>
 <li>MP3: MPEG-1 Layer III (sample rates: 32000 Hz, 44100 Hz, 48000 Hz). MPEG-2 is not supported.</li>
 <li>AAC-LC in M4A container (iTunes).</li>
@@ -165,8 +165,8 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>fullyDownloadedFile
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a17d678b8edcbf9402c274194d2fec0b8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a17d678b8edcbf9402c274194d2fec0b8">&#9670;&nbsp;</a></span>open()</h2>
+<a id="a9acceff57ef2de5b9d7ae443cb96175d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9acceff57ef2de5b9d7ae443cb96175d">&#9670;&nbsp;</a></span>open()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -204,14 +204,14 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>fullyDownloadedFile
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char **&#160;</td>
-          <td class="paramname"><em>customHTTPHeaders</em> = <code>0</code>, </td>
+          <td class="paramtype"><a class="el" href="class_superpowered_1_1http_request.html">Superpowered::httpRequest</a> *&#160;</td>
+          <td class="paramname"><em>customHTTPRequest</em> = <code>0</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int *&#160;</td>
-          <td class="paramname"><em>errorCode</em> = <code>0</code>&#160;</td>
+          <td class="paramname"><em>httpStatusCode</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -227,12 +227,13 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>fullyDownloadedFile
     <tr><td class="paramname">offset</td><td>Byte offset in the file. </td></tr>
     <tr><td class="paramname">length</td><td>Byte length from offset. Set offset and length to 0 to read the entire file. </td></tr>
     <tr><td class="paramname">stemsIndex</td><td>Stems track index for Native Instruments Stems format. </td></tr>
-    <tr><td class="paramname">customHTTPHeaders</td><td>NULL terminated list of custom headers for http communication. </td></tr>
-    <tr><td class="paramname">errorCode</td><td>Open error code in HTTP style, such as 404 = not found or 401 = unauthorized.</td></tr>
+    <tr><td class="paramname">customHTTPRequest</td><td>If custom HTTP communication is required (such as sending http headers for authorization), pass a fully prepared http request object. The player will take ownership of this. </td></tr>
+    <tr><td class="paramname">httpStatusCode</td><td></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>NULL if successful, or an error string. If the returned error string equals to "@", it means that the open method needs more time opening an audio file from the network. In this case, iterate over <a class="el" href="class_superpowered_decoder.html#a17d678b8edcbf9402c274194d2fec0b8" title="Opens a file for decoding. ">open()</a> until it returns something else than "@". It's recommended to sleep 50-100 ms in every iteration to allow the network stack doing its job without blowing up the CPU. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><code><a class="el" href="class_superpowered_1_1http_response.html" title="Represents an in-progress or finished HTTP response. ">Superpowered::httpResponse</a></code> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>NULL if successful, or an error string. If the returned status code equals to StatusCode_Progress, it means that the open method needs more time opening an audio file from the network. In this case, iterate over <a class="el" href="class_superpowered_decoder.html#a9acceff57ef2de5b9d7ae443cb96175d" title="Opens a file for decoding. ">open()</a> until it returns something else than StatusCode_Progress. It's recommended to sleep 50-100 ms in every iteration to allow the network stack doing its job without blowing up the CPU. </dd></dl>
 
 </div>
 </div>

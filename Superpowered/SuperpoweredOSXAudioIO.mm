@@ -13,7 +13,8 @@
     AudioBufferList *inputBuffers0, *inputBuffers1;
     float **inputBufs0, **inputBufs1;
 
-    int numberOfChannels, samplerate, inputFrames, inputChannels;
+    NSString *mapOutputDeviceName, *mapInputDeviceName;
+    int numberOfChannels, samplerate, inputFrames, inputChannels, mapNumInputChannels, mapNumOutputChannels;
     bool shouldRun, hasInput, inputEven, outputEven;
 }
 
@@ -67,19 +68,40 @@ static OSStatus audioOutputCallback(void *inRefCon, AudioUnitRenderActionFlags *
     return noErr;
 }
 
-OSStatus defaultDeviceChangedCallback(AudioObjectID inObjectID, UInt32 inNumberAddresses, const AudioObjectPropertyAddress inAddresses[], void *inClientData) {
+static OSStatus defaultDeviceChangedCallback(AudioObjectID inObjectID, UInt32 inNumberAddresses, const AudioObjectPropertyAddress inAddresses[], void *inClientData) {
     SuperpoweredOSXAudioIO *self = (__bridge SuperpoweredOSXAudioIO *)inClientData;
-    [self performSelectorOnMainThread:@selector(recreate) withObject:nil waitUntilDone:NO];
+    dispatch_async(dispatch_get_main_queue(), ^{ [self recreate]; });
+    return noErr;
+}
+
+static OSStatus devicesChangedCallback(AudioObjectID inObjectID, UInt32 inNumberAddresses, const AudioObjectPropertyAddress inAddresses[], void *inClientData) {
+    SuperpoweredOSXAudioIO *self = (__bridge SuperpoweredOSXAudioIO *)inClientData;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        audioDevice *devices = [SuperpoweredOSXAudioIO getAudioDevices], *next;
+        [self->delegate audioDevicesChanged:devices];
+        while (devices) {
+            next = devices->next;
+            if (devices->name) free(devices->name);
+            free(devices);
+            devices = next;
+        }
+    });
     return noErr;
 }
 
 - (id)initWithDelegate:(id<SuperpoweredOSXAudioIODelegate>)del preferredBufferSizeMs:(unsigned int)bufferSizeMs numberOfChannels:(int)channels enableInput:(bool)enableInput enableOutput:(bool)enableOutput {
+    return [self initWithDelegate:del preferredBufferSizeMs:bufferSizeMs numberOfChannels:channels enableInput:enableInput enableOutput:enableOutput audioDeviceID:UINT_MAX];
+}
+
+- (id)initWithDelegate:(id<SuperpoweredOSXAudioIODelegate>)del preferredBufferSizeMs:(unsigned int)bufferSizeMs numberOfChannels:(int)channels enableInput:(bool)enableInput enableOutput:(bool)enableOutput audioDeviceID:(unsigned int)deviceID {
     self = [super init];
     if (self) {
+        if (bufferSizeMs < 1) bufferSizeMs = 10;
         numberOfChannels = channels;
         self->preferredBufferSizeMs = bufferSizeMs;
         self->inputEnabled = enableInput;
         self->outputEnabled = enableOutput;
+        audioDeviceID = deviceID;
         samplerate = 0;
         shouldRun = false;
         inputUnit = outputUnit = NULL;
@@ -109,8 +131,10 @@ OSStatus defaultDeviceChangedCallback(AudioObjectID inObjectID, UInt32 inNumberA
         CFRunLoopRef runLoop = NULL;
         AudioObjectPropertyAddress rladdress = { kAudioHardwarePropertyRunLoop, kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMaster };
         AudioObjectSetPropertyData(kAudioObjectSystemObject, &rladdress, 0, NULL, sizeof(CFRunLoopRef), &runLoop);
-        AudioObjectPropertyAddress address = { kAudioHardwarePropertyDefaultOutputDevice, kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMaster };
-        AudioObjectAddPropertyListener(kAudioObjectSystemObject, &address, defaultDeviceChangedCallback, (__bridge void *)self);
+        AudioObjectPropertyAddress ddaddress = { enableInput && !enableOutput ? kAudioHardwarePropertyDefaultInputDevice : kAudioHardwarePropertyDefaultOutputDevice, kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMaster };
+        AudioObjectAddPropertyListener(kAudioObjectSystemObject, &ddaddress, defaultDeviceChangedCallback, (__bridge void *)self);
+        AudioObjectPropertyAddress hdaddress = { kAudioHardwarePropertyDevices, kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMaster };
+        AudioObjectAddPropertyListener(kAudioObjectSystemObject, &hdaddress, devicesChangedCallback, (__bridge void *)self);
 
         [self createAudioUnits];
     };
@@ -146,13 +170,8 @@ static void destroyUnit(AudioComponentInstance *unit) {
 #endif
 }
 
-- (void)recreate2 {
-    [self createAudioUnits];
-    if (self->shouldRun) [self start];
-}
-
 - (void)recreate {
-    [self performSelector:@selector(recreate2) withObject:nil afterDelay:1.0];
+    [self performSelector:@selector(createAudioUnits) withObject:nil afterDelay:1.0];
 }
 
 static void streamFormatChangedCallback(void *inRefCon, AudioUnit inUnit, AudioUnitPropertyID inID, AudioUnitScope inScope, AudioUnitElement inElement) {
@@ -161,23 +180,14 @@ static void streamFormatChangedCallback(void *inRefCon, AudioUnit inUnit, AudioU
         ((inUnit == self->outputUnit) && (inScope == kAudioUnitScope_Output) && (inElement == 0)) ||
         ((inUnit == self->inputUnit) && (inScope == kAudioUnitScope_Input) && (inElement == 1))
         )
-        [self performSelectorOnMainThread:@selector(recreate) withObject:nil waitUntilDone:NO];
+        dispatch_async(dispatch_get_main_queue(), ^{ [self recreate]; });
 }
 
-static AudioDeviceID getAudioDevice(bool input) {
+static AudioDeviceID getDefaultAudioDevice(bool input) {
     AudioDeviceID deviceID = 0;
     UInt32 size = sizeof(AudioDeviceID);
     AudioObjectPropertyAddress address = { input ? kAudioHardwarePropertyDefaultInputDevice : kAudioHardwarePropertyDefaultOutputDevice, kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMaster };
     return (AudioObjectGetPropertyData(kAudioObjectSystemObject, &address, 0, NULL, &size, &deviceID) == noErr) ? deviceID : UINT_MAX;
-}
-
-static void setBufferSize(bool input, int samplerate, int preferredBufferSizeMs) {
-    if (samplerate < 1) return;
-    UInt32 frames = powf(2.0f, floorf(log2f(float(samplerate) * 0.001f * float(preferredBufferSizeMs))));
-    if (frames > 4096) frames = 4096;
-    AudioObjectPropertyAddress address = { kAudioDevicePropertyBufferFrameSize, kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMaster };
-    AudioDeviceID deviceID = getAudioDevice(input);
-    if (deviceID != UINT_MAX) AudioObjectSetPropertyData(deviceID, &address, 0, NULL, sizeof(UInt32), &frames);
 }
 
 static bool enableOutput(AudioUnit au, bool enable) {
@@ -202,9 +212,39 @@ static void makeStreamFormat(AudioUnit au, AudioStreamBasicDescription *format, 
     format->mBytesPerPacket = 4;
 }
 
+static void setBufferSize(int samplerate, int preferredBufferSizeMs, AudioDeviceID deviceID) {
+    if (samplerate < 1) return;
+    UInt32 frames = powf(2.0f, floorf(log2f(float(samplerate) * 0.001f * float(preferredBufferSizeMs))));
+    if (frames > 4096) frames = 4096;
+    AudioObjectPropertyAddress address = { kAudioDevicePropertyBufferFrameSize, kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMaster };
+    if (deviceID != UINT_MAX) AudioObjectSetPropertyData(deviceID, &address, 0, NULL, sizeof(UInt32), &frames);
+}
+
 - (void)setBufferSize {
-    setBufferSize(true, samplerate, preferredBufferSizeMs);
-    setBufferSize(false, samplerate, preferredBufferSizeMs);
+    if (audioDeviceID != UINT_MAX) setBufferSize(samplerate, preferredBufferSizeMs, audioDeviceID);
+    else {
+        AudioDeviceID inputDevice = getDefaultAudioDevice(true), outputDevice = getDefaultAudioDevice(false);
+        setBufferSize(samplerate, preferredBufferSizeMs, inputDevice);
+        if (outputDevice != inputDevice) setBufferSize(samplerate, preferredBufferSizeMs, outputDevice);
+    }
+}
+
+static bool hasMapping(int *map) {
+    for (int n = 0; n < 32; n++) if (map[n] != -1) return true;
+    return false;
+}
+
+- (void)mapChannels {
+    if (!delegate) return;
+    if (![NSThread isMainThread]) {
+        [self performSelectorOnMainThread:@selector(mapChannels) withObject:nil waitUntilDone:NO];
+        return;
+    }
+    int inputMap[32], outputMap[32];
+    for (int n = 0; n < 32; n++) inputMap[n] = outputMap[n] = -1;
+    [delegate mapChannels:mapOutputDeviceName numOutputChannels:mapNumOutputChannels outputMap:outputMap input:mapInputDeviceName numInputChannels:mapNumInputChannels inputMap:inputMap];
+    if (outputUnit && hasMapping(outputMap)) AudioUnitSetProperty(outputUnit, kAudioOutputUnitProperty_ChannelMap, kAudioUnitScope_Output, 0, outputMap, 128);
+    if (inputUnit && hasMapping(inputMap)) AudioUnitSetProperty(inputUnit, kAudioOutputUnitProperty_ChannelMap, kAudioUnitScope_Output, 1, inputMap, 128);
 }
 
 - (void)createAudioUnits {
@@ -219,10 +259,18 @@ static void makeStreamFormat(AudioUnit au, AudioStreamBasicDescription *format, 
     desc.componentManufacturer = kAudioUnitManufacturer_Apple;
     AudioComponent component = AudioComponentFindNext(NULL, &desc);
     AudioUnit inau = NULL, outau = NULL;
-
+    
+    [mapInputDeviceName release];
+    [mapOutputDeviceName release];
+     mapInputDeviceName = mapOutputDeviceName = nil;
+    AudioObjectPropertyAddress deviceNameAddress = { kAudioObjectPropertyName, kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMaster };
+    AudioObjectPropertyAddress inputChannelsAddress = { kAudioDevicePropertyStreamConfiguration, kAudioDevicePropertyScopeInput, kAudioObjectPropertyElementMaster };
+    AudioObjectPropertyAddress outputChannelsAddress = { kAudioDevicePropertyStreamConfiguration, kAudioDevicePropertyScopeOutput, kAudioObjectPropertyElementMaster };
+    mapNumInputChannels = mapNumOutputChannels = 0;
+    
     if (outputEnabled) {
         if (!AudioComponentInstanceNew(component, &outau) && enableInput(outau, false) && enableOutput(outau, true)) {
-            AudioDeviceID device = getAudioDevice(false);
+            AudioDeviceID device = audioDeviceID != UINT_MAX ? audioDeviceID : getDefaultAudioDevice(false);
             if ((device != UINT_MAX) && !AudioUnitSetProperty(outau, kAudioOutputUnitProperty_CurrentDevice, kAudioUnitScope_Global, 0, &device, sizeof(device))) {
                 AudioUnitAddPropertyListener(outau, kAudioUnitProperty_StreamFormat, streamFormatChangedCallback, (__bridge void *)self);
                 AudioStreamBasicDescription format;
@@ -238,6 +286,20 @@ static void makeStreamFormat(AudioUnit au, AudioStreamBasicDescription *format, 
                         AudioUnitInitialize(outau);
                         outputUnit = outau;
                         outau = NULL;
+                        
+                        UInt32 size = sizeof(CFStringRef);
+                        CFStringRef cstr = NULL;
+                        AudioObjectGetPropertyData(device, &deviceNameAddress, 0, NULL, &size, &cstr);
+                        mapOutputDeviceName = (NSString *)cstr;
+                        if (!AudioObjectGetPropertyDataSize(device, &outputChannelsAddress, 0, NULL, &size)) {
+                            AudioBufferList *bufferList = (AudioBufferList *)malloc(size);
+                            if (bufferList) {
+                                if (!AudioObjectGetPropertyData(device, &outputChannelsAddress, 0, NULL, &size, bufferList)) {
+                                    for (int b = 0; b < bufferList->mNumberBuffers; b++) mapNumOutputChannels += bufferList->mBuffers[b].mNumberChannels;
+                                }
+                                free(bufferList);
+                            }
+                        }
                     };
                 };
             };
@@ -246,7 +308,7 @@ static void makeStreamFormat(AudioUnit au, AudioStreamBasicDescription *format, 
 
     if (inputEnabled) {
         if (!AudioComponentInstanceNew(component, &inau) && enableInput(inau, true) && enableOutput(inau, false)) {
-            AudioDeviceID device = getAudioDevice(true);
+            AudioDeviceID device = audioDeviceID != UINT_MAX ? audioDeviceID : getDefaultAudioDevice(true);
             if ((device != UINT_MAX) && !AudioUnitSetProperty(inau, kAudioOutputUnitProperty_CurrentDevice, kAudioUnitScope_Global, 0, &device, sizeof(device))) {
                 AudioUnitAddPropertyListener(inau, kAudioUnitProperty_StreamFormat, streamFormatChangedCallback, (__bridge void *)self);
                 AudioStreamBasicDescription format;
@@ -263,15 +325,31 @@ static void makeStreamFormat(AudioUnit au, AudioStreamBasicDescription *format, 
                         AudioUnitInitialize(inau);
                         inputUnit = inau;
                         inau = NULL;
+                        
+                        UInt32 size = sizeof(CFStringRef);
+                        CFStringRef cstr = NULL;
+                        AudioObjectGetPropertyData(device, &deviceNameAddress, 0, NULL, &size, &cstr);
+                        mapInputDeviceName = (NSString *)cstr;
+                        if (!AudioObjectGetPropertyDataSize(device, &inputChannelsAddress, 0, NULL, &size)) {
+                            AudioBufferList *bufferList = (AudioBufferList *)malloc(size);
+                            if (bufferList) {
+                                if (!AudioObjectGetPropertyData(device, &inputChannelsAddress, 0, NULL, &size, bufferList)) {
+                                    for (int b = 0; b < bufferList->mNumberBuffers; b++) mapNumInputChannels += bufferList->mBuffers[b].mNumberChannels;
+                                }
+                                free(bufferList);
+                            }
+                        }
                     };
                 };
             };
         };
     };
-
+    
+    [self mapChannels];
     destroyUnit(&inau);
     destroyUnit(&outau);
     [self setBufferSize];
+    if (self->shouldRun) [self start];
 }
 
 // public methods
@@ -294,26 +372,109 @@ static void makeStreamFormat(AudioUnit au, AudioStreamBasicDescription *format, 
 }
 
 - (void)setInputEnabled:(bool)e {
-    if (![NSThread isMainThread]) return;
-    if (inputEnabled != e) {
+    if (![NSThread isMainThread]) dispatch_async(dispatch_get_main_queue(), ^{ [self setInputEnabled:e]; });
+    else if (inputEnabled != e) {
         self->inputEnabled = e;
         [self createAudioUnits];
-        if (shouldRun) [self start];
     };
 }
 
 - (void)setOutputEnabled:(bool)e {
-    if (![NSThread isMainThread]) return;
-    if (outputEnabled != e) {
+    if (![NSThread isMainThread]) dispatch_async(dispatch_get_main_queue(), ^{ [self setOutputEnabled:e]; });
+    else if (outputEnabled != e) {
         self->outputEnabled = e;
         [self createAudioUnits];
-        if (shouldRun) [self start];
     };
+}
+
+- (void)setAudioDevice:(unsigned int)deviceID {
+    if (![NSThread isMainThread]) dispatch_async(dispatch_get_main_queue(), ^{
+        if (audioDeviceID == deviceID) return;
+        audioDeviceID = deviceID;
+        [self createAudioUnits];
+    }); else {
+        if (audioDeviceID == deviceID) return;
+        audioDeviceID = deviceID;
+        [self createAudioUnits];
+    }
 }
 
 - (void)setPreferredBufferSizeMs:(int)ms {
     preferredBufferSizeMs = ms;
     if ([NSThread isMainThread]) [self setBufferSize]; else [self performSelectorOnMainThread:@selector(setBufferSize) withObject:nil waitUntilDone:NO];
+}
+
++ (audioDevice *)getAudioDevices {
+    AudioObjectPropertyAddress allDevices = { kAudioHardwarePropertyDevices, kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMaster };
+    AudioObjectPropertyAddress deviceName = { kAudioObjectPropertyName, kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMaster };
+    AudioObjectPropertyAddress inputChannels = { kAudioDevicePropertyStreamConfiguration, kAudioDevicePropertyScopeInput, kAudioObjectPropertyElementMaster };
+    AudioObjectPropertyAddress outputChannels = { kAudioDevicePropertyStreamConfiguration, kAudioDevicePropertyScopeOutput, kAudioObjectPropertyElementMaster };
+    
+    UInt32 size = 0;
+    if (AudioObjectGetPropertyDataSize(kAudioObjectSystemObject, &allDevices, 0, NULL, &size) || !size) return NULL;
+    int numDevices = size / sizeof(AudioDeviceID);
+    AudioDeviceID devices[numDevices];
+    if (AudioObjectGetPropertyData(kAudioObjectSystemObject, &allDevices, 0, NULL, &size, devices)) return NULL;
+    
+    CFStringRef name;
+    size = sizeof(name);
+    const char *cname;
+    int numInputChannels, numOutputChannels;
+    AudioBufferList *bufferList;
+    audioDevice *result = NULL, *last = NULL, *current;
+    
+    for (int n = 0; n < numDevices; n++) {
+        numInputChannels = numOutputChannels = 0;
+        
+        if (!AudioObjectGetPropertyDataSize(devices[n], &inputChannels, 0, NULL, &size)) {
+            bufferList = (AudioBufferList *)malloc(size);
+            if (bufferList) {
+                if (!AudioObjectGetPropertyData(devices[n], &inputChannels, 0, NULL, &size, bufferList)) {
+                    numInputChannels = 0;
+                    for (int b = 0; b < bufferList->mNumberBuffers; b++) numInputChannels += bufferList->mBuffers[b].mNumberChannels;
+                }
+                free(bufferList);
+            }
+        }
+        
+        if (!AudioObjectGetPropertyDataSize(devices[n], &outputChannels, 0, NULL, &size)) {
+            bufferList = (AudioBufferList *)malloc(size);
+            if (bufferList) {
+                if (!AudioObjectGetPropertyData(devices[n], &outputChannels, 0, NULL, &size, bufferList)) {
+                    numOutputChannels = 0;
+                    for (int b = 0; b < bufferList->mNumberBuffers; b++) numOutputChannels += bufferList->mBuffers[b].mNumberChannels;
+                }
+                free(bufferList);
+            }
+        }
+        
+        if (numInputChannels + numOutputChannels < 1) continue;
+        size = sizeof(name);
+        name = NULL;
+        if (AudioObjectGetPropertyData(devices[n], &deviceName, 0, NULL, &size, &name) || !name) continue;
+        
+        cname = [(NSString *)name UTF8String];
+        if (cname) {
+            current = (audioDevice *)malloc(sizeof(audioDevice));
+            if (current) {
+                current->name = strdup(cname);
+                if (!current->name) free(current);
+                else {
+                    current->next = NULL;
+                    current->numInputChannels = numInputChannels;
+                    current->numOutputChannels = numOutputChannels;
+                    current->deviceID = devices[n];
+                    
+                    if (!result) result = current; else last->next = current;
+                    last = current;
+                }
+            }
+        }
+        
+        CFRelease(name);
+    }
+    
+    return result;
 }
 
 @end

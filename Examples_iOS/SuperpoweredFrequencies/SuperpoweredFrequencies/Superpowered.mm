@@ -10,7 +10,7 @@
     unsigned int samplerate, bandsWritePos, bandsReadPos, bandsPos, lastNumberOfSamples;
 }
 
-static bool audioProcessing(void *clientdata, float **buffers, unsigned int inputChannels, unsigned int outputChannels, unsigned int numberOfSamples, unsigned int samplerate, uint64_t hostTime) {
+static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int inputChannels, float **outputBuffers, unsigned int outputChannels, unsigned int numberOfSamples, unsigned int samplerate, uint64_t hostTime) {
     __unsafe_unretained Superpowered *self = (__bridge Superpowered *)clientdata;
     if (samplerate != self->samplerate) {
         self->samplerate = samplerate;
@@ -19,7 +19,7 @@ static bool audioProcessing(void *clientdata, float **buffers, unsigned int inpu
 
     // Mix the non-interleaved input to interleaved.
     float interleaved[numberOfSamples * 2 + 16];
-    SuperpoweredInterleave(buffers[0], buffers[1], interleaved, numberOfSamples);
+    SuperpoweredInterleave(inputBuffers[0], inputBuffers[1], interleaved, numberOfSamples);
 
     // Get the next position to write.
     unsigned int writePos = self->bandsWritePos++ & 127;

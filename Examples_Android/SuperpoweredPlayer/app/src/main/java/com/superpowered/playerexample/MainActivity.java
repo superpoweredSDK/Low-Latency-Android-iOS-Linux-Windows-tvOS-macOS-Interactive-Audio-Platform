@@ -12,7 +12,6 @@ import android.os.Bundle;
 import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         System.loadLibrary("PlayerExample");    // load native library
         StartAudio(samplerate, buffersize);             // start audio engine
         OpenFile(path, fileOffset, fileLength);         // open audio file from APK
+        // If the application crashes, please disable Instant Run under Build, Execution, Deployment in preferences.
     }
 
     // Handle Play/Pause button toggle.

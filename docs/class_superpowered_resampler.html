@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.2.4</span>
+   &#160;<span id="projectnumber">1.3.0</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -57,12 +57,12 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_resampler.html#a244d612ccca287670a299f5362740495">reset</a> ()</td></tr>
 <tr class="memdesc:a244d612ccca287670a299f5362740495"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset all internals. Doesn't change rate. <br /></td></tr>
 <tr class="separator:a244d612ccca287670a299f5362740495"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aabe39474f9d1d236c1f8145867e8ffc6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_resampler.html#aabe39474f9d1d236c1f8145867e8ffc6">process</a> (short int *input, float *output, int numberOfSamples, bool reverse=false, bool highQuality=false, float rateAdd=0.0f)</td></tr>
-<tr class="memdesc:aabe39474f9d1d236c1f8145867e8ffc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes the audio.  <a href="#aabe39474f9d1d236c1f8145867e8ffc6">More...</a><br /></td></tr>
-<tr class="separator:aabe39474f9d1d236c1f8145867e8ffc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a64617753cbcc234e56b0d43f79c78f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_resampler.html#a8a64617753cbcc234e56b0d43f79c78f">process</a> (short int *input, float *temp, short int *output, int numberOfSamples, bool reverse=false, bool highQuality=false, float rateAdd=0.0f)</td></tr>
-<tr class="memdesc:a8a64617753cbcc234e56b0d43f79c78f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes the audio.  <a href="#a8a64617753cbcc234e56b0d43f79c78f">More...</a><br /></td></tr>
-<tr class="separator:a8a64617753cbcc234e56b0d43f79c78f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a792bae577dd9d16108592fae01295c02"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_resampler.html#a792bae577dd9d16108592fae01295c02">process</a> (short int *input, float *output, int numberOfSamples, bool reverse=false, bool highQuality=false, float *hqTemp=0, unsigned int hqSamplerate=0, float rateAdd=0.0f)</td></tr>
+<tr class="memdesc:a792bae577dd9d16108592fae01295c02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes the audio.  <a href="#a792bae577dd9d16108592fae01295c02">More...</a><br /></td></tr>
+<tr class="separator:a792bae577dd9d16108592fae01295c02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0a721e0daf55eb15d44c505dbad77dd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_resampler.html#ac0a721e0daf55eb15d44c505dbad77dd">process</a> (short int *input, float *temp, short int *output, int numberOfSamples, bool reverse=false, bool highQuality=false, float *hqTemp=0, unsigned int hqSamplerate=0, float rateAdd=0.0f)</td></tr>
+<tr class="memdesc:ac0a721e0daf55eb15d44c505dbad77dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes the audio.  <a href="#ac0a721e0daf55eb15d44c505dbad77dd">More...</a><br /></td></tr>
+<tr class="separator:ac0a721e0daf55eb15d44c505dbad77dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -79,8 +79,8 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>rate</b></td></tr>
   </dd>
 </dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="aabe39474f9d1d236c1f8145867e8ffc6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aabe39474f9d1d236c1f8145867e8ffc6">&#9670;&nbsp;</a></span>process() <span class="overload">[1/2]</span></h2>
+<a id="a792bae577dd9d16108592fae01295c02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a792bae577dd9d16108592fae01295c02">&#9670;&nbsp;</a></span>process() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -118,6 +118,18 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>rate</b></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>hqTemp</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>hqSamplerate</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">float&#160;</td>
           <td class="paramname"><em>rateAdd</em> = <code>0.0f</code>&#160;</td>
         </tr>
@@ -136,15 +148,17 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>rate</b></td></tr>
     <tr><td class="paramname">numberOfSamples</td><td>Number of samples to process. </td></tr>
     <tr><td class="paramname">reverse</td><td>Plays backwards. </td></tr>
     <tr><td class="paramname">highQuality</td><td>Enables more sophisticated processing to reduce interpolation noise. Good for scratching for example, but not recommended for continous music playback above 0.5f rate. </td></tr>
-    <tr><td class="paramname">rateAdd</td><td>Changes rate during <a class="el" href="class_superpowered_resampler.html#aabe39474f9d1d236c1f8145867e8ffc6" title="Processes the audio. ">process()</a>, good for scratching or super smooth rate changes. After <a class="el" href="class_superpowered_resampler.html#aabe39474f9d1d236c1f8145867e8ffc6" title="Processes the audio. ">process()</a>, rate will be near the desired value. </td></tr>
+    <tr><td class="paramname">hqTemp</td><td>Improves scratching sound quality when used together with highQuality=true and hqSamplerate. A temporary buffer capable of holding numberOfSamples of 32-bit floating point stereo audio. </td></tr>
+    <tr><td class="paramname">hqSamplerate</td><td>Improves scratching sound quality when used together with highQuality=true and hqTemp. The sample rate of the input. </td></tr>
+    <tr><td class="paramname">rateAdd</td><td>Changes rate during <a class="el" href="class_superpowered_resampler.html#a792bae577dd9d16108592fae01295c02" title="Processes the audio. ">process()</a>, good for scratching or super smooth rate changes. After <a class="el" href="class_superpowered_resampler.html#a792bae577dd9d16108592fae01295c02" title="Processes the audio. ">process()</a>, rate will be near the desired value. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a8a64617753cbcc234e56b0d43f79c78f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8a64617753cbcc234e56b0d43f79c78f">&#9670;&nbsp;</a></span>process() <span class="overload">[2/2]</span></h2>
+<a id="ac0a721e0daf55eb15d44c505dbad77dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0a721e0daf55eb15d44c505dbad77dd">&#9670;&nbsp;</a></span>process() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -188,6 +202,18 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>rate</b></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>hqTemp</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>hqSamplerate</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">float&#160;</td>
           <td class="paramname"><em>rateAdd</em> = <code>0.0f</code>&#160;</td>
         </tr>
@@ -207,7 +233,9 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>rate</b></td></tr>
     <tr><td class="paramname">numberOfSamples</td><td>Number of samples to process. </td></tr>
     <tr><td class="paramname">reverse</td><td>Plays backwards. </td></tr>
     <tr><td class="paramname">highQuality</td><td>Enables more sophisticated processing to reduce interpolation noise. Good for scratching for example, but not recommended for continous music playback above 0.5f rate. </td></tr>
-    <tr><td class="paramname">rateAdd</td><td>Changes rate during <a class="el" href="class_superpowered_resampler.html#aabe39474f9d1d236c1f8145867e8ffc6" title="Processes the audio. ">process()</a>, good for scratching or super smooth rate changes. After <a class="el" href="class_superpowered_resampler.html#aabe39474f9d1d236c1f8145867e8ffc6" title="Processes the audio. ">process()</a>, rate will be near the desired value. </td></tr>
+    <tr><td class="paramname">hqTemp</td><td>Improves scratching sound quality when used together with highQuality=true and hqSamplerate. A temporary buffer capable of holding numberOfSamples of 32-bit floating point stereo audio. </td></tr>
+    <tr><td class="paramname">hqSamplerate</td><td>Improves scratching sound quality when used together with highQuality=true and hqTemp. The sample rate of the input. </td></tr>
+    <tr><td class="paramname">rateAdd</td><td>Changes rate during <a class="el" href="class_superpowered_resampler.html#a792bae577dd9d16108592fae01295c02" title="Processes the audio. ">process()</a>, good for scratching or super smooth rate changes. After <a class="el" href="class_superpowered_resampler.html#a792bae577dd9d16108592fae01295c02" title="Processes the audio. ">process()</a>, rate will be near the desired value. </td></tr>
   </table>
   </dd>
 </dl>

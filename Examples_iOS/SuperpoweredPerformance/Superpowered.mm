@@ -16,7 +16,7 @@
  You can perfectly mix it with Objective-C or Swift, until you keep the member variables and C++ related includes here.
  Yes, the header file (.h) isn't the only place for member variables.
  */
-@implementation Superpowered {
+@implementation SuperpoweredAudio {
     SuperpoweredAdvancedAudioPlayer *player;
     SuperpoweredFX *effects[NUMFXUNITS];
     SuperpoweredIOSAudioIO *output;
@@ -92,8 +92,8 @@
 }
 
 // This is where the Superpowered magic happens.
-static bool audioProcessing(void *clientdata, float **buffers, unsigned int inputChannels, unsigned int outputChannels, unsigned int numberOfSamples, unsigned int samplerate, uint64_t hostTime) {
-    __unsafe_unretained Superpowered *self = (__bridge Superpowered *)clientdata;
+static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int inputChannels, float **outputBuffers, unsigned int outputChannels, unsigned int numberOfSamples, unsigned int samplerate, uint64_t hostTime) {
+    __unsafe_unretained SuperpoweredAudio *self = (__bridge SuperpoweredAudio *)clientdata;
     uint64_t startTime = mach_absolute_time();
 
     if (samplerate != self->lastSamplerate) { // Has samplerate changed?
@@ -129,7 +129,7 @@ static bool audioProcessing(void *clientdata, float **buffers, unsigned int inpu
     };
 
     self->playing = self->player->playing;
-    if (!silence) SuperpoweredDeInterleave(self->stereoBuffer, buffers[0], buffers[1], numberOfSamples); // The stereoBuffer is ready now, let's put the finished audio into the requested buffers.
+    if (!silence) SuperpoweredDeInterleave(self->stereoBuffer, outputBuffers[0], outputBuffers[1], numberOfSamples); // The stereoBuffer is ready now, let's put the finished audio into the requested buffers.
     return !silence;
 }
 

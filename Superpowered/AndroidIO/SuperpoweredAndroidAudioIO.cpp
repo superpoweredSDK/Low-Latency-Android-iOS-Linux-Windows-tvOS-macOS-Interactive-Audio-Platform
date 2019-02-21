@@ -15,13 +15,30 @@
     #define CHANNELMASK (SL_SPEAKER_FRONT_LEFT | SL_SPEAKER_FRONT_RIGHT)
 #endif
 
+typedef struct fifo {
+    short int *buffer;
+    int readIndex, writeIndex;
+
+    bool hasAudio() {
+        return this->writeIndex != this->readIndex;
+    }
+    void incRead(int numBuffers) {
+        if (this->readIndex < numBuffers - 1) this->readIndex++; else this->readIndex = 0;
+    }
+    void incWrite(int numBuffers) {
+        if (this->writeIndex < numBuffers - 1) this->writeIndex++; else this->writeIndex = 0;
+    }
+} fifo;
+
 typedef struct SuperpoweredAndroidAudioIOInternals {
+    fifo inputFifo, outputFifo;
     void *clientdata;
     audioProcessingCallback callback;
     SLObjectItf openSLEngine, outputMix, outputBufferQueue, inputBufferQueue;
     SLAndroidSimpleBufferQueueItf outputBufferQueueInterface, inputBufferQueueInterface;
-    short int *fifobuffer, *silence;
-    int samplerate, buffersize, silenceSamples, latencySamples, numBuffers, bufferStep, readBufferIndex, writeBufferIndex;
+    short int *silence;
+    size_t fifoBufferSizeBytes;
+    int samplerate, buffersize, silenceSamples, numBuffers, bufferStep;
     bool hasOutput, hasInput, foreground, started;
 } SuperpoweredAndroidAudioIOInternals;
 
@@ -29,12 +46,16 @@ typedef struct SuperpoweredAndroidAudioIOInternals {
 static void startQueues(SuperpoweredAndroidAudioIOInternals *internals) {
     if (internals->started) return;
     internals->started = true;
+
     if (internals->inputBufferQueue) {
+        memset(internals->inputFifo.buffer, 0, internals->fifoBufferSizeBytes);
         SLRecordItf recordInterface;
         (*internals->inputBufferQueue)->GetInterface(internals->inputBufferQueue, SL_IID_RECORD, &recordInterface);
         (*recordInterface)->SetRecordState(recordInterface, SL_RECORDSTATE_RECORDING);
     };
+
     if (internals->outputBufferQueue) {
+        memset(internals->outputFifo.buffer, 0, internals->fifoBufferSizeBytes);
         SLPlayItf outputPlayInterface;
         (*internals->outputBufferQueue)->GetInterface(internals->outputBufferQueue, SL_IID_PLAY, &outputPlayInterface);
         (*outputPlayInterface)->SetPlayState(outputPlayInterface, SL_PLAYSTATE_PLAYING);
@@ -60,51 +81,43 @@ static void stopQueues(SuperpoweredAndroidAudioIOInternals *internals) {
 // This is called periodically by the input audio queue. Audio input is received from the media server at this point.
 static void SuperpoweredAndroidAudioIO_InputCallback(SLAndroidSimpleBufferQueueItf caller, void *pContext) {
     SuperpoweredAndroidAudioIOInternals *internals = (SuperpoweredAndroidAudioIOInternals *)pContext;
-    short int *buffer = internals->fifobuffer + internals->writeBufferIndex * internals->bufferStep;
-    if (internals->writeBufferIndex < internals->numBuffers - 1) internals->writeBufferIndex++; else internals->writeBufferIndex = 0;
+    internals->inputFifo.incWrite(internals->numBuffers);
 
-    if (!internals->hasOutput) { // When there is no audio output configured.
-        int buffersAvailable = internals->writeBufferIndex - internals->readBufferIndex;
-        if (buffersAvailable < 0) buffersAvailable = internals->numBuffers - (internals->readBufferIndex - internals->writeBufferIndex);
-        if (buffersAvailable * internals->buffersize >= internals->latencySamples) { // if we have enough audio input available
-            internals->callback(internals->clientdata, internals->fifobuffer + internals->readBufferIndex * internals->bufferStep, internals->buffersize, internals->samplerate);
-            if (internals->readBufferIndex < internals->numBuffers - 1) internals->readBufferIndex++; else internals->readBufferIndex = 0;
-        };
+    if (!internals->hasOutput && internals->inputFifo.hasAudio()) { // When there is no audio output configured and we have enough audio input available.
+        internals->callback(internals->clientdata, internals->inputFifo.buffer + internals->inputFifo.readIndex * internals->bufferStep, internals->buffersize, internals->samplerate);
+        internals->inputFifo.incRead(internals->numBuffers);
     }
-    (*caller)->Enqueue(caller, buffer, (SLuint32)internals->buffersize * NUM_CHANNELS * 2);
+
+    (*caller)->Enqueue(caller, internals->inputFifo.buffer + internals->inputFifo.writeIndex * internals->bufferStep, (SLuint32)internals->buffersize * NUM_CHANNELS * 2);
 }
 
 // This is called periodically by the output audio queue. Audio for the user should be provided here.
 static void SuperpoweredAndroidAudioIO_OutputCallback(SLAndroidSimpleBufferQueueItf caller, void *pContext) {
     SuperpoweredAndroidAudioIOInternals *internals = (SuperpoweredAndroidAudioIOInternals *)pContext;
-
-    int buffersAvailable = internals->writeBufferIndex - internals->readBufferIndex;
-    if (buffersAvailable < 0) buffersAvailable = internals->numBuffers - (internals->readBufferIndex - internals->writeBufferIndex);
-    short int *output = internals->fifobuffer + internals->readBufferIndex * internals->bufferStep;
+    short int *output = internals->outputFifo.buffer + internals->outputFifo.writeIndex * internals->bufferStep;
+    internals->outputFifo.incWrite(internals->numBuffers);
+    bool silence = false;
 
     if (internals->hasInput) { // If audio input is enabled.
-        if (buffersAvailable * internals->buffersize >= internals->latencySamples) { // if we have enough audio input available
+        if (internals->inputFifo.hasAudio()) { // If we have enough audio input available.
+            // Had to separate the input buffer from the output buffer, because it makes a feedback loop on some Android devices despite of memsetting everything to zero.
+            memcpy(output, internals->inputFifo.buffer + internals->inputFifo.readIndex * internals->bufferStep, (size_t)internals->buffersize * NUM_CHANNELS * 2);
+            internals->inputFifo.incRead(internals->numBuffers);
+
             if (!internals->callback(internals->clientdata, output, internals->buffersize, internals->samplerate)) {
-                memset(output, 0, (size_t)internals->buffersize * NUM_CHANNELS * 2);
+                silence = true;
                 internals->silenceSamples += internals->buffersize;
             } else internals->silenceSamples = 0;
-        } else output = NULL; // dropout, not enough audio input
+        } else silence = true; // Dropout, not enough audio input.
     } else { // If audio input is not enabled.
-        short int *audioToGenerate = internals->fifobuffer + internals->writeBufferIndex * internals->bufferStep;
-
-        if (!internals->callback(internals->clientdata, audioToGenerate, internals->buffersize, internals->samplerate)) {
-            memset(audioToGenerate, 0, (size_t)internals->buffersize * NUM_CHANNELS * 2);
+        if (!internals->callback(internals->clientdata, output, internals->buffersize, internals->samplerate)) {
+            silence = true;
             internals->silenceSamples += internals->buffersize;
         } else internals->silenceSamples = 0;
-
-        if (internals->writeBufferIndex < internals->numBuffers - 1) internals->writeBufferIndex++; else internals->writeBufferIndex = 0;
-        if ((buffersAvailable + 1) * internals->buffersize < internals->latencySamples) output = NULL; // dropout, not enough audio generated
     };
 
-    if (output) {
-        if (internals->readBufferIndex < internals->numBuffers - 1) internals->readBufferIndex++; else internals->readBufferIndex = 0;
-    };
-    (*caller)->Enqueue(caller, output ? output : internals->silence, (SLuint32)internals->buffersize * NUM_CHANNELS * 2);
+    if (silence) memset(output, 0, (size_t)internals->buffersize * NUM_CHANNELS * 2);
+    (*caller)->Enqueue(caller, output, (SLuint32)internals->buffersize * NUM_CHANNELS * 2);
 
     if (!internals->foreground && (internals->silenceSamples > internals->samplerate)) {
         internals->silenceSamples = 0;
@@ -112,7 +125,7 @@ static void SuperpoweredAndroidAudioIO_OutputCallback(SLAndroidSimpleBufferQueue
     };
 }
 
-SuperpoweredAndroidAudioIO::SuperpoweredAndroidAudioIO(int samplerate, int buffersize, bool enableInput, bool enableOutput, audioProcessingCallback callback, void *clientdata, int inputStreamType, int outputStreamType, int latencySamples) {
+SuperpoweredAndroidAudioIO::SuperpoweredAndroidAudioIO(int samplerate, int buffersize, bool enableInput, bool enableOutput, audioProcessingCallback callback, void *clientdata, int inputStreamType, int outputStreamType) {
     static const SLboolean requireds[2] = { SL_BOOLEAN_TRUE, SL_BOOLEAN_FALSE };
 
     internals = new SuperpoweredAndroidAudioIOInternals;
@@ -127,14 +140,11 @@ SuperpoweredAndroidAudioIO::SuperpoweredAndroidAudioIO(int samplerate, int buffe
     internals->started = false;
     internals->silence = (short int *)malloc((size_t)buffersize * NUM_CHANNELS * 2);
     memset(internals->silence, 0, (size_t)buffersize * NUM_CHANNELS * 2);
-    internals->latencySamples = latencySamples < buffersize ? buffersize : latencySamples;
 
-    internals->numBuffers = (internals->latencySamples / buffersize) * 2;
-    if (internals->numBuffers < 32) internals->numBuffers = 32;
+    internals->numBuffers = samplerate / buffersize;
     internals->bufferStep = (buffersize + 64) * NUM_CHANNELS;
-    size_t fifoBufferSizeBytes = internals->numBuffers * internals->bufferStep * sizeof(short int);
-    internals->fifobuffer = (short int *)malloc(fifoBufferSizeBytes);
-    memset(internals->fifobuffer, 0, fifoBufferSizeBytes);
+    internals->fifoBufferSizeBytes = internals->numBuffers * internals->bufferStep * sizeof(short int);
+    internals->inputFifo.buffer = internals->outputFifo.buffer = NULL;
 
     // Create the OpenSL ES engine.
     slCreateEngine(&internals->openSLEngine, 0, NULL, 0, NULL, NULL);
@@ -147,6 +157,8 @@ SuperpoweredAndroidAudioIO::SuperpoweredAndroidAudioIO(int samplerate, int buffe
     SLDataLocator_OutputMix outputMixLocator = { SL_DATALOCATOR_OUTPUTMIX, internals->outputMix };
 
     if (enableInput) { // Create the audio input buffer queue.
+        internals->inputFifo.buffer = (short int *)malloc(internals->fifoBufferSizeBytes);
+
         SLDataLocator_IODevice deviceInputLocator = { SL_DATALOCATOR_IODEVICE, SL_IODEVICE_AUDIOINPUT, SL_DEFAULTDEVICEID_AUDIOINPUT, NULL };
         SLDataSource inputSource = { &deviceInputLocator, NULL };
         SLDataLocator_AndroidSimpleBufferQueue inputLocator = { SL_DATALOCATOR_ANDROIDSIMPLEBUFFERQUEUE, 1 };
@@ -168,6 +180,8 @@ SuperpoweredAndroidAudioIO::SuperpoweredAndroidAudioIO(int samplerate, int buffe
     };
 
     if (enableOutput) { // Create the audio output buffer queue.
+        internals->outputFifo.buffer = (short int *)malloc(internals->fifoBufferSizeBytes);
+
         SLDataLocator_AndroidSimpleBufferQueue outputLocator = { SL_DATALOCATOR_ANDROIDSIMPLEBUFFERQUEUE, 1 };
         SLDataFormat_PCM outputFormat = { SL_DATAFORMAT_PCM, NUM_CHANNELS, (SLuint32)samplerate * 1000, SL_PCMSAMPLEFORMAT_FIXED_16, SL_PCMSAMPLEFORMAT_FIXED_16, CHANNELMASK, SL_BYTEORDER_LITTLEENDIAN };
         SLDataSource outputSource = { &outputLocator, &outputFormat };
@@ -188,15 +202,17 @@ SuperpoweredAndroidAudioIO::SuperpoweredAndroidAudioIO(int samplerate, int buffe
     };
 
     if (enableInput) { // Initialize the audio input buffer queue.
+        memset(internals->inputFifo.buffer, 0, internals->fifoBufferSizeBytes);
         (*internals->inputBufferQueue)->GetInterface(internals->inputBufferQueue, SL_IID_ANDROIDSIMPLEBUFFERQUEUE, &internals->inputBufferQueueInterface);
         (*internals->inputBufferQueueInterface)->RegisterCallback(internals->inputBufferQueueInterface, SuperpoweredAndroidAudioIO_InputCallback, internals);
-        (*internals->inputBufferQueueInterface)->Enqueue(internals->inputBufferQueueInterface, internals->fifobuffer, (SLuint32)buffersize * NUM_CHANNELS * 2);
+        (*internals->inputBufferQueueInterface)->Enqueue(internals->inputBufferQueueInterface, internals->inputFifo.buffer, (SLuint32)buffersize * NUM_CHANNELS * 2);
     };
 
     if (enableOutput) { // Initialize the audio output buffer queue.
+        memset(internals->outputFifo.buffer, 0, internals->fifoBufferSizeBytes);
         (*internals->outputBufferQueue)->GetInterface(internals->outputBufferQueue, SL_IID_BUFFERQUEUE, &internals->outputBufferQueueInterface);
         (*internals->outputBufferQueueInterface)->RegisterCallback(internals->outputBufferQueueInterface, SuperpoweredAndroidAudioIO_OutputCallback, internals);
-        (*internals->outputBufferQueueInterface)->Enqueue(internals->outputBufferQueueInterface, internals->fifobuffer, (SLuint32)buffersize * NUM_CHANNELS * 2);
+        (*internals->outputBufferQueueInterface)->Enqueue(internals->outputBufferQueueInterface, internals->outputFifo.buffer, (SLuint32)buffersize * NUM_CHANNELS * 2);
     };
 
     startQueues(internals);
@@ -226,7 +242,8 @@ SuperpoweredAndroidAudioIO::~SuperpoweredAndroidAudioIO() {
     if (internals->inputBufferQueue) (*internals->inputBufferQueue)->Destroy(internals->inputBufferQueue);
     (*internals->outputMix)->Destroy(internals->outputMix);
     (*internals->openSLEngine)->Destroy(internals->openSLEngine);
-    free(internals->fifobuffer);
+    if (internals->inputFifo.buffer) free(internals->inputFifo.buffer);
+    if (internals->outputFifo.buffer) free(internals->outputFifo.buffer);
     free(internals->silence);
     delete internals;
 }

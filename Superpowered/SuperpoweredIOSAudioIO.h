@@ -72,14 +72,15 @@ typedef struct multiInputChannelMap {
  @return Return false for no audio output (silence).
 
  @param clientData A custom pointer your callback receives.
- @param buffers Input-output buffers.
+ @param inputBuffers Input buffers.
  @param inputChannels The number of input channels.
+ @param outputBuffers Output buffers.
  @param outputChannels The number of output channels.
  @param numberOfSamples The number of samples requested.
  @param samplerate The current sample rate in Hz.
  @param hostTime A mach timestamp, indicates when this chunk of audio will be passed to the audio output.
  */
-typedef bool (*audioProcessingCallback) (void *clientdata, float **buffers, unsigned int inputChannels, unsigned int outputChannels, unsigned int numberOfSamples, unsigned int samplerate, uint64_t hostTime);
+typedef bool (*audioProcessingCallback) (void *clientData, float **inputBuffers, unsigned int inputChannels, float **outputBuffers, unsigned int outputChannels, unsigned int numberOfSamples, unsigned int samplerate, unsigned long long hostTime);
 
 /**
  @brief Handles all audio session, audio lifecycle (interruptions), output, buffer size, samplerate and routing headaches.
