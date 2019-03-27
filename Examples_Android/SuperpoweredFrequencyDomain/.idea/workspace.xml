@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c02a0a01-e710-4f10-b156-dfcfa3ba82da" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Docs/_superpowered_a_e_s_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/_superpowered_a_e_s_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/_superpowered_delay_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/_superpowered_delay_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/_superpowered_h_t_t_p_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/_superpowered_h_t_t_p_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/_superpowered_hash_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/_superpowered_hash_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/_superpowered_j_s_o_n_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/_superpowered_j_s_o_n_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/_superpowered_r_s_a_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/_superpowered_r_s_a_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/_superpowered_windows_audio_i_o_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/_superpowered_windows_audio_i_o_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/class_superpowered_1_1_r_s_a_private_key-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/class_superpowered_1_1_r_s_a_private_key-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/class_superpowered_1_1_r_s_a_private_key.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/class_superpowered_1_1_r_s_a_private_key.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/class_superpowered_1_1_r_s_a_public_key-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/class_superpowered_1_1_r_s_a_public_key-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/class_superpowered_1_1_r_s_a_public_key.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/class_superpowered_1_1_r_s_a_public_key.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/class_superpowered_1_1http_request-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/class_superpowered_1_1http_request-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/class_superpowered_1_1http_request.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/class_superpowered_1_1http_request.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/class_superpowered_1_1http_response-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/class_superpowered_1_1http_response-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/class_superpowered_1_1http_response.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/class_superpowered_1_1http_response.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/class_superpowered_analyzer-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/class_superpowered_analyzer-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/class_superpowered_analyzer.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/class_superpowered_analyzer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/class_superpowered_compressor_proto-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/class_superpowered_compressor_proto-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/class_superpowered_compressor_proto.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/class_superpowered_compressor_proto.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/class_superpowered_delay-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/class_superpowered_delay-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/class_superpowered_delay.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/class_superpowered_delay.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/class_superpowered_live_analyzer-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/class_superpowered_live_analyzer-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/class_superpowered_live_analyzer.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/class_superpowered_live_analyzer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/class_superpowered_windows_audio_i_o-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/class_superpowered_windows_audio_i_o-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/class_superpowered_windows_audio_i_o.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/class_superpowered_windows_audio_i_o.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/dir_a95f1a9d4044b19417a28fb0f598d1f1.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/dir_a95f1a9d4044b19417a28fb0f598d1f1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/functions_0x7e.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/functions_0x7e.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/functions_b.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/functions_b.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/functions_func_0x7e.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/functions_func_0x7e.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/functions_func_b.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/functions_func_b.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/functions_func_h.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/functions_func_h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/functions_func_v.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/functions_func_v.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/functions_h.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/functions_h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/functions_k.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/functions_k.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/functions_u.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/functions_u.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/functions_v.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/functions_v.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/functions_vars.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/functions_vars.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/interface_superpowered_i_o_s_audio_i_o-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/interface_superpowered_i_o_s_audio_i_o-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/interface_superpowered_o_s_x_audio_i_o-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/interface_superpowered_o_s_x_audio_i_o-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/interface_superpoweredtv_o_s_audio_i_o-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/interface_superpoweredtv_o_s_audio_i_o-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/struct_superpowered_1_1_a_e_s-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/struct_superpowered_1_1_a_e_s-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/struct_superpowered_1_1_a_e_s.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/struct_superpowered_1_1_a_e_s.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/struct_superpowered_1_1hasher-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/struct_superpowered_1_1hasher-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/struct_superpowered_1_1hasher.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/struct_superpowered_1_1hasher.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/struct_superpowered_1_1http_data-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/struct_superpowered_1_1http_data-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/struct_superpowered_1_1http_data.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/struct_superpowered_1_1http_data.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/struct_superpowered_1_1json-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/struct_superpowered_1_1json-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/struct_superpowered_1_1json.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/struct_superpowered_1_1json.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/structaudio_device-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/structaudio_device-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Docs/structaudio_device.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/structaudio_device.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredCrossExample/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredCrossExample/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredCrossExample/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredCrossExample/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredEffect/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredEffect/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SuperpoweredFrequencyDomain.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SuperpoweredFrequencyDomain.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredHLS/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredHLS/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/SuperpoweredAdvancedAudioPlayer.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/SuperpoweredAdvancedAudioPlayer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/SuperpoweredOSXAudioIO.mm" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/SuperpoweredOSXAudioIO.mm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/SuperpoweredSimple.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/SuperpoweredSimple.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin120_Debug_MD_x64.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin120_Debug_MD_x64.lib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin120_Debug_MD_x86.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin120_Debug_MD_x86.lib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin120_Debug_MT_x64.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin120_Debug_MT_x64.lib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin120_Debug_MT_x86.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin120_Debug_MT_x86.lib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin120_Release_MD_x64.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin120_Release_MD_x64.lib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin120_Release_MD_x86.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin120_Release_MD_x86.lib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin120_Release_MT_x64.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin120_Release_MT_x64.lib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin120_Release_MT_x86.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin120_Release_MT_x86.lib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin140_Debug_MD_x64.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin140_Debug_MD_x64.lib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin140_Debug_MD_x86.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin140_Debug_MD_x86.lib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin140_Debug_MT_x64.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin140_Debug_MT_x64.lib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin140_Debug_MT_x86.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin140_Debug_MT_x86.lib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin140_Release_MD_x64.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin140_Release_MD_x64.lib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin140_Release_MD_x86.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin140_Release_MD_x86.lib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin140_Release_MT_x64.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin140_Release_MT_x64.lib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin140_Release_MT_x86.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin140_Release_MT_x86.lib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin141_Debug_MD_x64.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin141_Debug_MD_x64.lib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin141_Debug_MD_x86.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin141_Debug_MD_x86.lib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin141_Debug_MT_x64.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin141_Debug_MT_x64.lib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin141_Debug_MT_x86.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin141_Debug_MT_x86.lib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin141_Release_MD_x64.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin141_Release_MD_x64.lib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin141_Release_MD_x86.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin141_Release_MD_x86.lib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin141_Release_MT_x64.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin141_Release_MT_x64.lib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin141_Release_MT_x86.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin141_Release_MT_x86.lib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWinUWP_Debug_ARM.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWinUWP_Debug_ARM.lib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWinUWP_Debug_x64.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWinUWP_Debug_x64.lib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWinUWP_Debug_x86.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWinUWP_Debug_x86.lib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWinUWP_Release_ARM.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWinUWP_Release_ARM.lib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWinUWP_Release_x64.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWinUWP_Release_x64.lib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWinUWP_Release_x86.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWinUWP_Release_x86.lib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/libSuperpoweredAndroidX86.a" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/libSuperpoweredAndroidX86.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/libSuperpoweredAndroidX86_64.a" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/libSuperpoweredAndroidX86_64.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/libSuperpoweredAndroidarm64-v8a.a" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/libSuperpoweredAndroidarm64-v8a.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/libSuperpoweredAndroidarmeabi-v7a.a" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/libSuperpoweredAndroidarmeabi-v7a.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/libSuperpoweredAudioIOS.a" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/libSuperpoweredAudioIOS.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/libSuperpoweredAudioOSX.a" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/libSuperpoweredAudioOSX.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/libSuperpoweredAudiotvOS.a" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/libSuperpoweredAudiotvOS.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/libSuperpoweredLinuxARM32Hard.a" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/libSuperpoweredLinuxARM32Hard.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/libSuperpoweredLinuxARM32Soft.a" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/libSuperpoweredLinuxARM32Soft.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/libSuperpoweredLinuxARM64.a" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/libSuperpoweredLinuxARM64.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/libSuperpoweredLinuxX86.a" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/libSuperpoweredLinuxX86.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/libSuperpoweredLinuxX86_64.a" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/libSuperpoweredLinuxX86_64.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/_superpowered3_band_e_q_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered3_band_e_q_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/_superpowered_advanced_audio_player_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered_advanced_audio_player_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/_superpowered_analyzer_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered_analyzer_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/_superpowered_android_audio_i_o_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered_android_audio_i_o_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/_superpowered_audio_buffers_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered_audio_buffers_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/_superpowered_bandpass_filterbank_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered_bandpass_filterbank_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/_superpowered_c_p_u_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered_c_p_u_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/_superpowered_clipper_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered_clipper_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/_superpowered_compressor_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered_compressor_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/_superpowered_decoder_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered_decoder_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/_superpowered_echo_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered_echo_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/_superpowered_f_f_t_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered_f_f_t_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/_superpowered_f_f_t_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered_f_f_t_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/_superpowered_f_x_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered_f_x_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/_superpowered_filter_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered_filter_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/_superpowered_flanger_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered_flanger_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/_superpowered_frequency_domain_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered_frequency_domain_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/_superpowered_gate_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered_gate_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/_superpowered_i_o_s_audio_i_o_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered_i_o_s_audio_i_o_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/_superpowered_limiter_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered_limiter_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/_superpowered_mixer_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered_mixer_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/_superpowered_n_band_e_q_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered_n_band_e_q_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/_superpowered_o_s_x_audio_i_o_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered_o_s_x_audio_i_o_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/_superpowered_recorder_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered_recorder_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/_superpowered_resampler_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered_resampler_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/_superpowered_reverb_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered_reverb_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/_superpowered_roll_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered_roll_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/_superpowered_simple_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered_simple_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/_superpowered_simple_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered_simple_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/_superpowered_spatializer_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered_spatializer_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/_superpowered_time_stretching_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered_time_stretching_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/_superpowered_u_s_b_audio_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered_u_s_b_audio_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/_superpowered_whoosh_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered_whoosh_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/_superpoweredtv_o_s_audio_i_o_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpoweredtv_o_s_audio_i_o_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/annotated.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/annotated.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered3_band_e_q-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered3_band_e_q-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered3_band_e_q.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered3_band_e_q.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_advanced_audio_player-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_advanced_audio_player-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_advanced_audio_player.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_advanced_audio_player.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_android_audio_i_o-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_android_audio_i_o-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_android_audio_i_o.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_android_audio_i_o.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_audiobuffer_pool-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_audiobuffer_pool-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_audiobuffer_pool.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_audiobuffer_pool.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_audiopointer_list-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_audiopointer_list-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_audiopointer_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_audiopointer_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_bandpass_filterbank-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_bandpass_filterbank-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_bandpass_filterbank.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_bandpass_filterbank.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_c_p_u-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_c_p_u-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_c_p_u.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_c_p_u.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_clipper-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_clipper-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_clipper.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_clipper.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_compressor-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_compressor-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_compressor.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_compressor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_decoder-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_decoder-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_decoder.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_decoder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_echo-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_echo-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_echo.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_echo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_f_x-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_f_x-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_f_x.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_f_x.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_filter-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_filter-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_filter.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_filter.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_flanger-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_flanger-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_flanger.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_flanger.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_frequency_domain-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_frequency_domain-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_frequency_domain.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_frequency_domain.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_gate-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_gate-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_gate.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_gate.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_limiter-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_limiter-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_limiter.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_limiter.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_mono_mixer-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_mono_mixer-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_mono_mixer.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_mono_mixer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_n_band_e_q-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_n_band_e_q-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_n_band_e_q.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_n_band_e_q.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_recorder-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_recorder-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_recorder.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_recorder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_resampler-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_resampler-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_resampler.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_resampler.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_reverb-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_reverb-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_reverb.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_reverb.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_roll-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_roll-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_roll.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_roll.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_spatializer-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_spatializer-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_spatializer.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_spatializer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_spatializer_global_reverb-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_spatializer_global_reverb-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_spatializer_global_reverb.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_spatializer_global_reverb.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_stereo_mixer-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_stereo_mixer-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_stereo_mixer.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_stereo_mixer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_time_stretching-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_time_stretching-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_time_stretching.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_time_stretching.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_u_s_b_audio-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_u_s_b_audio-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_u_s_b_audio.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_u_s_b_audio.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_u_s_b_m_i_d_i-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_u_s_b_m_i_d_i-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_u_s_b_m_i_d_i.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_u_s_b_m_i_d_i.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_u_s_b_system-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_u_s_b_system-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_u_s_b_system.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_u_s_b_system.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_waveform-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_waveform-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_waveform.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_waveform.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_whoosh-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_whoosh-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/class_superpowered_whoosh.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/class_superpowered_whoosh.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/classes.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/classes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/files.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/files.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/functions.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/functions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/functions_c.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/functions_c.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/functions_d.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/functions_d.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/functions_e.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/functions_e.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/functions_f.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/functions_f.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/functions_func.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/functions_func.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/functions_func_c.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/functions_func_c.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/functions_func_d.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/functions_func_d.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/functions_func_e.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/functions_func_e.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/functions_func_f.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/functions_func_f.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/functions_func_g.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/functions_func_g.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/functions_func_i.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/functions_func_i.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/functions_func_j.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/functions_func_j.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/functions_func_l.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/functions_func_l.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/functions_func_m.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/functions_func_m.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/functions_func_n.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/functions_func_n.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/functions_func_o.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/functions_func_o.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/functions_func_p.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/functions_func_p.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/functions_func_r.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/functions_func_r.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/functions_func_s.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/functions_func_s.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/functions_func_t.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/functions_func_t.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/functions_g.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/functions_g.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/functions_i.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/functions_i.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/functions_j.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/functions_j.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/functions_l.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/functions_l.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/functions_m.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/functions_m.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/functions_n.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/functions_n.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/functions_o.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/functions_o.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/functions_p.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/functions_p.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/functions_r.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/functions_r.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/functions_s.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/functions_s.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/functions_t.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/functions_t.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/globals.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/globals.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/globals_func.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/globals_func.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/hierarchy.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/hierarchy.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/interface_superpowered_i_o_s_audio_i_o.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/interface_superpowered_i_o_s_audio_i_o.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/interface_superpowered_o_s_x_audio_i_o.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/interface_superpowered_o_s_x_audio_i_o.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/interface_superpoweredtv_o_s_audio_i_o.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/interface_superpoweredtv_o_s_audio_i_o.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/protocol_superpowered_i_o_s_audio_i_o_delegate-p-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/protocol_superpowered_i_o_s_audio_i_o_delegate-p-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/protocol_superpowered_i_o_s_audio_i_o_delegate-p.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/protocol_superpowered_i_o_s_audio_i_o_delegate-p.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/protocol_superpowered_o_s_x_audio_i_o_delegate-p-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/protocol_superpowered_o_s_x_audio_i_o_delegate-p-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/protocol_superpowered_o_s_x_audio_i_o_delegate-p.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/protocol_superpowered_o_s_x_audio_i_o_delegate-p.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/protocol_superpoweredtv_o_s_audio_i_o_delegate-p-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/protocol_superpoweredtv_o_s_audio_i_o_delegate-p-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/protocol_superpoweredtv_o_s_audio_i_o_delegate-p.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/protocol_superpoweredtv_o_s_audio_i_o_delegate-p.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/struct_superpowered_audiobufferlist_element-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/struct_superpowered_audiobufferlist_element-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/struct_superpowered_audiobufferlist_element.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/struct_superpowered_audiobufferlist_element.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/struct_superpowered_u_s_b_audio_i_o_info-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/struct_superpowered_u_s_b_audio_i_o_info-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/struct_superpowered_u_s_b_audio_i_o_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/struct_superpowered_u_s_b_audio_i_o_info.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/structhls_stream_alternative-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/structhls_stream_alternative-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/structhls_stream_alternative.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/structhls_stream_alternative.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/structmulti_input_channel_map-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/structmulti_input_channel_map-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/structmulti_input_channel_map.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/structmulti_input_channel_map.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/structmulti_output_channel_map-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/structmulti_output_channel_map-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/structmulti_output_channel_map.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/structmulti_output_channel_map.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/structstems_compressor-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/structstems_compressor-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/structstems_compressor.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/structstems_compressor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/structstems_info-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/structstems_info-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/structstems_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/structstems_info.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/structstems_limiter-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/structstems_limiter-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/structstems_limiter.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/structstems_limiter.html" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view />
+      </state>
+    </system>
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1105968628">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.0" value="2" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="559" />
+    <option name="y" value="23" />
+    <option name="width" value="2593" />
+    <option name="height" value="1417" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="android.sdk.path" value="/android/sdk" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="&lt;template&gt;" type="Applet" default="true" selected="false">
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration name="&lt;template&gt;" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" default="true" selected="false">
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+    </configuration>
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c02a0a01-e710-4f10-b156-dfcfa3ba82da" name="Default Changelist" comment="" />
+      <created>1553675810549</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1553675810549</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="559" y="23" width="2593" height="1417" extended-state="0" />
+    <layout>
+      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.32967463" />
+      <window_info id="Structure" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info id="Build Variants" order="4" side_tool="true" />
+      <window_info id="Image Layers" order="5" />
+      <window_info id="Designer" order="6" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Logcat" order="1" />
+      <window_info anchor="bottom" id="TODO" order="2" />
+      <window_info anchor="bottom" id="Terminal" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Build" order="5" visible="true" weight="0.32981133" />
+      <window_info anchor="bottom" id="Android Profiler" order="6" show_stripe_button="false" />
+      <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
+      <window_info anchor="right" id="Capture Analysis" order="1" />
+      <window_info anchor="right" id="Gradle" order="2" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info anchor="right" id="Palette&#9;" order="4" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+</project>

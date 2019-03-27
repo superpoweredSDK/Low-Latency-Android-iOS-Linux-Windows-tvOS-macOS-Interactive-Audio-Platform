@@ -391,6 +391,17 @@ void SuperpoweredStereoToMidSide(float *input, float *output, unsigned int numbe
 void SuperpoweredMidSideToStereo(float *input, float *output, unsigned int numberOfFrames);
 
 /**
+ @fn SuperpoweredDotProduct(float *input0, float *input1, unsigned int numValues)
+ @brief Calculates the dot product of two vectors.
+ 
+ @param input0 First input vector.
+ @param input1 Second input vector.
+ @param numValues Number of value pairs to process.
+ @return The dot product.
+ */
+float SuperpoweredDotProduct(float *input0, float *input1, unsigned int numValues);
+
+/**
  @fn SuperpoweredVersion()
  @return Returns the current version of the Superpowered SDK.
  

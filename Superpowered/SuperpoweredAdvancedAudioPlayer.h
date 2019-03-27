@@ -173,6 +173,7 @@ typedef void (* SuperpoweredAdvancedAudioPlayerCallback) (void *clientData, Supe
  @param maxTimeStretchingTempo Will not time-stretch, just resample above this tempo. Default: 2.0f (recommended value for low CPU on older mobile devices, such as the first iPad).
  @param handleStems Output 4 distinct stereo pairs for Native Instruments STEMS format. Default: false (output stem 0 for STEMS).
  @param defaultQuantum Reserved for future use.
+ @param hlsLiveLatencySeconds Number of seconds of latency for a HLS live stream. The player will try to stay at this value on every reconnect. Default: -1 (stream starts at the first segment specified by the server)
  @param fullyDownloadedFilePath The file system path of the fully downloaded audio file for progressive downloads. Progressive downloads are automatically removed if no SuperpoweredAdvancedAudioPlayer instance is active for the same url. This parameter provides an alternative to save the file.
  @param tempFolderPath The path for temporary files.
 */
@@ -230,6 +231,7 @@ public:
     float maxTimeStretchingTempo;
     bool handleStems;
     double defaultQuantum;
+    char hlsLiveLatencySeconds;
 
 /**
  @brief Set the folder path for temporary files. Used for HLS and progressive download only.

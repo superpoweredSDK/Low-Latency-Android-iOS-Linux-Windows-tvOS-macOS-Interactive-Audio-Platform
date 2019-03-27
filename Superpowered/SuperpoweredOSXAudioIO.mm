@@ -45,14 +45,14 @@ static OSStatus audioOutputCallback(void *inRefCon, AudioUnitRenderActionFlags *
     SuperpoweredOSXAudioIO *self = (__bridge SuperpoweredOSXAudioIO *)inRefCon;
 
     div_t d = div(inNumberFrames, 8);
-    if ((d.rem != 0) || (inNumberFrames < 32) || (inNumberFrames > MAXFRAMES) || (ioData->mNumberBuffers != self->numberOfChannels) || (self->inputEnabled && (self->inputFrames != inNumberFrames))) {
+    if ((d.rem != 0) || (inNumberFrames < 32) || (inNumberFrames > MAXFRAMES) || (ioData->mNumberBuffers != self->numberOfChannels)) {
         return kAudioUnitErr_InvalidParameter;
     };
 
     float *outputBufs[self->numberOfChannels], **inputBufs = self->outputEven ? self->inputBufs0 : self->inputBufs1;
     for (int n = 0; n < self->numberOfChannels; n++) outputBufs[n] = (float *)ioData->mBuffers[n].mData;
     bool silence = true;
-    int inputChannels = self->hasInput ? self->inputChannels : 0;
+    int inputChannels = self->hasInput && self->inputEnabled && (self->inputFrames == inNumberFrames) ? self->inputChannels : 0;
     self->outputEven = !self->outputEven;
 
     if (self->processingCallback) silence = !self->processingCallback(self->processingClientdata, inputBufs, inputChannels, outputBufs, self->numberOfChannels, inNumberFrames, self->samplerate, inTimeStamp->mHostTime);

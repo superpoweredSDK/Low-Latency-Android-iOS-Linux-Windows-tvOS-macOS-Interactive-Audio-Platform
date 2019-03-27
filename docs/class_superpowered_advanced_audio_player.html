@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.3.1</span>
+   &#160;<span id="projectnumber">1.3.2</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -310,6 +310,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>handleStems</b></td><
 <tr class="memitem:ad1c9f6f770402e53ba778e8006a7da27"><td class="memItemLeft" align="right" valign="top"><a id="ad1c9f6f770402e53ba778e8006a7da27"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><b>defaultQuantum</b></td></tr>
 <tr class="separator:ad1c9f6f770402e53ba778e8006a7da27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae11ac2f6dd3b5b6f6efa4337c2fa46a9"><td class="memItemLeft" align="right" valign="top"><a id="ae11ac2f6dd3b5b6f6efa4337c2fa46a9"></a>
+char&#160;</td><td class="memItemRight" valign="bottom"><b>hlsLiveLatencySeconds</b></td></tr>
+<tr class="separator:ae11ac2f6dd3b5b6f6efa4337c2fa46a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -390,6 +393,7 @@ static char *&#160;</td><td class="memItemRight" valign="bottom"><b>tempFolderPa
     <tr><td class="paramname">maxTimeStretchingTempo</td><td>Will not time-stretch, just resample above this tempo. Default: 2.0f (recommended value for low CPU on older mobile devices, such as the first iPad). </td></tr>
     <tr><td class="paramname">handleStems</td><td>Output 4 distinct stereo pairs for Native Instruments STEMS format. Default: false (output stem 0 for STEMS). </td></tr>
     <tr><td class="paramname">defaultQuantum</td><td>Reserved for future use. </td></tr>
+    <tr><td class="paramname">hlsLiveLatencySeconds</td><td>Number of seconds of latency for a HLS live stream. The player will try to stay at this value on every reconnect. Default: -1 (stream starts at the first segment specified by the server) </td></tr>
     <tr><td class="paramname">fullyDownloadedFilePath</td><td>The file system path of the fully downloaded audio file for progressive downloads. Progressive downloads are automatically removed if no <a class="el" href="class_superpowered_advanced_audio_player.html" title="High performance advanced audio player with: ">SuperpoweredAdvancedAudioPlayer</a> instance is active for the same url. This parameter provides an alternative to save the file. </td></tr>
     <tr><td class="paramname">tempFolderPath</td><td>The path for temporary files. </td></tr>
   </table>

@@ -184,7 +184,7 @@
 			};
 			buildConfigurationList = 1B80C6F818E0C79600DF5B81 /* Build configuration list for PBXProject "SuperpoweredCrossExample" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,

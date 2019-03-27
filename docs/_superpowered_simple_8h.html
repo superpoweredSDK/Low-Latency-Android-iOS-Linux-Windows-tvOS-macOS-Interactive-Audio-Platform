@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.3.1</span>
+   &#160;<span id="projectnumber">1.3.2</span>
    </div>
    <div id="projectbrief">Pain-free Audio Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -151,6 +151,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a23281da10344cea10058d7e5bdd25924"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#a23281da10344cea10058d7e5bdd25924">SuperpoweredMidSideToStereo</a> (float *input, float *output, unsigned int numberOfFrames)</td></tr>
 <tr class="memdesc:a23281da10344cea10058d7e5bdd25924"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a mid-side signal to stereo.  <a href="#a23281da10344cea10058d7e5bdd25924">More...</a><br /></td></tr>
 <tr class="separator:a23281da10344cea10058d7e5bdd25924"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa46a31ece1c896d1e3680680ce666a24"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#aa46a31ece1c896d1e3680680ce666a24">SuperpoweredDotProduct</a> (float *input0, float *input1, unsigned int numValues)</td></tr>
+<tr class="memdesc:aa46a31ece1c896d1e3680680ce666a24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the dot product of two vectors.  <a href="#aa46a31ece1c896d1e3680680ce666a24">More...</a><br /></td></tr>
+<tr class="separator:aa46a31ece1c896d1e3680680ce666a24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe7772f165043b851a9bf074771cf17a"><td class="memItemLeft" align="right" valign="top">const unsigned char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_simple_8h.html#abe7772f165043b851a9bf074771cf17a">SuperpoweredVersion</a> ()</td></tr>
 <tr class="separator:abe7772f165043b851a9bf074771cf17a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -1910,6 +1913,49 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="aa46a31ece1c896d1e3680680ce666a24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa46a31ece1c896d1e3680680ce666a24">&#9670;&nbsp;</a></span>SuperpoweredDotProduct()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SuperpoweredDotProduct </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>input0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>input1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>numValues</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input0</td><td>First input vector. </td></tr>
+    <tr><td class="paramname">input1</td><td>Second input vector. </td></tr>
+    <tr><td class="paramname">numValues</td><td>Number of value pairs to process. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The dot product. </dd></dl>
 
 </div>
 </div>
