@@ -55,6 +55,7 @@
 		1BA11FCA18FC313D00484827 /* SuperpoweredFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredFilter.h; path = ../../Superpowered/SuperpoweredFilter.h; sourceTree = "<group>"; };
 		1BA11FCB18FC313D00484827 /* SuperpoweredFlanger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredFlanger.h; path = ../../Superpowered/SuperpoweredFlanger.h; sourceTree = "<group>"; };
 		1BA11FCC18FC313D00484827 /* SuperpoweredRoll.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredRoll.h; path = ../../Superpowered/SuperpoweredRoll.h; sourceTree = "<group>"; };
+		211F35D122806159006DE760 /* Superpowered.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Superpowered.h; path = ../../Superpowered/Superpowered.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +135,7 @@
 		1B80C74818E0C85B00DF5B81 /* Superpowered Headers */ = {
 			isa = PBXGroup;
 			children = (
+				211F35D122806159006DE760 /* Superpowered.h */,
 				1BA11FC918FC313D00484827 /* SuperpoweredAdvancedAudioPlayer.h */,
 				1BA11FCA18FC313D00484827 /* SuperpoweredFilter.h */,
 				1BA11FCB18FC313D00484827 /* SuperpoweredFlanger.h */,

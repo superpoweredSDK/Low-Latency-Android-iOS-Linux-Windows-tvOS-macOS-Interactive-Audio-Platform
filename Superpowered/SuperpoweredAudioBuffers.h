@@ -16,9 +16,9 @@ struct SuperpoweredAudiobufferlistElement;
 class SuperpoweredAudiobufferPool {
 public:
 /**
- @brief Let the system know that we are start using this class.
+ @brief Do not use this.
  */
-    static void ping();
+    static void initialize();
 /**
  @brief Creates a buffer with retain count set to 1, similar to an NSObject in Objective-C. Use releaseBuffer() to release.
  

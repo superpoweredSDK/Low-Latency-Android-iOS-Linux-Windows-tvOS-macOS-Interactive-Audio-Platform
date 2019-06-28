@@ -50,6 +50,7 @@
 		1BF94B6A19765615001FFAC9 /* libSuperpoweredAudioIOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSuperpoweredAudioIOS.a; path = ../../Superpowered/libSuperpoweredAudioIOS.a; sourceTree = "<group>"; };
 		1BF94B6C19765644001FFAC9 /* SuperpoweredDecoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredDecoder.h; path = ../../Superpowered/SuperpoweredDecoder.h; sourceTree = "<group>"; };
 		1BF94B6E19765833001FFAC9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		211F35D5228083A7006DE760 /* Superpowered.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Superpowered.h; path = ../../Superpowered/Superpowered.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				1BF94B6A19765615001FFAC9 /* libSuperpoweredAudioIOS.a */,
+				211F35D5228083A7006DE760 /* Superpowered.h */,
 				1B74E6D51CEB615400DF0B3D /* SuperpoweredAnalyzer.h */,
 				1BF94B6C19765644001FFAC9 /* SuperpoweredDecoder.h */,
 				1B1050791BB2F586002A3F93 /* SuperpoweredFilter.h */,

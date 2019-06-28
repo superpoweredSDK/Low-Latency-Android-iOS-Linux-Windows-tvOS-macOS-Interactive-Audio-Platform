@@ -36,7 +36,7 @@
 		1B0377E31A7ABDFB0094A776 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = SOURCE_ROOT; };
 		1B0377E61A7ABE100094A776 /* CoreAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreAudio.h; sourceTree = "<group>"; };
 		1B0377E71A7ABE100094A776 /* CoreAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreAudio.m; sourceTree = "<group>"; };
-		1B0377E81A7ABE100094A776 /* Superpowered.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Superpowered.h; sourceTree = "<group>"; };
+		1B0377E81A7ABE100094A776 /* SuperpoweredClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperpoweredClass.h; sourceTree = "<group>"; };
 		1B0377E91A7ABE100094A776 /* Superpowered.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Superpowered.mm; sourceTree = "<group>"; };
 		1B0377EC1A7ABE1B0094A776 /* fftTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fftTest.h; sourceTree = "<group>"; };
 		1B0377ED1A7ABE250094A776 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -66,6 +66,7 @@
 		1B85C570189EA027006D6C3C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		1B98E0071B14BE9600617EF9 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		1BADEA8E18DB892F001E9516 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		211F35D622808435006DE760 /* Superpowered.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Superpowered.h; path = ../../Superpowered/Superpowered.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				1B0377DB1A7ABDDE0094A776 /* libSuperpoweredAudioIOS.a */,
+				211F35D622808435006DE760 /* Superpowered.h */,
 				1B56C2261A7AC27F00A649D2 /* SuperpoweredFlanger.h */,
 				1B56C2271A7AC27F00A649D2 /* SuperpoweredEcho.h */,
 				1B56C2281A7AC27F00A649D2 /* SuperpoweredReverb.h */,
@@ -119,7 +121,7 @@
 				1B0377E31A7ABDFB0094A776 /* ViewController.m */,
 				1B0377E61A7ABE100094A776 /* CoreAudio.h */,
 				1B0377E71A7ABE100094A776 /* CoreAudio.m */,
-				1B0377E81A7ABE100094A776 /* Superpowered.h */,
+				1B0377E81A7ABE100094A776 /* SuperpoweredClass.h */,
 				1B0377E91A7ABE100094A776 /* Superpowered.mm */,
 				1B0377EC1A7ABE1B0094A776 /* fftTest.h */,
 				1B56C22F1A7AC2E900A649D2 /* Main.storyboard */,

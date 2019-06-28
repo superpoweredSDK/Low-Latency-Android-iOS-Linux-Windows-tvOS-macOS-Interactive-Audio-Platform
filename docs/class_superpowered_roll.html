@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Superpowered: SuperpoweredRoll Class Reference</title>
+<title>Superpowered SDKs: SuperpoweredRoll Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -18,10 +18,10 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.3.3</span>
+   <div id="projectname">Superpowered SDKs
+   &#160;<span id="projectnumber">1.4.0</span>
    </div>
-   <div id="projectbrief">Pain-free Audio Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
+   <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
  </tr>
  </tbody>
@@ -59,9 +59,9 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_roll.html#ab4adbc4e6bef10bbf07facddf5ff2682">enable</a> (bool flag)</td></tr>
 <tr class="memdesc:ab4adbc4e6bef10bbf07facddf5ff2682"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turns the effect on/off. <br /></td></tr>
 <tr class="separator:ab4adbc4e6bef10bbf07facddf5ff2682"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a716b20fefee502a8d9af8fef6413c23f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_roll.html#a716b20fefee502a8d9af8fef6413c23f">SuperpoweredRoll</a> (unsigned int samplerate)</td></tr>
-<tr class="memdesc:a716b20fefee502a8d9af8fef6413c23f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a roll instance with the current sample rate value.  <a href="#a716b20fefee502a8d9af8fef6413c23f">More...</a><br /></td></tr>
-<tr class="separator:a716b20fefee502a8d9af8fef6413c23f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a895f3491da2fc7cb7d711a2f66d755"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_roll.html#a9a895f3491da2fc7cb7d711a2f66d755">SuperpoweredRoll</a> (unsigned int samplerate, unsigned int maximumSamplerate=96000)</td></tr>
+<tr class="memdesc:a9a895f3491da2fc7cb7d711a2f66d755"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a roll instance with the current sample rate value.  <a href="#a9a895f3491da2fc7cb7d711a2f66d755">More...</a><br /></td></tr>
+<tr class="separator:a9a895f3491da2fc7cb7d711a2f66d755"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ffcbc3f4e9c6ef9348551803c335d6a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_roll.html#a4ffcbc3f4e9c6ef9348551803c335d6a">setSamplerate</a> (unsigned int samplerate)</td></tr>
 <tr class="memdesc:a4ffcbc3f4e9c6ef9348551803c335d6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the sample rate.  <a href="#a4ffcbc3f4e9c6ef9348551803c335d6a">More...</a><br /></td></tr>
 <tr class="separator:a4ffcbc3f4e9c6ef9348551803c335d6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -100,8 +100,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>enabled</b></td></tr>
   </dd>
 </dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a716b20fefee502a8d9af8fef6413c23f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a716b20fefee502a8d9af8fef6413c23f">&#9670;&nbsp;</a></span>SuperpoweredRoll()</h2>
+<a id="a9a895f3491da2fc7cb7d711a2f66d755"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a895f3491da2fc7cb7d711a2f66d755">&#9670;&nbsp;</a></span>SuperpoweredRoll()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -110,12 +110,29 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>enabled</b></td></tr>
           <td class="memname">SuperpoweredRoll::SuperpoweredRoll </td>
           <td>(</td>
           <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>samplerate</em></td><td>)</td>
+          <td class="paramname"><em>samplerate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>maximumSamplerate</em> = <code>96000</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Enabled is false by default, use enable(true) to enable. </p>
+<p>Enabled is false by default, use enable(true) to enable.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">samplerate</td><td>The current sample rate. </td></tr>
+    <tr><td class="paramname">maximumSamplerate</td><td>The maximum sample rate this effect will be operated. Affects memory usage. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

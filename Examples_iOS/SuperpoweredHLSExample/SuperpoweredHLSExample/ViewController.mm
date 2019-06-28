@@ -1,5 +1,6 @@
 #import "ViewController.h"
 #import "SuperpoweredIOSAudioIO.h"
+#include "Superpowered.h"
 #include "SuperpoweredAdvancedAudioPlayer.h"
 #include "SuperpoweredSimple.h"
 
@@ -68,6 +69,18 @@ static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    SuperpoweredInitialize(
+                           "ExampleLicenseKey-WillExpire-OnNextUpdate",
+                           false, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
+                           false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
+                           false, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
+                           false, // enableAudioEffects (using any SuperpoweredFX class)
+                           true, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
+                           false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
+                           false  // enableNetworking (using Superpowered::httpRequest)
+                           );
+    
     lastPositionSeconds = 0;
     selectedRow = 0;
     samplerate = 44100;

@@ -78,7 +78,7 @@ static OSStatus devicesChangedCallback(AudioObjectID inObjectID, UInt32 inNumber
     SuperpoweredOSXAudioIO *self = (__bridge SuperpoweredOSXAudioIO *)inClientData;
     dispatch_async(dispatch_get_main_queue(), ^{
         audioDevice *devices = [SuperpoweredOSXAudioIO getAudioDevices], *next;
-        [self->delegate audioDevicesChanged:devices];
+        if ([self->delegate respondsToSelector:@selector(audioDevicesChanged:)]) [self->delegate audioDevicesChanged:devices];
         while (devices) {
             next = devices->next;
             if (devices->name) free(devices->name);
@@ -235,7 +235,7 @@ static bool hasMapping(int *map) {
 }
 
 - (void)mapChannels {
-    if (!delegate) return;
+    if (!delegate || ![delegate respondsToSelector:@selector(mapChannels:numOutputChannels:outputMap:input:numInputChannels:inputMap:)]) return;
     if (![NSThread isMainThread]) {
         [self performSelectorOnMainThread:@selector(mapChannels) withObject:nil waitUntilDone:NO];
         return;

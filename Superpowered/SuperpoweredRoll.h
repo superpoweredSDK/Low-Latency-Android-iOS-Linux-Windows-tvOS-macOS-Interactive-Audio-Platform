@@ -29,8 +29,11 @@ public:
  @brief Create a roll instance with the current sample rate value.
  
  Enabled is false by default, use enable(true) to enable.
+ 
+ @param samplerate The current sample rate.
+ @param maximumSamplerate The maximum sample rate this effect will be operated. Affects memory usage.
 */
-    SuperpoweredRoll(unsigned int samplerate);
+    SuperpoweredRoll(unsigned int samplerate, unsigned int maximumSamplerate = 96000);
     ~SuperpoweredRoll();
     
 /**

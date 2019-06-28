@@ -1,11 +1,23 @@
 #include <stdio.h>
 #include <malloc.h>
+#include "Superpowered.h"
 #include "SuperpoweredDecoder.h"
 #include "SuperpoweredSimple.h"
 #include "SuperpoweredAnalyzer.h"
 
 // EXAMPLE: reading an audio file, applying time stretching and saving the result to WAV
 int main(int argc, char *argv[]) {
+    SuperpoweredInitialize(
+                           "ExampleLicenseKey-WillExpire-OnNextUpdate",
+                           true, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
+                           false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
+                           false, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
+                           false, // enableAudioEffects (using any SuperpoweredFX class)
+                           true, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
+                           false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
+                           false  // enableNetworking (using Superpowered::httpRequest)
+                           );
+    
     // Open the input file.
     SuperpoweredDecoder *decoder = new SuperpoweredDecoder();
     const char *openError = decoder->open("test.m4a", false, 0, 0);
@@ -16,7 +28,7 @@ int main(int argc, char *argv[]) {
     };
 
     // Create the analyzer.
-    SuperpoweredOfflineAnalyzer *analyzer = new SuperpoweredOfflineAnalyzer(decoder->samplerate, 0, decoder->durationSeconds);
+    SuperpoweredAnalyzer *analyzer = new SuperpoweredAnalyzer(decoder->samplerate, 0, decoder->durationSeconds);
 
     // Create a buffer for the 16-bit integer samples coming from the decoder.
     short int *intBuffer = (short int *)malloc(decoder->samplesPerFrame * 2 * sizeof(short int) + 32768);

@@ -1,20 +1,30 @@
-﻿// Typical UWP stuff.
+// Typical UWP stuff.
 #include "pch.h"
 #include "MainPage.xaml.h"
 using namespace SuperpoweredPlayer;
 
-MainPage::MainPage() {
-	InitializeComponent();
-}
-
-// The interesting part begins here.
 #include <helpers.h>
+#include <Superpowered.h>
 #include <SuperpoweredWindowsAudioIO.h>
 #include <SuperpoweredAdvancedAudioPlayer.h>
 
 static SuperpoweredWindowsAudioIO *audioIO = NULL;
 static SuperpoweredAdvancedAudioPlayer *player = NULL;
 static int lastSamplerate = 44100;
+
+MainPage::MainPage() {
+	InitializeComponent();
+    SuperpoweredInitialize(
+                           "ExampleLicenseKey-WillExpire-OnNextUpdate",
+                           false, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
+                           false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
+                           false, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
+                           false, // enableAudioEffects (using any SuperpoweredFX class)
+                           true, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
+                           false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
+                           false  // enableNetworking (using Superpowered::httpRequest)
+                           );
+}
 
 // Audio output should be provided here.
 static bool audioProcessing(void *clientdata, float *audio, int numberOfSamples, int samplerate) {

@@ -21,7 +21,8 @@ struct reverbInternals;
 class SuperpoweredReverb: public SuperpoweredFX {
 public:
 // READ ONLY parameters, don't set them directly, use the methods below.
-    float dry, wet;
+    float dry;
+    float wet;
     float mix;
     float width;
     float damp;

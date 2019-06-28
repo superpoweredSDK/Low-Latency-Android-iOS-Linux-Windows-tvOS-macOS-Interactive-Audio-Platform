@@ -1,6 +1,6 @@
 #import "ViewController.h"
 #import "CoreAudio.h"
-#import "Superpowered.h"
+#import "SuperpoweredClass.h"
 #import <QuartzCore/QuartzCore.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>

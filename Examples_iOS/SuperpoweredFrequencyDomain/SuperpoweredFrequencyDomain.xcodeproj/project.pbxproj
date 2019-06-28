@@ -41,6 +41,7 @@
 		1B52984C1C05BC3A00647594 /* SuperpoweredIOSAudioIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperpoweredIOSAudioIO.h; path = ../../Superpowered/SuperpoweredIOSAudioIO.h; sourceTree = "<group>"; };
 		1B52984D1C05BC3A00647594 /* SuperpoweredIOSAudioIO.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SuperpoweredIOSAudioIO.mm; path = ../../Superpowered/SuperpoweredIOSAudioIO.mm; sourceTree = "<group>"; };
 		1B98E0011B14BDF300617EF9 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		211F35D32280743A006DE760 /* Superpowered.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Superpowered.h; path = ../../Superpowered/Superpowered.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +70,7 @@
 				1B468B7E1AE664250099A7DD /* libSuperpoweredAudioIOS.a */,
 				1B52984C1C05BC3A00647594 /* SuperpoweredIOSAudioIO.h */,
 				1B52984D1C05BC3A00647594 /* SuperpoweredIOSAudioIO.mm */,
+				211F35D32280743A006DE760 /* Superpowered.h */,
 				1B468B8E1AE696520099A7DD /* SuperpoweredSimple.h */,
 				1B468B851AE664A30099A7DD /* SuperpoweredFrequencyDomain.h */,
 				1B468B571AE663D20099A7DD /* SuperpoweredFrequencyDomain */,

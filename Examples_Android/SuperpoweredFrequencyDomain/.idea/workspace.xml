@@ -52,16 +52,148 @@
       <change beforePath="$PROJECT_DIR$/../../Docs/struct_superpowered_1_1json.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/struct_superpowered_1_1json.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Docs/structaudio_device-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/structaudio_device-members.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Docs/structaudio_device.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Docs/structaudio_device.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredCrossExample/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredCrossExample/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredCrossExample/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredCrossExample/.idea/caches/gradle_models.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredCrossExample/.idea/codeStyles/Project.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../SuperpoweredCrossExample/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredCrossExample/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredCrossExample/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredCrossExample/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredCrossExample/app/src/main/cpp/CrossExample.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredCrossExample/app/src/main/cpp/CrossExample.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredCrossExample/app/src/main/java/com/superpowered/crossexample/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredCrossExample/app/src/main/java/com/superpowered/crossexample/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SuperpoweredCrossExample/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredCrossExample/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredCrossExample/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredCrossExample/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredEffect/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredEffect/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredEffect/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredEffect/.idea/caches/gradle_models.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredEffect/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredEffect/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredEffect/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredEffect/app/src/main/cpp/EffectExample.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredEffect/app/src/main/cpp/EffectExample.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredEffect/app/src/main/java/com/superpowered/effect/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredEffect/app/src/main/java/com/superpowered/effect/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SuperpoweredEffect/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredEffect/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredEffect/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredEffect/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_runtime_1_1_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_runtime_1_1_1_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_1_1_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_1_1_1_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_core_1_1_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_core_1_1_1_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_runtime_1_1_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_runtime_1_1_1_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_viewmodel_1_1_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_viewmodel_1_1_1_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_animated_vector_drawable_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_animated_vector_drawable_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_appcompat_v7_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_appcompat_v7_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_asynclayoutinflater_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_asynclayoutinflater_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_coordinatorlayout_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_coordinatorlayout_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_cursoradapter_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_cursoradapter_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_customview_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_customview_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_documentfile_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_documentfile_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_drawerlayout_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_drawerlayout_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_interpolator_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_interpolator_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_loader_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_loader_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_localbroadcastmanager_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_localbroadcastmanager_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_print_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_print_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_slidingpanelayout_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_slidingpanelayout_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_compat_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_compat_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_ui_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_ui_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_utils_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_utils_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_fragment_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_fragment_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_vector_drawable_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_vector_drawable_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_swiperefreshlayout_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_swiperefreshlayout_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_versionedparcelable_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_versionedparcelable_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_viewpager_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_viewpager_28_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SuperpoweredFrequencyDomain.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SuperpoweredFrequencyDomain.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/cpp/FrequencyDomain.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/cpp/FrequencyDomain.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/superpowered/frequencydomain/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/superpowered/frequencydomain/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredHLS/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredHLS/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredHLS/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredHLS/.idea/caches/gradle_models.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredHLS/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredHLS/app/src/main/cpp/HLSPlayer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredHLS/app/src/main/cpp/HLSPlayer.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SuperpoweredHLS/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredHLS/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Superpowered/SuperpoweredAdvancedAudioPlayer.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/SuperpoweredAdvancedAudioPlayer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredHLS/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredHLS/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredPlayer/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredPlayer/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredPlayer/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredPlayer/.idea/caches/gradle_models.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredPlayer/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredPlayer/app/src/main/cpp/PlayerExample.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredPlayer/app/src/main/cpp/PlayerExample.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredPlayer/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredPlayer/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredPlayer/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredPlayer/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredRecorder/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredRecorder/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredRecorder/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredRecorder/.idea/caches/gradle_models.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredRecorder/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredRecorder/app/src/main/cpp/RecorderExample.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredRecorder/app/src/main/cpp/RecorderExample.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredRecorder/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredRecorder/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredRecorder/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredRecorder/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredUSBExample/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredUSBExample/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredUSBExample/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredUSBExample/.idea/caches/gradle_models.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredUSBExample/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredUSBExample/SuperpoweredUSBExample.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredUSBExample/SuperpoweredUSBExample.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredUSBExample/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredUSBExample/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredUSBExample/complexusb/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredUSBExample/complexusb/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredUSBExample/complexusb/complexusb.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredUSBExample/complexusb/complexusb.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredUSBExample/complexusb/src/main/java/com/superpowered/complexusb/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredUSBExample/complexusb/src/main/java/com/superpowered/complexusb/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredUSBExample/complexusb/src/main/jni/complexusb.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredUSBExample/complexusb/src/main/jni/complexusb.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredUSBExample/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredUSBExample/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredUSBExample/simpleusb/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredUSBExample/simpleusb/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredUSBExample/simpleusb/simpleusb.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredUSBExample/simpleusb/simpleusb.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperpoweredUSBExample/simpleusb/src/main/jni/simpleusb.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperpoweredUSBExample/simpleusb/src/main/jni/simpleusb.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_Linux/src/hls.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_Linux/src/hls.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_Linux/src/offline1.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_Linux/src/offline1.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_Linux/src/offline2.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_Linux/src/offline2.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_Linux/src/offline3.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_Linux/src/offline3.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_Windows/SuperpoweredEffect/MainPage.xaml.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_Windows/SuperpoweredEffect/MainPage.xaml.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_Windows/SuperpoweredHLS/MainPage.xaml.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_Windows/SuperpoweredHLS/MainPage.xaml.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_Windows/SuperpoweredPlayer/MainPage.xaml.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_Windows/SuperpoweredPlayer/MainPage.xaml.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_Windows/SuperpoweredRecorderExample/MainPage.xaml.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_Windows/SuperpoweredRecorderExample/MainPage.xaml.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredCrossExample/SuperpoweredCrossExample.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredCrossExample/SuperpoweredCrossExample.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredCrossExample/SuperpoweredCrossExample.xcodeproj/project.xcworkspace/xcuserdata/gaborszanto.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredCrossExample/SuperpoweredCrossExample.xcodeproj/project.xcworkspace/xcuserdata/gaborszanto.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredCrossExample/SuperpoweredCrossExample/ViewController.mm" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredCrossExample/SuperpoweredCrossExample/ViewController.mm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredFrequencies/SuperpoweredFrequencies.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredFrequencies/SuperpoweredFrequencies.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredFrequencies/SuperpoweredFrequencies.xcodeproj/project.xcworkspace/xcuserdata/gaborszanto.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredFrequencies/SuperpoweredFrequencies.xcodeproj/project.xcworkspace/xcuserdata/gaborszanto.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredFrequencies/SuperpoweredFrequencies/Superpowered.mm" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredFrequencies/SuperpoweredFrequencies/Superpowered.mm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredFrequencyDomain/SuperpoweredFrequencyDomain.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredFrequencyDomain/SuperpoweredFrequencyDomain.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredFrequencyDomain/SuperpoweredFrequencyDomain.xcodeproj/project.xcworkspace/xcuserdata/gaborszanto.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredFrequencyDomain/SuperpoweredFrequencyDomain.xcodeproj/project.xcworkspace/xcuserdata/gaborszanto.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredFrequencyDomain/SuperpoweredFrequencyDomain/ViewController.mm" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredFrequencyDomain/SuperpoweredFrequencyDomain/ViewController.mm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredHLSExample/SuperpoweredHLSExample.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredHLSExample/SuperpoweredHLSExample.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredHLSExample/SuperpoweredHLSExample.xcodeproj/project.xcworkspace/xcuserdata/gaborszanto.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredHLSExample/SuperpoweredHLSExample.xcodeproj/project.xcworkspace/xcuserdata/gaborszanto.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredHLSExample/SuperpoweredHLSExample/ViewController.mm" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredHLSExample/SuperpoweredHLSExample/ViewController.mm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredOfflineProcessingExample/SuperpoweredOfflineProcessingExample.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredOfflineProcessingExample/SuperpoweredOfflineProcessingExample.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredOfflineProcessingExample/SuperpoweredOfflineProcessingExample.xcodeproj/project.xcworkspace/xcuserdata/gaborszanto.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredOfflineProcessingExample/SuperpoweredOfflineProcessingExample.xcodeproj/project.xcworkspace/xcuserdata/gaborszanto.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredOfflineProcessingExample/SuperpoweredOfflineProcessingExample/ViewController.mm" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredOfflineProcessingExample/SuperpoweredOfflineProcessingExample/ViewController.mm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredPerformance/Superpowered.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredPerformance/Superpowered.mm" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredPerformance/Superpowered.mm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredPerformance/SuperpoweredPerformance.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredPerformance/SuperpoweredPerformance.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredPerformance/SuperpoweredPerformance.xcodeproj/project.xcworkspace/xcuserdata/gaborszanto.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredPerformance/SuperpoweredPerformance.xcodeproj/project.xcworkspace/xcuserdata/gaborszanto.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredPerformance/ViewController.m" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_iOS/SuperpoweredPerformance/ViewController.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_tvOS/SuperpoweredTVExample/tvExample.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_tvOS/SuperpoweredTVExample/tvExample.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_tvOS/SuperpoweredTVExample/tvExample.xcodeproj/project.xcworkspace/xcuserdata/gaborszanto.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_tvOS/SuperpoweredTVExample/tvExample.xcodeproj/project.xcworkspace/xcuserdata/gaborszanto.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_tvOS/SuperpoweredTVExample/tvExample.xcodeproj/xcuserdata/gaborszanto.xcuserdatad/xcschemes/xcschememanagement.plist" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_tvOS/SuperpoweredTVExample/tvExample.xcodeproj/xcuserdata/gaborszanto.xcuserdatad/xcschemes/xcschememanagement.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_tvOS/SuperpoweredTVExample/tvExample/Assets.xcassets/App Icon &amp; Top Shelf Image.brandassets/App Icon - Large.imagestack/Back.imagestacklayer/Content.imageset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_tvOS/SuperpoweredTVExample/tvExample/Assets.xcassets/App Icon &amp; Top Shelf Image.brandassets/App Icon - Large.imagestack/Back.imagestacklayer/Content.imageset/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_tvOS/SuperpoweredTVExample/tvExample/Assets.xcassets/App Icon &amp; Top Shelf Image.brandassets/App Icon - Large.imagestack/Front.imagestacklayer/Content.imageset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_tvOS/SuperpoweredTVExample/tvExample/Assets.xcassets/App Icon &amp; Top Shelf Image.brandassets/App Icon - Large.imagestack/Front.imagestacklayer/Content.imageset/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_tvOS/SuperpoweredTVExample/tvExample/Assets.xcassets/App Icon &amp; Top Shelf Image.brandassets/App Icon - Large.imagestack/Middle.imagestacklayer/Content.imageset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_tvOS/SuperpoweredTVExample/tvExample/Assets.xcassets/App Icon &amp; Top Shelf Image.brandassets/App Icon - Large.imagestack/Middle.imagestacklayer/Content.imageset/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_tvOS/SuperpoweredTVExample/tvExample/Assets.xcassets/App Icon &amp; Top Shelf Image.brandassets/App Icon - Small.imagestack/Back.imagestacklayer/Content.imageset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_tvOS/SuperpoweredTVExample/tvExample/Assets.xcassets/App Icon &amp; Top Shelf Image.brandassets/App Icon - Small.imagestack/Back.imagestacklayer/Content.imageset/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_tvOS/SuperpoweredTVExample/tvExample/Assets.xcassets/App Icon &amp; Top Shelf Image.brandassets/App Icon - Small.imagestack/Front.imagestacklayer/Content.imageset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_tvOS/SuperpoweredTVExample/tvExample/Assets.xcassets/App Icon &amp; Top Shelf Image.brandassets/App Icon - Small.imagestack/Front.imagestacklayer/Content.imageset/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_tvOS/SuperpoweredTVExample/tvExample/Assets.xcassets/App Icon &amp; Top Shelf Image.brandassets/App Icon - Small.imagestack/Middle.imagestacklayer/Content.imageset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_tvOS/SuperpoweredTVExample/tvExample/Assets.xcassets/App Icon &amp; Top Shelf Image.brandassets/App Icon - Small.imagestack/Middle.imagestacklayer/Content.imageset/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_tvOS/SuperpoweredTVExample/tvExample/Assets.xcassets/App Icon &amp; Top Shelf Image.brandassets/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_tvOS/SuperpoweredTVExample/tvExample/Assets.xcassets/App Icon &amp; Top Shelf Image.brandassets/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_tvOS/SuperpoweredTVExample/tvExample/Assets.xcassets/App Icon &amp; Top Shelf Image.brandassets/Top Shelf Image.imageset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_tvOS/SuperpoweredTVExample/tvExample/Assets.xcassets/App Icon &amp; Top Shelf Image.brandassets/Top Shelf Image.imageset/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_tvOS/SuperpoweredTVExample/tvExample/Assets.xcassets/LaunchImage.launchimage/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_tvOS/SuperpoweredTVExample/tvExample/Assets.xcassets/LaunchImage.launchimage/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examples_tvOS/SuperpoweredTVExample/tvExample/audioHandler.mm" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples_tvOS/SuperpoweredTVExample/tvExample/audioHandler.mm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/AndroidIO/SuperpoweredAndroidAudioIO.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/AndroidIO/SuperpoweredAndroidAudioIO.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/Superpowered3BandEQ.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/Superpowered3BandEQ.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/SuperpoweredAnalyzer.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/SuperpoweredAnalyzer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/SuperpoweredAudioBuffers.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/SuperpoweredAudioBuffers.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/SuperpoweredDelay.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/SuperpoweredDelay.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/SuperpoweredEcho.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/SuperpoweredEcho.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/SuperpoweredFX.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/SuperpoweredFX.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/SuperpoweredFilter.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/SuperpoweredFilter.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/SuperpoweredIOSAudioIO.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/SuperpoweredIOSAudioIO.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/SuperpoweredMixer.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/SuperpoweredMixer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/SuperpoweredOSXAudioIO.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/SuperpoweredOSXAudioIO.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Superpowered/SuperpoweredOSXAudioIO.mm" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/SuperpoweredOSXAudioIO.mm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/SuperpoweredReverb.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/SuperpoweredReverb.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/SuperpoweredRoll.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/SuperpoweredRoll.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Superpowered/SuperpoweredSimple.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/SuperpoweredSimple.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Superpowered/SuperpoweredtvOSAudioIO.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/SuperpoweredtvOSAudioIO.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin120_Debug_MD_x64.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin120_Debug_MD_x64.lib" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin120_Debug_MD_x86.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin120_Debug_MD_x86.lib" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin120_Debug_MT_x64.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/Windows/SuperpoweredWin120_Debug_MT_x64.lib" afterDir="false" />
@@ -104,6 +236,36 @@
       <change beforePath="$PROJECT_DIR$/../../Superpowered/libSuperpoweredLinuxARM64.a" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/libSuperpoweredLinuxARM64.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Superpowered/libSuperpoweredLinuxX86.a" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/libSuperpoweredLinuxX86.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Superpowered/libSuperpoweredLinuxX86_64.a" beforeDir="false" afterPath="$PROJECT_DIR$/../../Superpowered/libSuperpoweredLinuxX86_64.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SuperpoweredSpatializer/SuperpoweredUnity/Assets/Plugins/AudioPluginSuperpoweredSpatializer.bundle/Contents/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/../../SuperpoweredSpatializer/SuperpoweredUnity/Assets/Plugins/AudioPluginSuperpoweredSpatializer.bundle/Contents/Info.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SuperpoweredSpatializer/SuperpoweredUnity/Assets/Plugins/AudioPluginSuperpoweredSpatializer.bundle/Contents/MacOS/AudioPluginSuperpoweredSpatializer" beforeDir="false" afterPath="$PROJECT_DIR$/../../SuperpoweredSpatializer/SuperpoweredUnity/Assets/Plugins/AudioPluginSuperpoweredSpatializer.bundle/Contents/MacOS/AudioPluginSuperpoweredSpatializer" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SuperpoweredSpatializer/Xcode/SuperpoweredSpatializer.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../SuperpoweredSpatializer/Xcode/SuperpoweredSpatializer.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SuperpoweredSpatializer/Xcode/SuperpoweredSpatializer.xcodeproj/project.xcworkspace/xcuserdata/gaborszanto.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../../SuperpoweredSpatializer/Xcode/SuperpoweredSpatializer.xcodeproj/project.xcworkspace/xcuserdata/gaborszanto.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SuperpoweredSpatializer/Xcode/build/Release/AudioPluginSuperpoweredSpatializer.bundle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SuperpoweredSpatializer/Xcode/build/Release/AudioPluginSuperpoweredSpatializer.bundle.dSYM/Contents/Info.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SuperpoweredSpatializer/Xcode/build/Release/AudioPluginSuperpoweredSpatializer.bundle.dSYM/Contents/Resources/DWARF/AudioPluginSuperpoweredSpatializer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SuperpoweredSpatializer/Xcode/build/SuperpoweredSpatializer.build/Release/SuperpoweredSpatializer.build/AudioPluginSuperpoweredSpatializer-all-non-framework-target-headers.hmap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SuperpoweredSpatializer/Xcode/build/SuperpoweredSpatializer.build/Release/SuperpoweredSpatializer.build/AudioPluginSuperpoweredSpatializer-all-target-headers.hmap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SuperpoweredSpatializer/Xcode/build/SuperpoweredSpatializer.build/Release/SuperpoweredSpatializer.build/AudioPluginSuperpoweredSpatializer-generated-files.hmap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SuperpoweredSpatializer/Xcode/build/SuperpoweredSpatializer.build/Release/SuperpoweredSpatializer.build/AudioPluginSuperpoweredSpatializer-own-target-headers.hmap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SuperpoweredSpatializer/Xcode/build/SuperpoweredSpatializer.build/Release/SuperpoweredSpatializer.build/AudioPluginSuperpoweredSpatializer-project-headers.hmap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SuperpoweredSpatializer/Xcode/build/SuperpoweredSpatializer.build/Release/SuperpoweredSpatializer.build/AudioPluginSuperpoweredSpatializer.hmap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SuperpoweredSpatializer/Xcode/build/SuperpoweredSpatializer.build/Release/SuperpoweredSpatializer.build/Objects-normal/x86_64/AudioPluginSuperpoweredSpatializer.LinkFileList" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SuperpoweredSpatializer/Xcode/build/SuperpoweredSpatializer.build/Release/SuperpoweredSpatializer.build/Objects-normal/x86_64/AudioPluginSuperpoweredSpatializer_dependency_info.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SuperpoweredSpatializer/Xcode/build/SuperpoweredSpatializer.build/Release/SuperpoweredSpatializer.build/Objects-normal/x86_64/AudioPluginUtil.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SuperpoweredSpatializer/Xcode/build/SuperpoweredSpatializer.build/Release/SuperpoweredSpatializer.build/Objects-normal/x86_64/AudioPluginUtil.dia" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SuperpoweredSpatializer/Xcode/build/SuperpoweredSpatializer.build/Release/SuperpoweredSpatializer.build/Objects-normal/x86_64/AudioPluginUtil.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SuperpoweredSpatializer/Xcode/build/SuperpoweredSpatializer.build/Release/SuperpoweredSpatializer.build/Objects-normal/x86_64/reverb.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SuperpoweredSpatializer/Xcode/build/SuperpoweredSpatializer.build/Release/SuperpoweredSpatializer.build/Objects-normal/x86_64/reverb.dia" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SuperpoweredSpatializer/Xcode/build/SuperpoweredSpatializer.build/Release/SuperpoweredSpatializer.build/Objects-normal/x86_64/reverb.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SuperpoweredSpatializer/Xcode/build/SuperpoweredSpatializer.build/Release/SuperpoweredSpatializer.build/Objects-normal/x86_64/spatializer.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SuperpoweredSpatializer/Xcode/build/SuperpoweredSpatializer.build/Release/SuperpoweredSpatializer.build/Objects-normal/x86_64/spatializer.dia" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SuperpoweredSpatializer/Xcode/build/SuperpoweredSpatializer.build/Release/SuperpoweredSpatializer.build/Objects-normal/x86_64/spatializer.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SuperpoweredSpatializer/Xcode/build/SuperpoweredSpatializer.build/Release/SuperpoweredSpatializer.build/dgph" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SuperpoweredSpatializer/ambi/ambi.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../SuperpoweredSpatializer/ambi/ambi.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SuperpoweredSpatializer/ambi/ambi.xcodeproj/project.xcworkspace/xcuserdata/gaborszanto.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../../SuperpoweredSpatializer/ambi/ambi.xcodeproj/project.xcworkspace/xcuserdata/gaborszanto.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SuperpoweredSpatializer/ambi/ambi.xcodeproj/xcuserdata/gaborszanto.xcuserdatad/xcschemes/xcschememanagement.plist" beforeDir="false" afterPath="$PROJECT_DIR$/../../SuperpoweredSpatializer/ambi/ambi.xcodeproj/xcuserdata/gaborszanto.xcuserdatad/xcschemes/xcschememanagement.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SuperpoweredSpatializer/ambi/ambi/AppDelegate.mm" beforeDir="false" afterPath="$PROJECT_DIR$/../../SuperpoweredSpatializer/ambi/ambi/AppDelegate.mm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SuperpoweredSpatializer/src/spatializer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../SuperpoweredSpatializer/src/spatializer.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../docs/_superpowered3_band_e_q_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered3_band_e_q_8h_source.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../docs/_superpowered_advanced_audio_player_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered_advanced_audio_player_8h_source.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../docs/_superpowered_analyzer_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/_superpowered_analyzer_8h_source.html" afterDir="false" />
@@ -246,8 +408,6 @@
       <change beforePath="$PROJECT_DIR$/../../docs/interface_superpoweredtv_o_s_audio_i_o.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/interface_superpoweredtv_o_s_audio_i_o.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../docs/protocol_superpowered_i_o_s_audio_i_o_delegate-p-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/protocol_superpowered_i_o_s_audio_i_o_delegate-p-members.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../docs/protocol_superpowered_i_o_s_audio_i_o_delegate-p.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/protocol_superpowered_i_o_s_audio_i_o_delegate-p.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../docs/protocol_superpowered_o_s_x_audio_i_o_delegate-p-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/protocol_superpowered_o_s_x_audio_i_o_delegate-p-members.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../docs/protocol_superpowered_o_s_x_audio_i_o_delegate-p.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/protocol_superpowered_o_s_x_audio_i_o_delegate-p.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../docs/protocol_superpoweredtv_o_s_audio_i_o_delegate-p-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/protocol_superpoweredtv_o_s_audio_i_o_delegate-p-members.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../docs/protocol_superpoweredtv_o_s_audio_i_o_delegate-p.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/protocol_superpoweredtv_o_s_audio_i_o_delegate-p.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../docs/struct_superpowered_audiobufferlist_element-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/struct_superpowered_audiobufferlist_element-members.html" afterDir="false" />
@@ -280,40 +440,82 @@
       </state>
     </system>
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="-1105968628">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="2" />
-          <entry key="project.open.time.0" value="2" />
-          <entry key="project.opened" value="2" />
-        </counts>
-      </usages-collector>
-    </session>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/cpp/FrequencyDomain.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="90" column="6" selection-start-line="90" selection-start-column="6" selection-end-line="90" selection-end-column="6" />
+              <folding>
+                <element signature="e#0#16#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/app/src/main/cpp/FrequencyDomain.cpp" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/superpowered/frequencydomain/MainActivity.java" />
+      </list>
+    </option>
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="559" />
+    <option name="x" value="782" />
     <option name="y" value="23" />
     <option name="width" value="2593" />
     <option name="height" value="1417" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane" />
-      <pane id="AndroidView" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="SuperpoweredFrequencyDomain" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="SuperpoweredFrequencyDomain" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="SuperpoweredFrequencyDomain" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="frequencydomain" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SuperpoweredFrequencyDomain" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="/android/sdk" />
+    <property name="device.picker.selection" value="RF8M20HR15V" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
@@ -363,12 +565,13 @@
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
     </configuration>
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="app" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
@@ -383,7 +586,7 @@
       <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
       <option name="FORCE_STOP_RUNNING_APP" value="true" />
       <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="true" />
       <option name="PREFERRED_AVD" value="" />
       <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
       <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
@@ -427,7 +630,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="TestNG" factoryName="TestNG">
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <properties />
       <listeners />
@@ -450,7 +654,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="559" y="23" width="2593" height="1417" extended-state="0" />
+    <frame x="782" y="23" width="2593" height="1417" extended-state="0" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.32967463" />
@@ -460,6 +664,7 @@
       <window_info id="Image Layers" order="5" />
       <window_info id="Designer" order="6" />
       <window_info id="Capture Tool" order="7" />
+      <window_info id="Resources Explorer" order="8" />
       <window_info anchor="bottom" id="Version Control" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Logcat" order="1" />
       <window_info anchor="bottom" id="TODO" order="2" />
@@ -467,6 +672,8 @@
       <window_info anchor="bottom" id="Event Log" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Build" order="5" visible="true" weight="0.32981133" />
       <window_info anchor="bottom" id="Android Profiler" order="6" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="7" />
+      <window_info anchor="bottom" id="Debug" order="8" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" />
@@ -474,7 +681,30 @@
       <window_info anchor="right" id="Palette&#9;" order="4" />
     </layout>
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="56" selection-start-line="20" selection-start-column="56" selection-end-line="20" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/superpowered/frequencydomain/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-83">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/cpp/FrequencyDomain.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="90" column="6" selection-start-line="90" selection-start-column="6" selection-end-line="90" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

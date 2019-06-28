@@ -1,3 +1,4 @@
+#import "SuperpoweredClass.h"
 #import "Superpowered.h"
 #import "SuperpoweredAdvancedAudioPlayer.h"
 #import "SuperpoweredReverb.h"
@@ -136,6 +137,18 @@ static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int
 - (id)init {
     self = [super init];
     if (!self) return nil;
+    
+    SuperpoweredInitialize(
+                           "ExampleLicenseKey-WillExpire-OnNextUpdate",
+                           false, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
+                           false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
+                           false, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
+                           true, // enableAudioEffects (using any SuperpoweredFX class)
+                           true, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
+                           false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
+                           false  // enableNetworking (using Superpowered::httpRequest)
+                           );
+    
     SuperpoweredFFTTest();
 
     started = false;

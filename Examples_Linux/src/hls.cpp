@@ -7,6 +7,7 @@
 #include <alsa/asoundlib.h>
 #include <sys/time.h>
 #include <math.h>
+#include "Superpowered.h"
 #include "SuperpoweredAdvancedAudioPlayer.h"
 
 typedef struct {
@@ -280,6 +281,17 @@ int main(int argc, char *argv[]) {
     context.samplerate = 48000;
     context.numChannels = 2;
     if (!setupContext(&context)) return 0;
+    
+    SuperpoweredInitialize(
+                           "ExampleLicenseKey-WillExpire-OnNextUpdate",
+                           false, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
+                           false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
+                           false, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
+                           false, // enableAudioEffects (using any SuperpoweredFX class)
+                           true, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
+                           false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
+                           false  // enableNetworking (using Superpowered::httpRequest)
+                           );
 
     SuperpoweredAdvancedAudioPlayer::setTempFolder("/tmp/");
     player = new SuperpoweredAdvancedAudioPlayer(NULL, playerEventCallback, context.samplerate, 0);

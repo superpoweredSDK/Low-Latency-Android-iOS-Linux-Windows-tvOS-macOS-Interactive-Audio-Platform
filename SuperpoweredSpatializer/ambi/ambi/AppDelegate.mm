@@ -1,5 +1,6 @@
 #import "AppDelegate.h"
 #include "SuperpoweredOSXAudioIO.h"
+#include "Superpowered.h"
 #include "SuperpoweredSpatializer.h"
 #include "SuperpoweredAdvancedAudioPlayer.h"
 #include "SuperpoweredSimple.h"
@@ -57,6 +58,17 @@ static const float wmul = sqrtf(0.5f);
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    SuperpoweredInitialize(
+                           "ExampleLicenseKey-WillExpire-OnNextUpdate",
+                           false, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
+                           false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
+                           false, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
+                           true, // enableAudioEffects (using any SuperpoweredFX class)
+                           false, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
+                           false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
+                           false  // enableNetworking (using Superpowered::httpRequest)
+                           );
+    
     lastSamplerate = 44100;
     loaded = 0;
     azimuth = lastAzimuth = elevation = lastElevation = 0;

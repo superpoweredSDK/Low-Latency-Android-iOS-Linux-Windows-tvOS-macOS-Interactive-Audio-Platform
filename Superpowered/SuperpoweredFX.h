@@ -45,15 +45,15 @@ public:
 };
 
 /**
- \mainpage Superpowered Audio SDK
+ \mainpage Audio, Networking, and Cryptographics for Android, iOS, macOS, tvOS, Linux and Windows
  
- The Superpowered Audio SDK is a software development kit based on Superpowered Inc’s digital signal processing (DSP) technology.
-
- Superpowered technology allows developers to build computationally intensive audio apps and embedded applications that process more quickly and use less power than other comparable solutions.
-
- Superpowered DSP is designed and optimized, from scratch, to run on low-power mobile processors. Specifically, any device running ARM with the NEON extension or 64-bit ARM (which covers 99% of all mobile devices manufactured). Intel CPU is supported too.
+ Details of the latest features/versions can be found at:
  
- Details of the latest version can be found at http://superpowered.com/superpowered-audio-sdk/
+ Audio: https://superpowered.com/audio-library-sdk
+ 
+ Networking: https://superpowered.com/networking-library-sdk
+ 
+ Cryptographics: https://superpowered.com/crypto-library-sdk
  */
 
 #endif

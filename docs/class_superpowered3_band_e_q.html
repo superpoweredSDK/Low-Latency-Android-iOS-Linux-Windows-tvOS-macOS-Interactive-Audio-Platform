@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Superpowered: Superpowered3BandEQ Class Reference</title>
+<title>Superpowered SDKs: Superpowered3BandEQ Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -18,10 +18,10 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.3.3</span>
+   <div id="projectname">Superpowered SDKs
+   &#160;<span id="projectnumber">1.4.0</span>
    </div>
-   <div id="projectbrief">Pain-free Audio Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
+   <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
  </tr>
  </tbody>
@@ -87,7 +87,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>enabled</b></td></tr>
 <div class="textblock"><p>It doesn't allocate any internal buffers and needs just a few bytes of memory.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">bands</td><td>Low/mid/high gain. Read-write. 1.0f is "flat", 2.0f is +6db. Kill is enabled under -40 db (0.01f). </td></tr>
+    <tr><td class="paramname">bands</td><td>Low/mid/high gain. Read-write. 1.0f is "flat", 2.0f is +6db. Kill is enabled under -40 db (0.01f). Limits: 0.0f and 8.0f. </td></tr>
     <tr><td class="paramname">enabled</td><td>True if the effect is enabled (processing audio). Read only. Use the <a class="el" href="class_superpowered3_band_e_q.html#a1bce6c9b36f6817e1e5d699cc7c86498" title="Turns the effect on/off. ">enable()</a> method to set. </td></tr>
   </table>
   </dd>

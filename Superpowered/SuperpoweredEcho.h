@@ -26,7 +26,7 @@ public:
     float decay;
 
 /**
- @brief Wet is always == mix, but dry changes with a nice curve for a good echo/dry balance.
+ @brief Wet always equals to mix, but dry changes with a nice curve for a good echo/dry balance.
  
  @param mix >= 0.0f and <= 1.0f.
  */

@@ -1,4 +1,5 @@
 #import "audioHandler.h"
+#include "Superpowered.h"
 #include "SuperpoweredWhoosh.h"
 #include "SuperpoweredSimple.h"
 
@@ -11,6 +12,17 @@
 - (id)init {
     self = [super init];
     if (self) {
+        SuperpoweredInitialize(
+                               "ExampleLicenseKey-WillExpire-OnNextUpdate",
+                               false, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
+                               false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
+                               false, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
+                               true, // enableAudioEffects (using any SuperpoweredFX class)
+                               false, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
+                               false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
+                               false  // enableNetworking (using Superpowered::httpRequest)
+                               );
+        
         lastSamplerate = 44100;
         whoosh = new SuperpoweredWhoosh(lastSamplerate);
         whoosh->wet = 1.0f;

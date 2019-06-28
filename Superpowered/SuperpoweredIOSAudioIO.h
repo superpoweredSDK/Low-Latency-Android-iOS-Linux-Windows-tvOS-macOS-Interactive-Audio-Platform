@@ -110,7 +110,7 @@ typedef bool (*audioProcessingCallback) (void *clientData, float **inputBuffers,
  @param preferredBufferSize The initial value for preferredBufferSizeMs. 12 is good for every iOS device (512 samples).
  @param preferredSamplerate The preferred sample rate. 44100 or 48000 are recommended for good sound quality.
  @param audioSessionCategory The audio session category. Audio input is enabled for the appropriate categories only!
- @param channels The number of channels in the audio processing callback.
+ @param channels The number of output channels in the audio processing callback regardless the actual hardware capabilities. The number of input channels in the audio processing callback will reflect the actual hardware configuration.
  @param callback The audio processing callback.
  @param clientdata Custom data passed to the audio processing callback.
  */

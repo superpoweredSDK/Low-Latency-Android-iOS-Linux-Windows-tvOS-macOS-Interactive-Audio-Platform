@@ -18,9 +18,9 @@ public class MainActivity extends AppCompatActivity implements SuperpoweredUSBAu
     private int inputPath;
     private int outputPath;
     private int thruPath;
-    private float inputFeatures[];
-    private float outputFeatures[];
-    private float thruFeatures[];
+    private float[] inputFeatures;
+    private float[] outputFeatures;
+    private float[] thruFeatures;
     private int inputIndex;
     private int outputIndex;
     private int lastLatencyMs;
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements SuperpoweredUSBAu
         switch (kind) {
             case CustomAdapter.SECTIONHEADERITEM:
                 if (position == 0) {
-                    String deviceInfo[] = getUSBAudioDeviceInfo(deviceID);
+                    String[] deviceInfo = getUSBAudioDeviceInfo(deviceID);
                     AlertDialog.Builder builder = new AlertDialog.Builder(this);
                     builder.setTitle("Device Info");
                     builder.setMessage(deviceInfo[2]);
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements SuperpoweredUSBAu
     public void onUSBAudioDeviceAttached(int deviceIdentifier) {
         if (hasDevice) return;
         deviceID = deviceIdentifier;
-        String configurationInfo[] = getConfigurationInfo(deviceID);
+        String[] configurationInfo = getConfigurationInfo(deviceID);
         adapter.removeAllItems();
         adapter.addSectionHeader("Select Configuration");
         adapter.addItems(configurationInfo, CustomAdapter.CONFIGURATIONITEM);
@@ -115,8 +115,8 @@ public class MainActivity extends AppCompatActivity implements SuperpoweredUSBAu
     private void setConfiguration(int index) {
         stopIO();
         setConfiguration(deviceID, index);
-        String inputs[] = getInputs(deviceID);
-        String outputs[] = getOutputs(deviceID);
+        String[] inputs = getInputs(deviceID);
+        String[] outputs = getOutputs(deviceID);
         inputIndex = outputIndex = -1;
 
         adapter.selectItemInSection(CustomAdapter.CONFIGURATIONITEM, index);
@@ -153,12 +153,12 @@ public class MainActivity extends AppCompatActivity implements SuperpoweredUSBAu
 
     private void updateIOOptions(boolean updateList) {
         getIOOptions(deviceID, inputIndex, outputIndex);
-        int outputPathIndexes[]  = getIOOptionsInt(0);
-        int inputPathIndexes[]   = getIOOptionsInt(1);
-        int thruPathIndexes[]    = getIOOptionsInt(2);
-        String outputPathNames[] = getIOOptionsString(0);
-        String inputPathNames[]  = getIOOptionsString(1);
-        String thruPathNames[]   = getIOOptionsString(2);
+        int[] outputPathIndexes  = getIOOptionsInt(0);
+        int[] inputPathIndexes   = getIOOptionsInt(1);
+        int[] thruPathIndexes    = getIOOptionsInt(2);
+        String[] outputPathNames = getIOOptionsString(0);
+        String[] inputPathNames  = getIOOptionsString(1);
+        String[] thruPathNames   = getIOOptionsString(2);
         getIOOptionsEnd();
 
         adapter.selectItemInSection(CustomAdapter.INPUTITEM, inputIndex);

@@ -39,7 +39,7 @@ public:
 /**
  @brief Processes the audio.
  
- @return Pointer the output having numberOfFrames audio available. It is valid until the next call to process().
+ @return Pointer to the output having numberOfFrames audio available. It is valid until the next call to process().
  
  @param input 32-bit interleaved stereo input.
  @param numberOfFrames Number of frames to input and output.

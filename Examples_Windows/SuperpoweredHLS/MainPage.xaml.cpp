@@ -1,10 +1,11 @@
-﻿// Typical UWP stuff.
+// Typical UWP stuff.
 #include "pch.h"
 #include "MainPage.xaml.h"
 using namespace SuperpoweredHLS;
 
 // The interesting part begins here.
 #include <helpers.h>
+#include <Superpowered.h>
 #include <SuperpoweredWindowsAudioIO.h>
 #include <SuperpoweredAdvancedAudioPlayer.h>
 
@@ -33,6 +34,16 @@ static bool audioProcessing(void *clientdata, float *audio, int numberOfSamples,
 
 MainPage::MainPage() {
 	InitializeComponent();
+    SuperpoweredInitialize(
+                           "ExampleLicenseKey-WillExpire-OnNextUpdate",
+                           false, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
+                           false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
+                           false, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
+                           false, // enableAudioEffects (using any SuperpoweredFX class)
+                           true, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
+                           false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
+                           false  // enableNetworking (using Superpowered::httpRequest)
+                           );
 // HLS playback needs a temporary folder.
 	char path[MAX_PATH + 1];
 	stringToChar(Windows::Storage::ApplicationData::Current->TemporaryFolder->Path, path);

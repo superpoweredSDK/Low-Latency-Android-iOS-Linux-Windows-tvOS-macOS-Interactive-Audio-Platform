@@ -1,6 +1,7 @@
 #include <jni.h>
 #include <stdlib.h>
 #include <string.h>
+#include <Superpowered.h>
 #include <SuperpoweredFrequencyDomain.h>
 #include <AndroidIO/SuperpoweredAndroidAudioIO.h>
 #include <SuperpoweredSimple.h>
@@ -78,6 +79,17 @@ Java_com_superpowered_frequencydomain_MainActivity_FrequencyDomain (
         jint samplerate,        // sampling rate
         jint buffersize         // buffer size
 ) {
+    SuperpoweredInitialize(
+            "ExampleLicenseKey-WillExpire-OnNextUpdate",
+            false, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
+            true, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
+            false, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
+            false, // enableAudioEffects (using any SuperpoweredFX class)
+            false, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
+            false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
+            false  // enableNetworking (using Superpowered::httpRequest)
+    );
+
     // This will do the main "magic".
     frequencyDomain = new SuperpoweredFrequencyDomain(FFT_LOG_SIZE);
 

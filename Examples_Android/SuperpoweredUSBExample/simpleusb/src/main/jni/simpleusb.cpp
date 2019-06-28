@@ -2,6 +2,7 @@
 #include <math.h>
 #include <SuperpoweredCPU.h>
 #include <AndroidIO/SuperpoweredUSBAudio.h>
+#include <Superpowered.h>
 #include <malloc.h>
 #include <pthread.h>
 
@@ -12,6 +13,16 @@ __unused jint JNI_OnLoad (
         JavaVM * __unused vm,
         void * __unused reserved
 ) {
+    SuperpoweredInitialize(
+            "ExampleLicenseKey-WillExpire-OnNextUpdate",
+            false, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
+            false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
+            false, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
+            false, // enableAudioEffects (using any SuperpoweredFX class)
+            false, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
+            false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
+            false  // enableNetworking (using Superpowered::httpRequest)
+    );
     SuperpoweredUSBSystem::initialize(NULL, NULL, NULL, NULL, NULL);
     return JNI_VERSION_1_6;
 }

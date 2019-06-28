@@ -1,20 +1,30 @@
-﻿// Typical UWP stuff.
+// Typical UWP stuff.
 #include "pch.h"
 #include "MainPage.xaml.h"
 using namespace SuperpoweredEffect;
 
-MainPage::MainPage() {
-	InitializeComponent();
-}
-
-// The interesting part begins here.
 #include <helpers.h>
+#include <Superpowered.h>
 #include <SuperpoweredWindowsAudioIO.h>
 #include <SuperpoweredReverb.h>
 
 static SuperpoweredWindowsAudioIO *audioIO = NULL;
 static SuperpoweredReverb *reverb = NULL;
 static int lastSamplerate = 44100;
+
+MainPage::MainPage() {
+	InitializeComponent();
+    SuperpoweredInitialize(
+                           "ExampleLicenseKey-WillExpire-OnNextUpdate",
+                           false, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
+                           false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
+                           false, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
+                           true, // enableAudioEffects (using any SuperpoweredFX class)
+                           false, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
+                           false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
+                           false  // enableNetworking (using Superpowered::httpRequest)
+                           );
+}
 
 // Audio input/output.
 static bool audioProcessing(void *clientdata, float *audio, int numberOfSamples, int samplerate) {

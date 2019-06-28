@@ -5,14 +5,14 @@
 struct filterInternals;
 
 typedef enum SuperpoweredFilterType {
-    SuperpoweredFilter_Resonant_Lowpass,
-    SuperpoweredFilter_Resonant_Highpass,
-    SuperpoweredFilter_Bandlimited_Bandpass,
-    SuperpoweredFilter_Bandlimited_Notch,
-    SuperpoweredFilter_LowShelf,
-    SuperpoweredFilter_HighShelf,
-    SuperpoweredFilter_Parametric,
-    SuperpoweredFilter_CustomCoefficients
+    SuperpoweredFilter_Resonant_Lowpass = 0,
+    SuperpoweredFilter_Resonant_Highpass = 1,
+    SuperpoweredFilter_Bandlimited_Bandpass = 2,
+    SuperpoweredFilter_Bandlimited_Notch = 3,
+    SuperpoweredFilter_LowShelf = 4,
+    SuperpoweredFilter_HighShelf = 5,
+    SuperpoweredFilter_Parametric = 6,
+    SuperpoweredFilter_CustomCoefficients = 7
 } SuperpoweredFilterType;
 
 /**

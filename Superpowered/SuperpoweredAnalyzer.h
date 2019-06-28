@@ -39,9 +39,9 @@ public:
  
  @param averageWaveform 150 points/sec waveform data displaying the average volume. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory, _aligned_free() on Windows).
  @param peakWaveform 150 points/sec waveform data displaying the peak volume. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory, _aligned_free() on Windows).
- @param lowWaveform 150 points/sec waveform data displaying the low frequencies. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory, _aligned_free() on Windows).
- @param midWaveform 150 points/sec waveform data displaying the mid frequencies. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory, _aligned_free() on Windows).
- @param highWaveform 150 points/sec waveform data displaying the high frequencies. Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory, _aligned_free() on Windows).
+ @param lowWaveform 150 points/sec waveform data displaying the low frequencies (below 200 Hz). Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory, _aligned_free() on Windows).
+ @param midWaveform 150 points/sec waveform data displaying the mid frequencies (200-1600 Hz). Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory, _aligned_free() on Windows).
+ @param highWaveform 150 points/sec waveform data displaying the high frequencies (above 1600 Hz). Each sample is an unsigned char from 0 to 255. You take ownership on this (must free memory, _aligned_free() on Windows).
  @param notes 150 points/sec data displaying the bass and mid keys. Upper 4 bits are the bass notes 0 to 11, lower 4 bits are the mid notes 0 to 11 (C, C#, D, D#, E, F, F#, G, G#, A, A#, B). The note value is 12 means "unknown note due low volume". You take ownership on this (must free memory, _aligned_free() on Windows).
  @param waveformSize The number of points in averageWaveform, peakWaveform or lowMidHighWaveform.
  @param overviewWaveform 1 point/sec waveform data displaying the average volume in decibels. Useful for displaying the overall structure of a track. Each sample is a signed char, from -128 to 0 decibel. You take ownership on this (must free memory, _aligned_free() on Windows).

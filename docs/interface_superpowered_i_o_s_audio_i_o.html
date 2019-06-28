@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Superpowered: SuperpoweredIOSAudioIO Class Reference</title>
+<title>Superpowered SDKs: SuperpoweredIOSAudioIO Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -18,10 +18,10 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.3.3</span>
+   <div id="projectname">Superpowered SDKs
+   &#160;<span id="projectnumber">1.4.0</span>
    </div>
-   <div id="projectbrief">Pain-free Audio Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
+   <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
  </tr>
  </tbody>
@@ -157,7 +157,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
     <tr><td class="paramname">preferredBufferSize</td><td>The initial value for preferredBufferSizeMs. 12 is good for every iOS device (512 samples). </td></tr>
     <tr><td class="paramname">preferredSamplerate</td><td>The preferred sample rate. 44100 or 48000 are recommended for good sound quality. </td></tr>
     <tr><td class="paramname">audioSessionCategory</td><td>The audio session category. Audio input is enabled for the appropriate categories only! </td></tr>
-    <tr><td class="paramname">channels</td><td>The number of channels in the audio processing callback. </td></tr>
+    <tr><td class="paramname">channels</td><td>The number of output channels in the audio processing callback regardless the actual hardware capabilities. The number of input channels in the audio processing callback will reflect the actual hardware configuration. </td></tr>
     <tr><td class="paramname">callback</td><td>The audio processing callback. </td></tr>
     <tr><td class="paramname">clientdata</td><td>Custom data passed to the audio processing callback. </td></tr>
   </table>

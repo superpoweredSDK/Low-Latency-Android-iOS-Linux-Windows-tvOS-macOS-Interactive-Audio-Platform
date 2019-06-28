@@ -405,8 +405,9 @@ float SuperpoweredDotProduct(float *input0, float *input1, unsigned int numValue
  @fn SuperpoweredVersion()
  @return Returns the current version of the Superpowered SDK.
  
- The returned value is 3 unsigned chars: major,minor,revision Example: 1,0,0 means 1.0.0
+ The returned value is: major version * 10000 + minor version * 100 + revision
+ Example: 10402 means 1.4.2
  */
-const unsigned char *SuperpoweredVersion();
+unsigned int SuperpoweredVersion();
 
 #endif

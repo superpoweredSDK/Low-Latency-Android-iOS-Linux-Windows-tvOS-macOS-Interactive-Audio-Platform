@@ -1,5 +1,6 @@
 #import "SuperpoweredFrequencies-Bridging-Header.h"
 #import "SuperpoweredIOSAudioIO.h"
+#include "Superpowered.h"
 #include "SuperpoweredBandpassFilterbank.h"
 #include "SuperpoweredSimple.h"
 
@@ -39,6 +40,18 @@ static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int
 - (id)init {
     self = [super init];
     if (!self) return nil;
+    
+    SuperpoweredInitialize(
+                           "ExampleLicenseKey-WillExpire-OnNextUpdate",
+                           true, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
+                           false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
+                           false, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
+                           false, // enableAudioEffects (using any SuperpoweredFX class)
+                           false, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
+                           false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
+                           false  // enableNetworking (using Superpowered::httpRequest)
+                           );
+    
     samplerate = 44100;
     bandsWritePos = bandsReadPos = bandsPos = lastNumberOfSamples = 0;
     memset(bands, 0, 128 * 8 * sizeof(float));

@@ -4,7 +4,6 @@ import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.media.AudioManager;
-import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -39,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         // Called when the user answers to the permission dialogs.
         if ((requestCode != 0) || (grantResults.length < 1) || (grantResults.length != permissions.length)) return;
         boolean hasAllPermissions = true;
@@ -56,12 +55,10 @@ public class MainActivity extends AppCompatActivity {
         // Get the device's sample rate and buffer size to enable
         // low-latency Android audio output, if available.
         String samplerateString = null, buffersizeString = null;
-        if (Build.VERSION.SDK_INT >= 17) {
-            AudioManager audioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
-            if (audioManager != null) {
-                samplerateString = audioManager.getProperty(AudioManager.PROPERTY_OUTPUT_SAMPLE_RATE);
-                buffersizeString = audioManager.getProperty(AudioManager.PROPERTY_OUTPUT_FRAMES_PER_BUFFER);
-            }
+        AudioManager audioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
+        if (audioManager != null) {
+            samplerateString = audioManager.getProperty(AudioManager.PROPERTY_OUTPUT_SAMPLE_RATE);
+            buffersizeString = audioManager.getProperty(AudioManager.PROPERTY_OUTPUT_FRAMES_PER_BUFFER);
         }
         if (samplerateString == null) samplerateString = "48000";
         if (buffersizeString == null) buffersizeString = "480";

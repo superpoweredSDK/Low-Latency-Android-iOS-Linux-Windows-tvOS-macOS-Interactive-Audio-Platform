@@ -1,4 +1,5 @@
 #import "ViewController.h"
+#include "Superpowered.h"
 #include "SuperpoweredDecoder.h"
 #include "SuperpoweredSimple.h"
 #include "SuperpoweredRecorder.h"
@@ -16,6 +17,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    SuperpoweredInitialize(
+                           "ExampleLicenseKey-WillExpire-OnNextUpdate",
+                           true, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
+                           false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
+                           true, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
+                           true, // enableAudioEffects (using any SuperpoweredFX class)
+                           true, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
+                           false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
+                           false  // enableNetworking (using Superpowered::httpRequest)
+                           );
+    
     progress = 0.0f;
     displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(onDisplayLink)];
     displayLink.frameInterval = 1;

@@ -1,4 +1,4 @@
-#import <AVFoundation/AVAudioSession.h>
+#import <AVFoundation/AVFoundation.h>
 
 @protocol SuperpoweredtvOSAudioIODelegate;
 

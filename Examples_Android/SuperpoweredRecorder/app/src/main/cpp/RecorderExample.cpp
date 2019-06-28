@@ -2,6 +2,7 @@
 #include <string>
 #include <android/log.h>
 #include <AndroidIO/SuperpoweredAndroidAudioIO.h>
+#include <Superpowered.h>
 #include <SuperpoweredSimple.h>
 #include <SuperpoweredRecorder.h>
 #include <malloc.h>
@@ -40,6 +41,16 @@ Java_com_superpowered_recorder_MainActivity_StartAudio (
         jstring tempPath,       // path to a temporary file
         jstring destPath        // path to the destination file
 ) {
+    SuperpoweredInitialize(
+            "ExampleLicenseKey-WillExpire-OnNextUpdate",
+            false, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
+            false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
+            false, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
+            false, // enableAudioEffects (using any SuperpoweredFX class)
+            false, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
+            false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
+            false  // enableNetworking (using Superpowered::httpRequest)
+    );
 
     // Get path strings.
     const char *temp = env->GetStringUTFChars(tempPath, 0);

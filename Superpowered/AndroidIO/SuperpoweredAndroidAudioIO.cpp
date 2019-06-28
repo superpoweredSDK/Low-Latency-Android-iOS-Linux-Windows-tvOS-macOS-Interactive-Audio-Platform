@@ -175,8 +175,14 @@ SuperpoweredAndroidAudioIO::SuperpoweredAndroidAudioIO(int samplerate, int buffe
                 (*inputConfiguration)->SetConfiguration(inputConfiguration, SL_ANDROID_KEY_RECORDING_PRESET, &st, sizeof(SLuint32));
             };
         };
-        
-        (*internals->inputBufferQueue)->Realize(internals->inputBufferQueue, SL_BOOLEAN_FALSE);
+
+        if ((*internals->inputBufferQueue)->Realize(internals->inputBufferQueue, SL_BOOLEAN_FALSE) != SL_RESULT_SUCCESS) { // Record permission refused. You need to handle this case in Java!
+            (*internals->inputBufferQueue)->Destroy(internals->inputBufferQueue);
+            internals->inputBufferQueue = NULL;
+            free(internals->inputFifo.buffer);
+            internals->inputFifo.buffer = NULL;
+            enableInput = false;
+        }
     };
 
     if (enableOutput) { // Create the audio output buffer queue.

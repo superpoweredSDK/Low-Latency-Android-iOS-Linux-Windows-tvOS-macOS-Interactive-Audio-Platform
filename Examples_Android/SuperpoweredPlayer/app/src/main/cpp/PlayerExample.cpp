@@ -2,6 +2,7 @@
 #include <string>
 #include <android/log.h>
 #include <AndroidIO/SuperpoweredAndroidAudioIO.h>
+#include <Superpowered.h>
 #include <SuperpoweredAdvancedAudioPlayer.h>
 #include <SuperpoweredSimple.h>
 #include <SuperpoweredCPU.h>
@@ -57,6 +58,17 @@ Java_com_superpowered_playerexample_MainActivity_StartAudio (
         jint samplerate,
         jint buffersize
 ) {
+    SuperpoweredInitialize(
+            "ExampleLicenseKey-WillExpire-OnNextUpdate",
+            false, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
+            false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
+            false, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
+            false, // enableAudioEffects (using any SuperpoweredFX class)
+            true, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
+            false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
+            false  // enableNetworking (using Superpowered::httpRequest)
+    );
+
     // Allocate audio buffer.
     floatBuffer = (float *)malloc(sizeof(float) * 2 * buffersize);
 

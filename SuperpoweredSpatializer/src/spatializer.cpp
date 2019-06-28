@@ -1,4 +1,5 @@
 #include "AudioPluginUtil.h"
+#include "Superpowered.h"
 #include "SuperpoweredSimple.h"
 #include "SuperpoweredSpatializer.h"
 
@@ -32,6 +33,17 @@ namespace Spatializer {
     }
 
     UNITY_AUDIODSP_RESULT UNITY_AUDIODSP_CALLBACK CreateCallback(UnityAudioEffectState *state) {
+        SuperpoweredInitialize(
+                               "ExampleLicenseKey-WillExpire-OnNextUpdate",
+                               false, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
+                               false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
+                               false, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
+                               true, // enableAudioEffects (using any SuperpoweredFX class)
+                               false, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
+                               false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
+                               false  // enableNetworking (using Superpowered::httpRequest)
+                               );
+        
         SpatializerData *data = new SpatializerData;
         memset(data, 0, sizeof(SpatializerData));
         data->lastDistanceIn = data->distanceMul = 1.0f;

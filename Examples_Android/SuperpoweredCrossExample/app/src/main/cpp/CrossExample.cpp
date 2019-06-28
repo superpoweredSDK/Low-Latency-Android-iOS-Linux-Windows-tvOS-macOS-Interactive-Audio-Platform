@@ -1,4 +1,5 @@
 #include "CrossExample.h"
+#include <Superpowered.h>
 #include <SuperpoweredSimple.h>
 #include <SuperpoweredCPU.h>
 #include <jni.h>
@@ -61,6 +62,17 @@ CrossExample::CrossExample (
 		int fileBlength             // length of file B
 ) : activeFx(0), crossValue(0.0f), volB(0.0f), volA(1.0f * headroom)
 {
+    SuperpoweredInitialize(
+            "ExampleLicenseKey-WillExpire-OnNextUpdate",
+            false, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
+            false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
+            false, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
+            true, // enableAudioEffects (using any SuperpoweredFX class)
+            true, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
+            false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
+            false  // enableNetworking (using Superpowered::httpRequest)
+    );
+
     // Allocate aligned memory for floating point buffer.
     stereoBuffer = (float *)memalign(16, buffersize * sizeof(float) * 2);
 

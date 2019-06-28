@@ -117,7 +117,7 @@ typedef bool (*audioProcessingCallback_C) (void *clientdata, float **inputBuffer
 /**
  @brief You must implement this protocol to make SuperpoweredOSXAudioIODelegate work.
  */
-@protocol SuperpoweredOSXAudioIODelegate
+@protocol SuperpoweredOSXAudioIODelegate <NSObject>
 @optional
 
 /**

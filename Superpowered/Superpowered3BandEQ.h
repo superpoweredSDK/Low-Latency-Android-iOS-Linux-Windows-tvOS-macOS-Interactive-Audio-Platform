@@ -9,7 +9,7 @@ struct eqInternals;
  
  It doesn't allocate any internal buffers and needs just a few bytes of memory.
  
- @param bands Low/mid/high gain. Read-write. 1.0f is "flat", 2.0f is +6db. Kill is enabled under -40 db (0.01f).
+ @param bands Low/mid/high gain. Read-write. 1.0f is "flat", 2.0f is +6db. Kill is enabled under -40 db (0.01f). Limits: 0.0f and 8.0f.
  @param enabled True if the effect is enabled (processing audio). Read only. Use the enable() method to set.
  */
 class Superpowered3BandEQ: public SuperpoweredFX {
