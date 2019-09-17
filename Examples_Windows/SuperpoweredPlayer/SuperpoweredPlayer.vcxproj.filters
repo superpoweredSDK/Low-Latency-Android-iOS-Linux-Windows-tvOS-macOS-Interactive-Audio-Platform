@@ -16,7 +16,7 @@
     <ClCompile Include="App.xaml.cpp" />
     <ClCompile Include="MainPage.xaml.cpp" />
     <ClCompile Include="pch.cpp" />
-    <ClCompile Include="..\..\Superpowered\SuperpoweredWindowsAudioIO.cpp" />
+    <ClCompile Include="..\..\Superpowered\OpenSource\SuperpoweredWindowsAudioIO.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />

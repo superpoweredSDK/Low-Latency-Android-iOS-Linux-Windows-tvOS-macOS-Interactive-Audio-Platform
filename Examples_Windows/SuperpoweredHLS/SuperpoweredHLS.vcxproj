@@ -174,7 +174,7 @@
     <Image Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Superpowered\SuperpoweredWindowsAudioIO.cpp" />
+    <ClCompile Include="..\..\Superpowered\OpenSource\SuperpoweredWindowsAudioIO.cpp" />
     <ClCompile Include="App.xaml.cpp">
       <DependentUpon>App.xaml</DependentUpon>
     </ClCompile>

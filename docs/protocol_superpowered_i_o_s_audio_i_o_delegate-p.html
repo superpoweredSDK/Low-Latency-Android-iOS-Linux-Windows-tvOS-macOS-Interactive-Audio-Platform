@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">1.4.0</span>
+   &#160;<span id="projectnumber">2.0.0</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -46,34 +46,108 @@ $(function() {
 <div class="title">&lt;SuperpoweredIOSAudioIODelegate&gt; Protocol Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>You must implement this protocol to make <a class="el" href="interface_superpowered_i_o_s_audio_i_o.html" title="Handles all audio session, audio lifecycle (interruptions), output, buffer size, samplerate and routi...">SuperpoweredIOSAudioIO</a> work.  
-</p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Instance Methods</h2></td></tr>
-<tr class="memitem:aae55829bbcf8176b34d1c567a27c9eeb"><td class="memItemLeft" align="right" valign="top"><a id="aae55829bbcf8176b34d1c567a27c9eeb"></a>
-(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html#aae55829bbcf8176b34d1c567a27c9eeb">interruptionStarted</a></td></tr>
-<tr class="memdesc:aae55829bbcf8176b34d1c567a27c9eeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">The audio session may be interrupted by a phone call, etc. This method is called on the main thread when this happens. <br /></td></tr>
+<tr class="memitem:aae55829bbcf8176b34d1c567a27c9eeb"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html#aae55829bbcf8176b34d1c567a27c9eeb">interruptionStarted</a></td></tr>
 <tr class="separator:aae55829bbcf8176b34d1c567a27c9eeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac371788ed59085810a0633aae0f12c9c"><td class="memItemLeft" align="right" valign="top"><a id="ac371788ed59085810a0633aae0f12c9c"></a>
-(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html#ac371788ed59085810a0633aae0f12c9c">interruptionEnded</a></td></tr>
-<tr class="memdesc:ac371788ed59085810a0633aae0f12c9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The audio session may be interrupted by a phone call, etc. This method is called on the main thread when audio resumes. <br /></td></tr>
+<tr class="memitem:ac371788ed59085810a0633aae0f12c9c"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html#ac371788ed59085810a0633aae0f12c9c">interruptionEnded</a></td></tr>
 <tr class="separator:ac371788ed59085810a0633aae0f12c9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41192d288bd5cbed0ff2d9d6c8a88d41"><td class="memItemLeft" align="right" valign="top"><a id="a41192d288bd5cbed0ff2d9d6c8a88d41"></a>
-(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html#a41192d288bd5cbed0ff2d9d6c8a88d41">recordPermissionRefused</a></td></tr>
-<tr class="memdesc:a41192d288bd5cbed0ff2d9d6c8a88d41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called if the user did not grant a recording permission for the app. <br /></td></tr>
+<tr class="memitem:a41192d288bd5cbed0ff2d9d6c8a88d41"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html#a41192d288bd5cbed0ff2d9d6c8a88d41">recordPermissionRefused</a></td></tr>
 <tr class="separator:a41192d288bd5cbed0ff2d9d6c8a88d41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e1d110ab799111819ca3f5149ac1d39"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html#a9e1d110ab799111819ca3f5149ac1d39">mapChannels:inputMap:externalAudioDeviceName:outputsAndInputs:</a></td></tr>
-<tr class="memdesc:a9e1d110ab799111819ca3f5149ac1d39"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is called on the main thread, when a multi-channel audio device is connected or disconnected.  <a href="#a9e1d110ab799111819ca3f5149ac1d39">More...</a><br /></td></tr>
 <tr class="separator:a9e1d110ab799111819ca3f5149ac1d39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Method Documentation</h2>
+<a id="aae55829bbcf8176b34d1c567a27c9eeb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae55829bbcf8176b34d1c567a27c9eeb">&#9670;&nbsp;</a></span>interruptionStarted()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) interruptionStarted </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">optional</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The audio session may be interrupted by a phone call, etc. This method is called on the main thread when the interrupt starts. </p>
+
+</div>
+</div>
+<a id="ac371788ed59085810a0633aae0f12c9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac371788ed59085810a0633aae0f12c9c">&#9670;&nbsp;</a></span>interruptionEnded()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) interruptionEnded </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">optional</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The audio session may be interrupted by a phone call, etc. This method is called on the main thread when audio resumes. </p>
+
+</div>
+</div>
+<a id="a41192d288bd5cbed0ff2d9d6c8a88d41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41192d288bd5cbed0ff2d9d6c8a88d41">&#9670;&nbsp;</a></span>recordPermissionRefused()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) recordPermissionRefused </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">optional</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Called if the user did not grant a recording permission for the app. </p>
+
+</div>
+</div>
 <a id="a9e1d110ab799111819ca3f5149ac1d39"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9e1d110ab799111819ca3f5149ac1d39">&#9670;&nbsp;</a></span>mapChannels:inputMap:externalAudioDeviceName:outputsAndInputs:()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">- (void) mapChannels: </td>
@@ -105,7 +179,14 @@ Instance Methods</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">optional</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+
+<p>This method is called on the main thread when a multi-channel audio device is connected or disconnected. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">outputMap</td><td>Map the output channels here. </td></tr>

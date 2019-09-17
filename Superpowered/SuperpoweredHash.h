@@ -40,7 +40,7 @@ namespace Superpowered {
             unsigned long long state64[8];
             unsigned int state32[8];
         };
-        unsigned char buffer[128]; ///< Internal variable.
+        unsigned char buffer[128];       ///< Internal variable.
         unsigned char innerPadding[128]; ///< Internal variable.
         unsigned char outerPadding[128]; ///< Internal variable.
         hashType type; ///< Internal variable.

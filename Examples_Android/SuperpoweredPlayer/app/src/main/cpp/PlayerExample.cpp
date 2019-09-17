@@ -1,7 +1,7 @@
 #include <jni.h>
 #include <string>
 #include <android/log.h>
-#include <AndroidIO/SuperpoweredAndroidAudioIO.h>
+#include <OpenSource/SuperpoweredAndroidAudioIO.h>
 #include <Superpowered.h>
 #include <SuperpoweredAdvancedAudioPlayer.h>
 #include <SuperpoweredSimple.h>
@@ -13,77 +13,50 @@
 #define log_print __android_log_print
 
 static SuperpoweredAndroidAudioIO *audioIO;
-static SuperpoweredAdvancedAudioPlayer *player;
-static float *floatBuffer;
+static Superpowered::AdvancedAudioPlayer *player;
 
 // This is called periodically by the audio engine.
 static bool audioProcessing (
         void * __unused clientdata, // custom pointer
-        short int *audio,           // buffer of interleaved samples
+        short int *audio,           // output buffer
         int numberOfFrames,         // number of frames to process
-        int __unused samplerate     // sampling rate
+        int samplerate              // current sample rate in Hz
 ) {
-    if (player->process(floatBuffer, false, (unsigned int)numberOfFrames)) {
-        SuperpoweredFloatToShortInt(floatBuffer, audio, (unsigned int)numberOfFrames);
-        return true;
-    } else {
-        return false;
-    }
-}
+    player->outputSamplerate = (unsigned int)samplerate;
+    float playerOutput[numberOfFrames * 2];
 
-// Called by the player.
-static void playerEventCallback (
-        void * __unused clientData,
-        SuperpoweredAdvancedAudioPlayerEvent event,
-        void *value
-) {
-    switch (event) {
-        case SuperpoweredAdvancedAudioPlayerEvent_LoadSuccess:
-            break;
-        case SuperpoweredAdvancedAudioPlayerEvent_LoadError:
-            log_print(ANDROID_LOG_ERROR, "PlayerExample", "Open error: %s", (char *)value);
-            break;
-        case SuperpoweredAdvancedAudioPlayerEvent_EOF:
-            player->seek(0);    // loop track
-            break;
-        default:;
-    };
+    if (player->processStereo(playerOutput, false, (unsigned int)numberOfFrames)) {
+        Superpowered::FloatToShortInt(playerOutput, audio, (unsigned int)numberOfFrames);
+        return true;
+    } else return false;
 }
 
 // StartAudio - Start audio engine and initialize player.
 extern "C" JNIEXPORT void
-Java_com_superpowered_playerexample_MainActivity_StartAudio (
-        JNIEnv * __unused env,
-        jobject  __unused obj,
-        jint samplerate,
-        jint buffersize
-) {
-    SuperpoweredInitialize(
+Java_com_superpowered_playerexample_MainActivity_NativeInit(JNIEnv *env, jobject __unused obj, jint samplerate, jint buffersize, jstring tempPath) {
+    Superpowered::Initialize(
             "ExampleLicenseKey-WillExpire-OnNextUpdate",
             false, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
             false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
             false, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
             false, // enableAudioEffects (using any SuperpoweredFX class)
-            true, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
+            true,  // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
             false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
             false  // enableNetworking (using Superpowered::httpRequest)
     );
 
-    // Allocate audio buffer.
-    floatBuffer = (float *)malloc(sizeof(float) * 2 * buffersize);
+    // setting the temp folder for progressive downloads or HLS playback
+    // not needed for local file playback
+    const char *str = env->GetStringUTFChars(tempPath, 0);
+    Superpowered::AdvancedAudioPlayer::setTempFolder(str);
+    env->ReleaseStringUTFChars(tempPath, str);
 
-    // Initialize player and pass callback function.
-    player = new SuperpoweredAdvancedAudioPlayer (
-            NULL,                           // clientData
-            playerEventCallback,            // callback function
-            (unsigned int)samplerate,       // sampling rate
-            0                               // cachedPointCount
-    );
+    // creating the player
+    player = new Superpowered::AdvancedAudioPlayer((unsigned int)samplerate, 0);
 
-    // Initialize audio with audio callback function.
     audioIO = new SuperpoweredAndroidAudioIO (
-            samplerate,                     // sampling rate
-            buffersize,                     // buffer size
+            samplerate,                     // device native sampling rate
+            buffersize,                     // device native buffer size
             false,                          // enableInput
             true,                           // enableOutput
             audioProcessing,                // process callback function
@@ -95,7 +68,7 @@ Java_com_superpowered_playerexample_MainActivity_StartAudio (
 
 // OpenFile - Open file in player, specifying offset and length.
 extern "C" JNIEXPORT void
-Java_com_superpowered_playerexample_MainActivity_OpenFile (
+Java_com_superpowered_playerexample_MainActivity_OpenFileFromAPK (
         JNIEnv *env,
         jobject __unused obj,
         jstring path,       // path to APK file
@@ -105,43 +78,57 @@ Java_com_superpowered_playerexample_MainActivity_OpenFile (
     const char *str = env->GetStringUTFChars(path, 0);
     player->open(str, offset, length);
     env->ReleaseStringUTFChars(path, str);
+
+    // open file from any path: player->open("file system path to file");
+    // open file from network (progressive download): player->open("http://example.com/music.mp3");
+    // open HLS stream: player->openHLS("http://example.com/stream");
+}
+
+// onUserInterfaceUpdate - Called periodically. Check and react to player events. This can be done in any thread.
+extern "C" JNIEXPORT jboolean
+Java_com_superpowered_playerexample_MainActivity_onUserInterfaceUpdate(JNIEnv * __unused env, jobject __unused obj) {
+    switch (player->getLatestEvent()) {
+        case Superpowered::PlayerEvent_None:
+        case Superpowered::PlayerEvent_Opening: break; // do nothing
+        case Superpowered::PlayerEvent_Opened: player->play(); break;
+        case Superpowered::PlayerEvent_OpenFailed:
+        {
+            int openError = player->getOpenErrorCode();
+            log_print(ANDROID_LOG_ERROR, "PlayerExample", "Open error %i: %s", openError, Superpowered::AdvancedAudioPlayer::statusCodeToString(openError));
+        }
+            break;
+        case Superpowered::PlayerEvent_ConnectionLost:
+            log_print(ANDROID_LOG_ERROR, "PlayerExample", "Network download failed."); break;
+        case Superpowered::PlayerEvent_ProgressiveDownloadFinished:
+            log_print(ANDROID_LOG_ERROR, "PlayerExample", "Download finished. Path: %s", player->getFullyDownloadedFilePath()); break;
+    }
+
+    if (player->eofRecently()) player->setPosition(0, false, false);
+    return (jboolean)player->isPlaying();
 }
 
 // TogglePlayback - Toggle Play/Pause state of the player.
 extern "C" JNIEXPORT void
-Java_com_superpowered_playerexample_MainActivity_TogglePlayback (
-        JNIEnv * __unused env,
-        jobject __unused obj
-) {
+Java_com_superpowered_playerexample_MainActivity_TogglePlayback(JNIEnv * __unused env, jobject __unused obj) {
     player->togglePlayback();
-    SuperpoweredCPU::setSustainedPerformanceMode(player->playing);  // prevent dropouts
+    Superpowered::CPU::setSustainedPerformanceMode(player->isPlaying()); // prevent dropouts
 }
 
-// onBackground - Put audio processing to sleep.
+// onBackground - Put audio processing to sleep if no audio is playing.
 extern "C" JNIEXPORT void
-Java_com_superpowered_playerexample_MainActivity_onBackground (
-        JNIEnv * __unused env,
-        jobject __unused obj
-) {
+Java_com_superpowered_playerexample_MainActivity_onBackground(JNIEnv * __unused env, jobject __unused obj) {
     audioIO->onBackground();
 }
 
 // onForeground - Resume audio processing.
 extern "C" JNIEXPORT void
-Java_com_superpowered_playerexample_MainActivity_onForeground (
-        JNIEnv * __unused env,
-        jobject __unused obj
-) {
+Java_com_superpowered_playerexample_MainActivity_onForeground(JNIEnv * __unused env, jobject __unused obj) {
     audioIO->onForeground();
 }
 
 // Cleanup - Free resources.
 extern "C" JNIEXPORT void
-Java_com_superpowered_playerexample_MainActivity_Cleanup (
-        JNIEnv * __unused env,
-        jobject __unused obj
-) {
+Java_com_superpowered_playerexample_MainActivity_Cleanup(JNIEnv * __unused env, jobject __unused obj) {
     delete audioIO;
     delete player;
-    free(floatBuffer);
 }

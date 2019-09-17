@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">1.4.0</span>
+   &#160;<span id="projectnumber">2.0.0</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -39,12 +39,15 @@ $(function() {
 <div id="main-nav"></div>
 </div><!-- top -->
 <div class="contents">
-<div class="textblock">Here is a list of all documented class members with links to the class documentation for each member:</div>
+<div class="textblock">Here is a list of all class members with links to the classes they belong to:</div>
 
 <h3><a id="index_i"></a>- i -</h3><ul>
+<li>i
+: <a class="el" href="struct_superpowered_1_1json.html#a3a61fbc1a8eaa3073b07e2d6b5fed0ae">Superpowered::json</a>
+</li>
 <li>initialize()
-: <a class="el" href="class_superpowered_audiobuffer_pool.html#aed447c8f751192581582b7b84a6eec37">SuperpoweredAudiobufferPool</a>
-, <a class="el" href="class_superpowered_u_s_b_system.html#a1489673288243f89fbaae7ab8e695d25">SuperpoweredUSBSystem</a>
+: <a class="el" href="class_superpowered_1_1_android_u_s_b.html#a7b26d427c84d7c23e489381af825dacf">Superpowered::AndroidUSB</a>
+, <a class="el" href="class_superpowered_1_1_audiobuffer_pool.html#a5a397c538c34e7a91974b37bafefdce4">Superpowered::AudiobufferPool</a>
 </li>
 <li>initWithDelegate:preferredBufferSize:preferredMinimumSamplerate:audioSessionCategory:channels:
 : <a class="el" href="interface_superpoweredtv_o_s_audio_i_o.html#aca0204f8eefc0f275adfdfe715cbff73">SuperpoweredtvOSAudioIO</a>
@@ -64,14 +67,37 @@ $(function() {
 <li>inputEnabled
 : <a class="el" href="interface_superpowered_o_s_x_audio_i_o.html#a32758e70309735a3b6be34e0e946245d">SuperpoweredOSXAudioIO</a>
 </li>
+<li>inputGain
+: <a class="el" href="class_superpowered_1_1_mono_mixer.html#a4f9ae0906a29cc222769cf4865efc00f">Superpowered::MonoMixer</a>
+, <a class="el" href="class_superpowered_1_1_stereo_mixer.html#a11ec7c25c4d74eeaac016074ae6951ea">Superpowered::StereoMixer</a>
+</li>
+<li>inputGainDb
+: <a class="el" href="class_superpowered_1_1_compressor.html#a757b38813f23a733860484a047215982">Superpowered::Compressor</a>
+</li>
+<li>inputList
+: <a class="el" href="class_superpowered_1_1_frequency_domain.html#a9d2b288c589358d844ebfda25552a308">Superpowered::FrequencyDomain</a>
+</li>
+<li>inputPeak
+: <a class="el" href="class_superpowered_1_1_stereo_mixer.html#a035bd99b3a634aeec6c535eeb5c5c7a3">Superpowered::StereoMixer</a>
+</li>
+<li>inputVolume
+: <a class="el" href="class_superpowered_1_1_spatializer.html#a0196515e0d3a911a2f27fb1d2f9f4230">Superpowered::Spatializer</a>
+</li>
 <li>insert()
-: <a class="el" href="class_superpowered_audiopointer_list.html#afb17721250323442a689ac9660612fe5">SuperpoweredAudiopointerList</a>
+: <a class="el" href="class_superpowered_1_1_audiopointer_list.html#ae43611aa5068f7e62e1f3a44c44b4a06">Superpowered::AudiopointerList</a>
 </li>
 <li>intAtKey()
 : <a class="el" href="struct_superpowered_1_1json.html#a50790e895de5219805b724b7a80cfa19">Superpowered::json</a>
 </li>
 <li>intAtKeyRecursive()
 : <a class="el" href="struct_superpowered_1_1json.html#ad62f794b30019c0338f7ff22073366f8">Superpowered::json</a>
+</li>
+<li>interface
+: <a class="el" href="struct_superpowered_1_1_android_u_s_b_audio_i_o_info.html#a23c6186297c1624240fd36aaec0af44e">Superpowered::AndroidUSBAudioIOInfo</a>
+</li>
+<li>internals
+: <a class="el" href="class_superpowered_1_1_android_u_s_b.html#a15e46fd2fe802cde9b279f8897f884e4">Superpowered::AndroidUSB</a>
+, <a class="el" href="class_superpowered_1_1_filter.html#a5dfa881ca625179172edf772d31c0012">Superpowered::Filter</a>
 </li>
 <li>interruptionEnded
 : <a class="el" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html#ac371788ed59085810a0633aae0f12c9c">&lt;SuperpoweredIOSAudioIODelegate&gt;</a>
@@ -81,11 +107,38 @@ $(function() {
 : <a class="el" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html#aae55829bbcf8176b34d1c567a27c9eeb">&lt;SuperpoweredIOSAudioIODelegate&gt;</a>
 , <a class="el" href="protocol_superpoweredtv_o_s_audio_i_o_delegate-p.html#a51ff3fa75c9e9af1cd22f8c1fcd82c32">&lt;SuperpoweredtvOSAudioIODelegate&gt;</a>
 </li>
+<li>isFinished()
+: <a class="el" href="class_superpowered_1_1_recorder.html#a6e22baff48e8bb7e0fec9fce80701fa0">Superpowered::Recorder</a>
+</li>
+<li>isInput
+: <a class="el" href="struct_superpowered_1_1_android_u_s_b_audio_i_o_info.html#a62f712b79328c311a9bc4424b4a7c44f">Superpowered::AndroidUSBAudioIOInfo</a>
+</li>
+<li>isLooping()
+: <a class="el" href="class_superpowered_1_1_advanced_audio_player.html#a0c08382ad668209f324506c673868518">Superpowered::AdvancedAudioPlayer</a>
+</li>
 <li>isPair()
 : <a class="el" href="class_superpowered_1_1_r_s_a_private_key.html#a5148825ef3a2efc584858cf9689907b0">Superpowered::RSAPrivateKey</a>
 </li>
+<li>isPerformingSlip()
+: <a class="el" href="class_superpowered_1_1_advanced_audio_player.html#a936dea70bace01cfb12bed15a1aed9be">Superpowered::AdvancedAudioPlayer</a>
+</li>
+<li>isPlaying()
+: <a class="el" href="class_superpowered_1_1_advanced_audio_player.html#a07aae186fe984e189725745e085b03b9">Superpowered::AdvancedAudioPlayer</a>
+</li>
 <li>isReference
 : <a class="el" href="struct_superpowered_1_1json.html#a799ef4d6e2e98c58a2557779e8a49362">Superpowered::json</a>
+</li>
+<li>isReverse()
+: <a class="el" href="class_superpowered_1_1_advanced_audio_player.html#a2006bcabdb69a11e628587b0bf08e899">Superpowered::AdvancedAudioPlayer</a>
+</li>
+<li>isScratching()
+: <a class="el" href="class_superpowered_1_1_advanced_audio_player.html#a388112628dd72efc2348839f20935a36">Superpowered::AdvancedAudioPlayer</a>
+</li>
+<li>isStems()
+: <a class="el" href="class_superpowered_1_1_advanced_audio_player.html#a76b1557c1af751b19a1d80dc5efc32c8">Superpowered::AdvancedAudioPlayer</a>
+</li>
+<li>isWaitingForBuffering()
+: <a class="el" href="class_superpowered_1_1_advanced_audio_player.html#a378212bfc37b9133f504fa069c159698">Superpowered::AdvancedAudioPlayer</a>
 </li>
 </ul>
 </div><!-- contents -->

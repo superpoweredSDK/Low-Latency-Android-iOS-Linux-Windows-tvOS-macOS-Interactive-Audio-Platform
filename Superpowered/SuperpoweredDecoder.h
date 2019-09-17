@@ -2,167 +2,206 @@
 #define Header_SuperpoweredDecoder
 
 #include "SuperpoweredHTTP.h"
-
 #include <stdint.h>
+
+namespace Superpowered {
+
 struct decoderInternals;
-struct stemsCompressor;
-struct stemsLimiter;
-class SuperpoweredDecoder;
 
-#define SUPERPOWEREDDECODER_EOF 0
-#define SUPERPOWEREDDECODER_OK 1
-#define SUPERPOWEREDDECODER_ERROR 2
-#define SUPERPOWEREDDECODER_BUFFERING 3
-#define SUPERPOWEREDDECODER_NETWORK_ERROR 4
+/// @brief File/decoder format.
+typedef enum Decoder_Format {
+    Decoder_Format_MP3,  ///< MP3
+    Decoder_Format_AAC,  ///< AAC, HE-AAC
+    Decoder_Format_AIFF, ///< AIFF
+    Decoder_Format_WAV,  ///< WAV
+    Decoder_Format_MediaServer ///< Other format decoded by iOS, macOS or tvOS.
+} Decoder_Format;
 
-typedef enum SuperpoweredDecoder_Kind {
-    SuperpoweredDecoder_MP3, SuperpoweredDecoder_AAC, SuperpoweredDecoder_AIFF, SuperpoweredDecoder_WAV, SuperpoweredDecoder_MediaServer
-} SuperpoweredDecoder_Kind;
-
-/**
- @brief Callback for parsing ID3 frames. Compatible with 2.3 and 2.4 only.
- 
- @param clientData Some custom pointer you set when you called getMetaData().
- @param frameName The ID3 frame name (four char).
- @param frameData The data inside the ID3 frame.
- @param frameDataSize Data size in bytes.
- */
-typedef void (* SuperpoweredDecoderID3Callback) (void *clientData, void *frameName, void *frameData, int frameDataSize);
-/**
- @brief Callback for progressive download completion.
-
- @clientData Some custom pointer you set when you created the decoder instance.
- @decoder The decoder instance sending the callback.
- */
-typedef void (* SuperpoweredDecoderFullyDownloadedCallback) (void *clientData, SuperpoweredDecoder *decoder);
-
-/**
- @brief Audio file decoder. Provides uncompresses PCM samples from various compressed formats.
- 
- Thread safety: single threaded, not thread safe. After a succesful open(), samplePosition and duration may change.
- Supported file types:
- - Stereo or mono pcm WAV and AIFF (16-bit int, 24-bit int, 32-bit int or 32-bit IEEE float).
- - MP3: MPEG-1 Layer III (sample rates: 32000 Hz, 44100 Hz, 48000 Hz). MPEG-2 is not supported.
- - AAC-LC in M4A container (iTunes).
- - AAC-LC in ADTS container (.aac).
- - Apple Lossless (on iOS only).
- 
- @param durationSeconds The duration of the current file in seconds. Read only.
- @param durationSamples The duration of the current file in samples. Read only.
- @param samplePosition The current position in samples. May change after each decode() or seekTo(). Read only.
- @param samplerate The sample rate of the current file. Read only.
- @param samplesPerFrame How many samples are in one frame of the source file. For example: 1152 in mp3 files.
- @param bufferStartPercent Indicates which part of the file has fast access. For local files it will always be 0.0f.
- @param bufferEndPercent Indicates which part of the file has fast access. For local files it will always be 1.0f.
- @param kind The format of the current file.
- @param fullyDownloadedFilePath The file system path of the fully downloaded audio file for progressive downloads. Progressive downloads are automatically removed if no SuperpoweredDecoder instance is active for the same url. This parameter provides an alternative to save the file.
-*/
-class SuperpoweredDecoder {
+/// @brief Audio file decoder. Provides raw PCM audio from various compressed formats.
+/// Supported file types:
+/// - Stereo or mono pcm WAV and AIFF (16-bit int, 24-bit int, 32-bit int or 32-bit IEEE float).
+/// - MP3: MPEG-1 Layer III (sample rates: 32000 Hz, 44100 Hz, 48000 Hz). MPEG-2 Layer III is not supported (mp3 with sample rates below 32000 Hz).
+/// - AAC or HE-AAC in M4A container (iTunes) or ADTS container (.aac).
+/// - ALAC/Apple Lossless (on iOS only).
+class Decoder {
 public:
-// READ ONLY properties
-    double durationSeconds;
-    int64_t durationSamples, samplePosition;
-    unsigned int samplerate, samplesPerFrame;
-    float bufferStartPercent, bufferEndPercent;
-    SuperpoweredDecoder_Kind kind;
-    char *fullyDownloadedFilePath;
-
-/**
- @brief Creates an instance of SuperpoweredDecoder.
-
- @param downloadedCallback Callback for progressive download completion.
- @param clientData Custom pointer for the downloadedCallback.
- */
-    SuperpoweredDecoder(SuperpoweredDecoderFullyDownloadedCallback downloadedCallback = 0, void *clientData = 0);
+/// @brief Error codes for the decodeAudio() and getAudioStartFrame() methods.
+    static const int EndOfFile = 0;               ///< End-of-file reached.
+    static const int BufferingTryAgainLater = -1; ///< Buffering (waiting for the network to pump enough data).
+    static const int NetworkError = -2;           ///< Network (download) error.
+    static const int Error = -3;                  ///< Decoding error.
     
-/**
- @brief Opens a file for decoding.
- 
- @param path Full file system path or progressive download path (http or https).
- @param metaOnly If true, it opens the file for fast metadata reading only, not for decoding audio. Available for fully available local files only (no network access).
- @param offset Byte offset in the file.
- @param length Byte length from offset. Set offset and length to 0 to read the entire file.
- @param stemsIndex Stems track index for Native Instruments Stems format.
- @param customHTTPRequest If custom HTTP communication is required (such as sending http headers for authorization), pass a fully prepared http request object. The player will take ownership of this.
- @param httpStatusCode @see @c Superpowered::httpResponse
+/// @brief Error codes for the open() method.
+    static const int OpenSuccess = 0;
+    static const int OpenError_OutOfMemory =             1000; ///< Some memory allocation failed. Recommended action: check for memory leaks.
+    static const int OpenError_PathIsNull =              1001; ///< Path is NULL.
+    static const int OpenError_FastMetadataNotLocal =    1002; ///< metaOnly was true, but it works on local files only.
+    static const int OpenError_ID3VersionNotSupported =  1003; ///< ID3 version 2.2, 2.3 and 2.4 are supported only.
+    static const int OpenError_ID3ReadError =            1004; ///< File read error (such as fread() failed) while reading the ID3 tag.
+    static const int OpenError_FileFormatNotRecognized = 1005; ///< The decoder is not able to decode this file format.
+    static const int OpenError_FileOpenError =           1006; ///< Such as fopen() failed. Recommended action: check if the path and read permissions are correct.
+    static const int OpenError_FileLengthError =         1007; ///< Such as fseek() failed. Recommended action: check if read permissions are correct.
+    static const int OpenError_FileTooShort =            1008; ///< The file has just a few bytes of data.
+    static const int OpenError_AppleAssetFailed =        1009; ///< The Apple system codec could not create an AVURLAsset on the resource. Wrong file format?
+    static const int OpenError_AppleMissingTracks =      1010; ///< The Apple system codec did not found any audio tracks. Wrong file format?
+    static const int OpenError_AppleDecoding =           1011; ///< The Apple system codec could not get the audio frames. Wrong file format?
+    static const int OpenError_ImplementationError0 =    1012; ///< Should never happen. But if it does, please let us know.
+    static const int OpenError_ImplementationError1 =    1013; ///< Should never happen. But if it does, please let us know.
+    static const int OpenError_ImplementationError2 =    1014; ///< Should never happen. But if it does, please let us know.
+    static const int OpenError_UseSetTempFolder =        1015; ///< Call AdvancedAudioPlayer::setTempFolder first.
+    
+/// @return Returns with a human readable error string. If the code is not a decoder status code, then it's a SuperpoweredHTTP status code and returns with that.
+/// @param code The return value of the Decoder::open method.
+    static const char *statusCodeToString(int code);
+    
+/// @return Returns with the duration of the current file in frames.
+/// @warning Duration may change after each decode() or seekTo(), because some audio formats doesn't contain precise length information.
+    int64_t getDurationFrames();
+    
+/// @return Returns with the duration of the current file in seconds.
+/// @warning Duration may change after each decode() or seekTo(), because some audio formats doesn't contain precise length information.
+    double getDurationSeconds();
+    
+/// @return Returns with the sample rate of the current file.
+    unsigned int getSamplerate();
+    
+/// @return Returns with the format of the current file.
+    Decoder_Format getFormat();
+    
+/// @return Returns with how many frames are in one chunk of the source file. For example: MP3 files store 1152 audio frames in a chunk.
+    unsigned int getFramesPerChunk();
+    
+/// @return Returns with the current position in frames. The postion may change after each decode() or seekTo().
+    int64_t getPositionFrames();
+    
+/// @return Indicates which part of the file has fast access. For local files it will always be 0.0f.
+    float getBufferedStartPercent();
+    
+/// @return Indicates which part of the file has fast access. For local files it will always be 1.0f.
+    float getBufferedEndPercent();
+    
+/// @return The file system path of the fully downloaded audio file for progressive downloads. May be NULL until the download finishes.
+    const char *getFullyDownloadedPath();
 
- @return NULL if successful, or an error string. If the returned status code equals to StatusCode_Progress, it means that the open method needs more time opening an audio file from the network. In this case, iterate over open() until it returns something else than StatusCode_Progress. It's recommended to sleep 50-100 ms in every iteration to allow the network stack doing its job without blowing up the CPU.
- */
-    const char *open(const char *path, bool metaOnly = false, int offset = 0, int length = 0, int stemsIndex = 0, Superpowered::httpRequest *customHTTPRequest = 0, int *httpStatusCode = 0);
-/**
- @brief Decodes the requested number of samples.
- 
- @return End of file (0), ok (1), error (2) or buffering(3).
- 
- @param pcmOutput The buffer to put uncompressed audio. Must be at least this big: (*samples * 4) + 16384 bytes.
- @param samples On input, the requested number of samples. Should be >= samplesPerFrame. On return, the samples decoded.
-*/
-    unsigned char decode(short int *pcmOutput, unsigned int *samples);
-/**
- @brief Jumps to a specific position.
- 
- @return ok (1), error (2) or buffering(3)
- 
- @param sample The requested position (a sample index). The actual position (samplePosition) may be different after calling this method.
- @param precise Some codecs may not jump precisely due internal framing. Set precise to true if you want exact positioning (for a little performance penalty of 1 memmove).
-*/
-    unsigned char seek(int64_t sample, bool precise);
-/**
- @return End of file (0), ok (1), error (2) or buffering(3). This function changes position!
- 
- @param startSample Returns the position where audio starts.
- @param limitSamples How far to search for. 0 means "the entire audio file".
- @param decibel Optional loudness threshold in decibel. 0 means "any non-zero audio sample". The value -49 is useful for vinyl rips.
- @param cancelIfBuffering Optional. If the decoder is waiting for more data from the network, set this variable to nonzero to cancel and return with error.
- */
-    unsigned char getAudioStartSample(unsigned int *startSample, unsigned int limitSamples = 0, int decibel = 0, unsigned int *cancelIfBuffering = 0);
-/**
- @brief Call this on a phone call or other interruption.
- 
- Apple's built-in codec may be used in some cases, for example ALAC files.
- Call this after a media server reset or audio session interrupt to resume playback.
- */
+/// @brief Creates an instance of Superpowered Decoder.
+    Decoder();
+    ~Decoder();
+    
+/// @brief Opens a file for decoding.
+/// @return The return value can be grouped into four categories:
+/// - Decoder::OpenSuccess: successful open.
+/// - httpResponse::StatusCode_Progress: the open method needs more time opening an audio file from the network. In this case retry open() later until it returns something else than StatusCode_Progress (it's recommended to wait at least 0.1 seconds).
+/// - A value above 1000: internal decoder error.
+/// - A HTTP status code for network errors.
+/// @param path Full file system path or progressive download path (http or https).
+/// @param metaOnly If true, it opens the file for fast metadata reading only, not for decoding audio. Available for fully available local files only (no network access).
+/// @param offset Byte offset in the file. Primarily designed to open raw files from an apk.
+/// @param length Byte length from offset. Set offset and length to 0 to read the entire file.
+/// @param stemsIndex Stems track index for Native Instruments Stems format.
+/// @param customHTTPRequest If custom HTTP communication is required (such as sending http headers for authorization), pass a fully prepared http request object. The player will take ownership of this.
+    int open(const char *path, bool metaOnly = false, int offset = 0, int length = 0, int stemsIndex = 0, Superpowered::httpRequest *customHTTPRequest = 0);
+    
+/// @brief Decodes audio.
+/// @return The return value can be:
+/// - A positive number above zero: the number of frames decoded.
+/// - Decoder::EndOfFile: end of file reached, there is nothing more to decode. Use setPosition.
+/// - Decoder::BufferingTryAgainLater: the decoder needs more data to be downloaded. Retry decodeAudio() later (it's recommended to wait at least 0.1 seconds).
+/// - Decoder::NetworkError: network (download) error.
+/// - Decoder::Error: internal decoder error.
+/// @param output Pointer to 16-bit signed integer numbers. The output. Must be at least numberOfFrames * 4 + 16384 bytes big.
+/// @param numberOfFrames The requested number of frames. Should NOT be less than framesPerChunk.
+    int decodeAudio(short int *output, unsigned int numberOfFrames);
+    
+/// @brief Jumps to the specified position's chunk (frame) beginning.
+/// Some codecs (such as MP3) contain audio in chunks (frames). This method will not jump precisely to the specified position, but to the chunk's beginning the position belongs to.
+/// @return Returns with success (true) or failure (false).
+/// @param positionFrames The requested position.
+    bool setPositionQuick(int64_t positionFrames);
+    
+/// @brief Jumps to a specific position.
+/// This method is a little bit slower than setPositionQuick().
+/// @return Returns with success (true) or failure (false).
+/// @param positionFrames The requested position.
+    bool setPositionPrecise(int64_t positionFrames);
+    
+/// Detects silence at the beginning.
+/// @warning This function changes positionFrames!
+/// @return The return value can be:
+/// - A positive number or zero: the frame index where audio starts.
+/// - Decoder::BufferingTryAgainLater: the decoder needs more data to be downloaded. Retry getAudioStartFrame() later (it's recommended to wait at least 0.1 seconds).
+/// - Decoder::NetworkError: network (download) error.
+/// - Decoder::Error: internal decoder error.
+/// @param limitFrames Optional. How far to search for. 0 means "the entire audio file".
+/// @param thresholdDb Optional. Loudness threshold in decibel. 0 means "any non-zero audio". The value -49 is useful for vinyl rips starting with vinyl noise (crackles).
+    int getAudioStartFrame(unsigned int limitFrames = 0, int thresholdDb = 0);
+    
+/// @return Returns with the JSON metadata string for the Native Instruments Stems format, or NULL if the file is not Stems.
+    const char *getStemsJSONString();
+        
+/// @brief Parses all ID3 frames. Do not use startReadingID3/readNextID3Frame after this.
+/// @param skipImages Parsing ID3 image frames is significantly slower than parsing other frames. Set this to true if not interested in image information to save CPU.
+/// @param maxFrameDataSize The maximum frame size in bytes to retrieve if the decoder can not memory map the entire audio file. Affects memory usage. Useful to skip large payloads (such as images).
+    void parseAllID3Frames(bool skipImages, unsigned int maxFrameDataSize);
+    
+/// @brief Starts reading ID3 frames. Use readNextID3Frame() in an iteration after this.
+/// @param skipImages Parsing ID3 image frames is significantly slower than parsing other frames. Set this to true if not interested in image information to save CPU.
+/// @param maxFrameDataSize The maximum frame size in bytes to retrieve if the decoder can not memory map the entire audio file. Affects memory usage. Useful to skip large payloads (such as images).
+    void startParsingID3Frames(bool skipImages, unsigned int maxFrameDataSize);
+    
+/// @return Reads the next ID3 frame and returns with its data size or -1 if finished reading.
+    unsigned int readNextID3Frame();
+    
+/// @return Returns with the current ID3 frame name (four char). To be used with readNextID3Frame().
+    unsigned int getID3FrameName();
+    
+/// @return Returns with the raw data of the current ID3 frame. To be used with readNextID3Frame().
+    void *getID3FrameData();
+    
+/// @return Returns with the current ID3 frame data length.
+    unsigned int getID3FrameDataLengthBytes();
+    
+/// @brief Returns with the text inside the current ID3 frame. To be used with readNextID3Frame().
+/// @return A pointer to the text in UTF-8 encoding (you take ownership on the data, don't forget to free() when done to prevent memory leaks), or NULL if empty.
+/// @warning Use it for frames containing text only!
+    char *getID3FrameAsString();
+    
+/// @return Returns with the contents "best" artist tag (TP1-4, TPE1-4, QT atoms). May return NULL.
+/// Call this after parseAllID3Frames() OR finished reading all ID3 frames with readNextID3Frame().
+/// @param takeOwnership For advanced use. If true, you take ownership on the data (don't forget to free() when done to prevent memory leaks).
+    char *getArtist(bool takeOwnership = false);
+    
+/// @return Returns with the contents "best" title tag (TT1-3, TIT1-3, QT atoms). May return NULL.
+/// Call this after parseAllID3Frames() OR finished reading all ID3 frames with readNextID3Frame().
+/// @param takeOwnership For advanced use. If true, you take ownership on the data (don't forget to free() when done to prevent memory leaks).
+    char *getTitle(bool takeOwnership = false);
+    
+/// @return Returns with the contents of the TALB tag (or QT atom). May return NULL.
+/// Call this after parseAllID3Frames() OR finished reading all ID3 frames with readNextID3Frame().
+/// @param takeOwnership For advanced use. If true, you take ownership on the data (don't forget to free() when done to prevent memory leaks).
+    char *getAlbum(bool takeOwnership = false);
+    
+/// @return Returns with the contents "best" image tag (PIC, APIC, QT atom). May return NULL.
+/// Call this after parseAllID3Frames() OR finished reading all ID3 frames with readNextID3Frame().
+/// @param takeOwnership For advanced use. If true, you take ownership on the data (don't forget to free() when done to prevent memory leaks).
+    void *getImage(bool takeOwnership = false);
+    
+/// @return Returns with the the size of the image returned by getImage(). May return NULL.
+/// Call this after parseAllID3Frames() OR finished reading all ID3 frames with readNextID3Frame().
+    unsigned int getImageSizeBytes();
+    
+/// @return Returns with the bpm value of the "best" bpm tag (TBP, TBPM, QT atom). May return 0.
+/// Call this after parseAllID3Frames() OR finished reading all ID3 frames with readNextID3Frame().
+    float getBPM();
+    
+/// @brief Apple's built-in codec may be used in some cases, such as decoding ALAC files. Call this after a media server reset or audio session interrupt to resume playback.
     void reconnectToMediaserver();
-/**
- @brief Returns often used metadata.
- 
- @param artist Artist, set to NULL if you're not interested. Returns NULL if can not be retrieved. Ownership passed (you must free memory after finished using it).
- @param title Title, set to NULL if you're not interested. Returns NULL if can not be retrieved. Ownership passed (you must free memory after finished using it).
- @param album Album, set to NULL if you're not interested. Returns NULL if can not be retrieved. Ownership passed (you must free memory after finished using it).
- @param image Raw image data (usually PNG or JPG). Set to NULL if you're not interested. Returns NULL if can not be retrieved. Ownership passed (you must free memory after finished using it).
- @param imageSizeBytes Size of the raw image data. Set to NULL if you're not interested.
- @param bpm Tempo in beats per minute. Set to NULL if you're not interested.
- @param callback A callback to process other ID3 frames. Set to NULL if you're not interested.
- @param clientData A custom pointer the callback receives.
- @param maxFrameDataSize The maximum frame size in bytes to receive by the callback, if the decoder can not memory map the entire audio file. Affects memory usage.
- */
-    void getMetaData(char **artist, char **title, char **album, void **image, int *imageSizeBytes, float *bpm, SuperpoweredDecoderID3Callback callback, void *clientData, int maxFrameDataSize);
-/**
- @return True if the file is Native Instruments Stems format.
- 
- @param names Returns 4 pointers of 0 terminated stem name strings or NULL if the file is not Stems. You take ownership (must free memory after used.).
- @param colors Returns 4 pointers of 0 terminated stem color strings or NULL if the file is not Stems. You take ownership (must free memory after used.).
- @param compressor Struct to receive compressor DSP settings. Can be NULL.
- @param limiter Struct to receive limiter DSP settings. Can be NULL;
-*/
-    bool getStemsInfo(char *names[4] = 0, char *colors[4] = 0, stemsCompressor *compressor = 0, stemsLimiter *limiter = 0);
 
-    ~SuperpoweredDecoder();
-    
 private:
     decoderInternals *internals;
-    SuperpoweredDecoder(const SuperpoweredDecoder&);
-    SuperpoweredDecoder& operator=(const SuperpoweredDecoder&);
+    Decoder(const Decoder&);
+    Decoder& operator=(const Decoder&);
 };
 
-/**
- @brief Helper function to parse ID3 text frames.
- 
- @return A pointer to the text in UTF-8 encoding (you must free memory it), or NULL if empty.
- 
- @param frameData Frame data without the frame header.
- @param frameLength The data length in bytes.
- */
-char *getID3TextFrameUTF8(unsigned char *frameData, int frameLength);
+}
 
 #endif

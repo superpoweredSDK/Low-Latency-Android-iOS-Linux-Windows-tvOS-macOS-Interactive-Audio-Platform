@@ -8,74 +8,60 @@
 
 // EXAMPLE: reading an audio file, applying a simple effect (filter) and saving the result to WAV
 int main(int argc, char *argv[]) {
-    SuperpoweredInitialize(
-                           "ExampleLicenseKey-WillExpire-OnNextUpdate",
-                           false, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
-                           false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
-                           false, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
-                           true, // enableAudioEffects (using any SuperpoweredFX class)
-                           true, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
-                           false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
-                           false  // enableNetworking (using Superpowered::httpRequest)
-                           );
+    Superpowered::Initialize(
+                             "ExampleLicenseKey-WillExpire-OnNextUpdate",
+                             false, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
+                             false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
+                             false, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
+                             true, // enableAudioEffects (using any SuperpoweredFX class)
+                             true, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
+                             false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
+                             false  // enableNetworking (using Superpowered::httpRequest)
+                             );
     // Open the input file.
-    SuperpoweredDecoder *decoder = new SuperpoweredDecoder();
-    const char *openError = decoder->open("test.m4a", false, 0, 0);
-    if (openError) {
-        printf("Open error: %s\n", openError);
+    Superpowered::Decoder *decoder = new Superpowered::Decoder();
+    int openReturn = decoder->open("test.m4a");
+    if (openReturn != Superpowered::Decoder::OpenSuccess) {
+        printf("\rOpen error %i: %s\n", openReturn, Superpowered::Decoder::statusCodeToString(openReturn));
         delete decoder;
         return 0;
     };
 
     // Create the output WAVE file.
-    FILE *fd = createWAV("./results/offline1.wav", decoder->samplerate, 2);
-    if (!fd) {
-        printf("File creation error.\n");
+    FILE *destinationFile = Superpowered::createWAV("./results/offline1.wav", decoder->getSamplerate(), 2);
+    if (!destinationFile) {
+        printf("\rFile creation error.\n");
         delete decoder;
         return 0;
     };
 
-    // Creating the filter.
-    SuperpoweredFilter *filter = new SuperpoweredFilter(SuperpoweredFilter_Resonant_Lowpass, decoder->samplerate);
-    filter->setResonantParameters(1000.0f, 0.1f);
-    filter->enable(true);
-
-    // Create a buffer for the 16-bit integer samples coming from the decoder.
-    short int *intBuffer = (short int *)malloc(decoder->samplesPerFrame * 2 * sizeof(short int) + 32768);
-    // Create a buffer for the 32-bit floating point samples required by the effect.
-    float *floatBuffer = (float *)malloc(decoder->samplesPerFrame * 2 * sizeof(float) + 32768);
-
+    // Create the low-pass filter.
+    Superpowered::Filter *filter = new Superpowered::Filter(Superpowered::Resonant_Lowpass, decoder->getSamplerate());
+    filter->frequency = 1000.0f;
+    filter->resonance = 0.1f;
+    filter->enabled = true;
+    
+    // Create a buffer for the 16-bit integer audio output of the decoder.
+    short int *intBuffer = (short int *)malloc(decoder->getFramesPerChunk() * 2 * sizeof(short int) + 16384);
+    // Create a buffer for the 32-bit floating point audio required by the effect.
+    float *floatBuffer = (float *)malloc(decoder->getFramesPerChunk() * 2 * sizeof(float) + 16384);
+    
     // Processing.
-    int progress = 0;
     while (true) {
-        // Decode one frame. samplesDecoded will be overwritten with the actual decoded number of samples.
-        unsigned int samplesDecoded = decoder->samplesPerFrame;
-        if (decoder->decode(intBuffer, &samplesDecoded) == SUPERPOWEREDDECODER_ERROR) break;
-        if (samplesDecoded < 1) break;
-
-        // Convert the decoded PCM samples from 16-bit integer to 32-bit floating point.
-        SuperpoweredShortIntToFloat(intBuffer, floatBuffer, samplesDecoded);
-
+        int framesDecoded = decoder->decodeAudio(intBuffer, decoder->getFramesPerChunk());
+        if (framesDecoded < 1) break;
+        
         // Apply the effect.
-        filter->process(floatBuffer, floatBuffer, samplesDecoded);
-
-        // Convert the PCM samples from 32-bit floating point to 16-bit integer.
-        SuperpoweredFloatToShortInt(floatBuffer, intBuffer, samplesDecoded);
-
+        Superpowered::ShortIntToFloat(intBuffer, floatBuffer, framesDecoded);
+        filter->process(floatBuffer, floatBuffer, framesDecoded);
+        Superpowered::FloatToShortInt(floatBuffer, intBuffer, framesDecoded);
+        
         // Write the audio to disk.
-        fwrite(intBuffer, 1, samplesDecoded * 4, fd);
-
-        // Update the progress indicator.
-        int p = int(((double)decoder->samplePosition / (double)decoder->durationSamples) * 100.0);
-        if (progress != p) {
-            progress = p;
-            printf("\r%i%%", progress);
-            fflush(stdout);
-        }
+        Superpowered::writeWAV(destinationFile, intBuffer, framesDecoded * 4);
     };
-
-    // Cleanup.
-    closeWAV(fd);
+    
+    // Close the file and clean up.
+    Superpowered::closeWAV(destinationFile);
     delete decoder;
     delete filter;
     free(intBuffer);

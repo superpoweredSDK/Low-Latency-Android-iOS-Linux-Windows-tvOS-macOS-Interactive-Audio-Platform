@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">1.4.0</span>
+   &#160;<span id="projectnumber">2.0.0</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -47,26 +47,20 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>You must implement this protocol to make SuperpoweredOSXAudioIODelegate work.  
-</p>
-
 <p>Inherits &lt;NSObjectNSObject&gt;.</p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Instance Methods</h2></td></tr>
-<tr class="memitem:a0ec997d8141d4ce5564efb6d41fd4608"><td class="memItemLeft" align="right" valign="top">(bool)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpowered_o_s_x_audio_i_o_delegate_01-p.html#a0ec997d8141d4ce5564efb6d41fd4608">audioProcessingCallback:inputChannels:outputBuffers:outputChannels:numberOfSamples:samplerate:hostTime:</a></td></tr>
-<tr class="memdesc:a0ec997d8141d4ce5564efb6d41fd4608"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process audio here.  <a href="#a0ec997d8141d4ce5564efb6d41fd4608">More...</a><br /></td></tr>
-<tr class="separator:a0ec997d8141d4ce5564efb6d41fd4608"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6235156592adf590efdfa39db16d5bff"><td class="memItemLeft" align="right" valign="top"><a id="a6235156592adf590efdfa39db16d5bff"></a>
-(void)&#160;</td><td class="memItemRight" valign="bottom">- <b>mapChannels:numOutputChannels:outputMap:input:numInputChannels:inputMap:</b></td></tr>
+<tr class="memitem:a819326a30aa1952931f77e2e58901620"><td class="memItemLeft" align="right" valign="top">(bool)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpowered_o_s_x_audio_i_o_delegate_01-p.html#a819326a30aa1952931f77e2e58901620">audioProcessingCallback:inputChannels:outputBuffers:outputChannels:numberOfFrames:samplerate:hostTime:</a></td></tr>
+<tr class="separator:a819326a30aa1952931f77e2e58901620"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6235156592adf590efdfa39db16d5bff"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpowered_o_s_x_audio_i_o_delegate_01-p.html#a6235156592adf590efdfa39db16d5bff">mapChannels:numOutputChannels:outputMap:input:numInputChannels:inputMap:</a></td></tr>
 <tr class="separator:a6235156592adf590efdfa39db16d5bff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a881f1c8ab6c6f059421e37680ef09907"><td class="memItemLeft" align="right" valign="top"><a id="a881f1c8ab6c6f059421e37680ef09907"></a>
-(void)&#160;</td><td class="memItemRight" valign="bottom">- <b>audioDevicesChanged:</b></td></tr>
+<tr class="memitem:a881f1c8ab6c6f059421e37680ef09907"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpowered_o_s_x_audio_i_o_delegate_01-p.html#a881f1c8ab6c6f059421e37680ef09907">audioDevicesChanged:</a></td></tr>
 <tr class="separator:a881f1c8ab6c6f059421e37680ef09907"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Method Documentation</h2>
-<a id="a0ec997d8141d4ce5564efb6d41fd4608"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0ec997d8141d4ce5564efb6d41fd4608">&#9670;&nbsp;</a></span>audioProcessingCallback:inputChannels:outputBuffers:outputChannels:numberOfSamples:samplerate:hostTime:()</h2>
+<a id="a819326a30aa1952931f77e2e58901620"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a819326a30aa1952931f77e2e58901620">&#9670;&nbsp;</a></span>audioProcessingCallback:inputChannels:outputBuffers:outputChannels:numberOfFrames:samplerate:hostTime:()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -99,10 +93,10 @@ Instance Methods</h2></td></tr>
           <td class="paramname"><em>outputChannels</em></td>
         </tr>
         <tr>
-          <td class="paramkey">numberOfSamples:</td>
+          <td class="paramkey">numberOfFrames:</td>
           <td></td>
           <td class="paramtype">(unsigned int)&#160;</td>
-          <td class="paramname"><em>numberOfSamples</em></td>
+          <td class="paramname"><em>numberOfFrames</em></td>
         </tr>
         <tr>
           <td class="paramkey">samplerate:</td>
@@ -128,20 +122,129 @@ Instance Methods</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Return false when you did no audio processing (silence).</dd></dl>
+
+<p>Process audio here. </p>
+<dl class="section return"><dt>Returns</dt><dd>Return false when you did no audio processing (silence). </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">inputBuffers</td><td>Input buffers. </td></tr>
     <tr><td class="paramname">inputChannels</td><td>The number of input channels. </td></tr>
     <tr><td class="paramname">outputBuffers</td><td>Output buffers. </td></tr>
     <tr><td class="paramname">outputChannels</td><td>The number of output channels. </td></tr>
-    <tr><td class="paramname">numberOfSamples</td><td>The number of samples requested. </td></tr>
+    <tr><td class="paramname">numberOfFrames</td><td>The number of frames requested. </td></tr>
     <tr><td class="paramname">samplerate</td><td>The current sample rate in Hz. </td></tr>
-    <tr><td class="paramname">hostTime</td><td>A mach timestamp, indicates when this chunk of audio will be passed to the audio output.</td></tr>
+    <tr><td class="paramname">hostTime</td><td>A mach timestamp, indicates when this chunk of audio will be passed to the audio output. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section warning"><dt>Warning</dt><dd>It's called on a high priority real-time audio thread, so please take care of blocking and processing time to prevent audio dropouts. </dd></dl>
+
+</div>
+</div>
+<a id="a6235156592adf590efdfa39db16d5bff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6235156592adf590efdfa39db16d5bff">&#9670;&nbsp;</a></span>mapChannels:numOutputChannels:outputMap:input:numInputChannels:inputMap:()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void SuperpoweredOSXAudioIODelegate) mapChannels: </td>
+          <td></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>outputDeviceName</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">numOutputChannels:</td>
+          <td></td>
+          <td class="paramtype">(int)&#160;</td>
+          <td class="paramname"><em>numOutputChannels</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">outputMap:</td>
+          <td></td>
+          <td class="paramtype">(int *)&#160;</td>
+          <td class="paramname"><em>outputMap</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">input:</td>
+          <td></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>inputDeviceName</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">numInputChannels:</td>
+          <td></td>
+          <td class="paramtype">(int)&#160;</td>
+          <td class="paramname"><em>numInputChannels</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">inputMap:</td>
+          <td></td>
+          <td class="paramtype">(int *)&#160;</td>
+          <td class="paramname"><em>inputMap</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">optional</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This method is called on the main thread when an audio device is initialized. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">outputDeviceName</td><td>The name of the audio output device. </td></tr>
+    <tr><td class="paramname">numOutputChannels</td><td>The number of output channels available. </td></tr>
+    <tr><td class="paramname">outputMap</td><td>Map the output channels here. </td></tr>
+    <tr><td class="paramname">inputDeviceName</td><td>The name of the audio input device. </td></tr>
+    <tr><td class="paramname">numInputChannels</td><td>The number of input channels available. </td></tr>
+    <tr><td class="paramname">inputMap</td><td>Map the input channels here. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a881f1c8ab6c6f059421e37680ef09907"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a881f1c8ab6c6f059421e37680ef09907">&#9670;&nbsp;</a></span>audioDevicesChanged:()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void SuperpoweredOSXAudioIODelegate) audioDevicesChanged: </td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="structaudio_device.html">audioDevice</a> *)&#160;</td>
+          <td class="paramname"><em>devices</em></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">optional</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This method is called when the an audio device is connected or disconnected. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">devices</td><td>A linked list of <a class="el" href="structaudio_device.html">audioDevice</a> structs. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

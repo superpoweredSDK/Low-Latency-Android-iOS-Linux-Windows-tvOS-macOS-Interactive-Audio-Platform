@@ -6,20 +6,21 @@
 
 @implementation ViewController {
     SuperpoweredIOSAudioIO *audioIO;
-    SuperpoweredFrequencyDomain *frequencyDomain;
+    Superpowered::FrequencyDomain *frequencyDomain;
     float *magnitudeLeft, *magnitudeRight, *phaseLeft, *phaseRight, *fifoOutput;
-    int fifoOutputFirstSample, fifoOutputLastSample, stepSize, fifoCapacity;
+    int fifoOutputFirstSample, fifoOutputLastSample, fftSize, fifoCapacity;
 }
 
 #define FFT_LOG_SIZE 11 // 2^11 = 2048
+#define OVERLAP_RATIO 4 // The default overlap ratio is 4:1, so we will receive this amount of frames from the frequency domain in one step.
 
 // This callback is called periodically by the audio system.
-static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int inputChannels, float **outputBuffers, unsigned int outputChannels, unsigned int numberOfSamples, unsigned int samplerate, uint64_t hostTime) {
+static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int inputChannels, float **outputBuffers, unsigned int outputChannels, unsigned int numberOfFrames, unsigned int samplerate, uint64_t hostTime) {
     __unsafe_unretained ViewController *self = (__bridge ViewController *)clientdata;
     // Input goes to the frequency domain.
-    float interleaved[numberOfSamples * 2 + 16];
-    SuperpoweredInterleave(inputBuffers[0], inputBuffers[1], interleaved, numberOfSamples);
-    self->frequencyDomain->addInput(interleaved, numberOfSamples);
+    float interleaved[numberOfFrames * 2];
+    Superpowered::Interleave(inputBuffers[0], inputBuffers[1], interleaved, numberOfFrames);
+    self->frequencyDomain->addInput(interleaved, numberOfFrames);
 
     // In the frequency domain we are working with 1024 magnitudes and phases for every channel (left, right), if the fft size is 2048.
     while (self->frequencyDomain->timeDomainToFrequencyDomain(self->magnitudeLeft, self->magnitudeRight, self->phaseLeft, self->phaseRight)) {
@@ -32,7 +33,7 @@ static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int
         // We are done working with frequency domain data. Let's go back to the time domain.
 
         // Check if we have enough room in the fifo buffer for the output. If not, move the existing audio data back to the buffer's beginning.
-        if (self->fifoOutputLastSample + self->stepSize >= self->fifoCapacity) { // This will be true for every 100th iteration only, so we save precious memory bandwidth.
+        if (self->fifoOutputLastSample + self->fftSize / OVERLAP_RATIO >= self->fifoCapacity) { // This will be true for every 100th iteration only, so we save precious memory bandwidth.
             int samplesInFifo = self->fifoOutputLastSample - self->fifoOutputFirstSample;
             if (samplesInFifo > 0) memmove(self->fifoOutput, self->fifoOutput + self->fifoOutputFirstSample * 2, samplesInFifo * sizeof(float) * 2);
             self->fifoOutputFirstSample = 0;
@@ -42,44 +43,46 @@ static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int
         // Transforming back to the time domain.
         self->frequencyDomain->frequencyDomainToTimeDomain(self->magnitudeLeft, self->magnitudeRight, self->phaseLeft, self->phaseRight, self->fifoOutput + self->fifoOutputLastSample * 2);
         self->frequencyDomain->advance();
-        self->fifoOutputLastSample += self->stepSize;
+        self->fifoOutputLastSample += self->fftSize / OVERLAP_RATIO;
     };
 
     // If we have enough samples in the fifo output buffer, pass them to the audio output.
-    if (self->fifoOutputLastSample - self->fifoOutputFirstSample >= numberOfSamples) {
-        SuperpoweredDeInterleave(self->fifoOutput + self->fifoOutputFirstSample * 2, outputBuffers[0], outputBuffers[1], numberOfSamples);
-        // buffers[0] and buffer[1] now have time domain audio output (left and right channels)
-        self->fifoOutputFirstSample += numberOfSamples;
+    if (self->fifoOutputLastSample - self->fifoOutputFirstSample >= numberOfFrames) {
+        Superpowered::DeInterleave(self->fifoOutput + self->fifoOutputFirstSample * 2, outputBuffers[0], outputBuffers[1], numberOfFrames);
+        self->fifoOutputFirstSample += numberOfFrames;
         return true;
     } else return false;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+#ifdef __IPHONE_13_0
+    if (@available(iOS 13, *)) self.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
+#endif
     
-    SuperpoweredInitialize(
-                           "ExampleLicenseKey-WillExpire-OnNextUpdate",
-                           false, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
-                           true, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
-                           false, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
-                           false, // enableAudioEffects (using any SuperpoweredFX class)
-                           false, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
-                           false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
-                           false  // enableNetworking (using Superpowered::httpRequest)
-                           );
+    Superpowered::Initialize(
+                             "ExampleLicenseKey-WillExpire-OnNextUpdate",
+                             false, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
+                             true, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
+                             false, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
+                             false, // enableAudioEffects (using any SuperpoweredFX class)
+                             false, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
+                             false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
+                             false  // enableNetworking (using Superpowered::httpRequest)
+                             );
 
-    frequencyDomain = new SuperpoweredFrequencyDomain(FFT_LOG_SIZE); // This will do the main "magic".
-    stepSize = frequencyDomain->fftSize / 4; // The default overlap ratio is 4:1, so we will receive this amount of samples from the frequency domain in one step.
+    frequencyDomain = new Superpowered::FrequencyDomain(FFT_LOG_SIZE); // This will do the main "magic".
+    fftSize = 1 << FFT_LOG_SIZE;
 
     // Frequency domain data goes into these buffers:
-    magnitudeLeft = (float *)malloc(frequencyDomain->fftSize * sizeof(float));
-    magnitudeRight = (float *)malloc(frequencyDomain->fftSize * sizeof(float));
-    phaseLeft = (float *)malloc(frequencyDomain->fftSize * sizeof(float));
-    phaseRight = (float *)malloc(frequencyDomain->fftSize * sizeof(float));
+    magnitudeLeft = (float *)malloc(fftSize * sizeof(float));
+    magnitudeRight = (float *)malloc(fftSize * sizeof(float));
+    phaseLeft = (float *)malloc(fftSize * sizeof(float));
+    phaseRight = (float *)malloc(fftSize * sizeof(float));
 
     // Time domain result goes into a FIFO (first-in, first-out) buffer
     fifoOutputFirstSample = fifoOutputLastSample = 0;
-    fifoCapacity = stepSize * 100; // Let's make the fifo's size 100 times more than the step size, so we save memory bandwidth.
+    fifoCapacity = fftSize / OVERLAP_RATIO * 100; // Let's make the fifo's size 100 times more than the step size, so we save memory bandwidth.
     fifoOutput = (float *)malloc(fifoCapacity * sizeof(float) * 2 + 128);
 
     // Audio input/output handling.
@@ -96,10 +99,5 @@ static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int
     free(phaseRight);
     free(fifoOutput);
 }
-
-- (void)interruptionStarted {}
-- (void)interruptionEnded {}
-- (void)recordPermissionRefused {}
-- (void)mapChannels:(multiOutputChannelMap *)outputMap inputMap:(multiInputChannelMap *)inputMap externalAudioDeviceName:(NSString *)externalAudioDeviceName outputsAndInputs:(NSString *)outputsAndInputs {}
 
 @end

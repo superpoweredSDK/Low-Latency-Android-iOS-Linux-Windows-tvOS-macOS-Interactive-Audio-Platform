@@ -2,9 +2,7 @@
 #include "Superpowered.h"
 #include "SuperpoweredDecoder.h"
 #include "SuperpoweredSimple.h"
-#include "SuperpoweredRecorder.h"
 #include "SuperpoweredTimeStretching.h"
-#include "SuperpoweredAudioBuffers.h"
 #include "SuperpoweredFilter.h"
 #include "SuperpoweredAnalyzer.h"
 
@@ -17,22 +15,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+#ifdef __IPHONE_13_0
+    if (@available(iOS 13, *)) self.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
+#endif
     
-    SuperpoweredInitialize(
-                           "ExampleLicenseKey-WillExpire-OnNextUpdate",
-                           true, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
-                           false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
-                           true, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
-                           true, // enableAudioEffects (using any SuperpoweredFX class)
-                           true, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
-                           false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
-                           false  // enableNetworking (using Superpowered::httpRequest)
-                           );
+    Superpowered::Initialize(
+                             "ExampleLicenseKey-WillExpire-OnNextUpdate",
+                             true, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
+                             false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
+                             true, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
+                             true, // enableAudioEffects (using any SuperpoweredFX class)
+                             true, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
+                             false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
+                             false  // enableNetworking (using Superpowered::httpRequest)
+                             );
     
     progress = 0.0f;
     displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(onDisplayLink)];
     displayLink.frameInterval = 1;
     [self displayMediaPicker];
+}
+
+- (void)dealloc {
+    [displayLink invalidate];
+}
+
+- (void)onDisplayLink {
+    progressView.progress = progress;
 }
 
 - (void)displayMediaPicker {
@@ -60,230 +69,167 @@
     } else [self displayMediaPicker];
 }
 
-- (void)dealloc {
-    [displayLink invalidate];
+// Creates a Superpowered Decoder and tries to open a file.
+static Superpowered::Decoder *openSourceFile(const char *path) {
+    Superpowered::Decoder *decoder = new Superpowered::Decoder();
+    
+    while (true) {
+        int openReturn = decoder->open(path);
+    
+        switch (openReturn) {
+            case Superpowered::Decoder::OpenSuccess: return decoder;
+            case Superpowered::Decoder::BufferingTryAgainLater: usleep(100000); break; // May happen for progressive downloads. Wait 100 ms for the network to load more data.
+            default:
+                delete decoder;
+                NSLog(@"Open error %i: %s", openReturn, Superpowered::Decoder::statusCodeToString(openReturn));
+                return NULL;
+        }
+    }
 }
 
-- (void)onDisplayLink {
-    progressView.progress = progress;
+// Creates the output WAV file. The destination is accessible in iTunes File Sharing. https://support.apple.com/en-gb/HT201301
+static FILE *createDestinationFile(const char *filename, unsigned int samplerate) {
+    NSString *destinationPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithUTF8String:filename]];
+    FILE *fd = Superpowered::createWAV([destinationPath fileSystemRepresentation], samplerate, 2);
+    if (fd) NSLog(@"File created at %@.", destinationPath); else NSLog(@"File creation error.");
+    return fd;
 }
 
-// EXAMPLE 1: reading an audio file, applying a simple effect (filter) and saving the result to WAV
+// EXAMPLE 1: reading an audio file, applying a simple effect (filter) and saving the result to WAV.
 - (void)offlineFilter:(NSURL *)url {
-    // Open the input file.
-    SuperpoweredDecoder *decoder = new SuperpoweredDecoder();
-    const char *openError = decoder->open([[url absoluteString] UTF8String], false, 0, 0);
-    if (openError) {
-        NSLog(@"open error: %s", openError);
+    Superpowered::Decoder *decoder = openSourceFile([[url absoluteString] UTF8String]);
+    if (!decoder) return;
+
+    FILE *destinationFile = createDestinationFile("SuperpoweredOfflineTest.wav", decoder->getSamplerate());
+    if (!destinationFile) {
         delete decoder;
         return;
-    };
+    }
 
-    // Create the output WAVE file. The destination is accessible in iTunes File Sharing.
-    NSString *destinationPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"SuperpoweredOfflineTest.wav"];
-    FILE *fd = createWAV([destinationPath fileSystemRepresentation], decoder->samplerate, 2);
-    if (!fd) {
-        NSLog(@"File creation error.");
-        delete decoder;
-        return;
-    };
+    // Create the low-pass filter.
+    Superpowered::Filter *filter = new Superpowered::Filter(Superpowered::Resonant_Lowpass, decoder->getSamplerate());
+    filter->frequency = 1000.0f;
+    filter->resonance = 0.1f;
+    filter->enabled = true;
 
-    // Creating the filter.
-    SuperpoweredFilter *filter = new SuperpoweredFilter(SuperpoweredFilter_Resonant_Lowpass, decoder->samplerate);
-    filter->setResonantParameters(1000.0f, 0.1f);
-    filter->enable(true);
-
-    // Create a buffer for the 16-bit integer samples coming from the decoder.
-    short int *intBuffer = (short int *)malloc(decoder->samplesPerFrame * 2 * sizeof(short int) + 32768);
-    // Create a buffer for the 32-bit floating point samples required by the effect.
-    float *floatBuffer = (float *)malloc(decoder->samplesPerFrame * 2 * sizeof(float) + 32768);
+    // Create a buffer for the 16-bit integer audio output of the decoder.
+    short int *intBuffer = (short int *)malloc(decoder->getFramesPerChunk() * 2 * sizeof(short int) + 16384);
+    // Create a buffer for the 32-bit floating point audio required by the effect.
+    float *floatBuffer = (float *)malloc(decoder->getFramesPerChunk() * 2 * sizeof(float) + 16384);
 
     // Processing.
     while (true) {
-        // Decode one frame. samplesDecoded will be overwritten with the actual decoded number of samples.
-        unsigned int samplesDecoded = decoder->samplesPerFrame;
-        if (decoder->decode(intBuffer, &samplesDecoded) == SUPERPOWEREDDECODER_ERROR) break;
-        if (samplesDecoded < 1) break;
-
-        // Convert the decoded PCM samples from 16-bit integer to 32-bit floating point.
-        SuperpoweredShortIntToFloat(intBuffer, floatBuffer, samplesDecoded);
+        int framesDecoded = decoder->decodeAudio(intBuffer, decoder->getFramesPerChunk());
+        if (framesDecoded == Superpowered::Decoder::BufferingTryAgainLater) { // May happen for progressive downloads.
+            usleep(100000); // Wait 100 ms for the network to load more data.
+            continue;
+        } else if (framesDecoded < 1) break;
 
         // Apply the effect.
-        filter->process(floatBuffer, floatBuffer, samplesDecoded);
+        Superpowered::ShortIntToFloat(intBuffer, floatBuffer, framesDecoded);
+        filter->process(floatBuffer, floatBuffer, framesDecoded);
+        Superpowered::FloatToShortInt(floatBuffer, intBuffer, framesDecoded);
 
-        // Convert the PCM samples from 32-bit floating point to 16-bit integer.
-        SuperpoweredFloatToShortInt(floatBuffer, intBuffer, samplesDecoded);
-
-        // Write the audio to disk.
-        fwrite(intBuffer, 1, samplesDecoded * 4, fd);
-
-        // Update the progress indicator.
-        progress = (double)decoder->samplePosition / (double)decoder->durationSamples;
+        // Write the audio to disk and update the progress indicator.
+        Superpowered::writeWAV(destinationFile, intBuffer, framesDecoded * 4);
+        progress = (double)decoder->getPositionFrames() / (double)decoder->getDurationFrames();
     };
-
-    // iTunes File Sharing: https://support.apple.com/en-gb/HT201301
-    NSLog(@"The file is available in iTunes File Sharing, and locally at %@.", destinationPath);
-
-    // Cleanup.
-    closeWAV(fd);
+    
+    // Close the file and clean up.
+    Superpowered::closeWAV(destinationFile);
     delete decoder;
     delete filter;
     free(intBuffer);
     free(floatBuffer);
 }
 
-// EXAMPLE 2: reading an audio file, applying time stretching and saving the result to WAV
+// EXAMPLE 2: reading an audio file, applying time stretching and saving the result to WAV.
+// For a real-time timestretching example check our JavaScript SDK.
 - (void)offlineTimeStretching:(NSURL *)url {
-    // Open the input file.
-    SuperpoweredDecoder *decoder = new SuperpoweredDecoder();
-    const char *openError = decoder->open([[url absoluteString] UTF8String], false, 0, 0);
-    if (openError) {
-        NSLog(@"open error: %s", openError);
+    Superpowered::Decoder *decoder = openSourceFile([[url absoluteString] UTF8String]);
+    if (!decoder) return;
+
+    FILE *destinationFile = createDestinationFile("SuperpoweredOfflineTest.wav", decoder->getSamplerate());
+    if (!destinationFile) {
         delete decoder;
         return;
-    };
+    }
 
-    // Create the output WAVE file. The destination is accessible in iTunes File Sharing.
-    NSString *destinationPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"SuperpoweredOfflineTest.wav"];
-    FILE *fd = createWAV([destinationPath fileSystemRepresentation], decoder->samplerate, 2);
-    if (!fd) {
-        NSLog(@"File creation error.");
-        delete decoder;
-        return;
-    };
-
-    /*
-     Due to it's nature, a time stretcher can not operate with fixed buffer sizes.
-     This problem can be solved with variable size buffer chains (complex) or FIFO buffering (easier).
-
-     Memory bandwidth on mobile devices is way lower than on desktop (laptop), so we need to use variable size buffer chains here.
-     This solution provides almost 2x performance increase over FIFO buffering!
-    */
-    SuperpoweredTimeStretching *timeStretch = new SuperpoweredTimeStretching(decoder->samplerate);
-    timeStretch->setRateAndPitchShift(1.04f, 0); // Audio will be 4% faster.
-    // This buffer list will receive the time-stretched samples.
-    SuperpoweredAudiopointerList *outputBuffers = new SuperpoweredAudiopointerList(8, 16);
-
-    // Create a buffer for the 16-bit integer samples.
-    short int *intBuffer = (short int *)malloc(decoder->samplesPerFrame * 2 * sizeof(short int) + 32768);
+    // Create the time stretcher.
+    Superpowered::TimeStretching *timeStretch = new Superpowered::TimeStretching(decoder->getSamplerate());
+    timeStretch->rate = 1.04f; // 4% faster
+    
+    // Create a buffer to store 16-bit integer audio up to 1 seconds, which is a safe limit.
+    short int *intBuffer = (short int *)malloc(decoder->getSamplerate() * 2 * sizeof(short int) + 16384);
+    // Create a buffer to store 32-bit floating point audio up to 1 seconds, which is a safe limit.
+    float *floatBuffer = (float *)malloc(decoder->getSamplerate() * 2 * sizeof(float));
 
     // Processing.
     while (true) {
-        // Decode one frame. samplesDecoded will be overwritten with the actual decoded number of samples.
-        unsigned int samplesDecoded = decoder->samplesPerFrame;
-        if (decoder->decode(intBuffer, &samplesDecoded) == SUPERPOWEREDDECODER_ERROR) break;
-        if (samplesDecoded < 1) break;
+        int framesDecoded = decoder->decodeAudio(intBuffer, decoder->getFramesPerChunk());
+        if (framesDecoded == Superpowered::Decoder::BufferingTryAgainLater) { // May happen for progressive downloads.
+            usleep(100000); // Wait 100 ms for the network to load more data.
+            continue;
+        } else if (framesDecoded < 1) break;
+        
+        // Submit the decoded audio to the time stretcher.
+        Superpowered::ShortIntToFloat(intBuffer, floatBuffer, framesDecoded);
+        timeStretch->addInput(floatBuffer, framesDecoded);
 
-        // Create an input buffer for the time stretcher.
-        SuperpoweredAudiobufferlistElement inputBuffer;
-        inputBuffer.samplePosition = decoder->samplePosition;
-        inputBuffer.startSample = 0;
-        inputBuffer.samplesUsed = 0;
-        inputBuffer.endSample = samplesDecoded; // <-- Important!
-        inputBuffer.buffers[0] = SuperpoweredAudiobufferPool::getBuffer(samplesDecoded * 8 + 64);
-        inputBuffer.buffers[1] = inputBuffer.buffers[2] = inputBuffer.buffers[3] = NULL;
+        // The time stretcher may have 0 or more audio at this point. Write to disk if it has some.
+        unsigned int outputFramesAvailable = timeStretch->getOutputLengthFrames();
+        if ((outputFramesAvailable > 0) && timeStretch->getOutput(floatBuffer, outputFramesAvailable)) {
+            Superpowered::FloatToShortInt(floatBuffer, intBuffer, outputFramesAvailable);
+            Superpowered::writeWAV(destinationFile, intBuffer, outputFramesAvailable * 4);
+        }
 
-        // Convert the decoded PCM samples from 16-bit integer to 32-bit floating point.
-        SuperpoweredShortIntToFloat(intBuffer, (float *)inputBuffer.buffers[0], samplesDecoded);
-
-        // Time stretching.
-        timeStretch->process(&inputBuffer, outputBuffers);
-
-        // Do we have some output?
-        if (outputBuffers->makeSlice(0, outputBuffers->sampleLength)) {
-
-            while (true) { // Iterate on every output slice.
-                // Get pointer to the output samples.
-                int numSamples = 0;
-                float *timeStretchedAudio = (float *)outputBuffers->nextSliceItem(&numSamples);
-                if (!timeStretchedAudio) break;
-
-                // Convert the time stretched PCM samples from 32-bit floating point to 16-bit integer.
-                SuperpoweredFloatToShortInt(timeStretchedAudio, intBuffer, numSamples);
-
-                // Write the audio to disk.
-                fwrite(intBuffer, 1, numSamples * 4, fd);
-            };
-            
-            // Clear the output buffer list.
-            outputBuffers->clear();
-        };
-
-        // Update the progress indicator.
-        progress = (double)decoder->samplePosition / (double)decoder->durationSamples;
+        progress = (double)decoder->getPositionFrames() / (double)decoder->getDurationFrames();
     };
 
-    // iTunes File Sharing: https://support.apple.com/en-gb/HT201301
-    NSLog(@"The file is available in iTunes File Sharing, and locally at %@.", destinationPath);
-
-    // Cleanup.
-    closeWAV(fd);
+    // Close the file and clean up.
+    Superpowered::closeWAV(destinationFile);
     delete decoder;
     delete timeStretch;
-    delete outputBuffers;
     free(intBuffer);
+    free(floatBuffer);
 }
 
 // EXAMPLE 3: reading an audio file and analyzing it (for bpm, beatgrid, etc.)
 - (void)offlineAnalyze:(NSURL *)url {
-    // Open the input file.
-    SuperpoweredDecoder *decoder = new SuperpoweredDecoder();
-    const char *openError = decoder->open([[url absoluteString] UTF8String], false, 0, 0);
-    if (openError) {
-        NSLog(@"open error: %s", openError);
-        delete decoder;
-        return;
-    };
+    Superpowered::Decoder *decoder = openSourceFile([[url absoluteString] UTF8String]);
+    if (!decoder) return;
 
     // Create the analyzer.
-    SuperpoweredOfflineAnalyzer *analyzer = new SuperpoweredOfflineAnalyzer(decoder->samplerate, 0, decoder->durationSeconds);
+    Superpowered::Analyzer *analyzer = new Superpowered::Analyzer(decoder->getSamplerate(), decoder->getDurationSeconds());
 
-    // Create a buffer for the 16-bit integer samples coming from the decoder.
-    short int *intBuffer = (short int *)malloc(decoder->samplesPerFrame * 2 * sizeof(short int) + 32768);
-    // Create a buffer for the 32-bit floating point samples required by the effect.
-    float *floatBuffer = (float *)malloc(decoder->samplesPerFrame * 2 * sizeof(float) + 32768);
+    // Create a buffer for the 16-bit integer audio output of the decoder.
+    short int *intBuffer = (short int *)malloc(decoder->getFramesPerChunk() * 2 * sizeof(short int) + 16384);
+    // Create a buffer for the 32-bit floating point audio required by the effect.
+    float *floatBuffer = (float *)malloc(decoder->getFramesPerChunk() * 2 * sizeof(float) + 16384);
 
     // Processing.
     while (true) {
-        // Decode one frame. samplesDecoded will be overwritten with the actual decoded number of samples.
-        unsigned int samplesDecoded = decoder->samplesPerFrame;
-        if (decoder->decode(intBuffer, &samplesDecoded) == SUPERPOWEREDDECODER_ERROR) break;
-        if (samplesDecoded < 1) break;
+        int framesDecoded = decoder->decodeAudio(intBuffer, decoder->getFramesPerChunk());
+        if (framesDecoded == Superpowered::Decoder::BufferingTryAgainLater) { // May happen for progressive downloads.
+            usleep(100000); // Wait 100 ms for the network to load more data.
+            continue;
+        } else if (framesDecoded < 1) break;
 
-        // Convert the decoded PCM samples from 16-bit integer to 32-bit floating point.
-        SuperpoweredShortIntToFloat(intBuffer, floatBuffer, samplesDecoded);
+        // Submit the decoded audio to the analyzer.
+        Superpowered::ShortIntToFloat(intBuffer, floatBuffer, framesDecoded);
+        analyzer->process(floatBuffer, framesDecoded);
 
-        // Submit samples to the analyzer.
-        analyzer->process(floatBuffer, samplesDecoded);
-
-        // Update the progress indicator.
-        progress = (double)decoder->samplePosition / (double)decoder->durationSamples;
+        progress = (double)decoder->getPositionFrames() / (double)decoder->getDurationFrames();
     };
-
-    // Get the result.
-    unsigned char *averageWaveform = NULL, *lowWaveform = NULL, *midWaveform = NULL, *highWaveform = NULL, *peakWaveform = NULL, *notes = NULL;
-    int waveformSize, overviewSize, keyIndex;
-    char *overviewWaveform = NULL;
-    float loudpartsAverageDecibel, peakDecibel, bpm, averageDecibel, beatgridStartMs = 0;
-    analyzer->getresults(&averageWaveform, &peakWaveform, &lowWaveform, &midWaveform, &highWaveform, &notes, &waveformSize, &overviewWaveform, &overviewSize, &averageDecibel, &loudpartsAverageDecibel, &peakDecibel, &bpm, &beatgridStartMs, &keyIndex);
+    
+    analyzer->makeResults(60, 200, 0, 0, false, false, false, false, false);
+    NSLog(@"Bpm is %f, average loudness is %f db, peak volume is %f db.", analyzer->bpm, analyzer->loudpartsAverageDb, analyzer->peakDb);
 
     // Cleanup.
     delete decoder;
     delete analyzer;
     free(intBuffer);
     free(floatBuffer);
-
-    // Do something with the result.
-    NSLog(@"Bpm is %f, average loudness is %f db, peak volume is %f db.", bpm, loudpartsAverageDecibel, peakDecibel);
-
-    // Done with the result, free memory.
-    if (averageWaveform) free(averageWaveform);
-    if (lowWaveform) free(lowWaveform);
-    if (midWaveform) free(midWaveform);
-    if (highWaveform) free(highWaveform);
-    if (peakWaveform) free(peakWaveform);
-    if (notes) free(notes);
-    if (overviewWaveform) free(overviewWaveform);
 }
 
 @end

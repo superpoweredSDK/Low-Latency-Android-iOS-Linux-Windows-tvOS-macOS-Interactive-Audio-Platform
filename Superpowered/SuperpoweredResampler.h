@@ -1,63 +1,49 @@
 #ifndef Header_SuperpoweredResampler
 #define Header_SuperpoweredResampler
 
+namespace Superpowered {
+
 struct resamplerInternals;
 
-/**
- @brief Linear or 6-point resampler, audio reverser and 16-bit to 32-bit audio converter.
- 
- It doesn't allocate any internal buffers and needs just a few bytes of memory.
- 
- @param rate Read-write. Default: 1.0f.
- */
-class SuperpoweredResampler {
+/// @brief Linear or 6-point resampler, audio reverser and 16-bit to 32-bit audio converter.
+/// It doesn't allocate any internal buffers and needs just a few bytes of memory.
+class Resampler {
 public:
-    float rate;
+    float rate; ///< Default: 1.0f. If rate = 1, process() is "transparent" without any effect on audio quality.
     
-    SuperpoweredResampler();
-    ~SuperpoweredResampler();
-/**
- @brief Reset all internals. Doesn't change rate.
- */
+    Resampler();
+    ~Resampler();
+    
+/// @brief Reset all internals. Doesn't change rate.
     void reset();
     
-/**
- @brief Processes the audio.
+/// @brief Processes the audio.
+/// @return The number of output frames.
+/// @param input Pointer to short integer numbers, 16-bit stereo interleaved input. Should be numberOfFrames * 2 + 64 big.
+/// @param output Pointer to floating point numbers, 32-bit stereo interleaved output. Should be big enough to store the expected number of output frames and some more.
+/// @param numberOfFrames Number of frames to process.
+/// @param reverse If true, the output will be backwards (reverse playback).
+/// @param highQuality Enables more sophisticated processing to reduce interpolation noise. Good for scratching for example, but not recommended for continous music playback above 0.5 rate.
+/// @param rateAdd Changes rate smoothly during process(). Useful for scratching or super smooth rate changes. After process() rate will be changed, but may or may not be precisely equal to the desired target value.
+    int process(short int *input, float *output, int numberOfFrames, bool reverse = false, bool highQuality = false, float rateAdd = 0.0f);
 
- @return The number of output frames (samples).
- 
- @param input 16-bit stereo input. Should be numberOfSamples * 2 + 64 big.
- @param output 32-bit floating point stereo output. Should be numberOfSamples * 2 + 64 big.
- @param numberOfSamples Number of samples to process.
- @param reverse Plays backwards.
- @param highQuality Enables more sophisticated processing to reduce interpolation noise. Good for scratching for example, but not recommended for continous music playback above 0.5f rate.
- @param hqTemp Improves scratching sound quality when used together with highQuality=true and hqSamplerate. A temporary buffer capable of holding numberOfSamples of 32-bit floating point stereo audio.
- @param hqSamplerate Improves scratching sound quality when used together with highQuality=true and hqTemp. The sample rate of the input.
- @param rateAdd Changes rate during process(), good for scratching or super smooth rate changes. After process(), rate will be near the desired value.
-*/
-    int process(short int *input, float *output, int numberOfSamples, bool reverse = false, bool highQuality = false, float *hqTemp = 0, unsigned int hqSamplerate = 0, float rateAdd = 0.0f);
-
-/**
- @brief Processes the audio.
-
- @return The number of output frames (samples).
-
- @param input 16-bit stereo input. Should be numberOfSamples * 2 + 64 big.
- @param temp Temporary buffer. Should be numberOfSamples * 2 + 64 big.
- @param output 16-bit stereo output. Should be big enough to store the expected number of output samples, and some more.
- @param numberOfSamples Number of samples to process.
- @param reverse Plays backwards.
- @param highQuality Enables more sophisticated processing to reduce interpolation noise. Good for scratching for example, but not recommended for continous music playback above 0.5f rate.
- @param hqTemp Improves scratching sound quality when used together with highQuality=true and hqSamplerate. A temporary buffer capable of holding numberOfSamples of 32-bit floating point stereo audio.
- @param hqSamplerate Improves scratching sound quality when used together with highQuality=true and hqTemp. The sample rate of the input.
- @param rateAdd Changes rate during process(), good for scratching or super smooth rate changes. After process(), rate will be near the desired value.
-*/
-    int process(short int *input, float *temp, short int *output, int numberOfSamples, bool reverse = false, bool highQuality = false, float *hqTemp = 0, unsigned int hqSamplerate = 0, float rateAdd = 0.0f);
+/// @brief Processes the audio.
+/// @return The number of output frames.
+/// @param input Pointer to short integer numbers, 16-bit stereo interleaved input. Should be numberOfFrames * 2 + 64 big.
+/// @param temp Pointer to floating point numbers. Should be numberOfFrames * 2 + 64 big.
+/// @param output Pointer to short integer numbers, 16-bit stereo interleaved output. Should be big enough to store the expected number of output frames and some more.
+/// @param numberOfFrames Number of frames to process.
+/// @param reverse If true, the output will be backwards (reverse playback).
+/// @param highQuality Enables more sophisticated processing to reduce interpolation noise. Good for scratching for example, but not recommended for continous music playback above 0.5 rate.
+/// @param rateAdd Changes rate smoothly during process(). Useful for scratching or super smooth rate changes. After process() rate will be changed, but may or may not be precisely equal to the desired target value.
+    int process(short int *input, float *temp, short int *output, int numberOfFrames, bool reverse = false, bool highQuality = false, float rateAdd = 0.0f);
     
 private:
     resamplerInternals *internals;
-    SuperpoweredResampler(const SuperpoweredResampler&);
-    SuperpoweredResampler& operator=(const SuperpoweredResampler&);
+    Resampler(const Resampler&);
+    Resampler& operator=(const Resampler&);
 };
+
+}
 
 #endif

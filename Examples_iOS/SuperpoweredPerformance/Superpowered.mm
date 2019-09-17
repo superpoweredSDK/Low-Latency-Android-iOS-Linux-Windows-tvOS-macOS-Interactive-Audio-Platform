@@ -12,19 +12,15 @@
 #import "fftTest.h"
 #import <mach/mach_time.h>
 
-/*
- This is a .mm file, meaning it's Objective-C++. 
- You can perfectly mix it with Objective-C or Swift, until you keep the member variables and C++ related includes here.
- Yes, the header file (.h) isn't the only place for member variables.
- */
+// This is a .mm file, meaning it's Objective-C++. You can perfectly mix it with Objective-C or Swift, until you keep the member variables and C++ related includes here.
 @implementation SuperpoweredAudio {
-    SuperpoweredAdvancedAudioPlayer *player;
-    SuperpoweredFX *effects[NUMFXUNITS];
+    Superpowered::AdvancedAudioPlayer *player;
+    Superpowered::FX *effects[NUMFXUNITS];
     SuperpoweredIOSAudioIO *output;
     float *stereoBuffer;
     bool started;
     uint64_t timeUnitsProcessed, maxTime;
-    unsigned int lastPositionSeconds, lastSamplerate, samplesProcessed;
+    unsigned int lastPositionSeconds, lastSamplerate, framesProcessed;
 }
 
 - (void)dealloc {
@@ -39,35 +35,37 @@
 
 // Called periodically by ViewController to update the user interface.
 - (void)updatePlayerLabel:(UILabel *)label slider:(UISlider *)slider button:(UIButton *)button {
-    bool tracking = slider.tracking;
-    unsigned int positionSeconds = tracking ? int(float(player->durationSeconds) * slider.value) : player->positionSeconds;
+    if (player->getLatestEvent() == Superpowered::PlayerEvent_Opened) {
+        player->play();
+        player->originalBPM = 124.0f;
+    }
     
-    if (positionSeconds != lastPositionSeconds) {
+    bool tracking = slider.tracking;
+    unsigned int positionSeconds = tracking ? int(float(player->getDurationSeconds()) * slider.value) : player->getDisplayPositionSeconds();
+    
+    if (lastPositionSeconds != positionSeconds) {
         lastPositionSeconds = positionSeconds;
-        NSString *str = [[NSString alloc] initWithFormat:@"%02d:%02d %02d:%02d", player->durationSeconds / 60, player->durationSeconds % 60, positionSeconds / 60, positionSeconds % 60];
+        NSString *str = [[NSString alloc] initWithFormat:@"%02d:%02d %02d:%02d", player->getDurationSeconds() / 60, player->getDurationSeconds() % 60, positionSeconds / 60, positionSeconds % 60];
         label.text = str;
 #if !__has_feature(objc_arc)
         [str release];
 #endif
     };
 
-    if (!button.tracking && (button.selected != player->playing)) button.selected = player->playing;
-    if (!tracking && (slider.value != player->positionPercent)) slider.value = player->positionPercent;
+    if (!button.tracking && (button.selected != player->isPlaying())) button.selected = player->isPlaying();
+    if (!tracking && (slider.value != player->getDisplayPositionPercent())) slider.value = player->getDisplayPositionPercent();
 }
 
 - (bool)toggleFx:(int)index {
     if (index == TIMEPITCHINDEX) {
-        bool enabled = (player->tempo != 1.0f);
-        player->setTempo(enabled ? 1.0f : 1.1f, true);
-        return !enabled;
+        player->playbackRate = (player->playbackRate != 1.0f) ? 1.0f : 1.1f;
+        return (player->playbackRate == 1.0f);
     } else if (index == PITCHSHIFTINDEX) {
-        bool enabled = (player->pitchShift != 0);
-        player->setPitchShift(enabled ? 0 : 1);
-        return !enabled;
+        player->pitchShiftCents = (player->pitchShiftCents == 0) ? 100 : 0;
+        return (player->pitchShiftCents == 0);
     } else {
-        bool enabled = effects[index]->enabled;
-        effects[index]->enable(!enabled);
-        return !enabled;
+        effects[index]->enabled = !effects[index]->enabled;
+        return effects[index]->enabled;
     };
 }
 
@@ -84,53 +82,46 @@
     started = !started;
 }
 
-- (void)interruptionStarted {}
-- (void)recordPermissionRefused {}
-- (void)mapChannels:(multiOutputChannelMap *)outputMap inputMap:(multiInputChannelMap *)inputMap externalAudioDeviceName:(NSString *)externalAudioDeviceName outputsAndInputs:(NSString *)outputsAndInputs {}
-
 - (void)interruptionEnded {
     player->onMediaserverInterrupt(); // If the player plays Apple Lossless audio files, then we need this. Otherwise unnecessary.
 }
 
 // This is where the Superpowered magic happens.
-static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int inputChannels, float **outputBuffers, unsigned int outputChannels, unsigned int numberOfSamples, unsigned int samplerate, uint64_t hostTime) {
+static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int inputChannels, float **outputBuffers, unsigned int outputChannels, unsigned int numberOfFrames, unsigned int samplerate, uint64_t hostTime) {
     __unsafe_unretained SuperpoweredAudio *self = (__bridge SuperpoweredAudio *)clientdata;
     uint64_t startTime = mach_absolute_time();
 
-    if (samplerate != self->lastSamplerate) { // Has samplerate changed?
+    if (self->lastSamplerate != samplerate) { // Has samplerate changed?
         self->lastSamplerate = samplerate;
-        self->player->setSamplerate(samplerate);
-        for (int n = 2; n < NUMFXUNITS; n++) self->effects[n]->setSamplerate(samplerate);
+        self->player->outputSamplerate = samplerate;
+        for (int n = 2; n < NUMFXUNITS; n++) self->effects[n]->samplerate = samplerate;
     };
 
     // We're keeping our Superpowered time-based effects in sync with the player... with one line of code. Not bad, eh?
-    ((SuperpoweredRoll *)self->effects[ROLLINDEX])->bpm = ((SuperpoweredFlanger *)self->effects[FLANGERINDEX])->bpm = ((SuperpoweredEcho *)self->effects[DELAYINDEX])->bpm = self->player->currentBpm;
+    ((Superpowered::Roll *)self->effects[ROLLINDEX])->bpm = ((Superpowered::Flanger *)self->effects[FLANGERINDEX])->bpm = ((Superpowered::Echo *)self->effects[DELAYINDEX])->bpm = self->player->getCurrentBpm();
 
-    /*
-     Let's process some audio.
-     If you'd like to change connections or tap into something, no abstract connection handling and no callbacks required!
-     */
-    bool silence = !self->player->process(self->stereoBuffer, false, numberOfSamples, 1.0f, 0.0f, -1.0);
-    if (self->effects[ROLLINDEX]->process(silence ? NULL : self->stereoBuffer, self->stereoBuffer, numberOfSamples)) silence = false;
-    self->effects[FILTERINDEX]->process(self->stereoBuffer, self->stereoBuffer, numberOfSamples);
-    self->effects[EQINDEX]->process(self->stereoBuffer, self->stereoBuffer, numberOfSamples);
-    self->effects[FLANGERINDEX]->process(self->stereoBuffer, self->stereoBuffer, numberOfSamples);
-    if (self->effects[DELAYINDEX]->process(silence ? NULL : self->stereoBuffer, self->stereoBuffer, numberOfSamples)) silence = false;
-    if (self->effects[REVERBINDEX]->process(silence ? NULL : self->stereoBuffer, self->stereoBuffer, numberOfSamples)) silence = false;
+    // Let's process some audio. If you'd like to change connections or tap into something, no abstract connection handling and no callbacks required!
+    bool silence = !self->player->processStereo(self->stereoBuffer, false, numberOfFrames);
+    if (self->effects[ROLLINDEX]->process(silence ? NULL : self->stereoBuffer, self->stereoBuffer, numberOfFrames)) silence = false;
+    self->effects[FILTERINDEX]->process(self->stereoBuffer, self->stereoBuffer, numberOfFrames);
+    self->effects[EQINDEX]->process(self->stereoBuffer, self->stereoBuffer, numberOfFrames);
+    self->effects[FLANGERINDEX]->process(self->stereoBuffer, self->stereoBuffer, numberOfFrames);
+    if (self->effects[DELAYINDEX]->process(silence ? NULL : self->stereoBuffer, self->stereoBuffer, numberOfFrames)) silence = false;
+    if (self->effects[REVERBINDEX]->process(silence ? NULL : self->stereoBuffer, self->stereoBuffer, numberOfFrames)) silence = false;
 
     // CPU measurement code to show some nice numbers for the business guys.
     uint64_t elapsedUnits = mach_absolute_time() - startTime;
     if (elapsedUnits > self->maxTime) self->maxTime = elapsedUnits;
     self->timeUnitsProcessed += elapsedUnits;
-    self->samplesProcessed += numberOfSamples;
-    if (self->samplesProcessed >= samplerate) {
+    self->framesProcessed += numberOfFrames;
+    if (self->framesProcessed >= samplerate) {
         self->avgUnitsPerSecond = self->timeUnitsProcessed;
-        self->maxUnitsPerSecond = (double(samplerate) / double(numberOfSamples)) * self->maxTime;
-        self->samplesProcessed = self->timeUnitsProcessed = self->maxTime = 0;
+        self->maxUnitsPerSecond = (double(samplerate) / double(numberOfFrames)) * self->maxTime;
+        self->framesProcessed = self->timeUnitsProcessed = self->maxTime = 0;
     };
 
-    self->playing = self->player->playing;
-    if (!silence) SuperpoweredDeInterleave(self->stereoBuffer, outputBuffers[0], outputBuffers[1], numberOfSamples); // The stereoBuffer is ready now, let's put the finished audio into the requested buffers.
+    self->playing = self->player->isPlaying();
+    if (!silence) Superpowered::DeInterleave(self->stereoBuffer, outputBuffers[0], outputBuffers[1], numberOfFrames); // The stereoBuffer is ready now, let's put the finished audio into the requested buffers.
     return !silence;
 }
 
@@ -138,53 +129,51 @@ static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int
     self = [super init];
     if (!self) return nil;
     
-    SuperpoweredInitialize(
-                           "ExampleLicenseKey-WillExpire-OnNextUpdate",
-                           false, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
-                           false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
-                           false, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
-                           true, // enableAudioEffects (using any SuperpoweredFX class)
-                           true, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
-                           false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
-                           false  // enableNetworking (using Superpowered::httpRequest)
-                           );
+    Superpowered::Initialize(
+                             "ExampleLicenseKey-WillExpire-OnNextUpdate",
+                             false, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
+                             false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
+                             false, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
+                             true, // enableAudioEffects (using any SuperpoweredFX class)
+                             true, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
+                             false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
+                             false  // enableNetworking (using Superpowered::httpRequest)
+                             );
     
     SuperpoweredFFTTest();
 
     started = false;
-    lastPositionSeconds = lastSamplerate = samplesProcessed = timeUnitsProcessed = maxTime = avgUnitsPerSecond = maxUnitsPerSecond = 0;
+    lastPositionSeconds = lastSamplerate = framesProcessed = timeUnitsProcessed = maxTime = avgUnitsPerSecond = maxUnitsPerSecond = 0;
     if (posix_memalign((void **)&stereoBuffer, 16, 4096 + 128) != 0) abort(); // Allocating memory, aligned to 16.
 
-// Create the Superpowered units we'll use.
-    player = new SuperpoweredAdvancedAudioPlayer(NULL, NULL, 44100, 0);
+    // Creating the Superpowered features we'll use.
+    player = new Superpowered::AdvancedAudioPlayer(44100, 0);
     player->open([[[NSBundle mainBundle] pathForResource:@"track" ofType:@"mp3"] fileSystemRepresentation]);
-    player->play(false);
-    player->setBpm(124.0f);
     
-    SuperpoweredFilter *filter = new SuperpoweredFilter(SuperpoweredFilter_Resonant_Lowpass, 44100);
-    filter->setResonantParameters(1000.0f, 0.1f);
+    Superpowered::Filter *filter = new Superpowered::Filter(Superpowered::Resonant_Lowpass, 44100);
+    filter->frequency = 1000.0f;
+    filter->resonance = 0.1f;
     effects[FILTERINDEX] = filter;
     
-    effects[ROLLINDEX] = new SuperpoweredRoll(44100);
-    effects[FLANGERINDEX] = new SuperpoweredFlanger(44100);
+    effects[ROLLINDEX] = new Superpowered::Roll(44100);
+    effects[FLANGERINDEX] = new Superpowered::Flanger(44100);
     
-    SuperpoweredEcho *delay = new SuperpoweredEcho(44100);
+    Superpowered::Echo *delay = new Superpowered::Echo(44100);
     delay->setMix(0.8f);
     effects[DELAYINDEX] = delay;
     
-    SuperpoweredReverb *reverb = new SuperpoweredReverb(44100);
-    reverb->setRoomSize(0.5f);
-    reverb->setMix(0.3f);
+    Superpowered::Reverb *reverb = new Superpowered::Reverb(44100);
+    reverb->roomSize = 0.5f;
+    reverb->mix = 0.3f;
     effects[REVERBINDEX] = reverb;
     
-    Superpowered3BandEQ *eq = new Superpowered3BandEQ(44100);
-    eq->bands[0] = 2.0f;
-    eq->bands[1] = 0.5f;
-    eq->bands[2] = 2.0f;
+    Superpowered::ThreeBandEQ *eq = new Superpowered::ThreeBandEQ(44100);
+    eq->low = 2.0f;
+    eq->mid = 0.5f;
+    eq->high = 2.0f;
     effects[EQINDEX] = eq;
 
     output = [[SuperpoweredIOSAudioIO alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:12 preferredSamplerate:44100 audioSessionCategory:AVAudioSessionCategoryPlayback channels:2 audioProcessingCallback:audioProcessing clientdata:(__bridge void *)self];
-
     return self;
 }
 

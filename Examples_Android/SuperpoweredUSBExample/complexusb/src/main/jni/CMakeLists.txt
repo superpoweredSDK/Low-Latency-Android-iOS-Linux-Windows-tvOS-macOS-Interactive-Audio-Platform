@@ -13,7 +13,6 @@ add_library(
 	SuperpoweredExample
 	SHARED
 	${CPP_FILES}
-	${PATH_TO_SUPERPOWERED}/AndroidIO/SuperpoweredAndroidAudioIO.cpp
 )
 
 # link the native library against the following libraries

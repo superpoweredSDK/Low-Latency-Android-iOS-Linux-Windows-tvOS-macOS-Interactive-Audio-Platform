@@ -5,10 +5,10 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.media.AudioManager;
 import android.os.Environment;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
     // Handle Start/Stop button toggle.
     public void ToggleStartStop(View button) {
         if (recording) {
-            StopAudio();
+            StopRecording();
             recording = false;
         } else {
             StartAudio(samplerate, buffersize, tempPath, destPath);
@@ -107,12 +107,12 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onDestroy() {
         super.onDestroy();
-        if (recording) StopAudio();
+        if (recording) StopRecording();
     }
 
     // Functions implemented in the native library.
     private native void StartAudio(int samplerate, int buffersize, String tempPath, String destPath);
     private native void onForeground();
     private native void onBackground();
-    private native void StopAudio();
+    private native void StopRecording();
 }

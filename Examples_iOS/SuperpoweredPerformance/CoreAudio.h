@@ -1,4 +1,4 @@
-// This object handles Apple's Core Audio.
+// This object handles Apple Core Audio.
 // Check the source and you'll see how many lines of code you'll have to write. Lots.
 
 @interface CoreAudio: NSObject {
@@ -7,13 +7,13 @@
     uint64_t avgUnitsPerSecond, maxUnitsPerSecond;
 }
 
-// Updates the user interface according to the file player's state.
+// Updates the user interface according to the file player state.
 - (void)updatePlayerLabel:(UILabel *)label slider:(UISlider *)slider button:(UIButton *)button;
 
-- (void)togglePlayback; // Play/pause.
+- (void)togglePlayback;        // Play/pause.
 - (void)seekTo:(float)percent; // Jump to a specific position.
 
-- (void)toggle; // Start/stop Core Audio.
+- (void)toggle;              // Start/stop Core Audio.
 - (bool)toggleFx:(int)index; // Enable/disable fx.
 
 @end

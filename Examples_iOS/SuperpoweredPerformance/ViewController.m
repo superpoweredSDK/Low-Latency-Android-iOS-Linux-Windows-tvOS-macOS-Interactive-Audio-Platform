@@ -39,6 +39,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+#ifdef __IPHONE_13_0
+    if (@available(iOS 13, *)) self.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
+#endif
     cpuLoad.text = nil;
     
     canCompare = true;

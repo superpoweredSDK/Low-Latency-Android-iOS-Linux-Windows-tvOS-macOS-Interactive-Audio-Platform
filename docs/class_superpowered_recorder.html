@@ -56,11 +56,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a6d068f25169d582ed0978cdbcf65da95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a recorder instance.  <a href="#a6d068f25169d582ed0978cdbcf65da95">More...</a><br /></td></tr>
 <tr class="separator:a6d068f25169d582ed0978cdbcf65da95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa8adf06a57c735691720a92a24e67402"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_recorder.html#aa8adf06a57c735691720a92a24e67402">start</a> (const char *destinationPath)</td></tr>
-<tr class="memdesc:aa8adf06a57c735691720a92a24e67402"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts recording.  <a href="#aa8adf06a57c735691720a92a24e67402">More...</a><br /></td></tr>
+<tr class="memdesc:aa8adf06a57c735691720a92a24e67402"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts recording. Do not call this in a real-time audio processing callback.  <a href="#aa8adf06a57c735691720a92a24e67402">More...</a><br /></td></tr>
 <tr class="separator:aa8adf06a57c735691720a92a24e67402"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab91723892859005472af7cc783ed743c"><td class="memItemLeft" align="right" valign="top"><a id="ab91723892859005472af7cc783ed743c"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_recorder.html#ab91723892859005472af7cc783ed743c">stop</a> ()</td></tr>
-<tr class="memdesc:ab91723892859005472af7cc783ed743c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops recording. <br /></td></tr>
+<tr class="memdesc:ab91723892859005472af7cc783ed743c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops recording. Safe to call in a real-time audio processing callback. <br /></td></tr>
 <tr class="separator:ab91723892859005472af7cc783ed743c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55d06a1f05face9945b0a12ccf0833e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_recorder.html#a55d06a1f05face9945b0a12ccf0833e7">addToTracklist</a> (char *artist, char *title, int offsetSeconds, bool takeOwnership=false)</td></tr>
 <tr class="memdesc:a55d06a1f05face9945b0a12ccf0833e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an artist + title to the tracklist.  <a href="#a55d06a1f05face9945b0a12ccf0833e7">More...</a><br /></td></tr>
@@ -141,7 +141,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
     <tr><td class="paramname">minSeconds</td><td>The minimum length of a recording. If the number of recorded seconds is lower, then a file will not be saved. </td></tr>
     <tr><td class="paramname">numChannels</td><td>The number of channels. </td></tr>
     <tr><td class="paramname">applyFade</td><td>If true, the recorder applies a fade-in at the beginning and a fade-out at the end of the recording. The fade is 64 samples long. </td></tr>
-    <tr><td class="paramname">callback</td><td>Called when the recorder finishes writing after <a class="el" href="class_superpowered_recorder.html#ab91723892859005472af7cc783ed743c" title="Stops recording. ">stop()</a>. </td></tr>
+    <tr><td class="paramname">callback</td><td>Called when the recorder finishes writing after <a class="el" href="class_superpowered_recorder.html#ab91723892859005472af7cc783ed743c" title="Stops recording. Safe to call in a real-time audio processing callback. ">stop()</a>. </td></tr>
     <tr><td class="paramname">clientData</td><td>A custom pointer your callback receives. </td></tr>
   </table>
   </dd>

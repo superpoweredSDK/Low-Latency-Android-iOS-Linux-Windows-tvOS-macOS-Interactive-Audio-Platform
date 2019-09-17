@@ -49,15 +49,6 @@ namespace Superpowered {
     /// @return The maximum bytes needed to store a URL encoded result.
     int urlEncodeGetMaxOutputBytes(int length);
     
-    #define StatusCode_OutOfMemoryError 1   ///< Out of memory. Check your code for memory leaks.
-    #define StatusCode_FileOperationError 2 ///< Can't read or write the disk. Perhaps the disk is full or is there a permission problem?
-    #define StatusCode_NetworkSocketError 3 ///< Can't connect to the server. Perhaps there is no internet connection.
-    #define StatusCode_InvalidResponseError 4         ///< Can't parse the server response.
-    #define StatusCode_MaximumRedirectsReachedError 5 ///< Too many redirects happened.
-    #define StatusCode_Canceled 6  ///< The request was canceled.
-    #define StatusCode_Progress 7  ///< Downloading in progress.
-    #define StatusCode_Success 200 ///< Successful transfer.
-    
     /// @brief User readable error string from a status code (including HTTP status codes).
     /// @param code The status code.
     /// @param defaultString Generic error message if the status code has a value not covered.
@@ -101,6 +92,16 @@ namespace Superpowered {
     /// @brief Represents an in-progress or finished HTTP response.
     class httpResponse {
     public:
+        /// @brief These codes extend the standard HTTP status codes.
+        static const int StatusCode_OutOfMemoryError = 1;   ///< Out of memory. Check your code for memory leaks.
+        static const int StatusCode_FileOperationError = 2; ///< Can't read or write the disk. Perhaps the disk is full or is there a permission problem?
+        static const int StatusCode_NetworkSocketError = 3; ///< Can't connect to the server. Perhaps there is no internet connection.
+        static const int StatusCode_InvalidResponseError = 4;         ///< Can't parse the server response.
+        static const int StatusCode_MaximumRedirectsReachedError = 5; ///< Too many redirects happened.
+        static const int StatusCode_Canceled = 6;  ///< The request was canceled.
+        static const int StatusCode_Progress = 7;  ///< Downloading in progress.
+        static const int StatusCode_Success = 200; ///< Successful transfer.
+        
         char *data;                       ///< Downloaded response body data (if any, can be NULL). Will be NULL for file transfers.
         char *filepath;                   ///< Path to the downloaded response body file (for file transfers, can be NULL otherwise).
         unsigned int dataOrFileSizeBytes; ///< Current output data or file size in bytes.

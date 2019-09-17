@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">1.4.0</span>
+   &#160;<span id="projectnumber">2.0.0</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -48,35 +48,24 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Handles all audio session, audio lifecycle (interruptions), output, buffer size, samplerate and routing headaches.  
- <a href="interface_superpoweredtv_o_s_audio_i_o.html#details">More...</a></p>
-
 <p>Inherits NSObject.</p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Instance Methods</h2></td></tr>
 <tr class="memitem:aca0204f8eefc0f275adfdfe715cbff73"><td class="memItemLeft" align="right" valign="top">(id)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_superpoweredtv_o_s_audio_i_o.html#aca0204f8eefc0f275adfdfe715cbff73">initWithDelegate:preferredBufferSize:preferredMinimumSamplerate:audioSessionCategory:channels:</a></td></tr>
-<tr class="memdesc:aca0204f8eefc0f275adfdfe715cbff73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the audio output instance.  <a href="#aca0204f8eefc0f275adfdfe715cbff73">More...</a><br /></td></tr>
 <tr class="separator:aca0204f8eefc0f275adfdfe715cbff73"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72957a99d801ef0cdcca7a9e9b6d4622"><td class="memItemLeft" align="right" valign="top">(bool)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_superpoweredtv_o_s_audio_i_o.html#a72957a99d801ef0cdcca7a9e9b6d4622">start</a></td></tr>
-<tr class="memdesc:a72957a99d801ef0cdcca7a9e9b6d4622"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts audio processing.  <a href="#a72957a99d801ef0cdcca7a9e9b6d4622">More...</a><br /></td></tr>
 <tr class="separator:a72957a99d801ef0cdcca7a9e9b6d4622"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24b24c5229a32812364fe96f54c4f404"><td class="memItemLeft" align="right" valign="top"><a id="a24b24c5229a32812364fe96f54c4f404"></a>
-(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_superpoweredtv_o_s_audio_i_o.html#a24b24c5229a32812364fe96f54c4f404">stop</a></td></tr>
-<tr class="memdesc:a24b24c5229a32812364fe96f54c4f404"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops audio processing. <br /></td></tr>
+<tr class="memitem:a24b24c5229a32812364fe96f54c4f404"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_superpoweredtv_o_s_audio_i_o.html#a24b24c5229a32812364fe96f54c4f404">stop</a></td></tr>
 <tr class="separator:a24b24c5229a32812364fe96f54c4f404"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a519e4ad3665ed2ece64606eef0ffe7f5"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_superpoweredtv_o_s_audio_i_o.html#a519e4ad3665ed2ece64606eef0ffe7f5">setProcessingCallback_C:clientdata:</a></td></tr>
-<tr class="memdesc:a519e4ad3665ed2ece64606eef0ffe7f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the audio processing callback to a C function, instead of the delegate's Objective-C method.  <a href="#a519e4ad3665ed2ece64606eef0ffe7f5">More...</a><br /></td></tr>
 <tr class="separator:a519e4ad3665ed2ece64606eef0ffe7f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a35ca6fceb20ec50ebc80862e1c256f2d"><td class="memItemLeft" align="right" valign="top"><a id="a35ca6fceb20ec50ebc80862e1c256f2d"></a>
-(void)&#160;</td><td class="memItemRight" valign="bottom">- <b>reconfigureWithAudioSessionCategory:</b></td></tr>
+<tr class="memitem:a35ca6fceb20ec50ebc80862e1c256f2d"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_superpoweredtv_o_s_audio_i_o.html#a35ca6fceb20ec50ebc80862e1c256f2d">reconfigureWithAudioSessionCategory:</a></td></tr>
 <tr class="separator:a35ca6fceb20ec50ebc80862e1c256f2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a1bf522c708d5bbcf36108816bef9b971"><td class="memItemLeft" align="right" valign="top"><a id="a1bf522c708d5bbcf36108816bef9b971"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_superpoweredtv_o_s_audio_i_o.html#a1bf522c708d5bbcf36108816bef9b971">preferredBufferSizeMs</a></td></tr>
-<tr class="memdesc:a1bf522c708d5bbcf36108816bef9b971"><td class="mdescLeft">&#160;</td><td class="mdescRight">The preferred buffer size. Recommended: 12. <br /></td></tr>
+<tr class="memitem:a1bf522c708d5bbcf36108816bef9b971"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_superpoweredtv_o_s_audio_i_o.html#a1bf522c708d5bbcf36108816bef9b971">preferredBufferSizeMs</a></td></tr>
 <tr class="separator:a1bf522c708d5bbcf36108816bef9b971"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -125,10 +114,12 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inter
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Constructor. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">delegate</td><td>The object fully implementing the <a class="el" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html" title="You must implement this protocol to make SuperpoweredIOSAudioIO work. ">SuperpoweredIOSAudioIODelegate</a> protocol. Not retained. </td></tr>
-    <tr><td class="paramname">preferredBufferSize</td><td>The initial value for preferredBufferSizeMs. 12 is good for every iOS device (512 samples). </td></tr>
+    <tr><td class="paramname">delegate</td><td>The object fully implementing the <a class="el" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html" title="You MUST implement this protocol to use SuperpoweredIOSAudioIO. ">SuperpoweredIOSAudioIODelegate</a> protocol. Not retained. </td></tr>
+    <tr><td class="paramname">preferredBufferSize</td><td>The initial value for preferredBufferSizeMs. 12 is good for every tvOS device (512 frames). </td></tr>
     <tr><td class="paramname">preferredMinimumSamplerate</td><td>The preferred minimum sample rate. 44100 or 48000 are recommended for good sound quality. </td></tr>
     <tr><td class="paramname">audioSessionCategory</td><td>The audio session category. Audio input is enabled for the appropriate categories only! </td></tr>
     <tr><td class="paramname">channels</td><td>The number of channels in the audio processing callback. </td></tr>
@@ -152,7 +143,28 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inter
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Starts audio I/O. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if successful, false if failed. </dd></dl>
+
+</div>
+</div>
+<a id="a24b24c5229a32812364fe96f54c4f404"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24b24c5229a32812364fe96f54c4f404">&#9670;&nbsp;</a></span>stop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) stop </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Stops audio I/O. </p>
 
 </div>
 </div>
@@ -165,7 +177,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inter
         <tr>
           <td class="memname">- (void) setProcessingCallback_C: </td>
           <td></td>
-          <td class="paramtype">(audioProcessingCallback_C)&#160;</td>
+          <td class="paramtype">(<a class="el" href="_superpoweredtv_o_s_audio_i_o_8h.html#a0cdb4b2f90dfe52021a4a6bdc8921e4d">audioProcessingCallback_C</a>)&#160;</td>
           <td class="paramname"><em>callback</em></td>
         </tr>
         <tr>
@@ -181,7 +193,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inter
         </tr>
       </table>
 </div><div class="memdoc">
-<p>99% of all audio apps work great with the Objective-C method, so you don't need to use this. Don't call this method after [start]!</p>
+
+<p>Sets the audio processing callback to a C function, instead of the delegate's Objective-C method. 99% of all audio apps work great with the Objective-C method, so you don't need to use this. Don't call this method after [start]! </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">callback</td><td>The callback function. </td></tr>
@@ -189,6 +202,49 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inter
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a35ca6fceb20ec50ebc80862e1c256f2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35ca6fceb20ec50ebc80862e1c256f2d">&#9670;&nbsp;</a></span>reconfigureWithAudioSessionCategory:()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) reconfigureWithAudioSessionCategory: </td>
+          <td></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>audioSessionCategory</em></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a1bf522c708d5bbcf36108816bef9b971"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1bf522c708d5bbcf36108816bef9b971">&#9670;&nbsp;</a></span>preferredBufferSizeMs</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (int) preferredBufferSizeMs</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">write</span><span class="mlabel">nonatomic</span><span class="mlabel">assign</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The preferred buffer size in milliseconds. Recommended: 12. </p>
 
 </div>
 </div>

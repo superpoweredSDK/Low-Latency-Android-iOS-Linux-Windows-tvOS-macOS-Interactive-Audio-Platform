@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">1.4.0</span>
+   &#160;<span id="projectnumber">2.0.0</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -39,7 +39,7 @@ $(function() {
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>Superpowered</b></li><li class="navelem"><a class="el" href="struct_superpowered_1_1_a_e_s.html">AES</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespace_superpowered.html">Superpowered</a></li><li class="navelem"><a class="el" href="struct_superpowered_1_1_a_e_s.html">AES</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -51,44 +51,29 @@ $(function() {
 <div class="title">Superpowered::AES Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>A structure to perform <a class="el" href="struct_superpowered_1_1_a_e_s.html" title="A structure to perform AES encryption. The size of the structure is 548 bytes. ">AES</a> encryption. The size of the structure is 548 bytes.  
-</p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:af390be08baf2a7678c1b8985f50f518e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_superpowered_1_1_a_e_s.html#af390be08baf2a7678c1b8985f50f518e">setKey</a> (const unsigned char *key, unsigned int keySizeBits)</td></tr>
-<tr class="memdesc:af390be08baf2a7678c1b8985f50f518e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the key.  <a href="#af390be08baf2a7678c1b8985f50f518e">More...</a><br /></td></tr>
 <tr class="separator:af390be08baf2a7678c1b8985f50f518e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac88cfaf180835e14f23dea5926a2f019"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_superpowered_1_1_a_e_s.html#ac88cfaf180835e14f23dea5926a2f019">cryptECB</a> (bool encrypt, const unsigned char input[16], unsigned char output[16])</td></tr>
-<tr class="memdesc:ac88cfaf180835e14f23dea5926a2f019"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encrypts with Electronic Codeblock (ECB) block cipher mode.  <a href="#ac88cfaf180835e14f23dea5926a2f019">More...</a><br /></td></tr>
 <tr class="separator:ac88cfaf180835e14f23dea5926a2f019"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57d094f4ac6c0a39dc88b8b10ac6a8f6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_superpowered_1_1_a_e_s.html#a57d094f4ac6c0a39dc88b8b10ac6a8f6">cryptCBC</a> (bool encrypt, unsigned char iv[16], int inputLengthBytes, const unsigned char *input, unsigned char *output)</td></tr>
-<tr class="memdesc:a57d094f4ac6c0a39dc88b8b10ac6a8f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encrypts with Cipher Block Chaining (CBC) block cipher mode.  <a href="#a57d094f4ac6c0a39dc88b8b10ac6a8f6">More...</a><br /></td></tr>
 <tr class="separator:a57d094f4ac6c0a39dc88b8b10ac6a8f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5256c73ec62022616b330a7186e06f5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_superpowered_1_1_a_e_s.html#af5256c73ec62022616b330a7186e06f5">cryptCFB128</a> (bool encrypt, int ivOffset, unsigned char iv[16], int inputLengthBytes, const unsigned char *input, unsigned char *output)</td></tr>
-<tr class="memdesc:af5256c73ec62022616b330a7186e06f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encrypts with Cipher Feedback (CFB) block cipher mode (8 bit feedback).  <a href="#af5256c73ec62022616b330a7186e06f5">More...</a><br /></td></tr>
 <tr class="separator:af5256c73ec62022616b330a7186e06f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae621d09dcc477976e6c0e204ad26253b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_superpowered_1_1_a_e_s.html#ae621d09dcc477976e6c0e204ad26253b">cryptCFB8</a> (bool encrypt, unsigned char iv[16], int inputLengthBytes, const unsigned char *input, unsigned char *output)</td></tr>
-<tr class="memdesc:ae621d09dcc477976e6c0e204ad26253b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encrypts with Cipher Feedback (CFB)) block cipher mode (128 bit feedback).  <a href="#ae621d09dcc477976e6c0e204ad26253b">More...</a><br /></td></tr>
 <tr class="separator:ae621d09dcc477976e6c0e204ad26253b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59d883ed57b7565caa2c7b011ed9a23a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_superpowered_1_1_a_e_s.html#a59d883ed57b7565caa2c7b011ed9a23a">cryptCTR</a> (unsigned char nonceCounter[16], int streamBlockOffset, unsigned char streamBlock[16], int inputLengthBytes, const unsigned char *input, unsigned char *output)</td></tr>
-<tr class="memdesc:a59d883ed57b7565caa2c7b011ed9a23a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encrypts with Counter (CTR) block cipher mode.  <a href="#a59d883ed57b7565caa2c7b011ed9a23a">More...</a><br /></td></tr>
 <tr class="separator:a59d883ed57b7565caa2c7b011ed9a23a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a889b0515480e9c37b4fd071fc0487ebf"><td class="memItemLeft" align="right" valign="top"><a id="a889b0515480e9c37b4fd071fc0487ebf"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_superpowered_1_1_a_e_s.html#a889b0515480e9c37b4fd071fc0487ebf">ec</a> [68]</td></tr>
-<tr class="memdesc:a889b0515480e9c37b4fd071fc0487ebf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal variable. <br /></td></tr>
+<tr class="memitem:a889b0515480e9c37b4fd071fc0487ebf"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_superpowered_1_1_a_e_s.html#a889b0515480e9c37b4fd071fc0487ebf">ec</a> [68]</td></tr>
 <tr class="separator:a889b0515480e9c37b4fd071fc0487ebf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61ee4c4448e2d71b81ebed70f6d8adfd"><td class="memItemLeft" align="right" valign="top"><a id="a61ee4c4448e2d71b81ebed70f6d8adfd"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_superpowered_1_1_a_e_s.html#a61ee4c4448e2d71b81ebed70f6d8adfd">dc</a> [68]</td></tr>
-<tr class="memdesc:a61ee4c4448e2d71b81ebed70f6d8adfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal variable. <br /></td></tr>
+<tr class="memitem:a61ee4c4448e2d71b81ebed70f6d8adfd"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_superpowered_1_1_a_e_s.html#a61ee4c4448e2d71b81ebed70f6d8adfd">dc</a> [68]</td></tr>
 <tr class="separator:a61ee4c4448e2d71b81ebed70f6d8adfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa92bf6124aa794ee17e07fae4a1b201e"><td class="memItemLeft" align="right" valign="top"><a id="aa92bf6124aa794ee17e07fae4a1b201e"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_superpowered_1_1_a_e_s.html#aa92bf6124aa794ee17e07fae4a1b201e">numberOfRounds</a></td></tr>
-<tr class="memdesc:aa92bf6124aa794ee17e07fae4a1b201e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal variable. <br /></td></tr>
+<tr class="memitem:aa92bf6124aa794ee17e07fae4a1b201e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_superpowered_1_1_a_e_s.html#aa92bf6124aa794ee17e07fae4a1b201e">numberOfRounds</a></td></tr>
 <tr class="separator:aa92bf6124aa794ee17e07fae4a1b201e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -117,6 +102,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struc
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set the key. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">key</td><td>The key. </td></tr>
@@ -159,6 +146,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struc
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Encrypts with Electronic Codeblock (ECB) block cipher mode. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">encrypt</td><td>True to encrypt, false to decrypt. </td></tr>
@@ -213,6 +202,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struc
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Encrypts with Cipher Block Chaining (CBC) block cipher mode. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">encrypt</td><td>True to encrypt, false to decrypt. </td></tr>
@@ -276,6 +267,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struc
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Encrypts with Cipher Feedback (CFB) block cipher mode (8 bit feedback). </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">encrypt</td><td>True to encrypt, false to decrypt. </td></tr>
@@ -334,6 +327,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struc
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Encrypts with Cipher Feedback (CFB)) block cipher mode (128 bit feedback). </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">encrypt</td><td>True to encrypt, false to decrypt. </td></tr>
@@ -396,6 +391,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struc
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Encrypts with Counter (CTR) block cipher mode. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">nonceCounter</td><td>Pseudo-ramdom number, high enough to not repeat for a long time. </td></tr>
@@ -408,6 +405,55 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struc
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The updated, new value of streamBlockOffset. </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a889b0515480e9c37b4fd071fc0487ebf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a889b0515480e9c37b4fd071fc0487ebf">&#9670;&nbsp;</a></span>ec</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int Superpowered::AES::ec[68]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Internal variable. </p>
+
+</div>
+</div>
+<a id="a61ee4c4448e2d71b81ebed70f6d8adfd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61ee4c4448e2d71b81ebed70f6d8adfd">&#9670;&nbsp;</a></span>dc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int Superpowered::AES::dc[68]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Internal variable. </p>
+
+</div>
+</div>
+<a id="aa92bf6124aa794ee17e07fae4a1b201e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa92bf6124aa794ee17e07fae4a1b201e">&#9670;&nbsp;</a></span>numberOfRounds</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Superpowered::AES::numberOfRounds</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Internal variable. </p>
 
 </div>
 </div>

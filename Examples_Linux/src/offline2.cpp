@@ -7,108 +7,67 @@
 #include "SuperpoweredTimeStretching.h"
 #include "SuperpoweredAudioBuffers.h"
 
-// EXAMPLE: reading an audio file, applying a simple effect (filter) and saving the result to WAV
+// EXAMPLE: reading an audio file, applying time stretching and saving the result to WAV
 int main(int argc, char *argv[]) {
-    SuperpoweredInitialize(
-                           "ExampleLicenseKey-WillExpire-OnNextUpdate",
-                           false, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
-                           false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
-                           true, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
-                           false, // enableAudioEffects (using any SuperpoweredFX class)
-                           true, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
-                           false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
-                           false  // enableNetworking (using Superpowered::httpRequest)
-                           );
+    Superpowered::Initialize(
+                             "ExampleLicenseKey-WillExpire-OnNextUpdate",
+                             false, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
+                             false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
+                             true, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
+                             false, // enableAudioEffects (using any SuperpoweredFX class)
+                             true, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
+                             false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
+                             false  // enableNetworking (using Superpowered::httpRequest)
+                             );
     // Open the input file.
-    SuperpoweredDecoder *decoder = new SuperpoweredDecoder();
-    const char *openError = decoder->open("test.m4a", false, 0, 0);
-    if (openError) {
-        printf("Open error: %s\n", openError);
+    Superpowered::Decoder *decoder = new Superpowered::Decoder();
+    int openReturn = decoder->open("test.m4a");
+    if (openReturn != Superpowered::Decoder::OpenSuccess) {
+        printf("\rOpen error %i: %s\n", openReturn, Superpowered::Decoder::statusCodeToString(openReturn));
         delete decoder;
         return 0;
     };
 
     // Create the output WAVE file.
-    FILE *fd = createWAV("./results/offline2.wav", decoder->samplerate, 2);
-    if (!fd) {
-        printf("File creation error.\n");
+    FILE *destinationFile = Superpowered::createWAV("./results/offline2.wav", decoder->getSamplerate(), 2);
+    if (!destinationFile) {
+        printf("\rFile creation error.\n");
         delete decoder;
         return 0;
     };
 
-/*
- Due to it's nature, a time stretcher can not operate with fixed buffer sizes.
- This problem can be solved with variable size buffer chains (complex) or FIFO buffering (easier).
-
- Memory bandwidth on mobile devices is way lower than on desktop (laptop), so we need to use variable size buffer chains here.
- This solution provides almost 2x performance increase over FIFO buffering!
-*/
-    SuperpoweredTimeStretching *timeStretch = new SuperpoweredTimeStretching(decoder->samplerate);
-    timeStretch->setRateAndPitchShift(1.04f, 0); // Audio will be 4% faster.
-    // This buffer list will receive the time-stretched samples.
-    SuperpoweredAudiopointerList *outputBuffers = new SuperpoweredAudiopointerList(8, 16);
-
-    // Create a buffer for the 16-bit integer samples.
-    short int *intBuffer = (short int *)malloc(decoder->samplesPerFrame * 2 * sizeof(short int) + 32768);
-
+    // Create the time stretcher.
+    Superpowered::TimeStretching *timeStretch = new Superpowered::TimeStretching(decoder->getSamplerate());
+    timeStretch->rate = 1.04f; // 4% faster
+    
+    // Create a buffer to store 16-bit integer audio up to 1 seconds, which is a safe limit.
+    short int *intBuffer = (short int *)malloc(decoder->getSamplerate() * 2 * sizeof(short int) + 16384);
+    // Create a buffer to store 32-bit floating point audio up to 1 seconds, which is a safe limit.
+    float *floatBuffer = (float *)malloc(decoder->getSamplerate() * 2 * sizeof(float));
+    
     // Processing.
-    int progress = 0;
     while (true) {
-        // Decode one frame. samplesDecoded will be overwritten with the actual decoded number of samples.
-        unsigned int samplesDecoded = decoder->samplesPerFrame;
-        if (decoder->decode(intBuffer, &samplesDecoded) == SUPERPOWEREDDECODER_ERROR) break;
-        if (samplesDecoded < 1) break;
-
-        // Create an input buffer for the time stretcher.
-        SuperpoweredAudiobufferlistElement inputBuffer;
-        inputBuffer.samplePosition = decoder->samplePosition;
-        inputBuffer.startSample = 0;
-        inputBuffer.samplesUsed = 0;
-        inputBuffer.endSample = samplesDecoded; // <-- Important!
-        inputBuffer.buffers[0] = SuperpoweredAudiobufferPool::getBuffer(samplesDecoded * 8 + 64);
-        inputBuffer.buffers[1] = inputBuffer.buffers[2] = inputBuffer.buffers[3] = NULL;
-
-        // Convert the decoded PCM samples from 16-bit integer to 32-bit floating point.
-        SuperpoweredShortIntToFloat(intBuffer, (float *)inputBuffer.buffers[0], samplesDecoded);
-
-        // Time stretching.
-        timeStretch->process(&inputBuffer, outputBuffers);
-
-        // Do we have some output?
-        if (outputBuffers->makeSlice(0, outputBuffers->sampleLength)) {
-
-            while (true) { // Iterate on every output slice.
-                // Get pointer to the output samples.
-                int numSamples = 0;
-                float *timeStretchedAudio = (float *)outputBuffers->nextSliceItem(&numSamples);
-                if (!timeStretchedAudio) break;
-
-                // Convert the time stretched PCM samples from 32-bit floating point to 16-bit integer.
-                SuperpoweredFloatToShortInt(timeStretchedAudio, intBuffer, numSamples);
-
-                // Write the audio to disk.
-                fwrite(intBuffer, 1, numSamples * 4, fd);
-            };
-
-            // Clear the output buffer list.
-            outputBuffers->clear();
-        };
-
-        // Update the progress indicator.
-        int p = int(((double)decoder->samplePosition / (double)decoder->durationSamples) * 100.0);
-        if (progress != p) {
-            progress = p;
-            printf("\r%i%%", progress);
-            fflush(stdout);
+        int framesDecoded = decoder->decodeAudio(intBuffer, decoder->getFramesPerChunk());
+        if (framesDecoded < 1) break;
+        
+        // Submit the decoded audio to the time stretcher.
+        Superpowered::ShortIntToFloat(intBuffer, floatBuffer, framesDecoded);
+        timeStretch->addInput(floatBuffer, framesDecoded);
+        
+        // The time stretcher may have 0 or more audio at this point. Write to disk if it has some.
+        unsigned int outputFramesAvailable = timeStretch->getOutputLengthFrames();
+        if ((outputFramesAvailable > 0) && timeStretch->getOutput(floatBuffer, outputFramesAvailable)) {
+            Superpowered::FloatToShortInt(floatBuffer, intBuffer, outputFramesAvailable);
+            Superpowered::writeWAV(destinationFile, intBuffer, outputFramesAvailable * 4);
         }
     };
-
-    // Cleanup.
-    closeWAV(fd);
+    
+    // Close the file and clean up.
+    Superpowered::closeWAV(destinationFile);
     delete decoder;
     delete timeStretch;
-    delete outputBuffers;
     free(intBuffer);
+    free(floatBuffer);
 
     printf("\rReady.\n");
     return 0;

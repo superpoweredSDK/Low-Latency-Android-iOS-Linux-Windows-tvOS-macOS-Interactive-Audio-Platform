@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">1.4.0</span>
+   &#160;<span id="projectnumber">2.0.0</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -39,7 +39,7 @@ $(function() {
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>Superpowered</b></li><li class="navelem"><a class="el" href="struct_superpowered_1_1hasher.html">hasher</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespace_superpowered.html">Superpowered</a></li><li class="navelem"><a class="el" href="struct_superpowered_1_1hasher.html">hasher</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -51,77 +51,49 @@ $(function() {
 <div class="title">Superpowered::hasher Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>A structure for high-performance hashing.  
-</p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:acca72a9fee3e8c49f055d75959a38b5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_superpowered_1_1hasher.html#acca72a9fee3e8c49f055d75959a38b5f">hashStart</a> (hashType <a class="el" href="struct_superpowered_1_1hasher.html#ac8b2723245c8501d661a70efe5c92726">type</a>)</td></tr>
-<tr class="memdesc:acca72a9fee3e8c49f055d75959a38b5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the structure for hashing. The structure will be as good as new after this.  <a href="#acca72a9fee3e8c49f055d75959a38b5f">More...</a><br /></td></tr>
+<tr class="memitem:acca72a9fee3e8c49f055d75959a38b5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_superpowered_1_1hasher.html#acca72a9fee3e8c49f055d75959a38b5f">hashStart</a> (<a class="el" href="namespace_superpowered.html#a1b951624897b2679fd12d12e82212801">hashType</a> <a class="el" href="struct_superpowered_1_1hasher.html#ac8b2723245c8501d661a70efe5c92726">type</a>)</td></tr>
 <tr class="separator:acca72a9fee3e8c49f055d75959a38b5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f63f1529602f387b567c981168da6cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_superpowered_1_1hasher.html#a2f63f1529602f387b567c981168da6cc">hashUpdate</a> (const unsigned char *input, int inputLengthBytes)</td></tr>
-<tr class="memdesc:a2f63f1529602f387b567c981168da6cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform hashing on the input data with any kind of input length. Can be called multiple times.  <a href="#a2f63f1529602f387b567c981168da6cc">More...</a><br /></td></tr>
 <tr class="separator:a2f63f1529602f387b567c981168da6cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0be0ef37c57c27541031c067734b634f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_superpowered_1_1hasher.html#a0be0ef37c57c27541031c067734b634f">hashFinish</a> (unsigned char *output)</td></tr>
-<tr class="memdesc:a0be0ef37c57c27541031c067734b634f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finish hashing and return with the hash.  <a href="#a0be0ef37c57c27541031c067734b634f">More...</a><br /></td></tr>
 <tr class="separator:a0be0ef37c57c27541031c067734b634f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ed9c7ca3860302297d2bb9baf8251aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_superpowered_1_1hasher.html#a0ed9c7ca3860302297d2bb9baf8251aa">hashProcess</a> (const unsigned char *input)</td></tr>
-<tr class="memdesc:a0ed9c7ca3860302297d2bb9baf8251aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform hashing on the input data with the exact same input length of the hasher algorithm. Can be called multiple times.  <a href="#a0ed9c7ca3860302297d2bb9baf8251aa">More...</a><br /></td></tr>
 <tr class="separator:a0ed9c7ca3860302297d2bb9baf8251aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae26d0d714f87eaee6d550636c056349"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_superpowered_1_1hasher.html#aae26d0d714f87eaee6d550636c056349">hmacStart</a> (hashType <a class="el" href="struct_superpowered_1_1hasher.html#ac8b2723245c8501d661a70efe5c92726">type</a>, const unsigned char *key, int keyLengthBytes)</td></tr>
-<tr class="memdesc:aae26d0d714f87eaee6d550636c056349"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the structure for hash-based message authentication code hashing. The structure will be as good as new after this.  <a href="#aae26d0d714f87eaee6d550636c056349">More...</a><br /></td></tr>
+<tr class="memitem:aae26d0d714f87eaee6d550636c056349"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_superpowered_1_1hasher.html#aae26d0d714f87eaee6d550636c056349">hmacStart</a> (<a class="el" href="namespace_superpowered.html#a1b951624897b2679fd12d12e82212801">hashType</a> <a class="el" href="struct_superpowered_1_1hasher.html#ac8b2723245c8501d661a70efe5c92726">type</a>, const unsigned char *key, int keyLengthBytes)</td></tr>
 <tr class="separator:aae26d0d714f87eaee6d550636c056349"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46b6de3d9fdd5a2d0bb831b98a066679"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_superpowered_1_1hasher.html#a46b6de3d9fdd5a2d0bb831b98a066679">hmacUpdate</a> (const unsigned char *input, int inputLengthBytes)</td></tr>
-<tr class="memdesc:a46b6de3d9fdd5a2d0bb831b98a066679"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform hmac on the input data with any kind of input length. Can be called multiple times.  <a href="#a46b6de3d9fdd5a2d0bb831b98a066679">More...</a><br /></td></tr>
 <tr class="separator:a46b6de3d9fdd5a2d0bb831b98a066679"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca7eb2c07b4495ca8384c437187cfaae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_superpowered_1_1hasher.html#aca7eb2c07b4495ca8384c437187cfaae">hmacFinish</a> (unsigned char *output)</td></tr>
-<tr class="memdesc:aca7eb2c07b4495ca8384c437187cfaae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finish hmac and return with the hash.  <a href="#aca7eb2c07b4495ca8384c437187cfaae">More...</a><br /></td></tr>
 <tr class="separator:aca7eb2c07b4495ca8384c437187cfaae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b8aec825a0c3ae827d5b7021653b0c0"><td class="memItemLeft" align="right" valign="top"><a id="a8b8aec825a0c3ae827d5b7021653b0c0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_superpowered_1_1hasher.html#a8b8aec825a0c3ae827d5b7021653b0c0">hmacReset</a> ()</td></tr>
-<tr class="memdesc:a8b8aec825a0c3ae827d5b7021653b0c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Re-initialize the structure for hmac. <br /></td></tr>
+<tr class="memitem:a8b8aec825a0c3ae827d5b7021653b0c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_superpowered_1_1hasher.html#a8b8aec825a0c3ae827d5b7021653b0c0">hmacReset</a> ()</td></tr>
 <tr class="separator:a8b8aec825a0c3ae827d5b7021653b0c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a1f43abeb744cd382f788704ec19c11f8"><td class="memItemLeft" ><a id="a1f43abeb744cd382f788704ec19c11f8"></a>
-union {</td></tr>
-<tr class="memitem:a7892f4d2c6ebc25ddd034eb282c8764b"><td class="memItemLeft" >
-&#160;&#160;&#160;unsigned long long&#160;&#160;&#160;<b>processed64</b> [2]</td></tr>
+<tr class="memitem:a1f43abeb744cd382f788704ec19c11f8"><td class="memItemLeft" >union {</td></tr>
+<tr class="memitem:a7892f4d2c6ebc25ddd034eb282c8764b"><td class="memItemLeft" >&#160;&#160;&#160;unsigned long long&#160;&#160;&#160;<a class="el" href="struct_superpowered_1_1hasher.html#a049162a6b536f4f2fbbf36ee62f4c02d">processed64</a> [2]</td></tr>
 <tr class="separator:a7892f4d2c6ebc25ddd034eb282c8764b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5b5fcac94131962c106cb5ea521ed59"><td class="memItemLeft" >
-&#160;&#160;&#160;unsigned int&#160;&#160;&#160;<b>processed32</b> [2]</td></tr>
+<tr class="memitem:af5b5fcac94131962c106cb5ea521ed59"><td class="memItemLeft" >&#160;&#160;&#160;unsigned int&#160;&#160;&#160;<a class="el" href="struct_superpowered_1_1hasher.html#a77bc068f8bfe023f9745ce77821a0666">processed32</a> [2]</td></tr>
 <tr class="separator:af5b5fcac94131962c106cb5ea521ed59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f43abeb744cd382f788704ec19c11f8"><td class="memItemLeft" valign="top">};&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
-<tr class="memdesc:a1f43abeb744cd382f788704ec19c11f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal variable. <br /></td></tr>
 <tr class="separator:a1f43abeb744cd382f788704ec19c11f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5ddfad3354fd39071edaf89a0b150ff"><td class="memItemLeft" ><a id="ac5ddfad3354fd39071edaf89a0b150ff"></a>
-union {</td></tr>
-<tr class="memitem:aa9b5704c1bf2a7c27df6b8b4a640f69b"><td class="memItemLeft" >
-&#160;&#160;&#160;unsigned long long&#160;&#160;&#160;<b>state64</b> [8]</td></tr>
+<tr class="memitem:ac5ddfad3354fd39071edaf89a0b150ff"><td class="memItemLeft" >union {</td></tr>
+<tr class="memitem:aa9b5704c1bf2a7c27df6b8b4a640f69b"><td class="memItemLeft" >&#160;&#160;&#160;unsigned long long&#160;&#160;&#160;<a class="el" href="struct_superpowered_1_1hasher.html#a2e3f649405b479d123d217028c58da68">state64</a> [8]</td></tr>
 <tr class="separator:aa9b5704c1bf2a7c27df6b8b4a640f69b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9446109c906de69a358ac3db12de30a6"><td class="memItemLeft" >
-&#160;&#160;&#160;unsigned int&#160;&#160;&#160;<b>state32</b> [8]</td></tr>
+<tr class="memitem:a9446109c906de69a358ac3db12de30a6"><td class="memItemLeft" >&#160;&#160;&#160;unsigned int&#160;&#160;&#160;<a class="el" href="struct_superpowered_1_1hasher.html#a402aabf24aa1b7025a8367566b012666">state32</a> [8]</td></tr>
 <tr class="separator:a9446109c906de69a358ac3db12de30a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5ddfad3354fd39071edaf89a0b150ff"><td class="memItemLeft" valign="top">};&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
-<tr class="memdesc:ac5ddfad3354fd39071edaf89a0b150ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal variable. <br /></td></tr>
 <tr class="separator:ac5ddfad3354fd39071edaf89a0b150ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af9d4b6ec079c4ffc271e25e812267554"><td class="memItemLeft" align="right" valign="top"><a id="af9d4b6ec079c4ffc271e25e812267554"></a>
-unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_superpowered_1_1hasher.html#af9d4b6ec079c4ffc271e25e812267554">buffer</a> [128]</td></tr>
-<tr class="memdesc:af9d4b6ec079c4ffc271e25e812267554"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal variable. <br /></td></tr>
+<tr class="memitem:af9d4b6ec079c4ffc271e25e812267554"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_superpowered_1_1hasher.html#af9d4b6ec079c4ffc271e25e812267554">buffer</a> [128]</td></tr>
 <tr class="separator:af9d4b6ec079c4ffc271e25e812267554"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a210118ade9b3f318c2d9226a93c6810c"><td class="memItemLeft" align="right" valign="top"><a id="a210118ade9b3f318c2d9226a93c6810c"></a>
-unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_superpowered_1_1hasher.html#a210118ade9b3f318c2d9226a93c6810c">innerPadding</a> [128]</td></tr>
-<tr class="memdesc:a210118ade9b3f318c2d9226a93c6810c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal variable. <br /></td></tr>
+<tr class="memitem:a210118ade9b3f318c2d9226a93c6810c"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_superpowered_1_1hasher.html#a210118ade9b3f318c2d9226a93c6810c">innerPadding</a> [128]</td></tr>
 <tr class="separator:a210118ade9b3f318c2d9226a93c6810c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ab5199624af66f4628148aa21aeeb33"><td class="memItemLeft" align="right" valign="top"><a id="a7ab5199624af66f4628148aa21aeeb33"></a>
-unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_superpowered_1_1hasher.html#a7ab5199624af66f4628148aa21aeeb33">outerPadding</a> [128]</td></tr>
-<tr class="memdesc:a7ab5199624af66f4628148aa21aeeb33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal variable. <br /></td></tr>
+<tr class="memitem:a7ab5199624af66f4628148aa21aeeb33"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_superpowered_1_1hasher.html#a7ab5199624af66f4628148aa21aeeb33">outerPadding</a> [128]</td></tr>
 <tr class="separator:a7ab5199624af66f4628148aa21aeeb33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8b2723245c8501d661a70efe5c92726"><td class="memItemLeft" align="right" valign="top"><a id="ac8b2723245c8501d661a70efe5c92726"></a>
-hashType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_superpowered_1_1hasher.html#ac8b2723245c8501d661a70efe5c92726">type</a></td></tr>
-<tr class="memdesc:ac8b2723245c8501d661a70efe5c92726"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal variable. <br /></td></tr>
+<tr class="memitem:ac8b2723245c8501d661a70efe5c92726"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_superpowered.html#a1b951624897b2679fd12d12e82212801">hashType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_superpowered_1_1hasher.html#ac8b2723245c8501d661a70efe5c92726">type</a></td></tr>
 <tr class="separator:ac8b2723245c8501d661a70efe5c92726"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -134,12 +106,14 @@ hashType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
         <tr>
           <td class="memname">void Superpowered::hasher::hashStart </td>
           <td>(</td>
-          <td class="paramtype">hashType&#160;</td>
+          <td class="paramtype"><a class="el" href="namespace_superpowered.html#a1b951624897b2679fd12d12e82212801">hashType</a>&#160;</td>
           <td class="paramname"><em>type</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Initialize the structure for hashing. The structure will be as good as new after this. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">type</td><td>The hash type. </td></tr>
@@ -174,6 +148,8 @@ hashType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Perform hashing on the input data with any kind of input length. Can be called multiple times. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">input</td><td>Pointer to the input data. </td></tr>
@@ -199,6 +175,8 @@ hashType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Finish hashing and return with the hash. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">output</td><td>The output. Must be big enough to store the result (SHA512 has the maximum with 64 bytes). </td></tr>
@@ -223,6 +201,8 @@ hashType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Perform hashing on the input data with the exact same input length of the hasher algorithm. Can be called multiple times. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">input</td><td>Pointer to the input data. </td></tr>
@@ -241,7 +221,7 @@ hashType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
         <tr>
           <td class="memname">void Superpowered::hasher::hmacStart </td>
           <td>(</td>
-          <td class="paramtype">hashType&#160;</td>
+          <td class="paramtype"><a class="el" href="namespace_superpowered.html#a1b951624897b2679fd12d12e82212801">hashType</a>&#160;</td>
           <td class="paramname"><em>type</em>, </td>
         </tr>
         <tr>
@@ -263,6 +243,8 @@ hashType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Initialize the structure for hash-based message authentication code hashing. The structure will be as good as new after this. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">type</td><td>The hash type. </td></tr>
@@ -299,6 +281,8 @@ hashType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Perform hmac on the input data with any kind of input length. Can be called multiple times. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">input</td><td>Pointer to the input data. </td></tr>
@@ -324,12 +308,186 @@ hashType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Finish hmac and return with the hash. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">output</td><td>The output. Must be big enough to store the result (SHA512 has the maximum with 64 bytes). </td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a8b8aec825a0c3ae827d5b7021653b0c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b8aec825a0c3ae827d5b7021653b0c0">&#9670;&nbsp;</a></span>hmacReset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Superpowered::hasher::hmacReset </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Re-initialize the structure for hmac. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a049162a6b536f4f2fbbf36ee62f4c02d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a049162a6b536f4f2fbbf36ee62f4c02d">&#9670;&nbsp;</a></span>processed64</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned long long Superpowered::hasher::processed64[2]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a77bc068f8bfe023f9745ce77821a0666"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77bc068f8bfe023f9745ce77821a0666">&#9670;&nbsp;</a></span>processed32</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int Superpowered::hasher::processed32[2]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1f43abeb744cd382f788704ec19c11f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f43abeb744cd382f788704ec19c11f8">&#9670;&nbsp;</a></span>@1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">union { ... } </td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Internal variable. </p>
+
+</div>
+</div>
+<a id="a2e3f649405b479d123d217028c58da68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e3f649405b479d123d217028c58da68">&#9670;&nbsp;</a></span>state64</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned long long Superpowered::hasher::state64[8]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a402aabf24aa1b7025a8367566b012666"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a402aabf24aa1b7025a8367566b012666">&#9670;&nbsp;</a></span>state32</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int Superpowered::hasher::state32[8]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac5ddfad3354fd39071edaf89a0b150ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5ddfad3354fd39071edaf89a0b150ff">&#9670;&nbsp;</a></span>@3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">union { ... } </td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Internal variable. </p>
+
+</div>
+</div>
+<a id="af9d4b6ec079c4ffc271e25e812267554"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9d4b6ec079c4ffc271e25e812267554">&#9670;&nbsp;</a></span>buffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char Superpowered::hasher::buffer[128]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Internal variable. </p>
+
+</div>
+</div>
+<a id="a210118ade9b3f318c2d9226a93c6810c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a210118ade9b3f318c2d9226a93c6810c">&#9670;&nbsp;</a></span>innerPadding</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char Superpowered::hasher::innerPadding[128]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Internal variable. </p>
+
+</div>
+</div>
+<a id="a7ab5199624af66f4628148aa21aeeb33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ab5199624af66f4628148aa21aeeb33">&#9670;&nbsp;</a></span>outerPadding</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char Superpowered::hasher::outerPadding[128]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Internal variable. </p>
+
+</div>
+</div>
+<a id="ac8b2723245c8501d661a70efe5c92726"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8b2723245c8501d661a70efe5c92726">&#9670;&nbsp;</a></span>type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_superpowered.html#a1b951624897b2679fd12d12e82212801">hashType</a> Superpowered::hasher::type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Internal variable. </p>
 
 </div>
 </div>

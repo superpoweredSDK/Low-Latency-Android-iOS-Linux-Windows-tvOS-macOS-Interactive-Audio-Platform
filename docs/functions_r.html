@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">1.4.0</span>
+   &#160;<span id="projectnumber">2.0.0</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -39,23 +39,55 @@ $(function() {
 <div id="main-nav"></div>
 </div><!-- top -->
 <div class="contents">
-<div class="textblock">Here is a list of all documented class members with links to the class documentation for each member:</div>
+<div class="textblock">Here is a list of all class members with links to the classes they belong to:</div>
 
 <h3><a id="index_r"></a>- r -</h3><ul>
+<li>rate
+: <a class="el" href="class_superpowered_1_1_resampler.html#abe1a47d0d9aa06c71239066d05d4a1d0">Superpowered::Resampler</a>
+, <a class="el" href="class_superpowered_1_1_time_stretching.html#a110e39abbf2a0a36cf52c8675f7cf2f7">Superpowered::TimeStretching</a>
+</li>
+<li>ratio
+: <a class="el" href="class_superpowered_1_1_compressor.html#a34dff52a307f5f6341c25c8005b75d6a">Superpowered::Compressor</a>
+, <a class="el" href="class_superpowered_1_1_compressor_proto.html#aaf66b9ac442e3bcefdae73e3187f4150">Superpowered::CompressorProto</a>
+</li>
+<li>readNextID3Frame()
+: <a class="el" href="class_superpowered_1_1_decoder.html#a81cc3db2e4c9cb961aeca4bcc391f2dc">Superpowered::Decoder</a>
+</li>
 <li>reconfigureWithAudioSessionCategory:
 : <a class="el" href="interface_superpowered_i_o_s_audio_i_o.html#a333354c7b9f80491efa41373aa57937c">SuperpoweredIOSAudioIO</a>
+, <a class="el" href="interface_superpoweredtv_o_s_audio_i_o.html#a35ca6fceb20ec50ebc80862e1c256f2d">SuperpoweredtvOSAudioIO</a>
 </li>
 <li>reconnectToMediaserver()
-: <a class="el" href="class_superpowered_decoder.html#ae0544563f5ee1d11f660aa8cd994d72b">SuperpoweredDecoder</a>
+: <a class="el" href="class_superpowered_1_1_decoder.html#ac3f55f967203fe92c239c066e0778fa2">Superpowered::Decoder</a>
+</li>
+<li>Recorder()
+: <a class="el" href="class_superpowered_1_1_recorder.html#ae9e3a572268ccaacc95a9b8ac7fd3a70">Superpowered::Recorder</a>
+</li>
+<li>recordInterleaved()
+: <a class="el" href="class_superpowered_1_1_recorder.html#aab0b0e4742f0a27e6d03cdad86a42692">Superpowered::Recorder</a>
+</li>
+<li>recordNonInterleaved()
+: <a class="el" href="class_superpowered_1_1_recorder.html#ad86b2b07149dada381a89ba3985ce627">Superpowered::Recorder</a>
 </li>
 <li>recordPermissionRefused
 : <a class="el" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html#a41192d288bd5cbed0ff2d9d6c8a88d41">&lt;SuperpoweredIOSAudioIODelegate&gt;</a>
 </li>
 <li>releaseBuffer()
-: <a class="el" href="class_superpowered_audiobuffer_pool.html#a649f34e706c5cc6f54b7bd51b5abf9ab">SuperpoweredAudiobufferPool</a>
+: <a class="el" href="class_superpowered_1_1_audiobuffer_pool.html#a3d48ed7f9120c1e6abf2970fd3ad4e46">Superpowered::AudiobufferPool</a>
 </li>
-<li>removeSamplesFromInputBuffersEnd()
-: <a class="el" href="class_superpowered_time_stretching.html#a47772269ace8d24748e13809cb6aed79">SuperpoweredTimeStretching</a>
+<li>releaseSec
+: <a class="el" href="class_superpowered_1_1_compressor.html#a6ac3903486cfee42c4b70a77748168bd">Superpowered::Compressor</a>
+, <a class="el" href="class_superpowered_1_1_compressor_proto.html#a54dd0d41e6c4e1324d3a4e51c67a8d0e">Superpowered::CompressorProto</a>
+, <a class="el" href="class_superpowered_1_1_limiter.html#a3925508c56a4540111893e6611c2d792">Superpowered::Limiter</a>
+</li>
+<li>removeFramesFromInputBuffersEnd()
+: <a class="el" href="class_superpowered_1_1_time_stretching.html#a824e09f4e7dcaf009b6a546dcef45ea9">Superpowered::TimeStretching</a>
+</li>
+<li>removeFromEnd()
+: <a class="el" href="class_superpowered_1_1_audiopointer_list.html#aae0ce7f59bcd851736796060d674a223">Superpowered::AudiopointerList</a>
+</li>
+<li>removeFromStart()
+: <a class="el" href="class_superpowered_1_1_audiopointer_list.html#a2d786f5c849cb9bdb81a2107caa263c7">Superpowered::AudiopointerList</a>
 </li>
 <li>replaceInArray()
 : <a class="el" href="struct_superpowered_1_1json.html#ab00392a154c8da01eea4ab29a6efe120">Superpowered::json</a>
@@ -63,33 +95,73 @@ $(function() {
 <li>replaceInObject()
 : <a class="el" href="struct_superpowered_1_1json.html#a6fcca898bfb7353fdf657bf0eb1f2df2">Superpowered::json</a>
 </li>
+<li>Resampler()
+: <a class="el" href="class_superpowered_1_1_resampler.html#a333841390497d47ea4d9c8d3daecebd7">Superpowered::Resampler</a>
+</li>
 <li>reset()
-: <a class="el" href="class_superpowered3_band_e_q.html#afd09932da4564e671066c0e843b266b8">Superpowered3BandEQ</a>
-, <a class="el" href="class_superpowered_compressor.html#a4e6cceee3c091babf2fa896d44ba620d">SuperpoweredCompressor</a>
-, <a class="el" href="class_superpowered_compressor_proto.html#a846242b428b98d17bcff07a7f5c9b50e">SuperpoweredCompressorProto</a>
-, <a class="el" href="class_superpowered_delay.html#a42df4fa5fa8e0787c1db609b2b28b2d7">SuperpoweredDelay</a>
-, <a class="el" href="class_superpowered_echo.html#a74add2dd31ab61e9d68d737760551fd9">SuperpoweredEcho</a>
-, <a class="el" href="class_superpowered_filter.html#a98bfe122621f3f6b3db4b93c0f067ba5">SuperpoweredFilter</a>
-, <a class="el" href="class_superpowered_flanger.html#a13a3b7cb7b6c2ee56b3f0e5cba2decbf">SuperpoweredFlanger</a>
-, <a class="el" href="class_superpowered_frequency_domain.html#a0d62a20d4a5e4cfa0b666908382971c4">SuperpoweredFrequencyDomain</a>
-, <a class="el" href="class_superpowered_f_x.html#a30e9f3656f7137455c30783f3ae34fac">SuperpoweredFX</a>
-, <a class="el" href="class_superpowered_gate.html#af57ec345524fbd6960e062eb8a42543e">SuperpoweredGate</a>
-, <a class="el" href="class_superpowered_limiter.html#a8b1ca5b968641a8dcc73f8a610e332c7">SuperpoweredLimiter</a>
-, <a class="el" href="class_superpowered_n_band_e_q.html#a69566a532d49cf87c5a3933dc44ed426">SuperpoweredNBandEQ</a>
-, <a class="el" href="class_superpowered_resampler.html#a244d612ccca287670a299f5362740495">SuperpoweredResampler</a>
-, <a class="el" href="class_superpowered_reverb.html#a1d331f2f1aeb7bc185988232b719d9aa">SuperpoweredReverb</a>
-, <a class="el" href="class_superpowered_roll.html#a52f90846dcb5f730c4644e5127a06ab6">SuperpoweredRoll</a>
-, <a class="el" href="class_superpowered_time_stretching.html#a0a2ca9a32525d3e98541e441c664e172">SuperpoweredTimeStretching</a>
-, <a class="el" href="class_superpowered_whoosh.html#a24c9fdca25b791db8b523b1a587bd8fd">SuperpoweredWhoosh</a>
+: <a class="el" href="class_superpowered_1_1_frequency_domain.html#a175afbb3cb8a4c198538cac305d1a215">Superpowered::FrequencyDomain</a>
+, <a class="el" href="class_superpowered_1_1_resampler.html#ab2c1a905d32361fc9abe09bec5b059f3">Superpowered::Resampler</a>
+, <a class="el" href="class_superpowered_1_1_time_stretching.html#a611340885eaf4dc86b0fc46b699e488f">Superpowered::TimeStretching</a>
+</li>
+<li>resetBands()
+: <a class="el" href="class_superpowered_1_1_bandpass_filterbank.html#a0e48b82f8aaa2f7706608d9c4c8910fb">Superpowered::BandpassFilterbank</a>
 </li>
 <li>resetBendMsOffset()
-: <a class="el" href="class_superpowered_advanced_audio_player.html#a7ab58dc5dd39734b9a2ef32f4bf28585">SuperpoweredAdvancedAudioPlayer</a>
+: <a class="el" href="class_superpowered_1_1_advanced_audio_player.html#a74f6e928433b9705e3b67c8d3466de96">Superpowered::AdvancedAudioPlayer</a>
+</li>
+<li>resetPeakVolume()
+: <a class="el" href="class_superpowered_1_1_bandpass_filterbank.html#acf9305b852d6fc94ab804ea48591a136">Superpowered::BandpassFilterbank</a>
+</li>
+<li>resetSumAndAverageVolume()
+: <a class="el" href="class_superpowered_1_1_bandpass_filterbank.html#a5e80a7667e588e7887ae2c7883f9215b">Superpowered::BandpassFilterbank</a>
+</li>
+<li>resonance
+: <a class="el" href="class_superpowered_1_1_filter.html#a868b400f58b2a29318ca46747dda1ad9">Superpowered::Filter</a>
 </li>
 <li>retainBuffer()
-: <a class="el" href="class_superpowered_audiobuffer_pool.html#abf513c3919a292e5f0c5dd9cc9cb09b9">SuperpoweredAudiobufferPool</a>
+: <a class="el" href="class_superpowered_1_1_audiobuffer_pool.html#a5b54473d72bff6de06ef6849fadab832">Superpowered::AudiobufferPool</a>
+</li>
+<li>Reverb()
+: <a class="el" href="class_superpowered_1_1_reverb.html#a4b950df5819b4eb06b88d8019f4f21f2">Superpowered::Reverb</a>
+</li>
+<li>reverbDamp
+: <a class="el" href="class_superpowered_1_1_spatializer.html#a1b8faf7bc2fbac3eb35fe7b0ccd4dbe3">Superpowered::Spatializer</a>
+</li>
+<li>reverbLowCutHz
+: <a class="el" href="class_superpowered_1_1_spatializer.html#adce9cf2e10ca114e8b61a3351fa7ed15">Superpowered::Spatializer</a>
+</li>
+<li>reverbmix
+: <a class="el" href="class_superpowered_1_1_spatializer.html#aefde2dea56002f412867792e64d8e49b">Superpowered::Spatializer</a>
+</li>
+<li>reverbPredelayMs
+: <a class="el" href="class_superpowered_1_1_spatializer.html#a8b009183454d1a40105ce69b43743fa7">Superpowered::Spatializer</a>
+</li>
+<li>reverbProcess()
+: <a class="el" href="class_superpowered_1_1_spatializer.html#a9f4bb17aa455cea89a353e4eeb375d7d">Superpowered::Spatializer</a>
+</li>
+<li>reverbRoomSize
+: <a class="el" href="class_superpowered_1_1_spatializer.html#a73df65d4910ecf87fb8b8a5cdfee5398">Superpowered::Spatializer</a>
+</li>
+<li>reverbWidth
+: <a class="el" href="class_superpowered_1_1_spatializer.html#ac1428748eed3a35286c6331ad81600fa">Superpowered::Spatializer</a>
+</li>
+<li>reverseToForwardAtLoopStart
+: <a class="el" href="class_superpowered_1_1_advanced_audio_player.html#a75c1d52f2c9e44c93029291094b82201">Superpowered::AdvancedAudioPlayer</a>
 </li>
 <li>rewindSlice()
-: <a class="el" href="class_superpowered_audiopointer_list.html#aaa79e72b81e380f24d1c1a9c2dc09623">SuperpoweredAudiopointerList</a>
+: <a class="el" href="class_superpowered_1_1_audiopointer_list.html#ab74f09a4327644bd4144e80b652954df">Superpowered::AudiopointerList</a>
+</li>
+<li>rms
+: <a class="el" href="class_superpowered_1_1_compressor_proto.html#ae3c2215efb4514d3eb7314db1e5f8864">Superpowered::CompressorProto</a>
+</li>
+<li>Roll()
+: <a class="el" href="class_superpowered_1_1_roll.html#a2b0ecb9d5951d1e1a1b9954aa53dd388">Superpowered::Roll</a>
+</li>
+<li>roomSize
+: <a class="el" href="class_superpowered_1_1_reverb.html#a60f95f8ac9e698e0a08e8019e66d7cef">Superpowered::Reverb</a>
+</li>
+<li>RSAPrivateKey
+: <a class="el" href="class_superpowered_1_1_r_s_a_public_key.html#ae8ac15acb5676a2c2555e5467819c656">Superpowered::RSAPublicKey</a>
 </li>
 </ul>
 </div><!-- contents -->

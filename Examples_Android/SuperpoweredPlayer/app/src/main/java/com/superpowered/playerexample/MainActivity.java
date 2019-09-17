@@ -1,6 +1,6 @@
 package com.superpowered.playerexample;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.res.AssetFileDescriptor;
 import android.media.AudioManager;
 import android.content.Context;
@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.view.View;
 import android.util.Log;
 import android.os.Bundle;
+import android.os.Handler;
 import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
@@ -41,17 +42,34 @@ public class MainActivity extends AppCompatActivity {
         }
         String path = getPackageResourcePath();         // get path to APK package
         System.loadLibrary("PlayerExample");    // load native library
-        StartAudio(samplerate, buffersize);             // start audio engine
-        OpenFile(path, fileOffset, fileLength);         // open audio file from APK
+        NativeInit(samplerate, buffersize, getCacheDir().getAbsolutePath()); // start audio engine
+        OpenFileFromAPK(path, fileOffset, fileLength);  // open audio file from APK
         // If the application crashes, please disable Instant Run under Build, Execution, Deployment in preferences.
+
+        // Update UI every 40 ms until UI_update returns with false.
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                UI_update();
+                handler.postDelayed(this, 40);
+            }
+        };
+        handler = new Handler();
+        handler.postDelayed(runnable, 40);
     }
 
-    // Handle Play/Pause button toggle.
-    public void PlayerExample_PlayPause (View button) {
+    public void UI_update() {
+        boolean p = onUserInterfaceUpdate();
+        if (playing != p) {
+            playing = p;
+            Button b = findViewById(R.id.playPause);
+            b.setText(playing ? "Pause" : "Play");
+        }
+    }
+
+    // Play/Pause button event.
+    public void PlayerExample_PlayPause(View button) {
         TogglePlayback();
-        playing = !playing;
-        Button b = findViewById(R.id.playPause);
-        b.setText(playing ? "Pause" : "Play");
     }
 
     @Override
@@ -72,12 +90,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Functions implemented in the native library.
-    private native void StartAudio(int samplerate, int buffersize);
-    private native void OpenFile(String path, int offset, int length);
+    private native void NativeInit(int samplerate, int buffersize, String tempPath);
+    private native void OpenFileFromAPK(String path, int offset, int length);
+    private native boolean onUserInterfaceUpdate();
     private native void TogglePlayback();
     private native void onForeground();
     private native void onBackground();
     private native void Cleanup();
 
     private boolean playing = false;
+    private Handler handler;
 }

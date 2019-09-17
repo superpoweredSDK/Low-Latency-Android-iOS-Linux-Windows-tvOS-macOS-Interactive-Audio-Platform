@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">1.4.0</span>
+   &#160;<span id="projectnumber">2.0.0</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -48,49 +48,30 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Handles all audio session, audio lifecycle (interruptions), output, buffer size, samplerate and routing headaches.  
- <a href="interface_superpowered_i_o_s_audio_i_o.html#details">More...</a></p>
-
 <p>Inherits NSObject.</p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Instance Methods</h2></td></tr>
 <tr class="memitem:a53cfc21827656db9db3453fdddd1394c"><td class="memItemLeft" align="right" valign="top">(id)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_superpowered_i_o_s_audio_i_o.html#a53cfc21827656db9db3453fdddd1394c">initWithDelegate:preferredBufferSize:preferredSamplerate:audioSessionCategory:channels:audioProcessingCallback:clientdata:</a></td></tr>
-<tr class="memdesc:a53cfc21827656db9db3453fdddd1394c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the audio output instance.  <a href="#a53cfc21827656db9db3453fdddd1394c">More...</a><br /></td></tr>
 <tr class="separator:a53cfc21827656db9db3453fdddd1394c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe7f8d2097684b5f0db47c3eaaa216f9"><td class="memItemLeft" align="right" valign="top">(bool)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_superpowered_i_o_s_audio_i_o.html#abe7f8d2097684b5f0db47c3eaaa216f9">start</a></td></tr>
-<tr class="memdesc:abe7f8d2097684b5f0db47c3eaaa216f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts audio processing.  <a href="#abe7f8d2097684b5f0db47c3eaaa216f9">More...</a><br /></td></tr>
 <tr class="separator:abe7f8d2097684b5f0db47c3eaaa216f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9426ebb93f5e4cbfcef2a7ea31014fc0"><td class="memItemLeft" align="right" valign="top"><a id="a9426ebb93f5e4cbfcef2a7ea31014fc0"></a>
-(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_superpowered_i_o_s_audio_i_o.html#a9426ebb93f5e4cbfcef2a7ea31014fc0">stop</a></td></tr>
-<tr class="memdesc:a9426ebb93f5e4cbfcef2a7ea31014fc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops audio processing. <br /></td></tr>
+<tr class="memitem:a9426ebb93f5e4cbfcef2a7ea31014fc0"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_superpowered_i_o_s_audio_i_o.html#a9426ebb93f5e4cbfcef2a7ea31014fc0">stop</a></td></tr>
 <tr class="separator:a9426ebb93f5e4cbfcef2a7ea31014fc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a32bd2402e4ed4afdca73293be9915372"><td class="memItemLeft" align="right" valign="top"><a id="a32bd2402e4ed4afdca73293be9915372"></a>
-(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_superpowered_i_o_s_audio_i_o.html#a32bd2402e4ed4afdca73293be9915372">mapChannels</a></td></tr>
-<tr class="memdesc:a32bd2402e4ed4afdca73293be9915372"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this to re-configure the channel mapping. <br /></td></tr>
+<tr class="memitem:a32bd2402e4ed4afdca73293be9915372"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_superpowered_i_o_s_audio_i_o.html#a32bd2402e4ed4afdca73293be9915372">mapChannels</a></td></tr>
 <tr class="separator:a32bd2402e4ed4afdca73293be9915372"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a333354c7b9f80491efa41373aa57937c"><td class="memItemLeft" align="right" valign="top"><a id="a333354c7b9f80491efa41373aa57937c"></a>
-(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_superpowered_i_o_s_audio_i_o.html#a333354c7b9f80491efa41373aa57937c">reconfigureWithAudioSessionCategory:</a></td></tr>
-<tr class="memdesc:a333354c7b9f80491efa41373aa57937c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this to re-configure the audio session category (such as enabling/disabling recording). <br /></td></tr>
+<tr class="memitem:a333354c7b9f80491efa41373aa57937c"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_superpowered_i_o_s_audio_i_o.html#a333354c7b9f80491efa41373aa57937c">reconfigureWithAudioSessionCategory:</a></td></tr>
 <tr class="separator:a333354c7b9f80491efa41373aa57937c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a10d9a6b8855c1241b51d9cd06e8e0f86"><td class="memItemLeft" align="right" valign="top"><a id="a10d9a6b8855c1241b51d9cd06e8e0f86"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_superpowered_i_o_s_audio_i_o.html#a10d9a6b8855c1241b51d9cd06e8e0f86">preferredBufferSizeMs</a></td></tr>
-<tr class="memdesc:a10d9a6b8855c1241b51d9cd06e8e0f86"><td class="mdescLeft">&#160;</td><td class="mdescRight">The preferred buffer size. Recommended: 12. <br /></td></tr>
+<tr class="memitem:a10d9a6b8855c1241b51d9cd06e8e0f86"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_superpowered_i_o_s_audio_i_o.html#a10d9a6b8855c1241b51d9cd06e8e0f86">preferredBufferSizeMs</a></td></tr>
 <tr class="separator:a10d9a6b8855c1241b51d9cd06e8e0f86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9cd7ffbecec9701da4c171e1f2dac1e8"><td class="memItemLeft" align="right" valign="top"><a id="a9cd7ffbecec9701da4c171e1f2dac1e8"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_superpowered_i_o_s_audio_i_o.html#a9cd7ffbecec9701da4c171e1f2dac1e8">preferredSamplerate</a></td></tr>
-<tr class="memdesc:a9cd7ffbecec9701da4c171e1f2dac1e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The preferred sample rate. <br /></td></tr>
+<tr class="memitem:a9cd7ffbecec9701da4c171e1f2dac1e8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_superpowered_i_o_s_audio_i_o.html#a9cd7ffbecec9701da4c171e1f2dac1e8">preferredSamplerate</a></td></tr>
 <tr class="separator:a9cd7ffbecec9701da4c171e1f2dac1e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9fca8e0025fb2a21de1ab27ebe0e8fb"><td class="memItemLeft" align="right" valign="top"><a id="ae9fca8e0025fb2a21de1ab27ebe0e8fb"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_superpowered_i_o_s_audio_i_o.html#ae9fca8e0025fb2a21de1ab27ebe0e8fb">saveBatteryInBackground</a></td></tr>
-<tr class="memdesc:ae9fca8e0025fb2a21de1ab27ebe0e8fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save battery if output is silence and the app runs in background mode. True by default. <br /></td></tr>
+<tr class="memitem:ae9fca8e0025fb2a21de1ab27ebe0e8fb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_superpowered_i_o_s_audio_i_o.html#ae9fca8e0025fb2a21de1ab27ebe0e8fb">saveBatteryInBackground</a></td></tr>
 <tr class="separator:ae9fca8e0025fb2a21de1ab27ebe0e8fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa6531e66b7151c0d8010dfbb123d99f0"><td class="memItemLeft" align="right" valign="top"><a id="aa6531e66b7151c0d8010dfbb123d99f0"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_superpowered_i_o_s_audio_i_o.html#aa6531e66b7151c0d8010dfbb123d99f0">started</a></td></tr>
-<tr class="memdesc:aa6531e66b7151c0d8010dfbb123d99f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates if the instance has been started. <br /></td></tr>
+<tr class="memitem:aa6531e66b7151c0d8010dfbb123d99f0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_superpowered_i_o_s_audio_i_o.html#aa6531e66b7151c0d8010dfbb123d99f0">started</a></td></tr>
 <tr class="separator:aa6531e66b7151c0d8010dfbb123d99f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -135,7 +116,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
         <tr>
           <td class="paramkey">audioProcessingCallback:</td>
           <td></td>
-          <td class="paramtype">(audioProcessingCallback)&#160;</td>
+          <td class="paramtype">(<a class="el" href="_superpowered_windows_audio_i_o_8h.html#ad977991ca1ab5f2c893e4f65ef1247cb">audioProcessingCallback</a>)&#160;</td>
           <td class="paramname"><em>callback</em></td>
         </tr>
         <tr>
@@ -151,10 +132,12 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Constructor. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">delegate</td><td>The object fully implementing the <a class="el" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html" title="You must implement this protocol to make SuperpoweredIOSAudioIO work. ">SuperpoweredIOSAudioIODelegate</a> protocol. Not retained. </td></tr>
-    <tr><td class="paramname">preferredBufferSize</td><td>The initial value for preferredBufferSizeMs. 12 is good for every iOS device (512 samples). </td></tr>
+    <tr><td class="paramname">delegate</td><td>The object fully implementing the <a class="el" href="protocol_superpowered_i_o_s_audio_i_o_delegate-p.html" title="You MUST implement this protocol to use SuperpoweredIOSAudioIO. ">SuperpoweredIOSAudioIODelegate</a> protocol. Not retained. </td></tr>
+    <tr><td class="paramname">preferredBufferSize</td><td>The initial value for preferredBufferSizeMs. 12 is good for every iOS device (512 frames). </td></tr>
     <tr><td class="paramname">preferredSamplerate</td><td>The preferred sample rate. 44100 or 48000 are recommended for good sound quality. </td></tr>
     <tr><td class="paramname">audioSessionCategory</td><td>The audio session category. Audio input is enabled for the appropriate categories only! </td></tr>
     <tr><td class="paramname">channels</td><td>The number of output channels in the audio processing callback regardless the actual hardware capabilities. The number of input channels in the audio processing callback will reflect the actual hardware configuration. </td></tr>
@@ -180,7 +163,164 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inte
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Starts audio I/O. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if successful, false if failed. </dd></dl>
+
+</div>
+</div>
+<a id="a9426ebb93f5e4cbfcef2a7ea31014fc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9426ebb93f5e4cbfcef2a7ea31014fc0">&#9670;&nbsp;</a></span>stop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) stop </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Stops audio I/O. </p>
+
+</div>
+</div>
+<a id="a32bd2402e4ed4afdca73293be9915372"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32bd2402e4ed4afdca73293be9915372">&#9670;&nbsp;</a></span>mapChannels()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) mapChannels </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Call this to re-configure the channel mapping. </p>
+
+</div>
+</div>
+<a id="a333354c7b9f80491efa41373aa57937c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a333354c7b9f80491efa41373aa57937c">&#9670;&nbsp;</a></span>reconfigureWithAudioSessionCategory:()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) reconfigureWithAudioSessionCategory: </td>
+          <td></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>audioSessionCategory</em></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Call this to re-configure the audio session category (such as enabling/disabling recording). </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a10d9a6b8855c1241b51d9cd06e8e0f86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10d9a6b8855c1241b51d9cd06e8e0f86">&#9670;&nbsp;</a></span>preferredBufferSizeMs</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (int) preferredBufferSizeMs</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">write</span><span class="mlabel">nonatomic</span><span class="mlabel">assign</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The preferred buffer size in milliseconds. Recommended: 12. </p>
+
+</div>
+</div>
+<a id="a9cd7ffbecec9701da4c171e1f2dac1e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9cd7ffbecec9701da4c171e1f2dac1e8">&#9670;&nbsp;</a></span>preferredSamplerate</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (int) preferredSamplerate</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">write</span><span class="mlabel">nonatomic</span><span class="mlabel">assign</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The preferred sample rate in Hz. </p>
+
+</div>
+</div>
+<a id="ae9fca8e0025fb2a21de1ab27ebe0e8fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9fca8e0025fb2a21de1ab27ebe0e8fb">&#9670;&nbsp;</a></span>saveBatteryInBackground</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (bool) saveBatteryInBackground</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">write</span><span class="mlabel">nonatomic</span><span class="mlabel">assign</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Save battery if output is silence and the app runs in background mode. True by default. </p>
+
+</div>
+</div>
+<a id="aa6531e66b7151c0d8010dfbb123d99f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6531e66b7151c0d8010dfbb123d99f0">&#9670;&nbsp;</a></span>started</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (bool) started</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">nonatomic</span><span class="mlabel">assign</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Indicates if the instance has been started. </p>
 
 </div>
 </div>

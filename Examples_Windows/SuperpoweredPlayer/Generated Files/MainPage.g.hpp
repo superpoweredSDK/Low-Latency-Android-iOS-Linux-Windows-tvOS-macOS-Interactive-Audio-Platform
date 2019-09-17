@@ -29,8 +29,8 @@ void ::SuperpoweredPlayer::MainPage::Connect(int __connectionId, ::Platform::Obj
     {
         case 1:
             {
-                ::Windows::UI::Xaml::Controls::Button^ element1 = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::Button^>(element1))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::SuperpoweredPlayer::MainPage::*)
+                this->MyButton = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
+                (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->MyButton))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::SuperpoweredPlayer::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::Toggle);
             }
             break;

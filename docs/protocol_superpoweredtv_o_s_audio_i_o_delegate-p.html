@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">1.4.0</span>
+   &#160;<span id="projectnumber">2.0.0</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -46,30 +46,79 @@ $(function() {
 <div class="title">&lt;SuperpoweredtvOSAudioIODelegate&gt; Protocol Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>You must implement this protocol to make <a class="el" href="interface_superpoweredtv_o_s_audio_i_o.html" title="Handles all audio session, audio lifecycle (interruptions), output, buffer size, samplerate and routi...">SuperpoweredtvOSAudioIO</a> work.  
-</p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Instance Methods</h2></td></tr>
-<tr class="memitem:a51ff3fa75c9e9af1cd22f8c1fcd82c32"><td class="memItemLeft" align="right" valign="top"><a id="a51ff3fa75c9e9af1cd22f8c1fcd82c32"></a>
-(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpoweredtv_o_s_audio_i_o_delegate-p.html#a51ff3fa75c9e9af1cd22f8c1fcd82c32">interruptionStarted</a></td></tr>
-<tr class="memdesc:a51ff3fa75c9e9af1cd22f8c1fcd82c32"><td class="mdescLeft">&#160;</td><td class="mdescRight">The audio session may be interrupted by a phone call, etc. This method is called on the main thread when this happens. <br /></td></tr>
+<tr class="memitem:a51ff3fa75c9e9af1cd22f8c1fcd82c32"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpoweredtv_o_s_audio_i_o_delegate-p.html#a51ff3fa75c9e9af1cd22f8c1fcd82c32">interruptionStarted</a></td></tr>
 <tr class="separator:a51ff3fa75c9e9af1cd22f8c1fcd82c32"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0e432032209a10a202411af08c8619c"><td class="memItemLeft" align="right" valign="top"><a id="ab0e432032209a10a202411af08c8619c"></a>
-(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpoweredtv_o_s_audio_i_o_delegate-p.html#ab0e432032209a10a202411af08c8619c">interruptionEnded</a></td></tr>
-<tr class="memdesc:ab0e432032209a10a202411af08c8619c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The audio session may be interrupted by a phone call, etc. This method is called on the main thread when audio resumes. <br /></td></tr>
+<tr class="memitem:ab0e432032209a10a202411af08c8619c"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpoweredtv_o_s_audio_i_o_delegate-p.html#ab0e432032209a10a202411af08c8619c">interruptionEnded</a></td></tr>
 <tr class="separator:ab0e432032209a10a202411af08c8619c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63740791ebb44efe536aa0762cbe1e4f"><td class="memItemLeft" align="right" valign="top">(bool)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpoweredtv_o_s_audio_i_o_delegate-p.html#a63740791ebb44efe536aa0762cbe1e4f">audioProcessingCallback:outputChannels:numberOfSamples:samplerate:hostTime:</a></td></tr>
-<tr class="memdesc:a63740791ebb44efe536aa0762cbe1e4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process audio here.  <a href="#a63740791ebb44efe536aa0762cbe1e4f">More...</a><br /></td></tr>
-<tr class="separator:a63740791ebb44efe536aa0762cbe1e4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaafcf0d69e7267b3ee6d1b009e33ec6b"><td class="memItemLeft" align="right" valign="top">(bool)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpoweredtv_o_s_audio_i_o_delegate-p.html#aaafcf0d69e7267b3ee6d1b009e33ec6b">audioProcessingCallback:outputChannels:numberOfFrames:samplerate:hostTime:</a></td></tr>
+<tr class="separator:aaafcf0d69e7267b3ee6d1b009e33ec6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Method Documentation</h2>
-<a id="a63740791ebb44efe536aa0762cbe1e4f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a63740791ebb44efe536aa0762cbe1e4f">&#9670;&nbsp;</a></span>audioProcessingCallback:outputChannels:numberOfSamples:samplerate:hostTime:()</h2>
+<a id="a51ff3fa75c9e9af1cd22f8c1fcd82c32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51ff3fa75c9e9af1cd22f8c1fcd82c32">&#9670;&nbsp;</a></span>interruptionStarted()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) interruptionStarted </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">optional</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The audio session may be interrupted by a phone call, etc. This method is called on the main thread when the interrupt starts. </p>
+
+</div>
+</div>
+<a id="ab0e432032209a10a202411af08c8619c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0e432032209a10a202411af08c8619c">&#9670;&nbsp;</a></span>interruptionEnded()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) interruptionEnded </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">optional</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The audio session may be interrupted by a phone call, etc. This method is called on the main thread when audio resumes. </p>
+
+</div>
+</div>
+<a id="aaafcf0d69e7267b3ee6d1b009e33ec6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaafcf0d69e7267b3ee6d1b009e33ec6b">&#9670;&nbsp;</a></span>audioProcessingCallback:outputChannels:numberOfFrames:samplerate:hostTime:()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">- (bool) audioProcessingCallback: </td>
@@ -84,10 +133,10 @@ Instance Methods</h2></td></tr>
           <td class="paramname"><em>outputChannels</em></td>
         </tr>
         <tr>
-          <td class="paramkey">numberOfSamples:</td>
+          <td class="paramkey">numberOfFrames:</td>
           <td></td>
           <td class="paramtype">(unsigned int)&#160;</td>
-          <td class="paramname"><em>numberOfSamples</em></td>
+          <td class="paramname"><em>numberOfFrames</em></td>
         </tr>
         <tr>
           <td class="paramkey">samplerate:</td>
@@ -107,15 +156,22 @@ Instance Methods</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">optional</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Return false for no audio output (silence).</dd></dl>
+
+<p>Process audio here. </p>
+<dl class="section return"><dt>Returns</dt><dd>Return false for no audio output (silence). </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">buffers</td><td>Input-output buffers. </td></tr>
     <tr><td class="paramname">outputChannels</td><td>The number of output channels. </td></tr>
-    <tr><td class="paramname">numberOfSamples</td><td>The number of samples requested. </td></tr>
+    <tr><td class="paramname">numberOfFrames</td><td>The number of frames requested. </td></tr>
     <tr><td class="paramname">samplerate</td><td>The current sample rate in Hz. </td></tr>
-    <tr><td class="paramname">hostTime</td><td>A mach timestamp, indicates when this chunk of audio will be passed to the audio output.</td></tr>
+    <tr><td class="paramname">hostTime</td><td>A mach timestamp, indicates when this chunk of audio will be passed to the audio output. </td></tr>
   </table>
   </dd>
 </dl>

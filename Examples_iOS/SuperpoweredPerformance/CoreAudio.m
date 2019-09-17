@@ -10,9 +10,9 @@
     AudioFileID audioFile;
     ScheduledAudioFileRegion region;
     bool fxEnabled[NUMFXUNITS], started;
-    int durationSeconds, durationSamples, lastPositionSeconds;
+    int durationSeconds, durationFrames, lastPositionSeconds;
     uint64_t outputUnitProcessingStart, timeUnitsProcessed, maxTime;
-    unsigned int samplerate, samplesProcessed;
+    unsigned int samplerate, framesProcessed;
 }
 
 - (void)dealloc {
@@ -32,7 +32,7 @@
     UInt32 size = sizeof(timestamp);
     
     if (!AudioUnitGetProperty(filePlayerAU, kAudioUnitProperty_CurrentPlayTime, kAudioUnitScope_Global, 0, &timestamp, &size)) {
-        positionPercent = ((float)timestamp.mSampleTime + region.mStartFrame) / ((float)(durationSamples));
+        positionPercent = ((float)timestamp.mSampleTime + region.mStartFrame) / ((float)(durationFrames));
         positionSeconds = tracking ? (int)(((float)durationSeconds) * slider.value) : (int)(positionPercent * ((float)durationSeconds));
     };
     
@@ -89,11 +89,11 @@ static OSStatus audioUnitRenderNotify(void *inRefCon, AudioUnitRenderActionFlags
         uint64_t elapsedUnits = mach_absolute_time() - self->outputUnitProcessingStart;
         if (elapsedUnits > self->maxTime) self->maxTime = elapsedUnits;
         self->timeUnitsProcessed += elapsedUnits;
-        self->samplesProcessed += inNumberFrames;
-        if (self->samplesProcessed >= self->samplerate) {
+        self->framesProcessed += inNumberFrames;
+        if (self->framesProcessed >= self->samplerate) {
             self->avgUnitsPerSecond = self->timeUnitsProcessed;
             self->maxUnitsPerSecond = (((double)self->samplerate) / ((double)inNumberFrames)) * ((double)self->maxTime);
-            self->samplesProcessed = self->timeUnitsProcessed = self->maxTime = 0;
+            self->framesProcessed = self->timeUnitsProcessed = self->maxTime = 0;
         };
     };
     return noErr;
@@ -122,7 +122,7 @@ static void CheckResult(const char *msg, OSStatus result) {
     if (!self) return nil;
     started = false;
     lastPositionSeconds = -1;
-    avgUnitsPerSecond = timeUnitsProcessed = samplerate = samplesProcessed = maxTime = maxUnitsPerSecond = 0;
+    avgUnitsPerSecond = timeUnitsProcessed = samplerate = framesProcessed = maxTime = maxUnitsPerSecond = 0;
     
     CheckResult("NewAUGraph", NewAUGraph(&graph)); // Let's start building the graph.
     
@@ -255,7 +255,7 @@ static void CheckResult(const char *msg, OSStatus result) {
     size = sizeof(duration);
     CheckResult("file duration", AudioFileGetProperty(audioFile, kAudioFilePropertyEstimatedDuration, &size, &duration));
     durationSeconds = floor(duration);
-    durationSamples = floor(duration * fileFormat.mSampleRate);
+    durationFrames = floor(duration * fileFormat.mSampleRate);
     
     memset(&region.mTimeStamp, 0, sizeof(region.mTimeStamp));
     region.mTimeStamp.mFlags = kAudioTimeStampSampleTimeValid;

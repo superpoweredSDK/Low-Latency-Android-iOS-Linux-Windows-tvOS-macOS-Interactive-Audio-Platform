@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Superpowered: SuperpoweredAndroidAudioIOInternals Struct Reference</title>
+<title>Superpowered SDKs: SuperpoweredAndroidAudioIOInternals Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -18,10 +18,10 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Superpowered
-   &#160;<span id="projectnumber">1.2.0</span>
+   <div id="projectname">Superpowered SDKs
+   &#160;<span id="projectnumber">2.0.0</span>
    </div>
-   <div id="projectbrief">Pain-free Audio Development for Windows, Android, iOS, Mac OSX, tvOS and Linux</div>
+   <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
  </tr>
  </tbody>
@@ -49,6 +49,12 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr class="memitem:a09006e052fe7e5d9d8827a0ff1cadc57"><td class="memItemLeft" align="right" valign="top"><a id="a09006e052fe7e5d9d8827a0ff1cadc57"></a>
+<a class="el" href="structfifo.html">fifo</a>&#160;</td><td class="memItemRight" valign="bottom"><b>inputFifo</b></td></tr>
+<tr class="separator:a09006e052fe7e5d9d8827a0ff1cadc57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe3b562046c95bafe1cac31d51942b76"><td class="memItemLeft" align="right" valign="top"><a id="afe3b562046c95bafe1cac31d51942b76"></a>
+<a class="el" href="structfifo.html">fifo</a>&#160;</td><td class="memItemRight" valign="bottom"><b>outputFifo</b></td></tr>
+<tr class="separator:afe3b562046c95bafe1cac31d51942b76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2afba4f678e8bfb4dfe7633a4183dc3d"><td class="memItemLeft" align="right" valign="top"><a id="a2afba4f678e8bfb4dfe7633a4183dc3d"></a>
 void *&#160;</td><td class="memItemRight" valign="bottom"><b>clientdata</b></td></tr>
 <tr class="separator:a2afba4f678e8bfb4dfe7633a4183dc3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -73,36 +79,27 @@ SLAndroidSimpleBufferQueueItf&#160;</td><td class="memItemRight" valign="bottom"
 <tr class="memitem:ae1c7a6a1bce18c788ffa6aacac2b3583"><td class="memItemLeft" align="right" valign="top"><a id="ae1c7a6a1bce18c788ffa6aacac2b3583"></a>
 SLAndroidSimpleBufferQueueItf&#160;</td><td class="memItemRight" valign="bottom"><b>inputBufferQueueInterface</b></td></tr>
 <tr class="separator:ae1c7a6a1bce18c788ffa6aacac2b3583"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0374ebe107779ab20566aaae29c03507"><td class="memItemLeft" align="right" valign="top"><a id="a0374ebe107779ab20566aaae29c03507"></a>
-short int *&#160;</td><td class="memItemRight" valign="bottom"><b>fifobuffer</b></td></tr>
-<tr class="separator:a0374ebe107779ab20566aaae29c03507"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0597030e6d3f5241c89bbcf1fd71c51"><td class="memItemLeft" align="right" valign="top"><a id="ab0597030e6d3f5241c89bbcf1fd71c51"></a>
+<tr class="memitem:a721f52474445c370deda7c7944302732"><td class="memItemLeft" align="right" valign="top"><a id="a721f52474445c370deda7c7944302732"></a>
 short int *&#160;</td><td class="memItemRight" valign="bottom"><b>silence</b></td></tr>
-<tr class="separator:ab0597030e6d3f5241c89bbcf1fd71c51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a721f52474445c370deda7c7944302732"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a718a8cf87892e04a6e1bf1bd3a96709a"><td class="memItemLeft" align="right" valign="top"><a id="a718a8cf87892e04a6e1bf1bd3a96709a"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>fifoBufferSizeBytes</b></td></tr>
+<tr class="separator:a718a8cf87892e04a6e1bf1bd3a96709a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf387626ad785d6b58164266d3f87730"><td class="memItemLeft" align="right" valign="top"><a id="adf387626ad785d6b58164266d3f87730"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>samplerate</b></td></tr>
 <tr class="separator:adf387626ad785d6b58164266d3f87730"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8e27f94e6637ce4b0f05d175b5a4a43"><td class="memItemLeft" align="right" valign="top"><a id="ab8e27f94e6637ce4b0f05d175b5a4a43"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>buffersize</b></td></tr>
 <tr class="separator:ab8e27f94e6637ce4b0f05d175b5a4a43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acebb72435d95515e3fb87b9530a8f8b8"><td class="memItemLeft" align="right" valign="top"><a id="acebb72435d95515e3fb87b9530a8f8b8"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>silenceSamples</b></td></tr>
-<tr class="separator:acebb72435d95515e3fb87b9530a8f8b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0249814e0c880002effa4e5f25e54d3b"><td class="memItemLeft" align="right" valign="top"><a id="a0249814e0c880002effa4e5f25e54d3b"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>latencySamples</b></td></tr>
-<tr class="separator:a0249814e0c880002effa4e5f25e54d3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af534aa06308ed42f9577cff85e621326"><td class="memItemLeft" align="right" valign="top"><a id="af534aa06308ed42f9577cff85e621326"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>silenceFrames</b></td></tr>
+<tr class="separator:af534aa06308ed42f9577cff85e621326"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff5cc284f80bb9689120b54291d6a2dc"><td class="memItemLeft" align="right" valign="top"><a id="aff5cc284f80bb9689120b54291d6a2dc"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>numBuffers</b></td></tr>
 <tr class="separator:aff5cc284f80bb9689120b54291d6a2dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab538f4e22db640f71036c1ed1ace1709"><td class="memItemLeft" align="right" valign="top"><a id="ab538f4e22db640f71036c1ed1ace1709"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>bufferStep</b></td></tr>
 <tr class="separator:ab538f4e22db640f71036c1ed1ace1709"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8213672fdd372bf1dd04b34823f818a"><td class="memItemLeft" align="right" valign="top"><a id="ad8213672fdd372bf1dd04b34823f818a"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>readBufferIndex</b></td></tr>
-<tr class="separator:ad8213672fdd372bf1dd04b34823f818a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a726b721d2e5c6ccc067bc4e22a57e9ef"><td class="memItemLeft" align="right" valign="top"><a id="a726b721d2e5c6ccc067bc4e22a57e9ef"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>writeBufferIndex</b></td></tr>
-<tr class="separator:a726b721d2e5c6ccc067bc4e22a57e9ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4caecfd272facfdde3f8b2fd29684a1f"><td class="memItemLeft" align="right" valign="top"><a id="a4caecfd272facfdde3f8b2fd29684a1f"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>hasOutput</b></td></tr>
 <tr class="separator:a4caecfd272facfdde3f8b2fd29684a1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -115,6 +112,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>foreground</b></td></
 <tr class="memitem:ac6f1cdb37c589223ed832fb7626df3e3"><td class="memItemLeft" align="right" valign="top"><a id="ac6f1cdb37c589223ed832fb7626df3e3"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>started</b></td></tr>
 <tr class="separator:ac6f1cdb37c589223ed832fb7626df3e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e75be6d248b9f3815e130b5b14abd4e"><td class="memItemLeft" align="right" valign="top"><a id="a3e75be6d248b9f3815e130b5b14abd4e"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>firstOutput</b></td></tr>
+<tr class="separator:a3e75be6d248b9f3815e130b5b14abd4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -55,7 +55,7 @@ namespace Superpowered {
         /// @param inputLengthBytes Number of bytes in input.
         /// @param input Input data.
         /// @param output Output data. Must be at least inputLengthBytes big.
-        /// @return  The updated, new value of streamBlockOffset.
+        /// @return The updated, new value of streamBlockOffset.
         int cryptCTR(unsigned char nonceCounter[16], int streamBlockOffset, unsigned char streamBlock[16], int inputLengthBytes, const unsigned char *input, unsigned char *output);
     };
 

@@ -11,7 +11,7 @@ add_library (
         EffectExample
         SHARED
         src/main/cpp/EffectExample.cpp
-        ${PATH_TO_SUPERPOWERED}/AndroidIO/SuperpoweredAndroidAudioIO.cpp
+        ${PATH_TO_SUPERPOWERED}/OpenSource/SuperpoweredAndroidAudioIO.cpp
 )
 
 # link the native library against the following libraries

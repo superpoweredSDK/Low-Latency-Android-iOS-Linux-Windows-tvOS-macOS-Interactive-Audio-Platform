@@ -1,19 +1,16 @@
 #include <jni.h>
 #include <math.h>
 #include <SuperpoweredCPU.h>
-#include <AndroidIO/SuperpoweredUSBAudio.h>
+#include <SuperpoweredAndroidUSB.h>
 #include <Superpowered.h>
 #include <malloc.h>
 #include <pthread.h>
 
-// Called when the application is initialized. You can initialize SuperpoweredUSBSystem
-// at any time btw. Although this function is marked __unused, it's due Android Studio's
+// Called when the application is initialized. You can initialize Superpowered::AndroidUSB
+// at any time. Although this function is marked __unused, it's due Android Studio's
 // annoying warning only. It's definitely used.
-__unused jint JNI_OnLoad (
-        JavaVM * __unused vm,
-        void * __unused reserved
-) {
-    SuperpoweredInitialize(
+__unused jint JNI_OnLoad (JavaVM * __unused vm, void * __unused reserved) {
+    Superpowered::Initialize(
             "ExampleLicenseKey-WillExpire-OnNextUpdate",
             false, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
             false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
@@ -23,18 +20,15 @@ __unused jint JNI_OnLoad (
             false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
             false  // enableNetworking (using Superpowered::httpRequest)
     );
-    SuperpoweredUSBSystem::initialize(NULL, NULL, NULL, NULL, NULL);
+    Superpowered::AndroidUSB::initialize(NULL, NULL, NULL, NULL, NULL);
     return JNI_VERSION_1_6;
 }
 
-// Called when the application is closed. You can destroy SuperpoweredUSBSystem at any time btw.
+// Called when the application is closed. You can destroy SuperpoweredUSBSystem at any time.
 // Although this function is marked __unused, it's due Android Studio's annoying warning only.
 // It's definitely used.
-__unused void JNI_OnUnload (
-        JavaVM * __unused vm,
-        void * __unused reserved
-) {
-    SuperpoweredUSBSystem::destroy();
+__unused void JNI_OnUnload (JavaVM * __unused vm, void * __unused reserved) {
+    Superpowered::AndroidUSB::destroy();
 }
 
 // A helper structure for sine wave output.
@@ -80,12 +74,7 @@ static int latestMidiValue = 0;
 
 // This is called when some MIDI data is coming in.
 // We are doing some primitive MIDI data processing here.
-static void onMidiReceived (
-        void * __unused clientdata,
-        int __unused deviceID,
-        unsigned char *data,
-        int bytes
-) {
+static void onMidiReceived (void * __unused clientdata, int __unused deviceID, unsigned char *data, int bytes) {
     while (bytes > 0) {
         if (*data > 127) {
             int command = *data >> 4;
@@ -128,12 +117,12 @@ JNI(jint, onConnect, PID) (
 ) {
     jbyte *rd = env->GetByteArrayElements(rawDescriptor, NULL);
     int dataBytes = env->GetArrayLength(rawDescriptor);
-    int r = SuperpoweredUSBSystem::onConnect(deviceID, fd, (unsigned char *)rd, dataBytes);
+    int r = Superpowered::AndroidUSB::onConnect(deviceID, fd, (unsigned char *)rd, dataBytes);
     env->ReleaseByteArrayElements(rawDescriptor, rd, JNI_ABORT);
 
     // r is 0 if SuperpoweredUSBSystem can't do anything with the connected device.
     // r & 2 is true if the device has MIDI. Start receiving events.
-    if (r & 2) SuperpoweredUSBMIDI::startIO(deviceID, NULL, onMidiReceived);
+    if (r & 2) Superpowered::AndroidUSBMIDI::startIO(deviceID, NULL, onMidiReceived);
 
     // r & 1 is true if the device has audio. Start output.
     if (r & 1) {
@@ -142,17 +131,17 @@ JNI(jint, onConnect, PID) (
         if (swo) {
             swo->mul = 0.0f;
             swo->step = 0;
-            SuperpoweredCPU::setSustainedPerformanceMode(true);
+            Superpowered::CPU::setSustainedPerformanceMode(true);
 
             // Our preferred settings: 44100 Hz, 16 bits, 0 input channels, 256 output channels,
             // low latency. Superpowered will set up the audio device as close as it can to these.
-            SuperpoweredUSBAudio::easyIO (
+            Superpowered::AndroidUSBAudio::easyIO (
                     deviceID,                    // deviceID
                     44100,                       // sampling rate
                     16,                          // bits per sample
                     0,                           // numInputChannels
                     256,                         // numOutputChannels
-                    SuperpoweredUSBLatency_Low,  // latency
+                    Superpowered::AndroidUSBAudioBufferSize_VeryLow,  // latency
                     swo,                         // clientData
                     audioProcessing              // SuperpoweredUSBAudioProcessingCallback
             );
@@ -162,23 +151,16 @@ JNI(jint, onConnect, PID) (
 }
 
 // This is called by the SuperpoweredUSBAudio Java object when a USB device is disconnected.
-JNI(void, onDisconnect, PID) (
-        JNIEnv * __unused env,
-        jobject __unused obj,
-        jint deviceID
-) {
-    SuperpoweredUSBSystem::onDisconnect(deviceID);
-    SuperpoweredCPU::setSustainedPerformanceMode(false);
+JNI(void, onDisconnect, PID) (JNIEnv * __unused env, jobject __unused obj, jint deviceID) {
+    Superpowered::AndroidUSB::onDisconnect(deviceID);
+    Superpowered::CPU::setSustainedPerformanceMode(false);
 }
 
 #undef PID
 #define PID com_superpowered_simpleusb_MainActivity
 
 // This is called by the MainActivity Java object periodically.
-JNI(jintArray, getLatestMidiMessage, PID) (
-        JNIEnv *env,
-        jobject __unused obj
-) {
+JNI(jintArray, getLatestMidiMessage, PID) (JNIEnv *env, jobject __unused obj) {
     jintArray ints = env->NewIntArray(4);
     jint *i = env->GetIntArrayElements(ints, 0);
     pthread_mutex_lock(&mutex);

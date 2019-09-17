@@ -98,7 +98,7 @@ static void SuperpoweredFFTTest() {
 
                 // perform forward complex FFT
                 uint64_t volatile st = mach_absolute_time();
-                SuperpoweredFFTComplex(real, imag, logSize, true);
+                Superpowered::FFTComplex(real, imag, logSize, true);
                 measurements[logSize][0][2][mea] = mach_absolute_time() - st;
 
                 DSPSplitComplex complex; complex.realp = vdsp_real; complex.imagp = vdsp_imag;
@@ -110,7 +110,7 @@ static void SuperpoweredFFTTest() {
 
                 // perform inverse real FFT
                 st = mach_absolute_time();
-                SuperpoweredFFTComplex(real, imag, logSize, false);
+                Superpowered::FFTComplex(real, imag, logSize, false);
                 measurements[logSize][0][3][mea] = mach_absolute_time() - st;
 
                 st = mach_absolute_time();
@@ -136,7 +136,7 @@ static void SuperpoweredFFTTest() {
 
             // perform forward real FFT
             uint64_t volatile st = mach_absolute_time();
-            SuperpoweredFFTReal(real, imag, logSize, true);
+            Superpowered::FFTReal(real, imag, logSize, true);
             measurements[logSize][1][2][mea] = mach_absolute_time() - st;
 
             DSPSplitComplex complex; complex.realp = vdsp_real; complex.imagp = vdsp_imag;
@@ -148,7 +148,7 @@ static void SuperpoweredFFTTest() {
 
             // perform inverse real FFT
             st = mach_absolute_time();
-            SuperpoweredFFTReal(real, imag, logSize, false);
+            Superpowered::FFTReal(real, imag, logSize, false);
             measurements[logSize][1][3][mea] = mach_absolute_time() - st;
 
             st = mach_absolute_time();
@@ -173,7 +173,7 @@ static void SuperpoweredFFTTest() {
 
             // perform forward polar FFT
             st = mach_absolute_time();
-            SuperpoweredPolarFFT(real, imag, logSize, true, VALUE_OF_PI);
+            Superpowered::PolarFFT(real, imag, logSize, true, VALUE_OF_PI);
             measurements[logSize][2][2][mea] = mach_absolute_time() - st;
 
             st = mach_absolute_time();
@@ -201,7 +201,7 @@ static void SuperpoweredFFTTest() {
 
             // perform inverse polar FFT
             st = mach_absolute_time();
-            SuperpoweredPolarFFT(real, imag, logSize, false, VALUE_OF_PI);
+            Superpowered::PolarFFT(real, imag, logSize, false, VALUE_OF_PI);
             measurements[logSize][2][3][mea] = mach_absolute_time() - st;
 
             st = mach_absolute_time();

@@ -1,8 +1,8 @@
 package com.superpowered.crossexample;
 
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,7 +12,7 @@ import android.content.Context;
 import android.content.res.AssetFileDescriptor;
 import android.content.pm.PackageManager;
 import java.io.IOException;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.RadioButton;

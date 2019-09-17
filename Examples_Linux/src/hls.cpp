@@ -10,258 +10,243 @@
 #include "Superpowered.h"
 #include "SuperpoweredAdvancedAudioPlayer.h"
 
-typedef struct {
-    unsigned int samplerate;
-    unsigned int numChannels;
-    unsigned int periodSize;
-    int pollDescriptorsCount;
+typedef struct ALSAContext {
     snd_pcm_t *handle;
     float *buffer;
     struct pollfd *ufds;
-} alsaPCMContext;
-
-static bool underrunRecovery(snd_pcm_t *pcmHandle, int error) {
-    if (error == -EPIPE) {
-        error = snd_pcm_prepare(pcmHandle);
-        if (error < 0) printf("underrun recovery 1, snd_pcm_prepare error %s\n", snd_strerror(error));
-        return true;
-    } else if (error == -ESTRPIPE) {
-        while ((error = snd_pcm_resume(pcmHandle)) == -EAGAIN) sleep(1);
-
-        if (error < 0) {
-            error = snd_pcm_prepare(pcmHandle);
-            if (error < 0) printf("underrun recovery 2, snd_pcm_prepare error %s\n", snd_strerror(error));
+    unsigned int samplerate, numChannels, periodSize;
+    int pollDescriptorsCount;
+    
+    void destroy() {
+        if (this->buffer) {
+            snd_pcm_drain(this->handle);
+            snd_pcm_close(this->handle);
+            free(this->buffer);
+            free(this->ufds);
         }
+    }
+    
+    bool setup() {
+        this->handle = NULL;
+        this->buffer = NULL;
+        this->ufds = NULL;
+        this->periodSize = 0;
+        
+        unsigned int bufferTimeUs = 500000, periodTimeUs = 100000;
+        snd_pcm_uframes_t bufferSize = 0;
+        int dir;
+        
+        int error = snd_pcm_open(&this->handle, "default", SND_PCM_STREAM_PLAYBACK, 0);
+        if (error < 0) {
+            printf("snd_pcm_open error %s\n", snd_strerror(error));
+            return false;
+        }
+        
+        snd_pcm_hw_params_t *hwParams;
+        snd_pcm_hw_params_alloca(&hwParams);
+        
+        error = snd_pcm_hw_params_any(this->handle, hwParams);
+        if (error < 0) {
+            printf("snd_pcm_hw_params_any error %s\n", snd_strerror(error));
+            snd_pcm_close(this->handle);
+            return false;
+        }
+        
+        error = snd_pcm_hw_params_set_rate_resample(this->handle, hwParams, 0);
+        if (error < 0) {
+            printf("snd_pcm_hw_params_set_rate_resample error %s\n", snd_strerror(error));
+            snd_pcm_close(this->handle);
+            return false;
+        }
+        
+        error = snd_pcm_hw_params_set_access(this->handle, hwParams, SND_PCM_ACCESS_RW_INTERLEAVED);
+        if (error < 0) {
+            printf("snd_pcm_hw_params_set_access error %s\n", snd_strerror(error));
+            snd_pcm_close(this->handle);
+            return false;
+        }
+        
+        error = snd_pcm_hw_params_set_format(this->handle, hwParams, SND_PCM_FORMAT_FLOAT_LE);
+        if (error < 0) {
+            printf("snd_pcm_hw_params_set_format error %s\n", snd_strerror(error));
+            snd_pcm_close(this->handle);
+            return false;
+        }
+        
+        error = snd_pcm_hw_params_set_channels(this->handle, hwParams, this->numChannels);
+        if (error < 0) {
+            printf("snd_pcm_hw_params_set_channels error %s\n", snd_strerror(error));
+            snd_pcm_close(this->handle);
+            return false;
+        }
+        
+        error = snd_pcm_hw_params_set_rate_near(this->handle, hwParams, &this->samplerate, 0);
+        if (error < 0) {
+            printf("snd_pcm_hw_params_set_rate_near error %s\n", snd_strerror(error));
+            snd_pcm_close(this->handle);
+            return false;
+        }
+        
+        error = snd_pcm_hw_params_set_buffer_time_near(this->handle, hwParams, &bufferTimeUs, &dir);
+        if (error < 0) {
+            printf("snd_pcm_hw_params_set_buffer_time error %s\n", snd_strerror(error));
+            snd_pcm_close(this->handle);
+            return false;
+        }
+        
+        error = snd_pcm_hw_params_get_buffer_size(hwParams, &bufferSize);
+        if (error < 0) {
+            printf("snd_pcm_hw_params_get_buffer_size error %s\n", snd_strerror(error));
+            snd_pcm_close(this->handle);
+            return false;
+        }
+        
+        error = snd_pcm_hw_params_set_period_time_near(this->handle, hwParams, &periodTimeUs, &dir);
+        if (error < 0) {
+            printf("snd_pcm_hw_params_set_period_time_near error %s\n", snd_strerror(error));
+            snd_pcm_close(this->handle);
+            return false;
+        }
+        
+        snd_pcm_uframes_t frames = 0;
+        error = snd_pcm_hw_params_get_period_size(hwParams, &frames, &dir);
+        if (error < 0) {
+            printf("snd_pcm_hw_params_get_period_size error %s\n", snd_strerror(error));
+            snd_pcm_close(this->handle);
+            return false;
+        }
+        this->periodSize = (unsigned int)frames;
+        
+        error = snd_pcm_hw_params(this->handle, hwParams);
+        if (error < 0) {
+            printf("snd_pcm_hw_params error %s\n", snd_strerror(error));
+            snd_pcm_close(this->handle);
+            return false;
+        }
+        
+        snd_pcm_sw_params_t *swParams;
+        snd_pcm_sw_params_alloca(&swParams);
+        
+        error = snd_pcm_sw_params_current(this->handle, swParams);
+        if (error < 0) {
+            printf("snd_pcm_sw_params_current error %s\n", snd_strerror(error));
+            snd_pcm_close(this->handle);
+            return false;
+        }
+        
+        error = snd_pcm_sw_params_set_start_threshold(this->handle, swParams, (bufferSize / this->periodSize) * this->periodSize);
+        if (error < 0) {
+            printf("snd_pcm_sw_params_set_start_threshold error %s\n", snd_strerror(error));
+            snd_pcm_close(this->handle);
+            return false;
+        }
+        
+        error = snd_pcm_sw_params_set_avail_min(this->handle, swParams, this->periodSize);
+        if (error < 0) {
+            printf("snd_pcm_sw_params_set_avail_min error %s\n", snd_strerror(error));
+            snd_pcm_close(this->handle);
+            return false;
+        }
+        
+        error = snd_pcm_sw_params(this->handle, swParams);
+        if (error < 0) {
+            printf("snd_pcm_sw_params error %s\n", snd_strerror(error));
+            snd_pcm_close(this->handle);
+            return false;
+        }
+        
+        this->pollDescriptorsCount = snd_pcm_poll_descriptors_count(this->handle);
+        if (this->pollDescriptorsCount <= 0) {
+            printf("invalid poll descriptors count %s\n", snd_strerror(error));
+            snd_pcm_close(this->handle);
+            return false;
+        }
+        
+        this->ufds = (pollfd *)malloc(sizeof(struct pollfd) * this->pollDescriptorsCount);
+        if (!this->ufds) {
+            printf("out of memory\n");
+            snd_pcm_close(this->handle);
+            return false;
+        }
+        
+        error = snd_pcm_poll_descriptors(this->handle, this->ufds, this->pollDescriptorsCount);
+        if (error < 0) {
+            printf("snd_pcm_poll_descriptors error %s\n", snd_strerror(error));
+            snd_pcm_close(this->handle);
+            free(this->ufds);
+            return false;
+        }
+        
+        this->buffer = (float *)malloc(this->periodSize * this->numChannels * 8);
+        if (!this->buffer) {
+            printf("out of memory\n");
+            snd_pcm_close(this->handle);
+            free(this->ufds);
+            return false;
+        }
+        
+        printf("buffer size: %i, period size: %i, sample rate: %i\n", bufferSize, this->periodSize, this->samplerate);
         return true;
     }
-    return (error >= 0);
-}
-
-static bool waitForPoll(alsaPCMContext *context, bool *init) {
-    unsigned short revents;
-    while (1) {
-        poll(context->ufds, context->pollDescriptorsCount, -1);
-        snd_pcm_poll_descriptors_revents(context->handle, context->ufds, context->pollDescriptorsCount, &revents);
-
-        if (revents & POLLOUT) return true;
-
-        if (revents & POLLERR) {
-            snd_pcm_state_t state = snd_pcm_state(context->handle);
-
-            if ((state == SND_PCM_STATE_XRUN) || (state == SND_PCM_STATE_SUSPENDED)) {
-                int error = (state == SND_PCM_STATE_XRUN) ? -EPIPE : -ESTRPIPE;
-                if (!underrunRecovery(context->handle, error)) {
-                    printf("wait for poll write error: %s\n", snd_strerror(error));
+    
+    bool underrunRecovery(int error) {
+        if (error == -EPIPE) {
+            error = snd_pcm_prepare(this->handle);
+            if (error < 0) printf("underrun recovery 1, snd_pcm_prepare error %s\n", snd_strerror(error));
+            return true;
+        } else if (error == -ESTRPIPE) {
+            while ((error = snd_pcm_resume(this->handle)) == -EAGAIN) sleep(1);
+            
+            if (error < 0) {
+                error = snd_pcm_prepare(this->handle);
+                if (error < 0) printf("underrun recovery 2, snd_pcm_prepare error %s\n", snd_strerror(error));
+            }
+            return true;
+        }
+        return (error >= 0);
+    }
+    
+    bool waitForPoll(bool *init) {
+        unsigned short revents;
+        while (1) {
+            poll(this->ufds, this->pollDescriptorsCount, -1);
+            snd_pcm_poll_descriptors_revents(this->handle, this->ufds, this->pollDescriptorsCount, &revents);
+            
+            if (revents & POLLOUT) return true;
+            
+            if (revents & POLLERR) {
+                snd_pcm_state_t state = snd_pcm_state(this->handle);
+                
+                if ((state == SND_PCM_STATE_XRUN) || (state == SND_PCM_STATE_SUSPENDED)) {
+                    int error = (state == SND_PCM_STATE_XRUN) ? -EPIPE : -ESTRPIPE;
+                    if (!underrunRecovery(error)) {
+                        printf("wait for poll write error: %s\n", snd_strerror(error));
+                        return false;
+                    }
+                    *init = true;
+                } else {
+                    printf("wait for poll failed\n");
                     return false;
                 }
-                *init = true;
-            } else {
-                printf("wait for poll failed\n");
-                return false;
             }
         }
+        return true;
     }
-    return true;
-}
-
-static void destroyContext(alsaPCMContext *context) {
-    snd_pcm_drain(context->handle);
-    snd_pcm_close(context->handle);
-    free(context->buffer);
-    free(context->ufds);
-}
-
-static bool setupContext(alsaPCMContext *context) {
-    context->handle = NULL;
-    context->periodSize = 0;
-
-    unsigned int bufferTimeUs = 500000, periodTimeUs = 100000;
-    snd_pcm_uframes_t bufferSize = 0;
-    int dir;
-
-    int error = snd_pcm_open(&context->handle, "sysdefault", SND_PCM_STREAM_PLAYBACK, 0);
-    if (error < 0) {
-        printf("snd_pcm_open error %s\n", snd_strerror(error));
-        return false;
-    }
-
-    snd_pcm_hw_params_t *hwParams;
-    snd_pcm_hw_params_alloca(&hwParams);
-
-    error = snd_pcm_hw_params_any(context->handle, hwParams);
-    if (error < 0) {
-        printf("snd_pcm_hw_params_any error %s\n", snd_strerror(error));
-        snd_pcm_close(context->handle);
-        return false;
-    }
-
-    error = snd_pcm_hw_params_set_rate_resample(context->handle, hwParams, 0);
-    if (error < 0) {
-        printf("snd_pcm_hw_params_set_rate_resample error %s\n", snd_strerror(error));
-        snd_pcm_close(context->handle);
-        return false;
-    }
-
-    error = snd_pcm_hw_params_set_access(context->handle, hwParams, SND_PCM_ACCESS_RW_INTERLEAVED);
-    if (error < 0) {
-        printf("snd_pcm_hw_params_set_access error %s\n", snd_strerror(error));
-        snd_pcm_close(context->handle);
-        return false;
-    }
-
-    error = snd_pcm_hw_params_set_format(context->handle, hwParams, SND_PCM_FORMAT_FLOAT_LE);
-    if (error < 0) {
-        printf("snd_pcm_hw_params_set_format error %s\n", snd_strerror(error));
-        snd_pcm_close(context->handle);
-        return false;
-    }
-
-    error = snd_pcm_hw_params_set_channels(context->handle, hwParams, context->numChannels);
-    if (error < 0) {
-        printf("snd_pcm_hw_params_set_channels error %s\n", snd_strerror(error));
-        snd_pcm_close(context->handle);
-        return false;
-    }
-
-    error = snd_pcm_hw_params_set_rate_near(context->handle, hwParams, &context->samplerate, 0);
-    if (error < 0) {
-        printf("snd_pcm_hw_params_set_rate_near error %s\n", snd_strerror(error));
-        snd_pcm_close(context->handle);
-        return false;
-    }
-
-    error = snd_pcm_hw_params_set_buffer_time_near(context->handle, hwParams, &bufferTimeUs, &dir);
-    if (error < 0) {
-        printf("snd_pcm_hw_params_set_buffer_time error %s\n", snd_strerror(error));
-        snd_pcm_close(context->handle);
-        return false;
-    }
-
-    error = snd_pcm_hw_params_get_buffer_size(hwParams, &bufferSize);
-    if (error < 0) {
-        printf("snd_pcm_hw_params_get_buffer_size error %s\n", snd_strerror(error));
-        snd_pcm_close(context->handle);
-        return false;
-    }
-
-    error = snd_pcm_hw_params_set_period_time_near(context->handle, hwParams, &periodTimeUs, &dir);
-    if (error < 0) {
-        printf("snd_pcm_hw_params_set_period_time_near error %s\n", snd_strerror(error));
-        snd_pcm_close(context->handle);
-        return false;
-    }
-
-    snd_pcm_uframes_t frames = 0;
-    error = snd_pcm_hw_params_get_period_size(hwParams, &frames, &dir);
-    if (error < 0) {
-        printf("snd_pcm_hw_params_get_period_size error %s\n", snd_strerror(error));
-        snd_pcm_close(context->handle);
-        return false;
-    }
-    context->periodSize = (unsigned int)frames;
-
-    error = snd_pcm_hw_params(context->handle, hwParams);
-    if (error < 0) {
-        printf("snd_pcm_hw_params error %s\n", snd_strerror(error));
-        snd_pcm_close(context->handle);
-        return false;
-    }
-
-    snd_pcm_sw_params_t *swParams;
-    snd_pcm_sw_params_alloca(&swParams);
-
-    error = snd_pcm_sw_params_current(context->handle, swParams);
-    if (error < 0) {
-        printf("snd_pcm_sw_params_current error %s\n", snd_strerror(error));
-        snd_pcm_close(context->handle);
-        return false;
-    }
-
-    error = snd_pcm_sw_params_set_start_threshold(context->handle, swParams, (bufferSize / context->periodSize) * context->periodSize);
-    if (error < 0) {
-        printf("snd_pcm_sw_params_set_start_threshold error %s\n", snd_strerror(error));
-        snd_pcm_close(context->handle);
-        return false;
-    }
-
-    error = snd_pcm_sw_params_set_avail_min(context->handle, swParams, context->periodSize);
-    if (error < 0) {
-        printf("snd_pcm_sw_params_set_avail_min error %s\n", snd_strerror(error));
-        snd_pcm_close(context->handle);
-        return false;
-    }
-
-    error = snd_pcm_sw_params(context->handle, swParams);
-    if (error < 0) {
-        printf("snd_pcm_sw_params error %s\n", snd_strerror(error));
-        snd_pcm_close(context->handle);
-        return false;
-    }
-
-    context->pollDescriptorsCount = snd_pcm_poll_descriptors_count(context->handle);
-    if (context->pollDescriptorsCount <= 0) {
-        printf("invalid poll descriptors count %s\n", snd_strerror(error));
-        snd_pcm_close(context->handle);
-        return false;
-    }
-
-    context->ufds = (pollfd *)malloc(sizeof(struct pollfd) * context->pollDescriptorsCount);
-    if (!context->ufds) {
-        printf("out of memory\n");
-        snd_pcm_close(context->handle);
-        return false;
-    }
-
-    error = snd_pcm_poll_descriptors(context->handle, context->ufds, context->pollDescriptorsCount);
-    if (error < 0) {
-        printf("snd_pcm_poll_descriptors error %s\n", snd_strerror(error));
-        snd_pcm_close(context->handle);
-        free(context->ufds);
-        return false;
-    }
-
-    context->buffer = (float *)malloc(context->periodSize * context->numChannels * 8);
-    if (!context->buffer) {
-        printf("out of memory\n");
-        snd_pcm_close(context->handle);
-        free(context->ufds);
-        return false;
-    }
-
-    printf("buffer size: %i, period size: %i, sample rate: %i\n", bufferSize, context->periodSize, context->samplerate);
-    return true;
-}
-
-static SuperpoweredAdvancedAudioPlayer *player = NULL;
-
-static void playerEventCallback(void *clientData, SuperpoweredAdvancedAudioPlayerEvent event, void *value) {
-    switch (event) {
-        case SuperpoweredAdvancedAudioPlayerEvent_LoadSuccess:
-            printf("Load success.\n");
-            player->play(false);
-            break;
-        case SuperpoweredAdvancedAudioPlayerEvent_LoadError: printf("Load error: %s", (char *)value); break;
-        case SuperpoweredAdvancedAudioPlayerEvent_EOF: player->seek(0); break;
-        case SuperpoweredAdvancedAudioPlayerEvent_DurationChanged: break;
-        default:;
-    };
-}
-
-int main(int argc, char *argv[]) {
-    {
+    
+    bool printAudioDevices() {
         char **hints;
         int error = snd_device_name_hint(-1, "pcm", (void ***)&hints);
         if (error != 0) {
             printf("snd_device_name_hint error %i\n", error);
-            return 0;
+            return false;
         }
-
+        
         if (*hints == NULL) {
             printf("\nNo audio devices found.\n");
             snd_device_name_free_hint((void **)hints);
-            return 0;
+            return false;
         }
-
+        
         printf("\nAudio Devices:\n");
         char **hint = hints;
         while (*hint != NULL) {
@@ -275,47 +260,75 @@ int main(int argc, char *argv[]) {
         }
         printf("\n");
         snd_device_name_free_hint((void **)hints);
+        return true;
     }
+} ALSAContext;
 
-    alsaPCMContext context;
+int main(int argc, char *argv[]) {
+    ALSAContext context;
+    if (!context.printAudioDevices()) return 0;
     context.samplerate = 48000;
     context.numChannels = 2;
-    if (!setupContext(&context)) return 0;
+    if (!context.setup()) return 0;
     
-    SuperpoweredInitialize(
-                           "ExampleLicenseKey-WillExpire-OnNextUpdate",
-                           false, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
-                           false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
-                           false, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
-                           false, // enableAudioEffects (using any SuperpoweredFX class)
-                           true, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
-                           false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
-                           false  // enableNetworking (using Superpowered::httpRequest)
-                           );
+    Superpowered::Initialize(
+                             "ExampleLicenseKey-WillExpire-OnNextUpdate",
+                             false, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
+                             false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
+                             false, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
+                             false, // enableAudioEffects (using any SuperpoweredFX class)
+                             true, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
+                             false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
+                             false  // enableNetworking (using Superpowered::httpRequest)
+                             );
 
-    SuperpoweredAdvancedAudioPlayer::setTempFolder("/tmp/");
-    player = new SuperpoweredAdvancedAudioPlayer(NULL, playerEventCallback, context.samplerate, 0);
+    Superpowered::AdvancedAudioPlayer::setTempFolder("/tmp/");
+    Superpowered::AdvancedAudioPlayer *player = new Superpowered::AdvancedAudioPlayer(context.samplerate, 0);
     player->openHLS("http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8");
 
     bool init = true;
 
-    int numTurns = 1, numSamples = context.periodSize;
+    int numTurns = 1, numFrames = context.periodSize;
     if (context.periodSize > 1024) {
         div_t d = div(context.periodSize, 1024);
         numTurns = d.quot;
         if (d.rem > 0) numTurns++;
-        numSamples = context.periodSize / numTurns;
+        numFrames = context.periodSize / numTurns;
     }
-    printf("Superpowered turns: %i, samples per turn: %i\n\nPress ENTER to quit.\n", numTurns, numSamples);
+    printf("Superpowered turns: %i, frames per turn: %i\n\nPress ENTER to quit.\n", numTurns, numFrames);
 
     bool run = true;
     while (run) {
-        if (!init && !waitForPoll(&context, &init)) break;
+        if (!init && !context.waitForPoll(&init)) break;
+        
+        switch (player->getLatestEvent()) {
+            case Superpowered::PlayerEvent_Opened:
+                printf("\rLoad success.\n");
+                player->play();
+                break;
+            case Superpowered::PlayerEvent_ConnectionLost:
+                printf("\rConnection Lost\n");
+                run = false;
+                break;
+            case Superpowered::PlayerEvent_OpenFailed:
+            {
+                int openError = player->getOpenErrorCode();
+                printf("\rOpen error %i: %s\n", openError, Superpowered::AdvancedAudioPlayer::statusCodeToString(openError));
+                run = false;
+            }
+                break;
+            default:;
+        }
+        
+        if (player->eofRecently()) {
+            printf("\rEnd of file.\n");
+            break;
+        }
 
         float *buf = context.buffer;
         for (int n = 0; n < numTurns; n++) {
-            if (!player->process(buf, false, numSamples)) memset(buf, 0, numSamples * 8);
-            buf += numSamples * 2;
+            if (!player->processStereo(buf, false, numFrames)) memset(buf, 0, numFrames * 8);
+            buf += numFrames * 2;
         }
 
         float *ptr = context.buffer;
@@ -324,7 +337,7 @@ int main(int argc, char *argv[]) {
         while (cptr > 0) {
             int error = snd_pcm_writei(context.handle, ptr, cptr);
             if (error < 0) {
-                if (!underrunRecovery(context.handle, error)) {
+                if (!context.underrunRecovery(error)) {
                     printf("underrun recovery write error: %s\n", snd_strerror(error));
                     run = false;
                     break;
@@ -340,7 +353,7 @@ int main(int argc, char *argv[]) {
             cptr -= error;
             if (cptr == 0) break;
 
-            if (!waitForPoll(&context, &init)) {
+            if (!context.waitForPoll(&init)) {
                 run = false;
                 break;
             }
@@ -353,7 +366,7 @@ int main(int argc, char *argv[]) {
         if (select(1, &fds, NULL, NULL, &tv)) break;
     }
 
-    destroyContext(&context);
+    context.destroy();
     if (player) delete(player);
     return 0;
 }

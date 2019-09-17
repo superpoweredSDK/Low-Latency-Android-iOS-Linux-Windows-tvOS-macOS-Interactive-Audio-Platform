@@ -13,7 +13,7 @@
 #else
 #define PLATFORM "x86"
 #endif
-#pragma comment(lib, "..\\..\\Superpowered\\Windows\\SuperpoweredWinUWP_" CONFIGURATION "_" PLATFORM  ".lib")
+#pragma comment(lib, "..\\..\\Superpowered\\libWindows\\SuperpoweredWinUWP_" CONFIGURATION "_" PLATFORM  ".lib")
 
 #include <Windows.h>
 #include <stdio.h>

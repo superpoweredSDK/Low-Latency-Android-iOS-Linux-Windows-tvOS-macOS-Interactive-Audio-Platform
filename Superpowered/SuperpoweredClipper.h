@@ -1,35 +1,34 @@
 #ifndef Header_SuperpoweredClipper
 #define Header_SuperpoweredClipper
 
+namespace Superpowered {
+
 struct clipperInternals;
 
-/**
- @brief Hard knee clipping with 0 latency.
- 
- It doesn't allocate any internal buffers and needs just a few bytes of memory.
- 
- @param thresholdDb Audio below this will be unchanged, above this will be attenuated. Limited between -100.0f and 0.0f.
- @param maximumDb Audio will reach 1.0f at this point. Limited between -48.0f and 48.0f.
-*/
-class SuperpoweredClipper {
+/// @brief Hard knee clipping with 0 latency.
+/// It doesn't allocate any internal buffers and needs just a few bytes of memory.
+class Clipper {
 public:
-    float thresholdDb;
-    float maximumDb;
+    float thresholdDb; ///< Audio below this will be unchanged, above this will be attenuated. Limited between -100 and 0.
+    float maximumDb;   ///< Audio will reach 1.0f at this point. Limited between -48 and 48.
 
-    SuperpoweredClipper();
-    ~SuperpoweredClipper();
+/// @brief Constructor;
+    Clipper();
+    ~Clipper();
 
-/**
- @brief Processes the audio.
-
- @param input 32-bit interleaved stereo input buffer. Can point to the same location with output (in-place processing).
- @param output 32-bit interleaved stereo output buffer. Can point to the same location with input (in-place processing).
- @param numberOfSamples Should be 4 minimum and exactly divisible with 4.
-*/
-    void process(float *input, float *output, unsigned int numberOfSamples);
+/// @brief Processes the audio.
+/// It's never blocking for real-time usage. You can change all properties on any thread, concurrently with process().
+/// @param input Pointer to floating point numbers. 32-bit interleaved stereo input.
+/// @param output Pointer to floating point numbers. 32-bit interleaved stereo output. Can point to the same location with input (in-place processing).
+/// @param numberOfFrames Should be 4 minimum and exactly divisible with 4.
+    void process(float *input, float *output, unsigned int numberOfFrames);
 
 private:
     clipperInternals *internals;
+    Clipper(const Clipper&);
+    Clipper& operator=(const Clipper&);
 };
+
+}
 
 #endif

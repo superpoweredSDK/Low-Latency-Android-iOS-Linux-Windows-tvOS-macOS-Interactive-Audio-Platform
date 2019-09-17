@@ -2,7 +2,7 @@ package com.superpowered.simpleusb;
 
 import android.os.Handler;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.widget.TextView;
 
 import java.util.Locale;

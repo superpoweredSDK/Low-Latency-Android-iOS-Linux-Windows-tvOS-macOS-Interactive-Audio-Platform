@@ -3,12 +3,12 @@ apply plugin: 'com.android.application'
 def superpowered_sdk_path = new File(projectDir, '../../../Superpowered')
 
 android { // main settings for your application
-    compileSdkVersion = 28
+    compileSdkVersion = 29
 
     defaultConfig {
         applicationId "com.superpowered.frequencydomain"
         minSdkVersion 19 // more than 99.5% of all active Android devices
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 
@@ -34,5 +34,5 @@ android { // main settings for your application
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
 }

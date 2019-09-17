@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">1.4.0</span>
+   &#160;<span id="projectnumber">2.0.0</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -46,20 +46,16 @@ $(function() {
 <div class="title">SuperpoweredWindowsAudioIO Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>Easy handling of WASAPI audio input and/or output.  
-</p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a961f7cfcb42e8f02f4336d2e368de798"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_windows_audio_i_o.html#a961f7cfcb42e8f02f4336d2e368de798">SuperpoweredWindowsAudioIO</a> (audioProcessingCallback callback, void *clientdata, bool enableInput, bool enableOutput)</td></tr>
-<tr class="memdesc:a961f7cfcb42e8f02f4336d2e368de798"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an audio I/O instance and configures it for low latency.  <a href="#a961f7cfcb42e8f02f4336d2e368de798">More...</a><br /></td></tr>
+<tr class="memitem:a961f7cfcb42e8f02f4336d2e368de798"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_windows_audio_i_o.html#a961f7cfcb42e8f02f4336d2e368de798">SuperpoweredWindowsAudioIO</a> (<a class="el" href="_superpowered_windows_audio_i_o_8h.html#ad977991ca1ab5f2c893e4f65ef1247cb">audioProcessingCallback</a> callback, void *clientdata, bool enableInput, bool enableOutput)</td></tr>
 <tr class="separator:a961f7cfcb42e8f02f4336d2e368de798"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a0d2f0e37d19e32a58242fc61c33e09"><td class="memItemLeft" align="right" valign="top"><a id="a8a0d2f0e37d19e32a58242fc61c33e09"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>start</b> ()</td></tr>
+<tr class="memitem:adb55d3d71b37ef38cb1b8deab44b839a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_windows_audio_i_o.html#adb55d3d71b37ef38cb1b8deab44b839a">~SuperpoweredWindowsAudioIO</a> ()</td></tr>
+<tr class="separator:adb55d3d71b37ef38cb1b8deab44b839a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a0d2f0e37d19e32a58242fc61c33e09"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_windows_audio_i_o.html#a8a0d2f0e37d19e32a58242fc61c33e09">start</a> ()</td></tr>
 <tr class="separator:a8a0d2f0e37d19e32a58242fc61c33e09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac787dafaf70043790972bb0fc12bdbab"><td class="memItemLeft" align="right" valign="top"><a id="ac787dafaf70043790972bb0fc12bdbab"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>stop</b> ()</td></tr>
+<tr class="memitem:ac787dafaf70043790972bb0fc12bdbab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_windows_audio_i_o.html#ac787dafaf70043790972bb0fc12bdbab">stop</a> ()</td></tr>
 <tr class="separator:ac787dafaf70043790972bb0fc12bdbab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -72,7 +68,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>stop</b> ()</td></tr>
         <tr>
           <td class="memname">SuperpoweredWindowsAudioIO::SuperpoweredWindowsAudioIO </td>
           <td>(</td>
-          <td class="paramtype">audioProcessingCallback&#160;</td>
+          <td class="paramtype"><a class="el" href="_superpowered_windows_audio_i_o_8h.html#ad977991ca1ab5f2c893e4f65ef1247cb">audioProcessingCallback</a>&#160;</td>
           <td class="paramname"><em>callback</em>, </td>
         </tr>
         <tr>
@@ -100,7 +96,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>stop</b> ()</td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section warning"><dt>Warning</dt><dd>Don't forget to check the Capabilities section in the Package.appxmanifest file for UWP apps, for items like "Background Media Playback" or "Microphone".</dd></dl>
+
+<p>Creates an audio I/O instance and configures it for low latency. </p>
+<dl class="section warning"><dt>Warning</dt><dd>Don't forget to check the Capabilities section in the Package.appxmanifest file for UWP apps, for items like "Background Media Playback" or "Microphone". </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">callback</td><td>The audio processing callback function to call periodically. </td></tr>
@@ -110,6 +108,62 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>stop</b> ()</td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="adb55d3d71b37ef38cb1b8deab44b839a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb55d3d71b37ef38cb1b8deab44b839a">&#9670;&nbsp;</a></span>~SuperpoweredWindowsAudioIO()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SuperpoweredWindowsAudioIO::~SuperpoweredWindowsAudioIO </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a8a0d2f0e37d19e32a58242fc61c33e09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a0d2f0e37d19e32a58242fc61c33e09">&#9670;&nbsp;</a></span>start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SuperpoweredWindowsAudioIO::start </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Starts audio input and/or output. </p>
+
+</div>
+</div>
+<a id="ac787dafaf70043790972bb0fc12bdbab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac787dafaf70043790972bb0fc12bdbab">&#9670;&nbsp;</a></span>stop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SuperpoweredWindowsAudioIO::stop </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Stops audio input and/or output. </p>
 
 </div>
 </div>
