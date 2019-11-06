@@ -193,6 +193,7 @@ SuperpoweredAndroidAudioIO::SuperpoweredAndroidAudioIO(int samplerate, int buffe
             free(internals->inputFifo.buffer);
             internals->inputFifo.buffer = NULL;
             enableInput = false;
+            internals->hasInput = false;
         }
     };
 
