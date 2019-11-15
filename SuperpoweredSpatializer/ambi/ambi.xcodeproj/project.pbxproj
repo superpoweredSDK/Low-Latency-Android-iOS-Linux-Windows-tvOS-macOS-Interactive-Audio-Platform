@@ -150,7 +150,7 @@
 		1BC17B891C6DDBA700729263 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = superpowered;
 				TargetAttributes = {
 					1BC17B901C6DDBA700729263 = {

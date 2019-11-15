@@ -163,7 +163,8 @@ public:
 /// @brief Returns with the text inside the current ID3 frame. To be used with readNextID3Frame().
 /// @return A pointer to the text in UTF-8 encoding (you take ownership on the data, don't forget to free() when done to prevent memory leaks), or NULL if empty.
 /// @warning Use it for frames containing text only!
-    char *getID3FrameAsString();
+/// @param offset Parse from this byte index.
+    char *getID3FrameAsString(int offset = 0);
     
 /// @return Returns with the contents "best" artist tag (TP1-4, TPE1-4, QT atoms). May return NULL.
 /// Call this after parseAllID3Frames() OR finished reading all ID3 frames with readNextID3Frame().
@@ -179,6 +180,10 @@ public:
 /// Call this after parseAllID3Frames() OR finished reading all ID3 frames with readNextID3Frame().
 /// @param takeOwnership For advanced use. If true, you take ownership on the data (don't forget to free() when done to prevent memory leaks).
     char *getAlbum(bool takeOwnership = false);
+    
+/// @return Returns with the track index (track field or TRCK).
+/// Call this after parseAllID3Frames() OR finished reading all ID3 frames with readNextID3Frame().
+    unsigned int getTrackIndex();
     
 /// @return Returns with the contents "best" image tag (PIC, APIC, QT atom). May return NULL.
 /// Call this after parseAllID3Frames() OR finished reading all ID3 frames with readNextID3Frame().

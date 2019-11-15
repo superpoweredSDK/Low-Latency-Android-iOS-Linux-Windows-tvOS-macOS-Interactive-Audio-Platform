@@ -1,18 +1,9 @@
 #import "SuperpoweredIOSAudioIO.h"
+#import <UIKit/UIKit.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import <AudioUnit/AudioUnit.h>
-#import <MediaPlayer/MediaPlayer.h>
 #import <pthread.h>
 #include <mach/mach_time.h>
-
-// Helpers
-#define SILENCE_DEPRECATION(code)                                   \
-{                                                                   \
-_Pragma("clang diagnostic push")                                    \
-_Pragma("clang diagnostic ignored \"-Wdeprecated-declarations\"")   \
-code;                                                               \
-_Pragma("clang diagnostic pop")                                     \
-}
 
 #define USES_AUDIO_INPUT 1
 
@@ -45,7 +36,7 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
     audioDeviceType RemoteIOOutputChannelMap[64];
     uint64_t lastCallbackTime;
     int numChannels, silenceFrames, samplerate, minimumNumberOfFrames, maximumNumberOfFrames;
-    bool audioUnitRunning, iOS6, background, inputEnabled;
+    bool audioUnitRunning, background, inputEnabled;
 }
 
 @synthesize preferredBufferSizeMs, preferredSamplerate, saveBatteryInBackground, started;
@@ -63,8 +54,7 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
 - (id)initWithDelegate:(NSObject<SuperpoweredIOSAudioIODelegate> *)d preferredBufferSize:(unsigned int)preferredBufferSize preferredSamplerate:(unsigned int)prefsamplerate audioSessionCategory:(NSString *)category channels:(int)channels audioProcessingCallback:(audioProcessingCallback)callback clientdata:(void *)clientdata {
     self = [super init];
     if (self) {
-        iOS6 = ([[[UIDevice currentDevice] systemVersion] compare:@"6.0" options:NSNumericSearch] != NSOrderedAscending);
-        numChannels = !iOS6 ? 2 : channels;
+        numChannels = channels;
 #if !__has_feature(objc_arc)
         audioSessionCategory = [category retain];
 #else
@@ -103,14 +93,9 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
         // Need to listen for a few app and audio session related events.
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onForeground) name:UIApplicationDidBecomeActiveNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
-        if (iOS6) {
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onMediaServerReset:) name:AVAudioSessionMediaServicesWereResetNotification object:[AVAudioSession sharedInstance]];
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioSessionInterrupted:) name:AVAudioSessionInterruptionNotification object:[AVAudioSession sharedInstance]];
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onRouteChange:) name:AVAudioSessionRouteChangeNotification object:[AVAudioSession sharedInstance]];
-        } else {
-            AVAudioSession *s = [AVAudioSession sharedInstance];
-            SILENCE_DEPRECATION(s.delegate = (id<AVAudioSessionDelegate>)self); // iOS 5 compatibility
-        };
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onMediaServerReset:) name:AVAudioSessionMediaServicesWereResetNotification object:[AVAudioSession sharedInstance]];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioSessionInterrupted:) name:AVAudioSessionInterruptionNotification object:[AVAudioSession sharedInstance]];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onRouteChange:) name:AVAudioSessionRouteChangeNotification object:[AVAudioSession sharedInstance]];
         
 #if (USES_AUDIO_INPUT == 1)
         if ((recordOnly || [category isEqualToString:AVAudioSessionCategoryPlayAndRecord]) && [[AVAudioSession sharedInstance] respondsToSelector:@selector(recordPermission)] && [[AVAudioSession sharedInstance] respondsToSelector:@selector(requestRecordPermission:)] && ([[AVAudioSession sharedInstance] recordPermission] != AVAudioSessionRecordPermissionGranted)) {
@@ -316,7 +301,6 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
     };
 
     [self mapChannels];
-    if (usbOrHDMIAvailable) SILENCE_DEPRECATION([[MPMusicPlayerController applicationMusicPlayer] setVolume:1.0f]); // iOS 5 and iOS 6 compatibility
 }
 
 - (void)applyBuffersize {
@@ -324,9 +308,7 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
 }
 
 - (void)applySamplerate {
-    if (!iOS6) { // iOS 5 compatibility
-        SILENCE_DEPRECATION([[AVAudioSession sharedInstance] setPreferredHardwareSampleRate:preferredSamplerate error:NULL]);
-    } else [[AVAudioSession sharedInstance] setPreferredSampleRate:preferredSamplerate error:NULL];
+    [[AVAudioSession sharedInstance] setPreferredSampleRate:preferredSamplerate error:NULL];
 }
 
 - (void)resetAudio {
@@ -357,9 +339,7 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
     [[AVAudioSession sharedInstance] setActive:YES error:NULL];
 
     audioUnit = [self createRemoteIO];
-    if (!multiRoute) {
-        if (iOS6) [self onRouteChange:nil]; else [self mapChannels];
-    };
+    if (!multiRoute) [self onRouteChange:nil];
 }
 
 /*
@@ -520,7 +500,7 @@ static OSStatus coreAudioProcessingCallback(void *inRefCon, AudioUnitRenderActio
     for (int n = 0; n < 32; n++) outputChannelMap.USBChannels[n] = inputChannelMap.USBChannels[n] = - 1;
     
     if ([(NSObject *)self->delegate respondsToSelector:@selector(mapChannels:inputMap:externalAudioDeviceName:outputsAndInputs:)]) [delegate mapChannels:&outputChannelMap inputMap:&inputChannelMap externalAudioDeviceName:externalAudioDeviceName outputsAndInputs:audioSystemInfo];
-    if (!audioUnit || !iOS6 || (numChannels <= 2)) return;
+    if (!audioUnit || (numChannels <= 2)) return;
 
     SInt32 outputmap[32], inputmap[32];
     int devicePos = 0, hdmiPos = 0, usbPos = 0;

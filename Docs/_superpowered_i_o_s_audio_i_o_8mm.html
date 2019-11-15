@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">2.0.0</span>
+   &#160;<span id="projectnumber">2.0.1</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -55,8 +55,6 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a9ee8ac50f2b212824faf33b5fbe65310"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_i_o_s_audio_i_o_8mm.html#a9ee8ac50f2b212824faf33b5fbe65310">SILENCE_DEPRECATION</a>(code)</td></tr>
-<tr class="separator:a9ee8ac50f2b212824faf33b5fbe65310"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66af7e2b83f29deeec726111b2ef4a83"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_i_o_s_audio_i_o_8mm.html#a66af7e2b83f29deeec726111b2ef4a83">USES_AUDIO_INPUT</a>&#160;&#160;&#160;1</td></tr>
 <tr class="separator:a66af7e2b83f29deeec726111b2ef4a83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -112,32 +110,12 @@ Variables</h2></td></tr>
 <tr class="separator:a386ad7482dfac1e7dd2589213b94c51b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6475a35a1c60f85a80b7e0f68290bf9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_i_o_s_audio_i_o_8mm.html#ac6475a35a1c60f85a80b7e0f68290bf9">audioUnitRunning</a></td></tr>
 <tr class="separator:ac6475a35a1c60f85a80b7e0f68290bf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adbfa75b1d9563f76901be1a0ac2a1ee7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_i_o_s_audio_i_o_8mm.html#adbfa75b1d9563f76901be1a0ac2a1ee7">iOS6</a></td></tr>
-<tr class="separator:adbfa75b1d9563f76901be1a0ac2a1ee7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad93cf7363a1d28f443bf79f2be77f531"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_i_o_s_audio_i_o_8mm.html#ad93cf7363a1d28f443bf79f2be77f531">background</a></td></tr>
 <tr class="separator:ad93cf7363a1d28f443bf79f2be77f531"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7ad5ba3a07ee0b2d21505621902157d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_i_o_s_audio_i_o_8mm.html#ae7ad5ba3a07ee0b2d21505621902157d">inputEnabled</a></td></tr>
 <tr class="separator:ae7ad5ba3a07ee0b2d21505621902157d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a9ee8ac50f2b212824faf33b5fbe65310"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9ee8ac50f2b212824faf33b5fbe65310">&#9670;&nbsp;</a></span>SILENCE_DEPRECATION</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define SILENCE_DEPRECATION</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">code</td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">{                                                                   \</div><div class="line">_Pragma(<span class="stringliteral">&quot;clang diagnostic push&quot;</span>)                                    \</div><div class="line">_Pragma(<span class="stringliteral">&quot;clang diagnostic ignored \&quot;-Wdeprecated-declarations\&quot;&quot;</span>)   \</div><div class="line">code;                                                               \</div><div class="line">_Pragma(<span class="stringliteral">&quot;clang diagnostic pop&quot;</span>)                                     \</div><div class="line">}</div></div><!-- fragment -->
-</div>
-</div>
 <a id="a66af7e2b83f29deeec726111b2ef4a83"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a66af7e2b83f29deeec726111b2ef4a83">&#9670;&nbsp;</a></span>USES_AUDIO_INPUT</h2>
 
@@ -435,20 +413,6 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">bool audioUnitRunning</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="adbfa75b1d9563f76901be1a0ac2a1ee7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adbfa75b1d9563f76901be1a0ac2a1ee7">&#9670;&nbsp;</a></span>iOS6</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool iOS6</td>
         </tr>
       </table>
 </div><div class="memdoc">

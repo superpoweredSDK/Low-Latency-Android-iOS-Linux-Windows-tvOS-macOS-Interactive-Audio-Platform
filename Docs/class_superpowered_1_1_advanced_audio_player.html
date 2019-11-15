@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">2.0.0</span>
+   &#160;<span id="projectnumber">2.0.1</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -94,6 +94,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aa5c070ed564b305bd571c2ad61e9567f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0787d489a4a543153bc1fcd23c566d87"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_advanced_audio_player.html#a0787d489a4a543153bc1fcd23c566d87">playSynchronized</a> ()</td></tr>
 <tr class="separator:a0787d489a4a543153bc1fcd23c566d87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d4da761888ae8733988680a4001d375"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_advanced_audio_player.html#a3d4da761888ae8733988680a4001d375">playSynchronizedToPosition</a> (double positionMs)</td></tr>
+<tr class="separator:a3d4da761888ae8733988680a4001d375"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f31d3173feb24cd0cbb6ba7599970e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_advanced_audio_player.html#a0f31d3173feb24cd0cbb6ba7599970e3">pause</a> (float decelerateSeconds=0, unsigned int slipMs=0)</td></tr>
 <tr class="separator:a0f31d3173feb24cd0cbb6ba7599970e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9143088cc2b60a0d71762c82ceeb8a16"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_advanced_audio_player.html#a9143088cc2b60a0d71762c82ceeb8a16">togglePlayback</a> ()</td></tr>
@@ -670,7 +672,6 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>Returns true if end-of-file has been reached recently (will never indicate end-of-file if loopOnEOF is true). This method should be used in a periodically running code at one place only, because it returns a specific end-of-file event just once. Best to be used in a UI loop. </dd></dl>
-<dl class="section warning"><dt>Warning</dt><dd></dd></dl>
 
 </div>
 </div>
@@ -853,6 +854,32 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Starts beat or tempo synchronized playback. </p>
+
+</div>
+</div>
+<a id="a3d4da761888ae8733988680a4001d375"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d4da761888ae8733988680a4001d375">&#9670;&nbsp;</a></span>playSynchronizedToPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Superpowered::AdvancedAudioPlayer::playSynchronizedToPosition </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>positionMs</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Starts playback at a specific position. <a class="el" href="class_superpowered_1_1_advanced_audio_player.html#a07aae186fe984e189725745e085b03b9">isPlaying()</a> will return false until this function succeeds starting playback at the specified position. You can call this in a real-time thread (audio processing callback) with a continuously updated time for a precise on-the-fly launch. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">positionMs</td><td>Start position in milliseconds. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

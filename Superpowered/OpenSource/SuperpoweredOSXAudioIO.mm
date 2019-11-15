@@ -155,6 +155,13 @@ static void destroyUnit(AudioComponentInstance *unit) {
 }
 
 - (void)dealloc {
+    AudioObjectPropertyAddress ddaddress = { kAudioHardwarePropertyDefaultInputDevice, kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMaster };
+    AudioObjectRemovePropertyListener(kAudioObjectSystemObject, &ddaddress, defaultDeviceChangedCallback, (__bridge void *)self);
+    ddaddress.mSelector = kAudioHardwarePropertyDefaultOutputDevice;
+    AudioObjectRemovePropertyListener(kAudioObjectSystemObject, &ddaddress, defaultDeviceChangedCallback, (__bridge void *)self);
+    AudioObjectPropertyAddress hdaddress = { kAudioHardwarePropertyDevices, kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMaster };
+    AudioObjectRemovePropertyListener(kAudioObjectSystemObject, &hdaddress, devicesChangedCallback, (__bridge void *)self);
+    
     destroyUnit(&inputUnit);
     destroyUnit(&outputUnit);
     for (int n = 0; n < numberOfChannels; n++) {

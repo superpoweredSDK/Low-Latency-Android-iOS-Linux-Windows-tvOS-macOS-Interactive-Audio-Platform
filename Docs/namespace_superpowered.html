@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">2.0.0</span>
+   &#160;<span id="projectnumber">2.0.1</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -1017,7 +1017,7 @@ Functions</h2></td></tr>
     <tr><td class="paramname">enableFFTAndFrequencyDomain</td><td>Enables <a class="el" href="class_superpowered_1_1_frequency_domain.html" title="Transforms between time-domain and frequency-domain audio, including buffering, windowing (HanningZ) ...">FrequencyDomain</a>, FFTComplex, FFTReal and PolarFFT. </td></tr>
     <tr><td class="paramname">enableAudioTimeStretching</td><td>Enables <a class="el" href="class_superpowered_1_1_time_stretching.html" title="Time stretching and pitch shifting. One instance allocates around 220 kb memory. ">TimeStretching</a>. </td></tr>
     <tr><td class="paramname">enableAudioEffects</td><td>Enables all effects and every class based on the <a class="el" href="class_superpowered_1_1_f_x.html" title="This is the base class for Superpowered effects. ">FX</a> class. </td></tr>
-    <tr><td class="paramname">enableAudioPlayerAndDecoder</td><td>Enables <a class="el" href="class_superpowered_1_1_advanced_audio_player.html" title="High performance advanced audio player with: ">AdvancedAudioPlayer</a> and <a class="el" href="class_superpowered_1_1_decoder.html" title="Audio file decoder. Provides raw PCM audio from various compressed formats. Thread safety: single thr...">Decoder</a>. </td></tr>
+    <tr><td class="paramname">enableAudioPlayerAndDecoder</td><td>Enables <a class="el" href="class_superpowered_1_1_advanced_audio_player.html" title="High performance advanced audio player with: ">AdvancedAudioPlayer</a> and <a class="el" href="class_superpowered_1_1_decoder.html" title="Audio file decoder. Provides raw PCM audio from various compressed formats. Supported file types: ...">Decoder</a>. </td></tr>
     <tr><td class="paramname">enableCryptographics</td><td>Enables <a class="el" href="class_superpowered_1_1_r_s_a_public_key.html" title="Forward declaration. ">RSAPublicKey</a>,<a class="el" href="class_superpowered_1_1_r_s_a_private_key.html" title="RSA private key object. ">RSAPrivateKey</a>, hasher and <a class="el" href="struct_superpowered_1_1_a_e_s.html" title="A structure to perform AES encryption. The size of the structure is 548 bytes. ">AES</a>. </td></tr>
     <tr><td class="paramname">enableNetworking</td><td>Enables <a class="el" href="class_superpowered_1_1http_request.html" title="HTTP request. ">httpRequest</a>. </td></tr>
   </table>
@@ -1178,7 +1178,7 @@ Functions</h2></td></tr>
     <tr><td class="paramname">mag</td><td>Pointer to floating point numbers. Input: split real part. Output: magnitudes. </td></tr>
     <tr><td class="paramname">phase</td><td>Pointer to floating point numbers. Input: split real part. Output: phases. </td></tr>
     <tr><td class="paramname">logSize</td><td>Should be 5 - 13 (FFT sizes 32 - 8192). </td></tr>
-    <tr><td class="paramname">forward</td><td>Forward or inverse. </td></tr>
+    <tr><td class="paramname">forward</td><td>Forward or inverse. Inverse PolarFFT will clear (zero) the DC offset. </td></tr>
     <tr><td class="paramname">valueOfPi</td><td>The function can translate pi to any value (Google: the tau manifesto). Use 0 for M_PI. </td></tr>
   </table>
   </dd>
@@ -1769,7 +1769,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Applies volume on a single stereo interleaved buffer. </p>
+<p>Applies volume on a single stereo interleaved buffer: output = input * gain. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">input</td><td>Pointer to floating point numbers. 32-bit interleaved stereo input. </td></tr>
@@ -1827,7 +1827,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Applies volume on a single stereo interleaved buffer. </p>
+<p>Applies volume on a single stereo interleaved buffer: output = input * gain. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">input</td><td>Pointer to floating point numbers. 32-bit interleaved stereo input. </td></tr>
@@ -1885,7 +1885,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Applies volume on a single stereo interleaved buffer and adds it to the audio in the output buffer. </p>
+<p>Applies volume on a single stereo interleaved buffer and adds it to the audio in the output buffer: output = output + input * gain. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">input</td><td>Pointer to floating point numbers. 32-bit interleaved stereo input. </td></tr>
@@ -1943,7 +1943,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Applies volume on a single stereo interleaved buffer and adds it to the audio in the output buffer. </p>
+<p>Applies volume on a single stereo interleaved buffer and adds it to the audio in the output buffer: output = output + input * gain. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">input</td><td>Pointer to floating point numbers. 32-bit interleaved stereo input. </td></tr>
@@ -2541,8 +2541,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Makes an interleaved stereo output from two mono input channels. </p>
-<p>Makes an interleaved stereo output from two mono input channels and adds the result to the audio in the output buffer.</p>
+<p>Makes an interleaved stereo output from two mono input channels: output = [L, R, L, R, ...]. </p>
+<p>Makes an interleaved stereo output from two mono input channels and adds the result to the audio in the output buffer: output = output + [L, R, L, R, ...].</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">left</td><td>Pointer to floating point numbers. Mono input for left channel. </td></tr>
@@ -2639,7 +2639,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Makes an interleaved output from two input channels and measures the volume. </p>
+<p>Makes an interleaved output from two input channels and measures the volume: output = [L, R, L, R, ...]. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">left</td><td>Pointer to floating point numbers. Mono input for left channel. </td></tr>
@@ -2691,7 +2691,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Deinterleaves an interleaved stereo input to two mono output channels. </p>
+<p>Deinterleaves an interleaved stereo input to two mono output channels: left = [L, L, L, L, ...], right = [R, R, R, R, ...]. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">input</td><td>Pointer to floating point numbers. Stereo interleaved input. </td></tr>
@@ -2748,7 +2748,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Deinterleaves an interleaved stereo input to two mono output channels and multiplies the output (gain). </p>
+<p>Deinterleaves an interleaved stereo input to two mono output channels and multiplies the output (gain): left = [L, L, L, L, ...] * gain, right = [R, R, R, R, ...] * gain. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">input</td><td>Pointer to floating point numbers. Stereo interleaved input. </td></tr>
@@ -2800,7 +2800,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Deinterleaves an interleaved stereo input and adds the results to the two mono output channels. </p>
+<p>Deinterleaves an interleaved stereo input and adds the results to the two mono output channels: left = left + [L, L, L, L, ...], right = right + [R, R, R, R, ...]. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">input</td><td>Pointer to floating point numbers. Stereo interleaved input. </td></tr>
@@ -2857,7 +2857,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Deinterleaves an interleaved stereo input to two mono output channels, multiplies the result (gain) and and adds the results to the two mono output channels. </p>
+<p>Deinterleaves an interleaved stereo input to two mono output channels, multiplies the result (gain) and and adds the results to the two mono output channels: left = left + [L, L, L, L, ...] * gain, right = right + [R, R, R, R, ...] * gain. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">input</td><td>Pointer to floating point numbers. Stereo interleaved input. </td></tr>
@@ -2964,7 +2964,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Makes mono output from stereo interleaved input. </p>
+<p>Makes mono output from stereo interleaved input: output = [L + R], [L + R], [L + R], ... </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">input</td><td>Pointer to floating point numbers. Stereo interleaved input. </td></tr>
@@ -3042,7 +3042,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Crossfades two mono input channels into a mono output. </p>
+<p>Crossfades two mono input channels into a mono output: output = inputA * gain + inputB + gain. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">inputA</td><td>Pointer to floating point numbers. First mono input. </td></tr>
@@ -3121,7 +3121,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Crossfades two stereo inputs into a stereo output. </p>
+<p>Crossfades two stereo inputs into a stereo output: output = inputA * gain + inputB + gain. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">inputA</td><td>Pointer to floating point numbers. Interleaved stereo input (first). </td></tr>
@@ -3170,7 +3170,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Adds the values in input to the values in output. output[n] += input[n]. </p>
+<p>Adds the values in input to the values in output: output[n] += input[n]. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">input</td><td>Pointer to floating point numbers. Input data. </td></tr>
@@ -3220,7 +3220,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Adds the values in two inputs to the values in output. output[n] += inputA[n] + inputB[n]. </p>
+<p>Adds the values in two inputs to the values in output: output[n] += inputA[n] + inputB[n]. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">inputA</td><td>Pointer to floating point numbers. Input data. </td></tr>
@@ -3283,7 +3283,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Adds the values in four inputs to the values in output. output[n] += inputA[n] + inputB[n] + inputC[n] + inputD[n]. </p>
+<p>Adds the values in four inputs to the values in output: output[n] += inputA[n] + inputB[n] + inputC[n] + inputD[n]. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">inputA</td><td>Pointer to floating point numbers. Input data. </td></tr>

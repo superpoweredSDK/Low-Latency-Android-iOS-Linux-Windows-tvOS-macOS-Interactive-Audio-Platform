@@ -4,8 +4,8 @@
     <facet type="android-gradle" name="Android-Gradle">
       <configuration>
         <option name="GRADLE_PROJECT_PATH" value=":complexusb" />
-        <option name="LAST_SUCCESSFUL_SYNC_AGP_VERSION" value="3.5.0" />
-        <option name="LAST_KNOWN_AGP_VERSION" value="3.5.0" />
+        <option name="LAST_SUCCESSFUL_SYNC_AGP_VERSION" value="3.5.2" />
+        <option name="LAST_KNOWN_AGP_VERSION" value="3.5.2" />
       </configuration>
     </facet>
     <facet type="native-android-gradle" name="Native-Android-Gradle">

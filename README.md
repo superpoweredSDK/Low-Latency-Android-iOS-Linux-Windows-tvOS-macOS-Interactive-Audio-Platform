@@ -216,8 +216,6 @@ Paid support options: https://superpowered.com/support
 
 # Licensing
 
-The Superpowered SDKs offers free and paid licenses. Most apps qualify for a free license.
-
 For details, please see: https://superpowered.com/licensing
 
 For licensing inquiries, please email licensing@superpowered.com.

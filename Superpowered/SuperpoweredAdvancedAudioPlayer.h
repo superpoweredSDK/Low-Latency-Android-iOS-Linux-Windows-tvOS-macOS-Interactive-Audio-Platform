@@ -177,6 +177,11 @@ public:
 /// @brief Starts beat or tempo synchronized playback.
     void playSynchronized();
     
+/// @brief Starts playback at a specific position. isPlaying() will return false until this function succeeds starting playback at the specified position.
+/// You can call this in a real-time thread (audio processing callback) with a continuously updated time for a precise on-the-fly launch.
+/// @param positionMs Start position in milliseconds.
+    void playSynchronizedToPosition(double positionMs);
+    
 /// @brief Pause playback.
 /// There is no need for a "stop" method, this player is very efficient with the battery and has no significant "stand-by" processing.
 /// @param decelerateSeconds Optional momentum. 0 means to pause immediately.
