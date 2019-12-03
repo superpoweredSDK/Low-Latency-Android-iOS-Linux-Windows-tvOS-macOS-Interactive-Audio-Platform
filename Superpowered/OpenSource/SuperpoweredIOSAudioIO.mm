@@ -392,7 +392,7 @@ static OSStatus coreAudioProcessingCallback(void *inRefCon, AudioUnitRenderActio
         }
         return kAudioUnitErr_InvalidParameter;
     }
-    
+
     if (((int)inNumberFrames < self->minimumNumberOfFrames) || ((int)inNumberFrames > self->maximumNumberOfFrames) || ((int)ioData->mNumberBuffers != self->numChannels)) {
         return kAudioUnitErr_InvalidParameter;
     };
