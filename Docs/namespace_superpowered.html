@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">2.0.1</span>
+   &#160;<span id="projectnumber">2.0.2</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -98,6 +98,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_f_x.html">FX</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_gate.html">Gate</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_guitar_distortion.html">GuitarDistortion</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_superpowered_1_1hasher.html">hasher</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -257,6 +259,10 @@ Enumerations</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:a33d3ea3367383bb9f0efe50bcc5cb7de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_superpowered.html#a33d3ea3367383bb9f0efe50bcc5cb7de">Initialize</a> (const char *licenseKey, bool enableAudioAnalysis, bool enableFFTAndFrequencyDomain, bool enableAudioTimeStretching, bool enableAudioEffects, bool enableAudioPlayerAndDecoder, bool enableCryptographics, bool enableNetworking)</td></tr>
 <tr class="separator:a33d3ea3367383bb9f0efe50bcc5cb7de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af48725ddecdf9d08913da5bd48b6ee04"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_superpowered.html#af48725ddecdf9d08913da5bd48b6ee04">DynamicInitialize</a> (const char *licenseKey)</td></tr>
+<tr class="separator:af48725ddecdf9d08913da5bd48b6ee04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecde97e3695afa0d6b5c6651575299a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_superpowered.html#aecde97e3695afa0d6b5c6651575299a1">DynamicDestroy</a> ()</td></tr>
+<tr class="separator:aecde97e3695afa0d6b5c6651575299a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a559557b5f7b3e7e5e040cb5186c797f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_superpowered.html#a559557b5f7b3e7e5e040cb5186c797f3">FFTComplex</a> (float *real, float *imag, int logSize, bool forward)</td></tr>
 <tr class="separator:a559557b5f7b3e7e5e040cb5186c797f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8bb3ebc308cca281f6248d3643d4157c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_superpowered.html#a8bb3ebc308cca281f6248d3643d4157c">FFTReal</a> (float *real, float *imag, int logSize, bool forward)</td></tr>
@@ -1009,7 +1015,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Initializes the <a class="el" href="namespace_superpowered.html">Superpowered</a> SDKs. </p>
+<p>Initializes the <a class="el" href="namespace_superpowered.html">Superpowered</a> SDKs. Use this only once, when your app or library initializes. Do not use this if <a class="el" href="namespace_superpowered.html">Superpowered</a> is loaded dynamically and might be loaded multiple times (a DLL in a VST host for example). </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespace_superpowered.html#af48725ddecdf9d08913da5bd48b6ee04" title="Use this if Superpowered is loaded in a dynamically loaded library (such as a DLL on Windows)...">DynamicInitialize</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">licenseKey</td><td>Visit <a href="https://superpowered.com/dev">https://superpowered.com/dev</a> to register license keys. </td></tr>
@@ -1023,6 +1030,51 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="af48725ddecdf9d08913da5bd48b6ee04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af48725ddecdf9d08913da5bd48b6ee04">&#9670;&nbsp;</a></span>DynamicInitialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Superpowered::DynamicInitialize </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>licenseKey</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Use this if <a class="el" href="namespace_superpowered.html">Superpowered</a> is loaded in a dynamically loaded library (such as a DLL on Windows). It allows for multiple loads (DLL in a VST host example). Enables all features. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">licenseKey</td><td>Visit <a href="https://superpowered.com/dev">https://superpowered.com/dev</a> to register license keys. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aecde97e3695afa0d6b5c6651575299a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aecde97e3695afa0d6b5c6651575299a1">&#9670;&nbsp;</a></span>DynamicDestroy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Superpowered::DynamicDestroy </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Use this if <a class="el" href="namespace_superpowered.html">Superpowered</a> is used in a dynamically loaded library (such as a DLL on Windows), when the dynamically loaded library instance unloads (even if multiple loads may happen). This function will block waiting for all <a class="el" href="namespace_superpowered.html">Superpowered</a> background threads to exit when the last instance of the library is unloaded. Please note that you still need to "properly" release all <a class="el" href="namespace_superpowered.html">Superpowered</a> objects <em>before</em> this call, such as delete all players, effects, etc. </p>
 
 </div>
 </div>

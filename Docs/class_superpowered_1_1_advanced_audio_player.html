@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">2.0.1</span>
+   &#160;<span id="projectnumber">2.0.2</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -189,8 +189,6 @@ Public Member Functions</h2></td></tr>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:aa6b0749dac615cdc6738d98e37c2f269"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_advanced_audio_player.html#aa6b0749dac615cdc6738d98e37c2f269">setTempFolder</a> (const char *path)</td></tr>
 <tr class="separator:aa6b0749dac615cdc6738d98e37c2f269"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab98edb8e0b86a0e75ad6ea7bd14aa18e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_advanced_audio_player.html#ab98edb8e0b86a0e75ad6ea7bd14aa18e">clearTempFolder</a> ()</td></tr>
-<tr class="separator:ab98edb8e0b86a0e75ad6ea7bd14aa18e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50e04e717aa3d4de0ce65f9ad81ecafc"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_advanced_audio_player.html#a50e04e717aa3d4de0ce65f9ad81ecafc">getTempFolderPath</a> ()</td></tr>
 <tr class="separator:a50e04e717aa3d4de0ce65f9ad81ecafc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17da1612e00e2d88f8f89e51529d476c"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_advanced_audio_player.html#a17da1612e00e2d88f8f89e51529d476c">statusCodeToString</a> (int code)</td></tr>
@@ -366,40 +364,13 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Set the folder to store for temporary files. Used for HLS and progressive download only. Call this before any player instance is created. It will create a subfolder with the name "SuperpoweredAAP" in the folder. </p>
+<p>Set the folder to store for temporary files. Used for HLS and progressive download only. Call this before any player instance is created. It will create a subfolder with the name "SuperpoweredAAP" in the specified folder (and will clear all content inside SuperpoweredAAP if it exists already). If you need to clear the folder before your app quits, use NULL for the path. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">path</td><td>File system path of the folder. </td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="ab98edb8e0b86a0e75ad6ea7bd14aa18e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab98edb8e0b86a0e75ad6ea7bd14aa18e">&#9670;&nbsp;</a></span>clearTempFolder()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void Superpowered::AdvancedAudioPlayer::clearTempFolder </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Removes the temp folder and all content inside. Use this when your program ends. </p>
 
 </div>
 </div>

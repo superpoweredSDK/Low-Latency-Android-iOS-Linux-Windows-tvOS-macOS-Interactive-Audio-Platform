@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">2.0.1</span>
+   &#160;<span id="projectnumber">2.0.2</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -63,6 +63,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a1c5e4ca34db721d4bf52553c06cb59b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a51b7c186bca3b62cfeb050146d37c082"><td class="memItemLeft" align="right" valign="top">unsigned char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_r_s_a_public_key.html#a51b7c186bca3b62cfeb050146d37c082">encrypt</a> (unsigned int inputLengthBytes, void *input, bool OAEP_PSS_V21)</td></tr>
 <tr class="separator:a51b7c186bca3b62cfeb050146d37c082"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8d5e4baef8dbc18a4d7a9f502cfec0d"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_r_s_a_public_key.html#ac8d5e4baef8dbc18a4d7a9f502cfec0d">getEncryptedOutputSizeBytes</a> ()</td></tr>
+<tr class="separator:ac8d5e4baef8dbc18a4d7a9f502cfec0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -351,6 +353,24 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Encrypted data or NULL on error. Don't forget to free() this at a later point to prevent memory leaks! </dd></dl>
+
+</div>
+</div>
+<a id="ac8d5e4baef8dbc18a4d7a9f502cfec0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8d5e4baef8dbc18a4d7a9f502cfec0d">&#9670;&nbsp;</a></span>getEncryptedOutputSizeBytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int Superpowered::RSAPublicKey::getEncryptedOutputSizeBytes </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Returns with the encrypted output data size in bytes. </dd></dl>
 
 </div>
 </div>
