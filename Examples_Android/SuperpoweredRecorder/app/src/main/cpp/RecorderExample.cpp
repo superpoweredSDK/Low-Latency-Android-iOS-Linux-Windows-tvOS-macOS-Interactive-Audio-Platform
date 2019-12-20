@@ -7,8 +7,6 @@
 #include <SuperpoweredRecorder.h>
 #include <unistd.h>
 
-#define log_write __android_log_write
-
 static SuperpoweredAndroidAudioIO *audioIO;
 static Superpowered::Recorder *recorder;
 
@@ -85,7 +83,7 @@ Java_com_superpowered_recorder_MainActivity_StopRecording(JNIEnv * __unused env,
     // It's better to do this asynchronously, but we're just blocking (sleeping) now.
     while (!recorder->isFinished()) usleep(100000);
 
-    log_write(ANDROID_LOG_DEBUG, "RecorderExample", "Finished recording.");
+    __android_log_print(ANDROID_LOG_DEBUG, "Recorder", "Finished recording.");
     delete recorder;
 }
 

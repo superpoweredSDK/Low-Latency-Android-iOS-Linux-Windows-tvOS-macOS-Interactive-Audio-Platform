@@ -88,12 +88,11 @@ public:
     static const float MaxPlaybackRate;      ///< The maximum playback rate or scratching speed: 20.
 
 /// @brief Set the folder to store for temporary files. Used for HLS and progressive download only.
-/// Call this before any player instance is created. It will create a subfolder with the name "SuperpoweredAAP" in the folder.
+/// Call this before any player instance is created.
+/// It will create a subfolder with the name "SuperpoweredAAP" in the specified folder (and will clear all content inside SuperpoweredAAP if it exists already).
+/// If you need to clear the folder before your app quits, use NULL for the path.
 /// @param path File system path of the folder.
     static void setTempFolder(const char *path);
-
-/// @brief Removes the temp folder and all content inside. Use this when your program ends.
-    static void clearTempFolder();
     
 /// @return Returns with the temporary folder path.
     static const char *getTempFolderPath();

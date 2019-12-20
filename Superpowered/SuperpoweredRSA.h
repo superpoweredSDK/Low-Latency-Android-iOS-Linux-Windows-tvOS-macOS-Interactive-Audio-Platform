@@ -62,6 +62,9 @@ namespace Superpowered {
         /// @return Encrypted data or NULL on error. Don't forget to free() this at a later point to prevent memory leaks!
         unsigned char *encrypt(unsigned int inputLengthBytes, void *input, bool OAEP_PSS_V21);
         
+        /// @return Returns with the encrypted output data size in bytes.
+        unsigned int getEncryptedOutputSizeBytes();
+        
     private:
         friend class RSAPrivateKey;
         RSAContext *internals;
