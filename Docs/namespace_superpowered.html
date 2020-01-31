@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">2.0.2</span>
+   &#160;<span id="projectnumber">2.0.3</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -363,6 +363,8 @@ Functions</h2></td></tr>
 <tr class="separator:ad5b82c6642e19c995d62905f79bac711"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ec83fb5357feb10cd37bde346030a9e"><td class="memItemLeft" align="right" valign="top">FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_superpowered.html#a5ec83fb5357feb10cd37bde346030a9e">createWAV</a> (const char *path, unsigned int <a class="el" href="_superpoweredtv_o_s_audio_i_o_8mm.html#ac38751c7169cfeb9325a947cc0484286">samplerate</a>, unsigned char <a class="el" href="_superpoweredtv_o_s_audio_i_o_8mm.html#a833642af16b83f234a41e9038ac89aaf">numChannels</a>)</td></tr>
 <tr class="separator:a5ec83fb5357feb10cd37bde346030a9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9dd919f29878a0de13595d642292da11"><td class="memItemLeft" align="right" valign="top">FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_superpowered.html#a9dd919f29878a0de13595d642292da11">createWAVfd</a> (int fd, unsigned int <a class="el" href="_superpoweredtv_o_s_audio_i_o_8mm.html#ac38751c7169cfeb9325a947cc0484286">samplerate</a>, unsigned char <a class="el" href="_superpoweredtv_o_s_audio_i_o_8mm.html#a833642af16b83f234a41e9038ac89aaf">numChannels</a>)</td></tr>
+<tr class="separator:a9dd919f29878a0de13595d642292da11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a053e23762cb75bcf4f2d87874371c093"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_superpowered.html#a053e23762cb75bcf4f2d87874371c093">writeWAV</a> (FILE *fd, short int *audio, unsigned int numberOfBytes)</td></tr>
 <tr class="separator:a053e23762cb75bcf4f2d87874371c093"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a012f0af59ea8267b3e22cb1834ea6975"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_superpowered.html#a012f0af59ea8267b3e22cb1834ea6975">closeWAV</a> (FILE *fd)</td></tr>
@@ -3545,6 +3547,51 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">path</td><td>The full filesystem path of the file. </td></tr>
+    <tr><td class="paramname">samplerate</td><td>Sample rate of the file in Hz. </td></tr>
+    <tr><td class="paramname">numChannels</td><td>The number of channels. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9dd919f29878a0de13595d642292da11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9dd919f29878a0de13595d642292da11">&#9670;&nbsp;</a></span>createWAVfd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FILE * Superpowered::createWAVfd </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>samplerate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>numChannels</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates a 16-bit WAV file. After createWAVfd, write audio data using the <a class="el" href="namespace_superpowered.html#a053e23762cb75bcf4f2d87874371c093" title="Writes audio into a WAV file. ">writeWAV()</a> function or fwrite(). Close the file with the <a class="el" href="namespace_superpowered.html#a012f0af59ea8267b3e22cb1834ea6975" title="Closes a 16-bit stereo WAV file. fclose() is not enough to create a valid a WAV file, use this function to close it. ">closeWAV()</a> function. Never use direct disk writing in a real-time audio processing thread, use the <a class="el" href="namespace_superpowered.html">Superpowered</a> <a class="el" href="class_superpowered_1_1_recorder.html" title="Records audio into 16-bit WAV file, with an optional tracklist. Use this class in a real-time audio p...">Recorder</a> class in that case. </p>
+<dl class="section return"><dt>Returns</dt><dd>A file handle (success) or NULL (error). </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fd</td><td>Existing file descriptor. <a class="el" href="namespace_superpowered.html">Superpowered</a> will fdopen on this using "w" mode. </td></tr>
     <tr><td class="paramname">samplerate</td><td>Sample rate of the file in Hz. </td></tr>
     <tr><td class="paramname">numChannels</td><td>The number of channels. </td></tr>
   </table>

@@ -13,7 +13,7 @@ class Recorder {
 public:
 /// @brief Creates a recorder instance.
 /// @warning Filesystem paths in C are different than paths in Java. /sdcard becomes /mnt/sdcard for example.
-/// @param tempPath The full filesystem path of a temporary file. The recorder will create and write into this while recording.
+/// @param tempPath The full filesystem path of a temporary file. The recorder will create and write into this while recording. Can be NULL if only preparefd() is used.
     Recorder(const char *tempPath);
     ~Recorder();
     
@@ -25,6 +25,16 @@ public:
 /// @param fadeInFadeOut If true, the recorder applies a fade-in at the beginning and a fade-out at the end of the recording. The fade is 64 frames long.
 /// @param minimumLengthSeconds The minimum length of the recording. If the number of recorded seconds is lower, then a file will not be saved.
     bool prepare(const char *destinationPath, unsigned int samplerate, bool fadeInFadeOut, unsigned int minimumLengthSeconds);
+    
+/// @brief Prepares for recording. The actual recording will begin on the first call of the process() method.
+/// @return Returns true on success or false if another recording is still active or not finished writing to disk yet.
+/// Do not call this in a real-time audio processing thread.
+/// @param audiofd Existing file descriptor for the audio file. Superpowered will fdopen on this using "w" mode.
+/// @param logfd Existing file descriptor for the .txt file. Can be 0 if addtoTracklist() is not used.
+/// @param samplerate The sample rate of the audio input and the recording, in Hz. The input sample rate must remain the same during the entire recording.
+/// @param fadeInFadeOut If true, the recorder applies a fade-in at the beginning and a fade-out at the end of the recording. The fade is 64 frames long.
+/// @param minimumLengthSeconds The minimum length of the recording. If the number of recorded seconds is lower, then a file will not be saved.
+    bool preparefd(int audiofd, int logfd, unsigned int samplerate, bool fadeInFadeOut, unsigned int minimumLengthSeconds);
     
 /// @brief Stops recording.
 /// After calling stop() the recorder needs a little bit more time to write the last pieces of audio to disk. You can periodically call isFinished() to check when it's done.

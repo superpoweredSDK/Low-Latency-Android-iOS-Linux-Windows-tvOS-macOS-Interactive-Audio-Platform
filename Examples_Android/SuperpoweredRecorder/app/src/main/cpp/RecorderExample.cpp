@@ -20,7 +20,7 @@ static bool audioProcessing (
     float floatBuffer[numberOfFrames * 2];
     Superpowered::ShortIntToFloat(audio, floatBuffer, (unsigned int)numberOfFrames);
     recorder->recordInterleaved(floatBuffer, (unsigned int)numberOfFrames);
-    return false;
+    return true;
 }
 
 // StartAudio - Start audio engine.
@@ -30,8 +30,7 @@ Java_com_superpowered_recorder_MainActivity_StartAudio (
         jobject  __unused obj,
         jint samplerate,
         jint buffersize,
-        jstring tempPath,       // path to a temporary file
-        jstring destPath        // path to the destination file
+        jint destinationfd // file descriptor of the destination file
 ) {
     Superpowered::Initialize(
             "ExampleLicenseKey-WillExpire-OnNextUpdate",
@@ -44,23 +43,18 @@ Java_com_superpowered_recorder_MainActivity_StartAudio (
             false  // enableNetworking (using Superpowered::httpRequest)
     );
 
-    // Get path strings.
-    const char *temp = env->GetStringUTFChars(tempPath, 0);
-    const char *dest = env->GetStringUTFChars(destPath, 0);
+    // Initialize the recorder.
+    recorder = new Superpowered::Recorder(NULL);
 
-    // Initialize the recorder with a temporary file path.
-    recorder = new Superpowered::Recorder(temp);
     // Start a new recording.
-    recorder->prepare(
-            dest,                     // destination path
+    recorder->preparefd(
+            destinationfd,            // destination file descriptor
+            0,                        // not used
             (unsigned int)samplerate, // sample rate in Hz
             true,                     // apply fade in/fade out
             1                         // minimum length of the recording in seconds
             );
 
-    // Release path strings.
-    env->ReleaseStringUTFChars(tempPath, temp);
-    env->ReleaseStringUTFChars(destPath, dest);
 
     // Initialize audio engine with audio callback function.
     audioIO = new SuperpoweredAndroidAudioIO (

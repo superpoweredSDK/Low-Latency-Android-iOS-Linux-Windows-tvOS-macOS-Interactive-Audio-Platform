@@ -292,6 +292,16 @@ float frequencyOfNote(int note);
 /// @param numChannels The number of channels.
 FILE *createWAV(const char *path, unsigned int samplerate, unsigned char numChannels);
 
+/// @fn FILE *createWAVfd(int fd, unsigned int samplerate, unsigned char numChannels);
+/// @brief Creates a 16-bit WAV file.
+/// After createWAVfd, write audio data using the writeWAV() function or fwrite(). Close the file with the closeWAV() function.
+/// Never use direct disk writing in a real-time audio processing thread, use the Superpowered Recorder class in that case.
+/// @return A file handle (success) or NULL (error).
+/// @param fd Existing file descriptor. Superpowered will fdopen on this using "w" mode.
+/// @param samplerate Sample rate of the file in Hz.
+/// @param numChannels The number of channels.
+FILE *createWAVfd(int fd, unsigned int samplerate, unsigned char numChannels);
+
 /// @fn bool writeWAV(FILE *fd, short int *audio, unsigned int numberOfBytes);
 /// @brief Writes audio into a WAV file.
 /// @return Returns true for success and false for error.

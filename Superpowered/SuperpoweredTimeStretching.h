@@ -14,7 +14,7 @@ public:
     float rate;          ///< Time stretching rate (tempo). 1 means no time stretching. Maximum: 4. Values above 2 or below 0.5 are not recommended on mobile devices with low latency audio due high CPU load and risk of audio dropouts.
     int pitchShiftCents; ///< Pitch shift cents, limited from -2400 (two octaves down) to 2400 (two octaves up). Examples: 0 (no pitch shift), -100 (one note down), 300 (3 notes up).
                          ///< When the value if a multiply of 100 and is >= -1200 and <= 1200, changing the pitch shift needs only a few CPU clock cycles. Any change in pitchShiftCents involves significant momentary CPU load otherwise.
-    unsigned int samplerate; ///< Sample rate in Hz.
+    unsigned int samplerate; ///< Sample rate in Hz. High quality pitch shifting requires 44100 Hz or more, the sound is "echoing" on lower sample rates.
     Superpowered::AudiopointerList *outputList; ///< The AudiopointerList storing the audio output. To be used with the advancedProcess() method. Read only.
     
 /// @brief Constructor.

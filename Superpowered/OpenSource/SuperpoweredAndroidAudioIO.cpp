@@ -180,31 +180,38 @@ static int32_t aaudioProcessingCallback(__unused AAudioStream *stream, void *use
             } while (drainedFrames > 0);
         }
 
-        if (AAudioStream_read(internals->inputStream, audioData, numFrames, 0) != numFrames) return AAUDIO_CALLBACK_RESULT_CONTINUE;
+        if (AAudioStream_read(internals->inputStream, audioData, numFrames, 0) != numFrames) {
+            if (internals->outputStream) memset(audioData, 0, (size_t)numFrames * NUM_CHANNELS * 2);
+            return AAUDIO_CALLBACK_RESULT_CONTINUE;
+        }
     }
+
+    bool makeSilence = false;
+    if (!internals->callback(internals->clientdata, (short int *)audioData, numFrames, internals->samplerate)) {
+        makeSilence = true;
+        internals->silenceFrames += numFrames;
+    } else internals->silenceFrames = 0;
+
+    // Silence the output if it's not needed.
+    if (!internals->hasOutput || makeSilence) memset(audioData, 0, (size_t)numFrames * NUM_CHANNELS * 2);
+
+    if (!internals->foreground && (internals->silenceFrames > internals->samplerate)) {
+        internals->silenceFrames = 0;
+        stopAAudio(internals);
+    };
 
     if (internals->aaudioFirstHalfSecond >= 0) internals->aaudioFirstHalfSecond -= numFrames;
     else {
         int xrunCount = internals->inputStream ? AAudioStream_getXRunCount(internals->inputStream) : 0;
         if (internals->outputStream) xrunCount += AAudioStream_getXRunCount(internals->outputStream);
 
-        if (internals->aaudioXRunCount != xrunCount) {
+        if (internals->aaudioXRunCount < xrunCount) {
             internals->aaudioXRunCount = xrunCount;
             if (internals->buffersize < 4096) internals->buffersize += internals->aaudioBurstSize;
             if (internals->inputStream) AAudioStream_setBufferSizeInFrames(internals->inputStream, internals->buffersize);
             if (internals->outputStream) AAudioStream_setBufferSizeInFrames(internals->outputStream, internals->buffersize);
         }
     }
-
-    if (!internals->callback(internals->clientdata, (short int *)audioData, numFrames, internals->samplerate)) {
-        memset(audioData, 0, (size_t)numFrames * NUM_CHANNELS * 2);
-        internals->silenceFrames += numFrames;
-    } else internals->silenceFrames = 0;
-
-    if (!internals->foreground && (internals->silenceFrames > internals->samplerate)) {
-        internals->silenceFrames = 0;
-        stopAAudio(internals);
-    };
 
     return AAUDIO_CALLBACK_RESULT_CONTINUE;
 }
@@ -226,7 +233,10 @@ static bool startAAudio(SuperpoweredAndroidAudioIOInternals *internals) {
     internals->aaudioRestarting = false;
     AAudioStream *mainStream = NULL;
 
-    if (internals->hasOutput) {
+    // Theoretically AAudio should work with an input stream only.
+    // However on many devices (such as the Samsung S10e) it doesn't return with audio if there is no output.
+    // Therefore we set up an output stream even if not needed.
+    //if (internals->hasOutput) {
         AAudioStreamBuilder *outputStreamBuilder;
         if (AAudio_createStreamBuilder(&outputStreamBuilder) != AAUDIO_OK) return false;
 
@@ -246,7 +256,7 @@ static bool startAAudio(SuperpoweredAndroidAudioIOInternals *internals) {
             internals->outputStream = NULL;
             return false;
         }
-    }
+    //}
 
     if (internals->hasInput) {
         AAudioStreamBuilder *inputStreamBuilder;

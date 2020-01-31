@@ -39,21 +39,21 @@ int main(int argc, char *argv[]) {
     // Create the time stretcher.
     Superpowered::TimeStretching *timeStretch = new Superpowered::TimeStretching(decoder->getSamplerate());
     timeStretch->rate = 1.04f; // 4% faster
-    
+
     // Create a buffer to store 16-bit integer audio up to 1 seconds, which is a safe limit.
     short int *intBuffer = (short int *)malloc(decoder->getSamplerate() * 2 * sizeof(short int) + 16384);
     // Create a buffer to store 32-bit floating point audio up to 1 seconds, which is a safe limit.
     float *floatBuffer = (float *)malloc(decoder->getSamplerate() * 2 * sizeof(float));
-    
+
     // Processing.
     while (true) {
         int framesDecoded = decoder->decodeAudio(intBuffer, decoder->getFramesPerChunk());
         if (framesDecoded < 1) break;
-        
+
         // Submit the decoded audio to the time stretcher.
         Superpowered::ShortIntToFloat(intBuffer, floatBuffer, framesDecoded);
         timeStretch->addInput(floatBuffer, framesDecoded);
-        
+
         // The time stretcher may have 0 or more audio at this point. Write to disk if it has some.
         unsigned int outputFramesAvailable = timeStretch->getOutputLengthFrames();
         if ((outputFramesAvailable > 0) && timeStretch->getOutput(floatBuffer, outputFramesAvailable)) {
@@ -61,7 +61,7 @@ int main(int argc, char *argv[]) {
             Superpowered::writeWAV(destinationFile, intBuffer, outputFramesAvailable * 4);
         }
     };
-    
+
     // Close the file and clean up.
     Superpowered::closeWAV(destinationFile);
     delete decoder;
