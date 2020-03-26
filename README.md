@@ -241,4 +241,4 @@ Superpowered FFT benefits from ideas in Construction of a High-Performance FFT b
 
 The Superpowered MP3 and AAC decoder benefits from optimizations by Ken Cooke.
 
-Superpowered version 2.0.3
+Superpowered version 2.0.4

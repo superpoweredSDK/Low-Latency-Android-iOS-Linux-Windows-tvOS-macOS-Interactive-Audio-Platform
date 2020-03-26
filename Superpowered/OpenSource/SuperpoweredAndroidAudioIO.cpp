@@ -10,6 +10,8 @@
 #include <dlfcn.h>
 #include <android/log.h>
 
+#define USE_AAUDIO 0
+
 #define AAUDIO_CALLBACK_RESULT_CONTINUE  0
 #define AAUDIO_OK 0
 #define AAUDIO_STREAM_STATE_DISCONNECTED 13
@@ -66,6 +68,9 @@ static bool aaudioInitialized = false;
 static bool aaudioAvailable = false;
 
 static bool initializeAAudio() {
+    #if (USE_AAUDIO == 0)
+    return false;
+    #endif
     if (aaudioInitialized) return aaudioAvailable;
     aaudioInitialized = true;
 
@@ -217,7 +222,7 @@ static int32_t aaudioProcessingCallback(__unused AAudioStream *stream, void *use
 }
 
 static void aaudioErrorCallback(AAudioStream *stream, void *userData, __unused int32_t error) {
-    if (AAudioStream_getState(stream) == AAUDIO_STREAM_STATE_DISCONNECTED) { // If the audio routing has been changed, restart audio I/O.
+    if (userData && (AAudioStream_getState(stream) == AAUDIO_STREAM_STATE_DISCONNECTED)) { // If the audio routing has been changed, restart audio I/O.
         SuperpoweredAndroidAudioIOInternals *internals = (SuperpoweredAndroidAudioIOInternals *)userData;
         if (!internals->aaudioRestarting) {
             internals->aaudioRestarting = true;
@@ -440,7 +445,6 @@ SuperpoweredAndroidAudioIO::SuperpoweredAndroidAudioIO(int samplerate, int buffe
         case -1: break;
         default: internals->aaudio = false;
     }
-
 
     if (internals->aaudio) internals->aaudio = startAAudio(internals);
     if (!internals->aaudio) {

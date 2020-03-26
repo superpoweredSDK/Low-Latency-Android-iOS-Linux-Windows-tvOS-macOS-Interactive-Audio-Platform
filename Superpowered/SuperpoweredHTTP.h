@@ -134,6 +134,7 @@ namespace Superpowered {
         unsigned int customContentLengthBytes; ///< The size in bytes of customContent.
         bool disableHttpCacheControl; ///< Disable HTTP caching by adding a Cache-Control: no-cache, no-store, must-revalidate header. Default: true.
         bool customDownloadHandling;  ///< Set to true to use your own data handling/file writing. Default: false.
+        bool returnWithDataOnError;   ///< Set to true to return with all data when the HTTP response is an error. Default: false.
         
         /// @brief Constructor with url. Example: request = new Superpowered::request(myURL);
         /// @param url The relative url.
