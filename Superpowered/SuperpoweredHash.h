@@ -29,7 +29,7 @@ namespace Superpowered {
     void simpleHMAC(hashType type, const unsigned char *key, int keyLengthBytes, const unsigned char *input, int inputLengthBytes, unsigned char *output);
     
     /// @brief A structure for high-performance hashing.
-    typedef struct { // 468 bytes
+    typedef struct hasher { // 468 bytes
         /// @brief Internal variable.
         union {
             unsigned long long processed64[2];

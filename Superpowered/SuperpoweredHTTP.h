@@ -95,7 +95,7 @@ namespace Superpowered {
         /// @brief These codes extend the standard HTTP status codes.
         static const int StatusCode_OutOfMemoryError = 1;   ///< Out of memory. Check your code for memory leaks.
         static const int StatusCode_FileOperationError = 2; ///< Can't read or write the disk. Perhaps the disk is full or is there a permission problem?
-        static const int StatusCode_NetworkSocketError = 3; ///< Can't connect to the server. Perhaps there is no internet connection.
+        static const int StatusCode_NetworkSocketError = 3; ///< Can't connect or lost connection to the server. Perhaps there is no internet connection.
         static const int StatusCode_InvalidResponseError = 4;         ///< Can't parse the server response.
         static const int StatusCode_MaximumRedirectsReachedError = 5; ///< Too many redirects happened.
         static const int StatusCode_Canceled = 6;  ///< The request was canceled.

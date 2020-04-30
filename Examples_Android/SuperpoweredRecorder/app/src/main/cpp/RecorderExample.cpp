@@ -17,6 +17,14 @@ static bool audioProcessing (
         int numberOfFrames,         // number of frames to process
         int __unused samplerate     // current sample rate in Hz
 ) {
+    {
+        static int test = 0;
+        test += numberOfFrames;
+        if (test >= 48000) {
+            test = 0;
+            __android_log_print(ANDROID_LOG_VERBOSE, "Superpowered", "record");
+        }
+    }
     float floatBuffer[numberOfFrames * 2];
     Superpowered::ShortIntToFloat(audio, floatBuffer, (unsigned int)numberOfFrames);
     recorder->recordInterleaved(floatBuffer, (unsigned int)numberOfFrames);
@@ -25,8 +33,8 @@ static bool audioProcessing (
 
 // StartAudio - Start audio engine.
 extern "C" JNIEXPORT void
-Java_com_superpowered_recorder_MainActivity_StartAudio (
-        JNIEnv *env,
+Java_com_superpowered_recorder_RecorderService_StartAudio (
+        JNIEnv * __unused env,
         jobject  __unused obj,
         jint samplerate,
         jint buffersize,
@@ -69,7 +77,7 @@ Java_com_superpowered_recorder_MainActivity_StartAudio (
 
 // StopAudio - Stop audio engine and free audio buffer.
 extern "C" JNIEXPORT void
-Java_com_superpowered_recorder_MainActivity_StopRecording(JNIEnv * __unused env, jobject __unused obj) {
+Java_com_superpowered_recorder_RecorderService_StopRecording(JNIEnv * __unused env, jobject __unused obj) {
     recorder->stop();
     delete audioIO;
 
@@ -79,16 +87,4 @@ Java_com_superpowered_recorder_MainActivity_StopRecording(JNIEnv * __unused env,
 
     __android_log_print(ANDROID_LOG_DEBUG, "Recorder", "Finished recording.");
     delete recorder;
-}
-
-// onBackground - Put audio processing to sleep if no audio is playing.
-extern "C" JNIEXPORT void
-Java_com_superpowered_recorder_MainActivity_onBackground(JNIEnv * __unused env, jobject __unused obj) {
-    audioIO->onBackground();
-}
-
-// onForeground - Resume audio processing.
-extern "C" JNIEXPORT void
-Java_com_superpowered_recorder_MainActivity_onForeground(JNIEnv * __unused env, jobject __unused obj) {
-    audioIO->onForeground();
 }
