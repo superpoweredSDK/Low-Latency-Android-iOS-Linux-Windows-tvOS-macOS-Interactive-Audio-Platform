@@ -420,6 +420,7 @@ static void SuperpoweredAndroidAudioIO_OutputCallback(SLAndroidSimpleBufferQueue
 
 SuperpoweredAndroidAudioIO::SuperpoweredAndroidAudioIO(int samplerate, int buffersize, bool enableInput, bool enableOutput, audioProcessingCallback callback, void *clientdata, int inputStreamType, int outputStreamType) {
     static const SLboolean requireds[2] = { SL_BOOLEAN_TRUE, SL_BOOLEAN_FALSE };
+    if (buffersize > 1024) buffersize = 1024;
 
     internals = new SuperpoweredAndroidAudioIOInternals;
     memset(internals, 0, sizeof(SuperpoweredAndroidAudioIOInternals));
