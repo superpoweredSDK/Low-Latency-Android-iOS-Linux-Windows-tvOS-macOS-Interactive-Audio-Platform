@@ -15,13 +15,13 @@ public:
     int pitchShiftCents; ///< Pitch shift cents, limited from -2400 (two octaves down) to 2400 (two octaves up). Examples: 0 (no pitch shift), -100 (one note down), 300 (3 notes up).
                          ///< When the value if a multiply of 100 and is >= -1200 and <= 1200, changing the pitch shift needs only a few CPU clock cycles. Any change in pitchShiftCents involves significant momentary CPU load otherwise.
     unsigned int samplerate; ///< Sample rate in Hz. High quality pitch shifting requires 44100 Hz or more, the sound is "echoing" on lower sample rates.
+    unsigned char sound; ///< Valid values are: 0 (best to save CPU with slightly lower audio quality), 1 (best for DJ apps, modern and "complete" music), 2 (best for instrumental loops and single instruments). Default: 1.
     Superpowered::AudiopointerList *outputList; ///< The AudiopointerList storing the audio output. To be used with the advancedProcess() method. Read only.
     
 /// @brief Constructor.
 /// @param samplerate The initial sample rate in Hz.
 /// @param minimumRate The minimum value of rate. For example: if the rate will never go below 0.5, minimumRate = 0.5 will save significant computing power and memory. Minimum value of this: 0.01.
-/// @param sound Valid values are: 0 (best to save CPU with slightly lower audio quality), 1 (best for DJ apps, modern and "complete" music), 2 (best for instrumental loops and single instruments).
-    TimeStretching(unsigned int samplerate, float minimumRate = 0.01f, unsigned char sound = 1);
+    TimeStretching(unsigned int samplerate, float minimumRate = 0.01f);
     ~TimeStretching();
     
 /// @return Returns with how many frames of input should be provided to the time stretcher to produce some output.

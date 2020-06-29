@@ -14,7 +14,8 @@ public:
 /// @brief Creates a recorder instance.
 /// @warning Filesystem paths in C are different than paths in Java. /sdcard becomes /mnt/sdcard for example.
 /// @param tempPath The full filesystem path of a temporary file. The recorder will create and write into this while recording. Can be NULL if only preparefd() is used.
-    Recorder(const char *tempPath);
+/// @param mono True: mono, false: stereo.
+    Recorder(const char *tempPath, bool mono = false);
     ~Recorder();
     
 /// @brief Prepares for recording. The actual recording will begin on the first call of the process() method.
@@ -68,6 +69,13 @@ public:
 /// @param input Pointer to floating point numbers. Stereo interleaved audio to record.
 /// @param numberOfFrames The number of frames in input.
     unsigned int recordInterleaved(float *input, unsigned int numberOfFrames);
+    
+/// @brief Processes incoming mono audio.
+/// @return Seconds recorded so far.
+/// It's never blocking for real-time usage.
+/// @param input Pointer to floating point numbers.
+/// @param numberOfFrames The number of frames in input.
+    unsigned int recordMono(float *input, unsigned int numberOfFrames);
 
 private:
     recorderInternals *internals;

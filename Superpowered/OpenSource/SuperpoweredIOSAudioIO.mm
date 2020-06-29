@@ -513,7 +513,7 @@ static OSStatus coreAudioProcessingCallback(void *inRefCon, AudioUnitRenderActio
         } else outputmap[n] = -1;
         inputmap[n] = inputChannelMap.USBChannels[n];
     };
-
+    
 #if !TARGET_IPHONE_SIMULATOR
     AudioUnitSetProperty(audioUnit, kAudioOutputUnitProperty_ChannelMap, kAudioUnitScope_Output, 0, outputmap, 128);
     AudioUnitSetProperty(audioUnit, kAudioOutputUnitProperty_ChannelMap, kAudioUnitScope_Output, 1, inputmap, 128);

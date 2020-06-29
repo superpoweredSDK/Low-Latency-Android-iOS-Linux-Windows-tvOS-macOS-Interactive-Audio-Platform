@@ -86,6 +86,7 @@ public:
     static const int HLSDownloadEverything;  ///< Will download everything after the playback position until the end.
     static const int HLSDownloadRemaining;   ///< Downloads everything from the beginning to the end, regardless the playback position.
     static const float MaxPlaybackRate;      ///< The maximum playback rate or scratching speed: 20.
+    unsigned char timeStretchingSound;       ///< The sound parameter of the internal TimeStretching instance. @see TimeStretching
 
 /// @brief Set the folder to store for temporary files. Used for HLS and progressive download only.
 /// Call this before any player instance is created.
