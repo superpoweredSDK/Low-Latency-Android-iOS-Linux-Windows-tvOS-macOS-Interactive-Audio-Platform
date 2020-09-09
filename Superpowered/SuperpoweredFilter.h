@@ -28,7 +28,7 @@ public:
     float decibel;   ///< Decibel gain value for shelving and parametric filters. Limit: -96 to 24.
     float resonance; ///< Resonance value for resonant filters. Resonance = Q / 10. Limit: 0.01 to 1.
     float octave;    ///< Width in octave for bandlimited and parametric filters. Limit: 0.05 to 5.
-    float slope;     ///< Slope value for shelving filters. Limit: 0.001 to 1.
+    float slope;     ///< Slope value for shelving filters. Limit: 0.001 (most gradual slope) to 1 (steepest slope).
     FilterType type; ///< Filter type. Changing the filter type often involves changing other parameters as well. Therefore in a real-time context change the parameters and the type in the same thread with the process() call.
 
 /// @brief For advanced use. Set custom coefficients for the filter. Changes will be smoothly handled to prevent audio artifacts. Do not call this concurrently with process().

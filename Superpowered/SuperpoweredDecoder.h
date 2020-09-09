@@ -25,7 +25,7 @@ typedef enum Decoder_Format {
 /// - ALAC/Apple Lossless (on iOS only).
 class Decoder {
 public:
-/// @brief Error codes for the decodeAudio() and getAudioStartFrame() methods.
+/// @brief Error codes for the decodeAudio(), getAudioStartFrame() and getAudioEndFrame() methods.
     static const int EndOfFile = 0;               ///< End-of-file reached.
     static const int BufferingTryAgainLater = -1; ///< Buffering (waiting for the network to pump enough data).
     static const int NetworkError = -2;           ///< Network (download) error.
@@ -128,12 +128,23 @@ public:
 /// @warning This function changes positionFrames!
 /// @return The return value can be:
 /// - A positive number or zero: the frame index where audio starts.
-/// - Decoder::BufferingTryAgainLater: the decoder needs more data to be downloaded. Retry getAudioStartFrame() later (it's recommended to wait at least 0.1 seconds).
+/// - Decoder::BufferingTryAgainLater: the decoder needs more data to be downloaded. Retry getAudioStartFrame() or getAudioEndFrame() later (it's recommended to wait at least 0.1 seconds).
 /// - Decoder::NetworkError: network (download) error.
 /// - Decoder::Error: internal decoder error.
 /// @param limitFrames Optional. How far to search for. 0 means "the entire audio file".
 /// @param thresholdDb Optional. Loudness threshold in decibel. 0 means "any non-zero audio". The value -49 is useful for vinyl rips starting with vinyl noise (crackles).
-    int getAudioStartFrame(unsigned int limitFrames = 0, int thresholdDb = 0);
+    int64_t getAudioStartFrame(unsigned int limitFrames = 0, int thresholdDb = 0);
+    
+/// Detects silence at the end.
+/// @warning This function changes positionFrames!
+/// @return The return value can be:
+/// - A positive number or zero: the frame index where audio ends.
+/// - Decoder::BufferingTryAgainLater: the decoder needs more data to be downloaded. Retry getAudioEndFrame() later (it's recommended to wait at least 0.1 seconds).
+/// - Decoder::NetworkError: network (download) error.
+/// - Decoder::Error: internal decoder error.
+/// @param limitFrames Optional. How far to search for from the end (the duration in frames). 0 means "the entire audio file".
+/// @param thresholdDb Optional. Loudness threshold in decibel. 0 means "any non-zero audio". The value -49 is useful for vinyl rips having vinyl noise (crackles).
+    int64_t getAudioEndFrame(unsigned int limitFrames = 0, int thresholdDb = 0);
     
 /// @return Returns with the JSON metadata string for the Native Instruments Stems format, or NULL if the file is not Stems.
     const char *getStemsJSONString();

@@ -11,14 +11,14 @@ struct reverbInternals;
 /// One instance allocates around 120 kb memory.
 class Reverb: public FX {
 public:
-    float dry;        ///< Set dry independently from wet. Don't use the mix property in this case. >= 0 and <= 1.
-    float wet;        ///< Set wet independently from dry. Don't use the mix property in this case. >= 0 and <= 1.
-    float mix;        ///< Sets dry and wet simultaneously with a nice constant power curve. Don't change dry and wet in this case. >= 0 and <= 1.
-    float width;      ///< Stereo width. >= 0 and <= 1.
-    float damp;       ///< High frequency damping. >= 0 and <= 1.
-    float roomSize;   ///< Room size. >= 0 and <= 1.
-    float predelayMs; ///< Pre-delay in milliseconds. 0 to 500.
-    float lowCutHz;   ///< Frequency of the low cut in Hz (-12 db point). Default: 0 (no low frequency cut).
+    float dry;        ///< Set dry independently from wet. Don't use the mix property in this case. >= 0 and <= 1. Default: 0.987...
+    float wet;        ///< Set wet independently from dry. Don't use the mix property in this case. >= 0 and <= 1. Default: 0.587...
+    float mix;        ///< Sets dry and wet simultaneously with a nice constant power curve. Don't change dry and wet in this case. >= 0 and <= 1. Default: 0.4.
+    float width;      ///< Stereo width. >= 0 and <= 1. Default: 1.
+    float damp;       ///< High frequency damping. >= 0 and <= 1. Default: 0.5.
+    float roomSize;   ///< Room size. >= 0 and <= 1. Default: 0.8.
+    float predelayMs; ///< Pre-delay in milliseconds. 0 to 500. Default: 0.
+    float lowCutHz;   ///< Frequency of the low cut in Hz (-12 db point). Default: 0 (no low frequency cut). Default: 0.
 
 /// @brief Constructor. Enabled is false by default.
 /// @param samplerate The initial sample rate in Hz.

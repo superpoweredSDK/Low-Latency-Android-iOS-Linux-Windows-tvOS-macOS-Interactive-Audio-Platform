@@ -10,7 +10,7 @@ struct delayInternals;
 /// @brief Simple delay with minimum memory operations.
 class Delay {
 public:
-    float delayMs;           ///< Delay in milliseconds.
+    float delayMs;           ///< Delay in milliseconds. Default: 0.
     unsigned int samplerate; ///< Sample rate in Hz.
     
 /// @brief Constructor.

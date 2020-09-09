@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">2.0.6</span>
+   &#160;<span id="projectnumber">2.0.8</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -223,7 +223,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>0 to 1. </p>
+<p>0 to 1. Default: 0.7. </p>
 
 </div>
 </div>
@@ -239,7 +239,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>0 to 1 (0 is 0.3 ms, 1 is 8 ms). </p>
+<p>0 to 1 (0 is 0.3 ms, 1 is 8 ms). Default: 0.16. </p>
 
 </div>
 </div>
@@ -255,7 +255,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>The length in beats between the "lowest" and the "highest" jet sound, &gt;= 0.25 and &lt;= 128. </p>
+<p>The length in beats between the "lowest" and the "highest" jet sound, &gt;= 0.25 and &lt;= 128. Default: 16. </p>
 
 </div>
 </div>
@@ -271,7 +271,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>The bpm of the current audio. Limited to &gt;= 40 and &lt;= 250. </p>
+<p>The bpm of the current audio. Limited to &gt;= 40 and &lt;= 250. Default: 128. </p>
 
 </div>
 </div>
@@ -287,7 +287,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>The flanger has a <a class="el" href="class_superpowered_1_1_clipper.html" title="Hard knee clipping with 0 latency. It doesn&#39;t allocate any internal buffers and needs just a few byte...">Clipper</a> inside to prevent overdrive. This is the thresholdDb parameter. </p>
+<p>The flanger has a <a class="el" href="class_superpowered_1_1_clipper.html" title="Hard knee clipping with 0 latency. It doesn&#39;t allocate any internal buffers and needs just a few byte...">Clipper</a> inside to prevent overdrive. This is the thresholdDb parameter. Default: -3. </p>
 
 </div>
 </div>
@@ -303,7 +303,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>The flanger has a <a class="el" href="class_superpowered_1_1_clipper.html" title="Hard knee clipping with 0 latency. It doesn&#39;t allocate any internal buffers and needs just a few byte...">Clipper</a> inside to prevent overdrive. This is the maximumDb parameter. </p>
+<p>The flanger has a <a class="el" href="class_superpowered_1_1_clipper.html" title="Hard knee clipping with 0 latency. It doesn&#39;t allocate any internal buffers and needs just a few byte...">Clipper</a> inside to prevent overdrive. This is the maximumDb parameter. Default: 6. </p>
 
 </div>
 </div>
@@ -319,7 +319,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>True: stereo, false: mono. </p>
+<p>True: stereo, false: mono. It doesn't transform the input or output to mono, this applies for the additional jet effect only. Default: false. </p>
 
 </div>
 </div>

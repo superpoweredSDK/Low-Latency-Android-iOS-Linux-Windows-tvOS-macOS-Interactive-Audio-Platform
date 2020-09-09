@@ -11,13 +11,13 @@ struct flangerInternals;
 /// One instance allocates around 80 kb memory.
 class Flanger: public FX {
 public:
-    float wet;                ///< 0 to 1.
-    float depth;              ///< 0 to 1 (0 is 0.3 ms, 1 is 8 ms).
-    float lfoBeats;           ///< The length in beats between the "lowest" and the "highest" jet sound, >= 0.25 and <= 128.
-    float bpm;                ///< The bpm of the current audio. Limited to >= 40 and <= 250.
-    float clipperThresholdDb; ///< The flanger has a Clipper inside to prevent overdrive. This is the thresholdDb parameter.
-    float clipperMaximumDb;   ///< The flanger has a Clipper inside to prevent overdrive. This is the maximumDb parameter.
-    bool stereo;              ///< True: stereo, false: mono.
+    float wet;                ///< 0 to 1. Default: 0.7.
+    float depth;              ///< 0 to 1 (0 is 0.3 ms, 1 is 8 ms). Default: 0.16.
+    float lfoBeats;           ///< The length in beats between the "lowest" and the "highest" jet sound, >= 0.25 and <= 128. Default: 16.
+    float bpm;                ///< The bpm of the current audio. Limited to >= 40 and <= 250. Default: 128.
+    float clipperThresholdDb; ///< The flanger has a Clipper inside to prevent overdrive. This is the thresholdDb parameter. Default: -3.
+    float clipperMaximumDb;   ///< The flanger has a Clipper inside to prevent overdrive. This is the maximumDb parameter. Default: 6.
+    bool stereo;              ///< True: stereo, false: mono. It doesn't transform the input or output to mono, this applies for the additional jet effect only. Default: false.
     
 /// @brief Constructor. Enabled is false by default.
 /// @param samplerate The initial sample rate in Hz.

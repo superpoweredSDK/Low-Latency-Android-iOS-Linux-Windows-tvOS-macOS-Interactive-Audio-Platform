@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">2.0.6</span>
+   &#160;<span id="projectnumber">2.0.8</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -86,8 +86,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ac279ca5a5ac7b884dba31c8af1dbed29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac730802f714291fb7d223c3d877f33e5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#ac730802f714291fb7d223c3d877f33e5">setPositionPrecise</a> (int64_t positionFrames)</td></tr>
 <tr class="separator:ac730802f714291fb7d223c3d877f33e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd35ff9d4cc287d663bf54f47c284796"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#abd35ff9d4cc287d663bf54f47c284796">getAudioStartFrame</a> (unsigned int limitFrames=0, int thresholdDb=0)</td></tr>
-<tr class="separator:abd35ff9d4cc287d663bf54f47c284796"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58f34d780d0aac17396443f497fcf384"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a58f34d780d0aac17396443f497fcf384">getAudioStartFrame</a> (unsigned int limitFrames=0, int thresholdDb=0)</td></tr>
+<tr class="separator:a58f34d780d0aac17396443f497fcf384"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44119aecec91759bb76aaac6706f8f65"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a44119aecec91759bb76aaac6706f8f65">getAudioEndFrame</a> (unsigned int limitFrames=0, int thresholdDb=0)</td></tr>
+<tr class="separator:a44119aecec91759bb76aaac6706f8f65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4d130834430b4a5615db8a8191e2a66"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#ad4d130834430b4a5615db8a8191e2a66">getStemsJSONString</a> ()</td></tr>
 <tr class="separator:ad4d130834430b4a5615db8a8191e2a66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a842606b200f5f9591788faa0b019b3c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a842606b200f5f9591788faa0b019b3c8">parseAllID3Frames</a> (bool skipImages, unsigned int maxFrameDataSize)</td></tr>
@@ -514,7 +516,7 @@ Static Public Attributes</h2></td></tr>
 <p>Decodes audio. </p>
 <dl class="section return"><dt>Returns</dt><dd>The return value can be:<ul>
 <li>A positive number above zero: the number of frames decoded.</li>
-<li><a class="el" href="class_superpowered_1_1_decoder.html#ab9ae9221d14745ef477d77341d565f1a" title="Error codes for the decodeAudio() and getAudioStartFrame() methods.">Decoder::EndOfFile</a>: end of file reached, there is nothing more to decode. Use setPosition.</li>
+<li><a class="el" href="class_superpowered_1_1_decoder.html#ab9ae9221d14745ef477d77341d565f1a" title="Error codes for the decodeAudio(), getAudioStartFrame() and getAudioEndFrame() methods.">Decoder::EndOfFile</a>: end of file reached, there is nothing more to decode. Use setPosition.</li>
 <li><a class="el" href="class_superpowered_1_1_decoder.html#a1add0546bacfd19eadf1269b92bb19b6" title="Buffering (waiting for the network to pump enough data).">Decoder::BufferingTryAgainLater</a>: the decoder needs more data to be downloaded. Retry <a class="el" href="class_superpowered_1_1_decoder.html#aef80762cf529ab48b0e4df83376b73ac" title="Decodes audio.">decodeAudio()</a> later (it's recommended to wait at least 0.1 seconds).</li>
 <li><a class="el" href="class_superpowered_1_1_decoder.html#a6ac0af538722f8976839a2b596548f17" title="Network (download) error.">Decoder::NetworkError</a>: network (download) error.</li>
 <li><a class="el" href="class_superpowered_1_1_decoder.html#afd9cc8076d243e99d63185b283c61130" title="Decoding error.">Decoder::Error</a>: internal decoder error. </li>
@@ -584,14 +586,14 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="abd35ff9d4cc287d663bf54f47c284796"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abd35ff9d4cc287d663bf54f47c284796">&#9670;&nbsp;</a></span>getAudioStartFrame()</h2>
+<a id="a58f34d780d0aac17396443f497fcf384"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58f34d780d0aac17396443f497fcf384">&#9670;&nbsp;</a></span>getAudioStartFrame()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int Superpowered::Decoder::getAudioStartFrame </td>
+          <td class="memname">int64_t Superpowered::Decoder::getAudioStartFrame </td>
           <td>(</td>
           <td class="paramtype">unsigned int&#160;</td>
           <td class="paramname"><em>limitFrames</em> = <code>0</code>, </td>
@@ -612,7 +614,7 @@ Static Public Attributes</h2></td></tr>
 <p>Detects silence at the beginning. </p><dl class="section warning"><dt>Warning</dt><dd>This function changes positionFrames! </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>The return value can be:<ul>
 <li>A positive number or zero: the frame index where audio starts.</li>
-<li><a class="el" href="class_superpowered_1_1_decoder.html#a1add0546bacfd19eadf1269b92bb19b6" title="Buffering (waiting for the network to pump enough data).">Decoder::BufferingTryAgainLater</a>: the decoder needs more data to be downloaded. Retry <a class="el" href="class_superpowered_1_1_decoder.html#abd35ff9d4cc287d663bf54f47c284796">getAudioStartFrame()</a> later (it's recommended to wait at least 0.1 seconds).</li>
+<li><a class="el" href="class_superpowered_1_1_decoder.html#a1add0546bacfd19eadf1269b92bb19b6" title="Buffering (waiting for the network to pump enough data).">Decoder::BufferingTryAgainLater</a>: the decoder needs more data to be downloaded. Retry <a class="el" href="class_superpowered_1_1_decoder.html#a58f34d780d0aac17396443f497fcf384">getAudioStartFrame()</a> or <a class="el" href="class_superpowered_1_1_decoder.html#a44119aecec91759bb76aaac6706f8f65">getAudioEndFrame()</a> later (it's recommended to wait at least 0.1 seconds).</li>
 <li><a class="el" href="class_superpowered_1_1_decoder.html#a6ac0af538722f8976839a2b596548f17" title="Network (download) error.">Decoder::NetworkError</a>: network (download) error.</li>
 <li><a class="el" href="class_superpowered_1_1_decoder.html#afd9cc8076d243e99d63185b283c61130" title="Decoding error.">Decoder::Error</a>: internal decoder error. </li>
 </ul>
@@ -621,6 +623,49 @@ Static Public Attributes</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">limitFrames</td><td>Optional. How far to search for. 0 means "the entire audio file". </td></tr>
     <tr><td class="paramname">thresholdDb</td><td>Optional. Loudness threshold in decibel. 0 means "any non-zero audio". The value -49 is useful for vinyl rips starting with vinyl noise (crackles). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a44119aecec91759bb76aaac6706f8f65"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44119aecec91759bb76aaac6706f8f65">&#9670;&nbsp;</a></span>getAudioEndFrame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t Superpowered::Decoder::getAudioEndFrame </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>limitFrames</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>thresholdDb</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Detects silence at the end. </p><dl class="section warning"><dt>Warning</dt><dd>This function changes positionFrames! </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The return value can be:<ul>
+<li>A positive number or zero: the frame index where audio ends.</li>
+<li><a class="el" href="class_superpowered_1_1_decoder.html#a1add0546bacfd19eadf1269b92bb19b6" title="Buffering (waiting for the network to pump enough data).">Decoder::BufferingTryAgainLater</a>: the decoder needs more data to be downloaded. Retry <a class="el" href="class_superpowered_1_1_decoder.html#a44119aecec91759bb76aaac6706f8f65">getAudioEndFrame()</a> later (it's recommended to wait at least 0.1 seconds).</li>
+<li><a class="el" href="class_superpowered_1_1_decoder.html#a6ac0af538722f8976839a2b596548f17" title="Network (download) error.">Decoder::NetworkError</a>: network (download) error.</li>
+<li><a class="el" href="class_superpowered_1_1_decoder.html#afd9cc8076d243e99d63185b283c61130" title="Decoding error.">Decoder::Error</a>: internal decoder error. </li>
+</ul>
+</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">limitFrames</td><td>Optional. How far to search for from the end (the duration in frames). 0 means "the entire audio file". </td></tr>
+    <tr><td class="paramname">thresholdDb</td><td>Optional. Loudness threshold in decibel. 0 means "any non-zero audio". The value -49 is useful for vinyl rips having vinyl noise (crackles). </td></tr>
   </table>
   </dd>
 </dl>
@@ -1013,7 +1058,7 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Error codes for the <a class="el" href="class_superpowered_1_1_decoder.html#aef80762cf529ab48b0e4df83376b73ac" title="Decodes audio.">decodeAudio()</a> and <a class="el" href="class_superpowered_1_1_decoder.html#abd35ff9d4cc287d663bf54f47c284796">getAudioStartFrame()</a> methods. </p>
+<p>Error codes for the <a class="el" href="class_superpowered_1_1_decoder.html#aef80762cf529ab48b0e4df83376b73ac" title="Decodes audio.">decodeAudio()</a>, <a class="el" href="class_superpowered_1_1_decoder.html#a58f34d780d0aac17396443f497fcf384">getAudioStartFrame()</a> and <a class="el" href="class_superpowered_1_1_decoder.html#a44119aecec91759bb76aaac6706f8f65">getAudioEndFrame()</a> methods. </p>
 <p>End-of-file reached. </p>
 
 </div>

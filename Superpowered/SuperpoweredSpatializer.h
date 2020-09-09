@@ -13,17 +13,17 @@ struct spatializerInternals;
 class Spatializer {
 public:
     unsigned int samplerate; ///< Sample rate in Hz.
-    float inputVolume;       ///< Input volume (gain).
-    float azimuth;           ///< From 0 to 360 degrees.
-    float elevation;         ///< -90 to 90 degrees.
-    float reverbmix;         ///< The ratio of how much audio the Global Spatializer Reverb can collect from this instance (between 0 and 1).
-    float occlusion;         ///< Occlusion factor (between 0 and 1);
-    bool sound2;             ///< Alternative sound option. True on, false off.
+    float inputVolume;       ///< Input volume (gain). Default: 1.
+    float azimuth;           ///< From 0 to 360 degrees. Default: 0.
+    float elevation;         ///< -90 to 90 degrees. Default: 0.
+    float reverbmix;         ///< The ratio of how much audio the Global Spatializer Reverb can collect from this instance (between 0 and 1). Default: 0.
+    float occlusion;         ///< Occlusion factor (between 0 and 1); Default: 0.
+    bool sound2;             ///< Alternative sound option. True on, false off. Default: false.
     
-    static float reverbWidth;      ///< Global Spatializer Reverb stereo width. >= 0 and <= 1.
-    static float reverbDamp;       ///< Global Spatializer Reverb high frequency damping. >= 0 and <= 1.
-    static float reverbRoomSize;   ///< Global Spatializer Reverb room size. >= 0 and <= 1.
-    static float reverbPredelayMs; ///< Global Spatializer Reverb pre-delay in milliseconds. 0 to 500.
+    static float reverbWidth;      ///< Global Spatializer Reverb stereo width. >= 0 and <= 1. Default: 1.
+    static float reverbDamp;       ///< Global Spatializer Reverb high frequency damping. >= 0 and <= 1. Default: 0.5.
+    static float reverbRoomSize;   ///< Global Spatializer Reverb room size. >= 0 and <= 1. Default: 0.8.
+    static float reverbPredelayMs; ///< Global Spatializer Reverb pre-delay in milliseconds. 0 to 500. Default: 0.
     static float reverbLowCutHz;   ///< Global Spatializer Reverb frequency of the low cut in Hz (-12 db point). Default: 0 (no low frequency cut).
     
 /// @brief Constructor.

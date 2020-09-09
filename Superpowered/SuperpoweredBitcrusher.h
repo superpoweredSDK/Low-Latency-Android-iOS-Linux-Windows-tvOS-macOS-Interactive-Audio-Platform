@@ -11,8 +11,8 @@ struct bitcrusherInternals;
 /// It doesn't allocate any internal buffers and needs just a few bytes of memory.
 class Bitcrusher: public FX {
 public:
-    unsigned int frequency; ///< Frequency in Hz, from 20 Hz to the half of the samplerate.
-    unsigned char bits;     ///< Bit depth, from 1 to 16.
+    unsigned int frequency; ///< Frequency in Hz, from 20 Hz to the half of the samplerate. Default: 8000.
+    unsigned char bits;     ///< Bit depth, from 1 to 16. Default: 8.
     
 /// @brief Constructor. Enabled is false by default.
 /// @param samplerate The initial sample rate in Hz.

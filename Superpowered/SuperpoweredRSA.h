@@ -25,13 +25,13 @@ namespace Superpowered {
         /// @brief Creates an RSA public key object from a PEM string.
         /// @param pem PEM string.
         /// @param pemLengthBytes PEM string length (not including the trailing zero if any).
-        /// @return The new RSA public key object or NULL on memory allocation error or invalid PEM data.
+        /// @return The new RSA public key object (created with new) or NULL on memory allocation error or invalid PEM data.
         static RSAPublicKey *createFromPEM(const char *pem, unsigned int pemLengthBytes);
         
         /// @brief Creates an RSA public key object from DER data.
         /// @param der DER data.
         /// @param derLengthBytes DER data length in bytes.
-        /// @return The new RSA public key object or NULL on memory allocation error or invalid DER data.
+        /// @return The new RSA public key object (created with new) or NULL on memory allocation error or invalid DER data.
         static RSAPublicKey *createFromDER(const unsigned char *der, unsigned int derLengthBytes);
         
         /// @brief Destructor.
@@ -77,13 +77,13 @@ namespace Superpowered {
         /// @brief Creates an RSA private key object from a PEM string.
         /// @param pem PEM string.
         /// @param pemLengthBytes PEM string length (not including the trailing zero if any).
-        /// @return The new RSA private key object or NULL on memory allocation error or invalid PEM data.
+        /// @return The new RSA private key object (created with new) or NULL on memory allocation error or invalid PEM data.
         static RSAPrivateKey *createFromPEM(const char *pem, unsigned int pemLengthBytes);
         
         /// @brief Creates an RSA private key object from DER data.
         /// @param der DER data.
         /// @param derLengthBytes DER data length in bytes.
-        /// @return The new RSA private key object or NULL on memory allocation error or invalid DER data.
+        /// @return The new RSA private key object (created with new) or NULL on memory allocation error or invalid DER data.
         static RSAPrivateKey *createFromDER(const unsigned char *der, unsigned int derLengthBytes);
         
         /// @brief Destructor.

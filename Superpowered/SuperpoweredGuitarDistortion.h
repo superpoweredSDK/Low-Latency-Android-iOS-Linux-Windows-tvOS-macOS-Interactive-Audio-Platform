@@ -11,20 +11,20 @@ struct gdInternals;
 /// One instance allocates around 32 kb memory.
 class GuitarDistortion: public FX {
 public:
-    float gainDecibel;     ///< Gain value in decibel. Limit: -96 to 24.
-    float drive;           ///< Drive percentage, from 0 to 1.
-    float bassFrequency;   ///< High-pass filter frequency in Hz. From 1 Hz to 250 Hz.
-    float trebleFrequency; ///< Low-pass filter frequency in Hz. From 6000 Hz to the half of the current sample rate.
-    float eq80HzDecibel;   ///< EQ 80 Hz decibel gain. Limit: -96 to 24.
-    float eq240HzDecibel;  ///< EQ 240 Hz decibel gain. Limit: -96 to 24.
-    float eq750HzDecibel;  ///< EQ 750 Hz decibel gain. Limit: -96 to 24.
-    float eq2200HzDecibel; ///< EQ 2200 Hz decibel gain. Limit: -96 to 24.
-    float eq6600HzDecibel; ///< EQ 6600 Hz decibel gain. Limit: -96 to 24.
-    bool distortion0;      ///< Enables the first distortion sound, that is similar to Boss DS-1.
-    bool distortion1;      ///< Enables the second distortion sound, that is similar to Tyrian.
-    bool marshall;         ///< Enables Marshall cabinet simulation.
-    bool ada;              ///< Enables ADA cabinet simulation. Adds a lot of bass and treble.
-    bool vtwin;            ///< Enables V-Twin preamp simulation. Recommended for blues/jazz.
+    float gainDecibel;     ///< Gain value in decibel. Limit: -96 to 24. Default: 0.
+    float drive;           ///< Drive percentage, from 0 to 1. Default: 0.
+    float bassFrequency;   ///< High-pass filter frequency in Hz. From 1 Hz to 250 Hz. Default: 1.
+    float trebleFrequency; ///< Low-pass filter frequency in Hz. From 6000 Hz to the half of the current sample rate. Default: constructor samplerate / 2 - 100.
+    float eq80HzDecibel;   ///< EQ 80 Hz decibel gain. Limit: -96 to 24. Default: 0.
+    float eq240HzDecibel;  ///< EQ 240 Hz decibel gain. Limit: -96 to 24. Default: 0.
+    float eq750HzDecibel;  ///< EQ 750 Hz decibel gain. Limit: -96 to 24. Default: 0.
+    float eq2200HzDecibel; ///< EQ 2200 Hz decibel gain. Limit: -96 to 24. Default: 0.
+    float eq6600HzDecibel; ///< EQ 6600 Hz decibel gain. Limit: -96 to 24. Default: 0.
+    bool distortion0;      ///< Enables the first distortion sound, that is similar to Boss DS-1. Default: false.
+    bool distortion1;      ///< Enables the second distortion sound, that is similar to Tyrian. Default: false.
+    bool marshall;         ///< Enables Marshall cabinet simulation. Default: false.
+    bool ada;              ///< Enables ADA cabinet simulation. Adds a lot of bass and treble. Default: false.
+    bool vtwin;            ///< Enables V-Twin preamp simulation. Recommended for blues/jazz. Default: false.
     
 /// @brief Constructor. Enabled is false by default.
 /// @param samplerate The initial sample rate in Hz.

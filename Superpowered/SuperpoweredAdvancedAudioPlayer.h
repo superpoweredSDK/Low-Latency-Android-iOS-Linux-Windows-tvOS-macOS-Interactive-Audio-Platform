@@ -75,7 +75,7 @@ public:
     double syncToMsElapsedSinceLastBeat;     ///< The number of milliseconds elapsed since the last beat on audio the player has to sync with. Use -1.0 to ignore.
     double syncToPhase;                      ///< Used for quantized synchronization. The phase to sync with.
     double syncToQuantum;                    ///< Used for quantized synchronization. The quantum to sync with.
-    int pitchShiftCents;                     ///< Pitch shift cents, from -1200 (one octave down) to 1200 (one octave up). Use values representing notes (multiply of 100) for low CPU load. Default: 0 (no pitch shift).
+    int pitchShiftCents;                     ///< Pitch shift cents, from -2400 (two octaves down) to 2400 (two octaves up). Use values representing notes (multiply of 100), between -1200 and 1200 for low CPU load. Default: 0 (no pitch shift).
     bool loopOnEOF;                          ///< If true, jumps back and continues playback. If false, playback stops. Default: false.
     bool reverseToForwardAtLoopStart;        ///< If this is true with playing backwards and looping, then reaching the beginning of the loop will change playback direction to forwards. Default: false.
     bool enableStems;                        ///< If true and a Native Instruments STEMS file is loaded, output 4 stereo channels. Default: false (stereo master mix output).
@@ -116,7 +116,8 @@ public:
 /// @param path Full file system path or progressive download path (http or https).
 /// @param customHTTPRequest If custom HTTP communication is required (such as sending http headers for authorization), pass a fully prepared http request object. The player will copy this object.
 /// @param skipSilenceAtBeginning If true, the player will set the position to skip the initial digital silence of the audio file (up to 10 seconds).
-    void open(const char *path, Superpowered::httpRequest *customHTTPRequest = 0, bool skipSilenceAtBeginning = false);
+/// @param measureSilenceAtEnd If true, the player will check the length of the digital silence at the end of the audio file.
+    void open(const char *path, Superpowered::httpRequest *customHTTPRequest = 0, bool skipSilenceAtBeginning = false, bool measureSilenceAtEnd = false);
     
 /// @brief Opens an audio file with playback paused.
 /// Playback rate, pitchShift, timeStretching and syncMode are NOT changed if you open a new file.
@@ -126,7 +127,8 @@ public:
 /// @param length The byte length from the offset.
 /// @param customHTTPRequest If custom HTTP communication is required (such as sending http headers for authorization), pass a fully prepared http request object. The player will copy this object.
 /// @param skipSilenceAtBeginning If true, the player will set the position to skip the initial digital silence of the audio file (up to 10 seconds).
-    void open(const char *path, int offset, int length, Superpowered::httpRequest *customHTTPRequest = 0, bool skipSilenceAtBeginning = false);
+/// @param measureSilenceAtEnd If true, the player will check the length of the digital silence at the end of the audio file.
+    void open(const char *path, int offset, int length, Superpowered::httpRequest *customHTTPRequest = 0, bool skipSilenceAtBeginning = false, bool measureSilenceAtEnd = false);
     
 /// @brief Opens a HTTP Live Streaming stream with playback paused.
 /// Playback rate, pitchShift, timeStretching and syncMode are NOT changed if you open a new one.
@@ -150,8 +152,11 @@ public:
 /// @return Indicates if the player is waiting for data (such as waiting for a network download).
     bool isWaitingForBuffering();
     
-/// @return Returns with the length of the digital silence at the beginning of the file if open() was called skipSilenceAtBeginning = true, 0 otherwise.
+/// @return Returns with the length of the digital silence at the beginning of the file if open() was called with skipSilenceAtBeginning = true, 0 otherwise.
     double getAudioStartMs();
+    
+/// @return Returns with the length of the digital silence at the end of the file if open() was called with measureSilenceAtEnd = true, 0 otherwise.
+    double getAudioEndMs();
             
 /// @return The current playhead position in milliseconds. Not changed by any pending setPosition() or seek() call, always accurate regardless of time-stretching and other transformations.
     double getPositionMs();

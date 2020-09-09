@@ -11,11 +11,11 @@ struct echoInternals;
 /// One instance allocates around 770 kb memory.
 class Echo: public FX {
 public:
-    float dry;   ///< 0 to 1
-    float wet;   ///< 0 to 1
-    float bpm;   ///< 40 to 250
-    float beats; ///< Delay in beats. 0.03125 to 2.
-    float decay; ///< 0 to 0.99
+    float dry;   ///< 0 to 1. Default: 1.
+    float wet;   ///< 0 to 1. Default: 0.5.
+    float bpm;   ///< 40 to 250. Default: 128.
+    float beats; ///< Delay in beats. 0.03125 to 2. Default: 0.5.
+    float decay; ///< 0 to 0.99. Default: 0.5.
     
 /// @brief Constructor. Enabled is false by default.
 /// @param samplerate The initial sample rate in Hz.

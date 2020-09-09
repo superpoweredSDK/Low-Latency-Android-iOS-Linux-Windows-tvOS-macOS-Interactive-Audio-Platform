@@ -9,8 +9,8 @@ struct clipperInternals;
 /// It doesn't allocate any internal buffers and needs just a few bytes of memory.
 class Clipper {
 public:
-    float thresholdDb; ///< Audio below this will be unchanged, above this will be attenuated. Limited between -100 and 0.
-    float maximumDb;   ///< Audio will reach 1.0f at this point. Limited between -48 and 48.
+    float thresholdDb; ///< Audio below this will be unchanged, above this will be attenuated. Limited between -100 and 0. Default: 0.
+    float maximumDb;   ///< Audio will reach 1.0f at this point. Limited between -48 and 48. Default: 6.
 
 /// @brief Constructor;
     Clipper();
