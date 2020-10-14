@@ -68,7 +68,7 @@ static const char *urls[8] = {
     audioIO = nil;
     bufferIndicator = nil;
     delete player;
-    Superpowered::AdvancedAudioPlayer::clearTempFolder();
+    Superpowered::AdvancedAudioPlayer::setTempFolder(NULL);
 }
 
 // Called periodically by the operating system's audio stack to provide audio output.

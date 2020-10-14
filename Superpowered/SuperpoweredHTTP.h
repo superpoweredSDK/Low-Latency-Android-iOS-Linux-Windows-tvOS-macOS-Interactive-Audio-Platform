@@ -118,6 +118,11 @@ namespace Superpowered {
     };
     
     /// @brief HTTP request.
+    /// Works with HTTP and HTTPS. Supported cipher suites for HTTPS:
+    /// TLS_RSA_WITH_AES_256_CBC_SHA256
+    /// TLS_RSA_WITH_AES_256_CBC_SHA
+    /// TLS_RSA_WITH_AES_128_CBC_SHA256
+    /// TLS_RSA_WITH_AES_128_CBC_SHA
     class httpRequest {
     public:
         char *url; ///< The url to connect to. Might include the query string, however the "data" parameter is more convenient to construct query strings. NULL by default.
