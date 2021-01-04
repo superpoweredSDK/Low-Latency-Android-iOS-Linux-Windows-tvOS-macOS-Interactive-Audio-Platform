@@ -64,6 +64,7 @@ public:
     unsigned int outputSamplerate;           ///< The player output sample rate in Hz.
     double playbackRate;                     ///< The playback rate. Must be positive and above 0.00001. Default: 1.
     bool timeStretching;                     ///< Enable/disable time-stretching. Default: true.
+    float formantCorrection;                 ///< Amount of formant correction, between 0 (none) and 1 (full). Default: 0.
     float minimumTimestretchingPlaybackRate; ///< Will not time-stretch but resample below this playback rate. Default: 0.501f (the recommended value for low CPU load on older mobile devices, such as the first iPad). Will be applied after changing playbackRate or scratching.
     float maximumTimestretchingPlaybackRate; ///< Will not time-stretch but resample above this playback rate. Default: 2.0f (the recommended value for low CPU load on older mobile devices, such as the first iPad). Will be applied after changing playbackRate or scratching.
     double originalBPM;                      ///< The original bpm of the current music. There is no auto-bpm detection inside, this must be set to a correct value for syncing. Maximum 300. A value below 20 will be automatically set to 0. Default: 0 (no bpm value known).
