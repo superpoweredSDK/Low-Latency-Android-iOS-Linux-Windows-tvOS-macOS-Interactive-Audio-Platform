@@ -29,7 +29,8 @@ public:
 
 /// @brief This class can handle one stereo audio channel pair by default (left+right). You can extend it to handle more.
 /// @param numStereoPairs The number of stereo audio channel pairs. Valid values: one (stereo) to four (8 channels).
-    void setStereoPairs(unsigned int numStereoPairs);
+/// @param dontFree If true, this function will not free up any memory if numStereoPairs is less than before, so no reallocation happens if numStereoPairs needs to be increased later.
+    void setStereoPairs(unsigned int numStereoPairs, bool dontFree = false);
 
 /// @brief Add some audio input.
 /// @param input Pointer to floating point numbers. 32-bit interleaved stereo input.

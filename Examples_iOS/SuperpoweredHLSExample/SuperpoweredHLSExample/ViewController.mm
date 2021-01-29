@@ -53,7 +53,7 @@ static const char *urls[8] = {
     [self.view insertSubview:bufferIndicator belowSubview:seekSlider];
 
     displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(onDisplayLink)];
-    displayLink.frameInterval = 1;
+    displayLink.preferredFramesPerSecond = 60;
     [displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
 
     audioIO = [[SuperpoweredIOSAudioIO alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:12 preferredSamplerate:44100 audioSessionCategory:AVAudioSessionCategoryPlayback channels:2 audioProcessingCallback:audioProcessing clientdata:(__bridge void *)self];

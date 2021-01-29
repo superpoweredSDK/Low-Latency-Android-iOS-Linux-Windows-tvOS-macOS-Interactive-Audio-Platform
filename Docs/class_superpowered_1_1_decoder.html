@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">2.1.0</span>
+   &#160;<span id="projectnumber">2.1.1</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -47,6 +47,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="class_superpowered_1_1_decoder-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -74,12 +75,16 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:accfc084bcae729b0e03b61c6f3929c0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4065521ec637d93602117253d22c737f"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a4065521ec637d93602117253d22c737f">getFullyDownloadedPath</a> ()</td></tr>
 <tr class="separator:a4065521ec637d93602117253d22c737f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a895d9e0daa0d894473e062a85616a7ab"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a895d9e0daa0d894473e062a85616a7ab">getCurrentBps</a> ()</td></tr>
+<tr class="separator:a895d9e0daa0d894473e062a85616a7ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abbc7af8303f8594343784de77da3f4d5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#abbc7af8303f8594343784de77da3f4d5">Decoder</a> ()</td></tr>
 <tr class="separator:abbc7af8303f8594343784de77da3f4d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2816d0d5f58677ca374c3ac7cae0cd03"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a2816d0d5f58677ca374c3ac7cae0cd03">~Decoder</a> ()</td></tr>
 <tr class="separator:a2816d0d5f58677ca374c3ac7cae0cd03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acba540f007a8b510a39c83eccafc5d41"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#acba540f007a8b510a39c83eccafc5d41">open</a> (const char *path, bool metaOnly=false, int offset=0, int length=0, int stemsIndex=0, <a class="el" href="class_superpowered_1_1http_request.html">Superpowered::httpRequest</a> *customHTTPRequest=0)</td></tr>
 <tr class="separator:acba540f007a8b510a39c83eccafc5d41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f4361c11b5247ca74991cb75b0aecb7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a3f4361c11b5247ca74991cb75b0aecb7">openHLS</a> (const char *url, char liveLatencySeconds=-1, <a class="el" href="class_superpowered_1_1http_request.html">Superpowered::httpRequest</a> *customHTTPRequest=0)</td></tr>
+<tr class="separator:a3f4361c11b5247ca74991cb75b0aecb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef80762cf529ab48b0e4df83376b73ac"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#aef80762cf529ab48b0e4df83376b73ac">decodeAudio</a> (short int *output, unsigned int numberOfFrames)</td></tr>
 <tr class="separator:aef80762cf529ab48b0e4df83376b73ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac279ca5a5ac7b884dba31c8af1dbed29"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#ac279ca5a5ac7b884dba31c8af1dbed29">setPositionQuick</a> (int64_t positionFrames)</td></tr>
@@ -127,6 +132,15 @@ Public Member Functions</h2></td></tr>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ad8163f74d51f7809414fd1d85d0be0f6"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#ad8163f74d51f7809414fd1d85d0be0f6">statusCodeToString</a> (int code)</td></tr>
 <tr class="separator:ad8163f74d51f7809414fd1d85d0be0f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:aa18d3d7b322303fff4736e1942b90bf3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#aa18d3d7b322303fff4736e1942b90bf3">HLSAutomaticAlternativeSwitching</a></td></tr>
+<tr class="separator:aa18d3d7b322303fff4736e1942b90bf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fc16c75c579f59cbaf1eb471428a20c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a8fc16c75c579f59cbaf1eb471428a20c">HLSMaximumDownloadAttempts</a></td></tr>
+<tr class="separator:a8fc16c75c579f59cbaf1eb471428a20c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38df0859b46172f7aac52da21072c540"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a38df0859b46172f7aac52da21072c540">HLSBufferingSeconds</a></td></tr>
+<tr class="separator:a38df0859b46172f7aac52da21072c540"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -415,6 +429,24 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a895d9e0daa0d894473e062a85616a7ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a895d9e0daa0d894473e062a85616a7ab">&#9670;&nbsp;</a></span>getCurrentBps()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int Superpowered::Decoder::getCurrentBps </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Returns with the current download speed in bytes per second. </dd></dl>
+
+</div>
+</div>
 <a id="acba540f007a8b510a39c83eccafc5d41"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acba540f007a8b510a39c83eccafc5d41">&#9670;&nbsp;</a></span>open()</h2>
 
@@ -481,6 +513,51 @@ Static Public Attributes</h2></td></tr>
     <tr><td class="paramname">length</td><td>Byte length from offset. Set offset and length to 0 to read the entire file. </td></tr>
     <tr><td class="paramname">stemsIndex</td><td>Stems track index for Native Instruments Stems format. </td></tr>
     <tr><td class="paramname">customHTTPRequest</td><td>If custom HTTP communication is required (such as sending http headers for authorization), pass a fully prepared http request object. The player will take ownership of this. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3f4361c11b5247ca74991cb75b0aecb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f4361c11b5247ca74991cb75b0aecb7">&#9670;&nbsp;</a></span>openHLS()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Superpowered::Decoder::openHLS </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>url</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>liveLatencySeconds</em> = <code>-1</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_superpowered_1_1http_request.html">Superpowered::httpRequest</a> *&#160;</td>
+          <td class="paramname"><em>customHTTPRequest</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Opens a HTTP Live Streaming stream. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_superpowered_1_1_decoder.html#acba540f007a8b510a39c83eccafc5d41" title="Opens a file for decoding.">open()</a> for the return value. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">url</td><td>Stream URL. </td></tr>
+    <tr><td class="paramname">liveLatencySeconds</td><td>When connecting or reconnecting to a HLS live stream, the decoder will try to skip audio to maintain this latency. Default: -1 (the decoder wil not skip audio and the live stream starts at the first segment specified by the server). </td></tr>
+    <tr><td class="paramname">customHTTPRequest</td><td>If custom HTTP communication is required (such as sending http headers for authorization), pass a fully prepared http request object. The decoder will copy this object. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1540,6 +1617,54 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Call <a class="el" href="class_superpowered_1_1_advanced_audio_player.html#aa6b0749dac615cdc6738d98e37c2f269" title="Set the folder to store for temporary files. Used for HLS and progressive download only....">AdvancedAudioPlayer::setTempFolder</a> first. </p>
+
+</div>
+</div>
+<a id="aa18d3d7b322303fff4736e1942b90bf3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa18d3d7b322303fff4736e1942b90bf3">&#9670;&nbsp;</a></span>HLSAutomaticAlternativeSwitching</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Superpowered::Decoder::HLSAutomaticAlternativeSwitching</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>If true, then the decoder will automatically switch between the HLS alternatives according to the available network bandwidth. Default: true. </p>
+
+</div>
+</div>
+<a id="a8fc16c75c579f59cbaf1eb471428a20c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8fc16c75c579f59cbaf1eb471428a20c">&#9670;&nbsp;</a></span>HLSMaximumDownloadAttempts</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Superpowered::Decoder::HLSMaximumDownloadAttempts</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>How many times to retry if a HLS segment download fails. Default: 100. </p>
+
+</div>
+</div>
+<a id="a38df0859b46172f7aac52da21072c540"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38df0859b46172f7aac52da21072c540">&#9670;&nbsp;</a></span>HLSBufferingSeconds</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Superpowered::Decoder::HLSBufferingSeconds</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>How many seconds ahead of the playback position to download. Default value: HLS_DOWNLOAD_REMAINING. </p>
 
 </div>
 </div>

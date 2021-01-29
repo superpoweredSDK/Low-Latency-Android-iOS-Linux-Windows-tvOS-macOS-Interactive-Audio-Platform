@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">2.1.0</span>
+   &#160;<span id="projectnumber">2.1.1</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -71,8 +71,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a611340885eaf4dc86b0fc46b699e488f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc2784e678b5722c5815987e2ea97eea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_time_stretching.html#acc2784e678b5722c5815987e2ea97eea">advancedProcess</a> (<a class="el" href="struct_superpowered_1_1_audiopointerlist_element.html">AudiopointerlistElement</a> *input)</td></tr>
 <tr class="separator:acc2784e678b5722c5815987e2ea97eea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ae793ce98d74f92b64c96fb91ba552a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_time_stretching.html#a7ae793ce98d74f92b64c96fb91ba552a">setStereoPairs</a> (unsigned int numStereoPairs)</td></tr>
-<tr class="separator:a7ae793ce98d74f92b64c96fb91ba552a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07d11991c1834be5950b2f74771b961a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_time_stretching.html#a07d11991c1834be5950b2f74771b961a">setStereoPairs</a> (unsigned int numStereoPairs, bool dontFree=false)</td></tr>
+<tr class="separator:a07d11991c1834be5950b2f74771b961a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a824e09f4e7dcaf009b6a546dcef45ea9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_time_stretching.html#a824e09f4e7dcaf009b6a546dcef45ea9">removeFramesFromInputBuffersEnd</a> (unsigned int numberOfFrames)</td></tr>
 <tr class="separator:a824e09f4e7dcaf009b6a546dcef45ea9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -308,8 +308,8 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a7ae793ce98d74f92b64c96fb91ba552a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7ae793ce98d74f92b64c96fb91ba552a">&#9670;&nbsp;</a></span>setStereoPairs()</h2>
+<a id="a07d11991c1834be5950b2f74771b961a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07d11991c1834be5950b2f74771b961a">&#9670;&nbsp;</a></span>setStereoPairs()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -318,8 +318,18 @@ Public Attributes</h2></td></tr>
           <td class="memname">void Superpowered::TimeStretching::setStereoPairs </td>
           <td>(</td>
           <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>numStereoPairs</em></td><td>)</td>
+          <td class="paramname"><em>numStereoPairs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>dontFree</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -328,6 +338,7 @@ Public Attributes</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">numStereoPairs</td><td>The number of stereo audio channel pairs. Valid values: one (stereo) to four (8 channels). </td></tr>
+    <tr><td class="paramname">dontFree</td><td>If true, this function will not free up any memory if numStereoPairs is less than before, so no reallocation happens if numStereoPairs needs to be increased later. </td></tr>
   </table>
   </dd>
 </dl>

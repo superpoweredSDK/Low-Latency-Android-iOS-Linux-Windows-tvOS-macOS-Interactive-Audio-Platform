@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">2.1.0</span>
+   &#160;<span id="projectnumber">2.1.1</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -61,8 +61,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a53c3e6fa532fc79befc7d4d9cc8a280e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6b40c67649ccfa5567b8abd3821b263"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_frequency_domain.html#aa6b40c67649ccfa5567b8abd3821b263">getNumberOfInputFramesNeeded</a> ()</td></tr>
 <tr class="separator:aa6b40c67649ccfa5567b8abd3821b263"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aafd831eb98fc0487075bb9844c00889e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_frequency_domain.html#aafd831eb98fc0487075bb9844c00889e">setStereoPairs</a> (unsigned int numStereoPairs)</td></tr>
-<tr class="separator:aafd831eb98fc0487075bb9844c00889e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a858e178ee48187c001e6f3ca263ab3ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_frequency_domain.html#a858e178ee48187c001e6f3ca263ab3ed">setStereoPairs</a> (unsigned int numStereoPairs, bool dontFree=false)</td></tr>
+<tr class="separator:a858e178ee48187c001e6f3ca263ab3ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07504c76c96273bbb4e6863767cb9dfa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_frequency_domain.html#a07504c76c96273bbb4e6863767cb9dfa">addInput</a> (float *input, int numberOfFrames)</td></tr>
 <tr class="separator:a07504c76c96273bbb4e6863767cb9dfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5409fc62d8f91635bb6b66983659e7c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_frequency_domain.html#af5409fc62d8f91635bb6b66983659e7c">addInput</a> (<a class="el" href="struct_superpowered_1_1_audiopointerlist_element.html">AudiopointerlistElement</a> *input)</td></tr>
@@ -165,8 +165,8 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aafd831eb98fc0487075bb9844c00889e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aafd831eb98fc0487075bb9844c00889e">&#9670;&nbsp;</a></span>setStereoPairs()</h2>
+<a id="a858e178ee48187c001e6f3ca263ab3ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a858e178ee48187c001e6f3ca263ab3ed">&#9670;&nbsp;</a></span>setStereoPairs()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -175,8 +175,18 @@ Public Attributes</h2></td></tr>
           <td class="memname">void Superpowered::FrequencyDomain::setStereoPairs </td>
           <td>(</td>
           <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>numStereoPairs</em></td><td>)</td>
+          <td class="paramname"><em>numStereoPairs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>dontFree</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -185,6 +195,7 @@ Public Attributes</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">numStereoPairs</td><td>The number of stereo audio channel pairs. Valid values: one (stereo) to four (8 channels). </td></tr>
+    <tr><td class="paramname">dontFree</td><td>If true, this function will not free up any memory if numStereoPairs is less than before, so no reallocation happens if numStereoPairs needs to be increased later. </td></tr>
   </table>
   </dd>
 </dl>

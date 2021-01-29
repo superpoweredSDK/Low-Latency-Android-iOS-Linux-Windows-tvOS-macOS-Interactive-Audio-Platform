@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">2.1.0</span>
+   &#160;<span id="projectnumber">2.1.1</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -57,8 +57,8 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a726f21de6d6a7e0b3701885dca88f3d9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_advanced_audio_player.html#a726f21de6d6a7e0b3701885dca88f3d9">AdvancedAudioPlayer</a> (unsigned int <a class="el" href="_superpoweredtv_o_s_audio_i_o_8mm.html#ac38751c7169cfeb9325a947cc0484286">samplerate</a>, unsigned char cachedPointCount, unsigned int internalBufferSizeSeconds=2, unsigned int negativeSeconds=0)</td></tr>
-<tr class="separator:a726f21de6d6a7e0b3701885dca88f3d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a011cadfed705ed1226480a033ef8f1eb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_advanced_audio_player.html#a011cadfed705ed1226480a033ef8f1eb">AdvancedAudioPlayer</a> (unsigned int <a class="el" href="_superpoweredtv_o_s_audio_i_o_8mm.html#ac38751c7169cfeb9325a947cc0484286">samplerate</a>, unsigned char cachedPointCount, unsigned int internalBufferSizeSeconds=2, unsigned int negativeSeconds=0, float minimumTimestretchingPlaybackRate=0.501f, float maximumTimestretchingPlaybackRate=2.0f, bool enableStems=false)</td></tr>
+<tr class="separator:a011cadfed705ed1226480a033ef8f1eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba9f2ff66654c4c9e8eaa6335984071f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_advanced_audio_player.html#aba9f2ff66654c4c9e8eaa6335984071f">~AdvancedAudioPlayer</a> ()</td></tr>
 <tr class="separator:aba9f2ff66654c4c9e8eaa6335984071f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e8cb1b0e3716fd5a5522b016bd51246"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_advanced_audio_player.html#a2e8cb1b0e3716fd5a5522b016bd51246">open</a> (const char *path, <a class="el" href="class_superpowered_1_1http_request.html">Superpowered::httpRequest</a> *customHTTPRequest=0, bool skipSilenceAtBeginning=false, bool measureSilenceAtEnd=false)</td></tr>
@@ -143,10 +143,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a8b8ed3dd766b9fb34346a87e9e1be3ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c97ed7d0d27c2ce4b79966674ac076b"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_advanced_audio_player.html#a4c97ed7d0d27c2ce4b79966674ac076b">getMsDifference</a> (double phase, double quantum)</td></tr>
 <tr class="separator:a4c97ed7d0d27c2ce4b79966674ac076b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a19dd519199473a218b4f063100d3c1b6"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_advanced_audio_player.html#a19dd519199473a218b4f063100d3c1b6">getWaitingForSyncStartMs</a> ()</td></tr>
-<tr class="separator:a19dd519199473a218b4f063100d3c1b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed483d9fe8bd45cfc9e530dd0032566d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_advanced_audio_player.html#aed483d9fe8bd45cfc9e530dd0032566d">getWillSyncMs</a> ()</td></tr>
-<tr class="separator:aed483d9fe8bd45cfc9e530dd0032566d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a055f452713771ca7adde3dc1dfef864f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_advanced_audio_player.html#a055f452713771ca7adde3dc1dfef864f">getMsRemainingToSyncEvent</a> ()</td></tr>
+<tr class="separator:a055f452713771ca7adde3dc1dfef864f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a036c89d6010c3e43617a459e8bf6e6ac"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_advanced_audio_player.html#a036c89d6010c3e43617a459e8bf6e6ac">loop</a> (double startMs, double lengthMs, bool jumpToStartMs, unsigned char pointID, bool synchronisedStart, unsigned int numLoops=0, bool forceDefaultQuantum=false, bool preferWaitingforSynchronisedStart=false)</td></tr>
 <tr class="separator:a036c89d6010c3e43617a459e8bf6e6ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a754bf320ee8c673e51caadf1f417567a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_advanced_audio_player.html#a754bf320ee8c673e51caadf1f417567a">loopBetween</a> (double startMs, double endMs, bool jumpToStartMs, unsigned char pointID, bool synchronisedStart, unsigned int numLoops=0, bool forceDefaultQuantum=false, bool preferWaitingforSynchronisedStart=false)</td></tr>
@@ -207,10 +205,6 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a6113515a237367caf14a330318c8fb24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad22326044d19f17255453dbba6f46dcb"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_advanced_audio_player.html#ad22326044d19f17255453dbba6f46dcb">formantCorrection</a></td></tr>
 <tr class="separator:ad22326044d19f17255453dbba6f46dcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad4d9f4a4c7172aeb46ce058566bf5836"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_advanced_audio_player.html#ad4d9f4a4c7172aeb46ce058566bf5836">minimumTimestretchingPlaybackRate</a></td></tr>
-<tr class="separator:ad4d9f4a4c7172aeb46ce058566bf5836"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ce22fee9fd17f4ba36484b42ea3a4c5"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_advanced_audio_player.html#a7ce22fee9fd17f4ba36484b42ea3a4c5">maximumTimestretchingPlaybackRate</a></td></tr>
-<tr class="separator:a7ce22fee9fd17f4ba36484b42ea3a4c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7068861e6912464520cb1aa5440a865"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_advanced_audio_player.html#ae7068861e6912464520cb1aa5440a865">originalBPM</a></td></tr>
 <tr class="separator:ae7068861e6912464520cb1aa5440a865"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2fb1507b87b9866e5f327eebddb9955"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_advanced_audio_player.html#ad2fb1507b87b9866e5f327eebddb9955">fixDoubleOrHalfBPM</a></td></tr>
@@ -235,8 +229,6 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a3a8ebd0e2ddd56919f1e3b9640a064d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75c1d52f2c9e44c93029291094b82201"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_advanced_audio_player.html#a75c1d52f2c9e44c93029291094b82201">reverseToForwardAtLoopStart</a></td></tr>
 <tr class="separator:a75c1d52f2c9e44c93029291094b82201"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad338d2fbef4e1fa823438bb73d587395"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_advanced_audio_player.html#ad338d2fbef4e1fa823438bb73d587395">enableStems</a></td></tr>
-<tr class="separator:ad338d2fbef4e1fa823438bb73d587395"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8465c570ac954ef65f59271722459ce"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_advanced_audio_player.html#ad8465c570ac954ef65f59271722459ce">HLSAutomaticAlternativeSwitching</a></td></tr>
 <tr class="separator:ad8465c570ac954ef65f59271722459ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8a4876be62072c2c6a994e0b5d68e8c"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_advanced_audio_player.html#ad8a4876be62072c2c6a994e0b5d68e8c">HLSLiveLatencySeconds</a></td></tr>
@@ -278,8 +270,8 @@ Static Public Attributes</h2></td></tr>
 <li>Http Live Streaming (HLS): vod/live/event streams, AAC-LC/MP3 in audio files or MPEG-TS files. Support for byte ranges and AES-128 encryption. </li>
 </ul>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a726f21de6d6a7e0b3701885dca88f3d9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a726f21de6d6a7e0b3701885dca88f3d9">&#9670;&nbsp;</a></span>AdvancedAudioPlayer()</h2>
+<a id="a011cadfed705ed1226480a033ef8f1eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a011cadfed705ed1226480a033ef8f1eb">&#9670;&nbsp;</a></span>AdvancedAudioPlayer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -306,7 +298,25 @@ Static Public Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>negativeSeconds</em> = <code>0</code>&#160;</td>
+          <td class="paramname"><em>negativeSeconds</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>minimumTimestretchingPlaybackRate</em> = <code>0.501f</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>maximumTimestretchingPlaybackRate</em> = <code>2.0f</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>enableStems</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -323,6 +333,9 @@ Static Public Attributes</h2></td></tr>
     <tr><td class="paramname">cachedPointCount</td><td>How many positions can be cached in the memory. Jumping to a cached point happens with zero latency. Loops are automatically cached. </td></tr>
     <tr><td class="paramname">internalBufferSizeSeconds</td><td>The number of seconds to buffer internally for playback and cached points. Minimum 2, maximum 60. Default: 2. </td></tr>
     <tr><td class="paramname">negativeSeconds</td><td>The number of seconds of silence in the negative direction, before the beginning of the track. </td></tr>
+    <tr><td class="paramname">minimumTimestretchingPlaybackRate</td><td>Will not time-stretch but resample below this playback rate. Default: 0.501f (the recommended value for low <a class="el" href="class_superpowered_1_1_c_p_u.html" title="Utility class to keep the CPU running near the maximum frequency for all cores (&quot;sustained performanc...">CPU</a> load on older mobile devices, such as the first iPad). Will be applied after changing playbackRate or scratching. Default: 0.501f </td></tr>
+    <tr><td class="paramname">maximumTimestretchingPlaybackRate</td><td>Will not time-stretch but resample above this playback rate. Default: 2.0f (the recommended value for low <a class="el" href="class_superpowered_1_1_c_p_u.html" title="Utility class to keep the CPU running near the maximum frequency for all cores (&quot;sustained performanc...">CPU</a> load on older mobile devices, such as the first iPad). Will be applied after changing playbackRate or scratching. </td></tr>
+    <tr><td class="paramname">enableStems</td><td>If true and a Native Instruments STEMS file is loaded, output 4 stereo channels. Default: false (stereo master mix output). </td></tr>
   </table>
   </dd>
 </dl>
@@ -883,7 +896,7 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Starts playback at a specific position. <a class="el" href="class_superpowered_1_1_advanced_audio_player.html#a07aae186fe984e189725745e085b03b9">isPlaying()</a> will return false until this function succeeds starting playback at the specified position. You can call this in a real-time thread (audio processing callback) with a continuously updated time for a precise on-the-fly launch. </p>
+<p>Starts playback at a specific position. <a class="el" href="class_superpowered_1_1_advanced_audio_player.html#a07aae186fe984e189725745e085b03b9">isPlaying()</a> will return false and the position will not be updated until this function succeeds starting playback at the specified position. You can call this in a real-time thread (audio processing callback) with a continuously updated time for a precise on-the-fly launch. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">positionMs</td><td>Start position in milliseconds. </td></tr>
@@ -1222,7 +1235,7 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Returns true if a STEMS file was loaded (and enableStems is also true). </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns true if a STEMS file was loaded (and the player was initialized with enableStems == true). </dd></dl>
 
 </div>
 </div>
@@ -1514,39 +1527,21 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a19dd519199473a218b4f063100d3c1b6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a19dd519199473a218b4f063100d3c1b6">&#9670;&nbsp;</a></span>getWaitingForSyncStartMs()</h2>
+<a id="a055f452713771ca7adde3dc1dfef864f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a055f452713771ca7adde3dc1dfef864f">&#9670;&nbsp;</a></span>getMsRemainingToSyncEvent()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double Superpowered::AdvancedAudioPlayer::getWaitingForSyncStartMs </td>
+          <td class="memname">double Superpowered::AdvancedAudioPlayer::getMsRemainingToSyncEvent </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Indicates if the player is waiting to start playback on a synchronization event (such as the next beat) for how many milliseconds (continously updated). Happens when you call a method with synchronisedStart enabled. 0 means not waiting. </dd></dl>
-
-</div>
-</div>
-<a id="aed483d9fe8bd45cfc9e530dd0032566d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aed483d9fe8bd45cfc9e530dd0032566d">&#9670;&nbsp;</a></span>getWillSyncMs()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double Superpowered::AdvancedAudioPlayer::getWillSyncMs </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Indicates if the player is waiting for a synchronization event (such as the next beat) for how many milliseconds (continously updated). 0 means not waiting. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>If the player is waiting to a synchronization event (such as synchronized playback start or restarting a loop), the return value indicates the time remaining in milliseconds (continously updated). 0 means not waiting to such event. </dd></dl>
 
 </div>
 </div>
@@ -2318,38 +2313,6 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ad4d9f4a4c7172aeb46ce058566bf5836"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad4d9f4a4c7172aeb46ce058566bf5836">&#9670;&nbsp;</a></span>minimumTimestretchingPlaybackRate</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float Superpowered::AdvancedAudioPlayer::minimumTimestretchingPlaybackRate</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Will not time-stretch but resample below this playback rate. Default: 0.501f (the recommended value for low <a class="el" href="class_superpowered_1_1_c_p_u.html" title="Utility class to keep the CPU running near the maximum frequency for all cores (&quot;sustained performanc...">CPU</a> load on older mobile devices, such as the first iPad). Will be applied after changing playbackRate or scratching. </p>
-
-</div>
-</div>
-<a id="a7ce22fee9fd17f4ba36484b42ea3a4c5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7ce22fee9fd17f4ba36484b42ea3a4c5">&#9670;&nbsp;</a></span>maximumTimestretchingPlaybackRate</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float Superpowered::AdvancedAudioPlayer::maximumTimestretchingPlaybackRate</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Will not time-stretch but resample above this playback rate. Default: 2.0f (the recommended value for low <a class="el" href="class_superpowered_1_1_c_p_u.html" title="Utility class to keep the CPU running near the maximum frequency for all cores (&quot;sustained performanc...">CPU</a> load on older mobile devices, such as the first iPad). Will be applied after changing playbackRate or scratching. </p>
-
-</div>
-</div>
 <a id="ae7068861e6912464520cb1aa5440a865"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae7068861e6912464520cb1aa5440a865">&#9670;&nbsp;</a></span>originalBPM</h2>
 
@@ -2542,22 +2505,6 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ad338d2fbef4e1fa823438bb73d587395"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad338d2fbef4e1fa823438bb73d587395">&#9670;&nbsp;</a></span>enableStems</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool Superpowered::AdvancedAudioPlayer::enableStems</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>If true and a Native Instruments STEMS file is loaded, output 4 stereo channels. Default: false (stereo master mix output). </p>
-
-</div>
-</div>
 <a id="ad8465c570ac954ef65f59271722459ce"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad8465c570ac954ef65f59271722459ce">&#9670;&nbsp;</a></span>HLSAutomaticAlternativeSwitching</h2>
 
@@ -2570,7 +2517,7 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>If true, then the player will automatically swtich between the HLS alternatives according to the available network bandwidth. Default: true. </p>
+<p>If true, then the player will automatically switch between the HLS alternatives according to the available network bandwidth. Default: true. </p>
 
 </div>
 </div>

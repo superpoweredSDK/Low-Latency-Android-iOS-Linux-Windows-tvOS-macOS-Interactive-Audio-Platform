@@ -6,7 +6,6 @@
 namespace Superpowered {
 
 class AdvancedAudioPlayer;
-struct PlayerSwap;
 struct PlayerInternals;
 
 /// @brief Status codes.
@@ -65,8 +64,6 @@ public:
     double playbackRate;                     ///< The playback rate. Must be positive and above 0.00001. Default: 1.
     bool timeStretching;                     ///< Enable/disable time-stretching. Default: true.
     float formantCorrection;                 ///< Amount of formant correction, between 0 (none) and 1 (full). Default: 0.
-    float minimumTimestretchingPlaybackRate; ///< Will not time-stretch but resample below this playback rate. Default: 0.501f (the recommended value for low CPU load on older mobile devices, such as the first iPad). Will be applied after changing playbackRate or scratching.
-    float maximumTimestretchingPlaybackRate; ///< Will not time-stretch but resample above this playback rate. Default: 2.0f (the recommended value for low CPU load on older mobile devices, such as the first iPad). Will be applied after changing playbackRate or scratching.
     double originalBPM;                      ///< The original bpm of the current music. There is no auto-bpm detection inside, this must be set to a correct value for syncing. Maximum 300. A value below 20 will be automatically set to 0. Default: 0 (no bpm value known).
     bool fixDoubleOrHalfBPM;                 ///< If true and playbackRate is above 1.4f or below 0.6f, it will sync the tempo as half or double. Default: false.
     double firstBeatMs;                      ///< Tells where the first beat is (the beatgrid starts). Must be set to a correct value for syncing. Default: 0.
@@ -79,8 +76,7 @@ public:
     int pitchShiftCents;                     ///< Pitch shift cents, from -2400 (two octaves down) to 2400 (two octaves up). Use values representing notes (multiply of 100), between -1200 and 1200 for low CPU load. Default: 0 (no pitch shift).
     bool loopOnEOF;                          ///< If true, jumps back and continues playback. If false, playback stops. Default: false.
     bool reverseToForwardAtLoopStart;        ///< If this is true with playing backwards and looping, then reaching the beginning of the loop will change playback direction to forwards. Default: false.
-    bool enableStems;                        ///< If true and a Native Instruments STEMS file is loaded, output 4 stereo channels. Default: false (stereo master mix output).
-    bool HLSAutomaticAlternativeSwitching;   ///< If true, then the player will automatically swtich between the HLS alternatives according to the available network bandwidth. Default: true.
+    bool HLSAutomaticAlternativeSwitching;   ///< If true, then the player will automatically switch between the HLS alternatives according to the available network bandwidth. Default: true.
     char HLSLiveLatencySeconds;              ///< When connecting or reconnecting to a HLS live stream, the player will try to skip audio to maintain this latency. Default: -1 (the player wil not skip audio and the live stream starts at the first segment specified by the server).
     int HLSMaximumDownloadAttempts;          ///< How many times to retry if a HLS segment download fails. Default: 100.
     int HLSBufferingSeconds;                 ///< How many seconds ahead of the playback position to download. Default value: HLS_DOWNLOAD_REMAINING.
@@ -108,7 +104,10 @@ public:
 /// @param cachedPointCount How many positions can be cached in the memory. Jumping to a cached point happens with zero latency. Loops are automatically cached.
 /// @param internalBufferSizeSeconds The number of seconds to buffer internally for playback and cached points. Minimum 2, maximum 60. Default: 2.
 /// @param negativeSeconds The number of seconds of silence in the negative direction, before the beginning of the track.
-    AdvancedAudioPlayer(unsigned int samplerate, unsigned char cachedPointCount, unsigned int internalBufferSizeSeconds = 2, unsigned int negativeSeconds = 0);
+/// @param minimumTimestretchingPlaybackRate Will not time-stretch but resample below this playback rate. Default: 0.501f (the recommended value for low CPU load on older mobile devices, such as the first iPad). Will be applied after changing playbackRate or scratching. Default: 0.501f
+/// @param maximumTimestretchingPlaybackRate Will not time-stretch but resample above this playback rate. Default: 2.0f (the recommended value for low CPU load on older mobile devices, such as the first iPad). Will be applied after changing playbackRate or scratching.
+/// @param enableStems If true and a Native Instruments STEMS file is loaded, output 4 stereo channels. Default: false (stereo master mix output).
+    AdvancedAudioPlayer(unsigned int samplerate, unsigned char cachedPointCount, unsigned int internalBufferSizeSeconds = 2, unsigned int negativeSeconds = 0, float minimumTimestretchingPlaybackRate = 0.501f, float maximumTimestretchingPlaybackRate = 2.0f, bool enableStems = false);
     ~AdvancedAudioPlayer();
     
 /// @brief Opens an audio file with playback paused.
@@ -183,7 +182,7 @@ public:
 /// @brief Starts beat or tempo synchronized playback.
     void playSynchronized();
     
-/// @brief Starts playback at a specific position. isPlaying() will return false until this function succeeds starting playback at the specified position.
+/// @brief Starts playback at a specific position. isPlaying() will return false and the position will not be updated until this function succeeds starting playback at the specified position.
 /// You can call this in a real-time thread (audio processing callback) with a continuously updated time for a precise on-the-fly launch.
 /// @param positionMs Start position in milliseconds.
     void playSynchronizedToPosition(double positionMs);
@@ -237,7 +236,7 @@ public:
 /// @param jogParameter If jog wheel mode is JogMode_Parameter, returns with the current parameter typically in the range of -1 to 1, or more than 1000000.0 if there was no jog wheel movement. Can be NULL if not interested.
     bool processMulti(float **buffers, bool mix, unsigned int numberOfFrames, float *volumes, double *jogParameter = 0);
     
-/// @return Returns true if a STEMS file was loaded (and enableStems is also true).
+/// @return Returns true if a STEMS file was loaded (and the player was initialized with enableStems == true).
     bool isStems();
     
 /// @brief Performs the last stage of STEMS processing, the master compressor and limiter. Works only if a STEMS file was loaded.
@@ -290,11 +289,8 @@ public:
 /// @param quantum The quantum to calculate against.
     double getMsDifference(double phase, double quantum);
     
-/// @return Indicates if the player is waiting to start playback on a synchronization event (such as the next beat) for how many milliseconds (continously updated). Happens when you call a method with synchronisedStart enabled. 0 means not waiting.
-    double getWaitingForSyncStartMs();
-        
-/// @return Indicates if the player is waiting for a synchronization event (such as the next beat) for how many milliseconds (continously updated). 0 means not waiting.
-    double getWillSyncMs();
+/// @return If the player is waiting to a synchronization event (such as synchronized playback start or restarting a loop), the return value indicates the time remaining in milliseconds (continously updated). 0 means not waiting to such event.
+    double getMsRemainingToSyncEvent();
     
 /// @brief Loop from a start point to some length.
 /// @param startMs Loop from this milliseconds.
@@ -401,7 +397,6 @@ public:
     bool isScratching();
     
 private:
-    PlayerSwap *swap;
     PlayerInternals *internals;
     AdvancedAudioPlayer(const AdvancedAudioPlayer&);
     AdvancedAudioPlayer& operator=(const AdvancedAudioPlayer&);

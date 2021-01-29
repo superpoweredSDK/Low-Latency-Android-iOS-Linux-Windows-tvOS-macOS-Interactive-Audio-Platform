@@ -14,7 +14,8 @@ typedef enum Decoder_Format {
     Decoder_Format_AAC,  ///< AAC, HE-AAC
     Decoder_Format_AIFF, ///< AIFF
     Decoder_Format_WAV,  ///< WAV
-    Decoder_Format_MediaServer ///< Other format decoded by iOS, macOS or tvOS.
+    Decoder_Format_MediaServer, ///< Other format decoded by iOS, macOS or tvOS.
+    Decoder_Format_HLS   ///< HTTP Live Streaming
 } Decoder_Format;
 
 /// @brief Audio file decoder. Provides raw PCM audio from various compressed formats.
@@ -82,6 +83,13 @@ public:
     
 /// @return The file system path of the fully downloaded audio file for progressive downloads. May be NULL until the download finishes.
     const char *getFullyDownloadedPath();
+    
+/// @return Returns with the current download speed in bytes per second.
+    unsigned int getCurrentBps();
+    
+    bool HLSAutomaticAlternativeSwitching;   ///< If true, then the decoder will automatically switch between the HLS alternatives according to the available network bandwidth. Default: true.
+    int HLSMaximumDownloadAttempts;          ///< How many times to retry if a HLS segment download fails. Default: 100.
+    int HLSBufferingSeconds;                 ///< How many seconds ahead of the playback position to download. Default value: HLS_DOWNLOAD_REMAINING.
 
 /// @brief Creates an instance of Superpowered Decoder.
     Decoder();
@@ -100,6 +108,12 @@ public:
 /// @param stemsIndex Stems track index for Native Instruments Stems format.
 /// @param customHTTPRequest If custom HTTP communication is required (such as sending http headers for authorization), pass a fully prepared http request object. The player will take ownership of this.
     int open(const char *path, bool metaOnly = false, int offset = 0, int length = 0, int stemsIndex = 0, Superpowered::httpRequest *customHTTPRequest = 0);
+    
+/// @brief Opens a HTTP Live Streaming stream. @see open() for the return value.
+/// @param url Stream URL.
+/// @param liveLatencySeconds When connecting or reconnecting to a HLS live stream, the decoder will try to skip audio to maintain this latency. Default: -1 (the decoder wil not skip audio and the live stream starts at the first segment specified by the server).
+/// @param customHTTPRequest If custom HTTP communication is required (such as sending http headers for authorization), pass a fully prepared http request object. The decoder will copy this object.
+    int openHLS(const char *url, char liveLatencySeconds = -1, Superpowered::httpRequest *customHTTPRequest = 0);
     
 /// @brief Decodes audio.
 /// @return The return value can be:

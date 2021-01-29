@@ -63,7 +63,8 @@ public:
 /// @brief This class can handle one stereo audio channel pair by default (left+right). Maybe you need more if you load some music with 4 channels, then less if you load a regular stereo track.
 /// Don't call this concurrently with process() and in a real-time thread.
 /// @param numStereoPairs The number of stereo audio channel pairs. Valid values: one (stereo) to four (8 channels).
-    void setStereoPairs(unsigned int numStereoPairs);
+/// @param dontFree If true, this function will not free up any memory if numStereoPairs is less than before, so no reallocation happens if numStereoPairs needs to be increased later.
+    void setStereoPairs(unsigned int numStereoPairs, bool dontFree = false);
         
 /// @brief Removes audio from the end of the input buffer. Can be useful for some looping use-cases for example.
 /// It's never blocking for real-time usage. Use it in the same thread with the other real-time methods of this class.

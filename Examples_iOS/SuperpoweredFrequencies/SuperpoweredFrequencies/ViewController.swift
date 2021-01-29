@@ -25,7 +25,7 @@ class ViewController: UIViewController {
 
         // A display link calls us on every frame (60 fps).
         displayLink = CADisplayLink(target: self, selector: #selector(ViewController.onDisplayLink))
-        displayLink.frameInterval = 1
+        displayLink.preferredFramesPerSecond = 60
         displayLink.add(to: RunLoop.current, forMode: RunLoop.Mode.common)
     }
 
