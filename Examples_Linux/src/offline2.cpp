@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <malloc.h>
+#include <sys/stat.h>
 #include "Superpowered.h"
 #include "SuperpoweredDecoder.h"
 #include "SuperpoweredSimple.h"
@@ -29,6 +30,7 @@ int main(int argc, char *argv[]) {
     };
 
     // Create the output WAVE file.
+    mkdir("./results", 0777);
     FILE *destinationFile = Superpowered::createWAV("./results/offline2.wav", decoder->getSamplerate(), 2);
     if (!destinationFile) {
         printf("\rFile creation error.\n");

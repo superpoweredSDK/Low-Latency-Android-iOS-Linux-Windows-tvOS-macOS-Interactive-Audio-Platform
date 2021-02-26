@@ -16,8 +16,8 @@ public:
 
 /// @brief Constructor. Enabled is false by default.
 /// @param samplerate The initial sample rate in Hz.
-    Whoosh(unsigned int samplerate);
-    ~Whoosh();
+    JSWASM Whoosh(unsigned int samplerate);
+    JSWASM ~Whoosh();
     
 /// @brief Processes the audio. Always call it in the audio processing callback, regardless if the effect is enabled or not for smooth, audio-artifact free operation.
 /// It's never blocking for real-time usage. You can change all properties on any thread, concurrently with process().
@@ -25,7 +25,7 @@ public:
 /// @param input Pointer to floating point numbers. 32-bit interleaved stereo input. The output will be mixed to this. Can be NULL.
 /// @param output Pointer to floating point numbers. 32-bit interleaved stereo input. Can point to the same location with output (in-place processing).
 /// @param numberOfFrames Number of frames to process. Recommendation for best performance: multiply of 4, minimum 64.
-    bool process(float *input, float *output, unsigned int numberOfFrames);
+    JSWASM bool process(float *input, float *output, unsigned int numberOfFrames);
     
 private:
     whooshInternals *internals;

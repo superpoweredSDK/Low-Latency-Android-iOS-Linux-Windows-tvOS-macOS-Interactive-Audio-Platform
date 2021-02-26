@@ -25,19 +25,19 @@ static bool audioProcessing(void *clientdata, float *audio, int numberOfFrames, 
 }
 
 // Runs periodically on the UI thread ("ui tick").
-void MainPage::OnTick(Platform::Object^ sender, Platform::Object^ e) { 
+void MainPage::OnTick(Platform::Object^ sender, Platform::Object^ e) {
     switch (player->getLatestEvent()) {
-        case Superpowered::PlayerEvent_None:
-        case Superpowered::PlayerEvent_Opening: break; // do nothing
-		case Superpowered::PlayerEvent_Opened: player->play(); break;
-        case Superpowered::PlayerEvent_OpenFailed: {
+        case Superpowered::AdvancedAudioPlayer::PlayerEvent_None:
+        case Superpowered::AdvancedAudioPlayer::PlayerEvent_Opening: break; // do nothing
+		case Superpowered::AdvancedAudioPlayer::PlayerEvent_Opened: player->play(); break;
+        case Superpowered::AdvancedAudioPlayer::PlayerEvent_OpenFailed: {
             int openError = player->getOpenErrorCode();
             Log("Open error %i: %s", openError, Superpowered::AdvancedAudioPlayer::statusCodeToString(openError));
         } break;
-        case Superpowered::PlayerEvent_ConnectionLost: Log("Network download failed."); break;
-        case Superpowered::PlayerEvent_ProgressiveDownloadFinished: Log("Download finished. Path: %s", player->getFullyDownloadedFilePath()); break;
+        case Superpowered::AdvancedAudioPlayer::PlayerEvent_ConnectionLost: Log("Network download failed."); break;
+        case Superpowered::AdvancedAudioPlayer::PlayerEvent_ProgressiveDownloadFinished: Log("Download finished. Path: %s", player->getFullyDownloadedFilePath()); break;
     }
-    
+
     if (player->eofRecently()) player->setPosition(0, false, false);
 }
 

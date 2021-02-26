@@ -113,8 +113,8 @@ static const float wmul = sqrtf(0.5f);
 }
 
 - (bool)audioProcessingCallback:(float **)inputBuffers inputChannels:(unsigned int)inputChannels outputBuffers:(float **)outputBuffers outputChannels:(unsigned int)outputChannels numberOfFrames:(unsigned int)numberOfFrames samplerate:(unsigned int)samplerate hostTime:(UInt64)hostTime {
-    if (players[0]->getLatestEvent() == Superpowered::PlayerEvent_Opened) loaded++;
-    if (players[1]->getLatestEvent() == Superpowered::PlayerEvent_Opened) loaded++;
+    if (players[0]->getLatestEvent() == Superpowered::AdvancedAudioPlayer::PlayerEvent_Opened) loaded++;
+    if (players[1]->getLatestEvent() == Superpowered::AdvancedAudioPlayer::PlayerEvent_Opened) loaded++;
     if ((loaded != 2) || (outputChannels != 2)) return false;
 
     if (players[0]->outputSamplerate != samplerate) {

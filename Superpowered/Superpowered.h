@@ -1,6 +1,10 @@
 #ifndef Header_Superpowered
 #define Header_Superpowered
 
+#ifndef JSWASM
+#define JSWASM
+#endif
+
 /// @file Superpowered.h
 /// @brief Initializes the Superpowered SDKs.
 
@@ -18,7 +22,7 @@ namespace Superpowered {
 /// @param enableCryptographics Enables RSAPublicKey,RSAPrivateKey, hasher and AES.
 /// @param enableNetworking Enables httpRequest.
 
-void Initialize(const char *licenseKey,
+JSWASM void Initialize(const char *licenseKey,
                 bool enableAudioAnalysis,
                 bool enableFFTAndFrequencyDomain,
                 bool enableAudioTimeStretching,

@@ -22,7 +22,7 @@ static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int
     
     // Write to the next position.
     unsigned int writePos = self->bandsWritePos++ & 127;
-    memcpy(self->bands[writePos], self->filterbank->bands, 8 * sizeof(float));
+    memcpy(self->bands[writePos], self->filterbank->getBands(), 8 * sizeof(float));
     self->lastNumberOfFrames = numberOfFrames;
     __sync_fetch_and_add(&self->bandsPos, 1);
     return false;

@@ -23,8 +23,8 @@ public:
 /// @brief Constructor. Enabled is false by default.
 /// @param samplerate The initial sample rate in Hz.
 /// @param maximumSamplerate Maximum sample rate (affects memory usage, the lower the smaller).
-    Reverb(unsigned int samplerate, unsigned int maximumSamplerate = 96000);
-    ~Reverb();
+    JSWASM Reverb(unsigned int samplerate, unsigned int maximumSamplerate = 96000);
+    JSWASM ~Reverb();
 
 /// @brief Processes the audio. Always call it in the audio processing callback, regardless if the effect is enabled or not for smooth, audio-artifact free operation.
 /// It's never blocking for real-time usage. You can change all properties on any thread, concurrently with process().
@@ -32,7 +32,7 @@ public:
 /// @param input Pointer to floating point numbers. 32-bit interleaved stereo input. Can point to the same location with output (in-place processing). Special case: input can be NULL, the effect will output the tail only in this case.
 /// @param output Pointer to floating point numbers. 32-bit interleaved stereo output.
 /// @param numberOfFrames Number of frames to process. Recommendation for best performance: multiply of 4, minimum 64.
-    bool process(float *input, float *output, unsigned int numberOfFrames);
+    JSWASM bool process(float *input, float *output, unsigned int numberOfFrames);
 
 private:
     reverbInternals *internals;    

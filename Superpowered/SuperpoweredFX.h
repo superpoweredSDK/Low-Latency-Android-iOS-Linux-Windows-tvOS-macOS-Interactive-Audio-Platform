@@ -1,6 +1,10 @@
 #ifndef Header_SuperpoweredFX
 #define Header_SuperpoweredFX
 
+#ifndef JSWASM
+#define JSWASM
+#endif
+
 namespace Superpowered {
 
 /// @brief This is the base class for Superpowered effects.
@@ -16,7 +20,7 @@ public:
 /// @param output 32-bit output buffer.
 /// @param numberOfFrames Number of frames to process.
     virtual bool process(float *input, float *output, unsigned int numberOfFrames) = 0;
-    
+
     virtual ~FX() {};
 };
 

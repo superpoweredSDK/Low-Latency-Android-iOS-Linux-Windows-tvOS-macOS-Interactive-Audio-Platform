@@ -35,7 +35,7 @@
 
 // Called periodically by ViewController to update the user interface.
 - (void)updatePlayerLabel:(UILabel *)label slider:(UISlider *)slider button:(UIButton *)button {
-    if (player->getLatestEvent() == Superpowered::PlayerEvent_Opened) {
+    if (player->getLatestEvent() == Superpowered::AdvancedAudioPlayer::PlayerEvent_Opened) {
         player->play();
         player->originalBPM = 124.0f;
     }
@@ -150,7 +150,7 @@ static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int
     player = new Superpowered::AdvancedAudioPlayer(44100, 0);
     player->open([[[NSBundle mainBundle] pathForResource:@"track" ofType:@"mp3"] fileSystemRepresentation]);
     
-    Superpowered::Filter *filter = new Superpowered::Filter(Superpowered::Resonant_Lowpass, 44100);
+    Superpowered::Filter *filter = new Superpowered::Filter(Superpowered::Filter::Resonant_Lowpass, 44100);
     filter->frequency = 1000.0f;
     filter->resonance = 0.1f;
     effects[FILTERINDEX] = filter;

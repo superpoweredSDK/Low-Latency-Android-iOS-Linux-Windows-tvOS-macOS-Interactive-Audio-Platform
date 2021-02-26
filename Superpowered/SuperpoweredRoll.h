@@ -18,8 +18,8 @@ public:
 /// @brief Constructor. Enabled is false by default.
 /// @param samplerate The initial sample rate in Hz.
 /// @param maximumSamplerate The maximum sample rate in Hz to support. The higher the larger the memory usage.
-    Roll(unsigned int samplerate, unsigned int maximumSamplerate = 96000);
-    ~Roll();
+    JSWASM Roll(unsigned int samplerate, unsigned int maximumSamplerate = 96000);
+    JSWASM ~Roll();
     
 /// @brief Processes the audio. Always call it in the audio processing callback, regardless if the effect is enabled or not for smooth, audio-artifact free operation.
 /// It's never blocking for real-time usage. You can change all properties on any thread, concurrently with process().
@@ -27,7 +27,7 @@ public:
 /// @param input Pointer to floating point numbers. 32-bit interleaved stereo input.
 /// @param output Pointer to floating point numbers. 32-bit interleaved stereo output. Can point to the same location with input (in-place processing).
 /// @param numberOfFrames Number of frames to process. Recommendations for best performance: minimum 64.
-    bool process(float *input, float *output, unsigned int numberOfFrames);
+    JSWASM bool process(float *input, float *output, unsigned int numberOfFrames);
     
 private:
     rollInternals *internals;

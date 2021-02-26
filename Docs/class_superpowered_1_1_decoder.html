@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">2.1.1</span>
+   &#160;<span id="projectnumber">2.2.0</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -45,6 +45,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
@@ -55,20 +56,40 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:ad9e0658cdc09800640c7687383b4aefe"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#ad9e0658cdc09800640c7687383b4aefe">Format</a> { <br />
+&#160;&#160;<a class="el" href="class_superpowered_1_1_decoder.html#ad9e0658cdc09800640c7687383b4aefeadb7cadb6f1b95a94eb28c4c9018104be">Format_MP3</a> = 0, 
+<a class="el" href="class_superpowered_1_1_decoder.html#ad9e0658cdc09800640c7687383b4aefea40b839a395e1d25f9a234b10289e52b8">Format_AAC</a> = 1, 
+<a class="el" href="class_superpowered_1_1_decoder.html#ad9e0658cdc09800640c7687383b4aefeaf399150a90d968fe314948593bdff236">Format_AIFF</a> = 2, 
+<a class="el" href="class_superpowered_1_1_decoder.html#ad9e0658cdc09800640c7687383b4aefea9886e1e259159be66eac3349bea935ba">Format_WAV</a> = 3, 
+<br />
+&#160;&#160;<a class="el" href="class_superpowered_1_1_decoder.html#ad9e0658cdc09800640c7687383b4aefea91be4ce9b247b5903f141bdd308d5253">Format_MediaServer</a> = 4, 
+<a class="el" href="class_superpowered_1_1_decoder.html#ad9e0658cdc09800640c7687383b4aefea8372763938c0d82dc180a2c00c2b1051">Format_HLS</a> = 5
+<br />
+ }</td></tr>
+<tr class="separator:ad9e0658cdc09800640c7687383b4aefe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc3df650db905fe5692dc968ba057f84"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="class_superpowered_1_1_decoder.html#ad9e0658cdc09800640c7687383b4aefe">Superpowered::Decoder::Format</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#abc3df650db905fe5692dc968ba057f84">Format</a></td></tr>
+<tr class="separator:abc3df650db905fe5692dc968ba057f84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a212a8d8d95ed2d798d6054e1ea981e40"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a212a8d8d95ed2d798d6054e1ea981e40">getDurationFrames</a> ()</td></tr>
-<tr class="separator:a212a8d8d95ed2d798d6054e1ea981e40"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af72c8f5f6e6fc34e715fe706427d8f4a"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#af72c8f5f6e6fc34e715fe706427d8f4a">getDurationSeconds</a> ()</td></tr>
-<tr class="separator:af72c8f5f6e6fc34e715fe706427d8f4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1fffebbbc96bbd4da058f87cc856f71"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#af1fffebbbc96bbd4da058f87cc856f71">getSamplerate</a> ()</td></tr>
-<tr class="separator:af1fffebbbc96bbd4da058f87cc856f71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb8e99ec2fddc89d06cf6aa41697dab4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_superpowered.html#aeb71b7371d5a377ac9fe8dac8c2a42f2">Decoder_Format</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#abb8e99ec2fddc89d06cf6aa41697dab4">getFormat</a> ()</td></tr>
-<tr class="separator:abb8e99ec2fddc89d06cf6aa41697dab4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d78f0a10f8797e01709e0d75e46de76"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a0d78f0a10f8797e01709e0d75e46de76">getFramesPerChunk</a> ()</td></tr>
-<tr class="separator:a0d78f0a10f8797e01709e0d75e46de76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e225e50fbb25ad2226e29f72fd9080e"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a8e225e50fbb25ad2226e29f72fd9080e">getPositionFrames</a> ()</td></tr>
-<tr class="separator:a8e225e50fbb25ad2226e29f72fd9080e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6adbd464f124615e8789e79251baf8c8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a6adbd464f124615e8789e79251baf8c8">Decoder</a> ()</td></tr>
+<tr class="separator:a6adbd464f124615e8789e79251baf8c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9225ec2201f6e575f190ea6635ee7fbc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a9225ec2201f6e575f190ea6635ee7fbc">~Decoder</a> ()</td></tr>
+<tr class="separator:a9225ec2201f6e575f190ea6635ee7fbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13529edf5f18389ad1dd1f5ed3e41771"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a13529edf5f18389ad1dd1f5ed3e41771">getDurationFrames</a> ()</td></tr>
+<tr class="separator:a13529edf5f18389ad1dd1f5ed3e41771"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ecf1af590c35288caf315d33ede552a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a8ecf1af590c35288caf315d33ede552a">getDurationSeconds</a> ()</td></tr>
+<tr class="separator:a8ecf1af590c35288caf315d33ede552a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97c0a001e9a7c83550950977b0e2f006"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a97c0a001e9a7c83550950977b0e2f006">getSamplerate</a> ()</td></tr>
+<tr class="separator:a97c0a001e9a7c83550950977b0e2f006"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8dc594a2f3620f0b86d9930dc8b9be2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> <a class="el" href="class_superpowered_1_1_decoder.html#ad9e0658cdc09800640c7687383b4aefe">Format</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#ac8dc594a2f3620f0b86d9930dc8b9be2">getFormat</a> ()</td></tr>
+<tr class="separator:ac8dc594a2f3620f0b86d9930dc8b9be2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5a7517be3da6286af040d189950bb0d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#ac5a7517be3da6286af040d189950bb0d">getFramesPerChunk</a> ()</td></tr>
+<tr class="separator:ac5a7517be3da6286af040d189950bb0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a423552518f14f0966c215764f698d9fc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a423552518f14f0966c215764f698d9fc">getPositionFrames</a> ()</td></tr>
+<tr class="separator:a423552518f14f0966c215764f698d9fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a863a1fe81e1a80e407c6844d29a1f38c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a863a1fe81e1a80e407c6844d29a1f38c">getBufferedStartPercent</a> ()</td></tr>
 <tr class="separator:a863a1fe81e1a80e407c6844d29a1f38c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:accfc084bcae729b0e03b61c6f3929c0d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#accfc084bcae729b0e03b61c6f3929c0d">getBufferedEndPercent</a> ()</td></tr>
@@ -77,61 +98,63 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4065521ec637d93602117253d22c737f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a895d9e0daa0d894473e062a85616a7ab"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a895d9e0daa0d894473e062a85616a7ab">getCurrentBps</a> ()</td></tr>
 <tr class="separator:a895d9e0daa0d894473e062a85616a7ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abbc7af8303f8594343784de77da3f4d5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#abbc7af8303f8594343784de77da3f4d5">Decoder</a> ()</td></tr>
-<tr class="separator:abbc7af8303f8594343784de77da3f4d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2816d0d5f58677ca374c3ac7cae0cd03"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a2816d0d5f58677ca374c3ac7cae0cd03">~Decoder</a> ()</td></tr>
-<tr class="separator:a2816d0d5f58677ca374c3ac7cae0cd03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acba540f007a8b510a39c83eccafc5d41"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#acba540f007a8b510a39c83eccafc5d41">open</a> (const char *path, bool metaOnly=false, int offset=0, int length=0, int stemsIndex=0, <a class="el" href="class_superpowered_1_1http_request.html">Superpowered::httpRequest</a> *customHTTPRequest=0)</td></tr>
 <tr class="separator:acba540f007a8b510a39c83eccafc5d41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab73b570f6823ff6827170cd06b497741"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#ab73b570f6823ff6827170cd06b497741">openAudioFileInMemory</a> (void *pointer, unsigned int sizeBytes, bool metaOnly=false)</td></tr>
+<tr class="separator:ab73b570f6823ff6827170cd06b497741"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33fb49262e709e1f678a6ff69ea06ff4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a33fb49262e709e1f678a6ff69ea06ff4">openMemory</a> (void *pointer, bool metaOnly=false)</td></tr>
+<tr class="separator:a33fb49262e709e1f678a6ff69ea06ff4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f4361c11b5247ca74991cb75b0aecb7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a3f4361c11b5247ca74991cb75b0aecb7">openHLS</a> (const char *url, char liveLatencySeconds=-1, <a class="el" href="class_superpowered_1_1http_request.html">Superpowered::httpRequest</a> *customHTTPRequest=0)</td></tr>
 <tr class="separator:a3f4361c11b5247ca74991cb75b0aecb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef80762cf529ab48b0e4df83376b73ac"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#aef80762cf529ab48b0e4df83376b73ac">decodeAudio</a> (short int *output, unsigned int numberOfFrames)</td></tr>
-<tr class="separator:aef80762cf529ab48b0e4df83376b73ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac279ca5a5ac7b884dba31c8af1dbed29"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#ac279ca5a5ac7b884dba31c8af1dbed29">setPositionQuick</a> (int64_t positionFrames)</td></tr>
-<tr class="separator:ac279ca5a5ac7b884dba31c8af1dbed29"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac730802f714291fb7d223c3d877f33e5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#ac730802f714291fb7d223c3d877f33e5">setPositionPrecise</a> (int64_t positionFrames)</td></tr>
-<tr class="separator:ac730802f714291fb7d223c3d877f33e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58f34d780d0aac17396443f497fcf384"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a58f34d780d0aac17396443f497fcf384">getAudioStartFrame</a> (unsigned int limitFrames=0, int thresholdDb=0)</td></tr>
-<tr class="separator:a58f34d780d0aac17396443f497fcf384"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a44119aecec91759bb76aaac6706f8f65"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a44119aecec91759bb76aaac6706f8f65">getAudioEndFrame</a> (unsigned int limitFrames=0, int thresholdDb=0)</td></tr>
-<tr class="separator:a44119aecec91759bb76aaac6706f8f65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6eda44296a413be811ed18266bab37a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#ad6eda44296a413be811ed18266bab37a">decodeAudio</a> (short int *output, unsigned int numberOfFrames)</td></tr>
+<tr class="separator:ad6eda44296a413be811ed18266bab37a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab432f13420345bf107c38b004727082d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#ab432f13420345bf107c38b004727082d">setPositionQuick</a> (int positionFrames)</td></tr>
+<tr class="separator:ab432f13420345bf107c38b004727082d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69ee0a4f67b5b3238d5b4b41f6ad4fd0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a69ee0a4f67b5b3238d5b4b41f6ad4fd0">setPositionPrecise</a> (int positionFrames)</td></tr>
+<tr class="separator:a69ee0a4f67b5b3238d5b4b41f6ad4fd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2c73e4f82223ad79063c98437f08ccc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#af2c73e4f82223ad79063c98437f08ccc">getAudioStartFrame</a> (unsigned int limitFrames=0, int thresholdDb=0)</td></tr>
+<tr class="separator:af2c73e4f82223ad79063c98437f08ccc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9311f6d847b3b7f9d089796eb0cbd142"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a9311f6d847b3b7f9d089796eb0cbd142">getAudioEndFrame</a> (unsigned int limitFrames=0, int thresholdDb=0)</td></tr>
+<tr class="separator:a9311f6d847b3b7f9d089796eb0cbd142"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4d130834430b4a5615db8a8191e2a66"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#ad4d130834430b4a5615db8a8191e2a66">getStemsJSONString</a> ()</td></tr>
 <tr class="separator:ad4d130834430b4a5615db8a8191e2a66"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a842606b200f5f9591788faa0b019b3c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a842606b200f5f9591788faa0b019b3c8">parseAllID3Frames</a> (bool skipImages, unsigned int maxFrameDataSize)</td></tr>
-<tr class="separator:a842606b200f5f9591788faa0b019b3c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a480fe0adb4444b7a7d7e8e74836b311e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a480fe0adb4444b7a7d7e8e74836b311e">startParsingID3Frames</a> (bool skipImages, unsigned int maxFrameDataSize)</td></tr>
-<tr class="separator:a480fe0adb4444b7a7d7e8e74836b311e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a81cc3db2e4c9cb961aeca4bcc391f2dc"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a81cc3db2e4c9cb961aeca4bcc391f2dc">readNextID3Frame</a> ()</td></tr>
-<tr class="separator:a81cc3db2e4c9cb961aeca4bcc391f2dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2155e2747a8fdd98d8af0e7d9e3d4217"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a2155e2747a8fdd98d8af0e7d9e3d4217">getID3FrameName</a> ()</td></tr>
-<tr class="separator:a2155e2747a8fdd98d8af0e7d9e3d4217"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05540b99c5b204eb60f89a1f0244f396"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a05540b99c5b204eb60f89a1f0244f396">getID3FrameData</a> ()</td></tr>
-<tr class="separator:a05540b99c5b204eb60f89a1f0244f396"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad41939f5b190654242131a887858834a"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#ad41939f5b190654242131a887858834a">getID3FrameDataLengthBytes</a> ()</td></tr>
-<tr class="separator:ad41939f5b190654242131a887858834a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afbd423b18ce5e1374d2411807bde759f"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#afbd423b18ce5e1374d2411807bde759f">getID3FrameAsString</a> (int offset=0)</td></tr>
-<tr class="separator:afbd423b18ce5e1374d2411807bde759f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ec1177186efc5aef7755fc6527be358"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a7ec1177186efc5aef7755fc6527be358">getArtist</a> (bool takeOwnership=false)</td></tr>
-<tr class="separator:a7ec1177186efc5aef7755fc6527be358"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd48eaa37d20e9ab74c9f73192f13cb6"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#afd48eaa37d20e9ab74c9f73192f13cb6">getTitle</a> (bool takeOwnership=false)</td></tr>
-<tr class="separator:afd48eaa37d20e9ab74c9f73192f13cb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f67c1b8e0750356dcbf8197976aca77"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a7f67c1b8e0750356dcbf8197976aca77">getAlbum</a> (bool takeOwnership=false)</td></tr>
-<tr class="separator:a7f67c1b8e0750356dcbf8197976aca77"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72bb42000258bf3095c53662bded837b"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a72bb42000258bf3095c53662bded837b">getTrackIndex</a> ()</td></tr>
-<tr class="separator:a72bb42000258bf3095c53662bded837b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96d4339ff5ecabbe0aa3fde2a17c560c"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a96d4339ff5ecabbe0aa3fde2a17c560c">getImage</a> (bool takeOwnership=false)</td></tr>
-<tr class="separator:a96d4339ff5ecabbe0aa3fde2a17c560c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a99b8765b6957b755adf7bb563d54c6cd"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a99b8765b6957b755adf7bb563d54c6cd">getImageSizeBytes</a> ()</td></tr>
-<tr class="separator:a99b8765b6957b755adf7bb563d54c6cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4920ad2f99cf9bc3efe546fb17755f78"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a4920ad2f99cf9bc3efe546fb17755f78">getBPM</a> ()</td></tr>
-<tr class="separator:a4920ad2f99cf9bc3efe546fb17755f78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63613eac6a86a4cb5a93a679abfca5cd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a63613eac6a86a4cb5a93a679abfca5cd">parseAllID3Frames</a> (bool skipImages, unsigned int maxFrameDataSize)</td></tr>
+<tr class="separator:a63613eac6a86a4cb5a93a679abfca5cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9473145f2c70e72313c09482283af0a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a9473145f2c70e72313c09482283af0a4">startParsingID3Frames</a> (bool skipImages, unsigned int maxFrameDataSize)</td></tr>
+<tr class="separator:a9473145f2c70e72313c09482283af0a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac23b384b886b20847703e55d3181e103"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#ac23b384b886b20847703e55d3181e103">readNextID3Frame</a> ()</td></tr>
+<tr class="separator:ac23b384b886b20847703e55d3181e103"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06aac38f8a2335011f9c8030e0dea054"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a06aac38f8a2335011f9c8030e0dea054">getID3FrameName</a> ()</td></tr>
+<tr class="separator:a06aac38f8a2335011f9c8030e0dea054"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a157560baf34aa8de2f90d34340c0c293"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a157560baf34aa8de2f90d34340c0c293">getID3FrameData</a> ()</td></tr>
+<tr class="separator:a157560baf34aa8de2f90d34340c0c293"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac89f5546b4d35d9af7f1106d59478dbc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#ac89f5546b4d35d9af7f1106d59478dbc">getID3FrameDataLengthBytes</a> ()</td></tr>
+<tr class="separator:ac89f5546b4d35d9af7f1106d59478dbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a431088e759ebfa41f56b96c0fdf9925c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a431088e759ebfa41f56b96c0fdf9925c">getID3FrameAsString</a> (int offset=0)</td></tr>
+<tr class="separator:a431088e759ebfa41f56b96c0fdf9925c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c18819921f61d4b5ef1e517fd7b89e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a6c18819921f61d4b5ef1e517fd7b89e0">getArtist</a> (bool takeOwnership=false)</td></tr>
+<tr class="separator:a6c18819921f61d4b5ef1e517fd7b89e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a06e9d24e46a61a8fb459fc28d3d67a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a1a06e9d24e46a61a8fb459fc28d3d67a">getTitle</a> (bool takeOwnership=false)</td></tr>
+<tr class="separator:a1a06e9d24e46a61a8fb459fc28d3d67a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e4f2ee361db37d2fb23bbb8e7f41f7e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a0e4f2ee361db37d2fb23bbb8e7f41f7e">getAlbum</a> (bool takeOwnership=false)</td></tr>
+<tr class="separator:a0e4f2ee361db37d2fb23bbb8e7f41f7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c75d7e21895b16c2b2a79608e051ae4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a4c75d7e21895b16c2b2a79608e051ae4">getTrackIndex</a> ()</td></tr>
+<tr class="separator:a4c75d7e21895b16c2b2a79608e051ae4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a280da872551b75880c6e6a7e968286"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a2a280da872551b75880c6e6a7e968286">getImage</a> (bool takeOwnership=false)</td></tr>
+<tr class="separator:a2a280da872551b75880c6e6a7e968286"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adeac453b444ab1880049db748c08517e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#adeac453b444ab1880049db748c08517e">getImageSizeBytes</a> ()</td></tr>
+<tr class="separator:adeac453b444ab1880049db748c08517e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57a9a0b5ce2d79ea6b13df4e4e3e4532"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a57a9a0b5ce2d79ea6b13df4e4e3e4532">getBPM</a> ()</td></tr>
+<tr class="separator:a57a9a0b5ce2d79ea6b13df4e4e3e4532"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3f55f967203fe92c239c066e0778fa2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#ac3f55f967203fe92c239c066e0778fa2">reconnectToMediaserver</a> ()</td></tr>
 <tr class="separator:ac3f55f967203fe92c239c066e0778fa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:ad8163f74d51f7809414fd1d85d0be0f6"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#ad8163f74d51f7809414fd1d85d0be0f6">statusCodeToString</a> (int code)</td></tr>
-<tr class="separator:ad8163f74d51f7809414fd1d85d0be0f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af196391286e50d04a46d43f70c6bb050"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#af196391286e50d04a46d43f70c6bb050">statusCodeToString</a> (int code)</td></tr>
+<tr class="separator:af196391286e50d04a46d43f70c6bb050"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a904094b387a17094f14b2c0df1c433f1"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a904094b387a17094f14b2c0df1c433f1">decodeToAudioInMemory</a> (void *pointer, unsigned int sizeBytes)</td></tr>
+<tr class="separator:a904094b387a17094f14b2c0df1c433f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -194,15 +217,63 @@ Static Public Attributes</h2></td></tr>
 <li>AAC or HE-AAC in M4A container (iTunes) or ADTS container (.aac).</li>
 <li>ALAC/Apple Lossless (on iOS only). </li>
 </ul>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="abbc7af8303f8594343784de77da3f4d5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abbc7af8303f8594343784de77da3f4d5">&#9670;&nbsp;</a></span>Decoder()</h2>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="abc3df650db905fe5692dc968ba057f84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc3df650db905fe5692dc968ba057f84">&#9670;&nbsp;</a></span>Format</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Superpowered::Decoder::Decoder </td>
+          <td class="memname">typedef enum <a class="el" href="class_superpowered_1_1_decoder.html#ad9e0658cdc09800640c7687383b4aefe">Superpowered::Decoder::Format</a> <a class="el" href="class_superpowered_1_1_decoder.html#ad9e0658cdc09800640c7687383b4aefe">Superpowered::Decoder::Format</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>File/decoder format. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="ad9e0658cdc09800640c7687383b4aefe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9e0658cdc09800640c7687383b4aefe">&#9670;&nbsp;</a></span>Format</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_superpowered_1_1_decoder.html#ad9e0658cdc09800640c7687383b4aefe">Superpowered::Decoder::Format</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>File/decoder format. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ad9e0658cdc09800640c7687383b4aefeadb7cadb6f1b95a94eb28c4c9018104be"></a>Format_MP3&#160;</td><td class="fielddoc"><p>MP3. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ad9e0658cdc09800640c7687383b4aefea40b839a395e1d25f9a234b10289e52b8"></a>Format_AAC&#160;</td><td class="fielddoc"><p>AAC, HE-AAC. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ad9e0658cdc09800640c7687383b4aefeaf399150a90d968fe314948593bdff236"></a>Format_AIFF&#160;</td><td class="fielddoc"><p>AIFF. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ad9e0658cdc09800640c7687383b4aefea9886e1e259159be66eac3349bea935ba"></a>Format_WAV&#160;</td><td class="fielddoc"><p>WAV. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ad9e0658cdc09800640c7687383b4aefea91be4ce9b247b5903f141bdd308d5253"></a>Format_MediaServer&#160;</td><td class="fielddoc"><p>Other format decoded by iOS, macOS or tvOS. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ad9e0658cdc09800640c7687383b4aefea8372763938c0d82dc180a2c00c2b1051"></a>Format_HLS&#160;</td><td class="fielddoc"><p>HTTP Live Streaming. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a6adbd464f124615e8789e79251baf8c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6adbd464f124615e8789e79251baf8c8">&#9670;&nbsp;</a></span>Decoder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> Superpowered::Decoder::Decoder </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -214,14 +285,14 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a2816d0d5f58677ca374c3ac7cae0cd03"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2816d0d5f58677ca374c3ac7cae0cd03">&#9670;&nbsp;</a></span>~Decoder()</h2>
+<a id="a9225ec2201f6e575f190ea6635ee7fbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9225ec2201f6e575f190ea6635ee7fbc">&#9670;&nbsp;</a></span>~Decoder()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Superpowered::Decoder::~Decoder </td>
+          <td class="memname"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> Superpowered::Decoder::~Decoder </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -232,8 +303,8 @@ Static Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ad8163f74d51f7809414fd1d85d0be0f6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad8163f74d51f7809414fd1d85d0be0f6">&#9670;&nbsp;</a></span>statusCodeToString()</h2>
+<a id="af196391286e50d04a46d43f70c6bb050"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af196391286e50d04a46d43f70c6bb050">&#9670;&nbsp;</a></span>statusCodeToString()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -242,7 +313,7 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static const char* Superpowered::Decoder::statusCodeToString </td>
+          <td class="memname">static <a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> const char* Superpowered::Decoder::statusCodeToString </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>code</em></td><td>)</td>
@@ -258,21 +329,21 @@ Static Public Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Returns with a human readable error string. If the code is not a decoder status code, then it's a SuperpoweredHTTP status code and returns with that. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">code</td><td>The return value of the <a class="el" href="class_superpowered_1_1_decoder.html#acba540f007a8b510a39c83eccafc5d41" title="Opens a file for decoding.">Decoder::open</a> method. </td></tr>
+    <tr><td class="paramname">code</td><td>The return value of the open...() method. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a212a8d8d95ed2d798d6054e1ea981e40"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a212a8d8d95ed2d798d6054e1ea981e40">&#9670;&nbsp;</a></span>getDurationFrames()</h2>
+<a id="a13529edf5f18389ad1dd1f5ed3e41771"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13529edf5f18389ad1dd1f5ed3e41771">&#9670;&nbsp;</a></span>getDurationFrames()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int64_t Superpowered::Decoder::getDurationFrames </td>
+          <td class="memname"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> int Superpowered::Decoder::getDurationFrames </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -284,14 +355,14 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="af72c8f5f6e6fc34e715fe706427d8f4a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af72c8f5f6e6fc34e715fe706427d8f4a">&#9670;&nbsp;</a></span>getDurationSeconds()</h2>
+<a id="a8ecf1af590c35288caf315d33ede552a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ecf1af590c35288caf315d33ede552a">&#9670;&nbsp;</a></span>getDurationSeconds()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double Superpowered::Decoder::getDurationSeconds </td>
+          <td class="memname"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> double Superpowered::Decoder::getDurationSeconds </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -303,14 +374,14 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="af1fffebbbc96bbd4da058f87cc856f71"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af1fffebbbc96bbd4da058f87cc856f71">&#9670;&nbsp;</a></span>getSamplerate()</h2>
+<a id="a97c0a001e9a7c83550950977b0e2f006"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97c0a001e9a7c83550950977b0e2f006">&#9670;&nbsp;</a></span>getSamplerate()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int Superpowered::Decoder::getSamplerate </td>
+          <td class="memname"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> unsigned int Superpowered::Decoder::getSamplerate </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -321,14 +392,14 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="abb8e99ec2fddc89d06cf6aa41697dab4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abb8e99ec2fddc89d06cf6aa41697dab4">&#9670;&nbsp;</a></span>getFormat()</h2>
+<a id="ac8dc594a2f3620f0b86d9930dc8b9be2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8dc594a2f3620f0b86d9930dc8b9be2">&#9670;&nbsp;</a></span>getFormat()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespace_superpowered.html#aeb71b7371d5a377ac9fe8dac8c2a42f2">Decoder_Format</a> Superpowered::Decoder::getFormat </td>
+          <td class="memname"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> <a class="el" href="class_superpowered_1_1_decoder.html#ad9e0658cdc09800640c7687383b4aefe">Format</a> Superpowered::Decoder::getFormat </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -339,14 +410,14 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a0d78f0a10f8797e01709e0d75e46de76"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0d78f0a10f8797e01709e0d75e46de76">&#9670;&nbsp;</a></span>getFramesPerChunk()</h2>
+<a id="ac5a7517be3da6286af040d189950bb0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5a7517be3da6286af040d189950bb0d">&#9670;&nbsp;</a></span>getFramesPerChunk()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int Superpowered::Decoder::getFramesPerChunk </td>
+          <td class="memname"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> unsigned int Superpowered::Decoder::getFramesPerChunk </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -357,14 +428,14 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a8e225e50fbb25ad2226e29f72fd9080e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8e225e50fbb25ad2226e29f72fd9080e">&#9670;&nbsp;</a></span>getPositionFrames()</h2>
+<a id="a423552518f14f0966c215764f698d9fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a423552518f14f0966c215764f698d9fc">&#9670;&nbsp;</a></span>getPositionFrames()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int64_t Superpowered::Decoder::getPositionFrames </td>
+          <td class="memname"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> int Superpowered::Decoder::getPositionFrames </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -499,7 +570,7 @@ Static Public Attributes</h2></td></tr>
 
 <p>Opens a file for decoding. </p>
 <dl class="section return"><dt>Returns</dt><dd>The return value can be grouped into four categories:<ul>
-<li><a class="el" href="class_superpowered_1_1_decoder.html#a60ee0ccdb4a43d55219b95ea67eaf0c9" title="Error codes for the open() method.">Decoder::OpenSuccess</a>: successful open.</li>
+<li><a class="el" href="class_superpowered_1_1_decoder.html#a60ee0ccdb4a43d55219b95ea67eaf0c9" title="Error codes for the open...() methods.">Decoder::OpenSuccess</a>: successful open.</li>
 <li><a class="el" href="class_superpowered_1_1http_response.html#a5541cd5bf491fab138638847e42b4eb5" title="Downloading in progress.">httpResponse::StatusCode_Progress</a>: the open method needs more time opening an audio file from the network. In this case retry <a class="el" href="class_superpowered_1_1_decoder.html#acba540f007a8b510a39c83eccafc5d41" title="Opens a file for decoding.">open()</a> later until it returns something else than StatusCode_Progress (it's recommended to wait at least 0.1 seconds).</li>
 <li>A value above 1000: internal decoder error.</li>
 <li>A HTTP status code for network errors. </li>
@@ -513,6 +584,89 @@ Static Public Attributes</h2></td></tr>
     <tr><td class="paramname">length</td><td>Byte length from offset. Set offset and length to 0 to read the entire file. </td></tr>
     <tr><td class="paramname">stemsIndex</td><td>Stems track index for Native Instruments Stems format. </td></tr>
     <tr><td class="paramname">customHTTPRequest</td><td>If custom HTTP communication is required (such as sending http headers for authorization), pass a fully prepared http request object. The player will take ownership of this. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab73b570f6823ff6827170cd06b497741"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab73b570f6823ff6827170cd06b497741">&#9670;&nbsp;</a></span>openAudioFileInMemory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> int Superpowered::Decoder::openAudioFileInMemory </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>pointer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>sizeBytes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>metaOnly</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Opens a memory location for decoding. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_superpowered_1_1_decoder.html#acba540f007a8b510a39c83eccafc5d41" title="Opens a file for decoding.">open()</a> for the return value. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pointer</td><td>Pointer to an audio file loaded onto the heap. </td></tr>
+    <tr><td class="paramname">sizeBytes</td><td>The audio file length in bytes. </td></tr>
+    <tr><td class="paramname">metaOnly</td><td>If true, it opens the file for fast metadata reading only, not for decoding audio. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a33fb49262e709e1f678a6ff69ea06ff4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33fb49262e709e1f678a6ff69ea06ff4">&#9670;&nbsp;</a></span>openMemory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> int Superpowered::Decoder::openMemory </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>pointer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>metaOnly</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Opens a memory location in <a class="el" href="namespace_superpowered.html">Superpowered</a> <a class="el" href="class_superpowered_1_1_audio_in_memory.html" title="The Superpowered AudioInMemory format allows the Decoder and the AdvancedAudioPlayer to read compress...">AudioInMemory</a> format for decoding. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_superpowered_1_1_decoder.html#acba540f007a8b510a39c83eccafc5d41" title="Opens a file for decoding.">open()</a> for the return value. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pointer</td><td>Pointer to information in <a class="el" href="namespace_superpowered.html">Superpowered</a> <a class="el" href="class_superpowered_1_1_audio_in_memory.html" title="The Superpowered AudioInMemory format allows the Decoder and the AdvancedAudioPlayer to read compress...">AudioInMemory</a> format. </td></tr>
+    <tr><td class="paramname">metaOnly</td><td>If true, it opens the file for fast metadata reading only, not for decoding audio. </td></tr>
   </table>
   </dd>
 </dl>
@@ -564,14 +718,14 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aef80762cf529ab48b0e4df83376b73ac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aef80762cf529ab48b0e4df83376b73ac">&#9670;&nbsp;</a></span>decodeAudio()</h2>
+<a id="ad6eda44296a413be811ed18266bab37a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6eda44296a413be811ed18266bab37a">&#9670;&nbsp;</a></span>decodeAudio()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int Superpowered::Decoder::decodeAudio </td>
+          <td class="memname"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> int Superpowered::Decoder::decodeAudio </td>
           <td>(</td>
           <td class="paramtype">short int *&#160;</td>
           <td class="paramname"><em>output</em>, </td>
@@ -594,7 +748,7 @@ Static Public Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The return value can be:<ul>
 <li>A positive number above zero: the number of frames decoded.</li>
 <li><a class="el" href="class_superpowered_1_1_decoder.html#ab9ae9221d14745ef477d77341d565f1a" title="Error codes for the decodeAudio(), getAudioStartFrame() and getAudioEndFrame() methods.">Decoder::EndOfFile</a>: end of file reached, there is nothing more to decode. Use setPosition.</li>
-<li><a class="el" href="class_superpowered_1_1_decoder.html#a1add0546bacfd19eadf1269b92bb19b6" title="Buffering (waiting for the network to pump enough data).">Decoder::BufferingTryAgainLater</a>: the decoder needs more data to be downloaded. Retry <a class="el" href="class_superpowered_1_1_decoder.html#aef80762cf529ab48b0e4df83376b73ac" title="Decodes audio.">decodeAudio()</a> later (it's recommended to wait at least 0.1 seconds).</li>
+<li><a class="el" href="class_superpowered_1_1_decoder.html#a1add0546bacfd19eadf1269b92bb19b6" title="Buffering (waiting for the network to pump enough data).">Decoder::BufferingTryAgainLater</a>: the decoder needs more data to be downloaded. Retry <a class="el" href="class_superpowered_1_1_decoder.html#ad6eda44296a413be811ed18266bab37a" title="Decodes audio.">decodeAudio()</a> later (it's recommended to wait at least 0.1 seconds).</li>
 <li><a class="el" href="class_superpowered_1_1_decoder.html#a6ac0af538722f8976839a2b596548f17" title="Network (download) error.">Decoder::NetworkError</a>: network (download) error.</li>
 <li><a class="el" href="class_superpowered_1_1_decoder.html#afd9cc8076d243e99d63185b283c61130" title="Decoding error.">Decoder::Error</a>: internal decoder error. </li>
 </ul>
@@ -602,23 +756,69 @@ Static Public Attributes</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">output</td><td>Pointer to 16-bit signed integer numbers. The output. Must be at least numberOfFrames * 4 + 16384 bytes big. </td></tr>
-    <tr><td class="paramname">numberOfFrames</td><td>The requested number of frames. Should NOT be less than framesPerChunk. </td></tr>
+    <tr><td class="paramname">numberOfFrames</td><td>The requested number of frames. Should NOT be less than the value returned by <a class="el" href="class_superpowered_1_1_decoder.html#ac5a7517be3da6286af040d189950bb0d">getFramesPerChunk()</a>. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="ac279ca5a5ac7b884dba31c8af1dbed29"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac279ca5a5ac7b884dba31c8af1dbed29">&#9670;&nbsp;</a></span>setPositionQuick()</h2>
+<a id="a904094b387a17094f14b2c0df1c433f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a904094b387a17094f14b2c0df1c433f1">&#9670;&nbsp;</a></span>decodeToAudioInMemory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> void* Superpowered::Decoder::decodeToAudioInMemory </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>pointer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>sizeBytes</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Decodes an entire audio file in memory to <a class="el" href="class_superpowered_1_1_audio_in_memory.html" title="The Superpowered AudioInMemory format allows the Decoder and the AdvancedAudioPlayer to read compress...">AudioInMemory</a> format in a single call. The output can be loaded by the <a class="el" href="class_superpowered_1_1_advanced_audio_player.html" title="High performance advanced audio player with:">AdvancedAudioPlayer</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>Pointer or NULL on error. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pointer</td><td>Pointer to an audio file loaded onto the heap. </td></tr>
+    <tr><td class="paramname">sizeBytes</td><td>The audio file length in bytes. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab432f13420345bf107c38b004727082d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab432f13420345bf107c38b004727082d">&#9670;&nbsp;</a></span>setPositionQuick()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool Superpowered::Decoder::setPositionQuick </td>
+          <td class="memname"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> bool Superpowered::Decoder::setPositionQuick </td>
           <td>(</td>
-          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>positionFrames</em></td><td>)</td>
           <td></td>
         </tr>
@@ -636,23 +836,23 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ac730802f714291fb7d223c3d877f33e5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac730802f714291fb7d223c3d877f33e5">&#9670;&nbsp;</a></span>setPositionPrecise()</h2>
+<a id="a69ee0a4f67b5b3238d5b4b41f6ad4fd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69ee0a4f67b5b3238d5b4b41f6ad4fd0">&#9670;&nbsp;</a></span>setPositionPrecise()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool Superpowered::Decoder::setPositionPrecise </td>
+          <td class="memname"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> bool Superpowered::Decoder::setPositionPrecise </td>
           <td>(</td>
-          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>positionFrames</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Jumps to a specific position. This method is a little bit slower than <a class="el" href="class_superpowered_1_1_decoder.html#ac279ca5a5ac7b884dba31c8af1dbed29" title="Jumps to the specified position&#39;s chunk (frame) beginning. Some codecs (such as MP3) contain audio in...">setPositionQuick()</a>. </p>
+<p>Jumps to a specific position. This method is a little bit slower than <a class="el" href="class_superpowered_1_1_decoder.html#ab432f13420345bf107c38b004727082d" title="Jumps to the specified position&#39;s chunk (frame) beginning. Some codecs (such as MP3) contain audio in...">setPositionQuick()</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>Returns with success (true) or failure (false). </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -663,14 +863,14 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a58f34d780d0aac17396443f497fcf384"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a58f34d780d0aac17396443f497fcf384">&#9670;&nbsp;</a></span>getAudioStartFrame()</h2>
+<a id="af2c73e4f82223ad79063c98437f08ccc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2c73e4f82223ad79063c98437f08ccc">&#9670;&nbsp;</a></span>getAudioStartFrame()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int64_t Superpowered::Decoder::getAudioStartFrame </td>
+          <td class="memname"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> int Superpowered::Decoder::getAudioStartFrame </td>
           <td>(</td>
           <td class="paramtype">unsigned int&#160;</td>
           <td class="paramname"><em>limitFrames</em> = <code>0</code>, </td>
@@ -688,10 +888,10 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Detects silence at the beginning. </p><dl class="section warning"><dt>Warning</dt><dd>This function changes positionFrames! </dd></dl>
+<p>Detects silence at the beginning. </p><dl class="section warning"><dt>Warning</dt><dd>This function changes the position! </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>The return value can be:<ul>
 <li>A positive number or zero: the frame index where audio starts.</li>
-<li><a class="el" href="class_superpowered_1_1_decoder.html#a1add0546bacfd19eadf1269b92bb19b6" title="Buffering (waiting for the network to pump enough data).">Decoder::BufferingTryAgainLater</a>: the decoder needs more data to be downloaded. Retry <a class="el" href="class_superpowered_1_1_decoder.html#a58f34d780d0aac17396443f497fcf384">getAudioStartFrame()</a> or <a class="el" href="class_superpowered_1_1_decoder.html#a44119aecec91759bb76aaac6706f8f65">getAudioEndFrame()</a> later (it's recommended to wait at least 0.1 seconds).</li>
+<li><a class="el" href="class_superpowered_1_1_decoder.html#a1add0546bacfd19eadf1269b92bb19b6" title="Buffering (waiting for the network to pump enough data).">Decoder::BufferingTryAgainLater</a>: the decoder needs more data to be downloaded. Retry <a class="el" href="class_superpowered_1_1_decoder.html#af2c73e4f82223ad79063c98437f08ccc">getAudioStartFrame()</a> or <a class="el" href="class_superpowered_1_1_decoder.html#a9311f6d847b3b7f9d089796eb0cbd142">getAudioEndFrame()</a> later (it's recommended to wait at least 0.1 seconds).</li>
 <li><a class="el" href="class_superpowered_1_1_decoder.html#a6ac0af538722f8976839a2b596548f17" title="Network (download) error.">Decoder::NetworkError</a>: network (download) error.</li>
 <li><a class="el" href="class_superpowered_1_1_decoder.html#afd9cc8076d243e99d63185b283c61130" title="Decoding error.">Decoder::Error</a>: internal decoder error. </li>
 </ul>
@@ -706,14 +906,14 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a44119aecec91759bb76aaac6706f8f65"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a44119aecec91759bb76aaac6706f8f65">&#9670;&nbsp;</a></span>getAudioEndFrame()</h2>
+<a id="a9311f6d847b3b7f9d089796eb0cbd142"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9311f6d847b3b7f9d089796eb0cbd142">&#9670;&nbsp;</a></span>getAudioEndFrame()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int64_t Superpowered::Decoder::getAudioEndFrame </td>
+          <td class="memname"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> int Superpowered::Decoder::getAudioEndFrame </td>
           <td>(</td>
           <td class="paramtype">unsigned int&#160;</td>
           <td class="paramname"><em>limitFrames</em> = <code>0</code>, </td>
@@ -731,10 +931,10 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Detects silence at the end. </p><dl class="section warning"><dt>Warning</dt><dd>This function changes positionFrames! </dd></dl>
+<p>Detects silence at the end. </p><dl class="section warning"><dt>Warning</dt><dd>This function changes the position! </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>The return value can be:<ul>
 <li>A positive number or zero: the frame index where audio ends.</li>
-<li><a class="el" href="class_superpowered_1_1_decoder.html#a1add0546bacfd19eadf1269b92bb19b6" title="Buffering (waiting for the network to pump enough data).">Decoder::BufferingTryAgainLater</a>: the decoder needs more data to be downloaded. Retry <a class="el" href="class_superpowered_1_1_decoder.html#a44119aecec91759bb76aaac6706f8f65">getAudioEndFrame()</a> later (it's recommended to wait at least 0.1 seconds).</li>
+<li><a class="el" href="class_superpowered_1_1_decoder.html#a1add0546bacfd19eadf1269b92bb19b6" title="Buffering (waiting for the network to pump enough data).">Decoder::BufferingTryAgainLater</a>: the decoder needs more data to be downloaded. Retry <a class="el" href="class_superpowered_1_1_decoder.html#a9311f6d847b3b7f9d089796eb0cbd142">getAudioEndFrame()</a> later (it's recommended to wait at least 0.1 seconds).</li>
 <li><a class="el" href="class_superpowered_1_1_decoder.html#a6ac0af538722f8976839a2b596548f17" title="Network (download) error.">Decoder::NetworkError</a>: network (download) error.</li>
 <li><a class="el" href="class_superpowered_1_1_decoder.html#afd9cc8076d243e99d63185b283c61130" title="Decoding error.">Decoder::Error</a>: internal decoder error. </li>
 </ul>
@@ -767,14 +967,14 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a842606b200f5f9591788faa0b019b3c8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a842606b200f5f9591788faa0b019b3c8">&#9670;&nbsp;</a></span>parseAllID3Frames()</h2>
+<a id="a63613eac6a86a4cb5a93a679abfca5cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63613eac6a86a4cb5a93a679abfca5cd">&#9670;&nbsp;</a></span>parseAllID3Frames()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Superpowered::Decoder::parseAllID3Frames </td>
+          <td class="memname"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> void Superpowered::Decoder::parseAllID3Frames </td>
           <td>(</td>
           <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>skipImages</em>, </td>
@@ -804,14 +1004,14 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a480fe0adb4444b7a7d7e8e74836b311e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a480fe0adb4444b7a7d7e8e74836b311e">&#9670;&nbsp;</a></span>startParsingID3Frames()</h2>
+<a id="a9473145f2c70e72313c09482283af0a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9473145f2c70e72313c09482283af0a4">&#9670;&nbsp;</a></span>startParsingID3Frames()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Superpowered::Decoder::startParsingID3Frames </td>
+          <td class="memname"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> void Superpowered::Decoder::startParsingID3Frames </td>
           <td>(</td>
           <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>skipImages</em>, </td>
@@ -830,7 +1030,7 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Starts reading ID3 frames. Use <a class="el" href="class_superpowered_1_1_decoder.html#a81cc3db2e4c9cb961aeca4bcc391f2dc">readNextID3Frame()</a> in an iteration after this. </p>
+<p>Starts reading ID3 frames. Use <a class="el" href="class_superpowered_1_1_decoder.html#ac23b384b886b20847703e55d3181e103">readNextID3Frame()</a> in an iteration after this. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">skipImages</td><td>Parsing ID3 image frames is significantly slower than parsing other frames. Set this to true if not interested in image information to save <a class="el" href="class_superpowered_1_1_c_p_u.html" title="Utility class to keep the CPU running near the maximum frequency for all cores (&quot;sustained performanc...">CPU</a>. </td></tr>
@@ -841,14 +1041,14 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a81cc3db2e4c9cb961aeca4bcc391f2dc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a81cc3db2e4c9cb961aeca4bcc391f2dc">&#9670;&nbsp;</a></span>readNextID3Frame()</h2>
+<a id="ac23b384b886b20847703e55d3181e103"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac23b384b886b20847703e55d3181e103">&#9670;&nbsp;</a></span>readNextID3Frame()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int Superpowered::Decoder::readNextID3Frame </td>
+          <td class="memname"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> unsigned int Superpowered::Decoder::readNextID3Frame </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -859,50 +1059,50 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a2155e2747a8fdd98d8af0e7d9e3d4217"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2155e2747a8fdd98d8af0e7d9e3d4217">&#9670;&nbsp;</a></span>getID3FrameName()</h2>
+<a id="a06aac38f8a2335011f9c8030e0dea054"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06aac38f8a2335011f9c8030e0dea054">&#9670;&nbsp;</a></span>getID3FrameName()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int Superpowered::Decoder::getID3FrameName </td>
+          <td class="memname"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> unsigned int Superpowered::Decoder::getID3FrameName </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Returns with the current ID3 frame name (four char). To be used with <a class="el" href="class_superpowered_1_1_decoder.html#a81cc3db2e4c9cb961aeca4bcc391f2dc">readNextID3Frame()</a>. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns with the current ID3 frame name (four char). To be used with <a class="el" href="class_superpowered_1_1_decoder.html#ac23b384b886b20847703e55d3181e103">readNextID3Frame()</a>. </dd></dl>
 
 </div>
 </div>
-<a id="a05540b99c5b204eb60f89a1f0244f396"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a05540b99c5b204eb60f89a1f0244f396">&#9670;&nbsp;</a></span>getID3FrameData()</h2>
+<a id="a157560baf34aa8de2f90d34340c0c293"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a157560baf34aa8de2f90d34340c0c293">&#9670;&nbsp;</a></span>getID3FrameData()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void* Superpowered::Decoder::getID3FrameData </td>
+          <td class="memname"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> void* Superpowered::Decoder::getID3FrameData </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Returns with the raw data of the current ID3 frame. To be used with <a class="el" href="class_superpowered_1_1_decoder.html#a81cc3db2e4c9cb961aeca4bcc391f2dc">readNextID3Frame()</a>. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns with the raw data of the current ID3 frame. To be used with <a class="el" href="class_superpowered_1_1_decoder.html#ac23b384b886b20847703e55d3181e103">readNextID3Frame()</a>. </dd></dl>
 
 </div>
 </div>
-<a id="ad41939f5b190654242131a887858834a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad41939f5b190654242131a887858834a">&#9670;&nbsp;</a></span>getID3FrameDataLengthBytes()</h2>
+<a id="ac89f5546b4d35d9af7f1106d59478dbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac89f5546b4d35d9af7f1106d59478dbc">&#9670;&nbsp;</a></span>getID3FrameDataLengthBytes()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int Superpowered::Decoder::getID3FrameDataLengthBytes </td>
+          <td class="memname"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> unsigned int Superpowered::Decoder::getID3FrameDataLengthBytes </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -913,14 +1113,14 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="afbd423b18ce5e1374d2411807bde759f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afbd423b18ce5e1374d2411807bde759f">&#9670;&nbsp;</a></span>getID3FrameAsString()</h2>
+<a id="a431088e759ebfa41f56b96c0fdf9925c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a431088e759ebfa41f56b96c0fdf9925c">&#9670;&nbsp;</a></span>getID3FrameAsString()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char* Superpowered::Decoder::getID3FrameAsString </td>
+          <td class="memname"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> char* Superpowered::Decoder::getID3FrameAsString </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>offset</em> = <code>0</code></td><td>)</td>
@@ -929,7 +1129,7 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Returns with the text inside the current ID3 frame. To be used with <a class="el" href="class_superpowered_1_1_decoder.html#a81cc3db2e4c9cb961aeca4bcc391f2dc">readNextID3Frame()</a>. </p>
+<p>Returns with the text inside the current ID3 frame. To be used with <a class="el" href="class_superpowered_1_1_decoder.html#ac23b384b886b20847703e55d3181e103">readNextID3Frame()</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>A pointer to the text in UTF-8 encoding (you take ownership on the data, don't forget to free() when done to prevent memory leaks), or NULL if empty. </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>Use it for frames containing text only! </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -941,14 +1141,14 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a7ec1177186efc5aef7755fc6527be358"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7ec1177186efc5aef7755fc6527be358">&#9670;&nbsp;</a></span>getArtist()</h2>
+<a id="a6c18819921f61d4b5ef1e517fd7b89e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c18819921f61d4b5ef1e517fd7b89e0">&#9670;&nbsp;</a></span>getArtist()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char* Superpowered::Decoder::getArtist </td>
+          <td class="memname"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> char* Superpowered::Decoder::getArtist </td>
           <td>(</td>
           <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>takeOwnership</em> = <code>false</code></td><td>)</td>
@@ -956,7 +1156,7 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Returns with the contents "best" artist tag (TP1-4, TPE1-4, QT atoms). May return NULL. Call this after <a class="el" href="class_superpowered_1_1_decoder.html#a842606b200f5f9591788faa0b019b3c8" title="Parses all ID3 frames. Do not use startReadingID3/readNextID3Frame after this.">parseAllID3Frames()</a> OR finished reading all ID3 frames with <a class="el" href="class_superpowered_1_1_decoder.html#a81cc3db2e4c9cb961aeca4bcc391f2dc">readNextID3Frame()</a>. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns with the contents "best" artist tag (TP1-4, TPE1-4, QT atoms). May return NULL. Call this after <a class="el" href="class_superpowered_1_1_decoder.html#a63613eac6a86a4cb5a93a679abfca5cd" title="Parses all ID3 frames. Do not use startReadingID3/readNextID3Frame after this.">parseAllID3Frames()</a> OR finished reading all ID3 frames with <a class="el" href="class_superpowered_1_1_decoder.html#ac23b384b886b20847703e55d3181e103">readNextID3Frame()</a>. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">takeOwnership</td><td>For advanced use. If true, you take ownership on the data (don't forget to free() when done to prevent memory leaks). </td></tr>
@@ -966,14 +1166,14 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="afd48eaa37d20e9ab74c9f73192f13cb6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afd48eaa37d20e9ab74c9f73192f13cb6">&#9670;&nbsp;</a></span>getTitle()</h2>
+<a id="a1a06e9d24e46a61a8fb459fc28d3d67a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a06e9d24e46a61a8fb459fc28d3d67a">&#9670;&nbsp;</a></span>getTitle()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char* Superpowered::Decoder::getTitle </td>
+          <td class="memname"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> char* Superpowered::Decoder::getTitle </td>
           <td>(</td>
           <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>takeOwnership</em> = <code>false</code></td><td>)</td>
@@ -981,7 +1181,7 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Returns with the contents "best" title tag (TT1-3, TIT1-3, QT atoms). May return NULL. Call this after <a class="el" href="class_superpowered_1_1_decoder.html#a842606b200f5f9591788faa0b019b3c8" title="Parses all ID3 frames. Do not use startReadingID3/readNextID3Frame after this.">parseAllID3Frames()</a> OR finished reading all ID3 frames with <a class="el" href="class_superpowered_1_1_decoder.html#a81cc3db2e4c9cb961aeca4bcc391f2dc">readNextID3Frame()</a>. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns with the contents "best" title tag (TT1-3, TIT1-3, QT atoms). May return NULL. Call this after <a class="el" href="class_superpowered_1_1_decoder.html#a63613eac6a86a4cb5a93a679abfca5cd" title="Parses all ID3 frames. Do not use startReadingID3/readNextID3Frame after this.">parseAllID3Frames()</a> OR finished reading all ID3 frames with <a class="el" href="class_superpowered_1_1_decoder.html#ac23b384b886b20847703e55d3181e103">readNextID3Frame()</a>. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">takeOwnership</td><td>For advanced use. If true, you take ownership on the data (don't forget to free() when done to prevent memory leaks). </td></tr>
@@ -991,14 +1191,14 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a7f67c1b8e0750356dcbf8197976aca77"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7f67c1b8e0750356dcbf8197976aca77">&#9670;&nbsp;</a></span>getAlbum()</h2>
+<a id="a0e4f2ee361db37d2fb23bbb8e7f41f7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e4f2ee361db37d2fb23bbb8e7f41f7e">&#9670;&nbsp;</a></span>getAlbum()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char* Superpowered::Decoder::getAlbum </td>
+          <td class="memname"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> char* Superpowered::Decoder::getAlbum </td>
           <td>(</td>
           <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>takeOwnership</em> = <code>false</code></td><td>)</td>
@@ -1006,7 +1206,7 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Returns with the contents of the TALB tag (or QT atom). May return NULL. Call this after <a class="el" href="class_superpowered_1_1_decoder.html#a842606b200f5f9591788faa0b019b3c8" title="Parses all ID3 frames. Do not use startReadingID3/readNextID3Frame after this.">parseAllID3Frames()</a> OR finished reading all ID3 frames with <a class="el" href="class_superpowered_1_1_decoder.html#a81cc3db2e4c9cb961aeca4bcc391f2dc">readNextID3Frame()</a>. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns with the contents of the TALB tag (or QT atom). May return NULL. Call this after <a class="el" href="class_superpowered_1_1_decoder.html#a63613eac6a86a4cb5a93a679abfca5cd" title="Parses all ID3 frames. Do not use startReadingID3/readNextID3Frame after this.">parseAllID3Frames()</a> OR finished reading all ID3 frames with <a class="el" href="class_superpowered_1_1_decoder.html#ac23b384b886b20847703e55d3181e103">readNextID3Frame()</a>. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">takeOwnership</td><td>For advanced use. If true, you take ownership on the data (don't forget to free() when done to prevent memory leaks). </td></tr>
@@ -1016,32 +1216,32 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a72bb42000258bf3095c53662bded837b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a72bb42000258bf3095c53662bded837b">&#9670;&nbsp;</a></span>getTrackIndex()</h2>
+<a id="a4c75d7e21895b16c2b2a79608e051ae4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c75d7e21895b16c2b2a79608e051ae4">&#9670;&nbsp;</a></span>getTrackIndex()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int Superpowered::Decoder::getTrackIndex </td>
+          <td class="memname"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> unsigned int Superpowered::Decoder::getTrackIndex </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Returns with the track index (track field or TRCK). Call this after <a class="el" href="class_superpowered_1_1_decoder.html#a842606b200f5f9591788faa0b019b3c8" title="Parses all ID3 frames. Do not use startReadingID3/readNextID3Frame after this.">parseAllID3Frames()</a> OR finished reading all ID3 frames with <a class="el" href="class_superpowered_1_1_decoder.html#a81cc3db2e4c9cb961aeca4bcc391f2dc">readNextID3Frame()</a>. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns with the track index (track field or TRCK). Call this after <a class="el" href="class_superpowered_1_1_decoder.html#a63613eac6a86a4cb5a93a679abfca5cd" title="Parses all ID3 frames. Do not use startReadingID3/readNextID3Frame after this.">parseAllID3Frames()</a> OR finished reading all ID3 frames with <a class="el" href="class_superpowered_1_1_decoder.html#ac23b384b886b20847703e55d3181e103">readNextID3Frame()</a>. </dd></dl>
 
 </div>
 </div>
-<a id="a96d4339ff5ecabbe0aa3fde2a17c560c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a96d4339ff5ecabbe0aa3fde2a17c560c">&#9670;&nbsp;</a></span>getImage()</h2>
+<a id="a2a280da872551b75880c6e6a7e968286"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a280da872551b75880c6e6a7e968286">&#9670;&nbsp;</a></span>getImage()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void* Superpowered::Decoder::getImage </td>
+          <td class="memname"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> void* Superpowered::Decoder::getImage </td>
           <td>(</td>
           <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>takeOwnership</em> = <code>false</code></td><td>)</td>
@@ -1049,7 +1249,7 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Returns with the contents "best" image tag (PIC, APIC, QT atom). May return NULL. Call this after <a class="el" href="class_superpowered_1_1_decoder.html#a842606b200f5f9591788faa0b019b3c8" title="Parses all ID3 frames. Do not use startReadingID3/readNextID3Frame after this.">parseAllID3Frames()</a> OR finished reading all ID3 frames with <a class="el" href="class_superpowered_1_1_decoder.html#a81cc3db2e4c9cb961aeca4bcc391f2dc">readNextID3Frame()</a>. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns with the contents "best" image tag (PIC, APIC, QT atom). May return NULL. Call this after <a class="el" href="class_superpowered_1_1_decoder.html#a63613eac6a86a4cb5a93a679abfca5cd" title="Parses all ID3 frames. Do not use startReadingID3/readNextID3Frame after this.">parseAllID3Frames()</a> OR finished reading all ID3 frames with <a class="el" href="class_superpowered_1_1_decoder.html#ac23b384b886b20847703e55d3181e103">readNextID3Frame()</a>. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">takeOwnership</td><td>For advanced use. If true, you take ownership on the data (don't forget to free() when done to prevent memory leaks). </td></tr>
@@ -1059,39 +1259,39 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a99b8765b6957b755adf7bb563d54c6cd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a99b8765b6957b755adf7bb563d54c6cd">&#9670;&nbsp;</a></span>getImageSizeBytes()</h2>
+<a id="adeac453b444ab1880049db748c08517e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adeac453b444ab1880049db748c08517e">&#9670;&nbsp;</a></span>getImageSizeBytes()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int Superpowered::Decoder::getImageSizeBytes </td>
+          <td class="memname"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> unsigned int Superpowered::Decoder::getImageSizeBytes </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Returns with the the size of the image returned by <a class="el" href="class_superpowered_1_1_decoder.html#a96d4339ff5ecabbe0aa3fde2a17c560c">getImage()</a>. May return NULL. Call this after <a class="el" href="class_superpowered_1_1_decoder.html#a842606b200f5f9591788faa0b019b3c8" title="Parses all ID3 frames. Do not use startReadingID3/readNextID3Frame after this.">parseAllID3Frames()</a> OR finished reading all ID3 frames with <a class="el" href="class_superpowered_1_1_decoder.html#a81cc3db2e4c9cb961aeca4bcc391f2dc">readNextID3Frame()</a>. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns with the the size of the image returned by <a class="el" href="class_superpowered_1_1_decoder.html#a2a280da872551b75880c6e6a7e968286">getImage()</a>. May return NULL. Call this after <a class="el" href="class_superpowered_1_1_decoder.html#a63613eac6a86a4cb5a93a679abfca5cd" title="Parses all ID3 frames. Do not use startReadingID3/readNextID3Frame after this.">parseAllID3Frames()</a> OR finished reading all ID3 frames with <a class="el" href="class_superpowered_1_1_decoder.html#ac23b384b886b20847703e55d3181e103">readNextID3Frame()</a>. </dd></dl>
 
 </div>
 </div>
-<a id="a4920ad2f99cf9bc3efe546fb17755f78"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4920ad2f99cf9bc3efe546fb17755f78">&#9670;&nbsp;</a></span>getBPM()</h2>
+<a id="a57a9a0b5ce2d79ea6b13df4e4e3e4532"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57a9a0b5ce2d79ea6b13df4e4e3e4532">&#9670;&nbsp;</a></span>getBPM()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float Superpowered::Decoder::getBPM </td>
+          <td class="memname"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> float Superpowered::Decoder::getBPM </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Returns with the bpm value of the "best" bpm tag (TBP, TBPM, QT atom). May return 0. Call this after <a class="el" href="class_superpowered_1_1_decoder.html#a842606b200f5f9591788faa0b019b3c8" title="Parses all ID3 frames. Do not use startReadingID3/readNextID3Frame after this.">parseAllID3Frames()</a> OR finished reading all ID3 frames with <a class="el" href="class_superpowered_1_1_decoder.html#a81cc3db2e4c9cb961aeca4bcc391f2dc">readNextID3Frame()</a>. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns with the bpm value of the "best" bpm tag (TBP, TBPM, QT atom). May return 0. Call this after <a class="el" href="class_superpowered_1_1_decoder.html#a63613eac6a86a4cb5a93a679abfca5cd" title="Parses all ID3 frames. Do not use startReadingID3/readNextID3Frame after this.">parseAllID3Frames()</a> OR finished reading all ID3 frames with <a class="el" href="class_superpowered_1_1_decoder.html#ac23b384b886b20847703e55d3181e103">readNextID3Frame()</a>. </dd></dl>
 
 </div>
 </div>
@@ -1135,7 +1335,7 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Error codes for the <a class="el" href="class_superpowered_1_1_decoder.html#aef80762cf529ab48b0e4df83376b73ac" title="Decodes audio.">decodeAudio()</a>, <a class="el" href="class_superpowered_1_1_decoder.html#a58f34d780d0aac17396443f497fcf384">getAudioStartFrame()</a> and <a class="el" href="class_superpowered_1_1_decoder.html#a44119aecec91759bb76aaac6706f8f65">getAudioEndFrame()</a> methods. </p>
+<p>Error codes for the <a class="el" href="class_superpowered_1_1_decoder.html#ad6eda44296a413be811ed18266bab37a" title="Decodes audio.">decodeAudio()</a>, <a class="el" href="class_superpowered_1_1_decoder.html#af2c73e4f82223ad79063c98437f08ccc">getAudioStartFrame()</a> and <a class="el" href="class_superpowered_1_1_decoder.html#a9311f6d847b3b7f9d089796eb0cbd142">getAudioEndFrame()</a> methods. </p>
 <p>End-of-file reached. </p>
 
 </div>
@@ -1232,7 +1432,7 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Error codes for the <a class="el" href="class_superpowered_1_1_decoder.html#acba540f007a8b510a39c83eccafc5d41" title="Opens a file for decoding.">open()</a> method. </p>
+<p>Error codes for the open...() methods. </p>
 
 </div>
 </div>
@@ -1352,7 +1552,7 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>File read error (such as fread() failed) while reading the ID3 tag. </p>
+<p>File read error while reading the ID3 tag. </p>
 
 </div>
 </div>

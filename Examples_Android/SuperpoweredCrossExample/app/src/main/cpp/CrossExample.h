@@ -26,7 +26,7 @@ public:
 	void onFxValue(int value);
 
 private:
-    SuperpoweredAndroidAudioIO *output;
+    SuperpoweredAndroidAudioIO *outputIO;
     Superpowered::AdvancedAudioPlayer *playerA, *playerB;
     Superpowered::Roll *roll;
     Superpowered::Filter *filter;

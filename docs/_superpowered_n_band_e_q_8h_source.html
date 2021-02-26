@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">2.1.1</span>
+   &#160;<span id="projectnumber">2.2.0</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -75,13 +75,13 @@ $(function() {
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclass_superpowered_n_band_e_q_html_ad1c0d9f9d9d3675d362112a10b61d2f4"><div class="ttname"><a href="class_superpowered_n_band_e_q.html#ad1c0d9f9d9d3675d362112a10b61d2f4">SuperpoweredNBandEQ::SuperpoweredNBandEQ</a></div><div class="ttdeci">SuperpoweredNBandEQ(unsigned int samplerate, float *frequencies)</div><div class="ttdoc">Constructor. Enabled is false by default.</div><div class="ttdef"><b>Definition:</b> SuperpoweredNBandEQ.cpp:18</div></div>
-<div class="ttc" id="aclass_superpowered_1_1_f_x_html_ae3dad4ee9873c37ddec4547b87b1f9ee"><div class="ttname"><a href="class_superpowered_1_1_f_x.html#ae3dad4ee9873c37ddec4547b87b1f9ee">Superpowered::FX::samplerate</a></div><div class="ttdeci">unsigned int samplerate</div><div class="ttdoc">Sample rate in Hz.</div><div class="ttdef"><b>Definition:</b> SuperpoweredFX.h:10</div></div>
+<div class="ttc" id="aclass_superpowered_1_1_f_x_html_ae3dad4ee9873c37ddec4547b87b1f9ee"><div class="ttname"><a href="class_superpowered_1_1_f_x.html#ae3dad4ee9873c37ddec4547b87b1f9ee">Superpowered::FX::samplerate</a></div><div class="ttdeci">unsigned int samplerate</div><div class="ttdoc">Sample rate in Hz.</div><div class="ttdef"><b>Definition:</b> SuperpoweredFX.h:14</div></div>
 <div class="ttc" id="a_superpowered_n_band_e_q_8cpp_html_a8bf302b9d2cfb893a20ccb846a32f739"><div class="ttname"><a href="_superpowered_n_band_e_q_8cpp.html#a8bf302b9d2cfb893a20ccb846a32f739">nbeqInternals</a></div><div class="ttdeci">struct nbeqInternals nbeqInternals</div></div>
 <div class="ttc" id="aclass_superpowered_n_band_e_q_html"><div class="ttname"><a href="class_superpowered_n_band_e_q.html">SuperpoweredNBandEQ</a></div><div class="ttdoc">N-band equalizer. It doesn't allocate any internal buffers and needs just a few bytes of memory.</div><div class="ttdef"><b>Definition:</b> SuperpoweredNBandEQ.h:9</div></div>
 <div class="ttc" id="aclass_superpowered_n_band_e_q_html_a572e6e019b70d19d069531bad3a116f4"><div class="ttname"><a href="class_superpowered_n_band_e_q.html#a572e6e019b70d19d069531bad3a116f4">SuperpoweredNBandEQ::process</a></div><div class="ttdeci">bool process(float *input, float *output, unsigned int numberOfFrames)</div><div class="ttdoc">Processes the audio. Always call it in the audio processing callback, regardless if the effect is ena...</div><div class="ttdef"><b>Definition:</b> SuperpoweredNBandEQ.cpp:64</div></div>
 <div class="ttc" id="a_superpowered_f_x_8h_html"><div class="ttname"><a href="_superpowered_f_x_8h.html">SuperpoweredFX.h</a></div></div>
 <div class="ttc" id="aclass_superpowered_n_band_e_q_html_a9961096d35c1d1187f19efa6cf89487e"><div class="ttname"><a href="class_superpowered_n_band_e_q.html#a9961096d35c1d1187f19efa6cf89487e">SuperpoweredNBandEQ::~SuperpoweredNBandEQ</a></div><div class="ttdeci">~SuperpoweredNBandEQ()</div><div class="ttdef"><b>Definition:</b> SuperpoweredNBandEQ.cpp:50</div></div>
-<div class="ttc" id="aclass_superpowered_1_1_f_x_html"><div class="ttname"><a href="class_superpowered_1_1_f_x.html">Superpowered::FX</a></div><div class="ttdoc">This is the base class for Superpowered effects.</div><div class="ttdef"><b>Definition:</b> SuperpoweredFX.h:7</div></div>
+<div class="ttc" id="aclass_superpowered_1_1_f_x_html"><div class="ttname"><a href="class_superpowered_1_1_f_x.html">Superpowered::FX</a></div><div class="ttdoc">This is the base class for Superpowered effects.</div><div class="ttdef"><b>Definition:</b> SuperpoweredFX.h:11</div></div>
 <div class="ttc" id="aclass_superpowered_n_band_e_q_html_a117220b6c7820a2c57c4482beb016633"><div class="ttname"><a href="class_superpowered_n_band_e_q.html#a117220b6c7820a2c57c4482beb016633">SuperpoweredNBandEQ::getBandDb</a></div><div class="ttdeci">float getBandDb(unsigned int index)</div><div class="ttdef"><b>Definition:</b> SuperpoweredNBandEQ.cpp:60</div></div>
 <div class="ttc" id="aclass_superpowered_n_band_e_q_html_a1b696d646daedfaf0e1cbcc47cd80f20"><div class="ttname"><a href="class_superpowered_n_band_e_q.html#a1b696d646daedfaf0e1cbcc47cd80f20">SuperpoweredNBandEQ::setGainDb</a></div><div class="ttdeci">void setGainDb(unsigned int index, float gainDecibels)</div><div class="ttdoc">Sets the gain for a frequency band.</div><div class="ttdef"><b>Definition:</b> SuperpoweredNBandEQ.cpp:56</div></div>
 <!-- start footer part -->

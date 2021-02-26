@@ -21,11 +21,11 @@ public:
     
 /// @brief Constructor. Enabled is false by default.
 /// @param samplerate The initial sample rate in Hz.
-    Flanger(unsigned int samplerate);
-    ~Flanger();
+    JSWASM Flanger(unsigned int samplerate);
+    JSWASM ~Flanger();
     
 /// @brief Returns with the current depth in milliseconds, 0.3f to 8.0f (0.3 ms to 8 ms).
-    float getDepthMs();
+    JSWASM float getDepthMs();
 
 /// @brief Processes the audio. Always call it in the audio processing callback, regardless if the effect is enabled or not for smooth, audio-artifact free operation.
 /// It's never blocking for real-time usage. You can change all properties and call getDepthMs() on any thread, concurrently with process().
@@ -33,7 +33,7 @@ public:
 /// @param input Pointer to floating point numbers. 32-bit interleaved stereo input.
 /// @param output Pointer to floating point numbers. 32-bit interleaved stereo output. Can point to the same location with input (in-place processing).
 /// @param numberOfFrames Number of frames to process. Recommendations for best performance: multiply of 4, minimum 64.
-    bool process(float *input, float *output, unsigned int numberOfFrames);
+    JSWASM bool process(float *input, float *output, unsigned int numberOfFrames);
     
 private:
     flangerInternals *internals;

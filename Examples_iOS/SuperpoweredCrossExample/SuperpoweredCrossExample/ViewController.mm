@@ -31,8 +31,8 @@ static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int
     playerA->outputSamplerate = playerB->outputSamplerate = roll->samplerate = filter->samplerate = flanger->samplerate = samplerate;
     
     // Check player statuses. We're only interested in the Opened event in this example.
-    if (playerA->getLatestEvent() == Superpowered::PlayerEvent_Opened) numPlayersLoaded++;
-    if (playerB->getLatestEvent() == Superpowered::PlayerEvent_Opened) numPlayersLoaded++;
+    if (playerA->getLatestEvent() == Superpowered::AdvancedAudioPlayer::PlayerEvent_Opened) numPlayersLoaded++;
+    if (playerB->getLatestEvent() == Superpowered::AdvancedAudioPlayer::PlayerEvent_Opened) numPlayersLoaded++;
     
     // Both players opened? If yes, set the beatgrid information on the players.
     if (numPlayersLoaded == 2) {
@@ -40,7 +40,7 @@ static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int
         playerA->firstBeatMs = 353;
         playerB->originalBPM = 123.0f;
         playerB->firstBeatMs = 40;
-        playerA->syncMode = playerB->syncMode = Superpowered::SyncMode_TempoAndBeat;
+        playerA->syncMode = playerB->syncMode = Superpowered::AdvancedAudioPlayer::SyncMode_TempoAndBeat;
         // Jump to the first beat.
         playerA->setPosition(playerA->firstBeatMs, false, false);
         playerB->setPosition(playerB->firstBeatMs, false, false);
@@ -98,7 +98,7 @@ static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int
     playerA = new Superpowered::AdvancedAudioPlayer(44100, 0);
     playerB = new Superpowered::AdvancedAudioPlayer(44100, 0);
     roll = new Superpowered::Roll(44100);
-    filter = new Superpowered::Filter(Superpowered::Resonant_Lowpass, 44100);
+    filter = new Superpowered::Filter(Superpowered::Filter::Resonant_Lowpass, 44100);
     flanger = new Superpowered::Flanger(44100);
     
     filter->resonance = 0.1f;

@@ -28,8 +28,8 @@ public:
     
 /// @brief Constructor.
 /// @param samplerate The initial sample rate in Hz.
-    Spatializer(unsigned int samplerate);
-    ~Spatializer();
+    JSWASM Spatializer(unsigned int samplerate);
+    JSWASM ~Spatializer();
 
 /// @brief Processes the audio.
 /// It's never blocking for real-time usage. You can change all properties on any thread, concurrently with process().
@@ -40,14 +40,14 @@ public:
 /// @param outputRight Pointer to floating point numbers. 32-bit right channel output. Can be NULL, outputLeft will be used in this case as interleaved stereo output.
 /// @param numberOfFrames Number of frames to process. Valid between 64-8192.
 /// @param outputAdd If true, audio will be added to whatever content is in outputLeft or outputRight.
-    bool process(float *inputLeft, float *inputRight, float *outputLeft, float *outputRight, unsigned int numberOfFrames, bool outputAdd);
+    JSWASM bool process(float *inputLeft, float *inputRight, float *outputLeft, float *outputRight, unsigned int numberOfFrames, bool outputAdd);
     
 /// @brief Outputs the Global Spatializer Reverb. Always call it in the audio processing callback, regardless if the effect is enabled or not for smooth, audio-artifact free operation. Should be called after every Superpowered Spatializer's process() method.
 /// It's never blocking for real-time usage. You can change all properties of the globalReverb on any thread, concurrently with process().
 /// @return If process() returns with true, the contents of output are replaced with the audio output. If process() returns with false, the contents of output are not changed.
 /// @param output Pointer to floating point numbers. 32-bit interleaved stereo output.
 /// @param numberOfFrames Number of framesto process. Should not be higher than 8192.
-    static bool reverbProcess(float *output, unsigned int numberOfFrames);
+    JSWASM static bool reverbProcess(float *output, unsigned int numberOfFrames);
 
 private:
     spatializerInternals *internals;

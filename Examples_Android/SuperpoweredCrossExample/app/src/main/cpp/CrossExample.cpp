@@ -43,7 +43,7 @@ CrossExample::CrossExample (
     playerA = new Superpowered::AdvancedAudioPlayer(samplerate, 0);
     playerB = new Superpowered::AdvancedAudioPlayer(samplerate, 0);
     roll = new Superpowered::Roll(samplerate);
-    filter = new Superpowered::Filter(Superpowered::Resonant_Lowpass, samplerate);
+    filter = new Superpowered::Filter(Superpowered::Filter::Resonant_Lowpass, samplerate);
     flanger = new Superpowered::Flanger(samplerate);
 
     filter->resonance = 0.1f;
@@ -51,7 +51,7 @@ CrossExample::CrossExample (
     playerB->open(path, fileBoffset, fileBlength);
 
     // Initialize audio engine and pass callback function.
-    output = new SuperpoweredAndroidAudioIO (
+    outputIO = new SuperpoweredAndroidAudioIO (
 			samplerate,                     // device native sample rate
 			buffersize,                     // device native buffer size
 			false,                          // enableInput
@@ -65,7 +65,7 @@ CrossExample::CrossExample (
 
 // Destructor. Free resources.
 CrossExample::~CrossExample() {
-    delete output; // Always stop and delete audio I/O first.
+    delete outputIO; // Always stop and delete audio I/O first.
     delete playerA;
     delete playerB;
     delete roll;
@@ -150,8 +150,8 @@ bool CrossExample::process(short int *output, unsigned int numberOfFrames, unsig
     playerA->outputSamplerate = playerB->outputSamplerate = roll->samplerate = filter->samplerate = flanger->samplerate = samplerate;
 
     // Check player statuses. We're only interested in the Opened event in this example.
-    if (playerA->getLatestEvent() == Superpowered::PlayerEvent_Opened) numPlayersLoaded++;
-    if (playerB->getLatestEvent() == Superpowered::PlayerEvent_Opened) numPlayersLoaded++;
+    if (playerA->getLatestEvent() == Superpowered::AdvancedAudioPlayer::PlayerEvent_Opened) numPlayersLoaded++;
+    if (playerB->getLatestEvent() == Superpowered::AdvancedAudioPlayer::PlayerEvent_Opened) numPlayersLoaded++;
 
     // Both players opened? If yes, set the beatgrid information on the players.
     if (numPlayersLoaded == 2) {
@@ -159,7 +159,7 @@ bool CrossExample::process(short int *output, unsigned int numberOfFrames, unsig
         playerA->firstBeatMs = 353;
         playerB->originalBPM = 123.0f;
         playerB->firstBeatMs = 40;
-        playerA->syncMode = playerB->syncMode = Superpowered::SyncMode_TempoAndBeat;
+        playerA->syncMode = playerB->syncMode = Superpowered::AdvancedAudioPlayer::SyncMode_TempoAndBeat;
         // Jump to the first beat.
         playerA->setPosition(playerA->firstBeatMs, false, false);
         playerB->setPosition(playerB->firstBeatMs, false, false);

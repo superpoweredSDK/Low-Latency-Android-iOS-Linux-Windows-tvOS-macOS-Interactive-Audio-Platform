@@ -19,17 +19,17 @@ static bool audioProcessing(void *clientdata, float *audio, int numberOfFrames, 
         else if (samplerate < 0) Log("Audio I/O error %i.\n", samplerate);
         return false;
     }
-    
+
     switch (player->getLatestEvent()) {
-        case Superpowered::PlayerEvent_None:
-        case Superpowered::PlayerEvent_Opening:
-        case Superpowered::PlayerEvent_ProgressiveDownloadFinished: break; // do nothing
-        case Superpowered::PlayerEvent_Opened: player->play(); break;
-        case Superpowered::PlayerEvent_OpenFailed: {
+        case Superpowered::AdvancedAudioPlayer::PlayerEvent_None:
+        case Superpowered::AdvancedAudioPlayer::PlayerEvent_Opening:
+        case Superpowered::AdvancedAudioPlayer::PlayerEvent_ProgressiveDownloadFinished: break; // do nothing
+        case Superpowered::AdvancedAudioPlayer::PlayerEvent_Opened: player->play(); break;
+        case Superpowered::AdvancedAudioPlayer::PlayerEvent_OpenFailed: {
             int openError = player->getOpenErrorCode();
             Log("Open error %i: %s", openError, Superpowered::AdvancedAudioPlayer::statusCodeToString(openError));
         } break;
-        case Superpowered::PlayerEvent_ConnectionLost: Log("Network download failed."); break;
+        case Superpowered::AdvancedAudioPlayer::PlayerEvent_ConnectionLost: Log("Network download failed."); break;
     }
 
     player->outputSamplerate = samplerate;

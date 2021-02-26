@@ -42,7 +42,7 @@ typedef struct AudiopointerlistElement {
     void *buffers[4];       ///< The buffers, coming from Superpowered AudiobufferPool.
     int firstFrame;         ///< The index of the first frame in the buffer.
     int lastFrame;          ///< The index of last frame in the buffer. The length of the buffer: lastFrame - firstFrame.
-    int64_t positionFrames; ///< Can be used to track position information.
+    int positionFrames;     ///< Can be used to track position information.
     float framesUsed;       ///< Can be used to track how many "original" frames were used to create this chunk of audio. Useful for time-stretching or resampling to precisely track the movement of the playhead.
 } AudiopointerlistElement;
 
@@ -87,11 +87,11 @@ public:
     
 /// @brief Returns the start position in an audio file or stream.
 /// Safe to use in a real-time thread.
-    int64_t getPositionFrames();
+    int getPositionFrames();
     
 /// @brief Returns the end position in an audio file or stream, plus 1.
 /// Safe to use in a real-time thread.
-    int64_t getNextPositionFrames();
+    int getNextPositionFrames();
     
 /// @brief Creates a "virtual slice" from this list.
 /// Safe to use in a real-time thread.
@@ -123,7 +123,7 @@ public:
     
 /// @brief Returns the slice start position in an audio file or stream.
 /// Safe to use in a real-time thread.
-    int64_t getSlicePositionFrames();
+    int getSlicePositionFrames();
     
 private:
     pointerListInternals *internals;

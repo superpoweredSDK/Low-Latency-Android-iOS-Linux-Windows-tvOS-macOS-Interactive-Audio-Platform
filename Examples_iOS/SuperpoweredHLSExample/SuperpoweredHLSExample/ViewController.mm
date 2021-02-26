@@ -86,10 +86,10 @@ static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int
 - (void)onDisplayLink {
     // Check player events.
     switch (player->getLatestEvent()) {
-        case Superpowered::PlayerEvent_Opened:
+        case Superpowered::AdvancedAudioPlayer::PlayerEvent_Opened:
             player->play();
             break;
-        case Superpowered::PlayerEvent_OpenFailed:
+        case Superpowered::AdvancedAudioPlayer::PlayerEvent_OpenFailed:
             NSLog(@"Open error %i: %s", player->getOpenErrorCode(), Superpowered::AdvancedAudioPlayer::statusCodeToString(player->getOpenErrorCode()));
             break;
         default:;

@@ -107,7 +107,7 @@ static FILE *createDestinationFile(const char *filename, unsigned int samplerate
     }
 
     // Create the low-pass filter.
-    Superpowered::Filter *filter = new Superpowered::Filter(Superpowered::Resonant_Lowpass, decoder->getSamplerate());
+    Superpowered::Filter *filter = new Superpowered::Filter(Superpowered::Filter::Resonant_Lowpass, decoder->getSamplerate());
     filter->frequency = 1000.0f;
     filter->resonance = 0.1f;
     filter->enabled = true;

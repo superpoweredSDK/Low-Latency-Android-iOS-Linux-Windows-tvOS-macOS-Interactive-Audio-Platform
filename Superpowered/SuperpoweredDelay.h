@@ -18,8 +18,8 @@ public:
 /// @param maximumSamplerate Maximum sample rate to support. Higher values increase memory usage.
 /// @param maximumNumberOfFramesToProcess Maximum number of frames for the process() call. Has minimum effect on memory usage.
 /// @param samplerate The initial sample rate in Hz.
-    Delay(unsigned int maximumDelayMs, unsigned int maximumSamplerate, unsigned int maximumNumberOfFramesToProcess, unsigned int samplerate);
-    ~Delay();
+    JSWASM Delay(unsigned int maximumDelayMs, unsigned int maximumSamplerate, unsigned int maximumNumberOfFramesToProcess, unsigned int samplerate);
+    JSWASM ~Delay();
     
 /// @brief Processes the audio.
 /// It's never blocking for real-time usage. You can change any properties concurrently with process().
@@ -27,7 +27,7 @@ public:
 /// @param input Pointer to floating point numbers. 32-bit interleaved stereo input. Special case: set to NULL to empty all buffered content.
 /// @param numberOfFrames Number of frames to input and output.
 /// @param fx Optional. If NULL, then simple memory copy will be used to pass audio from input to the internal buffer. If not NULL, fx->process() will be used to pass audio from input to the internal buffer.
-    const float * const process(float *input, int numberOfFrames, FX *fx = 0);
+    JSWASM const float * const process(float *input, int numberOfFrames, FX *fx = 0);
    
 private:
     delayInternals *internals;

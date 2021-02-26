@@ -21,12 +21,12 @@ public:
     float hpCutOffHz;   ///< Key highpass filter frequency, limited between 1 and 10000. Default: 1.
     
 /// @return Returns the maximum gain reduction in decibels since the last getGainReductionDb() call.
-    float getGainReductionDb();
+    JSWASM float getGainReductionDb();
 
 /// @brief Constructor. Enabled is false by default.
 /// @param samplerate The initial sample rate in Hz.
-    Compressor(unsigned int samplerate);
-    ~Compressor();
+    JSWASM Compressor(unsigned int samplerate);
+    JSWASM ~Compressor();
     
 /// @brief Processes the audio. Always call it in the audio processing callback, regardless if the effect is enabled or not for smooth, audio-artifact free operation.
 /// It's never blocking for real-time usage. You can change all properties and call getGainReductionDb() on any thread, concurrently with process().
@@ -34,7 +34,7 @@ public:
 /// @param input Pointer to floating point numbers. 32-bit interleaved stereo input.
 /// @param output Pointer to floating point numbers. 32-bit interleaved stereo output. Can point to the same location with input (in-place processing).
 /// @param numberOfFrames Number of frames to process. Recommendations for best performance: multiply of 4, minimum 64.
-    bool process(float *input, float *output, unsigned int numberOfFrames);
+    JSWASM bool process(float *input, float *output, unsigned int numberOfFrames);
 
 private:
     compressorInternals *internals;
