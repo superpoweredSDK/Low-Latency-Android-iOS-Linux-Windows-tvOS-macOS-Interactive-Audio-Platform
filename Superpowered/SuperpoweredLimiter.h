@@ -13,7 +13,7 @@ class Limiter: public FX {
 public:
     float ceilingDb;   ///< Ceiling in decibels, limited between 0 and -40. Default: 0.
     float thresholdDb; ///< Threshold in decibels, limited between 0 and -40. Default: 0.
-    float releaseSec;  ///< Release in seconds (not milliseconds!). Limited between 0.1 and 1.6. Default: 0.05 (50 ms).
+    float releaseSec;  ///< Release in seconds (not milliseconds!). Limited between 0.001 and 1. Default: 0.05 (50 ms).
 
 /// @brief Constructor. Enabled is false by default.
 /// @param samplerate The initial sample rate in Hz.
