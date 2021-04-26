@@ -21,6 +21,7 @@ public:
     unsigned int samplerate; ///< Sample rate in Hz. High quality pitch shifting requires 44100 Hz or more, the sound is "echoing" on lower sample rates.
     unsigned char sound; ///< Valid values are: 0 (best to save CPU with slightly lower audio quality), 1 (best for DJ apps, modern and "complete" music), 2 (best for instrumental loops and single instruments). Default: 1.
     float formantCorrection; ///< Amount of formant correction, between 0 (none) and 1 (full). Default: 0.
+    bool preciseTurningOn;  ///< Maintain precise timing when the time-stretcher turns on. Useful for all use-cases except when the audio is heavily manipulated with some resampler (scratching). Default: true.
     Superpowered::AudiopointerList *outputList; ///< The AudiopointerList storing the audio output. To be used with the advancedProcess() method. Read only.
 
 /// @brief Constructor.

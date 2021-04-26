@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">2.2.0</span>
+   &#160;<span id="projectnumber">2.2.2</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -88,6 +88,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a9d3cfef4a2a38382c250c9d4092037c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc68bc40d4dc7cd94dac8e81f9e2e351"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_time_stretching.html#acc68bc40d4dc7cd94dac8e81f9e2e351">formantCorrection</a></td></tr>
 <tr class="separator:acc68bc40d4dc7cd94dac8e81f9e2e351"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75909859618a3c801d327d541acbf137"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_time_stretching.html#a75909859618a3c801d327d541acbf137">preciseTurningOn</a></td></tr>
+<tr class="separator:a75909859618a3c801d327d541acbf137"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3047cad1be5e03175d60c3aa489e2c1c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_superpowered_1_1_audiopointer_list.html">Superpowered::AudiopointerList</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_time_stretching.html#a3047cad1be5e03175d60c3aa489e2c1c">outputList</a></td></tr>
 <tr class="separator:a3047cad1be5e03175d60c3aa489e2c1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -448,6 +450,22 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Amount of formant correction, between 0 (none) and 1 (full). Default: 0. </p>
+
+</div>
+</div>
+<a id="a75909859618a3c801d327d541acbf137"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75909859618a3c801d327d541acbf137">&#9670;&nbsp;</a></span>preciseTurningOn</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Superpowered::TimeStretching::preciseTurningOn</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Maintain precise timing when the time-stretcher turns on. Useful for all use-cases except when the audio is heavily manipulated with some resampler (scratching). Default: true. </p>
 
 </div>
 </div>

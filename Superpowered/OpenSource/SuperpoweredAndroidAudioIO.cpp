@@ -284,7 +284,7 @@ static bool startAAudio(SuperpoweredAndroidAudioIOInternals *internals) {
         if (!internals->outputStream) AAudioStreamBuilder_setDataCallback(inputStreamBuilder, aaudioProcessingCallback, internals);
         else AAudioStreamBuilder_setSampleRate(inputStreamBuilder, AAudioStream_getSampleRate(internals->outputStream));
 
-        bool success = (AAudioStreamBuilder_openStream(inputStreamBuilder, &internals->inputStream) == AAUDIO_OK) && (internals->inputStream != NULL);
+        success = (AAudioStreamBuilder_openStream(inputStreamBuilder, &internals->inputStream) == AAUDIO_OK) && (internals->inputStream != NULL);
         AAudioStreamBuilder_delete(inputStreamBuilder);
 
         if (success) {
