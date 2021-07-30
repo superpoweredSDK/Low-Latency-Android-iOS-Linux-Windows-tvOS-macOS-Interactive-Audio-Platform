@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">2.2.2</span>
+   &#160;<span id="projectnumber">2.3.0</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -77,7 +77,7 @@ Static Public Member Functions</h2></td></tr>
 <div class="textblock"><p>The payload can be fully loaded onto the heap in one big piece, or multiple, non-consecutive chunks can be added at any time to support for progressive loading (eg. add memory in chunks as downloaded).</p>
 <p>The format consists of a main table and zero or more buffer tables. Every item is a 64-bit number to support native 32/64-bit systems and the web (WebAssembly).</p>
 <p>The main table consists of 64-bit (int64_t) numbers: [ version, retain count, samplerate, size, completed, address of the first buffer table ]. </p><pre class="fragment">0: Version should be set to 0.
-1: The retain count can be used to track usage (eg. multiple simultaneous access). If set to 0, the Decoder and the AdvancedAudioPlayer will take ownership on all the memory allocated (the main table, the buffer tables and their payloads) and will automatically free them.
+1: The retain count can be used to track usage (eg. multiple simultaneous access). If set to 0, the Decoder and the AdvancedAudioPlayer will take ownership on all the memory allocated (the main table, the buffer tables and their payloads) and will automatically free them using free(). The allocation should happen using malloc() (and not _aligned_malloc() or similar).
 2. Samplerate is used with the AdvancedAudioPlayer only (valid range is 8192 to 384000) and must be correctly set right at the beginning. Set it to 0 if using the Decoder.
 3. Size. AdvancedAudioPlayer: the total duration in frames. Decoder: the total file size in bytes. Set to 0 if unknown at the beginning (eg. progressive download). Set it at any point later if it gets known.
 4. Completed: set it to 0 if additional buffers can be added (such as progressive download). Set it to 1 if finished adding additional buffers.
@@ -140,9 +140,9 @@ Static Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Creates a main table. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">retainCount</td><td>The retain count can be used to track usage (eg. multiple simultaneous access). If set to 0, the <a class="el" href="class_superpowered_1_1_decoder.html" title="Audio file decoder. Provides raw PCM audio from various compressed formats. Supported file types:">Decoder</a> and the <a class="el" href="class_superpowered_1_1_advanced_audio_player.html" title="High performance advanced audio player with:">AdvancedAudioPlayer</a> will take ownership on all the memory allocated (the main table, the buffer tables and their payloads) and will automatically free them. </td></tr>
-    <tr><td class="paramname">samplerate</td><td>Samplerate is used with the <a class="el" href="class_superpowered_1_1_advanced_audio_player.html" title="High performance advanced audio player with:">AdvancedAudioPlayer</a> only (valid range is 8192 to 384000) and must be correctly set right at the beginning. Set it to 0 if using the <a class="el" href="class_superpowered_1_1_decoder.html" title="Audio file decoder. Provides raw PCM audio from various compressed formats. Supported file types:">Decoder</a>. </td></tr>
-    <tr><td class="paramname">size</td><td><a class="el" href="class_superpowered_1_1_advanced_audio_player.html" title="High performance advanced audio player with:">AdvancedAudioPlayer</a>: the total duration in frames. <a class="el" href="class_superpowered_1_1_decoder.html" title="Audio file decoder. Provides raw PCM audio from various compressed formats. Supported file types:">Decoder</a>: the total file size in bytes. Set to 0 if unknown at the beginning (eg. progressive download). Set it at any point later if it gets known. </td></tr>
+    <tr><td class="paramname">retainCount</td><td>The retain count can be used to track usage (eg. multiple simultaneous access). If set to 0, the <a class="el" href="class_superpowered_1_1_decoder.html" title="Audio file decoder. Provides raw PCM audio from various compressed formats. Supported file types:">Decoder</a> and the <a class="el" href="class_superpowered_1_1_advanced_audio_player.html" title="High performance advanced audio player with:">AdvancedAudioPlayer</a> will take ownership on all the memory allocated (the main table, the buffer tables and their payloads) and will automatically free them using free(). The allocation should happen using malloc() (and not _aligned_malloc() or similar). </td></tr>
+    <tr><td class="paramname">samplerate</td><td>For compressed (not decoded) audio data this must be set to 0. For raw 16-bit PCM audio it must be correctly set right at the beginning (valid range: 8192 to 384000). </td></tr>
+    <tr><td class="paramname">size</td><td>For compressed (not decoded) audio data: the total payload size in bytes. For raw 16-bit PCM audio: the total duration in frames. Set to 0 if unknown at the beginning (eg. progressive download). Set it at any point later if it gets known. </td></tr>
     <tr><td class="paramname">completed</td><td>False if additional buffers can be added (such as progressive download), true otherwise. </td></tr>
   </table>
   </dd>
@@ -192,9 +192,9 @@ Static Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Creates a main table with the payload included (special "self-contained" case). </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">retainCount</td><td>The retain count can be used to track usage (eg. multiple simultaneous access). If set to 0, the <a class="el" href="class_superpowered_1_1_decoder.html" title="Audio file decoder. Provides raw PCM audio from various compressed formats. Supported file types:">Decoder</a> and the <a class="el" href="class_superpowered_1_1_advanced_audio_player.html" title="High performance advanced audio player with:">AdvancedAudioPlayer</a> will take ownership on all the memory allocated (the main table, the buffer tables and their payloads) and will automatically free them. </td></tr>
+    <tr><td class="paramname">retainCount</td><td>The retain count can be used to track usage (eg. multiple simultaneous access). If set to 0, the <a class="el" href="class_superpowered_1_1_decoder.html" title="Audio file decoder. Provides raw PCM audio from various compressed formats. Supported file types:">Decoder</a> and the <a class="el" href="class_superpowered_1_1_advanced_audio_player.html" title="High performance advanced audio player with:">AdvancedAudioPlayer</a> will take ownership on all the memory allocated (the main table, the buffer tables and their payloads) and will automatically free them using free(). The allocation should happen using malloc() (and not _aligned_malloc() or similar). </td></tr>
     <tr><td class="paramname">samplerate</td><td>Samplerate is used with the <a class="el" href="class_superpowered_1_1_advanced_audio_player.html" title="High performance advanced audio player with:">AdvancedAudioPlayer</a> only (valid range is 8192 to 384000) and must be correctly set right at the beginning. Set it to 0 if using the <a class="el" href="class_superpowered_1_1_decoder.html" title="Audio file decoder. Provides raw PCM audio from various compressed formats. Supported file types:">Decoder</a>. </td></tr>
-    <tr><td class="paramname">size</td><td><a class="el" href="class_superpowered_1_1_advanced_audio_player.html" title="High performance advanced audio player with:">AdvancedAudioPlayer</a>: the total duration in frames. <a class="el" href="class_superpowered_1_1_decoder.html" title="Audio file decoder. Provides raw PCM audio from various compressed formats. Supported file types:">Decoder</a>: the total file size in bytes. Set to 0 if unknown at the beginning (eg. progressive download). Set it at any point later if it gets known. </td></tr>
+    <tr><td class="paramname">size</td><td>For compressed (not decoded) audio data: the total payload size in bytes. For raw 16-bit PCM audio: the total duration in frames. Set to 0 if unknown at the beginning (eg. progressive download). Set it at any point later if it gets known. </td></tr>
   </table>
   </dd>
 </dl>
@@ -341,7 +341,7 @@ Static Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">pointer</td><td>Pointer to the main table. </td></tr>
-    <tr><td class="paramname">size</td><td><a class="el" href="class_superpowered_1_1_advanced_audio_player.html" title="High performance advanced audio player with:">AdvancedAudioPlayer</a>: the total duration in frames. <a class="el" href="class_superpowered_1_1_decoder.html" title="Audio file decoder. Provides raw PCM audio from various compressed formats. Supported file types:">Decoder</a>: the total file size in bytes. Set to 0 if unknown at the beginning (eg. progressive download). Set it at any point later if it gets known. </td></tr>
+    <tr><td class="paramname">size</td><td>For compressed (not decoded) audio data: the total payload size in bytes. For raw 16-bit PCM audio: the total duration in frames. Set to 0 if unknown at the beginning (eg. progressive download). Set it at any point later if it gets known. </td></tr>
   </table>
   </dd>
 </dl>
@@ -458,8 +458,8 @@ Static Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">table</td><td>Pointer to the main table. </td></tr>
-    <tr><td class="paramname">payload</td><td>Pointer to the payload. </td></tr>
-    <tr><td class="paramname">size</td><td><a class="el" href="class_superpowered_1_1_advanced_audio_player.html" title="High performance advanced audio player with:">AdvancedAudioPlayer</a>: the number of audio frames inside the payload. <a class="el" href="class_superpowered_1_1_decoder.html" title="Audio file decoder. Provides raw PCM audio from various compressed formats. Supported file types:">Decoder</a>: the size of the payload in bytes. </td></tr>
+    <tr><td class="paramname">payload</td><td>Pointer to the payload. Should be allocated with malloc() (NOT new or _aligned_malloc). </td></tr>
+    <tr><td class="paramname">size</td><td>For compressed (not decoded) audio data: the size of the payload in bytes. For raw 16-bit PCM audio: the number of audio frames inside the payload. </td></tr>
   </table>
   </dd>
 </dl>

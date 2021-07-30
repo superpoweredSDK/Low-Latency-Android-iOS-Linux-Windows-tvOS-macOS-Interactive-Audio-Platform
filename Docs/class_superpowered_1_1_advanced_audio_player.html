@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">2.2.2</span>
+   &#160;<span id="projectnumber">2.3.0</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -782,7 +782,7 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Opens a memory location, with playback paused. Playback rate, pitchShift, timeStretching and syncMode are NOT changed if you open a new file. </p>
+<p>Opens raw 16-bit sterteo PCM audio in memory, with playback paused. Playback rate, pitchShift, timeStretching and syncMode are NOT changed if you open a new file. </p>
 <dl class="section warning"><dt>Warning</dt><dd>This method has no effect if the previous open didn't finish or if called in the audio processing thread. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -829,7 +829,7 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Opens a memory location in <a class="el" href="namespace_superpowered.html">Superpowered</a> <a class="el" href="class_superpowered_1_1_audio_in_memory.html" title="The Superpowered AudioInMemory format allows the Decoder and the AdvancedAudioPlayer to read compress...">AudioInMemory</a> format, with playback paused. Playback rate, pitchShift, timeStretching and syncMode are NOT changed if you open a new file. </p>
+<p>Opens a memory location in <a class="el" href="namespace_superpowered.html">Superpowered</a> <a class="el" href="class_superpowered_1_1_audio_in_memory.html" title="The Superpowered AudioInMemory format allows the Decoder and the AdvancedAudioPlayer to read compress...">AudioInMemory</a> format, with playback paused. This feature supports progressive loading via <a class="el" href="class_superpowered_1_1_audio_in_memory.html#a3ba5401a35d2f0fbf85d64462e854b61" title="Adds data.">AudioInMemory::append</a> (and the <a class="el" href="class_superpowered_1_1_audio_in_memory.html" title="The Superpowered AudioInMemory format allows the Decoder and the AdvancedAudioPlayer to read compress...">AudioInMemory</a> doesn't even need to hold any data when openMemory is called). Playback rate, pitchShift, timeStretching and syncMode are NOT changed if you open a new file. </p>
 <dl class="section warning"><dt>Warning</dt><dd>This method has no effect if the previous open didn't finish or if called in the audio processing thread. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">

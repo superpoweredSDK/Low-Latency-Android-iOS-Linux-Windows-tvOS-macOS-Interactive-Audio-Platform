@@ -108,7 +108,9 @@ var menudata={children:[
 {text:"l",url:"functions_eval.html#index_l"},
 {text:"p",url:"functions_eval.html#index_p"},
 {text:"r",url:"functions_eval.html#index_r"},
-{text:"s",url:"functions_eval.html#index_s"}]},
+{text:"s",url:"functions_eval.html#index_s"},
+{text:"t",url:"functions_eval.html#index_t"},
+{text:"w",url:"functions_eval.html#index_w"}]},
 {text:"Related Functions",url:"functions_rela.html"}]}]},
 {text:"Files",url:"files.html",children:[
 {text:"File List",url:"files.html"},

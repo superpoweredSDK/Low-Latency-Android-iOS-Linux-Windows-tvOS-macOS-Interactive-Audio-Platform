@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">2.2.2</span>
+   &#160;<span id="projectnumber">2.3.0</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -626,7 +626,7 @@ Static Public Attributes</h2></td></tr>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="class_superpowered_1_1_decoder.html#acba540f007a8b510a39c83eccafc5d41" title="Opens a file for decoding.">open()</a> for the return value. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pointer</td><td>Pointer to an audio file loaded onto the heap. </td></tr>
+    <tr><td class="paramname">pointer</td><td>Pointer to an audio file loaded onto the heap. Should be allocated using malloc() (and not _aligned_malloc() or similar). The <a class="el" href="class_superpowered_1_1_decoder.html" title="Audio file decoder. Provides raw PCM audio from various compressed formats. Supported file types:">Decoder</a> will take ownership on this data. </td></tr>
     <tr><td class="paramname">sizeBytes</td><td>The audio file length in bytes. </td></tr>
     <tr><td class="paramname">metaOnly</td><td>If true, it opens the file for fast metadata reading only, not for decoding audio. </td></tr>
   </table>

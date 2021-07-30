@@ -40,7 +40,7 @@ SuperpoweredNBandEQ::SuperpoweredNBandEQ(unsigned int _samplerate, float *freque
         static const float log2fdiv = 1.0f / logf(2.0f);
         widthOctave *= log2fdiv;
 
-        internals->filters[n] = new Superpowered::Filter(Superpowered::Parametric, samplerate);
+        internals->filters[n] = new Superpowered::Filter(Superpowered::Filter::Parametric, samplerate);
         internals->filters[n]->frequency = frequencies[n];
         internals->filters[n]->octave = widthOctave;
         internals->filters[n]->decibel = 0.0f;

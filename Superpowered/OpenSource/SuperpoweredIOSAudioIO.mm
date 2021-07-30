@@ -373,6 +373,8 @@ static void streamFormatChangedCallback(void *inRefCon, AudioUnit inUnit, AudioU
             int minimum = int(self->samplerate * 0.001f), maximum = int(self->samplerate * 0.025f);
             self->minimumNumberOfFrames = (minimum >> 3) << 3;
             self->maximumNumberOfFrames = (maximum >> 3) << 3;
+            if (self->maximumNumberOfFrames < 1024) self->maximumNumberOfFrames = 1024;
+            if (self->minimumNumberOfFrames < 16) self->minimumNumberOfFrames = 16;
             [self performSelectorOnMainThread:@selector(applyBuffersize) withObject:nil waitUntilDone:NO];
         }
     }
@@ -390,7 +392,6 @@ static OSStatus coreAudioProcessingCallback(void *inRefCon, AudioUnitRenderActio
             self->audioUnitRunning = false;
             [self performSelectorOnMainThread:@selector(onMediaServerReset:) withObject:nil waitUntilDone:NO];
         }
-        return kAudioUnitErr_InvalidParameter;
     }
 
     if (((int)inNumberFrames < self->minimumNumberOfFrames) || ((int)inNumberFrames > self->maximumNumberOfFrames) || ((int)ioData->mNumberBuffers != self->numChannels)) {

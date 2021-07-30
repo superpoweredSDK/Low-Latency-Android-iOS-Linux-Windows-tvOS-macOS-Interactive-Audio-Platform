@@ -131,7 +131,7 @@ public:
 /// @param measureSilenceAtEnd If true, the player will check the length of the digital silence at the end of the audio file.
     void open(const char *path, int offset, int length, Superpowered::httpRequest *customHTTPRequest = 0, bool skipSilenceAtBeginning = false, bool measureSilenceAtEnd = false);
     
-/// @brief Opens a memory location, with playback paused.
+/// @brief Opens raw 16-bit sterteo PCM audio in memory, with playback paused.
 /// Playback rate, pitchShift, timeStretching and syncMode are NOT changed if you open a new file.
 /// @warning This method has no effect if the previous open didn't finish or if called in the audio processing thread.
 /// @param pointer Pointer to 16-bit integer numbers, raw stereo interleaved pcm audio.
@@ -141,7 +141,7 @@ public:
 /// @param measureSilenceAtEnd If true, the player will check the length of the digital silence at the end of the audio file.
     JSWASM void openPCM16AudioInMemory(void *pointer, unsigned int samplerate, unsigned int durationFrames, bool skipSilenceAtBeginning = false, bool measureSilenceAtEnd = false);
     
-/// @brief Opens a memory location in Superpowered AudioInMemory format, with playback paused.
+/// @brief Opens a memory location in Superpowered AudioInMemory format, with playback paused. This feature supports progressive loading via AudioInMemory::append (and the AudioInMemory doesn't even need to hold any data when openMemory is called).
 /// Playback rate, pitchShift, timeStretching and syncMode are NOT changed if you open a new file.
 /// @warning This method has no effect if the previous open didn't finish or if called in the audio processing thread.
 /// @param pointer Pointer to information in Superpowered AudioInMemory format. @see Decoder for details.

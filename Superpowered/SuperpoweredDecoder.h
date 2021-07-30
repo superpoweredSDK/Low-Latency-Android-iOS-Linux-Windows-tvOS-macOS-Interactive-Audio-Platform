@@ -114,7 +114,7 @@ public:
     int open(const char *path, bool metaOnly = false, int offset = 0, int length = 0, int stemsIndex = 0, Superpowered::httpRequest *customHTTPRequest = 0);
 
 /// @brief Opens a memory location for decoding. @see open() for the return value.
-/// @param pointer Pointer to an audio file loaded onto the heap.
+/// @param pointer Pointer to an audio file loaded onto the heap. Should be allocated using malloc() (and not _aligned_malloc() or similar). The Decoder will take ownership on this data.
 /// @param sizeBytes The audio file length in bytes.
 /// @param metaOnly If true, it opens the file for fast metadata reading only, not for decoding audio.
     JSWASM int openAudioFileInMemory(void *pointer, unsigned int sizeBytes, bool metaOnly = false);
@@ -262,7 +262,7 @@ private:
 /// The main table consists of 64-bit (int64_t) numbers: [ version, retain count, samplerate, size, completed, address of the first buffer table ].
 ///
 ///     0: Version should be set to 0.
-///     1: The retain count can be used to track usage (eg. multiple simultaneous access). If set to 0, the Decoder and the AdvancedAudioPlayer will take ownership on all the memory allocated (the main table, the buffer tables and their payloads) and will automatically free them.
+///     1: The retain count can be used to track usage (eg. multiple simultaneous access). If set to 0, the Decoder and the AdvancedAudioPlayer will take ownership on all the memory allocated (the main table, the buffer tables and their payloads) and will automatically free them using free(). The allocation should happen using malloc() (and not _aligned_malloc() or similar).
 ///     2. Samplerate is used with the AdvancedAudioPlayer only (valid range is 8192 to 384000) and must be correctly set right at the beginning. Set it to 0 if using the Decoder.
 ///     3. Size. AdvancedAudioPlayer: the total duration in frames. Decoder: the total file size in bytes. Set to 0 if unknown at the beginning (eg. progressive download). Set it at any point later if it gets known.
 ///     4. Completed: set it to 0 if additional buffers can be added (such as progressive download). Set it to 1 if finished adding additional buffers.
@@ -289,16 +289,16 @@ private:
 class AudioInMemory {
 public:
     /// @return Creates a main table.
-    /// @param retainCount The retain count can be used to track usage (eg. multiple simultaneous access). If set to 0, the Decoder and the AdvancedAudioPlayer will take ownership on all the memory allocated (the main table, the buffer tables and their payloads) and will automatically free them.
-    /// @param samplerate Samplerate is used with the AdvancedAudioPlayer only (valid range is 8192 to 384000) and must be correctly set right at the beginning. Set it to 0 if using the Decoder.
-    /// @param size AdvancedAudioPlayer: the total duration in frames. Decoder: the total file size in bytes. Set to 0 if unknown at the beginning (eg. progressive download). Set it at any point later if it gets known.
+    /// @param retainCount The retain count can be used to track usage (eg. multiple simultaneous access). If set to 0, the Decoder and the AdvancedAudioPlayer will take ownership on all the memory allocated (the main table, the buffer tables and their payloads) and will automatically free them using free(). The allocation should happen using malloc() (and not _aligned_malloc() or similar).
+    /// @param samplerate For compressed (not decoded) audio data this must be set to 0. For raw 16-bit PCM audio it must be correctly set right at the beginning (valid range: 8192 to 384000).
+    /// @param size For compressed (not decoded) audio data: the total payload size in bytes. For raw 16-bit PCM audio: the total duration in frames. Set to 0 if unknown at the beginning (eg. progressive download). Set it at any point later if it gets known.
     /// @param completed False if additional buffers can be added (such as progressive download), true otherwise.
     JSWASM static void *create(unsigned int retainCount, unsigned int samplerate, unsigned int size, bool completed);
     
     /// @return Creates a main table with the payload included (special "self-contained" case).
-    /// @param retainCount The retain count can be used to track usage (eg. multiple simultaneous access). If set to 0, the Decoder and the AdvancedAudioPlayer will take ownership on all the memory allocated (the main table, the buffer tables and their payloads) and will automatically free them.
+    /// @param retainCount The retain count can be used to track usage (eg. multiple simultaneous access). If set to 0, the Decoder and the AdvancedAudioPlayer will take ownership on all the memory allocated (the main table, the buffer tables and their payloads) and will automatically free them using free(). The allocation should happen using malloc() (and not _aligned_malloc() or similar).
     /// @param samplerate Samplerate is used with the AdvancedAudioPlayer only (valid range is 8192 to 384000) and must be correctly set right at the beginning. Set it to 0 if using the Decoder.
-    /// @param size AdvancedAudioPlayer: the total duration in frames. Decoder: the total file size in bytes. Set to 0 if unknown at the beginning (eg. progressive download). Set it at any point later if it gets known.
+    /// @param size For compressed (not decoded) audio data: the total payload size in bytes. For raw 16-bit PCM audio: the total duration in frames. Set to 0 if unknown at the beginning (eg. progressive download). Set it at any point later if it gets known.
     JSWASM static void *createSelfContained(unsigned int retainCount, unsigned int samplerate, unsigned int size);
     
     /// @brief Adds 1 to retain count.
@@ -315,7 +315,7 @@ public:
     
     /// @brief Set size.
     /// @param pointer Pointer to the main table.
-    /// @param size AdvancedAudioPlayer: the total duration in frames. Decoder: the total file size in bytes. Set to 0 if unknown at the beginning (eg. progressive download). Set it at any point later if it gets known.
+    /// @param size For compressed (not decoded) audio data: the total payload size in bytes. For raw 16-bit PCM audio: the total duration in frames. Set to 0 if unknown at the beginning (eg. progressive download). Set it at any point later if it gets known.
     JSWASM static void setSize(void *pointer, unsigned int size);
     
     /// @return Returns with the size.
@@ -328,8 +328,8 @@ public:
     
     /// @brief Adds data.
     /// @param table Pointer to the main table.
-    /// @param payload Pointer to the payload.
-    /// @param size AdvancedAudioPlayer: the number of audio frames inside the payload. Decoder: the size of the payload in bytes.
+    /// @param payload Pointer to the payload. Should be allocated with malloc() (NOT new or _aligned_malloc).
+    /// @param size For compressed (not decoded) audio data: the size of the payload in bytes. For raw 16-bit PCM audio: the number of audio frames inside the payload.
     JSWASM static void append(void *table, void *payload, unsigned int size);
 };
 
