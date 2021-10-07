@@ -43,34 +43,50 @@ private:
 };
 
 
-struct compressorProtoInternals;
+struct compressor2Internals;
 
-/// @brief The new Superpowered Compressor prototype. It can be used in production, but we're still collecting feedback on its feature set, therefore the documentation is not complete on this one.
-class CompressorProto: public FX {
+/// @brief Compressor with 0 latency, adjustable knee and optional sidechain input.
+/// It doesn't allocate any internal buffers and needs less than 1 kb of memory.
+class Compressor2: public FX {
 public:
-    float outputGainDb; ///< decibels
-    float wet;          ///< 0 to 1
-    float attackSec;    ///< 0 to 1
-    float releaseSec;   ///< 0.001 to 4
-    float ratio;        ///< 1 to 1000
-    float thresholdDb;  ///< 0 to -100
-    float kneeDb;       ///< 0 to 100
-    unsigned char lookaheadMs; ///< doesn't work yet
-    bool rms;           ///< false: follow peaks, true: follow RMS
+    float attackSec;    ///< Attack in seconds (not milliseconds!). Limited between 0.00001 and 10. Default: 0.05 (50 ms).
+    float holdSec;      ///< Hold segment before release starts, useful to limit unwanted noise with fast rates. 0 to 1 second (not millisecond). Default: 0.005 (5 ms).
+    float releaseSec;   ///< Release in seconds (not milliseconds!). Limited between 0.00001 and 10. Default: 0.05 (50 ms).
+    float ratio;        ///< Ratio, 1 to 1000. Default: 4.
+    float thresholdDb;  ///< Threshold in decibels, limited between 0 and -60. Default: -6.
+    float softKneeDb;   ///< Width of soft knee in decibels, 0 to 12. Default: 6.
+    float outputGainDb; ///< Output gain in decibels, limited between -24 and 24. Default: 0.
+    bool automaticGain; ///< If true, gain is set relative to compressor output at 0dB. Useful in digital environments. Default: true.
     
-    CompressorProto(unsigned int samplerate);
-    ~CompressorProto();
+/// @brief Constructor. Enabled is false by default.
+/// @param samplerate The initial sample rate in Hz.
+    JSWASM Compressor2(unsigned int samplerate);
+    JSWASM ~Compressor2();
     
-    float getGainReductionDb();
-    /// input is the sidechain
-    bool process(float *input, float *output, unsigned int numberOfSamples);
-    /// separate sidechain
-    bool process(float *input, float *sidechain, float *output, unsigned int numberOfSamples);
+/// @return Returns the maximum gain reduction in decibels since the last getGainReductionDb() call.
+    JSWASM float getGainReductionDb();
+    
+/// @brief Processes the audio. Always call it in the audio processing callback, regardless if the effect is enabled or not for smooth, audio-artifact free operation.
+/// It's never blocking for real-time usage. You can change all properties on any thread, concurrently with process().
+/// If process() returns with true, the contents of output are replaced with the audio output. If process() returns with false, the contents of output are not changed.
+/// @param input Pointer to floating point numbers. 32-bit interleaved stereo input.
+/// @param output Pointer to floating point numbers. 32-bit interleaved stereo output. Can point to the same location with input (in-place processing).
+/// @param numberOfFrames Number of frames to process. Recommendations for best performance: multiply of 4, minimum 64.
+    JSWASM bool process(float *input, float *output, unsigned int numberOfFrames);
+    
+/// @brief Processes the audio. Always call it in the audio processing callback, regardless if the effect is enabled or not for smooth, audio-artifact free operation.
+/// It's never blocking for real-time usage. You can change all properties on any thread, concurrently with process().
+/// If process() returns with true, the contents of output are replaced with the audio output. If process() returns with false, the contents of output are not changed.
+/// @param input Pointer to floating point numbers. 32-bit interleaved stereo input.
+/// @param sidechain Pointer to floating point numbers. 32-bit interleaved stereo sidechain input.
+/// @param output Pointer to floating point numbers. 32-bit interleaved stereo output. Can point to the same location with input (in-place processing).
+/// @param numberOfFrames Number of frames to process. Recommendations for best performance: multiply of 4, minimum 64.
+    JSWASM bool processWithSidechain(float *input, float *sidechain, float *output, unsigned int numberOfFrames);
     
 private:
-    compressorProtoInternals *internals;
-    CompressorProto(const CompressorProto&);
-    CompressorProto& operator=(const CompressorProto&);
+    compressor2Internals *internals;
+    Compressor2(const Compressor2&);
+    Compressor2& operator=(const Compressor2&);
 };
 
 }
