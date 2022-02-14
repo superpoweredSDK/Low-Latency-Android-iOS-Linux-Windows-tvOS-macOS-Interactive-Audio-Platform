@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		216EFD422322815800A07B71 /* libSuperpoweredAudiotvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 216EFD412322815800A07B71 /* libSuperpoweredAudiotvOS.a */; };
 		216EFD452322816200A07B71 /* SuperpoweredtvOSAudioIO.mm in Sources */ = {isa = PBXBuildFile; fileRef = 216EFD432322816200A07B71 /* SuperpoweredtvOSAudioIO.mm */; };
 		216EFD4A2322816E00A07B71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 216EFD462322816E00A07B71 /* Assets.xcassets */; };
 		216EFD4C2322816E00A07B71 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 216EFD482322816E00A07B71 /* main.m */; };
@@ -16,11 +15,11 @@
 		216EFD56232281A000A07B71 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 216EFD532322819F00A07B71 /* ViewController.mm */; };
 		216EFD5C232282E400A07B71 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 216EFD5B232282E400A07B71 /* AVFoundation.framework */; };
 		216EFD60232282F600A07B71 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 216EFD5F232282F600A07B71 /* AudioToolbox.framework */; };
+		21D40E5627B3D06D0077C4F9 /* libSuperpoweredAudio.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21D40E5527B3D06D0077C4F9 /* libSuperpoweredAudio.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1B911F9C1C04B5DD008C0ACA /* tvExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tvExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		216EFD412322815800A07B71 /* libSuperpoweredAudiotvOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSuperpoweredAudiotvOS.a; path = ../../Superpowered/libSuperpoweredAudiotvOS.a; sourceTree = "<group>"; };
 		216EFD432322816200A07B71 /* SuperpoweredtvOSAudioIO.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SuperpoweredtvOSAudioIO.mm; path = ../../Superpowered/OpenSource/SuperpoweredtvOSAudioIO.mm; sourceTree = "<group>"; };
 		216EFD442322816200A07B71 /* SuperpoweredtvOSAudioIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperpoweredtvOSAudioIO.h; path = ../../Superpowered/OpenSource/SuperpoweredtvOSAudioIO.h; sourceTree = "<group>"; };
 		216EFD462322816E00A07B71 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = etc/Assets.xcassets; sourceTree = "<group>"; };
@@ -37,6 +36,7 @@
 		216EFD5B232282E400A07B71 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		216EFD5D232282EB00A07B71 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 		216EFD5F232282F600A07B71 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		21D40E5527B3D06D0077C4F9 /* libSuperpoweredAudio.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = libSuperpoweredAudio.xcframework; path = ../../Superpowered/libSuperpoweredAudio.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,9 +44,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21D40E5627B3D06D0077C4F9 /* libSuperpoweredAudio.xcframework in Frameworks */,
 				216EFD60232282F600A07B71 /* AudioToolbox.framework in Frameworks */,
 				216EFD5C232282E400A07B71 /* AVFoundation.framework in Frameworks */,
-				216EFD422322815800A07B71 /* libSuperpoweredAudiotvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,7 +90,7 @@
 		216EFD402322812200A07B71 /* Superpowered */ = {
 			isa = PBXGroup;
 			children = (
-				216EFD412322815800A07B71 /* libSuperpoweredAudiotvOS.a */,
+				21D40E5527B3D06D0077C4F9 /* libSuperpoweredAudio.xcframework */,
 				216EFD442322816200A07B71 /* SuperpoweredtvOSAudioIO.h */,
 				216EFD432322816200A07B71 /* SuperpoweredtvOSAudioIO.mm */,
 				216EFD58232281DA00A07B71 /* Superpowered.h */,
@@ -300,7 +300,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
 				INFOPLIST_FILE = tvExample/etc/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../../Superpowered";
 				PRODUCT_BUNDLE_IDENTIFIER = com.superpowered.tvExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -315,7 +318,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
 				INFOPLIST_FILE = tvExample/etc/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../../Superpowered";
 				PRODUCT_BUNDLE_IDENTIFIER = com.superpowered.tvExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";

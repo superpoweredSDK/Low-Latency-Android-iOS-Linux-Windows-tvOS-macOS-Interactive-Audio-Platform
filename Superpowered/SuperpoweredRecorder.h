@@ -5,7 +5,7 @@ namespace Superpowered {
 
 struct recorderInternals;
 
-/// @brief Records audio into 16-bit WAV file, with an optional tracklist.
+/// @brief Writes audio into 16-bit WAV file, with an optional tracklist.
 /// Use this class in a real-time audio processing thread, where directly writing to a disk is not recommended.
 /// For offline processing, instead of a Superpowered Recorder use the createWAV(), writeWAV() and closeWAV() functions in SuperpoweredSimple.h.
 /// One instance allocates around 135k * numChannels memory when recording starts.
@@ -42,7 +42,7 @@ public:
 /// It's safe to call this method in any thread.
     void stop();
     
-/// @return Returns true is the recorder has finished writing after stop() was called, so the recording is fully available at the destination path.
+/// @return Returns true if the recorder has finished writing after stop() was called, so the recording is fully available at the destination path.
 /// It's safe to call this method in any thread.
     bool isFinished();
     
@@ -73,7 +73,7 @@ public:
 /// @brief Processes incoming mono audio.
 /// @return Seconds recorded so far.
 /// It's never blocking for real-time usage.
-/// @param input Pointer to floating point numbers.
+/// @param input Pointer to floating point numbers. Mono audio to record.
 /// @param numberOfFrames The number of frames in input.
     unsigned int recordMono(float *input, unsigned int numberOfFrames);
 

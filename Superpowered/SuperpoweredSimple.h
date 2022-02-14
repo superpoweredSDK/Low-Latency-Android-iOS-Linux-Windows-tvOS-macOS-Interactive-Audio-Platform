@@ -25,7 +25,7 @@ JSWASM void Volume(float *input, float *output, float volumeStart, float volumeE
 /// @brief Applies volume on a single stereo interleaved buffer: output = input * gain
 /// @param input Pointer to floating point numbers. 32-bit interleaved stereo input.
 /// @param output Pointer to floating point numbers. 32-bit interleaved stereo output. Can be equal to input (in-place processing).
-/// @param volumeStart Voume for the first frame.
+/// @param volumeStart Volume for the first frame.
 /// @param volumeChange Change volume by this amount for every frame.
 /// @param numberOfFrames The number of frames to process.
 JSWASM void ChangeVolume(float *input, float *output, float volumeStart, float volumeChange, unsigned int numberOfFrames);
@@ -134,6 +134,48 @@ JSWASM void ShortIntToFloatGetPeaks(short int *input, float *output, unsigned in
 /// @param numChannels The number of channels.
 JSWASM void ShortIntToFloat(short int *input, float *output, unsigned int numberOfFrames, unsigned int numChannels = 2);
 
+/// @fn CopyMonoToInterleaved(float *monoInput, unsigned int channelIndex, float *interleavedOutput, unsigned int numInterleavedChannels, unsigned int numberOfFrames);
+/// @brief Copy a mono channel into an interleaved buffer.
+/// @param monoInput Pointer to floating point numbers. Mono input.
+/// @param channelIndex Copy to this channel.
+/// @param interleavedOutput Pointer to floating point numbers. Interleaved output.
+/// @param numInterleavedChannels The total number of channels in the interleaved output.
+/// @param numberOfFrames The number of frames to process.
+JSWASM void CopyMonoToInterleaved(float *monoInput, unsigned int channelIndex, float *interleavedOutput, unsigned int numInterleavedChannels, unsigned int numberOfFrames);
+
+/// @fn CopyStereoToInterleaved(float *stereoInput, unsigned int channelIndex, float *interleavedOutput, unsigned int numInterleavedChannels, unsigned int numberOfFrames, float multiplier);
+/// @brief Copy interleaved stereo into an interleaved buffer.
+/// @param stereoInput Pointer to floating point numbers. Stereo interleaved input.
+/// @param channelIndex Copy to this channel pair. Left channel goes to channelIndex, right channel goes to channelIndex + 1.
+/// @param interleavedOutput Pointer to floating point numbers. Interleaved output.
+/// @param numInterleavedChannels The total number of channels in the interleaved output.
+/// @param numberOfFrames The number of frames to process.
+/// @param multiplier Multiply the output with this number (constant volume).
+JSWASM void CopyStereoToInterleaved(float *stereoInput, unsigned int channelIndex, float *interleavedOutput, unsigned int numInterleavedChannels, unsigned int numberOfFrames, float multiplier = 1.0f);
+
+/// @fn CopyMonoFromInterleaved(float *interleavedInput, float *monoOutput, unsigned int numberOfFrames, unsigned int channelIndex);
+/// @param interleavedInput Pointer to floating point numbers. Interleaved input.
+/// @param numInterleavedChannels The total number of channels in the interleaved input.
+/// @param monoOutput Pointer to floating point numbers. Mono output.
+/// @param channelIndex Copy this channel.
+/// @param numberOfFrames The number of frames to process.
+JSWASM void CopyMonoFromInterleaved(float *interleavedInput, unsigned int numInterleavedChannels, float *monoOutput, unsigned int channelIndex, unsigned int numberOfFrames);
+
+/// @fn CopyStereoFromInterleaved(float *interleavedInput, float *monoOutput, unsigned int numberOfFrames, unsigned int channelIndex);
+/// @param interleavedInput Pointer to floating point numbers. Interleaved input.
+/// @param numInterleavedChannels The total number of channels in the interleaved input.
+/// @param stereoOutput Pointer to floating point numbers. Stereo interleaved output.
+/// @param channelIndex Copy this channel. channelIndex is the left side, channelIndex + 1 is the right side.
+/// @param numberOfFrames The number of frames to process.
+JSWASM void CopyStereoFromInterleaved(float *interleavedInput, unsigned int numInterleavedChannels, float *stereoOutput, unsigned int channelIndex, unsigned int numberOfFrames);
+
+/// @fn GetPeaks(float *interleavedInput, unsigned int numInterleavedChannels, float *peaks);
+/// @param interleavedInput Pointer to floating point numbers. Interleaved input.
+/// @param numInterleavedChannels The total number of channels in the interleaved input.
+/// @param numberOfFrames The number of frames to process.
+/// @param peaks Pointer to floating point numbers. Peak value result, should be numInterleavedChannels big minimum.
+JSWASM void GetPeaks(float *interleavedInput, unsigned int numInterleavedChannels, unsigned int numberOfFrames, float *peaks);
+
 /// @fn Interleave(float *left, float *right, float *output, unsigned int numberOfFrames);
 /// @brief Makes an interleaved stereo output from two mono input channels: output = [L, R, L, R, ...]
 /// @param left Pointer to floating point numbers. Mono input for left channel.
@@ -193,11 +235,11 @@ JSWASM void DeInterleaveAdd(float *input, float *left, float *right, unsigned in
  /// @param multiplier Multiply each output sample with this value.
 JSWASM void DeInterleaveMultiplyAdd(float *input, float *left, float *right, unsigned int numberOfFrames, float multiplier);
 
-/// @fn HasNonFinite(float *buffer, unsigned int numberOfValues);
-/// @brief Checks if the audio samples has non-valid values, such as infinity or NaN (not a number).
-/// @param buffer Pointer to floating point numbers to check.
-/// @param numberOfValues Number of values in the buffer. Please note, this is NOT numberOfFrames. You need to provide the number of numbers in the buffer.
-JSWASM bool HasNonFinite(float *buffer, unsigned int numberOfValues);
+/// @fn HasNonFinite(float *input, unsigned int numberOfValues);
+/// @brief Checks if the audio samples have non-valid values, such as infinity or NaN (not a number).
+/// @param input Pointer to floating point numbers to check.
+/// @param numberOfValues Number of values in the buffer. Please note, this is NOT numberOfFrames. You need to provide the number of floating point numbers in the buffer.
+JSWASM bool HasNonFinite(float *input, unsigned int numberOfValues);
 
 /// @fn StereoToMono(float *input, float *output, float leftGainStart, float leftGainEnd, float rightGainStart, float rightGainEnd, unsigned int numberOfFrames);
 /// @brief Makes mono output from stereo interleaved input: output = [L + R], [L + R], [L + R], ...
@@ -283,7 +325,7 @@ JSWASM float DotProduct(float *inputA, float *inputB, unsigned int numValues);
 
 /// @fn float frequencyOfNote(int note);
 /// @return Returns the frequency of a specific note.
-/// @param note The number of the note. Note 0 is the standard A note at 440 Hz.
+/// @param note The index of the note. Note 0 is the standard A note at 440 Hz.
 JSWASM float frequencyOfNote(int note);
 
 /// @fn FILE *createWAV(const char *path, unsigned int samplerate, unsigned char numChannels);

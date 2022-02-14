@@ -39,10 +39,9 @@ public:
 /// It's never blocking for real-time usage. Use it in the same thread with the other real-time methods of this class.
     JSWASM unsigned int getOutputLengthFrames();
 
-/// @brief Processes audio.
-/// It's never blocking for real-time usage. You can change all properties on any thread, concurrently with process(). Use it in the same thread with the other real-time methods of this class.
+/// @brief Audio input.
 /// @param input Pointer to floating point numbers. 32-bit interleaved stereo input.
-/// @param numberOfFrames Number of frames to process.
+/// @param numberOfFrames Number of frames in input.
     JSWASM void addInput(float *input, int numberOfFrames);
 
 /// @brief Gets the audio output into a buffer.
@@ -59,7 +58,7 @@ public:
 /// @brief This class can handle one stereo audio channel pair by default (left+right). Maybe you need more if you load some music with 4 channels, then less if you load a regular stereo track.
 /// Don't call this concurrently with process() and in a real-time thread.
 /// @param numStereoPairs The number of stereo audio channel pairs. Valid values: one (stereo) to four (8 channels).
-/// @param dontFree If true, this function will not free up any memory if numStereoPairs is less than before, so no reallocation happens if numStereoPairs needs to be increased later.
+/// @param dontFree If true, this function will not free up any memory if numStereoPairs was bigger before, so no reallocation happens if numStereoPairs needs to be increased later.
     JSWASM void setStereoPairs(unsigned int numStereoPairs, bool dontFree = false);
 
 /// @brief Removes audio from the end of the input buffer. Can be useful for some looping use-cases for example.
@@ -74,7 +73,7 @@ public:
 /// It's never blocking for real-time usage. You can change all properties on any thread, concurrently with process(). Use it in the same thread with the other real-time methods of this class.
 /// Do not use this method with addInput() or getOutput().
 /// @param input The input buffer. It will take ownership on the input.
-        void advancedProcess(AudiopointerlistElement *input);
+    void advancedProcess(AudiopointerlistElement *input);
 
 private:
     stretchInternals *internals;

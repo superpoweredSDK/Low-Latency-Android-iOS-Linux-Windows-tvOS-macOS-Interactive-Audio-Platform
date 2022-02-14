@@ -10,16 +10,7 @@
 // at any time. Although this function is marked __unused, it's due Android Studio's
 // annoying warning only. It's definitely used.
 __unused jint JNI_OnLoad (JavaVM * __unused vm, void * __unused reserved) {
-    Superpowered::Initialize(
-            "ExampleLicenseKey-WillExpire-OnNextUpdate",
-            false, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
-            false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
-            false, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
-            false, // enableAudioEffects (using any SuperpoweredFX class)
-            false, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
-            false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
-            false  // enableNetworking (using Superpowered::httpRequest)
-    );
+    Superpowered::Initialize("ExampleLicenseKey-WillExpire-OnNextUpdate");
     Superpowered::AndroidUSB::initialize(NULL, NULL, NULL, NULL, NULL);
     return JNI_VERSION_1_6;
 }

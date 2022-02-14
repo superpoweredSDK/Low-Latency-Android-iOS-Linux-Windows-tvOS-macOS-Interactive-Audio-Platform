@@ -11,9 +11,9 @@ struct flangerInternals;
 /// One instance allocates around 80 kb memory.
 class Flanger: public FX {
 public:
-    float wet;                ///< 0 to 1. Default: 0.7.
-    float depth;              ///< 0 to 1 (0 is 0.3 ms, 1 is 8 ms). Default: 0.16.
-    float lfoBeats;           ///< The length in beats between the "lowest" and the "highest" jet sound, >= 0.25 and <= 128. Default: 16.
+    float wet;                ///< The wet signal mixed into the output. 0 to 1. Default: 0.7.
+    float depth;              ///< How far the flanger deviates from the input sound. 0 is 0.3 ms, 1 is 8 ms.'0 to 1 (0 is 0.3 ms, 1 is 8 ms). Default: 0.16.
+    float lfoBeats;           ///< The length in beats between the "lowest" and the "highest" jet sound. Depends on bpm property. >= 0.25 and <= 128. Default: 16.
     float bpm;                ///< The bpm of the current audio. Limited to >= 40 and <= 250. Default: 128.
     float clipperThresholdDb; ///< The flanger has a Clipper inside to prevent overdrive. This is the thresholdDb parameter. Default: -3.
     float clipperMaximumDb;   ///< The flanger has a Clipper inside to prevent overdrive. This is the maximumDb parameter. Default: 6.

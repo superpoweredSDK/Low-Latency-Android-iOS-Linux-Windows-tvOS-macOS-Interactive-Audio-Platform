@@ -172,14 +172,11 @@ public class CustomAdapter extends BaseAdapter {
                     @Override
                     public void onStopTrackingTouch(SeekBar seekBar) {}
                 });
-                viewData.muteControl.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        ItemData item = (ItemData)buttonView.getTag();
-                        boolean muted = item.handler.onMute(isChecked, item.index);
-                        buttonView.setChecked(muted);
-                        item.muted = muted ? 1 : 0;
-                    }
+                viewData.muteControl.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                    ItemData item1 = (ItemData)buttonView.getTag();
+                    boolean muted = item1.handler.onMute(isChecked, item1.index);
+                    buttonView.setChecked(muted);
+                    item1.muted = muted ? 1 : 0;
                 });
             } else {
                 rowView = inflater.inflate(android.R.layout.simple_list_item_1, null);

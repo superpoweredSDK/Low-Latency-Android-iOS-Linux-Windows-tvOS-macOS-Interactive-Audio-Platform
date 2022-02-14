@@ -12,7 +12,7 @@ struct spatializerInternals;
 /// The spatializer class also has one Global Spatializer Reverb instance to simulate "room sound". It collects audio from all Superpowered Spatializer instances and puts a reverb on the signal.
 class Spatializer {
 public:
-    unsigned int samplerate; ///< Sample rate in Hz.
+    unsigned int samplerate; ///< Sample rate of the input/output audio in Hz.
     float inputVolume;       ///< Input volume (gain). Default: 1.
     float azimuth;           ///< From 0 to 360 degrees. Default: 0.
     float elevation;         ///< -90 to 90 degrees. Default: 0.

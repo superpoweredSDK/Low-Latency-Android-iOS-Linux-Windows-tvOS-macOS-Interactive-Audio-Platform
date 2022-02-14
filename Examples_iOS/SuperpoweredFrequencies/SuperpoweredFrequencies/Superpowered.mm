@@ -11,14 +11,10 @@
     unsigned int bandsWritePos, bandsReadPos, bandsPos, lastNumberOfFrames;
 }
 
-static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int inputChannels, float **outputBuffers, unsigned int outputChannels, unsigned int numberOfFrames, unsigned int samplerate, uint64_t hostTime) {
+static bool audioProcessing(void *clientdata, float *input, float *output, unsigned int numberOfFrames, unsigned int samplerate, uint64_t hostTime) {
     __unsafe_unretained SuperpoweredBridge *self = (__bridge SuperpoweredBridge *)clientdata;
     self->filterbank->samplerate = samplerate;
-
-    // Mix the stereo non-interleaved input to stereo interleaved and detect frequency magnitudes.
-    float interleaved[numberOfFrames * 2];
-    Superpowered::Interleave(inputBuffers[0], inputBuffers[1], interleaved, numberOfFrames);
-    self->filterbank->processNoAdd(interleaved, numberOfFrames);
+    self->filterbank->processNoAdd(input, numberOfFrames);
     
     // Write to the next position.
     unsigned int writePos = self->bandsWritePos++ & 127;
@@ -31,17 +27,7 @@ static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int
 - (id)init {
     self = [super init];
     if (!self) return nil;
-    
-    Superpowered::Initialize(
-                             "ExampleLicenseKey-WillExpire-OnNextUpdate",
-                             true, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
-                             false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
-                             false, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
-                             false, // enableAudioEffects (using any SuperpoweredFX class)
-                             false, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
-                             false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
-                             false  // enableNetworking (using Superpowered::httpRequest)
-                             );
+    Superpowered::Initialize("ExampleLicenseKey-WillExpire-OnNextUpdate");
     
     bandsWritePos = bandsReadPos = bandsPos = lastNumberOfFrames = 0;
     memset(bands, 0, 128 * 8 * sizeof(float));

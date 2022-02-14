@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">2.4.0</span>
+   &#160;<span id="projectnumber">2.5.0</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -271,7 +271,7 @@ Public Attributes</h2></td></tr>
     <tr><td class="paramname">input</td><td>Pointer to floating point numbers. 32-bit interleaved stereo input. Can point to the same location with output (in-place processing). Special case: input can be NULL, the effect will output the tail only in this case. </td></tr>
     <tr><td class="paramname">output</td><td>Pointer to floating point numbers. 32-bit interleaved stereo output. </td></tr>
     <tr><td class="paramname">numberOfFrames</td><td>Number of frames to process. Recommendation for best performance: multiply of 4, minimum 64. </td></tr>
-    <tr><td class="paramname">fx</td><td>fx-&gt;<a class="el" href="class_superpowered_1_1_echo.html#ae1bc992e29a7f10f352387694039a802" title="Processes the audio. Always call it in the audio processing callback, regardless if the effect is ena...">process()</a> will be used to pass audio from input to the internal buffer. For example, a resonant <a class="el" href="class_superpowered_1_1_filter.html" title="Filter is an IIR filter based on the typical direct form 1 formula: y[n] = (b0/a0)*x[n] + (b1/a0)*x[n...">Filter</a> can provide a nice color for the echoes. </td></tr>
+    <tr><td class="paramname">fx</td><td>A <a class="el" href="namespace_superpowered.html">Superpowered</a> <a class="el" href="class_superpowered_1_1_f_x.html" title="This is the base class for Superpowered effects.">FX</a> class instance, such as a <a class="el" href="class_superpowered_1_1_filter.html" title="Filter is an IIR filter based on the typical direct form 1 formula: y[n] = (b0/a0)*x[n] + (b1/a0)*x[n...">Filter</a>. fx-&gt;<a class="el" href="class_superpowered_1_1_echo.html#ae1bc992e29a7f10f352387694039a802" title="Processes the audio. Always call it in the audio processing callback, regardless if the effect is ena...">process()</a> will be used to pass audio from input to the internal buffer, "coloring" the echo sounds. </td></tr>
   </table>
   </dd>
 </dl>
@@ -323,7 +323,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>40 to 250. Default: 128. </p>
+<p>Beats per minute, the base tempo of the echo. 40 to 250. Default: 128. </p>
 
 </div>
 </div>
@@ -339,7 +339,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><a class="el" href="class_superpowered_1_1_delay.html" title="Simple delay with minimum memory operations.">Delay</a> in beats. 0.03125 to 2. Default: 0.5. </p>
+<p><a class="el" href="class_superpowered_1_1_delay.html" title="Simple delay with minimum memory operations.">Delay</a> between the echo sounds in beats. 0.03125 to 2. Default: 0.5. </p>
 
 </div>
 </div>
@@ -355,7 +355,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>0 to 0.99. Default: 0.5. </p>
+<p>Decay factor of the echo sounds. 0 to 0.99. Default: 0.5. </p>
 
 </div>
 </div>

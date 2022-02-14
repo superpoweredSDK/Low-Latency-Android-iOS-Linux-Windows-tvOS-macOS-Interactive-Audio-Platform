@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1B468B811AE664250099A7DD /* libSuperpoweredAudioIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B468B7E1AE664250099A7DD /* libSuperpoweredAudioIOS.a */; };
 		21144CFE23214A5B0062D494 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 21144CFA23214A5B0062D494 /* main.m */; };
 		21144CFF23214A5B0062D494 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21144CFB23214A5B0062D494 /* Main.storyboard */; };
 		21144D0623214A650062D494 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 21144D0223214A650062D494 /* ViewController.mm */; };
@@ -17,11 +16,11 @@
 		217B984823201C57002297DB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 217B984723201C57002297DB /* AudioToolbox.framework */; };
 		217B984A23201C5C002297DB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 217B984923201C5C002297DB /* AVFoundation.framework */; };
 		217B984C23201C65002297DB /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 217B984B23201C65002297DB /* MediaPlayer.framework */; };
+		21D40E4A27B3CA6F0077C4F9 /* libSuperpoweredAudio.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21D40E4927B3CA6F0077C4F9 /* libSuperpoweredAudio.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1B468B551AE663D20099A7DD /* SuperpoweredFrequencyDomain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperpoweredFrequencyDomain.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1B468B7E1AE664250099A7DD /* libSuperpoweredAudioIOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSuperpoweredAudioIOS.a; path = ../../Superpowered/libSuperpoweredAudioIOS.a; sourceTree = "<group>"; };
 		1B468B851AE664A30099A7DD /* SuperpoweredFrequencyDomain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredFrequencyDomain.h; path = ../../Superpowered/SuperpoweredFrequencyDomain.h; sourceTree = "<group>"; };
 		1B468B8E1AE696520099A7DD /* SuperpoweredSimple.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredSimple.h; path = ../../Superpowered/SuperpoweredSimple.h; sourceTree = "<group>"; };
 		21144CFA23214A5B0062D494 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SuperpoweredFrequencyDomain/etc/main.m; sourceTree = "<group>"; };
@@ -38,6 +37,9 @@
 		217B984723201C57002297DB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		217B984923201C5C002297DB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		217B984B23201C65002297DB /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		21D40E3D27B3BC650077C4F9 /* libSuperpoweredAudioIOSSimulator.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSuperpoweredAudioIOSSimulator.a; path = ../../Superpowered/libSuperpoweredAudioIOSSimulator.a; sourceTree = "<group>"; };
+		21D40E3E27B3BC650077C4F9 /* libSuperpoweredAudioIOSDevice.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSuperpoweredAudioIOSDevice.a; path = ../../Superpowered/libSuperpoweredAudioIOSDevice.a; sourceTree = "<group>"; };
+		21D40E4927B3CA6F0077C4F9 /* libSuperpoweredAudio.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = libSuperpoweredAudio.xcframework; path = ../../Superpowered/libSuperpoweredAudio.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,11 +47,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21D40E4A27B3CA6F0077C4F9 /* libSuperpoweredAudio.xcframework in Frameworks */,
 				217B984C23201C65002297DB /* MediaPlayer.framework in Frameworks */,
 				217B984A23201C5C002297DB /* AVFoundation.framework in Frameworks */,
 				217B984823201C57002297DB /* AudioToolbox.framework in Frameworks */,
 				217B984623201C52002297DB /* CoreMedia.framework in Frameworks */,
-				1B468B811AE664250099A7DD /* libSuperpoweredAudioIOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,7 +93,7 @@
 		217B984323201C18002297DB /* Superpowered */ = {
 			isa = PBXGroup;
 			children = (
-				1B468B7E1AE664250099A7DD /* libSuperpoweredAudioIOS.a */,
+				21D40E4927B3CA6F0077C4F9 /* libSuperpoweredAudio.xcframework */,
 				217B984123201C0D002297DB /* SuperpoweredIOSAudioIO.h */,
 				217B984023201C0D002297DB /* SuperpoweredIOSAudioIO.mm */,
 				211F35D32280743A006DE760 /* Superpowered.h */,
@@ -104,6 +106,8 @@
 		217B984423201C41002297DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				21D40E3E27B3BC650077C4F9 /* libSuperpoweredAudioIOSDevice.a */,
+				21D40E3D27B3BC650077C4F9 /* libSuperpoweredAudioIOSSimulator.a */,
 				217B984B23201C65002297DB /* MediaPlayer.framework */,
 				217B984923201C5C002297DB /* AVFoundation.framework */,
 				217B984723201C57002297DB /* AudioToolbox.framework */,
@@ -303,7 +307,10 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = AP4SQ5L535;
 				INFOPLIST_FILE = SuperpoweredFrequencyDomain/etc/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/../../Superpowered",
@@ -318,7 +325,10 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = AP4SQ5L535;
 				INFOPLIST_FILE = SuperpoweredFrequencyDomain/etc/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/../../Superpowered",

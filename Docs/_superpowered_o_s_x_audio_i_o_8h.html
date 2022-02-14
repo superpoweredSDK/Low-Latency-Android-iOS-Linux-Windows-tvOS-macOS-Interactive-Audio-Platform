@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">2.4.0</span>
+   &#160;<span id="projectnumber">2.5.0</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -67,8 +67,8 @@ Classes</h2></td></tr>
 Typedefs</h2></td></tr>
 <tr class="memitem:aeef13ff05d65ba2f13c31c04f09ff865"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structaudio_device.html">audioDevice</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_o_s_x_audio_i_o_8h.html#aeef13ff05d65ba2f13c31c04f09ff865">audioDevice</a></td></tr>
 <tr class="separator:aeef13ff05d65ba2f13c31c04f09ff865"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2929596da7a13be93fe767fce7c98d50"><td class="memItemLeft" align="right" valign="top">typedef bool(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_o_s_x_audio_i_o_8h.html#a2929596da7a13be93fe767fce7c98d50">audioProcessingCallback_C</a>) (void *clientdata, float **inputBuffers, unsigned int <a class="el" href="_superpowered_o_s_x_audio_i_o_8mm.html#ac8e96447efe331beb104b19363a1615b">inputChannels</a>, float **outputBuffers, unsigned int outputChannels, unsigned int numberOfFrames, unsigned int <a class="el" href="_superpoweredtv_o_s_audio_i_o_8mm.html#ac38751c7169cfeb9325a947cc0484286">samplerate</a>, uint64_t hostTime)</td></tr>
-<tr class="separator:a2929596da7a13be93fe767fce7c98d50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5756459dacb77d8c90e257d4a8a9c0f0"><td class="memItemLeft" align="right" valign="top">typedef bool(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_superpowered_o_s_x_audio_i_o_8h.html#a5756459dacb77d8c90e257d4a8a9c0f0">audioProcessingCallback_C</a>) (void *clientdata, float *<a class="el" href="_superpowered_i_o_s_audio_i_o_8mm.html#a5f8f7d6c06e8fdfb97834cd41f7d160d">inputBuffer</a>, float *outputBuffer, unsigned int numberOfFrames, unsigned int <a class="el" href="_superpoweredtv_o_s_audio_i_o_8mm.html#ac38751c7169cfeb9325a947cc0484286">samplerate</a>, uint64_t hostTime)</td></tr>
+<tr class="separator:a5756459dacb77d8c90e257d4a8a9c0f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="aeef13ff05d65ba2f13c31c04f09ff865"></a>
@@ -85,14 +85,14 @@ Typedefs</h2></td></tr>
 
 </div>
 </div>
-<a id="a2929596da7a13be93fe767fce7c98d50"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2929596da7a13be93fe767fce7c98d50">&#9670;&nbsp;</a></span>audioProcessingCallback_C</h2>
+<a id="a5756459dacb77d8c90e257d4a8a9c0f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5756459dacb77d8c90e257d4a8a9c0f0">&#9670;&nbsp;</a></span>audioProcessingCallback_C</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef bool(* audioProcessingCallback_C) (void *clientdata, float **inputBuffers, unsigned int <a class="el" href="_superpowered_o_s_x_audio_i_o_8mm.html#ac8e96447efe331beb104b19363a1615b">inputChannels</a>, float **outputBuffers, unsigned int outputChannels, unsigned int numberOfFrames, unsigned int <a class="el" href="_superpoweredtv_o_s_audio_i_o_8mm.html#ac38751c7169cfeb9325a947cc0484286">samplerate</a>, uint64_t hostTime)</td>
+          <td class="memname">typedef bool(* audioProcessingCallback_C) (void *clientdata, float *<a class="el" href="_superpowered_i_o_s_audio_i_o_8mm.html#a5f8f7d6c06e8fdfb97834cd41f7d160d">inputBuffer</a>, float *outputBuffer, unsigned int numberOfFrames, unsigned int <a class="el" href="_superpoweredtv_o_s_audio_i_o_8mm.html#ac38751c7169cfeb9325a947cc0484286">samplerate</a>, uint64_t hostTime)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -102,10 +102,8 @@ Typedefs</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">clientdata</td><td>A custom pointer your callback receives. </td></tr>
-    <tr><td class="paramname">inputBuffers</td><td>Input buffers. </td></tr>
-    <tr><td class="paramname">inputChannels</td><td>The number of input channels. </td></tr>
-    <tr><td class="paramname">outputBuffers</td><td>Output buffers. </td></tr>
-    <tr><td class="paramname">outputChannels</td><td>The number of output channels. </td></tr>
+    <tr><td class="paramname">inputBuffer</td><td>32-bit floating point interleaved audio input. Never the same to outputBuffer. Can be NULL if input is not received. </td></tr>
+    <tr><td class="paramname">outputBuffer</td><td>32-bit floating point interleaved audio output. Never the same to inputBuffer. </td></tr>
     <tr><td class="paramname">numberOfFrames</td><td>The number of frames requested. </td></tr>
     <tr><td class="paramname">samplerate</td><td>The current sample rate in Hz. </td></tr>
     <tr><td class="paramname">hostTime</td><td>A mach timestamp, indicates when this buffer of audio will be passed to the audio output. </td></tr>

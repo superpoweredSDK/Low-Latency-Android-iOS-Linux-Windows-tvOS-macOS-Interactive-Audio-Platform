@@ -84,9 +84,9 @@ Superpowered is cross-platform: ALL SUPERPOWERED C++ CODE CAN BE COPY-PASTED bet
 
 	Example projects for Windows.
 
-- /SuperpoweredSpatializer
+- /Examples_macOS
 
-	* Ambisonics (b-format) implementation based on the SuperpoweredSpatializer.
+	Ambisonics (b-format) implementation based on the Superpowered Spatializer.
 
 
 # Example Projects
@@ -97,7 +97,7 @@ Four simple Universal Windows Platform example projects in a single Visual Studi
 - Set up audio I/O.
 - Use a single player to play an MP3 bundled with an app.
 - Use a single player to play HLS content.
-- Record the microphone input using SuperpoweredRecorder.
+- Record the microphone input using Superpowered Recorder.
 - Use a single effect (input -> fx -> output).
 
 #### /Examples_iOS/SuperpoweredCrossExample, /Examples_Android/CrossExample
@@ -122,7 +122,7 @@ HTTP Live Streaming example project.
 #### /Examples_iOS/SuperpoweredOfflineProcessingExample, /Examples_Linux/src/offlineX.cpp
 Advanced example. Decodes an audio file, applies an effect or time stretching and saves the result in WAV. Shows how to:
 
-- Set up the SuperpoweredDecoder.
+- Set up the Superpowered Decoder.
 - Apply a simple effect.
 - Use the time stretcher with an efficient dynamic memory pool.
 - Save the result in WAV.
@@ -133,7 +133,7 @@ Advanced example. Decodes an audio file, applies an effect or time stretching an
 Simple 8-band frequency analyzer. Shows how to:
 
 - Mix Swift and Objective-C++ in a project.
-- Use the SuperpoweredBandpassFilterbank.
+- Use the Superpowered BandpassFilterbank.
 
 #### /SuperpoweredPerformance (iOS)
 It compares several Superpowered features to Core Audio.
@@ -155,10 +155,10 @@ Shows how to use a player (for local, progressive download or HLS playback).
 
 #### /Examples_Android/SuperpoweredRecorder
 
-Shows how to record the microphone input using SuperpoweredRecorder.
+Shows how to record the microphone input using Superpowered Recorder.
 
-#### /SuperpoweredSpatializer/ambi (OSX)
-Simple ambisonics implementation based on the SuperpoweredSpatializer.
+#### /Examples_macOS/ambi (OSX)
+Simple ambisonics implementation based on the Superpowered Spatializer.
 
 #### /Examples_Android/SuperpoweredUSBExample
 This project comes with two example apps, a simple and a complex example app.
@@ -241,4 +241,4 @@ Superpowered FFT benefits from ideas in Construction of a High-Performance FFT b
 
 The Superpowered MP3 and AAC decoder benefits from optimizations by Ken Cooke.
 
-Superpowered version 2.4.0
+Superpowered version 2.5.0

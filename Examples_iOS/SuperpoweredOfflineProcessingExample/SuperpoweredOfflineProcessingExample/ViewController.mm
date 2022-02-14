@@ -18,17 +18,7 @@
 #ifdef __IPHONE_13_0
     if (@available(iOS 13, *)) self.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
 #endif
-    
-    Superpowered::Initialize(
-                             "ExampleLicenseKey-WillExpire-OnNextUpdate",
-                             true, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
-                             false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
-                             true, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
-                             true, // enableAudioEffects (using any SuperpoweredFX class)
-                             true, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
-                             false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
-                             false  // enableNetworking (using Superpowered::httpRequest)
-                             );
+    Superpowered::Initialize("ExampleLicenseKey-WillExpire-OnNextUpdate");
     
     progress = 0.0f;
     displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(onDisplayLink)];

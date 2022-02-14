@@ -1,5 +1,7 @@
 #import <AVFoundation/AVFoundation.h>
 
+#define MAXFRAMES 4096
+
 /// @brief Output channel mapping for iOS audio I/O.
 /// This structure maps the channels you provide in the audio processing callback to the appropriate output channels.
 /// You can have multi-channel (more than a single stereo channel) output if a HDMI or USB audio device is connected. iOS does not provide multi-channel output for other audio devices, such as wireless audio accessories.
@@ -33,18 +35,15 @@ typedef struct multiInputChannelMap {
 
 @protocol SuperpoweredIOSAudioIODelegate;
 
-/// @brief The audio processing callback prototype.
-/// @return Return false for no audio output (silence).
-/// @param clientData A custom pointer your callback receives.
-/// @param inputBuffers Input buffers.
-/// @param inputChannels The number of input channels.
-/// @param outputBuffers Output buffers.
-/// @param outputChannels The number of output channels.
+/// @brief You can have an audio processing callback in Objective-C or pure C. This is the pure C prototype.
+/// @return Return false when you did no audio processing (silence).
+/// @param clientdata A custom pointer your callback receives.
+/// @param inputBuffer 32-bit floating point interleaved audio input. Never the same to outputBuffer. Can be NULL if input is not received.
+/// @param outputBuffer 32-bit floating point interleaved audio output. Never the same to inputBuffer.
 /// @param numberOfFrames The number of frames requested.
 /// @param samplerate The current sample rate in Hz.
 /// @param hostTime A mach timestamp, indicates when this buffer of audio will be passed to the audio output.
-typedef bool (*audioProcessingCallback) (void *clientData, float **inputBuffers, unsigned int inputChannels, float **outputBuffers, unsigned int outputChannels, unsigned int numberOfFrames, unsigned int samplerate, unsigned long long hostTime);
-
+typedef bool (*audioProcessingCallback) (void *clientdata, float *inputBuffer, float *outputBuffer, unsigned int numberOfFrames, unsigned int samplerate, uint64_t hostTime);
 
 /// @brief Handles all audio session, audio lifecycle (interruptions), output, buffer size, samplerate and routing headaches.
 /// @warning All methods and setters should be called on the main thread only!

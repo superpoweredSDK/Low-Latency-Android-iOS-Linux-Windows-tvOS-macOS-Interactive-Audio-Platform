@@ -11,9 +11,9 @@ struct rollInternals;
 /// One instance allocates around 1600 kb memory.
 class Roll: public FX {
 public:
-    float wet;   ///< Limited to >= 0 and <= 1. Default: 1.
-    float bpm;   ///< Limited to >= 40 and <= 250. Default: 40.
-    float beats; ///< Limit: 1/64 beats to 4 beats. (>= 0.015625 and <= 4.0). Default: 1.
+    float wet;   ///< The dominance of the effect. Limited to >= 0 and <= 1. Default: 1.
+    float bpm;   ///< The bpm of the current audio. Limited to >= 40 and <= 250. Default: 40.
+    float beats; ///< The loop length of the effect in beats. Limit: 1/64 beats to 4 beats. (>= 0.015625 and <= 4.0). Default: 1.
     
 /// @brief Constructor. Enabled is false by default.
 /// @param samplerate The initial sample rate in Hz.

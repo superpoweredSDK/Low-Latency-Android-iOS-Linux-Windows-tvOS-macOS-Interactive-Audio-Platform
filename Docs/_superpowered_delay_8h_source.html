@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">2.4.0</span>
+   &#160;<span id="projectnumber">2.5.0</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -61,17 +61,19 @@ $(function() {
 <div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_superpowered_1_1_delay.html#afed5ba49286cfa2598530583087c6c76">   21</a></span>&#160;    <a class="code" href="_superpowered_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> <a class="code" href="class_superpowered_1_1_delay.html#afed5ba49286cfa2598530583087c6c76">Delay</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> maximumDelayMs, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> maximumSamplerate, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> maximumNumberOfFramesToProcess, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_superpowered_1_1_delay.html#a4460ac6d7949f642e01251f25ddab04f">samplerate</a>);</div>
 <div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_superpowered_1_1_delay.html#ae469c6826869bbe46a3160cf2d85c213">   22</a></span>&#160;    <a class="code" href="_superpowered_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> <a class="code" href="class_superpowered_1_1_delay.html#ae469c6826869bbe46a3160cf2d85c213">~Delay</a>();</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    </div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="class_superpowered_1_1_delay.html#a5ffc8110a96d1b7f558c06e894fecccf">   30</a></span>&#160;    <a class="code" href="_superpowered_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> <span class="keyword">const</span> <span class="keywordtype">float</span> * <span class="keyword">const</span> <a class="code" href="class_superpowered_1_1_delay.html#a5ffc8110a96d1b7f558c06e894fecccf">process</a>(<span class="keywordtype">float</span> *input, <span class="keywordtype">int</span> numberOfFrames, <a class="code" href="class_superpowered_1_1_f_x.html">FX</a> *fx = 0);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;   </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    delayInternals *internals;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="class_superpowered_1_1_delay.html#afed5ba49286cfa2598530583087c6c76">Delay</a>(<span class="keyword">const</span> <a class="code" href="class_superpowered_1_1_delay.html">Delay</a>&amp;);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="class_superpowered_1_1_delay.html">Delay</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="class_superpowered_1_1_delay.html">Delay</a>&amp;);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;};</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="class_superpowered_1_1_delay.html#ac1e90e639dd1743ab59894b17ce78559">   29</a></span>&#160;    <a class="code" href="_superpowered_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> <span class="keyword">const</span> <span class="keywordtype">float</span> * <span class="keyword">const</span> <a class="code" href="class_superpowered_1_1_delay.html#ac1e90e639dd1743ab59894b17ce78559">process</a>(<span class="keywordtype">float</span> *input, <span class="keywordtype">int</span> numberOfFrames);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="class_superpowered_1_1_delay.html#a834fdf8f316de4158defe3be9f811ca4">   37</a></span>&#160;    <a class="code" href="_superpowered_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> <span class="keyword">const</span> <span class="keywordtype">float</span> * <span class="keyword">const</span> <a class="code" href="class_superpowered_1_1_delay.html#a834fdf8f316de4158defe3be9f811ca4">processWithFx</a>(<span class="keywordtype">float</span> *input, <span class="keywordtype">int</span> numberOfFrames, <a class="code" href="class_superpowered_1_1_f_x.html">FX</a> *fx);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;   </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    delayInternals *internals;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="class_superpowered_1_1_delay.html#afed5ba49286cfa2598530583087c6c76">Delay</a>(<span class="keyword">const</span> <a class="code" href="class_superpowered_1_1_delay.html">Delay</a>&amp;);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="class_superpowered_1_1_delay.html">Delay</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="class_superpowered_1_1_delay.html">Delay</a>&amp;);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;};</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="anamespace_superpowered_html"><div class="ttname"><a href="namespace_superpowered.html">Superpowered</a></div><div class="ttdef"><b>Definition:</b> Superpowered.h:11</div></div>
 <div class="ttc" id="aclass_superpowered_1_1_delay_html_afed5ba49286cfa2598530583087c6c76"><div class="ttname"><a href="class_superpowered_1_1_delay.html#afed5ba49286cfa2598530583087c6c76">Superpowered::Delay::Delay</a></div><div class="ttdeci">JSWASM Delay(unsigned int maximumDelayMs, unsigned int maximumSamplerate, unsigned int maximumNumberOfFramesToProcess, unsigned int samplerate)</div><div class="ttdoc">Constructor.</div></div>
@@ -80,9 +82,10 @@ $(function() {
 <div class="ttc" id="aclass_superpowered_1_1_delay_html_ae469c6826869bbe46a3160cf2d85c213"><div class="ttname"><a href="class_superpowered_1_1_delay.html#ae469c6826869bbe46a3160cf2d85c213">Superpowered::Delay::~Delay</a></div><div class="ttdeci">JSWASM ~Delay()</div></div>
 <div class="ttc" id="aclass_superpowered_1_1_delay_html"><div class="ttname"><a href="class_superpowered_1_1_delay.html">Superpowered::Delay</a></div><div class="ttdoc">Simple delay with minimum memory operations.</div><div class="ttdef"><b>Definition:</b> SuperpoweredDelay.h:11</div></div>
 <div class="ttc" id="a_superpowered_f_x_8h_html"><div class="ttname"><a href="_superpowered_f_x_8h.html">SuperpoweredFX.h</a></div></div>
+<div class="ttc" id="aclass_superpowered_1_1_delay_html_a834fdf8f316de4158defe3be9f811ca4"><div class="ttname"><a href="class_superpowered_1_1_delay.html#a834fdf8f316de4158defe3be9f811ca4">Superpowered::Delay::processWithFx</a></div><div class="ttdeci">JSWASM const float *const processWithFx(float *input, int numberOfFrames, FX *fx)</div><div class="ttdoc">Processes the audio. It's never blocking for real-time usage. You can change any properties concurren...</div></div>
+<div class="ttc" id="aclass_superpowered_1_1_delay_html_ac1e90e639dd1743ab59894b17ce78559"><div class="ttname"><a href="class_superpowered_1_1_delay.html#ac1e90e639dd1743ab59894b17ce78559">Superpowered::Delay::process</a></div><div class="ttdeci">JSWASM const float *const process(float *input, int numberOfFrames)</div><div class="ttdoc">Processes the audio. It's never blocking for real-time usage. You can change any properties concurren...</div></div>
 <div class="ttc" id="aclass_superpowered_1_1_f_x_html"><div class="ttname"><a href="class_superpowered_1_1_f_x.html">Superpowered::FX</a></div><div class="ttdoc">This is the base class for Superpowered effects.</div><div class="ttdef"><b>Definition:</b> SuperpoweredFX.h:11</div></div>
 <div class="ttc" id="a_superpowered_8h_html_a748090d319f9f128373708b048ee41ee"><div class="ttname"><a href="_superpowered_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a></div><div class="ttdeci">#define JSWASM</div><div class="ttdef"><b>Definition:</b> Superpowered.h:5</div></div>
-<div class="ttc" id="aclass_superpowered_1_1_delay_html_a5ffc8110a96d1b7f558c06e894fecccf"><div class="ttname"><a href="class_superpowered_1_1_delay.html#a5ffc8110a96d1b7f558c06e894fecccf">Superpowered::Delay::process</a></div><div class="ttdeci">JSWASM const float *const process(float *input, int numberOfFrames, FX *fx=0)</div><div class="ttdoc">Processes the audio. It's never blocking for real-time usage. You can change any properties concurren...</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

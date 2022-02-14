@@ -4,6 +4,9 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -18,10 +21,32 @@ import java.io.FileNotFoundException;
 
 public class MainActivity extends AppCompatActivity {
     private boolean recording = false;
+    private ActivityResultLauncher<Intent>fileBrowserLauncher = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        fileBrowserLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            // Handle the return of the save as dialog.
+            if (result.getResultCode() == android.app.Activity.RESULT_OK) {
+                Intent resultData = result.getData();
+                if (resultData != null) {
+                    Uri u = resultData.getData();
+                    try {
+                        ParcelFileDescriptor pfd = getContentResolver().openFileDescriptor(u, "w");
+                        if (pfd != null) {
+                            Intent serviceIntent = new Intent(this, RecorderService.class);
+                            serviceIntent.putExtra("fileDescriptor", pfd.detachFd());
+                            ContextCompat.startForegroundService(this, serviceIntent);
+                            recording = true;
+                            updateButton();
+                        } else Log.d("Recorder", "File descriptor is null.");
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
         setContentView(R.layout.activity_main);
         Button b = findViewById(R.id.startStop);
         b.setVisibility(View.GONE);
@@ -44,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         // Called when the user answers to the permission dialogs.
         if ((requestCode != 0) || (grantResults.length < 1) || (grantResults.length != permissions.length)) return;
         boolean hasAllPermissions = true;
@@ -66,28 +92,6 @@ public class MainActivity extends AppCompatActivity {
         b.setText(recording ? "Stop" : "Start");
     }
 
-    // Handle the return of the save as dialog.
-    public void onActivityResult(int requestCode, int resultCode, Intent resultData) {
-        super.onActivityResult(requestCode, resultCode, resultData);
-        if (resultCode == android.app.Activity.RESULT_OK) {
-            if ((requestCode == 0) && (resultData != null)) {
-                Uri u = resultData.getData();
-                try {
-                    ParcelFileDescriptor pfd = getContentResolver().openFileDescriptor(u, "w");
-                    if (pfd != null) {
-                        Intent serviceIntent = new Intent(this, RecorderService.class);
-                        serviceIntent.putExtra("fileDescriptor", pfd.detachFd());
-                        ContextCompat.startForegroundService(this, serviceIntent);
-                        recording = true;
-                        updateButton();
-                    } else Log.d("Recorder", "File descriptor is null.");
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
     // Handle Start/Stop button toggle.
     public void ToggleStartStop(View button) {
         if (recording) {
@@ -102,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
             intent.addCategory(Intent.CATEGORY_OPENABLE);
             intent.setType("application/octet-stream");
             intent.putExtra(Intent.EXTRA_TITLE, "recording.wav");
-            startActivityForResult(intent, 0);
+            fileBrowserLauncher.launch(intent);
         }
     }
 }

@@ -1,15 +1,13 @@
 package com.superpowered.complexusb;
 
-import android.content.DialogInterface;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
+import android.os.Handler;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.os.Handler;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements SuperpoweredUSBAudioHandler, CustomAdapterHandler {
     private ListView list;
@@ -58,12 +56,7 @@ public class MainActivity extends AppCompatActivity implements SuperpoweredUSBAu
                     AlertDialog.Builder builder = new AlertDialog.Builder(this);
                     builder.setTitle("Device Info");
                     builder.setMessage(deviceInfo[2]);
-                    builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
-                        }
-                    });
+                    builder.setNeutralButton("Ok", (dialog, which) -> dialog.cancel());
                     builder.create().show();
                 }
                 break;
@@ -93,12 +86,9 @@ public class MainActivity extends AppCompatActivity implements SuperpoweredUSBAu
         adapter.notifyDataSetChanged();
 
         list.setAdapter(adapter);
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                int[] ki = adapter.getItemKindAndIndex(position);
-                MainActivity.this.onItemClick(ki[0], ki[1], position);
-            }
+        list.setOnItemClickListener((parent, view, position, id) -> {
+            int[] ki = adapter.getItemKindAndIndex(position);
+            MainActivity.this.onItemClick(ki[0], ki[1], position);
         });
     }
 

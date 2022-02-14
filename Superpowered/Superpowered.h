@@ -10,26 +10,11 @@
 
 namespace Superpowered {
 
-/// @fn Initialize(const char *licenseKey, bool enableAudioAnalysis, bool enableFFTAndFrequencyDomain, bool enableAudioTimeStretching, bool enableAudioEffects, bool enableAudioPlayerAndDecoder, bool enableCryptographics, bool enableNetworking);
+/// @fn Initialize(const char *licenseKey);
 /// @brief Initializes the Superpowered SDKs. Use this only once, when your app or library initializes.
 /// Do not use this if Superpowered is loaded dynamically and might be loaded multiple times (a DLL in a VST host for example). @see DynamicInitialize
 /// @param licenseKey Visit https://superpowered.com/dev to register license keys.
-/// @param enableAudioAnalysis Enables Analyzer, LiveAnalyzer, Waveform and BandpassFilterbank.
-/// @param enableFFTAndFrequencyDomain Enables FrequencyDomain, FFTComplex, FFTReal and PolarFFT.
-/// @param enableAudioTimeStretching Enables TimeStretching.
-/// @param enableAudioEffects Enables all effects and every class based on the FX class.
-/// @param enableAudioPlayerAndDecoder Enables AdvancedAudioPlayer and Decoder.
-/// @param enableCryptographics Enables RSAPublicKey,RSAPrivateKey, hasher and AES.
-/// @param enableNetworking Enables httpRequest.
-
-JSWASM void Initialize(const char *licenseKey,
-                bool enableAudioAnalysis,
-                bool enableFFTAndFrequencyDomain,
-                bool enableAudioTimeStretching,
-                bool enableAudioEffects,
-                bool enableAudioPlayerAndDecoder,
-                bool enableCryptographics,
-                bool enableNetworking);
+JSWASM void Initialize(const char *licenseKey);
 
 /// @fn DynamicInitialize(const char *licenseKey);
 /// @brief Use this if Superpowered is loaded in a dynamically loaded library (such as a DLL on Windows). It allows for multiple loads (DLL in a VST host example). Enables all features.

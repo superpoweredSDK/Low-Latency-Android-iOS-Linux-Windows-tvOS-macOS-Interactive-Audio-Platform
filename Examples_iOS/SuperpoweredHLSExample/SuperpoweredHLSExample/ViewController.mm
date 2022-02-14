@@ -30,16 +30,7 @@ static const char *urls[8] = {
         if (@available(iOS 13, *)) self.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
     #endif
     
-    Superpowered::Initialize(
-                             "ExampleLicenseKey-WillExpire-OnNextUpdate",
-                             false, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
-                             false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
-                             false, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
-                             false, // enableAudioEffects (using any SuperpoweredFX class)
-                             true, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
-                             false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
-                             false  // enableNetworking (using Superpowered::httpRequest)
-                             );
+    Superpowered::Initialize("ExampleLicenseKey-WillExpire-OnNextUpdate");
     
     Superpowered::AdvancedAudioPlayer::setTempFolder([NSTemporaryDirectory() fileSystemRepresentation]);
     player = new Superpowered::AdvancedAudioPlayer(44100, 0);
@@ -72,13 +63,11 @@ static const char *urls[8] = {
 }
 
 // Called periodically by the operating system's audio stack to provide audio output.
-static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int inputChannels, float **outputBuffers, unsigned int outputChannels, unsigned int numberOfFrames, unsigned int samplerate, uint64_t hostTime) {
+static bool audioProcessing(void *clientdata, float *input, float *output, unsigned int numberOfFrames, unsigned int samplerate, uint64_t hostTime) {
     __unsafe_unretained ViewController *self = (__bridge ViewController *)clientdata;
     self->player->outputSamplerate = samplerate;
     
-    float interleavedBuffer[numberOfFrames * 2];
-    bool notSilence = self->player->processStereo(interleavedBuffer, false, numberOfFrames);
-    if (notSilence) Superpowered::DeInterleave(interleavedBuffer, outputBuffers[0], outputBuffers[1], numberOfFrames);
+    bool notSilence = self->player->processStereo(output, false, numberOfFrames);
     return notSilence;
 }
 

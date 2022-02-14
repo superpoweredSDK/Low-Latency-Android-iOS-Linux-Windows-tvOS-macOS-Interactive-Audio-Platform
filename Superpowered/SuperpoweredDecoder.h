@@ -12,12 +12,12 @@ namespace Superpowered {
 
 struct decoderInternals;
 
-/// @brief Audio file decoder. Provides raw PCM audio from various compressed formats.
+/// @brief Audio file decoder. Provides raw PCM audio and metadata from various compressed formats.
 /// Supported file types:
 /// - Stereo or mono pcm WAV and AIFF (16-bit int, 24-bit int, 32-bit int or 32-bit IEEE float).
 /// - MP3: MPEG-1 Layer III (sample rates: 32000 Hz, 44100 Hz, 48000 Hz). MPEG-2 Layer III is not supported (mp3 with sample rates below 32000 Hz).
 /// - AAC or HE-AAC in M4A container (iTunes) or ADTS container (.aac).
-/// - ALAC/Apple Lossless (on iOS only).
+/// - ALAC/Apple Lossless (iOS/macOS/tvOS only).
 class Decoder {
 public:
     /// @brief File/decoder format.
@@ -37,7 +37,7 @@ public:
     static const int Error = -3;                  ///< Decoding error.
 
 /// @brief Error codes for the open...() methods.
-    static const int OpenSuccess = 0;
+    static const int OpenSuccess = 0;                          ///< Opened successfully.
     static const int OpenError_OutOfMemory =             1000; ///< Some memory allocation failed. Recommended action: check for memory leaks.
     static const int OpenError_PathIsNull =              1001; ///< Path is NULL.
     static const int OpenError_FastMetadataNotLocal =    1002; ///< metaOnly was true, but it works on local files only.
@@ -110,7 +110,7 @@ public:
 /// @param offset Byte offset in the file. Primarily designed to open raw files from an apk.
 /// @param length Byte length from offset. Set offset and length to 0 to read the entire file.
 /// @param stemsIndex Stems track index for Native Instruments Stems format.
-/// @param customHTTPRequest If custom HTTP communication is required (such as sending http headers for authorization), pass a fully prepared http request object. The player will take ownership of this.
+/// @param customHTTPRequest If custom HTTP communication is required (such as sending http headers for authorization), pass a fully prepared http request object. The decoder will copy this object.
     int open(const char *path, bool metaOnly = false, int offset = 0, int length = 0, int stemsIndex = 0, Superpowered::httpRequest *customHTTPRequest = 0);
 
 /// @brief Opens a memory location for decoding. @see open() for the return value.
@@ -120,7 +120,7 @@ public:
     JSWASM int openAudioFileInMemory(void *pointer, unsigned int sizeBytes, bool metaOnly = false);
 
 /// @brief Opens a memory location in Superpowered AudioInMemory format for decoding. @see open() for the return value.
-/// @param pointer Pointer to information in Superpowered AudioInMemory format.
+/// @param pointer Pointer to information in Superpowered AudioInMemory format. Ownership is controlled by the AudioInMemory format.
 /// @param metaOnly If true, it opens the file for fast metadata reading only, not for decoding audio.
     JSWASM int openMemory(void *pointer, bool metaOnly = false);
 
@@ -137,7 +137,7 @@ public:
 /// - Decoder::BufferingTryAgainLater: the decoder needs more data to be downloaded. Retry decodeAudio() later (it's recommended to wait at least 0.1 seconds).
 /// - Decoder::NetworkError: network (download) error.
 /// - Decoder::Error: internal decoder error.
-/// @param output Pointer to 16-bit signed integer numbers. The output. Must be at least numberOfFrames * 4 + 16384 bytes big.
+/// @param output Pointer to allocated memory. The output. Must be at least numberOfFrames * 4 + 16384 bytes big.
 /// @param numberOfFrames The requested number of frames. Should NOT be less than the value returned by getFramesPerChunk().
     JSWASM int decodeAudio(short int *output, unsigned int numberOfFrames);
 
@@ -182,7 +182,7 @@ public:
     JSWASM int getAudioEndFrame(unsigned int limitFrames = 0, int thresholdDb = 0);
 
 /// @return Returns with the JSON metadata string for the Native Instruments Stems format, or NULL if the file is not Stems.
-    const char *getStemsJSONString();
+    JSWASM const char *getStemsJSONString();
 
 /// @brief Parses all ID3 frames. Do not use startReadingID3/readNextID3Frame after this.
 /// @param skipImages Parsing ID3 image frames is significantly slower than parsing other frames. Set this to true if not interested in image information to save CPU.
@@ -236,7 +236,7 @@ public:
 /// @param takeOwnership For advanced use. If true, you take ownership on the data (don't forget to free() when done to prevent memory leaks).
     JSWASM void *getImage(bool takeOwnership = false);
 
-/// @return Returns with the the size of the image returned by getImage(). May return NULL.
+/// @return Returns with the the size of the image returned by getImage(). May return 0.
 /// Call this after parseAllID3Frames() OR finished reading all ID3 frames with readNextID3Frame().
     JSWASM unsigned int getImageSizeBytes();
 
@@ -255,11 +255,11 @@ private:
 
 /// @brief The Superpowered AudioInMemory format allows the Decoder and the AdvancedAudioPlayer to read compressed audio files or raw 16-bit PCM audio directly from memory.
 ///
-/// The payload can be fully loaded onto the heap in one big piece, or multiple, non-consecutive chunks can be added at any time to support for progressive loading (eg. add memory in chunks as downloaded).
+/// The payload can be fully loaded onto the heap in one big piece, or multiple chunks can be added at any time to support for progressive loading (eg. add memory in chunks as downloaded).
 ///
 /// The format consists of a main table and zero or more buffer tables. Every item is a 64-bit number to support native 32/64-bit systems and the web (WebAssembly).
 ///
-/// The main table consists of 64-bit (int64_t) numbers: [ version, retain count, samplerate, size, completed, address of the first buffer table ].
+/// The main table consists of six numbers, 64-bit (int64_t) each: [ version, retain count, samplerate, size, completed, address of the first buffer table ].
 ///
 ///     0: Version should be set to 0.
 ///     1: The retain count can be used to track usage (eg. multiple simultaneous access). If set to 0, the Decoder and the AdvancedAudioPlayer will take ownership on all the memory allocated (the main table, the buffer tables and their payloads) and will automatically free them using free(). The allocation should happen using malloc() (and not _aligned_malloc() or similar).
@@ -268,7 +268,7 @@ private:
 ///     4. Completed: set it to 0 if additional buffers can be added (such as progressive download). Set it to 1 if finished adding additional buffers.
 ///     5. Memory address of the first buffer table.
 ///
-/// Every buffer table consists of four 64-bit (int64_t) numbers: [ payload address, size, address of the next buffer table, reserved ].
+/// Every buffer table consists of four numbers, 64-bit (int64_t) each: [ payload address, size, address of the next buffer table, reserved ].
 ///
 ///     0. Memory address of the payload.
 ///     1. Size. AdvancedAudioPlayer: the number of audio frames inside the payload. Decoder: the size of the payload in bytes.
@@ -322,7 +322,7 @@ public:
     /// @param pointer Pointer to the main table.
     JSWASM static unsigned int getSize(void *pointer);
     
-    /// @return Returns with the sample reate.
+    /// @return Returns with the sample rate.
     /// @param pointer Pointer to the main table.
     JSWASM static unsigned int getSamplerate(void *pointer);
     

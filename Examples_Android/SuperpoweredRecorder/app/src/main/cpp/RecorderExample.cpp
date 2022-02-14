@@ -40,16 +40,7 @@ Java_com_superpowered_recorder_RecorderService_StartAudio (
         jint buffersize,
         jint destinationfd // file descriptor of the destination file
 ) {
-    Superpowered::Initialize(
-            "ExampleLicenseKey-WillExpire-OnNextUpdate",
-            false, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
-            false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
-            false, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
-            false, // enableAudioEffects (using any SuperpoweredFX class)
-            false, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
-            false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
-            false  // enableNetworking (using Superpowered::httpRequest)
-    );
+    Superpowered::Initialize("ExampleLicenseKey-WillExpire-OnNextUpdate");
 
     // Initialize the recorder.
     recorder = new Superpowered::Recorder(NULL);

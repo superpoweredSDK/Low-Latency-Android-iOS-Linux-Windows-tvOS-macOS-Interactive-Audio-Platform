@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">2.4.0</span>
+   &#160;<span id="projectnumber">2.5.0</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -54,8 +54,8 @@ Instance Methods</h2></td></tr>
 <tr class="separator:a51ff3fa75c9e9af1cd22f8c1fcd82c32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0e432032209a10a202411af08c8619c"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpoweredtv_o_s_audio_i_o_delegate-p.html#ab0e432032209a10a202411af08c8619c">interruptionEnded</a></td></tr>
 <tr class="separator:ab0e432032209a10a202411af08c8619c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0edb5ad3084bfd298eedf28ed46a4ed6"><td class="memItemLeft" align="right" valign="top">(bool)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpoweredtv_o_s_audio_i_o_delegate-p.html#a0edb5ad3084bfd298eedf28ed46a4ed6">audioProcessingCallback:outputChannels:numberOfFrames:samplerate:hostTime:</a></td></tr>
-<tr class="separator:a0edb5ad3084bfd298eedf28ed46a4ed6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a201e3ad43c9822a4b5dc086c5a2f4456"><td class="memItemLeft" align="right" valign="top">(bool)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpoweredtv_o_s_audio_i_o_delegate-p.html#a201e3ad43c9822a4b5dc086c5a2f4456">audioProcessingCallback:numberOfFrames:samplerate:hostTime:</a></td></tr>
+<tr class="separator:a201e3ad43c9822a4b5dc086c5a2f4456"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Method Documentation</h2>
 <a id="a51ff3fa75c9e9af1cd22f8c1fcd82c32"></a>
@@ -112,8 +112,8 @@ Instance Methods</h2></td></tr>
 
 </div>
 </div>
-<a id="a0edb5ad3084bfd298eedf28ed46a4ed6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0edb5ad3084bfd298eedf28ed46a4ed6">&#9670;&nbsp;</a></span>audioProcessingCallback:outputChannels:numberOfFrames:samplerate:hostTime:</h2>
+<a id="a201e3ad43c9822a4b5dc086c5a2f4456"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a201e3ad43c9822a4b5dc086c5a2f4456">&#9670;&nbsp;</a></span>audioProcessingCallback:numberOfFrames:samplerate:hostTime:</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -124,14 +124,8 @@ Instance Methods</h2></td></tr>
         <tr>
           <td class="memname">- (bool) audioProcessingCallback: </td>
           <td></td>
-          <td class="paramtype">(float **)&#160;</td>
-          <td class="paramname"><em>buffers</em></td>
-        </tr>
-        <tr>
-          <td class="paramkey">outputChannels:</td>
-          <td></td>
-          <td class="paramtype">(unsigned int)&#160;</td>
-          <td class="paramname"><em>outputChannels</em></td>
+          <td class="paramtype">(float *)&#160;</td>
+          <td class="paramname"><em>output</em></td>
         </tr>
         <tr>
           <td class="paramkey">numberOfFrames:</td>
@@ -168,8 +162,7 @@ Instance Methods</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Return false for no audio output (silence). </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">buffers</td><td>Input-output buffers. </td></tr>
-    <tr><td class="paramname">outputChannels</td><td>The number of output channels. </td></tr>
+    <tr><td class="paramname">output</td><td>Output buffer. </td></tr>
     <tr><td class="paramname">numberOfFrames</td><td>The number of frames requested. </td></tr>
     <tr><td class="paramname">samplerate</td><td>The current sample rate in Hz. </td></tr>
     <tr><td class="paramname">hostTime</td><td>A mach timestamp, indicates when this chunk of audio will be passed to the audio output. </td></tr>

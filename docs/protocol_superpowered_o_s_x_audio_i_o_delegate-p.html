@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">2.4.0</span>
+   &#160;<span id="projectnumber">2.5.0</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -52,16 +52,16 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Instance Methods</h2></td></tr>
-<tr class="memitem:ad82c3667b73c6085197183e4a1ba121b"><td class="memItemLeft" align="right" valign="top">(bool)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpowered_o_s_x_audio_i_o_delegate-p.html#ad82c3667b73c6085197183e4a1ba121b">audioProcessingCallback:inputChannels:outputBuffers:outputChannels:numberOfFrames:samplerate:hostTime:</a></td></tr>
-<tr class="separator:ad82c3667b73c6085197183e4a1ba121b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a70574279c468313124f4ec317b4cc3"><td class="memItemLeft" align="right" valign="top">(bool)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpowered_o_s_x_audio_i_o_delegate-p.html#a7a70574279c468313124f4ec317b4cc3">audioProcessingCallback:outputBuffer:numberOfFrames:samplerate:hostTime:</a></td></tr>
+<tr class="separator:a7a70574279c468313124f4ec317b4cc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae18bf05f5473d7ce650342d74bd07f57"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpowered_o_s_x_audio_i_o_delegate-p.html#ae18bf05f5473d7ce650342d74bd07f57">mapChannels:numOutputChannels:outputMap:input:numInputChannels:inputMap:</a></td></tr>
 <tr class="separator:ae18bf05f5473d7ce650342d74bd07f57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af98cb6d89d7ffa7b4d9d41c888e05106"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_superpowered_o_s_x_audio_i_o_delegate-p.html#af98cb6d89d7ffa7b4d9d41c888e05106">audioDevicesChanged:</a></td></tr>
 <tr class="separator:af98cb6d89d7ffa7b4d9d41c888e05106"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Method Documentation</h2>
-<a id="ad82c3667b73c6085197183e4a1ba121b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad82c3667b73c6085197183e4a1ba121b">&#9670;&nbsp;</a></span>audioProcessingCallback:inputChannels:outputBuffers:outputChannels:numberOfFrames:samplerate:hostTime:</h2>
+<a id="a7a70574279c468313124f4ec317b4cc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a70574279c468313124f4ec317b4cc3">&#9670;&nbsp;</a></span>audioProcessingCallback:outputBuffer:numberOfFrames:samplerate:hostTime:</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -72,26 +72,14 @@ Instance Methods</h2></td></tr>
         <tr>
           <td class="memname">- (bool) audioProcessingCallback: </td>
           <td></td>
-          <td class="paramtype">(float **)&#160;</td>
-          <td class="paramname"><em>inputBuffers</em></td>
+          <td class="paramtype">(float *)&#160;</td>
+          <td class="paramname"><em>inputBuffer</em></td>
         </tr>
         <tr>
-          <td class="paramkey">inputChannels:</td>
+          <td class="paramkey">outputBuffer:</td>
           <td></td>
-          <td class="paramtype">(unsigned int)&#160;</td>
-          <td class="paramname"><em>inputChannels</em></td>
-        </tr>
-        <tr>
-          <td class="paramkey">outputBuffers:</td>
-          <td></td>
-          <td class="paramtype">(float **)&#160;</td>
-          <td class="paramname"><em>outputBuffers</em></td>
-        </tr>
-        <tr>
-          <td class="paramkey">outputChannels:</td>
-          <td></td>
-          <td class="paramtype">(unsigned int)&#160;</td>
-          <td class="paramname"><em>outputChannels</em></td>
+          <td class="paramtype">(float *)&#160;</td>
+          <td class="paramname"><em>outputBuffer</em></td>
         </tr>
         <tr>
           <td class="paramkey">numberOfFrames:</td>
@@ -128,10 +116,8 @@ Instance Methods</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Return false when you did no audio processing (silence). </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">inputBuffers</td><td>Input buffers. </td></tr>
-    <tr><td class="paramname">inputChannels</td><td>The number of input channels. </td></tr>
-    <tr><td class="paramname">outputBuffers</td><td>Output buffers. </td></tr>
-    <tr><td class="paramname">outputChannels</td><td>The number of output channels. </td></tr>
+    <tr><td class="paramname">inputBuffer</td><td>32-bit floating point interleaved audio input. Never the same to outputBuffer. Can be NULL if input is not received. </td></tr>
+    <tr><td class="paramname">outputBuffer</td><td>32-bit floating point interleaved audio output. Never the same to inputBuffer. </td></tr>
     <tr><td class="paramname">numberOfFrames</td><td>The number of frames requested. </td></tr>
     <tr><td class="paramname">samplerate</td><td>The current sample rate in Hz. </td></tr>
     <tr><td class="paramname">hostTime</td><td>A mach timestamp, indicates when this chunk of audio will be passed to the audio output. </td></tr>

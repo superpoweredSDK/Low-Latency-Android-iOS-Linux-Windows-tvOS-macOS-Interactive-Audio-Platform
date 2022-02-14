@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">2.4.0</span>
+   &#160;<span id="projectnumber">2.5.0</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -276,7 +276,7 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Returns true is the recorder has finished writing after <a class="el" href="class_superpowered_1_1_recorder.html#a8678b7edce2b9f7578839a411a054a99" title="Stops recording. After calling stop() the recorder needs a little bit more time to write the last pie...">stop()</a> was called, so the recording is fully available at the destination path. It's safe to call this method in any thread. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns true if the recorder has finished writing after <a class="el" href="class_superpowered_1_1_recorder.html#a8678b7edce2b9f7578839a411a054a99" title="Stops recording. After calling stop() the recorder needs a little bit more time to write the last pie...">stop()</a> was called, so the recording is fully available at the destination path. It's safe to call this method in any thread. </dd></dl>
 
 </div>
 </div>
@@ -444,7 +444,7 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Seconds recorded so far. It's never blocking for real-time usage. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">input</td><td>Pointer to floating point numbers. </td></tr>
+    <tr><td class="paramname">input</td><td>Pointer to floating point numbers. Mono audio to record. </td></tr>
     <tr><td class="paramname">numberOfFrames</td><td>The number of frames in input. </td></tr>
   </table>
   </dd>

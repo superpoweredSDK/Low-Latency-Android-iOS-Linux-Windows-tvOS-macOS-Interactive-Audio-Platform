@@ -73,16 +73,7 @@ static bool audioProcessing (
 // FrequencyDomain - Initialize buffers and setup frequency domain processing.
 extern "C" JNIEXPORT void
 Java_com_superpowered_frequencydomain_MainActivity_FrequencyDomain(JNIEnv * __unused env, jobject __unused obj, jint samplerate, jint buffersize) {
-    Superpowered::Initialize(
-            "ExampleLicenseKey-WillExpire-OnNextUpdate",
-            false, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
-            true, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
-            false, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
-            false, // enableAudioEffects (using any SuperpoweredFX class)
-            false, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
-            false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
-            false  // enableNetworking (using Superpowered::httpRequest)
-    );
+    Superpowered::Initialize("ExampleLicenseKey-WillExpire-OnNextUpdate");
 
     // This will do the main "magic".
     frequencyDomain = new Superpowered::FrequencyDomain(FFT_LOG_SIZE);

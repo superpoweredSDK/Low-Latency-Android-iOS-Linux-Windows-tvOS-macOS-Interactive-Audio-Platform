@@ -11,14 +11,14 @@ struct reverbInternals;
 /// One instance allocates around 120 kb memory.
 class Reverb: public FX {
 public:
-    float dry;        ///< Set dry independently from wet. Don't use the mix property in this case. >= 0 and <= 1. Default: 0.987...
-    float wet;        ///< Set wet independently from dry. Don't use the mix property in this case. >= 0 and <= 1. Default: 0.587...
-    float mix;        ///< Sets dry and wet simultaneously with a nice constant power curve. Don't change dry and wet in this case. >= 0 and <= 1. Default: 0.4.
-    float width;      ///< Stereo width. >= 0 and <= 1. Default: 1.
-    float damp;       ///< High frequency damping. >= 0 and <= 1. Default: 0.5.
-    float roomSize;   ///< Room size. >= 0 and <= 1. Default: 0.8.
-    float predelayMs; ///< Pre-delay in milliseconds. 0 to 500. Default: 0.
-    float lowCutHz;   ///< Frequency of the low cut in Hz (-12 db point). Default: 0 (no low frequency cut). Default: 0.
+    float dry;        ///< Loudness of the dry signal. Don't use the mix property when using the dry and wet properties. >= 0 and <= 1. Default: 0.987...
+    float wet;        ///< Loudness of the wet signal. Don't use the mix property when using the dry and wet properties. >= 0 and <= 1. Default: 0.587...
+    float mix;        ///< Sets dry and wet simultaneously with a nice balanced power curve. Don't use the dry and wet properties while using mix. >= 0 and <= 1. Default: 0.4.
+    float width;      ///< Stereo width of the reverberation. >= 0 and <= 1. Default: 1.
+    float damp;       ///< Used to control the absorption of high frequencies in the reverb. More absorption of high frequencies means higher damping values. The tail of the reverb will lose high frequencies as they bounce around softer surfaces like halls and result in warmer sounds. >= 0 and <= 1. Default: 0.5.
+    float roomSize;   ///< Room size controls the scale of the decay time and reflections found in the physical characteristics of living spaces, and studios. These unique attributes will simulate the expected behavior of acoustic environments. A larger room size typically results in longer reverb time. >= 0 and <= 1. Default: 0.8.
+    float predelayMs; ///< Pre-delay in milliseconds. The length of time it takes for a sound wave to leave its source and create its first reflection is determined by the pre-delay. This property controls the offset of reverb from the dry signal. An increase in pre-delay can result in a feeling of a bigger space. 0 to 500. Default: 0.
+    float lowCutHz;   ///< Frequency of the low cut in Hz (-12 db point). Controls the low frequency build up generated from the reverb. Default: 0 (no low frequency cut).
 
 /// @brief Constructor. Enabled is false by default.
 /// @param samplerate The initial sample rate in Hz.

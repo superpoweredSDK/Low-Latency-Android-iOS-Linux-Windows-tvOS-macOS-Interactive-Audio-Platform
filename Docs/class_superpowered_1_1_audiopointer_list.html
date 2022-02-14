@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">2.4.0</span>
+   &#160;<span id="projectnumber">2.5.0</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -162,6 +162,12 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Append a buffer to the end of the list. The list will increase the retain count of the buffer by 1, similar to Objective-C. Not safe to use in a real-time thread, because it may use blocking memory operations. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>The buffer to append. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -182,6 +188,12 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Insert a buffer before the beginning of the list. The list will increase the retain count of the buffer by 1, similar to Objective-C. Not safe to use in a real-time thread, because it may use blocking memory operations. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>The buffer to insert. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -366,6 +378,7 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>True if succeeded, false if could not provide a slice with these arguments. </dd></dl>
 
 </div>
 </div>

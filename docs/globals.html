@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">2.4.0</span>
+   &#160;<span id="projectnumber">2.5.0</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -194,13 +194,13 @@ $(function() {
 : <a class="el" href="_superpowered_i_o_s_audio_i_o_8mm.html#a0fe9ac4426188e9f1020b16736419ca2a78dd4a6790c6fb78b1f63123c2b41ece">SuperpoweredIOSAudioIO.mm</a>
 </li>
 <li>audioProcessingCallback
-: <a class="el" href="_superpowered_i_o_s_audio_i_o_8h.html#ab8d61b23c5d3778e944a9debbbeaa261">SuperpoweredIOSAudioIO.h</a>
-, <a class="el" href="_superpowered_windows_audio_i_o_8h.html#ad977991ca1ab5f2c893e4f65ef1247cb">SuperpoweredWindowsAudioIO.h</a>
+: <a class="el" href="_superpowered_i_o_s_audio_i_o_8h.html#a800db643d82f61984825ebeb5d7c5581">SuperpoweredIOSAudioIO.h</a>
+, <a class="el" href="_superpowered_w_a_s_a_p_i_audio_i_o_8h.html#a3aea6ef624453c81171cc5e79d25a09e">SuperpoweredWASAPIAudioIO.h</a>
 , <a class="el" href="_superpowered_android_audio_i_o_8h.html#a43a972b498730b44c17b2f0aa051ab7c">SuperpoweredAndroidAudioIO.h</a>
 </li>
 <li>audioProcessingCallback_C
-: <a class="el" href="_superpoweredtv_o_s_audio_i_o_8h.html#a0cdb4b2f90dfe52021a4a6bdc8921e4d">SuperpoweredtvOSAudioIO.h</a>
-, <a class="el" href="_superpowered_o_s_x_audio_i_o_8h.html#a2929596da7a13be93fe767fce7c98d50">SuperpoweredOSXAudioIO.h</a>
+: <a class="el" href="_superpoweredtv_o_s_audio_i_o_8h.html#ac4aae181a3174648328966fc050dc5f8">SuperpoweredtvOSAudioIO.h</a>
+, <a class="el" href="_superpowered_o_s_x_audio_i_o_8h.html#a5756459dacb77d8c90e257d4a8a9c0f0">SuperpoweredOSXAudioIO.h</a>
 </li>
 <li>audioSessionCategory
 : <a class="el" href="_superpoweredtv_o_s_audio_i_o_8mm.html#af746739985edba8b2b0feccce312673b">SuperpoweredtvOSAudioIO.mm</a>
@@ -231,6 +231,9 @@ $(function() {
 <h3><a id="index_c"></a>- c -</h3><ul>
 <li>CHANNELMASK
 : <a class="el" href="_superpowered_android_audio_i_o_8cpp.html#aa25dcbd0927f348f66b5243a37d9d090">SuperpoweredAndroidAudioIO.cpp</a>
+</li>
+<li>checkReturn
+: <a class="el" href="_superpowered_w_a_s_a_p_i_audio_i_o_8cpp.html#adfd56f626b4b8a2de1e33b494c6363e8">SuperpoweredWASAPIAudioIO.cpp</a>
 </li>
 </ul>
 
@@ -270,8 +273,8 @@ $(function() {
 
 
 <h3><a id="index_i"></a>- i -</h3><ul>
-<li>inputBufferListForRecordingCategory
-: <a class="el" href="_superpowered_i_o_s_audio_i_o_8mm.html#a174ac97d0394e509e4cd92e4df89b343">SuperpoweredIOSAudioIO.mm</a>
+<li>inputBuffer
+: <a class="el" href="_superpowered_i_o_s_audio_i_o_8mm.html#a5f8f7d6c06e8fdfb97834cd41f7d160d">SuperpoweredIOSAudioIO.mm</a>
 </li>
 <li>inputBuffers0
 : <a class="el" href="_superpowered_o_s_x_audio_i_o_8mm.html#a9a0f116c90edf322243945086ff397bb">SuperpoweredOSXAudioIO.mm</a>
@@ -279,17 +282,8 @@ $(function() {
 <li>inputBuffers1
 : <a class="el" href="_superpowered_o_s_x_audio_i_o_8mm.html#addc1dfde7c6d1ab91e817c2f9847e41e">SuperpoweredOSXAudioIO.mm</a>
 </li>
-<li>inputBufs0
-: <a class="el" href="_superpowered_o_s_x_audio_i_o_8mm.html#ae8e93ae3929bb8554f9596f01b476ebf">SuperpoweredOSXAudioIO.mm</a>
-</li>
-<li>inputBufs1
-: <a class="el" href="_superpowered_o_s_x_audio_i_o_8mm.html#a65de91d7b45774ce198575c0cfeef89d">SuperpoweredOSXAudioIO.mm</a>
-</li>
 <li>inputChannelMap
 : <a class="el" href="_superpowered_i_o_s_audio_i_o_8mm.html#a2e6913429a4c7812ed433b0344624fda">SuperpoweredIOSAudioIO.mm</a>
-</li>
-<li>inputChannels
-: <a class="el" href="_superpowered_o_s_x_audio_i_o_8mm.html#ac8e96447efe331beb104b19363a1615b">SuperpoweredOSXAudioIO.mm</a>
 </li>
 <li>inputEnabled
 : <a class="el" href="_superpowered_i_o_s_audio_i_o_8mm.html#ae7ad5ba3a07ee0b2d21505621902157d">SuperpoweredIOSAudioIO.mm</a>
@@ -299,9 +293,6 @@ $(function() {
 </li>
 <li>inputFrames
 : <a class="el" href="_superpowered_o_s_x_audio_i_o_8mm.html#a8e6c39aa0885057e93eb2988ac588f68">SuperpoweredOSXAudioIO.mm</a>
-</li>
-<li>inputOrOutputHandlerInternals
-: <a class="el" href="_superpowered_windows_audio_i_o_8cpp.html#a007d4341af492f2400278c268782ccac">SuperpoweredWindowsAudioIO.cpp</a>
 </li>
 <li>inputUnit
 : <a class="el" href="_superpowered_o_s_x_audio_i_o_8mm.html#a31625abb35dd2b704ef70f9e56e0e5d5">SuperpoweredOSXAudioIO.mm</a>
@@ -348,7 +339,8 @@ $(function() {
 : <a class="el" href="_superpowered_o_s_x_audio_i_o_8mm.html#ad00b454ea6c6266c1ef9e7f2f5bb966b">SuperpoweredOSXAudioIO.mm</a>
 </li>
 <li>MAXFRAMES
-: <a class="el" href="_superpowered_o_s_x_audio_i_o_8mm.html#a2a9396057bbd8e2ede463368a0990e26">SuperpoweredOSXAudioIO.mm</a>
+: <a class="el" href="_superpowered_i_o_s_audio_i_o_8h.html#a2a9396057bbd8e2ede463368a0990e26">SuperpoweredIOSAudioIO.h</a>
+, <a class="el" href="_superpowered_o_s_x_audio_i_o_8mm.html#a2a9396057bbd8e2ede463368a0990e26">SuperpoweredOSXAudioIO.mm</a>
 </li>
 <li>maximumNumberOfFrames
 : <a class="el" href="_superpowered_i_o_s_audio_i_o_8mm.html#a386ad7482dfac1e7dd2589213b94c51b">SuperpoweredIOSAudioIO.mm</a>
@@ -374,13 +366,8 @@ $(function() {
 </li>
 <li>numberOfChannels
 : <a class="el" href="_superpowered_o_s_x_audio_i_o_8mm.html#ace2be3f433a6d3928bf9e69719d24747">SuperpoweredOSXAudioIO.mm</a>
-</li>
-<li>numChannels
-: <a class="el" href="_superpowered_i_o_s_audio_i_o_8mm.html#a833642af16b83f234a41e9038ac89aaf">SuperpoweredIOSAudioIO.mm</a>
-, <a class="el" href="_superpoweredtv_o_s_audio_i_o_8mm.html#a833642af16b83f234a41e9038ac89aaf">SuperpoweredtvOSAudioIO.mm</a>
-</li>
-<li>NUMCHANNELS
-: <a class="el" href="_superpowered_windows_audio_i_o_8cpp.html#a48d76b75af6c5498ed7a6963cfa5e84b">SuperpoweredWindowsAudioIO.cpp</a>
+, <a class="el" href="_superpowered_i_o_s_audio_i_o_8mm.html#ace2be3f433a6d3928bf9e69719d24747">SuperpoweredIOSAudioIO.mm</a>
+, <a class="el" href="_superpoweredtv_o_s_audio_i_o_8mm.html#ace2be3f433a6d3928bf9e69719d24747">SuperpoweredtvOSAudioIO.mm</a>
 </li>
 </ul>
 
@@ -449,8 +436,8 @@ $(function() {
 <li>SuperpoweredAndroidAudioIOInternals
 : <a class="el" href="_superpowered_android_audio_i_o_8cpp.html#a2ee3e2ea052820c24977e5828608b657">SuperpoweredAndroidAudioIO.cpp</a>
 </li>
-<li>SuperpoweredWindowsAudioIOInternals
-: <a class="el" href="_superpowered_windows_audio_i_o_8cpp.html#ac60846868c03eec2b2da5713773a216e">SuperpoweredWindowsAudioIO.cpp</a>
+<li>SuperpoweredWASAPIAudioIOInternals
+: <a class="el" href="_superpowered_w_a_s_a_p_i_audio_i_o_8cpp.html#a1ad6398861aa1283a9edae3496215ff6">SuperpoweredWASAPIAudioIO.cpp</a>
 </li>
 </ul>
 

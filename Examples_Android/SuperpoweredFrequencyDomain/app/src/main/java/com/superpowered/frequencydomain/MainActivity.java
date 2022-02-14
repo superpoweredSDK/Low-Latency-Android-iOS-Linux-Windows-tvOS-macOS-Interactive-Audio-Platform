@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         // Called when the user answers to the permission dialogs.
         if ((requestCode != 0) || (grantResults.length < 1) || (grantResults.length != permissions.length)) return;
         boolean hasAllPermissions = true;

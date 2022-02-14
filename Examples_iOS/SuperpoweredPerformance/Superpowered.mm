@@ -17,7 +17,6 @@
     Superpowered::AdvancedAudioPlayer *player;
     Superpowered::FX *effects[NUMFXUNITS];
     SuperpoweredIOSAudioIO *output;
-    float *stereoBuffer;
     bool started;
     uint64_t timeUnitsProcessed, maxTime;
     unsigned int lastPositionSeconds, lastSamplerate, framesProcessed;
@@ -26,7 +25,6 @@
 - (void)dealloc {
     delete player;
     for (int n = 2; n < NUMFXUNITS; n++) delete effects[n];
-    free(stereoBuffer);
 #if !__has_feature(objc_arc)
     [output release];
     [super dealloc];
@@ -87,7 +85,7 @@
 }
 
 // This is where the Superpowered magic happens.
-static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int inputChannels, float **outputBuffers, unsigned int outputChannels, unsigned int numberOfFrames, unsigned int samplerate, uint64_t hostTime) {
+static bool audioProcessing(void *clientdata, float *input, float *output, unsigned int numberOfFrames, unsigned int samplerate, uint64_t hostTime) {
     __unsafe_unretained SuperpoweredAudio *self = (__bridge SuperpoweredAudio *)clientdata;
     uint64_t startTime = mach_absolute_time();
 
@@ -101,13 +99,13 @@ static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int
     ((Superpowered::Roll *)self->effects[ROLLINDEX])->bpm = ((Superpowered::Flanger *)self->effects[FLANGERINDEX])->bpm = ((Superpowered::Echo *)self->effects[DELAYINDEX])->bpm = self->player->getCurrentBpm();
 
     // Let's process some audio. If you'd like to change connections or tap into something, no abstract connection handling and no callbacks required!
-    bool silence = !self->player->processStereo(self->stereoBuffer, false, numberOfFrames);
-    if (self->effects[ROLLINDEX]->process(silence ? NULL : self->stereoBuffer, self->stereoBuffer, numberOfFrames)) silence = false;
-    self->effects[FILTERINDEX]->process(self->stereoBuffer, self->stereoBuffer, numberOfFrames);
-    self->effects[EQINDEX]->process(self->stereoBuffer, self->stereoBuffer, numberOfFrames);
-    self->effects[FLANGERINDEX]->process(self->stereoBuffer, self->stereoBuffer, numberOfFrames);
-    if (self->effects[DELAYINDEX]->process(silence ? NULL : self->stereoBuffer, self->stereoBuffer, numberOfFrames)) silence = false;
-    if (self->effects[REVERBINDEX]->process(silence ? NULL : self->stereoBuffer, self->stereoBuffer, numberOfFrames)) silence = false;
+    bool silence = !self->player->processStereo(output, false, numberOfFrames);
+    if (self->effects[ROLLINDEX]->process(silence ? NULL : output, output, numberOfFrames)) silence = false;
+    self->effects[FILTERINDEX]->process(output, output, numberOfFrames);
+    self->effects[EQINDEX]->process(output, output, numberOfFrames);
+    self->effects[FLANGERINDEX]->process(output, output, numberOfFrames);
+    if (self->effects[DELAYINDEX]->process(silence ? NULL : output, output, numberOfFrames)) silence = false;
+    if (self->effects[REVERBINDEX]->process(silence ? NULL : output, output, numberOfFrames)) silence = false;
 
     // CPU measurement code to show some nice numbers for the business guys.
     uint64_t elapsedUnits = mach_absolute_time() - startTime;
@@ -121,7 +119,6 @@ static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int
     };
 
     self->playing = self->player->isPlaying();
-    if (!silence) Superpowered::DeInterleave(self->stereoBuffer, outputBuffers[0], outputBuffers[1], numberOfFrames); // The stereoBuffer is ready now, let's put the finished audio into the requested buffers.
     return !silence;
 }
 
@@ -129,22 +126,11 @@ static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int
     self = [super init];
     if (!self) return nil;
     
-    Superpowered::Initialize(
-                             "ExampleLicenseKey-WillExpire-OnNextUpdate",
-                             false, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
-                             false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
-                             false, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
-                             true, // enableAudioEffects (using any SuperpoweredFX class)
-                             true, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
-                             false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
-                             false  // enableNetworking (using Superpowered::httpRequest)
-                             );
-    
+    Superpowered::Initialize("ExampleLicenseKey-WillExpire-OnNextUpdate");
     SuperpoweredFFTTest();
 
     started = false;
     lastPositionSeconds = lastSamplerate = framesProcessed = timeUnitsProcessed = maxTime = avgUnitsPerSecond = maxUnitsPerSecond = 0;
-    if (posix_memalign((void **)&stereoBuffer, 16, 4096 + 128) != 0) abort(); // Allocating memory, aligned to 16.
 
     // Creating the Superpowered features we'll use.
     player = new Superpowered::AdvancedAudioPlayer(44100, 0);

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,10 +15,10 @@
 		1BF94B3A19765521001FFAC9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BF94B3919765521001FFAC9 /* UIKit.framework */; };
 		1BF94B4619765521001FFAC9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF94B4519765521001FFAC9 /* AppDelegate.m */; };
 		1BF94B4C19765521001FFAC9 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1BF94B4B19765521001FFAC9 /* ViewController.mm */; };
-		1BF94B6B19765615001FFAC9 /* libSuperpoweredAudioIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BF94B6A19765615001FFAC9 /* libSuperpoweredAudioIOS.a */; };
 		1BF94B6F19765833001FFAC9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BF94B6E19765833001FFAC9 /* AudioToolbox.framework */; };
 		21144CBC232135F60062D494 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 21144CB6232135F60062D494 /* main.m */; };
 		21144CBD232135F60062D494 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21144CB7232135F60062D494 /* Main.storyboard */; };
+		21D40E5027B3CDC80077C4F9 /* libSuperpoweredAudio.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21D40E4F27B3CDC80077C4F9 /* libSuperpoweredAudio.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,13 +37,13 @@
 		1BF94B4519765521001FFAC9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = SuperpoweredOfflineProcessingExample/AppDelegate.m; sourceTree = "<group>"; };
 		1BF94B4A19765521001FFAC9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = SuperpoweredOfflineProcessingExample/ViewController.h; sourceTree = "<group>"; };
 		1BF94B4B19765521001FFAC9 /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = ViewController.mm; path = SuperpoweredOfflineProcessingExample/ViewController.mm; sourceTree = "<group>"; };
-		1BF94B6A19765615001FFAC9 /* libSuperpoweredAudioIOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSuperpoweredAudioIOS.a; path = ../../Superpowered/libSuperpoweredAudioIOS.a; sourceTree = "<group>"; };
 		1BF94B6C19765644001FFAC9 /* SuperpoweredDecoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredDecoder.h; path = ../../Superpowered/SuperpoweredDecoder.h; sourceTree = "<group>"; };
 		1BF94B6E19765833001FFAC9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		21144CB6232135F60062D494 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SuperpoweredOfflineProcessingExample/etc/main.m; sourceTree = "<group>"; };
 		21144CB7232135F60062D494 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = SuperpoweredOfflineProcessingExample/etc/Main.storyboard; sourceTree = "<group>"; };
 		21144CB9232135F60062D494 /* SuperpoweredOfflineProcessingExample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "SuperpoweredOfflineProcessingExample-Info.plist"; path = "SuperpoweredOfflineProcessingExample/etc/SuperpoweredOfflineProcessingExample-Info.plist"; sourceTree = "<group>"; };
 		211F35D5228083A7006DE760 /* Superpowered.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Superpowered.h; path = ../../Superpowered/Superpowered.h; sourceTree = "<group>"; };
+		21D40E4F27B3CDC80077C4F9 /* libSuperpoweredAudio.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = libSuperpoweredAudio.xcframework; path = ../../Superpowered/libSuperpoweredAudio.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,12 +53,12 @@
 			files = (
 				1B3F0BD01B160A5F00F50B00 /* MediaPlayer.framework in Frameworks */,
 				1B98E0061B14BE5400617EF9 /* AVFoundation.framework in Frameworks */,
+				21D40E5027B3CDC80077C4F9 /* libSuperpoweredAudio.xcframework in Frameworks */,
 				1B98E0041B14BE2600617EF9 /* CoreMedia.framework in Frameworks */,
 				1BF94B6F19765833001FFAC9 /* AudioToolbox.framework in Frameworks */,
 				1BF94B3819765521001FFAC9 /* CoreGraphics.framework in Frameworks */,
 				1BF94B3A19765521001FFAC9 /* UIKit.framework in Frameworks */,
 				1BF94B3619765521001FFAC9 /* Foundation.framework in Frameworks */,
-				1BF94B6B19765615001FFAC9 /* libSuperpoweredAudioIOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,7 +104,7 @@
 		21144CB22321354F0062D494 /* Superpowered */ = {
 			isa = PBXGroup;
 			children = (
-				1BF94B6A19765615001FFAC9 /* libSuperpoweredAudioIOS.a */,
+				21D40E4F27B3CDC80077C4F9 /* libSuperpoweredAudio.xcframework */,
 				211F35D5228083A7006DE760 /* Superpowered.h */,
 				1B74E6D51CEB615400DF0B3D /* SuperpoweredAnalyzer.h */,
 				1BF94B6C19765644001FFAC9 /* SuperpoweredDecoder.h */,

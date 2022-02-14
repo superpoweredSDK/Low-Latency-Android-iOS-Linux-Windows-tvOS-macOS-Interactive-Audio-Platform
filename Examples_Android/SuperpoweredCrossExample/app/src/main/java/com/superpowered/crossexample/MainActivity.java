@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         // Called when the user answers to the permission dialogs.
         if ((requestCode != 0) || (grantResults.length < 1) || (grantResults.length != permissions.length)) return;
         boolean hasAllPermissions = true;
@@ -128,11 +129,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Setup FX select event
         final RadioGroup group = findViewById(R.id.radioGroup1);
-        if (group != null) group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-                RadioButton checkedRadioButton = radioGroup.findViewById(checkedId);
-                onFxSelect(radioGroup.indexOfChild(checkedRadioButton));
-            }
+        if (group != null) group.setOnCheckedChangeListener((radioGroup, checkedId) -> {
+            RadioButton checkedRadioButton = radioGroup.findViewById(checkedId);
+            onFxSelect(radioGroup.indexOfChild(checkedRadioButton));
         });
     }
 

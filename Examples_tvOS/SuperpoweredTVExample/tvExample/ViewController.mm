@@ -13,17 +13,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    Superpowered::Initialize(
-                             "ExampleLicenseKey-WillExpire-OnNextUpdate",
-                             false, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
-                             false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
-                             false, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
-                             true, // enableAudioEffects (using any SuperpoweredFX class)
-                             false, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
-                             false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
-                             false  // enableNetworking (using Superpowered::httpRequest)
-                             );
+    Superpowered::Initialize("ExampleLicenseKey-WillExpire-OnNextUpdate");
     
     whoosh = new Superpowered::Whoosh(44100);
     whoosh->wet = 1.0f;
@@ -46,14 +36,9 @@
     whoosh = nil;
 }
 
-- (bool)audioProcessingCallback:(float **)buffers outputChannels:(unsigned int)outputChannels numberOfFrames:(unsigned int)numberOfFrames samplerate:(unsigned int)samplerate hostTime:(UInt64)hostTime {
+- (bool)audioProcessingCallback:(float *)output numberOfFrames:(unsigned int)numberOfFrames samplerate:(unsigned int)samplerate hostTime:(UInt64)hostTime {
     whoosh->samplerate = samplerate;
-    float stereoOutput[numberOfFrames * 2];
-    
-    if (whoosh->process(NULL, stereoOutput, numberOfFrames)) {
-        Superpowered::DeInterleave(stereoOutput, buffers[0], buffers[1], numberOfFrames);
-        return true;
-    } else return false;
+    return whoosh->process(NULL, output, numberOfFrames);
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {

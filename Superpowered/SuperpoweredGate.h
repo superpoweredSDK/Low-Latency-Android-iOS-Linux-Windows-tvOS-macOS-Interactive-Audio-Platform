@@ -11,8 +11,8 @@ struct gateInternals;
 /// It doesn't allocate any internal buffers and needs just a few bytes of memory.
 class Gate: public FX {
 public:
-    float wet;   ///< Limited to >= 0 and <= 1. Default: 1.
-    float bpm;   ///< Limited to >= 40 and <= 250. Default: 40.
+    float wet;   ///< The dominance of the effect. Limited to >= 0 and <= 1. Default: 1.
+    float bpm;   ///< The bpm of the current audio, defines the speed of the gate. Limited to >= 40 and <= 250. Default: 40.
     float beats; ///< The rhythm in beats to open and close the "gate". From 1/64 beats to 4 beats. (>= 0.015625 and <= 4) Default: 1.
 
 /// @brief Constructor. Enabled is false by default.

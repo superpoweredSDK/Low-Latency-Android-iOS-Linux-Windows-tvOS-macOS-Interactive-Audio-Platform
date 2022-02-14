@@ -12,8 +12,8 @@ struct eqInternals;
 class ThreeBandEQ: public FX {
 public:
     float low; ///< Low gain. Read-write. 1.0f is "flat", 2.0f is +6db. Kill is enabled under -40 db (0.01f). Default: 1.0f. Limits: 0.0f and 8.0f.
-    float mid; ///< Mid gain. See low for details.
-    float high; ///< High gain. See low for details.
+    float mid; ///< Mid gain. Read-write. 1.0f is "flat", 2.0f is +6db. Kill is enabled under -40 db (0.01f). Default: 1.0f. Limits: 0.0f and 8.0f.
+    float high; ///< High gain. Read-write. 1.0f is "flat", 2.0f is +6db. Kill is enabled under -40 db (0.01f). Default: 1.0f. Limits: 0.0f and 8.0f.
     
 /// @brief Constructor. Enabled is false by default.
 /// @param samplerate The initial sample rate in Hz.

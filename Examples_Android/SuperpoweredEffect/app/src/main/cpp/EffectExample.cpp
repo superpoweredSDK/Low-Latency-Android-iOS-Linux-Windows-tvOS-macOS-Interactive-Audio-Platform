@@ -28,16 +28,7 @@ static bool audioProcessing (
 // StartAudio - Start audio engine.
 extern "C" JNIEXPORT void
 Java_com_superpowered_effect_MainActivity_StartAudio(JNIEnv * __unused env, jobject  __unused obj, jint samplerate, jint buffersize) {
-    Superpowered::Initialize(
-            "ExampleLicenseKey-WillExpire-OnNextUpdate",
-            false, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
-            false, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
-            false, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
-            true,  // enableAudioEffects (using any SuperpoweredFX class)
-            false, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
-            false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
-            false  // enableNetworking (using Superpowered::httpRequest)
-    );
+    Superpowered::Initialize("ExampleLicenseKey-WillExpire-OnNextUpdate");
 
     // initialize reverb
     reverb = new Superpowered::Reverb((unsigned int)samplerate);

@@ -13,9 +13,9 @@ class Echo: public FX {
 public:
     float dry;   ///< 0 to 1. Default: 1.
     float wet;   ///< 0 to 1. Default: 0.5.
-    float bpm;   ///< 40 to 250. Default: 128.
-    float beats; ///< Delay in beats. 0.03125 to 2. Default: 0.5.
-    float decay; ///< 0 to 0.99. Default: 0.5.
+    float bpm;   ///< Beats per minute, the base tempo of the echo. 40 to 250. Default: 128.
+    float beats; ///< Delay between the echo sounds in beats. 0.03125 to 2. Default: 0.5.
+    float decay; ///< Decay factor of the echo sounds. 0 to 0.99. Default: 0.5.
     
 /// @brief Constructor. Enabled is false by default.
 /// @param samplerate The initial sample rate in Hz.
@@ -41,7 +41,7 @@ public:
 /// @param input Pointer to floating point numbers. 32-bit interleaved stereo input. Can point to the same location with output (in-place processing). Special case: input can be NULL, the effect will output the tail only in this case.
 /// @param output Pointer to floating point numbers. 32-bit interleaved stereo output.
 /// @param numberOfFrames Number of frames to process. Recommendation for best performance: multiply of 4, minimum 64.
-/// @param fx fx->process() will be used to pass audio from input to the internal buffer. For example, a resonant Filter can provide a nice color for the echoes.
+/// @param fx A Superpowered FX class instance, such as a Filter. fx->process() will be used to pass audio from input to the internal buffer, "coloring" the echo sounds.
     JSWASM bool processWithFx(float *input, float *output, unsigned int numberOfFrames, FX *fx);
     
 private:

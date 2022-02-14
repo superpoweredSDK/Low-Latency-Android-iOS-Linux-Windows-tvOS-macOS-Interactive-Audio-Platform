@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">2.4.0</span>
+   &#160;<span id="projectnumber">2.5.0</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -215,7 +215,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Set dry independently from wet. Don't use the mix property in this case. &gt;= 0 and &lt;= 1. Default: 0.987... </p>
+<p>Loudness of the dry signal. Don't use the mix property when using the dry and wet properties. &gt;= 0 and &lt;= 1. Default: 0.987... </p>
 
 </div>
 </div>
@@ -231,7 +231,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Set wet independently from dry. Don't use the mix property in this case. &gt;= 0 and &lt;= 1. Default: 0.587... </p>
+<p>Loudness of the wet signal. Don't use the mix property when using the dry and wet properties. &gt;= 0 and &lt;= 1. Default: 0.587... </p>
 
 </div>
 </div>
@@ -247,7 +247,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets dry and wet simultaneously with a nice constant power curve. Don't change dry and wet in this case. &gt;= 0 and &lt;= 1. Default: 0.4. </p>
+<p>Sets dry and wet simultaneously with a nice balanced power curve. Don't use the dry and wet properties while using mix. &gt;= 0 and &lt;= 1. Default: 0.4. </p>
 
 </div>
 </div>
@@ -263,7 +263,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Stereo width. &gt;= 0 and &lt;= 1. Default: 1. </p>
+<p>Stereo width of the reverberation. &gt;= 0 and &lt;= 1. Default: 1. </p>
 
 </div>
 </div>
@@ -279,7 +279,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>High frequency damping. &gt;= 0 and &lt;= 1. Default: 0.5. </p>
+<p>Used to control the absorption of high frequencies in the reverb. More absorption of high frequencies means higher damping values. The tail of the reverb will lose high frequencies as they bounce around softer surfaces like halls and result in warmer sounds. &gt;= 0 and &lt;= 1. Default: 0.5. </p>
 
 </div>
 </div>
@@ -295,7 +295,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Room size. &gt;= 0 and &lt;= 1. Default: 0.8. </p>
+<p>Room size controls the scale of the decay time and reflections found in the physical characteristics of living spaces, and studios. These unique attributes will simulate the expected behavior of acoustic environments. A larger room size typically results in longer reverb time. &gt;= 0 and &lt;= 1. Default: 0.8. </p>
 
 </div>
 </div>
@@ -311,7 +311,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Pre-delay in milliseconds. 0 to 500. Default: 0. </p>
+<p>Pre-delay in milliseconds. The length of time it takes for a sound wave to leave its source and create its first reflection is determined by the pre-delay. This property controls the offset of reverb from the dry signal. An increase in pre-delay can result in a feeling of a bigger space. 0 to 500. Default: 0. </p>
 
 </div>
 </div>
@@ -327,7 +327,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Frequency of the low cut in Hz (-12 db point). Default: 0 (no low frequency cut). Default: 0. </p>
+<p>Frequency of the low cut in Hz (-12 db point). Controls the low frequency build up generated from the reverb. Default: 0 (no low frequency cut). </p>
 
 </div>
 </div>

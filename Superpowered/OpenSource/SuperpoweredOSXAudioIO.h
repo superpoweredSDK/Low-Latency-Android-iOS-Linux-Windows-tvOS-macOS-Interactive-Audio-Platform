@@ -17,14 +17,12 @@ typedef struct audioDevice {
 /// @brief You can have an audio processing callback in Objective-C or pure C. This is the pure C prototype.
 /// @return Return false when you did no audio processing (silence).
 /// @param clientdata A custom pointer your callback receives.
-/// @param inputBuffers Input buffers.
-/// @param inputChannels The number of input channels.
-/// @param outputBuffers Output buffers.
-/// @param outputChannels The number of output channels.
+/// @param inputBuffer 32-bit floating point interleaved audio input. Never the same to outputBuffer. Can be NULL if input is not received.
+/// @param outputBuffer 32-bit floating point interleaved audio output. Never the same to inputBuffer.
 /// @param numberOfFrames The number of frames requested.
 /// @param samplerate The current sample rate in Hz.
 /// @param hostTime A mach timestamp, indicates when this buffer of audio will be passed to the audio output.
-typedef bool (*audioProcessingCallback_C) (void *clientdata, float **inputBuffers, unsigned int inputChannels, float **outputBuffers, unsigned int outputChannels, unsigned int numberOfFrames, unsigned int samplerate, uint64_t hostTime);
+typedef bool (*audioProcessingCallback_C) (void *clientdata, float *inputBuffer, float *outputBuffer, unsigned int numberOfFrames, unsigned int samplerate, uint64_t hostTime);
 
 /// @brief A simple system audio input and/or output handler for macOS.
 /// @warning All methods and setters should be called on the main thread only!
@@ -40,7 +38,7 @@ typedef bool (*audioProcessingCallback_C) (void *clientdata, float **inputBuffer
 
 /// @brief Creates an audio IO instance using the default system audio input and/or output.
 /// @param delegate The object fully implementing the SuperpoweredOSXAudioIODelegate protocol. Not retained.
-/// @param preferredBufferSizeMs The initial value for preferredBufferSizeMs. 12 is good for every device (512 frames).
+/// @param preferredBufferSizeMs The initial value for preferredBufferSizeMs. 12 is good for every device (typically results in 512 frames).
 /// @param numberOfChannels The number of channels you provide in the audio processing callback.
 /// @param enableInput Enable audio input.
 /// @param enableOutput Enable audio output.
@@ -87,16 +85,14 @@ typedef bool (*audioProcessingCallback_C) (void *clientdata, float **inputBuffer
 
 /// @brief Process audio here.
 /// @return Return false when you did no audio processing (silence).
-/// @param inputBuffers Input buffers.
-/// @param inputChannels The number of input channels.
-/// @param outputBuffers Output buffers.
-/// @param outputChannels The number of output channels.
+/// @param inputBuffer 32-bit floating point interleaved audio input. Never the same to outputBuffer. Can be NULL if input is not received.
+/// @param outputBuffer 32-bit floating point interleaved audio output. Never the same to inputBuffer.
 /// @param numberOfFrames The number of frames requested.
 /// @param samplerate The current sample rate in Hz.
 /// @param hostTime A mach timestamp, indicates when this chunk of audio will be passed to the audio output.
 /// @warning It's called on a high priority real-time audio thread, so please take care of blocking and processing time to prevent audio dropouts.
 @optional
-- (bool)audioProcessingCallback:(float **)inputBuffers inputChannels:(unsigned int)inputChannels outputBuffers:(float **)outputBuffers outputChannels:(unsigned int)outputChannels numberOfFrames:(unsigned int)numberOfFrames samplerate:(unsigned int)samplerate hostTime:(unsigned long long int)hostTime;
+- (bool)audioProcessingCallback:(float *)inputBuffer outputBuffer:(float *)outputBuffer numberOfFrames:(unsigned int)numberOfFrames samplerate:(unsigned int)samplerate hostTime:(unsigned long long int)hostTime;
 
 /// @brief This method is called on the main thread when an audio device is initialized.
 /// @param outputDeviceName The name of the audio output device.

@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">2.4.0</span>
+   &#160;<span id="projectnumber">2.5.0</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -116,8 +116,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:af2c73e4f82223ad79063c98437f08ccc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9311f6d847b3b7f9d089796eb0cbd142"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a9311f6d847b3b7f9d089796eb0cbd142">getAudioEndFrame</a> (unsigned int limitFrames=0, int thresholdDb=0)</td></tr>
 <tr class="separator:a9311f6d847b3b7f9d089796eb0cbd142"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad4d130834430b4a5615db8a8191e2a66"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#ad4d130834430b4a5615db8a8191e2a66">getStemsJSONString</a> ()</td></tr>
-<tr class="separator:ad4d130834430b4a5615db8a8191e2a66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae57158337c5e589b3c8bff29cc53d60e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#ae57158337c5e589b3c8bff29cc53d60e">getStemsJSONString</a> ()</td></tr>
+<tr class="separator:ae57158337c5e589b3c8bff29cc53d60e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63613eac6a86a4cb5a93a679abfca5cd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a63613eac6a86a4cb5a93a679abfca5cd">parseAllID3Frames</a> (bool skipImages, unsigned int maxFrameDataSize)</td></tr>
 <tr class="separator:a63613eac6a86a4cb5a93a679abfca5cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9473145f2c70e72313c09482283af0a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_superpowered_1_1_decoder.html#a9473145f2c70e72313c09482283af0a4">startParsingID3Frames</a> (bool skipImages, unsigned int maxFrameDataSize)</td></tr>
@@ -215,7 +215,7 @@ Static Public Attributes</h2></td></tr>
 <li>Stereo or mono pcm WAV and AIFF (16-bit int, 24-bit int, 32-bit int or 32-bit IEEE float).</li>
 <li>MP3: MPEG-1 Layer III (sample rates: 32000 Hz, 44100 Hz, 48000 Hz). MPEG-2 Layer III is not supported (mp3 with sample rates below 32000 Hz).</li>
 <li>AAC or HE-AAC in M4A container (iTunes) or ADTS container (.aac).</li>
-<li>ALAC/Apple Lossless (on iOS only). </li>
+<li>ALAC/Apple Lossless (iOS/macOS/tvOS only). </li>
 </ul>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="abc3df650db905fe5692dc968ba057f84"></a>
@@ -281,7 +281,7 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Creates an instance of <a class="el" href="namespace_superpowered.html">Superpowered</a> <a class="el" href="class_superpowered_1_1_decoder.html" title="Audio file decoder. Provides raw PCM audio from various compressed formats. Supported file types:">Decoder</a>. </p>
+<p>Creates an instance of <a class="el" href="namespace_superpowered.html">Superpowered</a> <a class="el" href="class_superpowered_1_1_decoder.html" title="Audio file decoder. Provides raw PCM audio and metadata from various compressed formats....">Decoder</a>. </p>
 
 </div>
 </div>
@@ -583,7 +583,7 @@ Static Public Attributes</h2></td></tr>
     <tr><td class="paramname">offset</td><td>Byte offset in the file. Primarily designed to open raw files from an apk. </td></tr>
     <tr><td class="paramname">length</td><td>Byte length from offset. Set offset and length to 0 to read the entire file. </td></tr>
     <tr><td class="paramname">stemsIndex</td><td>Stems track index for Native Instruments Stems format. </td></tr>
-    <tr><td class="paramname">customHTTPRequest</td><td>If custom HTTP communication is required (such as sending http headers for authorization), pass a fully prepared http request object. The player will take ownership of this. </td></tr>
+    <tr><td class="paramname">customHTTPRequest</td><td>If custom HTTP communication is required (such as sending http headers for authorization), pass a fully prepared http request object. The decoder will copy this object. </td></tr>
   </table>
   </dd>
 </dl>
@@ -626,7 +626,7 @@ Static Public Attributes</h2></td></tr>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="class_superpowered_1_1_decoder.html#acba540f007a8b510a39c83eccafc5d41" title="Opens a file for decoding.">open()</a> for the return value. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pointer</td><td>Pointer to an audio file loaded onto the heap. Should be allocated using malloc() (and not _aligned_malloc() or similar). The <a class="el" href="class_superpowered_1_1_decoder.html" title="Audio file decoder. Provides raw PCM audio from various compressed formats. Supported file types:">Decoder</a> will take ownership on this data. </td></tr>
+    <tr><td class="paramname">pointer</td><td>Pointer to an audio file loaded onto the heap. Should be allocated using malloc() (and not _aligned_malloc() or similar). The <a class="el" href="class_superpowered_1_1_decoder.html" title="Audio file decoder. Provides raw PCM audio and metadata from various compressed formats....">Decoder</a> will take ownership on this data. </td></tr>
     <tr><td class="paramname">sizeBytes</td><td>The audio file length in bytes. </td></tr>
     <tr><td class="paramname">metaOnly</td><td>If true, it opens the file for fast metadata reading only, not for decoding audio. </td></tr>
   </table>
@@ -665,7 +665,7 @@ Static Public Attributes</h2></td></tr>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="class_superpowered_1_1_decoder.html#acba540f007a8b510a39c83eccafc5d41" title="Opens a file for decoding.">open()</a> for the return value. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pointer</td><td>Pointer to information in <a class="el" href="namespace_superpowered.html">Superpowered</a> <a class="el" href="class_superpowered_1_1_audio_in_memory.html" title="The Superpowered AudioInMemory format allows the Decoder and the AdvancedAudioPlayer to read compress...">AudioInMemory</a> format. </td></tr>
+    <tr><td class="paramname">pointer</td><td>Pointer to information in <a class="el" href="namespace_superpowered.html">Superpowered</a> <a class="el" href="class_superpowered_1_1_audio_in_memory.html" title="The Superpowered AudioInMemory format allows the Decoder and the AdvancedAudioPlayer to read compress...">AudioInMemory</a> format. Ownership is controlled by the <a class="el" href="class_superpowered_1_1_audio_in_memory.html" title="The Superpowered AudioInMemory format allows the Decoder and the AdvancedAudioPlayer to read compress...">AudioInMemory</a> format. </td></tr>
     <tr><td class="paramname">metaOnly</td><td>If true, it opens the file for fast metadata reading only, not for decoding audio. </td></tr>
   </table>
   </dd>
@@ -755,7 +755,7 @@ Static Public Attributes</h2></td></tr>
 </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">output</td><td>Pointer to 16-bit signed integer numbers. The output. Must be at least numberOfFrames * 4 + 16384 bytes big. </td></tr>
+    <tr><td class="paramname">output</td><td>Pointer to allocated memory. The output. Must be at least numberOfFrames * 4 + 16384 bytes big. </td></tr>
     <tr><td class="paramname">numberOfFrames</td><td>The requested number of frames. Should NOT be less than the value returned by <a class="el" href="class_superpowered_1_1_decoder.html#ac5a7517be3da6286af040d189950bb0d">getFramesPerChunk()</a>. </td></tr>
   </table>
   </dd>
@@ -949,14 +949,14 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ad4d130834430b4a5615db8a8191e2a66"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad4d130834430b4a5615db8a8191e2a66">&#9670;&nbsp;</a></span>getStemsJSONString()</h2>
+<a id="ae57158337c5e589b3c8bff29cc53d60e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae57158337c5e589b3c8bff29cc53d60e">&#9670;&nbsp;</a></span>getStemsJSONString()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const char* Superpowered::Decoder::getStemsJSONString </td>
+          <td class="memname"><a class="el" href="_superpowered_time_stretching_8h.html#a748090d319f9f128373708b048ee41ee">JSWASM</a> const char* Superpowered::Decoder::getStemsJSONString </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -1273,7 +1273,7 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Returns with the the size of the image returned by <a class="el" href="class_superpowered_1_1_decoder.html#a2a280da872551b75880c6e6a7e968286">getImage()</a>. May return NULL. Call this after <a class="el" href="class_superpowered_1_1_decoder.html#a63613eac6a86a4cb5a93a679abfca5cd" title="Parses all ID3 frames. Do not use startReadingID3/readNextID3Frame after this.">parseAllID3Frames()</a> OR finished reading all ID3 frames with <a class="el" href="class_superpowered_1_1_decoder.html#ac23b384b886b20847703e55d3181e103">readNextID3Frame()</a>. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns with the the size of the image returned by <a class="el" href="class_superpowered_1_1_decoder.html#a2a280da872551b75880c6e6a7e968286">getImage()</a>. May return 0. Call this after <a class="el" href="class_superpowered_1_1_decoder.html#a63613eac6a86a4cb5a93a679abfca5cd" title="Parses all ID3 frames. Do not use startReadingID3/readNextID3Frame after this.">parseAllID3Frames()</a> OR finished reading all ID3 frames with <a class="el" href="class_superpowered_1_1_decoder.html#ac23b384b886b20847703e55d3181e103">readNextID3Frame()</a>. </dd></dl>
 
 </div>
 </div>
@@ -1433,6 +1433,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Error codes for the open...() methods. </p>
+<p>Opened successfully. </p>
 
 </div>
 </div>

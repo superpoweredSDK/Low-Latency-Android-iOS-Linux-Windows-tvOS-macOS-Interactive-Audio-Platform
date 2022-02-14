@@ -135,7 +135,7 @@ public:
 
 /// @brief Returns with 150 points/sec waveform data displaying the peak volume. Each number is an unsigned byte (8-bits), representing one "pixel". Available after calling makeResults().
 /// @param takeOwnership If true, you take ownership on the data, so don't forget to free() the memory to prevent memory leaks. Use _aligned_free() on Windows.
-        JSWASM unsigned char *getPeakWaveform(bool takeOwnership = false);
+    JSWASM unsigned char *getPeakWaveform(bool takeOwnership = false);
 
 private:
     waveformInternals *internals;

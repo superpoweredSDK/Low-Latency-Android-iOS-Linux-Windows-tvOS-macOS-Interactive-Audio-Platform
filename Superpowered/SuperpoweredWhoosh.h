@@ -11,7 +11,7 @@ struct whooshInternals;
 /// One whoosh instance allocates around 4 kb memory.
 class Whoosh: public FX {
 public:
-    float wet;       ///< Limited to >= 0 and <= 1. Default: 0.4.
+    float wet;       ///< White noise signal volume. Limited to >= 0 and <= 1. Default: 0.4.
     float frequency; ///< Limited to >= 20 and <= 20000. Default: 500.
 
 /// @brief Constructor. Enabled is false by default.

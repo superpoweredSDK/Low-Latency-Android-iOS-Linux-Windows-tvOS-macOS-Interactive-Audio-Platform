@@ -12,7 +12,7 @@ namespace Superpowered {
 struct frequencyDomainInternals;
 
 /// @brief Transforms between time-domain and frequency-domain audio, including buffering, windowing (HanningZ) and window overlap handling (default: 4:1).
-/// One instance allocates around 131 kb. How to use:
+/// One instance allocates around 131 kb memory. How to use:
 /// 1. Audio input using addInput().
 /// 2. Call timeDomainToFrequencyDomain(), if it returns false go back to 1.
 /// 3. The output of timeDomainToFrequencyDomain is frequency domain data you can work with.
@@ -83,7 +83,7 @@ public:
 
 /// @brief Add some audio input (advanced use).
 /// @param input The input buffer.
-        void addAudiopointerlistElement(AudiopointerlistElement *input);
+    void addAudiopointerlistElement(AudiopointerlistElement *input);
 
 private:
     frequencyDomainInternals *internals;

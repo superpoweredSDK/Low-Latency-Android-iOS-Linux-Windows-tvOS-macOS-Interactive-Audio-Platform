@@ -10,7 +10,7 @@ namespace Superpowered {
 struct stereoMixerInternals;
 struct monoMixerInternals;
 
-/// @brief Mixes up to 4 stereo inputs. From the traditional mixer hardware point of view, every input and the output has dedicated metering, gain and pan controls. One instance allocates just a few bytes of memory, therefore combining multiple instances of the StereoMixer is the recommended way to support more than 4 channels.
+/// @brief Mixes up to 4 stereo inputs. From the traditional mixer hardware point of view, every input and the output has dedicated metering, gain and pan controls. One instance allocates just a few bytes of memory. Combining multiple instances of the StereoMixer is the recommended way to support more than 4 channels.
 class StereoMixer {
 public:
     float inputGain[8];  ///< Gain per input channel. Default value for all: 1. Changes between consecutive process() calls are automatically smoothed. Example: inputGain[0] = input 0 left, inputGain[1] = input 0 right, inputGain[2] = input 1 left, ...
@@ -37,7 +37,7 @@ private:
     StereoMixer& operator=(const StereoMixer&);
 };
 
-/// @brief Mixes up to 4 mono inputs. Every input and the output has individual gain control. One instance allocates just a few bytes of memory, therefore combining multiple instances of the MonoMixer is the recommended way to support more than 4 channels.
+/// @brief Mixes up to 4 mono inputs. Every input and the output has individual gain control. One instance allocates just a few bytes of memory. Combining multiple instances of the MonoMixer is the recommended way to support more than 4 channels.
 class MonoMixer {
 public:
     float inputGain[4]; ///< Gain per input channel. Default value for all: 1. Changes between consecutive process() calls are automatically smoothed.

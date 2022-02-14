@@ -25,7 +25,7 @@ JSWASM void FFTComplex(float *real, float *imag, int logSize, bool forward);
 /// Data packing is same as Apple's vDSP. Check the "Using Fourier Transforms" page of Apple's vDSP documentation ("Data Packing for Real FFTs").
 /// @param real Pointer to floating point numbers. Real part.
 /// @param imag Pointer to floating point numbers. Imaginary part.
-/// @param logSize Should be 5 - 13 (FFT sizes 32 - 8192).
+/// @param logSize Should be between 5 - 13 (FFT sizes 32 - 8192).
 /// @param forward Forward or inverse.
 JSWASM void FFTReal(float *real, float *imag, int logSize, bool forward);
 
@@ -34,7 +34,7 @@ JSWASM void FFTReal(float *real, float *imag, int logSize, bool forward);
 /// Data packing is same as Apple's vDSP. Check the "Using Fourier Transforms" page of Apple's vDSP documentation ("Data Packing for Real FFTs").
 /// @param mag Pointer to floating point numbers. Input: split real part. Output: magnitudes.
 /// @param phase Pointer to floating point numbers. Input: split real part. Output: phases.
-/// @param logSize Should be 5 - 13 (FFT sizes 32 - 8192).
+/// @param logSize Should be between 5 - 13 (FFT sizes 32 - 8192).
 /// @param forward Forward or inverse. Inverse PolarFFT will clear (zero) the DC offset.
 /// @param valueOfPi The function can translate pi to any value (Google: the tau manifesto). Use 0 for M_PI.
 JSWASM void PolarFFT(float *mag, float *phase, int logSize, bool forward, float valueOfPi = 0);

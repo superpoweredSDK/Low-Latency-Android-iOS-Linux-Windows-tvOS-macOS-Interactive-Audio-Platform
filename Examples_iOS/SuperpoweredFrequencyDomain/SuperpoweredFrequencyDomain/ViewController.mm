@@ -8,19 +8,17 @@
     SuperpoweredIOSAudioIO *audioIO;
     Superpowered::FrequencyDomain *frequencyDomain;
     float *magnitudeLeft, *magnitudeRight, *phaseLeft, *phaseRight, *fifoOutput;
-    int fifoOutputFirstSample, fifoOutputLastSample, fftSize, fifoCapacity;
+    int fifoOutputFirstFrame, fifoOutputLastFrame, fftSize, fifoCapacity;
 }
 
 #define FFT_LOG_SIZE 11 // 2^11 = 2048
 #define OVERLAP_RATIO 4 // The default overlap ratio is 4:1, so we will receive this amount of frames from the frequency domain in one step.
 
 // This callback is called periodically by the audio system.
-static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int inputChannels, float **outputBuffers, unsigned int outputChannels, unsigned int numberOfFrames, unsigned int samplerate, uint64_t hostTime) {
+static bool audioProcessing(void *clientdata, float *input, float *output, unsigned int numberOfFrames, unsigned int samplerate, uint64_t hostTime) {
     __unsafe_unretained ViewController *self = (__bridge ViewController *)clientdata;
     // Input goes to the frequency domain.
-    float interleaved[numberOfFrames * 2];
-    Superpowered::Interleave(inputBuffers[0], inputBuffers[1], interleaved, numberOfFrames);
-    self->frequencyDomain->addInput(interleaved, numberOfFrames);
+    self->frequencyDomain->addInput(input, numberOfFrames);
 
     // In the frequency domain we are working with 1024 magnitudes and phases for every channel (left, right), if the fft size is 2048.
     while (self->frequencyDomain->timeDomainToFrequencyDomain(self->magnitudeLeft, self->magnitudeRight, self->phaseLeft, self->phaseRight)) {
@@ -33,23 +31,23 @@ static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int
         // We are done working with frequency domain data. Let's go back to the time domain.
 
         // Check if we have enough room in the fifo buffer for the output. If not, move the existing audio data back to the buffer's beginning.
-        if (self->fifoOutputLastSample + self->fftSize / OVERLAP_RATIO >= self->fifoCapacity) { // This will be true for every 100th iteration only, so we save precious memory bandwidth.
-            int samplesInFifo = self->fifoOutputLastSample - self->fifoOutputFirstSample;
-            if (samplesInFifo > 0) memmove(self->fifoOutput, self->fifoOutput + self->fifoOutputFirstSample * 2, samplesInFifo * sizeof(float) * 2);
-            self->fifoOutputFirstSample = 0;
-            self->fifoOutputLastSample = samplesInFifo;
+        if (self->fifoOutputLastFrame + self->fftSize / OVERLAP_RATIO >= self->fifoCapacity) { // This will be true for every 100th iteration only, so we save precious memory bandwidth.
+            int samplesInFifo = self->fifoOutputLastFrame - self->fifoOutputFirstFrame;
+            if (samplesInFifo > 0) memmove(self->fifoOutput, self->fifoOutput + self->fifoOutputFirstFrame * 2, samplesInFifo * sizeof(float) * 2);
+            self->fifoOutputFirstFrame = 0;
+            self->fifoOutputLastFrame = samplesInFifo;
         };
 
         // Transforming back to the time domain.
-        self->frequencyDomain->frequencyDomainToTimeDomain(self->magnitudeLeft, self->magnitudeRight, self->phaseLeft, self->phaseRight, self->fifoOutput + self->fifoOutputLastSample * 2);
+        self->frequencyDomain->frequencyDomainToTimeDomain(self->magnitudeLeft, self->magnitudeRight, self->phaseLeft, self->phaseRight, self->fifoOutput + self->fifoOutputLastFrame * 2);
         self->frequencyDomain->advance();
-        self->fifoOutputLastSample += self->fftSize / OVERLAP_RATIO;
+        self->fifoOutputLastFrame += self->fftSize / OVERLAP_RATIO;
     };
 
     // If we have enough samples in the fifo output buffer, pass them to the audio output.
-    if (self->fifoOutputLastSample - self->fifoOutputFirstSample >= numberOfFrames) {
-        Superpowered::DeInterleave(self->fifoOutput + self->fifoOutputFirstSample * 2, outputBuffers[0], outputBuffers[1], numberOfFrames);
-        self->fifoOutputFirstSample += numberOfFrames;
+    if (self->fifoOutputLastFrame - self->fifoOutputFirstFrame >= numberOfFrames) {
+        memcpy(output, self->fifoOutput + self->fifoOutputFirstFrame * 2, numberOfFrames * sizeof(float) * 2);
+        self->fifoOutputFirstFrame += numberOfFrames;
         return true;
     } else return false;
 }
@@ -60,16 +58,7 @@ static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int
     if (@available(iOS 13, *)) self.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
 #endif
     
-    Superpowered::Initialize(
-                             "ExampleLicenseKey-WillExpire-OnNextUpdate",
-                             false, // enableAudioAnalysis (using SuperpoweredAnalyzer, SuperpoweredLiveAnalyzer, SuperpoweredWaveform or SuperpoweredBandpassFilterbank)
-                             true, // enableFFTAndFrequencyDomain (using SuperpoweredFrequencyDomain, SuperpoweredFFTComplex, SuperpoweredFFTReal or SuperpoweredPolarFFT)
-                             false, // enableAudioTimeStretching (using SuperpoweredTimeStretching)
-                             false, // enableAudioEffects (using any SuperpoweredFX class)
-                             false, // enableAudioPlayerAndDecoder (using SuperpoweredAdvancedAudioPlayer or SuperpoweredDecoder)
-                             false, // enableCryptographics (using Superpowered::RSAPublicKey, Superpowered::RSAPrivateKey, Superpowered::hasher or Superpowered::AES)
-                             false  // enableNetworking (using Superpowered::httpRequest)
-                             );
+    Superpowered::Initialize("ExampleLicenseKey-WillExpire-OnNextUpdate");
 
     frequencyDomain = new Superpowered::FrequencyDomain(FFT_LOG_SIZE); // This will do the main "magic".
     fftSize = 1 << FFT_LOG_SIZE;
@@ -81,7 +70,7 @@ static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int
     phaseRight = (float *)malloc(fftSize * sizeof(float));
 
     // Time domain result goes into a FIFO (first-in, first-out) buffer
-    fifoOutputFirstSample = fifoOutputLastSample = 0;
+    fifoOutputFirstFrame = fifoOutputLastFrame = 0;
     fifoCapacity = fftSize / OVERLAP_RATIO * 100; // Let's make the fifo's size 100 times more than the step size, so we save memory bandwidth.
     fifoOutput = (float *)malloc(fifoCapacity * sizeof(float) * 2 + 128);
 

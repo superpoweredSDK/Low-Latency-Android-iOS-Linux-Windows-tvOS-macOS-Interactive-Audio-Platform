@@ -44,7 +44,7 @@ class ViewController: UIViewController {
         let width:CGFloat = (self.view.frame.size.width - 47) / 8
         var frame:CGRect = CGRect(x: 20, y: 0, width: width, height: 0)
         for n in 0...7 {
-            frame.size.height = CGFloat(frequencies[n]) * 4000
+            frame.size.height = CGFloat(frequencies[n]) * 400000
             frame.origin.y = originY - frame.size.height
             layers[n].frame = frame
             frame.origin.x += width + 1

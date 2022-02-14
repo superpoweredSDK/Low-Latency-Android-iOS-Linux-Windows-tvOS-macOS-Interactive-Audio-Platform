@@ -37,6 +37,10 @@ struct PlayerInternals;
 
 class AdvancedAudioPlayer {
 public:
+    static const int HLSDownloadEverything;  ///< Will download everything after the playback position until the end.
+    static const int HLSDownloadRemaining;   ///< Downloads everything from the beginning to the end, regardless the playback position.
+    static const float MaxPlaybackRate;      ///< The maximum playback rate or scratching speed: 20.
+    
     /// @brief Jog Wheel Mode, to be used with the jogT... methods.
     typedef enum JogMode {
         JogMode_Scratch = 0,   ///< Jog wheel controls scratching.
@@ -67,23 +71,20 @@ public:
     float formantCorrection;                 ///< Amount of formant correction, between 0 (none) and 1 (full). Default: 0.
     double originalBPM;                      ///< The original bpm of the current music. There is no auto-bpm detection inside, this must be set to a correct value for syncing. Maximum 300. A value below 20 will be automatically set to 0. Default: 0 (no bpm value known).
     bool fixDoubleOrHalfBPM;                 ///< If true and playbackRate is above 1.4f or below 0.6f, it will sync the tempo as half or double. Default: false.
-    double firstBeatMs;                      ///< Tells where the first beat is (the beatgrid starts). Must be set to a correct value for syncing. Default: 0.
-    double defaultQuantum;                   ///< Sets the quantum for quantized synchronization. Example: 4 means 4 beats.
+    double firstBeatMs;                      ///< The start position of the beatgrid in milliseconds. Must be set to a correct value for syncing. Default: 0.
+    double defaultQuantum;                   ///< Sets the quantum for quantized synchronization. Example: 4 means 4 beats. Default: 1.
     SyncMode syncMode;                       ///< The current sync mode (off, tempo, or tempo+beat). Default: off.
-    double syncToBpm;                        ///< A bpm value to sync with. Use 0.0f for no syncing.
-    double syncToMsElapsedSinceLastBeat;     ///< The number of milliseconds elapsed since the last beat on audio the player has to sync with. Use -1.0 to ignore.
-    double syncToPhase;                      ///< Used for quantized synchronization. The phase to sync with.
-    double syncToQuantum;                    ///< Used for quantized synchronization. The quantum to sync with.
-    int pitchShiftCents;                     ///< Pitch shift cents, from -2400 (two octaves down) to 2400 (two octaves up). Use values representing notes (multiply of 100), between -1200 and 1200 for low CPU load. Default: 0 (no pitch shift).
+    double syncToBpm;                        ///< A bpm value to sync with. Use 0 for no syncing. Default: 0.
+    double syncToMsElapsedSinceLastBeat;     ///< The number of milliseconds elapsed since the last beat on audio the player has to sync with. Use -1.0 to ignore. Default: -1.
+    double syncToPhase;                      ///< Used for quantized synchronization. The phase to sync with between 0 and 1. Use -1 to ignore. Default: -1.
+    double syncToQuantum;                    ///< Used for quantized synchronization. The quantum to sync with. Use -1 to ignore. Default: -1.
+    int pitchShiftCents;                     ///< Pitch shift cents, from -2400 (two octaves down) to 2400 (two octaves up). Low CPU load for multiples of 100 between -1200 and 1200. Default: 0 (no pitch shift).
     bool loopOnEOF;                          ///< If true, jumps back and continues playback. If false, playback stops. Default: false.
     bool reverseToForwardAtLoopStart;        ///< If this is true with playing backwards and looping, then reaching the beginning of the loop will change playback direction to forwards. Default: false.
     bool HLSAutomaticAlternativeSwitching;   ///< If true, then the player will automatically switch between the HLS alternatives according to the available network bandwidth. Default: true.
-    char HLSLiveLatencySeconds;              ///< When connecting or reconnecting to a HLS live stream, the player will try to skip audio to maintain this latency. Default: -1 (the player wil not skip audio and the live stream starts at the first segment specified by the server).
+    char HLSLiveLatencySeconds;              ///< When connecting or reconnecting to a HLS live stream, the player will try to skip audio to maintain this latency. Default: -1 (the player will not skip audio and the live stream starts at the first segment specified by the server).
     int HLSMaximumDownloadAttempts;          ///< How many times to retry if a HLS segment download fails. Default: 100.
-    int HLSBufferingSeconds;                 ///< How many seconds ahead of the playback position to download. Default value: HLS_DOWNLOAD_REMAINING.
-    static const int HLSDownloadEverything;  ///< Will download everything after the playback position until the end.
-    static const int HLSDownloadRemaining;   ///< Downloads everything from the beginning to the end, regardless the playback position.
-    static const float MaxPlaybackRate;      ///< The maximum playback rate or scratching speed: 20.
+    int HLSBufferingSeconds;                 ///< How many seconds ahead of the playback position to download. Default value: HLSDownloadRemaining.
     unsigned char timeStretchingSound;       ///< The sound parameter of the internal TimeStretching instance. @see TimeStretching
 
 /// @brief Set the folder to store for temporary files. Used for HLS and progressive download only.
@@ -144,7 +145,7 @@ public:
 /// @brief Opens a memory location in Superpowered AudioInMemory format, with playback paused. This feature supports progressive loading via AudioInMemory::append (and the AudioInMemory doesn't even need to hold any data when openMemory is called).
 /// Playback rate, pitchShift, timeStretching and syncMode are NOT changed if you open a new file.
 /// @warning This method has no effect if the previous open didn't finish or if called in the audio processing thread.
-/// @param pointer Pointer to information in Superpowered AudioInMemory format. @see Decoder for details.
+/// @param pointer Pointer to data in Superpowered AudioInMemory format, pointing to raw stereo interleaved pcm audio inside.
 /// @param skipSilenceAtBeginning If true, the player will set the position to skip the initial digital silence of the audio file (up to 10 seconds).
 /// @param measureSilenceAtEnd If true, the player will check the length of the digital silence at the end of the audio file.
     JSWASM void openMemory(void *pointer, bool skipSilenceAtBeginning = false, bool measureSilenceAtEnd = false);
@@ -188,6 +189,9 @@ public:
     
 /// @return Similar to getDisplayPositionMs(), but as seconds elapsed.
     JSWASM int getDisplayPositionSeconds();
+    
+/// @return The position in milliseconds where the player will continue playback after slip mode ends.
+    JSWASM double afterSlipModeWillJumpBackToPositionMs();
     
 /// @return The duration of the current track in milliseconds. Returns UINT_MAX for live streams.
     JSWASM unsigned int getDurationMs();
@@ -235,8 +239,8 @@ public:
 /// @param pointID Use this to provide a custom identifier, so you can overwrite the same point later. Use 255 for a point with no identifier.
     JSWASM void cachePosition(double ms, unsigned char pointID = 255);
             
-/// @brief Processes audio, stereo version.
-/// @return True: buffer has audio output from the player. False: the contents of buffer were not changed (typically happens when the player is paused).
+/// @brief Outputs audio, stereo version.
+/// @return True: buffer has audio output from the player. False: the contents of the buffers were not changed (typically happens when the player is paused).
 /// @warning Duration may change to a more precise value after this, because some file formats have no precise duration information.
 /// @param buffer Pointer to floating point numbers. 32-bit interleaved stereo input/output buffer. Should be numberOfFrames * 8 + 64 bytes big.
 /// @param mix If true, the player output will be mixed with the contents of buffer. If false, the contents of buffer will be overwritten with the player output.
@@ -244,7 +248,7 @@ public:
 /// @param volume 0.0f is silence, 1.0f is "original volume". Changes are automatically smoothed between consecutive processes.
     JSWASM bool processStereo(float *buffer, bool mix, unsigned int numberOfFrames, float volume = 1.0f);
 
-/// @brief Processes audio, 8 channels version.
+/// @brief Outputs audio, 8 channels version.
 /// @return True: buffers has audio output from the player. False: the contents of buffer were not changed (typically happens when the player is paused).
 /// @warning Duration may change to a more precise value after this, because some file formats have no precise duration information.
 /// @param buffer0 Pointer to floating point numbers. 32-bit interleaved stereo input/output buffer for the 1st stereo channels. Should be numberOfFrames * 8 + 64 bytes big.
@@ -266,7 +270,7 @@ public:
 /// @param input Pointer to floating point numbers. 32-bit interleaved stereo input buffer.
 /// @param output Pointer to floating point numbers. 32-bit interleaved stereo output buffer.
 /// @param numberOfFrames The number of frames to process.
-/// @param volume 0.0f is silence, 1.0f is "original volume". Changes are automatically smoothed between consecutive processes.
+/// @param volume Output volume. 0.0f is silence, 1.0f is "original volume". Changes are automatically smoothed between consecutive processes.
     JSWASM void processSTEMSMaster(float *input, float *output, unsigned int numberOfFrames, float volume = 1.0f);
     
 /// @return Returns with a stem's name if a STEMS file was loaded, NULL otherwise.
@@ -303,10 +307,10 @@ public:
 /// 4 - 4.999: fourth beat
     JSWASM float getBeatIndex();
         
-/// @return Returns with the current phase for quantized synchronization.
+/// @return Returns with the current phase for quantized synchronization, between 0 (beginning of the quantum) and 1 (end of the quantum).
     JSWASM double getPhase();
         
-/// @return Returns with the current quantum for quantized synchronization.
+/// @return Returns with the current quantum for quantized synchronization, such as 2 for two beats, 4 for four beats, etc...
     JSWASM double getQuantum();
     
 /// @return Returns with the distance (in milliseconds) to a specific quantum and phase for quantized synchronization.
@@ -326,7 +330,7 @@ public:
 /// @param numLoops Number of times to loop. 0 means: until exitLoop() is called.
 /// @param forceDefaultQuantum If true and using quantized synchronization, will use the defaultQuantum instead of the syncToQuantum.
 /// @param preferWaitingforSynchronisedStart Wait or start immediately when synchronized.
-    JSWASM bool loop(double startMs, double lengthMs, bool jumpToStartMs, unsigned char pointID, bool synchronisedStart, unsigned int numLoops = 0, bool forceDefaultQuantum = false, bool preferWaitingforSynchronisedStart = false);
+    JSWASM void loop(double startMs, double lengthMs, bool jumpToStartMs, unsigned char pointID, bool synchronisedStart, unsigned int numLoops = 0, bool forceDefaultQuantum = false, bool preferWaitingforSynchronisedStart = false);
 
 /// @brief Loop between a start and end points.
 /// @param startMs Loop from this milliseconds.
@@ -337,7 +341,7 @@ public:
 /// @param numLoops Number of times to loop. 0 means: until exitLoop() is called.
 /// @param forceDefaultQuantum If true and using quantized synchronization, will use the defaultQuantum instead of the syncToQuantum.
 /// @param preferWaitingforSynchronisedStart Wait or start immediately when synchronized.
-    JSWASM bool loopBetween(double startMs, double endMs, bool jumpToStartMs, unsigned char pointID, bool synchronisedStart, unsigned int numLoops = 0, bool forceDefaultQuantum = false, bool preferWaitingforSynchronisedStart = false);
+    JSWASM void loopBetween(double startMs, double endMs, bool jumpToStartMs, unsigned char pointID, bool synchronisedStart, unsigned int numLoops = 0, bool forceDefaultQuantum = false, bool preferWaitingforSynchronisedStart = false);
         
 /// @brief Exit from the current loop.
 /// @param synchronisedStart Synchronized start or re-synchronization after the loop exit.

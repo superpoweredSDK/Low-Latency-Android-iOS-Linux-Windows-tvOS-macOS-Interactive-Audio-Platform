@@ -11,7 +11,7 @@
     audioProcessingCallback_C processingCallback;
     void *processingClientdata;
     AudioComponentInstance audioUnit;
-    int numChannels, samplerate, preferredMinimumSamplerate;
+    int numberOfChannels, samplerate, preferredMinimumSamplerate;
     bool audioUnitRunning, background;
 }
 
@@ -20,7 +20,7 @@
 - (id)initWithDelegate:(NSObject<SuperpoweredtvOSAudioIODelegate> *)d preferredBufferSize:(unsigned int)preferredBufferSize preferredMinimumSamplerate:(unsigned int)prefsamplerate audioSessionCategory:(NSString *)category channels:(int)channels {
     self = [super init];
     if (self) {
-        numChannels = channels;
+        numberOfChannels = channels;
 #if !__has_feature(objc_arc)
         audioSessionCategory = [category retain];
 #else
@@ -160,21 +160,18 @@ static OSStatus audioProcessingCallback(void *inRefCon, AudioUnitRenderActionFla
     __unsafe_unretained SuperpoweredtvOSAudioIO *self = (__bridge SuperpoweredtvOSAudioIO *)inRefCon;
 
     div_t d = div(inNumberFrames, 8);
-    if ((d.rem != 0) || (inNumberFrames < 32) || (inNumberFrames > 512) || (ioData->mNumberBuffers != self->numChannels)) {
+    if ((d.rem != 0) || (inNumberFrames < 32) || (inNumberFrames > 512) || ((int)ioData->mBuffers[0].mNumberChannels != self->numberOfChannels)) {
         return kAudioUnitErr_InvalidParameter;
     };
-
-    float *bufs[self->numChannels];
-    for (int n = 0; n < self->numChannels; n++) bufs[n] = (float *)ioData->mBuffers[n].mData;
     bool silence = true;
 
     // Make audio output.
-    if (self->processingCallback) silence = !self->processingCallback(self->processingClientdata, bufs, self->numChannels, inNumberFrames, self->samplerate, inTimeStamp->mHostTime);
-    else silence = ![self->delegate audioProcessingCallback:bufs outputChannels:self->numChannels numberOfFrames:inNumberFrames samplerate:self->samplerate hostTime:inTimeStamp->mHostTime];
+    if (self->processingCallback) silence = !self->processingCallback(self->processingClientdata, (float *)ioData->mBuffers[0].mData, inNumberFrames, self->samplerate, inTimeStamp->mHostTime);
+    else silence = ![self->delegate audioProcessingCallback:(float *)ioData->mBuffers[0].mData numberOfFrames:inNumberFrames samplerate:self->samplerate hostTime:inTimeStamp->mHostTime];
 
     if (silence) { // Despite of ioActionFlags, it outputs garbage sometimes, so must zero the buffers:
         *ioActionFlags |= kAudioUnitRenderAction_OutputIsSilence;
-        for (unsigned char n = 0; n < ioData->mNumberBuffers; n++) memset(ioData->mBuffers[n].mData, 0, ioData->mBuffers[n].mDataByteSize);
+        memset(ioData->mBuffers[0].mData, 0, inNumberFrames * sizeof(float) * self->numberOfChannels);
     };
     
     return noErr;
@@ -206,12 +203,11 @@ static OSStatus audioProcessingCallback(void *inRefCon, AudioUnitRenderActionFla
     [self setSamplerateAndBuffersize];
 
 	format.mFormatID = kAudioFormatLinearPCM;
-    format.mFormatFlags = kAudioFormatFlagIsFloat | kAudioFormatFlagIsPacked | kAudioFormatFlagIsNonInterleaved | kAudioFormatFlagsNativeEndian;
+    format.mFormatFlags = kAudioFormatFlagIsFloat | kAudioFormatFlagIsPacked | kAudioFormatFlagsNativeEndian;
     format.mBitsPerChannel = 32;
 	format.mFramesPerPacket = 1;
-    format.mBytesPerFrame = 4;
-    format.mBytesPerPacket = 4;
-    format.mChannelsPerFrame = numChannels;
+    format.mBytesPerFrame = format.mBytesPerPacket = numberOfChannels * 4;
+    format.mChannelsPerFrame = numberOfChannels;
     if (AudioUnitSetProperty(au, kAudioUnitProperty_StreamFormat, kAudioUnitScope_Input, 0, &format, sizeof(format))) { AudioComponentInstanceDispose(au); return NULL; };
     if (AudioUnitSetProperty(au, kAudioUnitProperty_StreamFormat, kAudioUnitScope_Output, 1, &format, sizeof(format))) { AudioComponentInstanceDispose(au); return NULL; };
     

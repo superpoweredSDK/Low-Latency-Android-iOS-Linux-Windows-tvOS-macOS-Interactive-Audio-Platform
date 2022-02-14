@@ -5,13 +5,11 @@
 /// @brief You can have an audio processing callback in Objective-C or pure C. This is the pure C prototype.
 /// @return Return false when you did no audio processing (silence).
 /// @param clientData A custom pointer your callback receives.
-/// @param buffers Input-output buffers.
-/// @param inputChannels The number of input channels.
-/// @param outputChannels The number of output channels.
+/// @param output Output buffer.
 /// @param numberOfFrames The number of frames requested.
 /// @param samplerate The current sample rate in Hz.
 /// @param hostTime A mach timestamp, indicates when this buffer of audio will be passed to the audio output.
-typedef bool (*audioProcessingCallback_C) (void *clientdata, float **buffers, unsigned int outputChannels, unsigned int numberOfFrames, unsigned int samplerate, uint64_t hostTime);
+typedef bool (*audioProcessingCallback_C) (void *clientdata, float *output, unsigned int numberOfFrames, unsigned int samplerate, uint64_t hostTime);
 
 /// @brief Handles all audio session, audio lifecycle (interruptions), output, buffer size and samplerate headaches.
 /// @warning All methods and setters should be called on the main thread only!
@@ -25,7 +23,7 @@ typedef bool (*audioProcessingCallback_C) (void *clientdata, float **buffers, un
 /// @param delegate The object fully implementing the SuperpoweredIOSAudioIODelegate protocol. Not retained.
 /// @param preferredBufferSize The initial value for preferredBufferSizeMs. 12 is good for every tvOS device (512 frames).
 /// @param preferredMinimumSamplerate The preferred minimum sample rate. 44100 or 48000 are recommended for good sound quality.
-/// @param audioSessionCategory The audio session category. Audio input is enabled for the appropriate categories only!
+/// @param audioSessionCategory The audio session category.
 /// @param channels The number of channels in the audio processing callback.
 - (id)initWithDelegate:(id<SuperpoweredtvOSAudioIODelegate>)delegate preferredBufferSize:(unsigned int)preferredBufferSize preferredMinimumSamplerate:(unsigned int)preferredMinimumSamplerate audioSessionCategory:(NSString *)audioSessionCategory channels:(int)channels;
 
@@ -60,12 +58,11 @@ typedef bool (*audioProcessingCallback_C) (void *clientdata, float **buffers, un
 
 /// @brief Process audio here.
 /// @return Return false for no audio output (silence).
-/// @param buffers Input-output buffers.
-/// @param outputChannels The number of output channels.
+/// @param output Output buffer.
 /// @param numberOfFrames The number of frames requested.
 /// @param samplerate The current sample rate in Hz.
 /// @param hostTime A mach timestamp, indicates when this chunk of audio will be passed to the audio output.
 /// @warning It's called on a high priority real-time audio thread, so please take care of blocking and processing time to prevent audio dropouts.
-- (bool)audioProcessingCallback:(float **)buffers outputChannels:(unsigned int)outputChannels numberOfFrames:(unsigned int)numberOfFrames samplerate:(unsigned int)samplerate hostTime:(UInt64)hostTime;
+- (bool)audioProcessingCallback:(float *)output numberOfFrames:(unsigned int)numberOfFrames samplerate:(unsigned int)samplerate hostTime:(UInt64)hostTime;
 
 @end

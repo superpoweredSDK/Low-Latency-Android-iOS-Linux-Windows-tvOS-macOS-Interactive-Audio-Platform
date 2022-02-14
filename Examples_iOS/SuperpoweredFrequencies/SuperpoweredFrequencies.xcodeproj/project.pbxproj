@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		21144CE0232147C70062D494 /* libSuperpoweredAudioIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21144CDF232147C70062D494 /* libSuperpoweredAudioIOS.a */; };
 		21144CE3232147DF0062D494 /* SuperpoweredIOSAudioIO.mm in Sources */ = {isa = PBXBuildFile; fileRef = 21144CE1232147DF0062D494 /* SuperpoweredIOSAudioIO.mm */; };
 		21144CEC232147FD0062D494 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21144CE8232147FD0062D494 /* Main.storyboard */; };
 		21144CF22321480A0062D494 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21144CEE2321480A0062D494 /* ViewController.swift */; };
@@ -17,11 +16,11 @@
 		217B983B23201AEE002297DB /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 217B983A23201AEE002297DB /* CoreMedia.framework */; };
 		217B983D23201AFB002297DB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 217B983C23201AFB002297DB /* AudioToolbox.framework */; };
 		217B983F23201B0D002297DB /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 217B983E23201B0D002297DB /* MediaPlayer.framework */; };
+		21D40E4E27B3CD150077C4F9 /* libSuperpoweredAudio.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21D40E4D27B3CD150077C4F9 /* libSuperpoweredAudio.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1B1688DA1A7BAFF800CB7477 /* SuperpoweredFrequencies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperpoweredFrequencies.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		21144CDF232147C70062D494 /* libSuperpoweredAudioIOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSuperpoweredAudioIOS.a; path = ../../Superpowered/libSuperpoweredAudioIOS.a; sourceTree = "<group>"; };
 		21144CE1232147DF0062D494 /* SuperpoweredIOSAudioIO.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SuperpoweredIOSAudioIO.mm; path = ../../Superpowered/OpenSource/SuperpoweredIOSAudioIO.mm; sourceTree = "<group>"; };
 		21144CE2232147DF0062D494 /* SuperpoweredIOSAudioIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperpoweredIOSAudioIO.h; path = ../../Superpowered/OpenSource/SuperpoweredIOSAudioIO.h; sourceTree = "<group>"; };
 		21144CE4232147E70062D494 /* SuperpoweredBandpassFilterbank.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SuperpoweredBandpassFilterbank.h; path = ../../Superpowered/SuperpoweredBandpassFilterbank.h; sourceTree = "<group>"; };
@@ -37,6 +36,7 @@
 		217B983A23201AEE002297DB /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		217B983C23201AFB002297DB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		217B983E23201B0D002297DB /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		21D40E4D27B3CD150077C4F9 /* libSuperpoweredAudio.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = libSuperpoweredAudio.xcframework; path = ../../Superpowered/libSuperpoweredAudio.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,10 +44,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21D40E4E27B3CD150077C4F9 /* libSuperpoweredAudio.xcframework in Frameworks */,
 				217B983F23201B0D002297DB /* MediaPlayer.framework in Frameworks */,
 				217B983D23201AFB002297DB /* AudioToolbox.framework in Frameworks */,
 				217B983B23201AEE002297DB /* CoreMedia.framework in Frameworks */,
-				21144CE0232147C70062D494 /* libSuperpoweredAudioIOS.a in Frameworks */,
 				217B983923201AE3002297DB /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -80,7 +80,7 @@
 		21144CDE232147810062D494 /* Superpowered */ = {
 			isa = PBXGroup;
 			children = (
-				21144CDF232147C70062D494 /* libSuperpoweredAudioIOS.a */,
+				21D40E4D27B3CD150077C4F9 /* libSuperpoweredAudio.xcframework */,
 				21144CE2232147DF0062D494 /* SuperpoweredIOSAudioIO.h */,
 				21144CE1232147DF0062D494 /* SuperpoweredIOSAudioIO.mm */,
 				21144CE4232147E70062D494 /* SuperpoweredBandpassFilterbank.h */,
@@ -297,7 +297,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -309,7 +310,10 @@
 				DEVELOPMENT_TEAM = AP4SQ5L535;
 				INFOPLIST_FILE = SuperpoweredFrequencies/etc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../../Superpowered";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.imect.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -326,7 +330,10 @@
 				DEVELOPMENT_TEAM = AP4SQ5L535;
 				INFOPLIST_FILE = SuperpoweredFrequencies/etc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../../Superpowered";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.imect.$(PRODUCT_NAME:rfc1034identifier)";

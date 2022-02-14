@@ -26,8 +26,15 @@ public:
 /// @return Returns with a pointer to floating point numbers, which is the output with numberOfFrames audio available in it. It is valid until the next call to process().
 /// @param input Pointer to floating point numbers. 32-bit interleaved stereo input. Special case: set to NULL to empty all buffered content.
 /// @param numberOfFrames Number of frames to input and output.
-/// @param fx Optional. If NULL, then simple memory copy will be used to pass audio from input to the internal buffer. If not NULL, fx->process() will be used to pass audio from input to the internal buffer.
-    JSWASM const float * const process(float *input, int numberOfFrames, FX *fx = 0);
+    JSWASM const float * const process(float *input, int numberOfFrames);
+    
+/// @brief Processes the audio.
+/// It's never blocking for real-time usage. You can change any properties concurrently with process().
+/// @return Returns with a pointer to floating point numbers, which is the output with numberOfFrames audio available in it. It is valid until the next call to process().
+/// @param input Pointer to floating point numbers. 32-bit interleaved stereo input. Special case: set to NULL to empty all buffered content.
+/// @param numberOfFrames Number of frames to input and output.
+/// @param fx A Superpowered FX class instance, such as a Filter. fx->process() will be used to pass audio from input to the internal buffer.
+    JSWASM const float * const processWithFx(float *input, int numberOfFrames, FX *fx);
    
 private:
     delayInternals *internals;

@@ -19,7 +19,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Superpowered SDKs
-   &#160;<span id="projectnumber">2.4.0</span>
+   &#160;<span id="projectnumber">2.5.0</span>
    </div>
    <div id="projectbrief">Pain-free Audio, Cryptographics and Networking Development for Android, iOS, macOS, tvOS, Linux and Windows</div>
   </td>
@@ -211,11 +211,11 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Processes audio. It's never blocking for real-time usage. You can change all properties on any thread, concurrently with process(). Use it in the same thread with the other real-time methods of this class. </p>
+<p>Audio input. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">input</td><td>Pointer to floating point numbers. 32-bit interleaved stereo input. </td></tr>
-    <tr><td class="paramname">numberOfFrames</td><td>Number of frames to process. </td></tr>
+    <tr><td class="paramname">numberOfFrames</td><td>Number of frames in input. </td></tr>
   </table>
   </dd>
 </dl>
@@ -309,7 +309,7 @@ Public Attributes</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">numStereoPairs</td><td>The number of stereo audio channel pairs. Valid values: one (stereo) to four (8 channels). </td></tr>
-    <tr><td class="paramname">dontFree</td><td>If true, this function will not free up any memory if numStereoPairs is less than before, so no reallocation happens if numStereoPairs needs to be increased later. </td></tr>
+    <tr><td class="paramname">dontFree</td><td>If true, this function will not free up any memory if numStereoPairs was bigger before, so no reallocation happens if numStereoPairs needs to be increased later. </td></tr>
   </table>
   </dd>
 </dl>
@@ -362,7 +362,7 @@ Public Attributes</h2></td></tr>
 <ol type="1">
 <li>Save memory bandwidth (uses no memory copy) for maximum performance.</li>
 <li>Support up to 8 audio channels.</li>
-<li>Provide sub-sample precise positioning. It's never blocking for real-time usage. You can change all properties on any thread, concurrently with process(). Use it in the same thread with the other real-time methods of this class. Do not use this method with <a class="el" href="class_superpowered_1_1_time_stretching.html#a4ce855fddfaf9323e430da9d4d709d5a" title="Processes audio. It&#39;s never blocking for real-time usage. You can change all properties on any thread...">addInput()</a> or <a class="el" href="class_superpowered_1_1_time_stretching.html#a4fc347804abbe1048d860ca8e03f4455" title="Gets the audio output into a buffer. It&#39;s never blocking for real-time usage. You can change all prop...">getOutput()</a>. <dl class="params"><dt>Parameters</dt><dd>
+<li>Provide sub-sample precise positioning. It's never blocking for real-time usage. You can change all properties on any thread, concurrently with process(). Use it in the same thread with the other real-time methods of this class. Do not use this method with <a class="el" href="class_superpowered_1_1_time_stretching.html#a4ce855fddfaf9323e430da9d4d709d5a" title="Audio input.">addInput()</a> or <a class="el" href="class_superpowered_1_1_time_stretching.html#a4fc347804abbe1048d860ca8e03f4455" title="Gets the audio output into a buffer. It&#39;s never blocking for real-time usage. You can change all prop...">getOutput()</a>. <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">input</td><td>The input buffer. It will take ownership on the input. </td></tr>
   </table>
