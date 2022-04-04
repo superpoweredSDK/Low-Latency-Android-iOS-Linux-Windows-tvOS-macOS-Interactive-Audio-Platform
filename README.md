@@ -52,10 +52,6 @@ Superpowered is cross-platform: ALL SUPERPOWERED C++ CODE CAN BE COPY-PASTED bet
 
 # Folders
 
-- /Docs
-
-	The documentation. Start with index.html.
-
 - /Superpowered
 
 	The SDKs (static libraries and headers).
@@ -199,9 +195,7 @@ Prerequisites: latest Android SDK, Android NDK, Android Studio installed. Steps:
 
 Superpowered offers multiple support options.
 
-Developer Documentation (C++): https://superpowered.com/docs/
-
-Developer Documentation (Javascript): https://superpowered.com/js-wasm-sdk/docs.html
+Developer Documentation (C++ and JavaScript): https://docs.superpowered.com
 
 Email: support@superpowered.zendesk.com
 
@@ -241,4 +235,4 @@ Superpowered FFT benefits from ideas in Construction of a High-Performance FFT b
 
 The Superpowered MP3 and AAC decoder benefits from optimizations by Ken Cooke.
 
-Superpowered version 2.5.0
+Superpowered version 2.5.1

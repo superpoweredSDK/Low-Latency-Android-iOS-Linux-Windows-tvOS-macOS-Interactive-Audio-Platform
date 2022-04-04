@@ -154,6 +154,7 @@ JSWASM void CopyMonoToInterleaved(float *monoInput, unsigned int channelIndex, f
 JSWASM void CopyStereoToInterleaved(float *stereoInput, unsigned int channelIndex, float *interleavedOutput, unsigned int numInterleavedChannels, unsigned int numberOfFrames, float multiplier = 1.0f);
 
 /// @fn CopyMonoFromInterleaved(float *interleavedInput, float *monoOutput, unsigned int numberOfFrames, unsigned int channelIndex);
+/// @brief Copy mono audio from an interleaved buffer.
 /// @param interleavedInput Pointer to floating point numbers. Interleaved input.
 /// @param numInterleavedChannels The total number of channels in the interleaved input.
 /// @param monoOutput Pointer to floating point numbers. Mono output.
@@ -162,6 +163,7 @@ JSWASM void CopyStereoToInterleaved(float *stereoInput, unsigned int channelInde
 JSWASM void CopyMonoFromInterleaved(float *interleavedInput, unsigned int numInterleavedChannels, float *monoOutput, unsigned int channelIndex, unsigned int numberOfFrames);
 
 /// @fn CopyStereoFromInterleaved(float *interleavedInput, float *monoOutput, unsigned int numberOfFrames, unsigned int channelIndex);
+/// @brief Copy stereo audio from an interleaved buffer.
 /// @param interleavedInput Pointer to floating point numbers. Interleaved input.
 /// @param numInterleavedChannels The total number of channels in the interleaved input.
 /// @param stereoOutput Pointer to floating point numbers. Stereo interleaved output.
@@ -170,6 +172,7 @@ JSWASM void CopyMonoFromInterleaved(float *interleavedInput, unsigned int numInt
 JSWASM void CopyStereoFromInterleaved(float *interleavedInput, unsigned int numInterleavedChannels, float *stereoOutput, unsigned int channelIndex, unsigned int numberOfFrames);
 
 /// @fn GetPeaks(float *interleavedInput, unsigned int numInterleavedChannels, float *peaks);
+/// @brief Get the peak values of each channel in an interleaved buffer.
 /// @param interleavedInput Pointer to floating point numbers. Interleaved input.
 /// @param numInterleavedChannels The total number of channels in the interleaved input.
 /// @param numberOfFrames The number of frames to process.

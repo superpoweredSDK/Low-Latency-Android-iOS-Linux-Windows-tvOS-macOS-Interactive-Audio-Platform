@@ -13,13 +13,14 @@
     AudioBufferList *inputBuffers0, *inputBuffers1;
 
     NSString *mapOutputDeviceName, *mapInputDeviceName;
-    int numberOfChannels, samplerate, inputFrames, mapNumInputChannels, mapNumOutputChannels;
+    unsigned int numberOfChannels;
+    int samplerate, inputFrames, mapNumInputChannels, mapNumOutputChannels;
     bool shouldRun, hasInput, inputEven, outputEven;
 }
 
 @synthesize preferredBufferSizeMs, inputEnabled, outputEnabled;
 
-static OSStatus audioInputCallback(void *inRefCon, AudioUnitRenderActionFlags *ioActionFlags, const AudioTimeStamp *inTimeStamp, UInt32 inBusNumber, UInt32 inNumberFrames, AudioBufferList *ioData) {
+static OSStatus audioInputCallback(void *inRefCon, AudioUnitRenderActionFlags *ioActionFlags, const AudioTimeStamp *inTimeStamp, UInt32 inBusNumber, UInt32 inNumberFrames, __attribute__((unused)) AudioBufferList *ioData) {
     SuperpoweredOSXAudioIO *self = (__bridge SuperpoweredOSXAudioIO *)inRefCon;
 
     div_t d = div(inNumberFrames, 8);
@@ -45,7 +46,7 @@ static OSStatus audioInputCallback(void *inRefCon, AudioUnitRenderActionFlags *i
 	return noErr;
 }
 
-static OSStatus audioOutputCallback(void *inRefCon, AudioUnitRenderActionFlags *ioActionFlags, const AudioTimeStamp *inTimeStamp, UInt32 inBusNumber, UInt32 inNumberFrames, AudioBufferList *ioData) {
+static OSStatus audioOutputCallback(void *inRefCon, AudioUnitRenderActionFlags *ioActionFlags, const AudioTimeStamp *inTimeStamp, __attribute__((unused)) UInt32 inBusNumber, UInt32 inNumberFrames, AudioBufferList *ioData) {
     SuperpoweredOSXAudioIO *self = (__bridge SuperpoweredOSXAudioIO *)inRefCon;
 
     div_t d = div(inNumberFrames, 8);
@@ -70,13 +71,13 @@ static OSStatus audioOutputCallback(void *inRefCon, AudioUnitRenderActionFlags *
     return noErr;
 }
 
-static OSStatus defaultDeviceChangedCallback(AudioObjectID inObjectID, UInt32 inNumberAddresses, const AudioObjectPropertyAddress inAddresses[], void *inClientData) {
+static OSStatus defaultDeviceChangedCallback(__attribute__((unused)) AudioObjectID inObjectID, __attribute__((unused)) UInt32 inNumberAddresses, __attribute__((unused)) const AudioObjectPropertyAddress inAddresses[], void *inClientData) {
     SuperpoweredOSXAudioIO *self = (__bridge SuperpoweredOSXAudioIO *)inClientData;
     dispatch_async(dispatch_get_main_queue(), ^{ [self recreate]; });
     return noErr;
 }
 
-static OSStatus devicesChangedCallback(AudioObjectID inObjectID, UInt32 inNumberAddresses, const AudioObjectPropertyAddress inAddresses[], void *inClientData) {
+static OSStatus devicesChangedCallback(__attribute__((unused)) AudioObjectID inObjectID, __attribute__((unused)) UInt32 inNumberAddresses, __attribute__((unused)) const AudioObjectPropertyAddress inAddresses[], void *inClientData) {
     SuperpoweredOSXAudioIO *self = (__bridge SuperpoweredOSXAudioIO *)inClientData;
     dispatch_async(dispatch_get_main_queue(), ^{
         audioDevice *devices = [SuperpoweredOSXAudioIO getAudioDevices], *next;
@@ -173,7 +174,7 @@ static void destroyUnit(AudioComponentInstance *unit) {
     [self performSelector:@selector(createAudioUnits) withObject:nil afterDelay:1.0];
 }
 
-static void streamFormatChangedCallback(void *inRefCon, AudioUnit inUnit, AudioUnitPropertyID inID, AudioUnitScope inScope, AudioUnitElement inElement) {
+static void streamFormatChangedCallback(void *inRefCon, AudioUnit inUnit, __attribute__((unused)) AudioUnitPropertyID inID, AudioUnitScope inScope, AudioUnitElement inElement) {
     SuperpoweredOSXAudioIO *self = (__bridge SuperpoweredOSXAudioIO *)inRefCon;
     if (
         ((inUnit == self->outputUnit) && (inScope == kAudioUnitScope_Output) && (inElement == 0)) ||
@@ -294,7 +295,7 @@ static bool hasMapping(int *map) {
                             AudioBufferList *bufferList = (AudioBufferList *)malloc(size);
                             if (bufferList) {
                                 if (!AudioObjectGetPropertyData(device, &outputChannelsAddress, 0, NULL, &size, bufferList)) {
-                                    for (int b = 0; b < bufferList->mNumberBuffers; b++) mapNumOutputChannels += bufferList->mBuffers[b].mNumberChannels;
+                                    for (unsigned int b = 0; b < bufferList->mNumberBuffers; b++) mapNumOutputChannels += bufferList->mBuffers[b].mNumberChannels;
                                 }
                                 free(bufferList);
                             }
@@ -330,7 +331,7 @@ static bool hasMapping(int *map) {
                             AudioBufferList *bufferList = (AudioBufferList *)malloc(size);
                             if (bufferList) {
                                 if (!AudioObjectGetPropertyData(device, &inputChannelsAddress, 0, NULL, &size, bufferList)) {
-                                    for (int b = 0; b < bufferList->mNumberBuffers; b++) mapNumInputChannels += bufferList->mBuffers[b].mNumberChannels;
+                                    for (unsigned int b = 0; b < bufferList->mNumberBuffers; b++) mapNumInputChannels += bufferList->mBuffers[b].mNumberChannels;
                                 }
                                 free(bufferList);
                             }
@@ -409,7 +410,10 @@ static bool hasMapping(int *map) {
     UInt32 size = 0;
     if (AudioObjectGetPropertyDataSize(kAudioObjectSystemObject, &allDevices, 0, NULL, &size) || !size) return NULL;
     int numDevices = size / sizeof(AudioDeviceID);
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wvla-extension"
     AudioDeviceID devices[numDevices];
+#pragma clang diagnostic pop
     if (AudioObjectGetPropertyData(kAudioObjectSystemObject, &allDevices, 0, NULL, &size, devices)) return NULL;
     
     CFStringRef name;
@@ -427,7 +431,7 @@ static bool hasMapping(int *map) {
             if (bufferList) {
                 if (!AudioObjectGetPropertyData(devices[n], &inputChannels, 0, NULL, &size, bufferList)) {
                     numInputChannels = 0;
-                    for (int b = 0; b < bufferList->mNumberBuffers; b++) numInputChannels += bufferList->mBuffers[b].mNumberChannels;
+                    for (unsigned int b = 0; b < bufferList->mNumberBuffers; b++) numInputChannels += bufferList->mBuffers[b].mNumberChannels;
                 }
                 free(bufferList);
             }
@@ -438,7 +442,7 @@ static bool hasMapping(int *map) {
             if (bufferList) {
                 if (!AudioObjectGetPropertyData(devices[n], &outputChannels, 0, NULL, &size, bufferList)) {
                     numOutputChannels = 0;
-                    for (int b = 0; b < bufferList->mNumberBuffers; b++) numOutputChannels += bufferList->mBuffers[b].mNumberChannels;
+                    for (unsigned int b = 0; b < bufferList->mNumberBuffers; b++) numOutputChannels += bufferList->mBuffers[b].mNumberChannels;
                 }
                 free(bufferList);
             }

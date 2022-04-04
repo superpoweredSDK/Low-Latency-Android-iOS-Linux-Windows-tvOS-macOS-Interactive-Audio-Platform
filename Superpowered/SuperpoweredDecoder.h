@@ -143,7 +143,7 @@ public:
 
 /// @brief Decodes an entire audio file in memory to AudioInMemory format in a single call. The output can be loaded by the AdvancedAudioPlayer.
 /// @return Pointer or NULL on error.
-/// @param pointer Pointer to an audio file loaded onto the heap.
+/// @param pointer Pointer to an audio file loaded onto the heap. Should be allocated using malloc() (and not _aligned_malloc() or similar). The Decoder will free() this data.
 /// @param sizeBytes The audio file length in bytes.
     JSWASM static void *decodeToAudioInMemory(void *pointer, unsigned int sizeBytes);
 
