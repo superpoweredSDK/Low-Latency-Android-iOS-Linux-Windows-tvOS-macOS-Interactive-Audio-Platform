@@ -10,7 +10,7 @@ namespace Superpowered {
 struct tunerInternals;
 
 /// @brief Automatic Vocal Pitch Correction (Automatic Tune).
-/// One instance allocates around kb memory.
+/// One instance allocates around 20kb memory.
 class AutomaticVocalPitchCorrection {
 public:
     typedef enum TunerScale {
@@ -58,7 +58,7 @@ public:
 /// It's never blocking for real-time usage. You can change any properties concurrently with process().
 /// @param input Pointer to floating point numbers. 32-bit mono or interleaved stereo input.
 /// @param output Pointer to floating point numbers. 32-bit mono or interleaved stereo input.
-/// @param stereo Stereo or mono input and output.
+/// @param stereo Interleaved stereo or mono input and output.
 /// @param numberOfFrames Number of frames to process.
     JSWASM void process(float *input, float *output, bool stereo, unsigned int numberOfFrames);
 
