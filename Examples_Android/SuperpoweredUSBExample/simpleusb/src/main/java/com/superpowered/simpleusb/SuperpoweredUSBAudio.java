@@ -14,14 +14,14 @@ import android.hardware.usb.UsbManager;
 // This class handles USB device permissions, attaching and detaching a device.
 public class SuperpoweredUSBAudio {
     private static final String ACTION_USB_PERMISSION = "com.superpowered.USBAudio.USB_PERMISSION";
-    private PendingIntent permissionIntent;
-    private Context context;
-    private SuperpoweredUSBAudioHandler handler;
+    private final PendingIntent permissionIntent;
+    private final Context context;
+    private final SuperpoweredUSBAudioHandler handler;
 
     public SuperpoweredUSBAudio(Context c, SuperpoweredUSBAudioHandler h) {
         context = c;
         handler = h;
-        permissionIntent = PendingIntent.getBroadcast(context, 0, new Intent(ACTION_USB_PERMISSION), 0);
+        permissionIntent = PendingIntent.getBroadcast(context, 0, new Intent(ACTION_USB_PERMISSION), PendingIntent.FLAG_IMMUTABLE);
 
         BroadcastReceiver usbReceiver = new BroadcastReceiver() {
             @Override

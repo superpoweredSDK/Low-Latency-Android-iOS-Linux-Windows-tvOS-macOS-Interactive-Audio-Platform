@@ -17,14 +17,6 @@ static bool audioProcessing (
         int numberOfFrames,         // number of frames to process
         int __unused samplerate     // current sample rate in Hz
 ) {
-    {
-        static int test = 0;
-        test += numberOfFrames;
-        if (test >= 48000) {
-            test = 0;
-            __android_log_print(ANDROID_LOG_VERBOSE, "Superpowered", "record");
-        }
-    }
     float floatBuffer[numberOfFrames * 2];
     Superpowered::ShortIntToFloat(audio, floatBuffer, (unsigned int)numberOfFrames);
     recorder->recordInterleaved(floatBuffer, (unsigned int)numberOfFrames);

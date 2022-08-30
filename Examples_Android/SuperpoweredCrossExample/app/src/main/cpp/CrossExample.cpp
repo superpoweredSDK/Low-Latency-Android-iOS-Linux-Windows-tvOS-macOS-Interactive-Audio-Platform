@@ -209,29 +209,29 @@ Java_com_superpowered_crossexample_MainActivity_CrossExample(
 // onPlayPause - Toggle playback state of player.
 extern "C" JNIEXPORT void
 Java_com_superpowered_crossexample_MainActivity_onPlayPause(JNIEnv * __unused env, jobject __unused obj, jboolean play) {
-	example->onPlayPause(play);
+	if (example) example->onPlayPause(play);
 }
 
 // onCrossfader - Handle crossfader events.
 extern "C" JNIEXPORT void
 Java_com_superpowered_crossexample_MainActivity_onCrossfader(JNIEnv * __unused env, jobject __unused obj, jint value) {
-	example->onCrossfader(value);
+    if (example) example->onCrossfader(value);
 }
 
 // onFxSelect - Handle FX selection.
 extern "C" JNIEXPORT void
 Java_com_superpowered_crossexample_MainActivity_onFxSelect(JNIEnv * __unused env, jobject __unused obj, jint value) {
-	example->onFxSelect(value);
+    if (example) example->onFxSelect(value);
 }
 
 // onFxOff - Turn of all effects.
 extern "C" JNIEXPORT void
 Java_com_superpowered_crossexample_MainActivity_onFxOff(JNIEnv * __unused env, jobject __unused obj) {
-	example->onFxOff();
+    if (example) example->onFxOff();
 }
 
 // onFxValue - Adjust FX value.
 extern "C" JNIEXPORT void
 Java_com_superpowered_crossexample_MainActivity_onFxValue(JNIEnv * __unused env, jobject __unused obj, jint value) {
-	example->onFxValue(value);
+    if (example) example->onFxValue(value);
 }

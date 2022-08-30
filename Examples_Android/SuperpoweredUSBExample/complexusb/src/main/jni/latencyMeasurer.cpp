@@ -26,13 +26,13 @@
 
 // Returns with the absolute sum of the audio.
 static int sumAudio(short int *audio, int numberOfSamples) {
-    int sum = 0;
+    int asum = 0;
     while (numberOfSamples) {
         numberOfSamples--;
-        sum += abs(audio[0]) + abs(audio[1]);
+        asum += abs(audio[0]) + abs(audio[1]);
         audio += 2;
     };
-    return sum;
+    return asum;
 }
 
 latencyMeasurer::latencyMeasurer() : measurementState(idle), nextMeasurementState(idle), samplesElapsed(0), sineWave(0), sum(0), threshold(0), state(0), samplerate(0), latencyMs(0), buffersize(0) {
@@ -106,11 +106,11 @@ void latencyMeasurer::processInput(short int *audio, int _samplerate, int number
                 if (samplesElapsed > numberOfSamples) { // Expect at least 1 buffer of round-trip latency.
                     roundTripLatencyMs[state - 1] = float(samplesElapsed * 1000) / float(samplerate);
 
-                    float sum = 0, max = 0, min = 100000.0f;
+                    float fsum = 0, max = 0, min = 100000.0f;
                     for (n = 0; n < state; n++) {
                         if (roundTripLatencyMs[n] > max) max = roundTripLatencyMs[n];
                         if (roundTripLatencyMs[n] < min) min = roundTripLatencyMs[n];
-                        sum += roundTripLatencyMs[n];
+                        fsum += roundTripLatencyMs[n];
                     };
 
                     if (max / min > 2.0f) { // Dispersion error.
@@ -118,7 +118,7 @@ void latencyMeasurer::processInput(short int *audio, int _samplerate, int number
                         state = 10;
                         measurementState = nextMeasurementState = idle;
                     } else if (state == 10) { // Final result.
-                        latencyMs = int(sum * 0.1f);
+                        latencyMs = int(fsum * 0.1f);
                         measurementState = nextMeasurementState = idle;
                     } else { // Next step.
                         latencyMs = (int)roundTripLatencyMs[state - 1];

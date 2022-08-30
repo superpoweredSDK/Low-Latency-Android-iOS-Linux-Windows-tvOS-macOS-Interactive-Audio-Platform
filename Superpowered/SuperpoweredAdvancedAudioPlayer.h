@@ -27,7 +27,6 @@ struct PlayerInternals;
 /// - low memory usage,
 /// - thread safety (all methods are thread-safe),
 /// - direct iPod music library access.
-/// Can be used in a real-time audio processing thread. Can not be used for offline processing.
 /// Supported file types:
 /// - Stereo or mono pcm WAV and AIFF (16-bit int, 24-bit int, 32-bit int or 32-bit IEEE float).
 /// - MP3: MPEG-1 Layer III (sample rates: 32000 Hz, 44100 Hz, 48000 Hz). MPEG-2 Layer III is not supported (mp3 with sample rates below 32000 Hz).
@@ -104,7 +103,7 @@ public:
 /// @brief Creates a player instance.
 /// @param samplerate The initial sample rate of the player output in hz.
 /// @param cachedPointCount How many positions can be cached in the memory. Jumping to a cached point happens with zero latency. Loops are automatically cached.
-/// @param internalBufferSizeSeconds The number of seconds to buffer internally for playback and cached points. Minimum 2, maximum 60. Default: 2.
+/// @param internalBufferSizeSeconds The number of seconds to buffer internally for playback and cached points. The value 0 enables "offline mode", where the player can not be used for real-time playback, but can process audio in an iteration. If not zero, the AdvancedAudioPlayer can only be used for real-time playback. Default: 2.
 /// @param negativeSeconds The number of seconds of silence in the negative direction, before the beginning of the track.
 /// @param minimumTimestretchingPlaybackRate Will not time-stretch but resample below this playback rate. Default: 0.501f (the recommended value for low CPU load on older mobile devices, such as the first iPad). Will be applied after changing playbackRate or scratching. Default: 0.501f
 /// @param maximumTimestretchingPlaybackRate Will not time-stretch but resample above this playback rate. Default: 2.0f (the recommended value for low CPU load on older mobile devices, such as the first iPad). Will be applied after changing playbackRate or scratching.

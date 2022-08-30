@@ -3,12 +3,12 @@ apply plugin: 'com.android.application'
 def superpowered_sdk_path = new File(projectDir, '../../../Superpowered')
 
 android { // main settings for your application
-    compileSdkVersion = 31
+    compileSdkVersion = 33
 
     defaultConfig {
         applicationId "com.superpowered.frequencydomain"
-        minSdkVersion 22
-        targetSdkVersion 31
+        minSdkVersion 24
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
 
@@ -18,7 +18,7 @@ android { // main settings for your application
 
         externalNativeBuild {
             cmake {
-                arguments '-DANDROID_PLATFORM=android-22', '-DANDROID_TOOLCHAIN=clang', '-DANDROID_ARM_NEON=TRUE', '-DANDROID_STL=c++_static', "-DPATH_TO_SUPERPOWERED:STRING=${superpowered_sdk_path}"
+                arguments '-DANDROID_PLATFORM=android-24', '-DANDROID_TOOLCHAIN=clang', '-DANDROID_ARM_NEON=TRUE', '-DANDROID_STL=c++_static', "-DPATH_TO_SUPERPOWERED:STRING=${superpowered_sdk_path}"
                 cFlags '-O3', '-fsigned-char' // full optimization, char data type is signed
                 cppFlags '-fsigned-char', "-I${superpowered_sdk_path}"
             }
@@ -31,10 +31,10 @@ android { // main settings for your application
         }
     }
 
-    ndkPath "/Volumes/iMect/android/ndk/23.1.7779620/android-ndk-r23b"
+    ndkPath "/Volumes/iMect/android/ndk/25.1.8937393"
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'androidx.appcompat:appcompat:1.5.0'
 }

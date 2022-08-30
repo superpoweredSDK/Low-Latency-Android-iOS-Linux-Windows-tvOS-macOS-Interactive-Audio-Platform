@@ -26,7 +26,7 @@ public:
 
 /// @brief Constructor.
 /// @param samplerate The initial sample rate in Hz.
-/// @param minimumRate The minimum value of rate. For example: if the rate will never go below 0.5, minimumRate = 0.5 will save significant computing power and memory. Minimum value of this: 0.01.
+/// @param minimumRate The minimum value of rate. For example: if the rate will never go below 0.5, minimumRate = 0.5 will save significant computing power and memory. Min: 0.01, max 0.75.
     JSWASM TimeStretching(unsigned int samplerate, float minimumRate = 0.01f);
     JSWASM ~TimeStretching();
 
