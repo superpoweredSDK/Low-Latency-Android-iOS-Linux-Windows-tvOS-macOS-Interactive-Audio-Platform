@@ -11,6 +11,7 @@ Superpowered Inc develops the following interactive audio, networking and crypto
 Superpowered C++ Audio Library and SDK is the leading C++ Audio Library featuring low-power, real-time latency and cross-platform audio players, audio decoders, Fx (effects), audio I/O, streaming, music analysis and spatialization.
 
 For the most up-to-date feature list, see: https://superpowered.com/audio-library-sdk
+For the latest API reference check the docsite: https://docs.superpowered.com/reference/latest?lang=cpp
 
 ### 2. Superpowered C++ Networking Library and SDK for Android, iOS, macOS, tvOS, Linux and Windows.
 The Superpowered C++ Networking Library and SDK was designed from the ground-up to provide the easiest cross-platform way for a client to communicate with the back-end. It implements HTTP and HTTPS communication with custom data and header support, progress handling, file uploads/downloads and more. It reduces implementation, debug and maintenance time of typical tasks such as REST API requests, OAuth and bearer token authorization, or digital media streaming. It operates identically on all platforms, removing the pain of writing wrappers and finding quirks around the operating system's networking API, while it's fully self-contained and independent from it. The SDK also has a JSON parser to offer a complete package for your everyday networking and parsing needs.
