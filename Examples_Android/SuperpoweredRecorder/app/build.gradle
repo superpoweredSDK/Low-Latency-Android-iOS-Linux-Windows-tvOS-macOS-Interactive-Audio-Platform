@@ -31,7 +31,7 @@ android { // main settings for your application
         }
     }
 
-    ndkPath "/Volumes/iMect/android/ndk/23.1.7779620/android-ndk-r23b"
+    ndkVersion '25.1.8937393'
 }
 
 dependencies {
