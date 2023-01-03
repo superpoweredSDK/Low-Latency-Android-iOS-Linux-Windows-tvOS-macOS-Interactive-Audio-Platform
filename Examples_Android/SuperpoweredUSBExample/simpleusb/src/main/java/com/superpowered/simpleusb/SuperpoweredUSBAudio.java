@@ -21,7 +21,7 @@ public class SuperpoweredUSBAudio {
     public SuperpoweredUSBAudio(Context c, SuperpoweredUSBAudioHandler h) {
         context = c;
         handler = h;
-        permissionIntent = PendingIntent.getBroadcast(context, 0, new Intent(ACTION_USB_PERMISSION), PendingIntent.FLAG_IMMUTABLE);
+        permissionIntent = PendingIntent.getBroadcast(context, 0, new Intent(ACTION_USB_PERMISSION), PendingIntent.FLAG_MUTABLE);
 
         BroadcastReceiver usbReceiver = new BroadcastReceiver() {
             @Override
@@ -61,20 +61,27 @@ public class SuperpoweredUSBAudio {
     private void addUSBDevice(UsbDevice device) {
         UsbManager manager = (UsbManager)context.getSystemService(Context.USB_SERVICE);
         if (manager == null) return;
+
+        if (!manager.hasPermission(device)) {
+            manager.requestPermission(device, permissionIntent);
+            return;
+        }
+
         UsbDeviceConnection connection = manager.openDevice(device);
         if (connection != null) {
             int id = device.getDeviceId();
             switch (onConnect(id, connection.getFileDescriptor(), connection.getRawDescriptors())) {
+                case 0: // Audio and MIDI device.
+                    if (handler != null) handler.onUSBAudioDeviceAttached(id);
+                    if (handler != null) handler.onUSBMIDIDeviceAttached(id);
+                    break;
                 case 1: // Audio device.
                     if (handler != null) handler.onUSBAudioDeviceAttached(id);
                     break;
                 case 2: // MIDI device.
                     if (handler != null) handler.onUSBMIDIDeviceAttached(id);
                     break;
-                case 3: // Audio and MIDI device.
-                    if (handler != null) handler.onUSBAudioDeviceAttached(id);
-                    if (handler != null) handler.onUSBMIDIDeviceAttached(id);
-                    break;
+                case 3: break; // Found no audio or MIDI features for this device.
             }
         }
     }
