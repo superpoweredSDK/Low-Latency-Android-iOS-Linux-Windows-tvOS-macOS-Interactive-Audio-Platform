@@ -44,9 +44,17 @@ public:
         EXTREME ///< classic pitch correction effect
     } TunerSpeed;
     
+    typedef enum TunerClamp {
+        OFF,    ///< no pitch clamping
+        LOOSE,  ///< low pitch clamping threshold
+        TIGHT   ///< high pitch clamping threshold
+    } TuneClamp;
+    
     TunerScale scale; ///< Music scale. Default: CHROMATIC (all twelve keys of the octave are allowed)
     TunerRange range; ///< Vocal range for pitch detection. Default: WIDE (40 to 3000 Hz)
     TunerSpeed speed; ///< Speed for tune correction. Default: EXTREME
+    TunerClamp clamp; ///< Clamp for tune correction. Default: LOOSE
+    
     float frequencyOfA;       ///< Frequency for middle A, between 410-470 Hz. Default: 440
     unsigned int samplerate;  ///< Input/output sample rate in Hz. Default: 48000
     
