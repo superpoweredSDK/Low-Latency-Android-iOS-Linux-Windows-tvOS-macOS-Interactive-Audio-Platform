@@ -43,10 +43,19 @@ public:
         MEDIUM, ///< medium pitch correction
         EXTREME ///< classic pitch correction effect
     } TunerSpeed;
+
+    typedef enum TunerClamp {
+        OFF,    ///< Always switch to the nearest key in the selected scale as output note
+        LOOSE,  ///< Switch if the detected key is 0.7 semitones above or below the current output note.
+                ///< In other words, establish a stable area 1.4 semitones wide centered around the current note.
+        TIGHT   ///< Switch if the detected key is 1.2 semitones above or below the current output note, stable area centered around current note is 2.4 semitones
+    } TuneClamp;
     
     TunerScale scale; ///< Music scale. Default: CHROMATIC (all twelve keys of the octave are allowed)
     TunerRange range; ///< Vocal range for pitch detection. Default: WIDE (40 to 3000 Hz)
     TunerSpeed speed; ///< Speed for tune correction. Default: EXTREME
+    TunerClamp clamp; ///< The clamp setting controls the incoming pitch variance threshold for switching to a new note for the output. Default: LOOSE
+    
     float frequencyOfA;       ///< Frequency for middle A, between 410-470 Hz. Default: 440
     unsigned int samplerate;  ///< Input/output sample rate in Hz. Default: 48000
     
