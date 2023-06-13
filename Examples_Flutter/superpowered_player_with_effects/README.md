@@ -1,6 +1,6 @@
 # Superpowered Player with Effects Flutter Sample App
 
-A [FFI plugin](https://docs.flutter.dev/development/platform-integration/c-interop) project integrating SuperpoweredSDK.
+A [FFI plugin](https://docs.flutter.dev/platform-integration/android/c-interop) project integrating SuperpoweredSDK.
 ## How to run:
 `cd scripts` 
 * Android: build_android.sh 
