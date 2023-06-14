@@ -8,10 +8,11 @@
 
 void SuperpoweredEngineExample::platformInit() {
     iOSEngine = (void*) CFBridgingRetain([[SuperpoweredEngineExampleiOS alloc] initWithBase:this]);
-    printf("init - iOSEngine %lld\n", (uint64_t)iOSEngine);
+    printf("platformInit - iOSEngine %lld\n", (uint64_t)iOSEngine);
 }
 
 void SuperpoweredEngineExample::platformStartEngine() {
+    NSLog(@"SuperpoweredEngineExampleiOS platformStartEngine");
     __unsafe_unretained SuperpoweredEngineExampleiOS *op = (__bridge SuperpoweredEngineExampleiOS *)iOSEngine;
     [op->audioIO start];
 }
@@ -41,7 +42,7 @@ void SuperpoweredEngineExample::platformCleanup() {
     example = engine;
     selfReference = (void *) CFBridgingRetain(self);
     audioIO = [[SuperpoweredIOSAudioIO alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self
-                                            preferredBufferSize:512
+                                            preferredBufferSize:12
                                             preferredSamplerate:44100
                                             audioSessionCategory:AVAudioSessionCategoryPlayback
                                             channels:2

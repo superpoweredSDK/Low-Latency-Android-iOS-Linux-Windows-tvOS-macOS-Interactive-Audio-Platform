@@ -29,7 +29,7 @@ SuperpoweredEngineExample::~SuperpoweredEngineExample() {
 }
 
 void SuperpoweredEngineExample::play() {
-  player->open("http://www.orangefreesounds.com/wp-content/uploads/2020/04/Groove-synth-loop-130-bpm.mp3");
+  player->open("https://file-examples.com/storage/fee88abb026489b1d96a1d3/2017/11/file_example_MP3_700KB.mp3");
   player->play();
 }
 
