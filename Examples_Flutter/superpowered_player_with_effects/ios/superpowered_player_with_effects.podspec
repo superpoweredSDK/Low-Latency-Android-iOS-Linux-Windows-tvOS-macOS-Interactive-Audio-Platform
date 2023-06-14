@@ -24,7 +24,7 @@ A new Flutter FFI plugin project.
   s.ios.framework = 'Foundation', 'AVFoundation', 'AudioToolbox', 'CoreAudio', 'CoreMedia'
 
   if ENV['SDKROOT']&.include?('iphoneos')
-    # For real devices and M1 Mac devices
+    # For real devices
     s.vendored_libraries = 'libSuperpoweredAudio.xcframework/ios-arm64/libSuperpoweredAudioIOS-iphoneos.a'
   else
     # For simulators (including Intel-based and ARM-based simulators)
