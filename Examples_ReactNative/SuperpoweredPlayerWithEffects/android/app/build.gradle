@@ -68,6 +68,8 @@ def enableProguardInReleaseBuilds = false
  */
 def jscFlavor = 'org.webkit:android-jsc:+'
 
+def superpowered_sdk_path = new File(projectDir, '../../../../Superpowered')
+
 android {
     ndkVersion rootProject.ext.ndkVersion
 
@@ -80,6 +82,24 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+
+        ndk { // these platforms cover 99.9% percent of all Android devices
+            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+        }
+
+        externalNativeBuild {
+            cmake {
+                arguments '-DANDROID_PLATFORM=android-24', "-DANDROID_TOOLCHAIN=clang", "-DANDROID_ARM_NEON=TRUE", "-DPATH_TO_SUPERPOWERED:STRING=${superpowered_sdk_path}"
+                cFlags "-O3", "-fsigned-char" // full optimization, char data type is signed
+                cppFlags "-fsigned-char", "-I${superpowered_sdk_path}"
+            }
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
     }
     signingConfigs {
         debug {
