@@ -29,7 +29,7 @@ SuperpoweredEngineExample::~SuperpoweredEngineExample() {
 }
 
 void SuperpoweredEngineExample::play() {
-  player->open("https://file-examples.com/storage/fee88abb026489b1d96a1d3/2017/11/file_example_MP3_700KB.mp3");
+  player->open("https://docs.superpowered.com/audio/samples/splice/SO_PF_74_string_phrase_soaring_Gb.mp3");
   player->play();
 }
 
