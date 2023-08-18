@@ -38,5 +38,5 @@ public class SuperpoweredModule extends ReactContextBaseJavaModule {
 
     private native void nativeInit(String tempdir);
     private native void nativeTogglePlayback();
-    private native void nativeEnableFlanger(Boolean enable);
+    private native void nativeEnableFlanger(boolean enable);
 }
