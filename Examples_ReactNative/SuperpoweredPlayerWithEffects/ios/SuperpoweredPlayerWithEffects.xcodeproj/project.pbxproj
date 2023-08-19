@@ -14,6 +14,16 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-SuperpoweredPlayerWithEffects-SuperpoweredPlayerWithEffectsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-SuperpoweredPlayerWithEffects-SuperpoweredPlayerWithEffectsTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		A19AC9C52A8FA3F50060D549 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19AC9C42A8FA3F40060D549 /* AudioToolbox.framework */; };
+		A19AC9C72A8FA3FF0060D549 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19AC9C62A8FA3FF0060D549 /* AVFoundation.framework */; };
+		A19AC9C92A8FA40D0060D549 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19AC9C82A8FA40D0060D549 /* CoreAudio.framework */; };
+		A19AC9CB2A8FA4390060D549 /* libSuperpoweredAudio.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19AC9CA2A8FA4380060D549 /* libSuperpoweredAudio.xcframework */; };
+		A19AC9D82A8FAB490060D549 /* SuperpoweredIOSAudioIO.mm in Sources */ = {isa = PBXBuildFile; fileRef = A19AC9D12A8FAB480060D549 /* SuperpoweredIOSAudioIO.mm */; };
+		A19AC9DA2A8FAB490060D549 /* SuperpoweredEngineExample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A19AC9D52A8FAB490060D549 /* SuperpoweredEngineExample.cpp */; };
+		A19AC9DB2A8FAB490060D549 /* SuperpoweredEngineExampleiOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = A19AC9D62A8FAB490060D549 /* SuperpoweredEngineExampleiOS.mm */; };
+		A19AC9DD2A8FAE7A0060D549 /* SuperpoweredAudio.mm in Sources */ = {isa = PBXBuildFile; fileRef = A19AC9DC2A8FAE7A0060D549 /* SuperpoweredAudio.mm */; };
+		A19AC9E22A8FD1750060D549 /* SuperpoweredModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19AC9E12A8FD1750060D549 /* SuperpoweredModule.swift */; };
+		A19AC9E52A90ADE00060D549 /* SuperpoweredModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A19AC9E42A90ADE00060D549 /* SuperpoweredModule.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +53,22 @@
 		5DCACB8F33CDC322A6C60F78 /* libPods-SuperpoweredPlayerWithEffects.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SuperpoweredPlayerWithEffects.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = SuperpoweredPlayerWithEffects/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-SuperpoweredPlayerWithEffects-SuperpoweredPlayerWithEffectsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperpoweredPlayerWithEffects-SuperpoweredPlayerWithEffectsTests.release.xcconfig"; path = "Target Support Files/Pods-SuperpoweredPlayerWithEffects-SuperpoweredPlayerWithEffectsTests/Pods-SuperpoweredPlayerWithEffects-SuperpoweredPlayerWithEffectsTests.release.xcconfig"; sourceTree = "<group>"; };
+		A19AC9C42A8FA3F40060D549 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		A19AC9C62A8FA3FF0060D549 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A19AC9C82A8FA40D0060D549 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		A19AC9CA2A8FA4380060D549 /* libSuperpoweredAudio.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = libSuperpoweredAudio.xcframework; path = ../../../Superpowered/libSuperpoweredAudio.xcframework; sourceTree = "<group>"; };
+		A19AC9CF2A8FAB480060D549 /* SuperpoweredIOSAudioIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperpoweredIOSAudioIO.h; sourceTree = "<group>"; };
+		A19AC9D12A8FAB480060D549 /* SuperpoweredIOSAudioIO.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SuperpoweredIOSAudioIO.mm; sourceTree = "<group>"; };
+		A19AC9D22A8FAB480060D549 /* SuperpoweredEngineExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperpoweredEngineExample.h; sourceTree = "<group>"; };
+		A19AC9D42A8FAB490060D549 /* SuperpoweredEngineExampleiOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperpoweredEngineExampleiOS.h; sourceTree = "<group>"; };
+		A19AC9D52A8FAB490060D549 /* SuperpoweredEngineExample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SuperpoweredEngineExample.cpp; sourceTree = "<group>"; };
+		A19AC9D62A8FAB490060D549 /* SuperpoweredEngineExampleiOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SuperpoweredEngineExampleiOS.mm; sourceTree = "<group>"; };
+		A19AC9DC2A8FAE7A0060D549 /* SuperpoweredAudio.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SuperpoweredAudio.mm; sourceTree = "<group>"; };
+		A19AC9DE2A8FAED00060D549 /* SuperpoweredAudio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuperpoweredAudio.h; sourceTree = "<group>"; };
+		A19AC9E02A8FD1730060D549 /* SuperpoweredPlayerWithEffects-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SuperpoweredPlayerWithEffects-Bridging-Header.h"; sourceTree = "<group>"; };
+		A19AC9E12A8FD1750060D549 /* SuperpoweredModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperpoweredModule.swift; sourceTree = "<group>"; };
+		A19AC9E32A8FD2040060D549 /* SuperpoweredModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuperpoweredModule.h; sourceTree = "<group>"; };
+		A19AC9E42A90ADE00060D549 /* SuperpoweredModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SuperpoweredModule.m; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -59,7 +85,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A19AC9CB2A8FA4390060D549 /* libSuperpoweredAudio.xcframework in Frameworks */,
 				0C80B921A6F3F58F76C31292 /* libPods-SuperpoweredPlayerWithEffects.a in Frameworks */,
+				A19AC9C52A8FA3F50060D549 /* AudioToolbox.framework in Frameworks */,
+				A19AC9C92A8FA40D0060D549 /* CoreAudio.framework in Frameworks */,
+				A19AC9C72A8FA3FF0060D549 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +116,7 @@
 		13B07FAE1A68108700A75B9A /* SuperpoweredPlayerWithEffects */ = {
 			isa = PBXGroup;
 			children = (
+				A19AC9DF2A8FD1400060D549 /* Superpowered */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -99,6 +130,10 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A19AC9CA2A8FA4380060D549 /* libSuperpoweredAudio.xcframework */,
+				A19AC9C82A8FA40D0060D549 /* CoreAudio.framework */,
+				A19AC9C62A8FA3FF0060D549 /* AVFoundation.framework */,
+				A19AC9C42A8FA3F40060D549 /* AudioToolbox.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				5DCACB8F33CDC322A6C60F78 /* libPods-SuperpoweredPlayerWithEffects.a */,
 				19F6CBCC0A4E27FBF8BF4A61 /* libPods-SuperpoweredPlayerWithEffects-SuperpoweredPlayerWithEffectsTests.a */,
@@ -116,6 +151,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				A19AC9CE2A8FAB480060D549 /* cpp */,
 				13B07FAE1A68108700A75B9A /* SuperpoweredPlayerWithEffects */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* SuperpoweredPlayerWithEffectsTests */,
@@ -135,6 +171,33 @@
 				00E356EE1AD99517003FC87E /* SuperpoweredPlayerWithEffectsTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A19AC9CE2A8FAB480060D549 /* cpp */ = {
+			isa = PBXGroup;
+			children = (
+				A19AC9CF2A8FAB480060D549 /* SuperpoweredIOSAudioIO.h */,
+				A19AC9D12A8FAB480060D549 /* SuperpoweredIOSAudioIO.mm */,
+				A19AC9D22A8FAB480060D549 /* SuperpoweredEngineExample.h */,
+				A19AC9D42A8FAB490060D549 /* SuperpoweredEngineExampleiOS.h */,
+				A19AC9D52A8FAB490060D549 /* SuperpoweredEngineExample.cpp */,
+				A19AC9D62A8FAB490060D549 /* SuperpoweredEngineExampleiOS.mm */,
+				A19AC9DC2A8FAE7A0060D549 /* SuperpoweredAudio.mm */,
+				A19AC9DE2A8FAED00060D549 /* SuperpoweredAudio.h */,
+			);
+			name = cpp;
+			path = ../cpp;
+			sourceTree = "<group>";
+		};
+		A19AC9DF2A8FD1400060D549 /* Superpowered */ = {
+			isa = PBXGroup;
+			children = (
+				A19AC9E12A8FD1750060D549 /* SuperpoweredModule.swift */,
+				A19AC9E02A8FD1730060D549 /* SuperpoweredPlayerWithEffects-Bridging-Header.h */,
+				A19AC9E32A8FD2040060D549 /* SuperpoweredModule.h */,
+				A19AC9E42A90ADE00060D549 /* SuperpoweredModule.m */,
+			);
+			name = Superpowered;
 			sourceTree = "<group>";
 		};
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
@@ -207,7 +270,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1430;
 					};
 				};
 			};
@@ -412,8 +475,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A19AC9DA2A8FAB490060D549 /* SuperpoweredEngineExample.cpp in Sources */,
+				A19AC9DB2A8FAB490060D549 /* SuperpoweredEngineExampleiOS.mm in Sources */,
+				A19AC9DD2A8FAE7A0060D549 /* SuperpoweredAudio.mm in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				A19AC9D82A8FAB490060D549 /* SuperpoweredIOSAudioIO.mm in Sources */,
+				A19AC9E52A90ADE00060D549 /* SuperpoweredModule.m in Sources */,
+				A19AC9E22A8FD1750060D549 /* SuperpoweredModule.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,6 +501,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-SuperpoweredPlayerWithEffects-SuperpoweredPlayerWithEffectsTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -459,6 +529,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-SuperpoweredPlayerWithEffects-SuperpoweredPlayerWithEffectsTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = SuperpoweredPlayerWithEffectsTests/Info.plist;
@@ -486,7 +557,56 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NQ2VLM7NM7;
 				ENABLE_BITCODE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/CocoaAsyncSocket\"",
+					"\"${PODS_ROOT}/Headers/Public/DoubleConversion\"",
+					"\"${PODS_ROOT}/Headers/Public/FBLazyVector\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper-Fmt\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper-Folly\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper-PeerTalk\"",
+					"\"${PODS_ROOT}/Headers/Public/FlipperKit\"",
+					"\"${PODS_ROOT}/Headers/Public/RCT-Folly\"",
+					"\"${PODS_ROOT}/Headers/Public/RCTRequired\"",
+					"\"${PODS_ROOT}/Headers/Public/RCTTypeSafety\"",
+					"\"${PODS_ROOT}/Headers/Public/React-Codegen\"",
+					"\"${PODS_ROOT}/Headers/Public/React-Core\"",
+					"\"${PODS_ROOT}/Headers/Public/React-NativeModulesApple\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTAnimation\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTAppDelegate\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTBlob\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTText\"",
+					"\"${PODS_ROOT}/Headers/Public/React-callinvoker\"",
+					"\"${PODS_ROOT}/Headers/Public/React-cxxreact\"",
+					"\"${PODS_ROOT}/Headers/Public/React-debug\"",
+					"\"${PODS_ROOT}/Headers/Public/React-hermes\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsi\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsiexecutor\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsinspector\"",
+					"\"${PODS_ROOT}/Headers/Public/React-logger\"",
+					"\"${PODS_ROOT}/Headers/Public/React-perflogger\"",
+					"\"${PODS_ROOT}/Headers/Public/React-runtimeexecutor\"",
+					"\"${PODS_ROOT}/Headers/Public/React-runtimescheduler\"",
+					"\"${PODS_ROOT}/Headers/Public/React-utils\"",
+					"\"${PODS_ROOT}/Headers/Public/ReactCommon\"",
+					"\"${PODS_ROOT}/Headers/Public/SocketRocket\"",
+					"\"${PODS_ROOT}/Headers/Public/Yoga\"",
+					"\"${PODS_ROOT}/Headers/Public/YogaKit\"",
+					"\"${PODS_ROOT}/Headers/Public/fmt\"",
+					"\"${PODS_ROOT}/Headers/Public/glog\"",
+					"\"${PODS_ROOT}/Headers/Public/hermes-engine\"",
+					"\"${PODS_ROOT}/Headers/Public/libevent\"",
+					"\"$(PODS_ROOT)/DoubleConversion\"",
+					"\"$(PODS_ROOT)/boost\"",
+					"\"$(PODS_ROOT)/Headers/Private/React-Core\"",
+					"$(PROJECT_DIR)/../cpp",
+					"$(PROJECT_DIR)/../../../Superpowered",
+					"\"$(PODS_TARGET_SRCROOT)/include/\"",
+				);
 				INFOPLIST_FILE = SuperpoweredPlayerWithEffects/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -500,6 +620,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SuperpoweredPlayerWithEffects;
+				SWIFT_OBJC_BRIDGING_HEADER = "SuperpoweredPlayerWithEffects-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -513,6 +634,55 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NQ2VLM7NM7;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/CocoaAsyncSocket\"",
+					"\"${PODS_ROOT}/Headers/Public/DoubleConversion\"",
+					"\"${PODS_ROOT}/Headers/Public/FBLazyVector\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper-Fmt\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper-Folly\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper-PeerTalk\"",
+					"\"${PODS_ROOT}/Headers/Public/FlipperKit\"",
+					"\"${PODS_ROOT}/Headers/Public/RCT-Folly\"",
+					"\"${PODS_ROOT}/Headers/Public/RCTRequired\"",
+					"\"${PODS_ROOT}/Headers/Public/RCTTypeSafety\"",
+					"\"${PODS_ROOT}/Headers/Public/React-Codegen\"",
+					"\"${PODS_ROOT}/Headers/Public/React-Core\"",
+					"\"${PODS_ROOT}/Headers/Public/React-NativeModulesApple\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTAnimation\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTAppDelegate\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTBlob\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTText\"",
+					"\"${PODS_ROOT}/Headers/Public/React-callinvoker\"",
+					"\"${PODS_ROOT}/Headers/Public/React-cxxreact\"",
+					"\"${PODS_ROOT}/Headers/Public/React-debug\"",
+					"\"${PODS_ROOT}/Headers/Public/React-hermes\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsi\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsiexecutor\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsinspector\"",
+					"\"${PODS_ROOT}/Headers/Public/React-logger\"",
+					"\"${PODS_ROOT}/Headers/Public/React-perflogger\"",
+					"\"${PODS_ROOT}/Headers/Public/React-runtimeexecutor\"",
+					"\"${PODS_ROOT}/Headers/Public/React-runtimescheduler\"",
+					"\"${PODS_ROOT}/Headers/Public/React-utils\"",
+					"\"${PODS_ROOT}/Headers/Public/ReactCommon\"",
+					"\"${PODS_ROOT}/Headers/Public/SocketRocket\"",
+					"\"${PODS_ROOT}/Headers/Public/Yoga\"",
+					"\"${PODS_ROOT}/Headers/Public/YogaKit\"",
+					"\"${PODS_ROOT}/Headers/Public/fmt\"",
+					"\"${PODS_ROOT}/Headers/Public/glog\"",
+					"\"${PODS_ROOT}/Headers/Public/hermes-engine\"",
+					"\"${PODS_ROOT}/Headers/Public/libevent\"",
+					"\"$(PODS_ROOT)/DoubleConversion\"",
+					"\"$(PODS_ROOT)/boost\"",
+					"\"$(PODS_ROOT)/Headers/Private/React-Core\"",
+					"$(PROJECT_DIR)/../cpp",
+					"$(PROJECT_DIR)/../../../Superpowered",
+					"\"$(PODS_TARGET_SRCROOT)/include/\"",
+				);
 				INFOPLIST_FILE = SuperpoweredPlayerWithEffects/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -526,6 +696,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SuperpoweredPlayerWithEffects;
+				SWIFT_OBJC_BRIDGING_HEADER = "SuperpoweredPlayerWithEffects-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

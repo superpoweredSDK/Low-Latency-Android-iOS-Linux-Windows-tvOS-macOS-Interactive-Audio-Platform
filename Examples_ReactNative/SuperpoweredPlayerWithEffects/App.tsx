@@ -7,7 +7,7 @@ const App = () => {
   const [isFlangerEnabled, setFlangerEnabled] = useState(true);
 
   const initializeSuperpoweredModule = () => {
-    SuperpoweredModule.init();
+    SuperpoweredModule.initSuperpowered();
   };
 
   const onPress = () => {

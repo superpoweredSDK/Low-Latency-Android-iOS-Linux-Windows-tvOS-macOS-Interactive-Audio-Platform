@@ -22,7 +22,7 @@ public class SuperpoweredModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void init() {
+    public void initSuperpowered() {
         nativeInit(_reactContext.getApplicationContext().getCacheDir().getAbsolutePath());
     }
 
@@ -32,7 +32,7 @@ public class SuperpoweredModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void enableFlanger(Boolean enable) {
+    public void enableFlanger(boolean enable) {
         nativeEnableFlanger(enable);
     }
 
