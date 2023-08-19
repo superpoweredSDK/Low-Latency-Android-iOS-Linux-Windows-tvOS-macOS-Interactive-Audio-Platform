@@ -22,7 +22,7 @@ class SuperpoweredModule : NSObject {
     superpowered.togglePlayback()
   }
   
-  @objc func enableFlanger(enable: Bool) -> Void {
+  @objc func enableFlanger(_ enable: Bool) -> Void {
     superpowered.enableFlanger(enable)
   }
 }
