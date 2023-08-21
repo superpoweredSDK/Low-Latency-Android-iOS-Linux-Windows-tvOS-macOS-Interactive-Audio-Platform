@@ -1,17 +1,8 @@
 #include <stdint.h>
 #include <math.h>
 #include "SuperpoweredEngineExample.h"
-
-#ifdef __ANDROID__
 #include "SuperpoweredSimple.h"
 #include "SuperpoweredCPU.h"
-#endif
-
-// The "Superpowered" directory cannot be included in the header search path, since podspec does not support relative paths
-#ifdef __APPLE__
-#include "../../../Superpowered/SuperpoweredSimple.h"
-#include "../../../Superpowered/SuperpoweredCPU.h"
-#endif
 
 SuperpoweredEngineExample::SuperpoweredEngineExample() {
   player = std::make_unique<Superpowered::AdvancedAudioPlayer>(48000, 0);

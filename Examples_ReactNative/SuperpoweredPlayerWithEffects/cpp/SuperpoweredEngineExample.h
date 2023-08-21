@@ -4,16 +4,10 @@
 
 #ifdef __ANDROID__
 #include "OpenSource/SuperpoweredAndroidAudioIO.h"
+#endif
+
 #include "SuperpoweredAdvancedAudioPlayer.h"
 #include "SuperpoweredFlanger.h"
-#endif
-
-// The "Superpowered" directory cannot be included in the header search path, since podspec does not support relative paths
-#ifdef __APPLE__
-#include "../../../Superpowered/SuperpoweredAdvancedAudioPlayer.h"
-#include "../../../Superpowered/SuperpoweredFlanger.h"
-#endif
-
 
 class SuperpoweredEngineExample {
 public:
