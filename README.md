@@ -85,6 +85,14 @@ Superpowered is cross-platform: ALL SUPERPOWERED C++ CODE CAN BE COPY-PASTED bet
 
 	Ambisonics (b-format) implementation based on the Superpowered Spatializer.
 
+- /Examples_Flutter
+
+	Example projects for Flutter.
+
+- /Examples_ReactNative
+
+	Example projects for React Native.
+
 
 # Example Projects
 
@@ -171,6 +179,12 @@ The complex example app demonstrates full USB audio discovery, for the use case 
 If an audio output is selected without an audio input, the complex example sends a sine wave to every output channel. If both audio output and audio input are selected, then loopback or round-trip latency measurement are available.
 
 This means that the complex example app is also a testing tool to discover a USB audio device’s advanced features, test audio quality, glitches and latency.
+
+#### /Examples_Flutter/SuperpoweredPlayerWithEffects
+Shows how to use a player and apply a single effect.
+
+#### /Examples_ReactNative/SuperpoweredPlayerWithEffects
+Shows how to use a player and apply a single effect.
 
 ###### Remarks:
 
