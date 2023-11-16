@@ -370,11 +370,11 @@ public:
 /// @return If true, the player is playing backwards.
     JSWASM bool isReverse();
 
-/// @brief Starts on changes pitch bend (temporary playback rate change).
+/// @brief Starts or changes pitch bend (temporary playback rate change).
 /// @param maxPercent The maximum playback rate range for pitch bend, should be between 0.01f and 0.3f (1% and 30%).
 /// @param bendStretch Use time-stretching for pitch bend or not (false makes it "audible").
 /// @param faster True: faster, false: slower.
-/// @param holdMs How long to maintain the pitch bend state. A value >= 1000 will hold until endContinuousPitchBend is called.
+/// @param holdMs How long to maintain the pitch bend state. A value >= 1000 will hold until endContinuousPitchBend is called. A value < 40 will not "ramp up" pitch bend, but will apply it immediately.
     JSWASM void pitchBend(float maxPercent, bool bendStretch, bool faster, unsigned int holdMs);
         
 /// @brief Ends pitch bend.

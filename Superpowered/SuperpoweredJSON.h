@@ -82,16 +82,16 @@ namespace Superpowered {
         /// @return Pointer to a child or NULL if not found.
         json *atKeyWithType(const char *key, jtype type);
         
-        /// @brief Returns with a pointer to a child with the corresponding key in any depth. Example: item->atKeyRecursive("animals", "mammal", "cat");
+        /// @brief Returns with a pointer to a child with the corresponding key in any depth. Example: item->atKeyRecursive("animals", "mammal", "cat", NULL);
         /// @param key The key or name of the item to be found.
-        /// @param ... Other child keys.
+        /// @param ... Other child keys. Must end with NULL!
         /// @return Pointer to an item or NULL if not found.
         json *atKeyRecursive(const char *key, ...);
         
-        /// @brief Returns with a pointer to a child with the corresponding key and type in any depth. Example: item->atKeyWithTypeRecursive(jstring, "animals", "mammal", "cat");
+        /// @brief Returns with a pointer to a child with the corresponding key and type in any depth. Example: item->atKeyWithTypeRecursive(jstring, "animals", "mammal", "cat", NULL);
         /// @param type The type of the item to be found.
         /// @param key The key or name of the item to be found.
-        /// @param ... Other child keys.
+        /// @param ... Other child keys. Must end with NULL!
         /// @return Pointer to an item or NULL if not found.
         json *atKeyWithTypeRecursive(jtype type, const char *key, ...);
         
@@ -154,45 +154,45 @@ namespace Superpowered {
         /// @return The item or NULL if the item is not found.
         json *objectAtKey(const char *key);
         
-        /// @brief Finds a jtype == null item in the child hierarchy. item->nullAtKeyRecursive("animals", "mammal", "cat");
+        /// @brief Finds a jtype == null item in the child hierarchy. item->nullAtKeyRecursive("animals", "mammal", "cat", NULL);
         /// @param key The key or name of the item.
-        /// @param ... Other child keys.
+        /// @param ... Other child keys. Must end with NULL!
         /// @return The item or NULL if the item is not found.
         json *nullAtKeyRecursive(const char *key, ...);
         
-        /// @brief Finds a jtype == jbool item in the child hierarchy. item->boolAtKeyRecursive("animals", "mammal", "cat");
+        /// @brief Finds a jtype == jbool item in the child hierarchy. item->boolAtKeyRecursive("animals", "mammal", "cat", NULL);
         /// @param key The key or name of the item.
-        /// @param ... Other child keys.
+        /// @param ... Other child keys. Must end with NULL!
         /// @return The item or NULL if the item is not found.
         json *boolAtKeyRecursive(const char *key, ...);
         
-        /// @brief Finds a jtype == jint item in the child hierarchy. item->intAtKeyRecursive("animals", "mammal", "cat");
+        /// @brief Finds a jtype == jint item in the child hierarchy. item->intAtKeyRecursive("animals", "mammal", "cat", NULL);
         /// @param key The key or name of the item.
-        /// @param ... Other child keys.
+        /// @param ... Other child keys. Must end with NULL!
         /// @return The item or NULL if the item is not found.
         json *intAtKeyRecursive(const char *key, ...);
         
-        /// @brief Finds a jtype == jdouble item in the child hierarchy. item->doubleAtKeyRecursive("animals", "mammal", "cat");
+        /// @brief Finds a jtype == jdouble item in the child hierarchy. item->doubleAtKeyRecursive("animals", "mammal", "cat", NULL);
         /// @param key The key or name of the item.
-        /// @param ... Other child keys.
+        /// @param ... Other child keys. Must end with NULL!
         /// @return The item or NULL if the item is not found.
         json *doubleAtKeyRecursive(const char *key, ...);
         
-        /// @brief Finds a jtype == jstring item in the child hierarchy. item->stringAtKeyRecursive("animals", "mammal", "cat");
+        /// @brief Finds a jtype == jstring item in the child hierarchy. item->stringAtKeyRecursive("animals", "mammal", "cat", NULL);
         /// @param key The key or name of the item.
-        /// @param ... Other child keys.
+        /// @param ... Other child keys. Must end with NULL!
         /// @return The item or NULL if the item is not found.
         json *stringAtKeyRecursive(const char *key, ...);
         
-        /// @brief Finds a jtype == jarray item in the child hierarchy. item->arrayAtKeyRecursive("animals", "mammal", "cat");
+        /// @brief Finds a jtype == jarray item in the child hierarchy. item->arrayAtKeyRecursive("animals", "mammal", "cat", NULL);
         /// @param key The key or name of the item.
-        /// @param ... Other child keys.
+        /// @param ... Other child keys. Must end with NULL!
         /// @return The item or NULL if the item is not found.
         json *arrayAtKeyRecursive(const char *key, ...);
         
-        /// @brief Finds a jtype == jobject item in the child hierarchy. item->objectAtKeyRecursive("animals", "mammal", "cat");
+        /// @brief Finds a jtype == jobject item in the child hierarchy. item->objectAtKeyRecursive("animals", "mammal", "cat", NULL);
         /// @param key The key or name of the item.
-        /// @param ... Other child keys.
+        /// @param ... Other child keys. Must end with NULL!
         /// @return The item or NULL if the item is not found.
         json *objectAtKeyRecursive(const char *key, ...);
         
