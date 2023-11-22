@@ -3,12 +3,12 @@ apply plugin: 'com.android.application'
 def superpowered_sdk_path = new File(projectDir, '../../../Superpowered')
 
 android { // main settings for your application
-    compileSdkVersion = 33
+    compileSdkVersion = 34
 
     defaultConfig {
         applicationId "com.superpowered.complexusb"
         minSdkVersion 24
-        targetSdkVersion 33
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
 

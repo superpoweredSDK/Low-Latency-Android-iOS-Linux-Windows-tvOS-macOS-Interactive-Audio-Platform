@@ -1,0 +1,417 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9843601B2AD00529004BF2F9 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = 9843601A2AD00529004BF2F9 /* RealityKitContent */; };
+		9843601D2AD00529004BF2F9 /* SuperpoweredVisionOSExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9843601C2AD00529004BF2F9 /* SuperpoweredVisionOSExampleApp.swift */; };
+		9843601F2AD00529004BF2F9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9843601E2AD00529004BF2F9 /* ContentView.swift */; };
+		984360212AD0052A004BF2F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 984360202AD0052A004BF2F9 /* Assets.xcassets */; };
+		984360242AD0052A004BF2F9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 984360232AD0052A004BF2F9 /* Preview Assets.xcassets */; };
+		984360362AD00A53004BF2F9 /* SuperpoweredAudioEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = 984360352AD00A53004BF2F9 /* SuperpoweredAudioEngine.mm */; };
+		984360382AD00D19004BF2F9 /* libSuperpoweredAudioVisionOS.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 984360372AD00D19004BF2F9 /* libSuperpoweredAudioVisionOS.xcframework */; };
+		984360392AD00D19004BF2F9 /* libSuperpoweredAudioVisionOS.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 984360372AD00D19004BF2F9 /* libSuperpoweredAudioVisionOS.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9843603C2AD01102004BF2F9 /* SuperpoweredVisionOSAudioIO.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9843603A2AD01102004BF2F9 /* SuperpoweredVisionOSAudioIO.mm */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9843602F2AD0057E004BF2F9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				984360392AD00D19004BF2F9 /* libSuperpoweredAudioVisionOS.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		984360152AD00529004BF2F9 /* SuperpoweredVisionOSExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperpoweredVisionOSExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		984360192AD00529004BF2F9 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
+		9843601C2AD00529004BF2F9 /* SuperpoweredVisionOSExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperpoweredVisionOSExampleApp.swift; sourceTree = "<group>"; };
+		9843601E2AD00529004BF2F9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		984360202AD0052A004BF2F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		984360232AD0052A004BF2F9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		984360252AD0052A004BF2F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		984360302AD0099F004BF2F9 /* SuperpoweredVisionOSExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SuperpoweredVisionOSExample-Bridging-Header.h"; sourceTree = "<group>"; };
+		984360342AD00A53004BF2F9 /* SuperpoweredAudioEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuperpoweredAudioEngine.h; sourceTree = "<group>"; };
+		984360352AD00A53004BF2F9 /* SuperpoweredAudioEngine.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SuperpoweredAudioEngine.mm; sourceTree = "<group>"; };
+		984360372AD00D19004BF2F9 /* libSuperpoweredAudioVisionOS.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = libSuperpoweredAudioVisionOS.xcframework; path = ../../Superpowered/libSuperpoweredAudioVisionOS.xcframework; sourceTree = "<group>"; };
+		9843603A2AD01102004BF2F9 /* SuperpoweredVisionOSAudioIO.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SuperpoweredVisionOSAudioIO.mm; path = ../../../Superpowered/OpenSource/SuperpoweredVisionOSAudioIO.mm; sourceTree = "<group>"; };
+		9843603B2AD01102004BF2F9 /* SuperpoweredVisionOSAudioIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperpoweredVisionOSAudioIO.h; path = ../../../Superpowered/OpenSource/SuperpoweredVisionOSAudioIO.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		984360122AD00529004BF2F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9843601B2AD00529004BF2F9 /* RealityKitContent in Frameworks */,
+				984360382AD00D19004BF2F9 /* libSuperpoweredAudioVisionOS.xcframework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9843600C2AD00529004BF2F9 = {
+			isa = PBXGroup;
+			children = (
+				984360172AD00529004BF2F9 /* SuperpoweredVisionOSExample */,
+				984360182AD00529004BF2F9 /* Packages */,
+				984360162AD00529004BF2F9 /* Products */,
+				9843602B2AD0057D004BF2F9 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		984360162AD00529004BF2F9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				984360152AD00529004BF2F9 /* SuperpoweredVisionOSExample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		984360172AD00529004BF2F9 /* SuperpoweredVisionOSExample */ = {
+			isa = PBXGroup;
+			children = (
+				984360302AD0099F004BF2F9 /* SuperpoweredVisionOSExample-Bridging-Header.h */,
+				9843603B2AD01102004BF2F9 /* SuperpoweredVisionOSAudioIO.h */,
+				9843603A2AD01102004BF2F9 /* SuperpoweredVisionOSAudioIO.mm */,
+				984360342AD00A53004BF2F9 /* SuperpoweredAudioEngine.h */,
+				984360352AD00A53004BF2F9 /* SuperpoweredAudioEngine.mm */,
+				9843601C2AD00529004BF2F9 /* SuperpoweredVisionOSExampleApp.swift */,
+				9843601E2AD00529004BF2F9 /* ContentView.swift */,
+				984360202AD0052A004BF2F9 /* Assets.xcassets */,
+				984360252AD0052A004BF2F9 /* Info.plist */,
+				984360222AD0052A004BF2F9 /* Preview Content */,
+			);
+			path = SuperpoweredVisionOSExample;
+			sourceTree = "<group>";
+		};
+		984360182AD00529004BF2F9 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				984360192AD00529004BF2F9 /* RealityKitContent */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
+		984360222AD0052A004BF2F9 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				984360232AD0052A004BF2F9 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9843602B2AD0057D004BF2F9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				984360372AD00D19004BF2F9 /* libSuperpoweredAudioVisionOS.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		984360142AD00529004BF2F9 /* SuperpoweredVisionOSExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 984360282AD0052A004BF2F9 /* Build configuration list for PBXNativeTarget "SuperpoweredVisionOSExample" */;
+			buildPhases = (
+				984360112AD00529004BF2F9 /* Sources */,
+				984360122AD00529004BF2F9 /* Frameworks */,
+				984360132AD00529004BF2F9 /* Resources */,
+				9843602F2AD0057E004BF2F9 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SuperpoweredVisionOSExample;
+			packageProductDependencies = (
+				9843601A2AD00529004BF2F9 /* RealityKitContent */,
+			);
+			productName = SuperpoweredVisionOSExample;
+			productReference = 984360152AD00529004BF2F9 /* SuperpoweredVisionOSExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9843600D2AD00529004BF2F9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					984360142AD00529004BF2F9 = {
+						CreatedOnToolsVersion = 15.0;
+						LastSwiftMigration = 1500;
+					};
+				};
+			};
+			buildConfigurationList = 984360102AD00529004BF2F9 /* Build configuration list for PBXProject "SuperpoweredVisionOSExample" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9843600C2AD00529004BF2F9;
+			productRefGroup = 984360162AD00529004BF2F9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				984360142AD00529004BF2F9 /* SuperpoweredVisionOSExample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		984360132AD00529004BF2F9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				984360242AD0052A004BF2F9 /* Preview Assets.xcassets in Resources */,
+				984360212AD0052A004BF2F9 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		984360112AD00529004BF2F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				984360362AD00A53004BF2F9 /* SuperpoweredAudioEngine.mm in Sources */,
+				9843601F2AD00529004BF2F9 /* ContentView.swift in Sources */,
+				9843601D2AD00529004BF2F9 /* SuperpoweredVisionOSExampleApp.swift in Sources */,
+				9843603C2AD01102004BF2F9 /* SuperpoweredVisionOSAudioIO.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		984360262AD0052A004BF2F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = xros;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				XROS_DEPLOYMENT_TARGET = 1.0;
+			};
+			name = Debug;
+		};
+		984360272AD0052A004BF2F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = xros;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+				XROS_DEPLOYMENT_TARGET = 1.0;
+			};
+			name = Release;
+		};
+		984360292AD0052A004BF2F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SuperpoweredVisionOSExample/Preview Content\"";
+				DEVELOPMENT_TEAM = NQ2VLM7NM7;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../../Superpowered";
+				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.synervoz.SuperpoweredVisionOSExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "SuperpoweredVisionOSExample/SuperpoweredVisionOSExample-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+			};
+			name = Debug;
+		};
+		9843602A2AD0052A004BF2F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SuperpoweredVisionOSExample/Preview Content\"";
+				DEVELOPMENT_TEAM = NQ2VLM7NM7;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../../Superpowered";
+				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.synervoz.SuperpoweredVisionOSExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "SuperpoweredVisionOSExample/SuperpoweredVisionOSExample-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		984360102AD00529004BF2F9 /* Build configuration list for PBXProject "SuperpoweredVisionOSExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				984360262AD0052A004BF2F9 /* Debug */,
+				984360272AD0052A004BF2F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		984360282AD0052A004BF2F9 /* Build configuration list for PBXNativeTarget "SuperpoweredVisionOSExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				984360292AD0052A004BF2F9 /* Debug */,
+				9843602A2AD0052A004BF2F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9843601A2AD00529004BF2F9 /* RealityKitContent */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RealityKitContent;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 9843600D2AD00529004BF2F9 /* Project object */;
+}

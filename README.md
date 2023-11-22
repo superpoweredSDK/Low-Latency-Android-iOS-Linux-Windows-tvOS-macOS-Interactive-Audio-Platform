@@ -93,6 +93,10 @@ Superpowered is cross-platform: ALL SUPERPOWERED C++ CODE CAN BE COPY-PASTED bet
 
 	Example projects for React Native.
 
+- /Examples_VisionOS
+
+	Example projects for visionOS.
+
 
 # Example Projects
 
@@ -186,6 +190,9 @@ Shows how to use a player and apply a single effect.
 #### /Examples_ReactNative/SuperpoweredPlayerWithEffects
 Shows how to use a player and apply a single effect.
 
+#### /Examples_VisionOS/SuperpoweredVisionOSExample
+Shows how to generate a sine wave.
+
 ###### Remarks:
 
 Superpowered USB Audio classes for Android are compatible from Android 19 (KitKat 4.4) onwards. That’s the first Android version where proper scheduling priorities were implemented for low latency audio. This covers more than 75% active Android devices today.
@@ -250,4 +257,4 @@ Superpowered FFT benefits from ideas in Construction of a High-Performance FFT b
 
 The Superpowered MP3 and AAC decoder benefits from optimizations by Ken Cooke.
 
-Superpowered version 2.6.2
+Superpowered version 2.6.3

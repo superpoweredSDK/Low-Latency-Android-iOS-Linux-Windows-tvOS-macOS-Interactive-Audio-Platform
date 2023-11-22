@@ -3,3 +3,4 @@ Superpowered/libWindows/SuperpoweredWinUWP.pri
 Examples_Windows/x64
 Examples_Windows/x86
 Examples_Windows/.vs
+xcuserdata

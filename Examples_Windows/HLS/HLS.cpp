@@ -35,7 +35,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
             if (!audioIO) {
                 player = new Superpowered::AdvancedAudioPlayer(44100, 0);
                 player->loopOnEOF = true;
-                player->openHLS("https://playertest.longtailvideo.com/adaptive/oceans_aes/oceans_aes.m3u8");
+                player->openHLS("http://playertest.longtailvideo.com/adaptive/bbbfull/bbbfull.m3u8");
                 audioIO = new SuperpoweredWASAPIAudioIO(audioProcessing, NULL, 12, 2, false, true);
                 audioIO->start();
                 SetWindowTextW(button, L"STOP");
