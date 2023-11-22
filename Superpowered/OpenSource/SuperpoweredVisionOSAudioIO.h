@@ -1,6 +1,6 @@
 #import <AVFoundation/AVFoundation.h>
 
-@protocol SuperpoweredtvOSAudioIODelegate;
+@protocol SuperpoweredVisionOSAudioIODelegate;
 
 /// @brief You can have an audio processing callback in Objective-C or pure C. This is the pure C prototype.
 /// @return Return false when you did no audio processing (silence).
@@ -13,7 +13,7 @@ typedef bool (*audioProcessingCallback_C) (void *clientData, float *output, unsi
 
 /// @brief Handles all audio session, audio lifecycle (interruptions), output, buffer size and samplerate headaches.
 /// @warning All methods and setters should be called on the main thread only!
-@interface SuperpoweredtvOSAudioIO: NSObject {
+@interface SuperpoweredVisionOSAudioIO: NSObject {
     int preferredBufferSizeMs;
 }
 
@@ -21,11 +21,11 @@ typedef bool (*audioProcessingCallback_C) (void *clientData, float *output, unsi
 
 /// @brief Constructor.
 /// @param delegate The object fully implementing the SuperpoweredIOSAudioIODelegate protocol. Not retained.
-/// @param preferredBufferSize The initial value for preferredBufferSizeMs. 12 is good for every tvOS device (512 frames).
+/// @param preferredBufferSize The initial value for preferredBufferSizeMs. 12 is good for every VisionOS device (512 frames).
 /// @param preferredMinimumSamplerate The preferred minimum sample rate. 44100 or 48000 are recommended for good sound quality.
 /// @param audioSessionCategory The audio session category.
 /// @param channels The number of channels in the audio processing callback.
-- (id)initWithDelegate:(id<SuperpoweredtvOSAudioIODelegate>)delegate preferredBufferSize:(unsigned int)preferredBufferSize preferredMinimumSamplerate:(unsigned int)preferredMinimumSamplerate audioSessionCategory:(NSString *)audioSessionCategory channels:(int)channels;
+- (id)initWithDelegate:(id<SuperpoweredVisionOSAudioIODelegate>)delegate preferredBufferSize:(unsigned int)preferredBufferSize preferredMinimumSamplerate:(unsigned int)preferredMinimumSamplerate audioSessionCategory:(NSString *)audioSessionCategory channels:(int)channels;
 
 /// @brief Starts audio I/O.
 /// @return True if successful, false if failed.
@@ -45,8 +45,8 @@ typedef bool (*audioProcessingCallback_C) (void *clientData, float *output, unsi
 @end
 
 
-/// @brief You must implement this protocol to use SuperpoweredtvOSAudioIO.
-@protocol SuperpoweredtvOSAudioIODelegate
+/// @brief You must implement this protocol to use SuperpoweredVisionOSAudioIO.
+@protocol SuperpoweredVisionOSAudioIODelegate
 
 /// @brief The audio session may be interrupted by a phone call, etc. This method is called on the main thread when the interrupt starts.
 @optional
