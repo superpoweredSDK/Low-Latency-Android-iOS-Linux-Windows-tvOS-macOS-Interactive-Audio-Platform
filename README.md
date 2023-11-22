@@ -93,6 +93,10 @@ Superpowered is cross-platform: ALL SUPERPOWERED C++ CODE CAN BE COPY-PASTED bet
 
 	Example projects for React Native.
 
+- /Examples_VisionOS
+
+	Example projects for visionOS.
+
 
 # Example Projects
 
@@ -185,6 +189,9 @@ Shows how to use a player and apply a single effect.
 
 #### /Examples_ReactNative/SuperpoweredPlayerWithEffects
 Shows how to use a player and apply a single effect.
+
+#### /Examples_VisionOS/SuperpoweredVisionOSExample
+Shows how to generate a sine wave.
 
 ###### Remarks:
 
