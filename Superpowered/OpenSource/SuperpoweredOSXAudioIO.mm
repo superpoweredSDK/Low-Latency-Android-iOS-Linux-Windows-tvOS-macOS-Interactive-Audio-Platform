@@ -126,11 +126,11 @@ static OSStatus devicesChangedCallback(__attribute__((unused)) AudioObjectID inO
         inputBuffers0->mNumberBuffers = inputBuffers1->mNumberBuffers = 1;
 
         CFRunLoopRef runLoop = NULL;
-        AudioObjectPropertyAddress rladdress = { kAudioHardwarePropertyRunLoop, kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMaster };
+        AudioObjectPropertyAddress rladdress = { kAudioHardwarePropertyRunLoop, kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMain };
         AudioObjectSetPropertyData(kAudioObjectSystemObject, &rladdress, 0, NULL, sizeof(CFRunLoopRef), &runLoop);
-        AudioObjectPropertyAddress ddaddress = { enableInput && !enableOutput ? kAudioHardwarePropertyDefaultInputDevice : kAudioHardwarePropertyDefaultOutputDevice, kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMaster };
+        AudioObjectPropertyAddress ddaddress = { enableInput && !enableOutput ? kAudioHardwarePropertyDefaultInputDevice : kAudioHardwarePropertyDefaultOutputDevice, kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMain };
         AudioObjectAddPropertyListener(kAudioObjectSystemObject, &ddaddress, defaultDeviceChangedCallback, (__bridge void *)self);
-        AudioObjectPropertyAddress hdaddress = { kAudioHardwarePropertyDevices, kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMaster };
+        AudioObjectPropertyAddress hdaddress = { kAudioHardwarePropertyDevices, kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMain };
         AudioObjectAddPropertyListener(kAudioObjectSystemObject, &hdaddress, devicesChangedCallback, (__bridge void *)self);
 
         [self createAudioUnits];
@@ -152,11 +152,11 @@ static void destroyUnit(AudioComponentInstance *unit) {
 }
 
 - (void)dealloc {
-    AudioObjectPropertyAddress ddaddress = { kAudioHardwarePropertyDefaultInputDevice, kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMaster };
+    AudioObjectPropertyAddress ddaddress = { kAudioHardwarePropertyDefaultInputDevice, kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMain };
     AudioObjectRemovePropertyListener(kAudioObjectSystemObject, &ddaddress, defaultDeviceChangedCallback, (__bridge void *)self);
     ddaddress.mSelector = kAudioHardwarePropertyDefaultOutputDevice;
     AudioObjectRemovePropertyListener(kAudioObjectSystemObject, &ddaddress, defaultDeviceChangedCallback, (__bridge void *)self);
-    AudioObjectPropertyAddress hdaddress = { kAudioHardwarePropertyDevices, kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMaster };
+    AudioObjectPropertyAddress hdaddress = { kAudioHardwarePropertyDevices, kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMain };
     AudioObjectRemovePropertyListener(kAudioObjectSystemObject, &hdaddress, devicesChangedCallback, (__bridge void *)self);
     
     destroyUnit(&inputUnit);
@@ -186,7 +186,7 @@ static void streamFormatChangedCallback(void *inRefCon, AudioUnit inUnit, __attr
 static AudioDeviceID getDefaultAudioDevice(bool input) {
     AudioDeviceID deviceID = 0;
     UInt32 size = sizeof(AudioDeviceID);
-    AudioObjectPropertyAddress address = { input ? kAudioHardwarePropertyDefaultInputDevice : kAudioHardwarePropertyDefaultOutputDevice, kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMaster };
+    AudioObjectPropertyAddress address = { input ? kAudioHardwarePropertyDefaultInputDevice : kAudioHardwarePropertyDefaultOutputDevice, kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMain };
     return (AudioObjectGetPropertyData(kAudioObjectSystemObject, &address, 0, NULL, &size, &deviceID) == noErr) ? deviceID : UINT_MAX;
 }
 
@@ -216,7 +216,7 @@ static void setBufferSize(int samplerate, int preferredBufferSizeMs, AudioDevice
     if (samplerate < 1) return;
     UInt32 frames = powf(2.0f, floorf(log2f(float(samplerate) * 0.001f * float(preferredBufferSizeMs))));
     if (frames > 4096) frames = 4096;
-    AudioObjectPropertyAddress address = { kAudioDevicePropertyBufferFrameSize, kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMaster };
+    AudioObjectPropertyAddress address = { kAudioDevicePropertyBufferFrameSize, kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMain };
     if (deviceID != UINT_MAX) AudioObjectSetPropertyData(deviceID, &address, 0, NULL, sizeof(UInt32), &frames);
 }
 
@@ -265,9 +265,9 @@ static bool hasMapping(int *map) {
     [mapOutputDeviceName release];
 #endif
      mapInputDeviceName = mapOutputDeviceName = nil;
-    AudioObjectPropertyAddress deviceNameAddress = { kAudioObjectPropertyName, kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMaster };
-    AudioObjectPropertyAddress inputChannelsAddress = { kAudioDevicePropertyStreamConfiguration, kAudioDevicePropertyScopeInput, kAudioObjectPropertyElementMaster };
-    AudioObjectPropertyAddress outputChannelsAddress = { kAudioDevicePropertyStreamConfiguration, kAudioDevicePropertyScopeOutput, kAudioObjectPropertyElementMaster };
+    AudioObjectPropertyAddress deviceNameAddress = { kAudioObjectPropertyName, kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMain };
+    AudioObjectPropertyAddress inputChannelsAddress = { kAudioDevicePropertyStreamConfiguration, kAudioDevicePropertyScopeInput, kAudioObjectPropertyElementMain };
+    AudioObjectPropertyAddress outputChannelsAddress = { kAudioDevicePropertyStreamConfiguration, kAudioDevicePropertyScopeOutput, kAudioObjectPropertyElementMain };
     mapNumInputChannels = mapNumOutputChannels = 0;
     
     if (outputEnabled) {
@@ -402,10 +402,10 @@ static bool hasMapping(int *map) {
 }
 
 + (audioDevice *)getAudioDevices {
-    AudioObjectPropertyAddress allDevices = { kAudioHardwarePropertyDevices, kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMaster };
-    AudioObjectPropertyAddress deviceName = { kAudioObjectPropertyName, kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMaster };
-    AudioObjectPropertyAddress inputChannels = { kAudioDevicePropertyStreamConfiguration, kAudioDevicePropertyScopeInput, kAudioObjectPropertyElementMaster };
-    AudioObjectPropertyAddress outputChannels = { kAudioDevicePropertyStreamConfiguration, kAudioDevicePropertyScopeOutput, kAudioObjectPropertyElementMaster };
+    AudioObjectPropertyAddress allDevices = { kAudioHardwarePropertyDevices, kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMain };
+    AudioObjectPropertyAddress deviceName = { kAudioObjectPropertyName, kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMain };
+    AudioObjectPropertyAddress inputChannels = { kAudioDevicePropertyStreamConfiguration, kAudioDevicePropertyScopeInput, kAudioObjectPropertyElementMain };
+    AudioObjectPropertyAddress outputChannels = { kAudioDevicePropertyStreamConfiguration, kAudioDevicePropertyScopeOutput, kAudioObjectPropertyElementMain };
     
     UInt32 size = 0;
     if (AudioObjectGetPropertyDataSize(kAudioObjectSystemObject, &allDevices, 0, NULL, &size) || !size) return NULL;
