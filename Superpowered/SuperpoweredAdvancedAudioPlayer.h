@@ -39,14 +39,14 @@ public:
     static const int HLSDownloadEverything;  ///< Will download everything after the playback position until the end.
     static const int HLSDownloadRemaining;   ///< Downloads everything from the beginning to the end, regardless the playback position.
     static const float MaxPlaybackRate;      ///< The maximum playback rate or scratching speed: 20.
-    
+
     /// @brief Jog Wheel Mode, to be used with the jogT... methods.
     typedef enum JogMode {
         JogMode_Scratch = 0,   ///< Jog wheel controls scratching.
         JogMode_PitchBend = 1, ///< Jog wheel controls pitch bend.
         JogMode_Parameter = 2  ///< Jog wheel changes a parameter.
     } JogMode;
-    
+
     /// @brief Player events.
     typedef enum PlayerEvent {
         PlayerEvent_None = 0,       ///< Open was not called yet.
@@ -56,14 +56,14 @@ public:
         PlayerEvent_ConnectionLost = 3, ///< Network connection lost to the HLS stream or progressive download. Can only be "recovered" by a new open(). May happen after PlayerEvent_Opened has been delivered.
         PlayerEvent_ProgressiveDownloadFinished = 11 ///< The content has finished downloading and is fully available locally. May happen after PlayerEvent_Opened has been delivered.
     } PlayerEvent;
-    
+
     /// @brief Synchronization modes.
     typedef enum SyncMode {
         SyncMode_None = 0,        ///< No synchronization.
         SyncMode_Tempo = 1,       ///< Sync tempo only.
         SyncMode_TempoAndBeat = 2 ///< Sync tempo and beat.
     } SyncMode;
-    
+
     unsigned int outputSamplerate;           ///< The player output sample rate in Hz.
     double playbackRate;                     ///< The playback rate. Must be positive and above 0.00001. Default: 1.
     bool timeStretching;                     ///< Enable/disable time-stretching. Default: true.
@@ -92,14 +92,14 @@ public:
 /// If you need to clear the folder before your app quits, use NULL for the path.
 /// @param path File system path of the folder.
     static void setTempFolder(const char *path);
-    
+
 /// @return Returns with the temporary folder path.
     static const char *getTempFolderPath();
-    
+
 /// @return Returns with a human readable error string. If the code is not a decoder status code, then it's a SuperpoweredHTTP status code and returns with that.
 /// @param code The return value of the open...() method.
     JSWASM static const char *statusCodeToString(int code);
-    
+
 /// @brief Creates a player instance.
 /// @param samplerate The initial sample rate of the player output in hz.
 /// @param cachedPointCount How many positions can be cached in the memory. Jumping to a cached point happens with zero latency. Loops are automatically cached.
@@ -110,7 +110,7 @@ public:
 /// @param enableStems If true and a Native Instruments STEMS file is loaded, output 4 stereo channels. Default: false (stereo master mix output).
     JSWASM AdvancedAudioPlayer(unsigned int samplerate, unsigned char cachedPointCount, unsigned int internalBufferSizeSeconds = 2, unsigned int negativeSeconds = 0, float minimumTimestretchingPlaybackRate = 0.501f, float maximumTimestretchingPlaybackRate = 2.0f, bool enableStems = false);
     JSWASM ~AdvancedAudioPlayer();
-    
+
 /// @brief Opens an audio file with playback paused.
 /// Playback rate, pitchShift, timeStretching and syncMode are NOT changed if you open a new file.
 /// @warning This method has no effect if the previous open didn't finish or if called in the audio processing thread.
@@ -119,7 +119,7 @@ public:
 /// @param skipSilenceAtBeginning If true, the player will set the position to skip the initial digital silence of the audio file (up to 10 seconds).
 /// @param measureSilenceAtEnd If true, the player will check the length of the digital silence at the end of the audio file.
     void open(const char *path, Superpowered::httpRequest *customHTTPRequest = 0, bool skipSilenceAtBeginning = false, bool measureSilenceAtEnd = false);
-    
+
 /// @brief Opens an audio file with playback paused.
 /// Playback rate, pitchShift, timeStretching and syncMode are NOT changed if you open a new file.
 /// @warning This method has no effect if the previous open didn't finish or if called in the audio processing thread.
@@ -130,7 +130,7 @@ public:
 /// @param skipSilenceAtBeginning If true, the player will set the position to skip the initial digital silence of the audio file (up to 10 seconds).
 /// @param measureSilenceAtEnd If true, the player will check the length of the digital silence at the end of the audio file.
     void open(const char *path, int offset, int length, Superpowered::httpRequest *customHTTPRequest = 0, bool skipSilenceAtBeginning = false, bool measureSilenceAtEnd = false);
-    
+
 /// @brief Opens raw 16-bit sterteo PCM audio in memory, with playback paused.
 /// Playback rate, pitchShift, timeStretching and syncMode are NOT changed if you open a new file.
 /// @warning This method has no effect if the previous open didn't finish or if called in the audio processing thread.
@@ -140,7 +140,7 @@ public:
 /// @param skipSilenceAtBeginning If true, the player will set the position to skip the initial digital silence of the audio file (up to 10 seconds).
 /// @param measureSilenceAtEnd If true, the player will check the length of the digital silence at the end of the audio file.
     JSWASM void openPCM16AudioInMemory(void *pointer, unsigned int samplerate, unsigned int durationFrames, bool skipSilenceAtBeginning = false, bool measureSilenceAtEnd = false);
-    
+
 /// @brief Opens a memory location in Superpowered AudioInMemory format, with playback paused. This feature supports progressive loading via AudioInMemory::append (and the AudioInMemory doesn't even need to hold any data when openMemory is called).
 /// Playback rate, pitchShift, timeStretching and syncMode are NOT changed if you open a new file.
 /// @warning This method has no effect if the previous open didn't finish or if called in the audio processing thread.
@@ -148,83 +148,83 @@ public:
 /// @param skipSilenceAtBeginning If true, the player will set the position to skip the initial digital silence of the audio file (up to 10 seconds).
 /// @param measureSilenceAtEnd If true, the player will check the length of the digital silence at the end of the audio file.
     JSWASM void openMemory(void *pointer, bool skipSilenceAtBeginning = false, bool measureSilenceAtEnd = false);
-    
+
 /// @brief Opens a HTTP Live Streaming stream with playback paused.
 /// Playback rate, pitchShift, timeStretching and syncMode are NOT changed if you open a new one.
 /// Do not call openHLS() in the audio processing thread.
 /// @param url Stream URL.
 /// @param customHTTPRequest If custom HTTP communication is required (such as sending http headers for authorization), pass a fully prepared http request object. The player will copy this object.
     void openHLS(const char *url, Superpowered::httpRequest *customHTTPRequest = 0);
-    
+
 /// @return Returns with the latest player event. This method should be used in a periodically running code, at one place only, because it returns a specific event just once per open() call. Best to be used in a UI loop.
     JSWASM PlayerEvent getLatestEvent();
 
 /// @return If getLatestEvent returns with OpenFailed, retrieve the error code or HTTP status code here.
     JSWASM int getOpenErrorCode();
-    
+
 /// @return Returns with the full filesystem path of the locally cached file if the player is in the PlayerEvent_Opened_ProgressiveDownloadFinished state, NULL otherwise.
     const char *getFullyDownloadedFilePath();
-    
+
 /// @return Returns true if end-of-file has been reached recently (will never indicate end-of-file if loopOnEOF is true). This method should be used in a periodically running code at one place only, because it returns a specific end-of-file event just once. Best to be used in a UI loop.
     JSWASM bool eofRecently();
- 
+
 /// @return Indicates if the player is waiting for data (such as waiting for a network download).
     JSWASM bool isWaitingForBuffering();
-    
+
 /// @return Returns with the length of the digital silence at the beginning of the file if open...() was called with skipSilenceAtBeginning = true, 0 otherwise.
     JSWASM double getAudioStartMs();
-    
+
 /// @return Returns with the length of the digital silence at the end of the file if open...() was called with measureSilenceAtEnd = true, 0 otherwise.
     JSWASM double getAudioEndMs();
-            
+
 /// @return The current playhead position in milliseconds. Not changed by any pending setPosition() or seek() call, always accurate regardless of time-stretching and other transformations.
     JSWASM double getPositionMs();
-    
+
 /// @return The current position in milliseconds, immediately updated after setPosition() or seek(). Use this for UI display.
     JSWASM double getDisplayPositionMs();
-    
+
 /// @return Similar to getDisplayPositionMs(), but as a percentage (0 to 1).
     JSWASM float getDisplayPositionPercent();
-    
+
 /// @return Similar to getDisplayPositionMs(), but as seconds elapsed.
     JSWASM int getDisplayPositionSeconds();
-    
+
 /// @return The position in milliseconds where the player will continue playback after slip mode ends.
     JSWASM double afterSlipModeWillJumpBackToPositionMs();
-    
-/// @return The duration of the current track in milliseconds. Returns UINT_MAX for live streams.
-    JSWASM unsigned int getDurationMs();
-    
+
+/// @return The duration of the current track in milliseconds. Returns -1 for live streams.
+    JSWASM double getDurationMs();
+
 /// @return The duration of the current track in seconds. Returns UINT_MAX for live streams.
     JSWASM unsigned int getDurationSeconds();
-    
+
 /// @brief Starts playback immediately without any synchronization.
     JSWASM void play();
-    
+
 /// @brief Starts beat or tempo synchronized playback.
     JSWASM void playSynchronized();
-    
+
 /// @brief Starts playback at a specific position. isPlaying() will return false and the position will not be updated until this function succeeds starting playback at the specified position.
 /// You can call this in a real-time thread (audio processing callback) with a continuously updated time for a precise on-the-fly launch.
 /// @param positionMs Start position in milliseconds.
     JSWASM void playSynchronizedToPosition(double positionMs);
-    
+
 /// @brief Pause playback.
 /// There is no need for a "stop" method, this player is very efficient with the battery and has no significant "stand-by" processing.
 /// @param decelerateSeconds Optional momentum. 0 means to pause immediately.
 /// @param slipMs Enable slip mode for a specific amount of time, or 0 to not slip.
     JSWASM void pause(float decelerateSeconds = 0, unsigned int slipMs = 0);
-    
+
 /// @brief Toggle play/pause (no synchronization).
     JSWASM void togglePlayback();
-    
+
 /// @return Indicates if the player is playing or paused.
     JSWASM bool isPlaying();
-    
+
 /// @brief Simple seeking to a percentage.
 /// @param percent The position in percentage.
     JSWASM void seek(double percent);
-    
+
 /// @brief Precise seeking.
 /// @param ms Position in milliseconds.
 /// @param andStop If true, stops playback.
@@ -232,12 +232,12 @@ public:
 /// @param forceDefaultQuantum If true and using quantized synchronization, will use the defaultQuantum instead of the syncToQuantum.
 /// @param preferWaitingforSynchronisedStart Wait or start immediately when synchronized.
     JSWASM void setPosition(double ms, bool andStop, bool synchronisedStart, bool forceDefaultQuantum = false, bool preferWaitingforSynchronisedStart = false);
-    
+
 /// @brief Caches a position for zero latency seeking.
 /// @param ms Position in milliseconds.
 /// @param pointID Use this to provide a custom identifier, so you can overwrite the same point later. Use 255 for a point with no identifier.
     JSWASM void cachePosition(double ms, unsigned char pointID = 255);
-            
+
 /// @brief Outputs audio, stereo version.
 /// @return True: buffer has audio output from the player. False: the contents of the buffers were not changed (typically happens when the player is paused).
 /// @warning Duration may change to a more precise value after this, because some file formats have no precise duration information.
@@ -261,43 +261,43 @@ public:
 /// @param volume2 Volume for buffer2. 0.0f is silence, 1.0f is "original volume". Changes are automatically smoothed between consecutive processes.
 /// @param volume3 Volume for buffer3. 0.0f is silence, 1.0f is "original volume". Changes are automatically smoothed between consecutive processes.
     JSWASM bool process8Channels(float *buffer0, float *buffer1, float *buffer2, float *buffer3, bool mix, unsigned int numberOfFrames, float volume0, float volume1, float volume2, float volume3);
-    
+
 /// @return Returns true if a STEMS file was loaded (and the player was initialized with enableStems == true).
     JSWASM bool isStems();
-    
+
 /// @brief Performs the last stage of STEMS processing, the master compressor and limiter. Works only if a STEMS file was loaded.
 /// @param input Pointer to floating point numbers. 32-bit interleaved stereo input buffer.
 /// @param output Pointer to floating point numbers. 32-bit interleaved stereo output buffer.
 /// @param numberOfFrames The number of frames to process.
 /// @param volume Output volume. 0.0f is silence, 1.0f is "original volume". Changes are automatically smoothed between consecutive processes.
     JSWASM void processSTEMSMaster(float *input, float *output, unsigned int numberOfFrames, float volume = 1.0f);
-    
+
 /// @return Returns with a stem's name if a STEMS file was loaded, NULL otherwise.
 /// @param index The index of the stem.
     JSWASM const char *getStemName(unsigned char index);
-    
+
 /// @return Returns with a stem's color if a STEMS file was loaded, NULL otherwise.
 /// @param index The index of the stem.
     JSWASM const char *getStemColor(unsigned char index);
-    
+
 /// @brief Apple's built-in codec may be used in some cases, such as decoding ALAC files. Call this after a media server reset or audio session interrupt to resume playback.
     void onMediaserverInterrupt();
-    
+
 /// @return Returns with the beginning of the buffered part. Will always be 0 for non-network sources (such as local files).
     float getBufferedStartPercent();
-    
+
 /// @return Returns with the end of the buffered part. Will always be 1.0f for non-network sources (such as local files).
     float getBufferedEndPercent();
-    
+
 /// @return For HLS only. Returns with the actual network throughput (for best stream selection).
     unsigned int getCurrentHLSBPS();
-    
+
 /// @return The current bpm of the track (as changed by the playback rate).
     JSWASM double getCurrentBpm();
-        
+
 /// @return How many milliseconds elapsed since the last beat.
     JSWASM double getMsElapsedSinceLastBeat();
-        
+
 /// @return Which beat has just happened. Possible values:
 /// 0        : unknown
 /// 1 - 1.999: first beat
@@ -305,21 +305,21 @@ public:
 /// 3 - 3.999: third beat
 /// 4 - 4.999: fourth beat
     JSWASM float getBeatIndex();
-        
+
 /// @return Returns with the current phase for quantized synchronization, between 0 (beginning of the quantum) and 1 (end of the quantum).
     JSWASM double getPhase();
-        
+
 /// @return Returns with the current quantum for quantized synchronization, such as 2 for two beats, 4 for four beats, etc...
     JSWASM double getQuantum();
-    
+
 /// @return Returns with the distance (in milliseconds) to a specific quantum and phase for quantized synchronization.
 /// @param phase The phase to calculate against.
 /// @param quantum The quantum to calculate against.
     JSWASM double getMsDifference(double phase, double quantum);
-    
+
 /// @return If the player is waiting to a synchronization event (such as synchronized playback start or restarting a loop), the return value indicates the time remaining in milliseconds (continously updated). 0 means not waiting to such event.
     JSWASM double getMsRemainingToSyncEvent();
-    
+
 /// @brief Loop from a start point to some length.
 /// @param startMs Loop from this milliseconds.
 /// @param lengthMs Loop length in milliseconds.
@@ -341,32 +341,32 @@ public:
 /// @param forceDefaultQuantum If true and using quantized synchronization, will use the defaultQuantum instead of the syncToQuantum.
 /// @param preferWaitingforSynchronisedStart Wait or start immediately when synchronized.
     JSWASM void loopBetween(double startMs, double endMs, bool jumpToStartMs, unsigned char pointID, bool synchronisedStart, unsigned int numLoops = 0, bool forceDefaultQuantum = false, bool preferWaitingforSynchronisedStart = false);
-        
+
 /// @brief Exit from the current loop.
 /// @param synchronisedStart Synchronized start or re-synchronization after the loop exit.
     JSWASM void exitLoop(bool synchronisedStart = false);
-    
+
 /// @return Indicates if looping is enabled.
     JSWASM bool isLooping();
-        
+
 /// @return Returns true if a position is inside the current loop.
 /// @param ms The position in milliseconds.
     JSWASM bool msInLoop(double ms);
-    
+
 /// @return Returns with the position of the closest beat.
 /// @param ms The position in milliseconds where to find the closest beat.
 /// @param beatIndex Set to 1-4 to retrieve the position of a specific beat index relative to ms, or 0 for any beat index.
     JSWASM double closestBeatMs(double ms, unsigned char beatIndex = 0);
-    
+
 /// @return Returns with the beat index of the closest beat.
 /// @param ms The position in milliseconds where to find the closest beat.
     JSWASM unsigned char closestBeatIndex(double ms);
-    
+
 /// @brief Sets playback direction.
 /// @param reverse True: reverse. False: forward.
 /// @param slipMs Enable slip mode for a specific amount of time, or 0 to not slip.
     JSWASM void setReverse(bool reverse, unsigned int slipMs = 0);
-    
+
 /// @return If true, the player is playing backwards.
     JSWASM bool isReverse();
 
@@ -376,25 +376,28 @@ public:
 /// @param faster True: faster, false: slower.
 /// @param holdMs How long to maintain the pitch bend state. A value >= 1000 will hold until endContinuousPitchBend is called. A value < 40 will not "ramp up" pitch bend, but will apply it immediately.
     JSWASM void pitchBend(float maxPercent, bool bendStretch, bool faster, unsigned int holdMs);
-        
+
 /// @brief Ends pitch bend.
     JSWASM void endContinuousPitchBend();
-    
+
 /// @return Returns with the distance (in milliseconds) to the beatgrid while using pitch bend for correction.
     JSWASM double getBendOffsetMs();
-    
+
+/// @return Returns with the current pitch bend percent. Will be 1 if there is no pitch bend happening.
+    JSWASM float getCurrentPitchBendPercent();
+
 /// @brief Reset the pitch bend offset to the beatgrid to zero.
     JSWASM void resetBendMsOffset();
-    
+
 /// @return Indicates if returning from scratching or reverse playback will maintain the playback position as if the player had never entered into scratching or reverse playback.
     JSWASM bool isPerformingSlip();
-    
+
 /// @brief "Virtual jog wheel" or "virtual turntable" handling.
 /// @param ticksPerTurn Sets the sensitivity of the virtual wheel. Use around 2300 for pixel-perfect touchscreen waveform control.
 /// @param mode Jog wheel mode (scratching, pitch bend, or parameter set in the 0-1 range).
 /// @param scratchSlipMs Enables slip mode for a specific amount of time for scratching, or 0 to not slip.
     JSWASM void jogTouchBegin(int ticksPerTurn, JogMode mode, unsigned int scratchSlipMs = 0);
-        
+
 /// @brief A jog wheel should send some "ticks" with the movement. A waveform's movement in pixels for example.
 /// @param value The ticks value.
 /// @param bendStretch Use time-stretching for pitch bend or not (false makes it "audible").
@@ -407,30 +410,30 @@ public:
 /// @param decelerate The decelerating rate for momentum. Set to 0.0f for automatic.
 /// @param synchronisedStart Beat-synced start after decelerating.
     JSWASM void jogTouchEnd(float decelerate, bool synchronisedStart);
-    
+
 /// @brief Direct turntable handling. Call this when scratching starts.
 /// @warning This is an advanced method, use it only if not using the jogT... methods.
 /// @param slipMs Enable slip mode for a specific amount of time for scratching, or 0 to not slip.
 /// @param stopImmediately Stop playback or not.
     JSWASM void startScratch(unsigned int slipMs, bool stopImmediately);
-        
+
 /// @brief Scratch movement.
 /// @warning This is an advanced method, use it only if not using the jogT... methods.
 /// @param pitch The current speed.
 /// @param smoothing Should be between 0.05f (max. smoothing) and 1.0f (no smoothing).
     JSWASM void scratch(double pitch, float smoothing);
-        
+
 /// @brief Ends scratching.
 /// @warning This is an advanced method, use it only if not using the jogT... methods.
 /// @param returnToStateBeforeScratch Return to the previous playback state (direction, speed) or not.
     JSWASM void endScratch(bool returnToStateBeforeScratch);
-    
+
 /// @return Indicates if the player is in scratching mode.
     JSWASM bool isScratching();
-    
+
 /// @return If jog wheel mode is JogMode_Parameter, returns with the current parameter typically in the range of -1 to 1, or less than -1000000.0 if there was no jog wheel movement. processStereo or processMulti updates this value, therefore it's recommended to read it after those calls were made, in the same thread.
     JSWASM double getJogParameter();
-    
+
 private:
     PlayerInternals *internals;
     AdvancedAudioPlayer(const AdvancedAudioPlayer&);

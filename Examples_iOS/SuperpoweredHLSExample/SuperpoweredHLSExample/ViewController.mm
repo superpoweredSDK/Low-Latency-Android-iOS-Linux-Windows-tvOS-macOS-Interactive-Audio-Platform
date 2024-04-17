@@ -6,7 +6,7 @@
 
 // some HLS stream url-title pairs
 static const char *urls[8] = {
-    "https://devimages.apple.com.edgekey.net/streaming/examples/bipbop_16x9/bipbop_16x9_variant.m3u8", "Apple Advanced Example Stream",
+    "http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8", "Apple Advanced Example Stream",
     "http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8", "Back to the Mac",
     "http://playertest.longtailvideo.com/adaptive/bbbfull/bbbfull.m3u8", "JW Player Test",
     "http://playertest.longtailvideo.com/adaptive/oceans_aes/oceans_aes.m3u8", "JW AES Encrypted",
