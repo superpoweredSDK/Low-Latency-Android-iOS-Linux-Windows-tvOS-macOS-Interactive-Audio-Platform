@@ -185,7 +185,7 @@ typedef struct ALSAContext {
             return false;
         }
 
-        printf("buffer size: %i, period size: %i, sample rate: %i\n", bufferSize, this->periodSize, this->samplerate);
+        printf("buffer size: %li, period size: %i, sample rate: %i\n", bufferSize, this->periodSize, this->samplerate);
         return true;
     }
 
