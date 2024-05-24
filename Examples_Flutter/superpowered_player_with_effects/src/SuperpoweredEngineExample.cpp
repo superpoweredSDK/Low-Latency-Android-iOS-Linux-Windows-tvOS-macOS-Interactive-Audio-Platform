@@ -16,7 +16,7 @@
 SuperpoweredEngineExample::SuperpoweredEngineExample() {
   player = std::make_unique<Superpowered::AdvancedAudioPlayer>(48000, 0);
   player->loopOnEOF = true;
-  
+
   flanger = std::make_unique<Superpowered::Flanger>(48000);
   flanger->enabled = true;
 
@@ -29,7 +29,7 @@ SuperpoweredEngineExample::~SuperpoweredEngineExample() {
 }
 
 void SuperpoweredEngineExample::play() {
-  player->open("https://docs.superpowered.com/audio/samples/splice/SO_PF_74_string_phrase_soaring_Gb.mp3");
+  player->open("https://superpowered.s3.amazonaws.com/SO_PF_74_string_phrase_soaring_Gb.mp3");
   player->play();
 }
 
