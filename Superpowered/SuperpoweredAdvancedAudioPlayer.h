@@ -431,7 +431,7 @@ public:
 /// @return Indicates if the player is in scratching mode.
     JSWASM bool isScratching();
 
-/// @return If jog wheel mode is JogMode_Parameter, returns with the current parameter typically in the range of -1 to 1, or less than -1000000.0 if there was no jog wheel movement. processStereo or processMulti updates this value, therefore it's recommended to read it after those calls were made, in the same thread.
+/// @return If jog wheel mode is JogMode_Parameter, returns with the current parameter typically in the range of -1 to 1, or more than 1000000.0 if there was no jog wheel movement. processStereo or processMulti updates this value, therefore it's recommended to read it after those calls were made, in the same thread.
     JSWASM double getJogParameter();
 
 private:
