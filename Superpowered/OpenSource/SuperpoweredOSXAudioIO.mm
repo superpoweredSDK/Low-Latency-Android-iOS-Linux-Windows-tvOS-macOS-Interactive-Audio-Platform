@@ -214,7 +214,7 @@ static void makeStreamFormat(AudioUnit au, AudioStreamBasicDescription *format, 
 
 static void setBufferSize(int samplerate, int preferredBufferSizeMs, AudioDeviceID deviceID) {
     if (samplerate < 1) return;
-    UInt32 frames = powf(2.0f, floorf(log2f(float(samplerate) * 0.001f * float(preferredBufferSizeMs))));
+    UInt32 frames = (UInt32)powf(2.0f, floorf(log2f(float(samplerate) * 0.001f * float(preferredBufferSizeMs))));
     if (frames > 4096) frames = 4096;
     AudioObjectPropertyAddress address = { kAudioDevicePropertyBufferFrameSize, kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMain };
     if (deviceID != UINT_MAX) AudioObjectSetPropertyData(deviceID, &address, 0, NULL, sizeof(UInt32), &frames);
@@ -277,7 +277,7 @@ static bool hasMapping(int *map) {
                 AudioUnitAddPropertyListener(outau, kAudioUnitProperty_StreamFormat, streamFormatChangedCallback, (__bridge void *)self);
                 AudioStreamBasicDescription format;
                 makeStreamFormat(outau, &format, false, numberOfChannels);
-                samplerate = format.mSampleRate;
+                samplerate = (int)format.mSampleRate;
                 if (!AudioUnitSetProperty(outau, kAudioUnitProperty_StreamFormat, kAudioUnitScope_Input, 0, &format, sizeof(format))) {
                     AURenderCallbackStruct callbackStruct;
                     callbackStruct.inputProc = audioOutputCallback;
@@ -313,7 +313,7 @@ static bool hasMapping(int *map) {
                 AudioUnitAddPropertyListener(inau, kAudioUnitProperty_StreamFormat, streamFormatChangedCallback, (__bridge void *)self);
                 AudioStreamBasicDescription format;
                 makeStreamFormat(inau, &format, true, numberOfChannels);
-                if (outputEnabled) format.mSampleRate = samplerate; else samplerate = format.mSampleRate;
+                if (outputEnabled) format.mSampleRate = samplerate; else samplerate = (int)format.mSampleRate;
                 if (!AudioUnitSetProperty(inau, kAudioUnitProperty_StreamFormat, kAudioUnitScope_Output, 1, &format, sizeof(format))) {
                     AURenderCallbackStruct callbackStruct;
                     callbackStruct.inputProc = audioInputCallback;

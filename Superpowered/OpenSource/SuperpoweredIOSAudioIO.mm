@@ -18,6 +18,18 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
     else return audioDeviceType_other;
 }
 
+static unsigned int nearestPowerOfTwo(unsigned int n) {
+    unsigned int v = n - 1;
+    v |= v >> 1;
+    v |= v >> 2;
+    v |= v >> 4;
+    v |= v >> 8;
+    v |= v >> 16;
+    v++;
+    unsigned int x = v >> 1;
+    return (v - n) > (n - x) ? x : v;
+}
+
 // Initialization
 @implementation SuperpoweredIOSAudioIO {
 #if __has_feature(objc_arc)
@@ -307,7 +319,10 @@ static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
 }
 
 - (void)applyBuffersize {
-    [[AVAudioSession sharedInstance] setPreferredIOBufferDuration:double(preferredBufferSizeMs) * 0.001 error:NULL];
+    double sr = double(self->samplerate);
+    if (sr < 1000) sr = 48000.0;
+    unsigned int powerOfTwoBufferSizeFrames = nearestPowerOfTwo((unsigned int)(sr * preferredBufferSizeMs * 0.001));
+    [[AVAudioSession sharedInstance] setPreferredIOBufferDuration:powerOfTwoBufferSizeFrames / sr error:NULL];
 }
 
 - (void)applySamplerate {
@@ -374,8 +389,8 @@ static void streamFormatChangedCallback(void *inRefCon, AudioUnit inUnit, AudioU
         if (self->samplerate != sr) {
             self->samplerate = sr;
             int minimum = int(self->samplerate * 0.001f), maximum = int(self->samplerate * 0.025f);
-            self->minimumNumberOfFrames = (minimum >> 3) << 3;
-            self->maximumNumberOfFrames = (maximum >> 3) << 3;
+            self->minimumNumberOfFrames = nearestPowerOfTwo(minimum / 8) * 8;
+            self->maximumNumberOfFrames = nearestPowerOfTwo(maximum / 8) * 8;
             if (self->maximumNumberOfFrames < 1024) self->maximumNumberOfFrames = 1024;
             if (self->minimumNumberOfFrames < 16) self->minimumNumberOfFrames = 16;
             [self performSelectorOnMainThread:@selector(applyBuffersize) withObject:nil waitUntilDone:NO];
@@ -504,7 +519,7 @@ static OSStatus coreAudioProcessingCallback(void *inRefCon, AudioUnitRenderActio
 - (void)mapChannels {
     outputChannelMap.deviceChannels[0] = outputChannelMap.deviceChannels[1] = -1;
     for (int n = 0; n < 8; n++) outputChannelMap.HDMIChannels[n] = -1;
-    for (int n = 0; n < 32; n++) outputChannelMap.USBChannels[n] = inputChannelMap.USBChannels[n] = - 1;
+    for (int n = 0; n < 32; n++) outputChannelMap.USBChannels[n] = inputChannelMap.USBChannels[n] = -1;
     
     if ([(NSObject *)self->delegate respondsToSelector:@selector(mapChannels:inputMap:externalAudioDeviceName:outputsAndInputs:)]) [delegate mapChannels:&outputChannelMap inputMap:&inputChannelMap externalAudioDeviceName:externalAudioDeviceName outputsAndInputs:audioSystemInfo];
     if (!audioUnit || (numberOfChannels <= 2)) return;

@@ -385,9 +385,13 @@ public:
 
 /// @return Returns with the current pitch bend percent. Will be 1 if there is no pitch bend happening.
     JSWASM float getCurrentPitchBendPercent();
-
+    
 /// @brief Reset the pitch bend offset to the beatgrid to zero.
     JSWASM void resetBendMsOffset();
+
+/// @brief Set the pitch bend offset to the beatgrid.
+/// @param ms The value.
+    JSWASM void setBendOffsetMs(double ms);
 
 /// @return Indicates if returning from scratching or reverse playback will maintain the playback position as if the player had never entered into scratching or reverse playback.
     JSWASM bool isPerformingSlip();
