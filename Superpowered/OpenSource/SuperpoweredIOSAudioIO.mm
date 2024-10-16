@@ -412,9 +412,26 @@ static OSStatus coreAudioProcessingCallback(void *inRefCon, AudioUnitRenderActio
         }
     }
 
-    if (((int)inNumberFrames < self->minimumNumberOfFrames) || ((int)inNumberFrames > self->maximumNumberOfFrames) || ((int)ioData->mBuffers[0].mNumberChannels != self->numberOfChannels)) {
-        return kAudioUnitErr_InvalidParameter;
-    };
+#if !TARGET_OS_MACCATALYST // iOS or Mac (Designed for iPad)
+    BOOL isiOSAppOnMac = false;
+    if (@available(iOS 14.0, *)) {
+        isiOSAppOnMac = NSProcessInfo.processInfo.isiOSAppOnMac;
+    }
+#else // Mac Catalyst
+    BOOL isiOSAppOnMac = false;
+#endif
+    
+    if(isiOSAppOnMac) { // iOS: original code
+        if (((int)inNumberFrames < self->minimumNumberOfFrames) || ((int)inNumberFrames > self->maximumNumberOfFrames) || ((int)ioData->mBuffers[0].mNumberChannels != self->numberOfChannels)) {
+            return kAudioUnitErr_InvalidParameter;
+        };
+    }
+    else { // macOS: ported from SuperpoweredOSXAudioIO.mm
+        if ((d.rem != 0) || (inNumberFrames < 32) || (inNumberFrames > MAXFRAMES) || (ioData->mBuffers[0].mNumberChannels != self->numberOfChannels)) {
+            return kAudioUnitErr_InvalidParameter;
+        };
+    }
+    
 
     // Get audio input.
     float *inputBuf = NULL;
