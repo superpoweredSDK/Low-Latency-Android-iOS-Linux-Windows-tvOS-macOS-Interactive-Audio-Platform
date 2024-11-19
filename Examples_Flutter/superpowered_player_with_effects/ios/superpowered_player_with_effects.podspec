@@ -25,7 +25,6 @@ A new Flutter FFI plugin project.
 
   s.vendored_libraries = 'libSuperpoweredAudio.xcframework/ios-arm64/libSuperpoweredAudioIOS-iphoneos.a'
   # s.vendored_libraries = 'libSuperpoweredAudio.xcframework/ios-arm64_x86_64-simulator/libSuperpoweredAudioIOS-iphonesimulator.a'
-  end
 
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }

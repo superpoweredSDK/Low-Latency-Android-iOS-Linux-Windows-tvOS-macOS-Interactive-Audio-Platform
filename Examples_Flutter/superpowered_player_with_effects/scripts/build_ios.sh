@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd ../example
+cd ../example || exit
 # Podspec does not support relative path
 cp -r ../../../Superpowered/libSuperpoweredAudio.xcframework ../ios/
 
