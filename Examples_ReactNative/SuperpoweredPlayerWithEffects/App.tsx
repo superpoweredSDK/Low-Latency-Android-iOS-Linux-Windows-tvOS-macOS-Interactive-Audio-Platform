@@ -1,23 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, NativeModules, Button, Switch } from 'react-native';
+import { StyleSheet, Text, View, Button, Switch } from 'react-native';
+
+import NativeSuperpoweredEngine from './specs/NativeSuperpoweredEngine';
 
 const App = () => {
 
-  const { SuperpoweredModule } = NativeModules;
   const [isFlangerEnabled, setFlangerEnabled] = useState(true);
 
   const initializeSuperpoweredModule = () => {
-    SuperpoweredModule.initSuperpowered();
+    NativeSuperpoweredEngine.initSuperpowered();
   };
 
   const onPress = () => {
-    SuperpoweredModule.togglePlayback();
+    NativeSuperpoweredEngine.togglePlayback();
   };
 
   const handleFlangerChange = () => {
     const newFlangerState = !isFlangerEnabled;
     setFlangerEnabled(newFlangerState);
-    SuperpoweredModule.enableFlanger(newFlangerState);
+    NativeSuperpoweredEngine.enableFlanger(newFlangerState);
   };
 
   useEffect(() => {

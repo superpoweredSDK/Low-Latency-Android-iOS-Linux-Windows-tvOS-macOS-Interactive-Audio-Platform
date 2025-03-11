@@ -1,5 +1,7 @@
-cmake_minimum_required(VERSION 3.10)
-project(SuperpoweredPlayerWithEffects)
+cmake_minimum_required(VERSION 3.22.1)
+project(appmodules)
+
+include(${REACT_ANDROID_DIR}/cmake-utils/ReactNative-application.cmake)
 
 set(CMAKE_VERBOSE_MAKEFILE on)
 # Set C++ standard to C++17
@@ -15,7 +17,6 @@ set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS} -Os")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -g -UNDEBUG -DDEBUG=1")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -Os")
 
-
 file(TO_CMAKE_PATH ${PATH_TO_SUPERPOWERED} PATH_TO_SUPERPOWERED)
 include_directories(${PATH_TO_SUPERPOWERED})
 
@@ -27,10 +28,11 @@ add_library(SuperpoweredPlayerWithEffects SHARED
 )
 
 # link the native library against the following libraries
-target_link_libraries (
+target_link_libraries(
         SuperpoweredPlayerWithEffects
         log
         android
         OpenSLES
         ${PATH_TO_SUPERPOWERED}/libSuperpoweredAndroid${ANDROID_ABI}.a
 )
+target_link_libraries(appmodules SuperpoweredPlayerWithEffects)

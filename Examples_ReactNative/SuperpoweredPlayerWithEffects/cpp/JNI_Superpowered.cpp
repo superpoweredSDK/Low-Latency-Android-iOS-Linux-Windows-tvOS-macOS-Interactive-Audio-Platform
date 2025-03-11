@@ -6,8 +6,8 @@ static SuperpoweredEngineExample *example;
 
 extern "C" {
 JNIEXPORT void JNICALL
-Java_com_superpoweredplayerwitheffects_SuperpoweredModule_nativeInit(JNIEnv *env, jobject thiz,
-                                                                     jstring temp_dir) {
+Java_com_superpoweredplayerwitheffects_NativeSuperpoweredEngineModule_nativeInit(JNIEnv *env, jobject thiz,
+                                                                                 jstring temp_dir) {
     Superpowered::Initialize("ExampleLicenseKey-WillExpire-OnNextUpdate");
     const char *str = env->GetStringUTFChars(temp_dir, nullptr);
     Superpowered::AdvancedAudioPlayer::setTempFolder(str);
@@ -18,15 +18,15 @@ Java_com_superpoweredplayerwitheffects_SuperpoweredModule_nativeInit(JNIEnv *env
 }
 
 JNIEXPORT void JNICALL
-Java_com_superpoweredplayerwitheffects_SuperpoweredModule_nativeTogglePlayback(JNIEnv *env,
-                                                                               jobject thiz) {
+Java_com_superpoweredplayerwitheffects_NativeSuperpoweredEngineModule_nativeTogglePlayback(JNIEnv *env,
+                                                                                           jobject thiz) {
     example->togglePlayback();
 }
 
 JNIEXPORT void JNICALL
-Java_com_superpoweredplayerwitheffects_SuperpoweredModule_nativeEnableFlanger(JNIEnv *env,
-                                                                              jobject thiz,
-                                                                              jboolean enable) {
+Java_com_superpoweredplayerwitheffects_NativeSuperpoweredEngineModule_nativeEnableFlanger(JNIEnv *env,
+                                                                                          jobject thiz,
+                                                                                          jboolean enable) {
     example->enableFlanger(enable);
 }
 }
