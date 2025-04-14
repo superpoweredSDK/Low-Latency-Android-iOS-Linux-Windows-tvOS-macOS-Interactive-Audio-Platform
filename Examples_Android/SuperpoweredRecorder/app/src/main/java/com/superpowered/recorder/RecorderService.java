@@ -1,5 +1,7 @@
 package com.superpowered.recorder;
 
+import static android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PLAYBACK;
+
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -29,14 +31,16 @@ public class RecorderService extends Service {
             return START_NOT_STICKY;
         }
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel serviceChannel = new NotificationChannel(CHANNELID, "Foreground Service Channel", NotificationManager.IMPORTANCE_DEFAULT);
-            NotificationManager manager = getSystemService(NotificationManager.class);
-            if (manager != null) manager.createNotificationChannel(serviceChannel);
-        }
+        NotificationChannel serviceChannel = new NotificationChannel(CHANNELID, "Foreground Service Channel", NotificationManager.IMPORTANCE_DEFAULT);
+        NotificationManager manager = getSystemService(NotificationManager.class);
+        if (manager != null) manager.createNotificationChannel(serviceChannel);
 
         Notification notification = new NotificationCompat.Builder(this, CHANNELID).setContentTitle("Recorder Service").build();
-        startForeground(1, notification);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
+            startForeground(1, notification);
+        } else {
+            startForeground(1, notification, FOREGROUND_SERVICE_TYPE_MEDIA_PLAYBACK);
+        }
 
         // Get the device's sample rate and buffer size to enable
         // low-latency Android audio output, if available.
