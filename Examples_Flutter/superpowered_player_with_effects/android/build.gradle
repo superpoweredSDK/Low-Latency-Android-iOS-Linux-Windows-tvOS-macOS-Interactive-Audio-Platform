@@ -12,7 +12,7 @@ buildscript {
 
     dependencies {
         // The Android Gradle Plugin knows how to build native code with the NDK.
-        classpath 'com.android.tools.build:gradle:7.3.0'
+        classpath 'com.android.tools.build:gradle:8.9.1'
     }
 }
 
@@ -26,12 +26,13 @@ rootProject.allprojects {
 apply plugin: 'com.android.library'
 
 android {
+    namespace "com.example.superpowered_player_with_effects"
     // Bumping the plugin compileSdkVersion requires all clients of this plugin
     // to bump the version in their app.
-    compileSdkVersion 31
+    compileSdkVersion 35
 
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 26
 
         ndk { // these platforms cover 99.9% percent of all Android devices
             abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
@@ -39,7 +40,7 @@ android {
 
         externalNativeBuild {
             cmake {
-                arguments '-DANDROID_PLATFORM=android-24', "-DANDROID_TOOLCHAIN=clang", "-DANDROID_ARM_NEON=TRUE", "-DPATH_TO_SUPERPOWERED:STRING=${superpowered_sdk_path}"
+                arguments '-DANDROID_PLATFORM=android-26', "-DANDROID_TOOLCHAIN=clang", "-DANDROID_ARM_NEON=TRUE", "-DPATH_TO_SUPERPOWERED:STRING=${superpowered_sdk_path}"
                 cFlags "-O3", "-fsigned-char" // full optimization, char data type is signed
                 cppFlags "-fsigned-char", "-I${superpowered_sdk_path}"
             }
@@ -63,7 +64,7 @@ android {
 
     // Bumping the plugin ndkVersion requires all clients of this plugin to bump
     // the version in their app and to download a newer version of the NDK.
-    ndkVersion '25.1.8937393'
+    ndkVersion '27.1.12297006'
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
