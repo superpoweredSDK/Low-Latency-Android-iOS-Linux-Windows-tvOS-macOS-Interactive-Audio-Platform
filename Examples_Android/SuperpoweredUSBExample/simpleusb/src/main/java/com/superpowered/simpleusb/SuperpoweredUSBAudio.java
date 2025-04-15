@@ -9,6 +9,8 @@ import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbDeviceConnection;
 import android.hardware.usb.UsbManager;
 
+import androidx.core.content.ContextCompat;
+
 @SuppressWarnings("WeakerAccess")
 
 // This class handles USB device permissions, attaching and detaching a device.
@@ -21,7 +23,7 @@ public class SuperpoweredUSBAudio {
     public SuperpoweredUSBAudio(Context c, SuperpoweredUSBAudioHandler h) {
         context = c;
         handler = h;
-        permissionIntent = PendingIntent.getBroadcast(context, 0, new Intent(ACTION_USB_PERMISSION), PendingIntent.FLAG_MUTABLE);
+        permissionIntent = PendingIntent.getBroadcast(context, 0, new Intent(ACTION_USB_PERMISSION), PendingIntent.FLAG_IMMUTABLE);
 
         BroadcastReceiver usbReceiver = new BroadcastReceiver() {
             @Override
@@ -55,7 +57,7 @@ public class SuperpoweredUSBAudio {
         filter.addAction(UsbManager.ACTION_USB_DEVICE_ATTACHED);
         filter.addAction(UsbManager.ACTION_USB_DEVICE_DETACHED);
         filter.addAction(ACTION_USB_PERMISSION);
-        context.registerReceiver(usbReceiver, filter);
+        ContextCompat.registerReceiver(context, usbReceiver, filter, ContextCompat.RECEIVER_NOT_EXPORTED);
     }
 
     private void addUSBDevice(UsbDevice device) {

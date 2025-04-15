@@ -1,5 +1,7 @@
 package com.superpowered.recorder;
 
+import static android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PLAYBACK;
+
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -11,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Build;
 import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
 import android.util.Log;
@@ -18,6 +22,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private boolean recording = false;
@@ -52,10 +58,14 @@ public class MainActivity extends AppCompatActivity {
         b.setVisibility(View.GONE);
 
         // Checking permissions.
-        String[] permissions = {
-                Manifest.permission.RECORD_AUDIO
-        };
-        for (String s:permissions) {
+        List<String> permissionsList = new ArrayList<>();
+        permissionsList.add(Manifest.permission.RECORD_AUDIO);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            permissionsList.add(Manifest.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK);
+        }
+        String[] permissions = new String[permissionsList.size()];
+        permissionsList.toArray(permissions);
+        for (String s : permissions) {
             if (ContextCompat.checkSelfPermission(this, s) != PackageManager.PERMISSION_GRANTED) {
                 // Some permissions are not granted, ask the user.
                 ActivityCompat.requestPermissions(this, permissions, 0);

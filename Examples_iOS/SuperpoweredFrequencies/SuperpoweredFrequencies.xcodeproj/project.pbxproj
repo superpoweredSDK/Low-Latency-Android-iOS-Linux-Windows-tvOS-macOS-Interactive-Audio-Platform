@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -143,7 +143,6 @@
 				TargetAttributes = {
 					1B1688D91A7BAFF800CB7477 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = AP4SQ5L535;
 						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -307,7 +306,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = AP4SQ5L535;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SuperpoweredFrequencies/etc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -327,7 +326,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = AP4SQ5L535;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SuperpoweredFrequencies/etc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -153,11 +153,6 @@
 			attributes = {
 				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = imect;
-				TargetAttributes = {
-					1BF94B3119765521001FFAC9 = {
-						DevelopmentTeam = AP4SQ5L535;
-					};
-				};
 			};
 			buildConfigurationList = 1BF94B2D19765521001FFAC9 /* Build configuration list for PBXProject "SuperpoweredOfflineProcessingExample" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -306,7 +301,7 @@
 		1BF94B6519765521001FFAC9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = AP4SQ5L535;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "SuperpoweredOfflineProcessingExample/etc/SuperpoweredOfflineProcessingExample-Info.plist";
@@ -324,7 +319,7 @@
 		1BF94B6619765521001FFAC9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = AP4SQ5L535;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "SuperpoweredOfflineProcessingExample/etc/SuperpoweredOfflineProcessingExample-Info.plist";

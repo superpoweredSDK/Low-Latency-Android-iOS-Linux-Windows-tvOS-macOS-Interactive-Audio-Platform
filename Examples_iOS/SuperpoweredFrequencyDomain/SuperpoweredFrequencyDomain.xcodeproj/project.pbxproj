@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -147,7 +147,6 @@
 				TargetAttributes = {
 					1B468B541AE663D20099A7DD = {
 						CreatedOnToolsVersion = 6.3;
-						DevelopmentTeam = AP4SQ5L535;
 					};
 				};
 			};
@@ -305,7 +304,7 @@
 		1B468B791AE663D20099A7DD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = AP4SQ5L535;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SuperpoweredFrequencyDomain/etc/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -323,7 +322,7 @@
 		1B468B7A1AE663D20099A7DD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = AP4SQ5L535;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SuperpoweredFrequencyDomain/etc/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
