@@ -7,25 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9843601B2AD00529004BF2F9 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = 9843601A2AD00529004BF2F9 /* RealityKitContent */; };
+		5D69ED872E12E2280034308A /* libSuperpoweredAudio.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D69ED862E12E2280034308A /* libSuperpoweredAudio.xcframework */; };
+		5D69ED882E12E2280034308A /* libSuperpoweredAudio.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5D69ED862E12E2280034308A /* libSuperpoweredAudio.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5D69ED8B2E12E2360034308A /* RealityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D69ED8A2E12E2360034308A /* RealityKit.framework */; };
 		9843601D2AD00529004BF2F9 /* SuperpoweredVisionOSExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9843601C2AD00529004BF2F9 /* SuperpoweredVisionOSExampleApp.swift */; };
 		9843601F2AD00529004BF2F9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9843601E2AD00529004BF2F9 /* ContentView.swift */; };
 		984360212AD0052A004BF2F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 984360202AD0052A004BF2F9 /* Assets.xcassets */; };
 		984360242AD0052A004BF2F9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 984360232AD0052A004BF2F9 /* Preview Assets.xcassets */; };
 		984360362AD00A53004BF2F9 /* SuperpoweredAudioEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = 984360352AD00A53004BF2F9 /* SuperpoweredAudioEngine.mm */; };
-		984360382AD00D19004BF2F9 /* libSuperpoweredAudioVisionOS.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 984360372AD00D19004BF2F9 /* libSuperpoweredAudioVisionOS.xcframework */; };
-		984360392AD00D19004BF2F9 /* libSuperpoweredAudioVisionOS.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 984360372AD00D19004BF2F9 /* libSuperpoweredAudioVisionOS.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9843603C2AD01102004BF2F9 /* SuperpoweredVisionOSAudioIO.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9843603A2AD01102004BF2F9 /* SuperpoweredVisionOSAudioIO.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		9843602F2AD0057E004BF2F9 /* Embed Frameworks */ = {
+		5D69ED892E12E2280034308A /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				984360392AD00D19004BF2F9 /* libSuperpoweredAudioVisionOS.xcframework in Embed Frameworks */,
+				5D69ED882E12E2280034308A /* libSuperpoweredAudio.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -33,6 +33,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5D69ED862E12E2280034308A /* libSuperpoweredAudio.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = libSuperpoweredAudio.xcframework; path = ../../Superpowered/libSuperpoweredAudio.xcframework; sourceTree = "<group>"; };
+		5D69ED8A2E12E2360034308A /* RealityKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealityKit.framework; path = System/Library/Frameworks/RealityKit.framework; sourceTree = SDKROOT; };
 		984360152AD00529004BF2F9 /* SuperpoweredVisionOSExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperpoweredVisionOSExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		984360192AD00529004BF2F9 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		9843601C2AD00529004BF2F9 /* SuperpoweredVisionOSExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperpoweredVisionOSExampleApp.swift; sourceTree = "<group>"; };
@@ -53,8 +55,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9843601B2AD00529004BF2F9 /* RealityKitContent in Frameworks */,
-				984360382AD00D19004BF2F9 /* libSuperpoweredAudioVisionOS.xcframework in Frameworks */,
+				5D69ED8B2E12E2360034308A /* RealityKit.framework in Frameworks */,
+				5D69ED872E12E2280034308A /* libSuperpoweredAudio.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +117,8 @@
 		9843602B2AD0057D004BF2F9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5D69ED8A2E12E2360034308A /* RealityKit.framework */,
+				5D69ED862E12E2280034308A /* libSuperpoweredAudio.xcframework */,
 				984360372AD00D19004BF2F9 /* libSuperpoweredAudioVisionOS.xcframework */,
 			);
 			name = Frameworks;
@@ -130,7 +134,7 @@
 				984360112AD00529004BF2F9 /* Sources */,
 				984360122AD00529004BF2F9 /* Frameworks */,
 				984360132AD00529004BF2F9 /* Resources */,
-				9843602F2AD0057E004BF2F9 /* Embed Frameworks */,
+				5D69ED892E12E2280034308A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -138,7 +142,6 @@
 			);
 			name = SuperpoweredVisionOSExample;
 			packageProductDependencies = (
-				9843601A2AD00529004BF2F9 /* RealityKitContent */,
 			);
 			productName = SuperpoweredVisionOSExample;
 			productReference = 984360152AD00529004BF2F9 /* SuperpoweredVisionOSExample.app */;
@@ -405,13 +408,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		9843601A2AD00529004BF2F9 /* RealityKitContent */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = RealityKitContent;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9843600D2AD00529004BF2F9 /* Project object */;
 }
