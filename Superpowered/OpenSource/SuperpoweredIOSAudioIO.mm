@@ -101,9 +101,9 @@ static unsigned int nearestPowerOfTwo(unsigned int n) {
         stopTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(everySecond) userInfo:nil repeats:YES];
         [self release]; // to prevent NSTimer retaining this
 #else
-        typeof(self) __weak weakSelf = self;
+        SuperpoweredIOSAudioIO* __weak weakSelf = self;
         stopTimer = [NSTimer scheduledTimerWithTimeInterval:2.0 repeats:YES block:^(NSTimer * _Nonnull timer) {
-            __strong typeof(weakSelf) strongSelf = weakSelf;
+            __strong SuperpoweredIOSAudioIO* strongSelf = weakSelf;
             if (!strongSelf) return;
             if (strongSelf->silenceFrames > strongSelf->samplerate) {
                 [strongSelf beginInterruption];

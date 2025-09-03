@@ -10,6 +10,7 @@
 		0C80B921A6F3F58F76C31292 /* libPods-SuperpoweredPlayerWithEffects.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-SuperpoweredPlayerWithEffects.a */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		5DBF99F72D80225D00EAB33E /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DBF99F62D80225D00EAB33E /* CoreMedia.framework */; };
+		5DD8BAD82E68598F00E0053D /* SuperpoweredIOSAudioIO.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5DD8BAD72E68598F00E0053D /* SuperpoweredIOSAudioIO.mm */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		95AAEA041E2BD201C77AEFA0 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
@@ -17,7 +18,6 @@
 		A19AC9C72A8FA3FF0060D549 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19AC9C62A8FA3FF0060D549 /* AVFoundation.framework */; };
 		A19AC9C92A8FA40D0060D549 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19AC9C82A8FA40D0060D549 /* CoreAudio.framework */; };
 		A19AC9CB2A8FA4390060D549 /* libSuperpoweredAudio.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19AC9CA2A8FA4380060D549 /* libSuperpoweredAudio.xcframework */; };
-		A19AC9D82A8FAB490060D549 /* SuperpoweredIOSAudioIO.mm in Sources */ = {isa = PBXBuildFile; fileRef = A19AC9D12A8FAB480060D549 /* SuperpoweredIOSAudioIO.mm */; };
 		A19AC9DA2A8FAB490060D549 /* SuperpoweredEngineExample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A19AC9D52A8FAB490060D549 /* SuperpoweredEngineExample.cpp */; };
 		A19AC9DB2A8FAB490060D549 /* SuperpoweredEngineExampleiOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = A19AC9D62A8FAB490060D549 /* SuperpoweredEngineExampleiOS.mm */; };
 		A19AC9DD2A8FAE7A0060D549 /* SuperpoweredAudio.mm in Sources */ = {isa = PBXBuildFile; fileRef = A19AC9DC2A8FAE7A0060D549 /* SuperpoweredAudio.mm */; };
@@ -33,14 +33,13 @@
 		5709B34CF0A7D63546082F79 /* Pods-SuperpoweredPlayerWithEffects.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperpoweredPlayerWithEffects.release.xcconfig"; path = "Target Support Files/Pods-SuperpoweredPlayerWithEffects/Pods-SuperpoweredPlayerWithEffects.release.xcconfig"; sourceTree = "<group>"; };
 		5DBF99F62D80225D00EAB33E /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-SuperpoweredPlayerWithEffects.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SuperpoweredPlayerWithEffects.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DD8BAD72E68598F00E0053D /* SuperpoweredIOSAudioIO.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = SuperpoweredIOSAudioIO.mm; path = ../../../Superpowered/OpenSource/SuperpoweredIOSAudioIO.mm; sourceTree = "<absolute>"; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = SuperpoweredPlayerWithEffects/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = SuperpoweredPlayerWithEffects/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A19AC9C42A8FA3F40060D549 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		A19AC9C62A8FA3FF0060D549 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A19AC9C82A8FA40D0060D549 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		A19AC9CA2A8FA4380060D549 /* libSuperpoweredAudio.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = libSuperpoweredAudio.xcframework; path = ../../../Superpowered/libSuperpoweredAudio.xcframework; sourceTree = "<group>"; };
-		A19AC9CF2A8FAB480060D549 /* SuperpoweredIOSAudioIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperpoweredIOSAudioIO.h; sourceTree = "<group>"; };
-		A19AC9D12A8FAB480060D549 /* SuperpoweredIOSAudioIO.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SuperpoweredIOSAudioIO.mm; sourceTree = "<group>"; };
 		A19AC9D22A8FAB480060D549 /* SuperpoweredEngineExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperpoweredEngineExample.h; sourceTree = "<group>"; };
 		A19AC9D42A8FAB490060D549 /* SuperpoweredEngineExampleiOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperpoweredEngineExampleiOS.h; sourceTree = "<group>"; };
 		A19AC9D52A8FAB490060D549 /* SuperpoweredEngineExample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SuperpoweredEngineExample.cpp; sourceTree = "<group>"; };
@@ -130,8 +129,7 @@
 		A19AC9CE2A8FAB480060D549 /* cpp */ = {
 			isa = PBXGroup;
 			children = (
-				A19AC9CF2A8FAB480060D549 /* SuperpoweredIOSAudioIO.h */,
-				A19AC9D12A8FAB480060D549 /* SuperpoweredIOSAudioIO.mm */,
+				5DD8BAD72E68598F00E0053D /* SuperpoweredIOSAudioIO.mm */,
 				A19AC9D22A8FAB480060D549 /* SuperpoweredEngineExample.h */,
 				A19AC9D42A8FAB490060D549 /* SuperpoweredEngineExampleiOS.h */,
 				A19AC9D52A8FAB490060D549 /* SuperpoweredEngineExample.cpp */,
@@ -255,9 +253,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SuperpoweredPlayerWithEffects/Pods-SuperpoweredPlayerWithEffects-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SuperpoweredPlayerWithEffects/Pods-SuperpoweredPlayerWithEffects-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -294,9 +296,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SuperpoweredPlayerWithEffects/Pods-SuperpoweredPlayerWithEffects-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SuperpoweredPlayerWithEffects/Pods-SuperpoweredPlayerWithEffects-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -311,10 +317,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A19AC9DA2A8FAB490060D549 /* SuperpoweredEngineExample.cpp in Sources */,
+				5DD8BAD82E68598F00E0053D /* SuperpoweredIOSAudioIO.mm in Sources */,
 				A19AC9DB2A8FAB490060D549 /* SuperpoweredEngineExampleiOS.mm in Sources */,
 				A19AC9DD2A8FAE7A0060D549 /* SuperpoweredAudio.mm in Sources */,
 				761780ED2CA45674006654EE /* AppDelegate.swift in Sources */,
-				A19AC9D82A8FAB490060D549 /* SuperpoweredIOSAudioIO.mm in Sources */,
 				A19AC9E52A90ADE00060D549 /* RCTNativeSuperpoweredEngine.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

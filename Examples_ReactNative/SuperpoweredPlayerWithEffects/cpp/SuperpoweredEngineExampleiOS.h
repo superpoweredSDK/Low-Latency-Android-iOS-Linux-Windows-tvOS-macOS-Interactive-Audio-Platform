@@ -1,7 +1,7 @@
 #pragma once
 
 #import "SuperpoweredEngineExample.h"
-#import "SuperpoweredIOSAudioIO.h"
+#import "OpenSource/SuperpoweredIOSAudioIO.h"
 
 @interface SuperpoweredEngineExampleiOS : NSObject {
     SuperpoweredIOSAudioIO *audioIO;
