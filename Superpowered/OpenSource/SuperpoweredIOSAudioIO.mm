@@ -13,6 +13,8 @@ typedef enum audioDeviceType {
 
 static audioDeviceType NSStringToAudioDeviceType(NSString *str) {
     if ([str isEqualToString:AVAudioSessionPortHeadphones]) return audioDeviceType_headphone;
+    else if ([str isEqualToString:AVAudioSessionPortBluetoothA2DP]) return audioDeviceType_headphone;
+    else if ([str isEqualToString:AVAudioSessionPortBluetoothHFP]) return audioDeviceType_headphone;
     else if ([str isEqualToString:AVAudioSessionPortUSBAudio]) return audioDeviceType_USB;
     else if ([str isEqualToString:AVAudioSessionPortHDMI]) return audioDeviceType_HDMI;
     else return audioDeviceType_other;
@@ -48,7 +50,12 @@ static unsigned int nearestPowerOfTwo(unsigned int n) {
     audioDeviceType RemoteIOOutputChannelMap[64];
     uint64_t lastCallbackTime;
     int numberOfChannels, silenceFrames, samplerate, minimumNumberOfFrames, maximumNumberOfFrames;
-    bool audioUnitRunning, background, inputEnabled;
+    bool audioUnitRunning, background, inputEnabled, recordOnly;
+
+    float *ringBuffer;
+    unsigned int readPointerIndex;
+    unsigned int writePointerIndex;
+    unsigned int ringBufferSize;
 }
 
 @synthesize preferredBufferSizeMs, preferredSamplerate, saveBatteryInBackground, started;
@@ -61,6 +68,13 @@ static unsigned int nearestPowerOfTwo(unsigned int n) {
     inputBuffer->mBuffers[0].mDataByteSize = MAXFRAMES * 4 * numberOfChannels;
     inputBuffer->mBuffers[0].mNumberChannels = numberOfChannels;
     inputBuffer->mNumberBuffers = 1;
+
+    if (!recordOnly) {
+        ringBufferSize = MAXFRAMES * 4 * numberOfChannels + 1;
+        ringBuffer = (float *)malloc(ringBufferSize * sizeof(float));
+        readPointerIndex = 0;
+        writePointerIndex = 0;
+    }
 }
 
 - (id)initWithDelegate:(NSObject<SuperpoweredIOSAudioIODelegate> *)d preferredBufferSize:(unsigned int)preferredBufferSize preferredSamplerate:(unsigned int)prefsamplerate audioSessionCategory:(NSString *)category channels:(int)channels audioProcessingCallback:(audioProcessingCallback)callback clientdata:(void *)clientdata {
@@ -77,10 +91,10 @@ static unsigned int nearestPowerOfTwo(unsigned int n) {
         preferredBufferSizeMs = preferredBufferSize;
         preferredSamplerate = prefsamplerate;
 #if (USES_AUDIO_INPUT == 1)
-        bool recordOnly = [category isEqualToString:AVAudioSessionCategoryRecord];
+        recordOnly = [category isEqualToString:AVAudioSessionCategoryRecord];
         inputEnabled = recordOnly || [category isEqualToString:AVAudioSessionCategoryPlayAndRecord];
 #else
-        bool recordOnly = false;
+        recordOnly = false;
         inputEnabled = false;
 #endif
         processingCallback = callback;
@@ -93,6 +107,7 @@ static unsigned int nearestPowerOfTwo(unsigned int n) {
         externalAudioDeviceName = nil;
         audioUnit = NULL;
         inputBuffer = NULL;
+        ringBuffer = NULL;
 
 #if (USES_AUDIO_INPUT == 1)
         if (inputEnabled) [self createInputBuffer];
@@ -163,6 +178,9 @@ static unsigned int nearestPowerOfTwo(unsigned int n) {
         free(inputBuffer->mBuffers[0].mData);
         free(inputBuffer);
     };
+    if (ringBuffer) {
+        free(ringBuffer);
+    }
     [[AVAudioSession sharedInstance] setActive:NO error:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 #if !__has_feature(objc_arc)
@@ -360,6 +378,14 @@ static unsigned int nearestPowerOfTwo(unsigned int n) {
         audioUnit = NULL;
     };
 
+    bool headphoneAvailable = false;
+    for (AVAudioSessionPortDescription *port in [[[AVAudioSession sharedInstance] currentRoute] outputs]) {
+        audioDeviceType type = NSStringToAudioDeviceType(port.portType);
+        if (type == audioDeviceType_headphone) headphoneAvailable = true;
+    }
+    [[AVAudioSession sharedInstance] setActive:NO error:nil];
+    [[AVAudioSession sharedInstance] setMode:inputEnabled && !headphoneAvailable ? AVAudioSessionModeVoiceChat : AVAudioSessionModeDefault error:NULL];
+
     bool multiRoute = false;
     if ((numberOfChannels > 2) && [audioSessionCategory isEqualToString:AVAudioSessionCategoryPlayback]) {
         for (AVAudioSessionPortDescription *port in [[[AVAudioSession sharedInstance] currentRoute] outputs]) {
@@ -375,7 +401,6 @@ static unsigned int nearestPowerOfTwo(unsigned int n) {
 #else
     [[AVAudioSession sharedInstance] setCategory:multiRoute ? AVAudioSessionCategoryMultiRoute : audioSessionCategory error:NULL];
 #endif
-    [[AVAudioSession sharedInstance] setMode:AVAudioSessionModeDefault error:NULL];
     [self applyBuffersize];
     [self applySamplerate];
     [[AVAudioSession sharedInstance] setActive:YES error:NULL];
@@ -422,7 +447,7 @@ static void streamFormatChangedCallback(void *inRefCon, AudioUnit inUnit, AudioU
     }
 }
 
-static OSStatus coreAudioProcessingCallback(void *inRefCon, AudioUnitRenderActionFlags *ioActionFlags, const AudioTimeStamp *inTimeStamp, UInt32 inBusNumber, UInt32 inNumberFrames, AudioBufferList *ioData) {
+static OSStatus captureCallback(void *inRefCon, AudioUnitRenderActionFlags *ioActionFlags, const AudioTimeStamp *inTimeStamp, UInt32 inBusNumber, UInt32 inNumberFrames, AudioBufferList *ioData) {
     __unsafe_unretained SuperpoweredIOSAudioIO *self = (__bridge SuperpoweredIOSAudioIO *)inRefCon;
     self->lastCallbackTime = mach_absolute_time();
 
@@ -453,17 +478,73 @@ static OSStatus coreAudioProcessingCallback(void *inRefCon, AudioUnitRenderActio
     }
 
     // Get audio input.
-    float *inputBuf = NULL;
     if (self->inputEnabled) {
         self->inputBuffer->mBuffers[0].mDataByteSize = MAXFRAMES * 4 * self->numberOfChannels;
         self->inputBuffer->mBuffers[0].mNumberChannels = self->numberOfChannels;
         self->inputBuffer->mNumberBuffers = 1;
-        if (!AudioUnitRender(self->audioUnit, ioActionFlags, inTimeStamp, 1, inNumberFrames, self->inputBuffer)) inputBuf = (float *)self->inputBuffer->mBuffers[0].mData;
+        if (!AudioUnitRender(self->audioUnit, ioActionFlags, inTimeStamp, 1, inNumberFrames, self->inputBuffer)) {
+            if (self->recordOnly) {
+                float* inputBuf = (float*)self->inputBuffer->mBuffers[0].mData;
+                bool silence = !self->processingCallback(self->processingClientdata, inputBuf, (float *)ioData->mBuffers[0].mData, inNumberFrames, self->samplerate, inTimeStamp->mHostTime);
+
+                if (silence) { // Despite of ioActionFlags, it outputs garbage sometimes, so must zero the buffers:
+                    *ioActionFlags |= kAudioUnitRenderAction_OutputIsSilence;
+                    memset(ioData->mBuffers[0].mData, 0, inNumberFrames * sizeof(float) * self->numberOfChannels);
+
+                    // If the app is in the background, check if we don't output anything.
+                    if (self->background && self->saveBatteryInBackground) self->silenceFrames += inNumberFrames; else self->silenceFrames = 0;
+                } else self->silenceFrames = 0;
+
+                return noErr;
+            }
+
+            unsigned int availableItems = self->ringBufferSize - self->writePointerIndex;
+            unsigned int numberOfSamples = inNumberFrames * self->numberOfChannels;
+            if (availableItems >= numberOfSamples) {
+                memcpy(self->ringBuffer + self->writePointerIndex, self->inputBuffer->mBuffers[0].mData, numberOfSamples * sizeof(float));
+            } else {
+                memcpy(self->ringBuffer + self->writePointerIndex, self->inputBuffer->mBuffers[0].mData, availableItems * sizeof(float));
+                unsigned int leftOverItems = numberOfSamples - availableItems;
+                const float* leftOverBuffer = (float *)self->inputBuffer->mBuffers[0].mData + availableItems;
+                memcpy(self->ringBuffer, leftOverBuffer, leftOverItems * sizeof(float));
+            }
+            self->writePointerIndex = (self->writePointerIndex + numberOfSamples) % self->ringBufferSize;
+        }
     }
+
+    return noErr;
+}
+
+static OSStatus renderCallback(void *inRefCon, AudioUnitRenderActionFlags *ioActionFlags, const AudioTimeStamp *inTimeStamp, UInt32 inBusNumber, UInt32 inNumberFrames, AudioBufferList *ioData) {
+    __unsafe_unretained SuperpoweredIOSAudioIO *self = (__bridge SuperpoweredIOSAudioIO *)inRefCon;
+    self->lastCallbackTime = mach_absolute_time();
+
+    if (self->inputEnabled) {
+        const uint availableItems = self->ringBufferSize - self->readPointerIndex;
+        unsigned int numberOfSamples = inNumberFrames * self->numberOfChannels;
+        if (availableItems >= numberOfSamples) {
+            memcpy(ioData->mBuffers[0].mData, self->ringBuffer + self->readPointerIndex, numberOfSamples * sizeof(float));
+        } else {
+            memcpy(ioData->mBuffers[0].mData, self->ringBuffer + self->readPointerIndex, availableItems * sizeof(float));
+            unsigned int leftOverItems = numberOfSamples - availableItems;
+            float *leftOverBuffer = (float *)ioData->mBuffers[0].mData + availableItems;
+            memcpy(leftOverBuffer, self->ringBuffer, leftOverItems * sizeof(float));
+        }
+
+        unsigned int availableItemsToConsume = 0;
+        if (self->readPointerIndex <= self->writePointerIndex) {
+            availableItemsToConsume = self->writePointerIndex - self->readPointerIndex;
+        } else {
+            availableItemsToConsume = self->ringBufferSize - (self->readPointerIndex - self->writePointerIndex);
+        }
+        const uint itemsToDiscard = std::fmin(availableItemsToConsume, numberOfSamples);
+        self->readPointerIndex = (self->readPointerIndex + itemsToDiscard) % self->ringBufferSize;
+    }
+
     bool silence = true;
 
     // Make audio output.
-    silence = !self->processingCallback(self->processingClientdata, inputBuf, (float *)ioData->mBuffers[0].mData, inNumberFrames, self->samplerate, inTimeStamp->mHostTime);
+    silence = !self->processingCallback(self->processingClientdata, (float *)ioData->mBuffers[0].mData, (float *)ioData->mBuffers[0].mData, inNumberFrames, self->samplerate, inTimeStamp->mHostTime);
 
     if (silence) { // Despite of ioActionFlags, it outputs garbage sometimes, so must zero the buffers:
         *ioActionFlags |= kAudioUnitRenderAction_OutputIsSilence;
@@ -481,18 +562,26 @@ static OSStatus coreAudioProcessingCallback(void *inRefCon, AudioUnitRenderActio
 
     AudioComponentDescription desc;
 	desc.componentType = kAudioUnitType_Output;
-	desc.componentSubType = kAudioUnitSubType_RemoteIO;
-	desc.componentFlags = 0;
-	desc.componentFlagsMask = 0;
-	desc.componentManufacturer = kAudioUnitManufacturer_Apple;
-	AudioComponent component = AudioComponentFindNext(NULL, &desc);
-	if (AudioComponentInstanceNew(component, &au) != 0) return NULL;
+    bool headphoneAvailable = false;
+    for (AVAudioSessionPortDescription *port in [[[AVAudioSession sharedInstance] currentRoute] outputs]) {
+        audioDeviceType type = NSStringToAudioDeviceType(port.portType);
+        if (type == audioDeviceType_headphone) headphoneAvailable = true;
+    }
 
-    bool recordOnly = [audioSessionCategory isEqualToString:AVAudioSessionCategoryRecord];
+    bool shouldUseVPIO = false;
+    // Use VoiceProcessingIO when input is enabled and output is on speakers. If you don't want to use VPIO, comment out the next line.
+    shouldUseVPIO = inputEnabled && !recordOnly && !headphoneAvailable;
+    desc.componentSubType = shouldUseVPIO ? kAudioUnitSubType_VoiceProcessingIO : kAudioUnitSubType_RemoteIO;
+    desc.componentFlags = 0;
+    desc.componentFlagsMask = 0;
+    desc.componentManufacturer = kAudioUnitManufacturer_Apple;
+    AudioComponent component = AudioComponentFindNext(NULL, &desc);
+    if (AudioComponentInstanceNew(component, &au) != 0) return NULL;
+
     UInt32 value = recordOnly ? 0 : 1;
-	if (AudioUnitSetProperty(au, kAudioOutputUnitProperty_EnableIO, kAudioUnitScope_Output, 0, &value, sizeof(value))) { AudioComponentInstanceDispose(au); return NULL; };
+    if (AudioUnitSetProperty(au, kAudioOutputUnitProperty_EnableIO, kAudioUnitScope_Output, 0, &value, sizeof(value))) { AudioComponentInstanceDispose(au); return NULL; };
     value = inputEnabled ? 1 : 0;
-	if (AudioUnitSetProperty(au, kAudioOutputUnitProperty_EnableIO, kAudioUnitScope_Input, 1, &value, sizeof(value))) { AudioComponentInstanceDispose(au); return NULL; };
+    if (AudioUnitSetProperty(au, kAudioOutputUnitProperty_EnableIO, kAudioUnitScope_Input, 1, &value, sizeof(value))) { AudioComponentInstanceDispose(au); return NULL; };
 
     AudioUnitAddPropertyListener(au, kAudioUnitProperty_StreamFormat, streamFormatChangedCallback, (__bridge void *)self);
 
@@ -503,23 +592,29 @@ static OSStatus coreAudioProcessingCallback(void *inRefCon, AudioUnitRenderActio
 
     samplerate = (int)format.mSampleRate;
 
-	format.mFormatID = kAudioFormatLinearPCM;
+    format.mFormatID = kAudioFormatLinearPCM;
     format.mFormatFlags = kAudioFormatFlagIsFloat | kAudioFormatFlagIsPacked | kAudioFormatFlagsNativeEndian;
     format.mBitsPerChannel = 32;
-	format.mFramesPerPacket = 1;
+    format.mFramesPerPacket = 1;
     format.mBytesPerFrame = format.mBytesPerPacket = numberOfChannels * 4;
     format.mChannelsPerFrame = numberOfChannels;
     if (AudioUnitSetProperty(au, kAudioUnitProperty_StreamFormat, kAudioUnitScope_Input, 0, &format, sizeof(format))) { AudioComponentInstanceDispose(au); return NULL; };
     if (AudioUnitSetProperty(au, kAudioUnitProperty_StreamFormat, kAudioUnitScope_Output, 1, &format, sizeof(format))) { AudioComponentInstanceDispose(au); return NULL; };
 
-	AURenderCallbackStruct callbackStruct;
-	callbackStruct.inputProc = coreAudioProcessingCallback;
-	callbackStruct.inputProcRefCon = (__bridge void *)self;
-    if (recordOnly) {
-        if (AudioUnitSetProperty(au, kAudioOutputUnitProperty_SetInputCallback, kAudioUnitScope_Global, 0, &callbackStruct, sizeof(callbackStruct))) { AudioComponentInstanceDispose(au); return NULL; };
-    } else {
-        if (AudioUnitSetProperty(au, kAudioUnitProperty_SetRenderCallback, kAudioUnitScope_Input, 0, &callbackStruct, sizeof(callbackStruct))) { AudioComponentInstanceDispose(au); return NULL; };
-    };
+    if (inputEnabled) {
+        AURenderCallbackStruct captureCallbackStruct;
+        captureCallbackStruct.inputProc = captureCallback;
+        captureCallbackStruct.inputProcRefCon = (__bridge void *)self;
+        if (AudioUnitSetProperty(au, kAudioOutputUnitProperty_SetInputCallback, kAudioUnitScope_Global, 1, &captureCallbackStruct, sizeof(captureCallbackStruct))) { AudioComponentInstanceDispose(au); return NULL; };
+    }
+
+    if (!recordOnly) {
+        AURenderCallbackStruct renderCallbackStruct;
+        renderCallbackStruct.inputProc = renderCallback;
+        renderCallbackStruct.inputProcRefCon = (__bridge void *)self;
+
+        if (AudioUnitSetProperty(au, kAudioUnitProperty_SetRenderCallback, kAudioUnitScope_Global, 0, &renderCallbackStruct, sizeof(renderCallbackStruct))) { AudioComponentInstanceDispose(au); return NULL; };
+    }
 
 	if (AudioUnitInitialize(au)) { AudioComponentInstanceDispose(au); return NULL; };
     return au;
@@ -591,7 +686,7 @@ static OSStatus coreAudioProcessingCallback(void *inRefCon, AudioUnitRenderActio
 #endif
 
 #if (USES_AUDIO_INPUT == 1)
-    bool recordOnly = [category isEqualToString:AVAudioSessionCategoryRecord];
+    recordOnly = [category isEqualToString:AVAudioSessionCategoryRecord];
     inputEnabled = recordOnly || [category isEqualToString:AVAudioSessionCategoryPlayAndRecord];
     if (inputEnabled && !inputBuffer) [self createInputBuffer];
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= 170000
