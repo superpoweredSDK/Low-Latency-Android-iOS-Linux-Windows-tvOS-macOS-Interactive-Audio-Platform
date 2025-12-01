@@ -14,7 +14,7 @@ typedef struct audioDevice {
 
 @protocol SuperpoweredOSXAudioIODelegate;
 
-/// @brief You can have an audio processing callback in Objective-C or pure C. This is the pure C prototype.
+/// @brief You can have an audio processing callback in Objective-C or pure C. This is the pure C prototype, interleaved version.
 /// @return Return false when you did no audio processing (silence).
 /// @param clientdata A custom pointer your callback receives.
 /// @param inputBuffer 32-bit floating point interleaved audio input. Never the same to outputBuffer. Can be NULL if input is not received.
@@ -23,6 +23,16 @@ typedef struct audioDevice {
 /// @param samplerate The current sample rate in Hz.
 /// @param hostTime A mach timestamp, indicates when this buffer of audio will be passed to the audio output.
 typedef bool (*audioProcessingCallback_C) (void *clientdata, float *inputBuffer, float *outputBuffer, unsigned int numberOfFrames, unsigned int samplerate, uint64_t hostTime);
+
+/// @brief You can have an audio processing callback in Objective-C or pure C. This is the pure C prototype, non-interleaved version.
+/// @return Return false when you did no audio processing (silence).
+/// @param clientdata A custom pointer your callback receives.
+/// @param inputBuffers 32-bit floating point audio input for each channel. Never the same to any in outputBuffers. Can be NULL if input is not received.
+/// @param outputBuffers 32-bit floating point audio output for each channel. Never the same to any in inputBuffers.
+/// @param numberOfFrames The number of frames requested.
+/// @param samplerate The current sample rate in Hz.
+/// @param hostTime A mach timestamp, indicates when this buffer of audio will be passed to the audio output.
+typedef bool (*audioProcessingCallback_C_NonInterleaved) (void *clientdata, float **inputBuffers, float **outputBuffers, unsigned int numberOfFrames, unsigned int samplerate, uint64_t hostTime);
 
 /// @brief A simple system audio input and/or output handler for macOS.
 /// @warning All methods and setters should be called on the main thread only!
@@ -36,13 +46,22 @@ typedef bool (*audioProcessingCallback_C) (void *clientdata, float *inputBuffer,
 @property (nonatomic, assign) bool inputEnabled;  ///< Set this to true to enable audio input.
 @property (nonatomic, assign) bool outputEnabled; ///< Set this to true to enable audio output.
 
-/// @brief Creates an audio IO instance using the default system audio input and/or output.
+/// @brief Creates an audio IO instance using the default system audio input and/or output. Interleaved version.
 /// @param delegate The object fully implementing the SuperpoweredOSXAudioIODelegate protocol. Not retained.
 /// @param preferredBufferSizeMs The initial value for preferredBufferSizeMs. 12 is good for every device (typically results in 512 frames).
 /// @param numberOfChannels The number of channels you provide in the audio processing callback.
 /// @param enableInput Enable audio input.
 /// @param enableOutput Enable audio output.
 - (id)initWithDelegate:(id<SuperpoweredOSXAudioIODelegate>)delegate preferredBufferSizeMs:(unsigned int)preferredBufferSizeMs numberOfChannels:(int)numberOfChannels enableInput:(bool)enableInput enableOutput:(bool)enableOutput;
+
+/// @brief Creates an audio output instance using a specific audio device. Interleaved version.
+/// @param delegate The object fully implementing the SuperpoweredOSXAudioIODelegate protocol. Not retained.
+/// @param preferredBufferSizeMs The initial value for preferredBufferSizeMs. 12 is good for every device (512 frames).
+/// @param numberOfChannels The number of channels you provide in the audio processing callback.
+/// @param enableInput Enable audio input.
+/// @param enableOutput Enable audio output.
+/// @param audioDeviceID The device identifier of the audio device. Equals to AudioDeviceID of Core Audio.
+- (id)initWithDelegate:(id<SuperpoweredOSXAudioIODelegate>)delegate preferredBufferSizeMs:(unsigned int)preferredBufferSizeMs numberOfChannels:(int)numberOfChannels enableInput:(bool)enableInput enableOutput:(bool)enableOutput audioDeviceID:(unsigned int)audioDeviceID;
 
 /// @brief Creates an audio output instance using a specific audio device.
 /// @param delegate The object fully implementing the SuperpoweredOSXAudioIODelegate protocol. Not retained.
@@ -51,7 +70,7 @@ typedef bool (*audioProcessingCallback_C) (void *clientdata, float *inputBuffer,
 /// @param enableInput Enable audio input.
 /// @param enableOutput Enable audio output.
 /// @param audioDeviceID The device identifier of the audio device. Equals to AudioDeviceID of Core Audio.
-- (id)initWithDelegate:(id<SuperpoweredOSXAudioIODelegate>)delegate preferredBufferSizeMs:(unsigned int)preferredBufferSizeMs numberOfChannels:(int)numberOfChannels enableInput:(bool)enableInput enableOutput:(bool)enableOutput audioDeviceID:(unsigned int)audioDeviceID;
+- (id)initWithDelegate:(id<SuperpoweredOSXAudioIODelegate>)delegate preferredBufferSizeMs:(unsigned int)preferredBufferSizeMs numberOfChannels:(int)numberOfChannels enableInput:(bool)enableInput enableOutput:(bool)enableOutput audioDeviceID:(unsigned int)audioDeviceID interleaved:(BOOL)interleaved;
 
 /// @brief Changes the audio device.
 /// @param audioDeviceID The device identifier of the audio device (equals to AudioDeviceID of Core Audio) or UINT_MAX to use the default system audio device.
@@ -73,6 +92,12 @@ typedef bool (*audioProcessingCallback_C) (void *clientdata, float *inputBuffer,
 /// @param clientdata Some custom pointer for the C processing callback. You can set it to NULL.
 - (void)setProcessingCallback_C:(audioProcessingCallback_C)callback clientdata:(void *)clientdata;
 
+/// @brief Sets the audio processing callback to a C function, instead of the delegate's Objective-C method.
+/// 99% of all audio apps work great with the Objective-C method, so you don't need to use this. Don't call this method after [start]!
+/// @param callback The callback function.
+/// @param clientdata Some custom pointer for the C processing callback. You can set it to NULL.
+- (void)setProcessingCallback_C_NonInterleaved:(audioProcessingCallback_C_NonInterleaved)callback clientdata:(void *)clientdata;
+
 /// @return Returns with a list of the current audio input and output devices. A linked list of audioDevice structs.
 + (audioDevice *)getAudioDevices;
 
@@ -83,7 +108,7 @@ typedef bool (*audioProcessingCallback_C) (void *clientdata, float *inputBuffer,
 @protocol SuperpoweredOSXAudioIODelegate <NSObject>
 @optional
 
-/// @brief Process audio here.
+/// @brief Process audio here, interleaved version.
 /// @return Return false when you did no audio processing (silence).
 /// @param inputBuffer 32-bit floating point interleaved audio input. Never the same to outputBuffer. Can be NULL if input is not received.
 /// @param outputBuffer 32-bit floating point interleaved audio output. Never the same to inputBuffer.
@@ -93,6 +118,17 @@ typedef bool (*audioProcessingCallback_C) (void *clientdata, float *inputBuffer,
 /// @warning It's called on a high priority real-time audio thread, so please take care of blocking and processing time to prevent audio dropouts.
 @optional
 - (bool)audioProcessingCallback:(float *)inputBuffer outputBuffer:(float *)outputBuffer numberOfFrames:(unsigned int)numberOfFrames samplerate:(unsigned int)samplerate hostTime:(unsigned long long int)hostTime;
+
+/// @brief Process audio here, non-interleaved version.
+/// @return Return false when you did no audio processing (silence).
+/// @param inputBuffers 32-bit floating point audio input for each channel. Never the same to any in outputBuffers. Can be NULL if input is not received.
+/// @param outputBuffers 32-bit floating point audio output for each channel. Never the same to any in inputBuffers.
+/// @param numberOfFrames The number of frames requested.
+/// @param samplerate The current sample rate in Hz.
+/// @param hostTime A mach timestamp, indicates when this chunk of audio will be passed to the audio output.
+/// @warning It's called on a high priority real-time audio thread, so please take care of blocking and processing time to prevent audio dropouts.
+@optional
+- (bool)audioProcessingCallback:(float **)inputBuffers outputBuffers:(float **)outputBuffers numberOfFrames:(unsigned int)numberOfFrames samplerate:(unsigned int)samplerate hostTime:(unsigned long long int)hostTime;
 
 /// @brief This method is called on the main thread when an audio device is initialized.
 /// @param outputDeviceName The name of the audio output device.

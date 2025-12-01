@@ -6,40 +6,46 @@
 
 @implementation SuperpoweredOSXAudioIO {
     id<SuperpoweredOSXAudioIODelegate>delegate;
-    audioProcessingCallback_C processingCallback;
+    audioProcessingCallback_C_NonInterleaved processingCallback;
     void *processingClientdata;
     
     AudioUnit inputUnit, outputUnit;
     AudioBufferList *inputBuffers0, *inputBuffers1;
 
     NSString *mapOutputDeviceName, *mapInputDeviceName;
+    float **inputBufs0, **inputBufs1, **outputBufs;
     unsigned int numberOfChannels;
     int samplerate, inputFrames, mapNumInputChannels, mapNumOutputChannels;
-    bool shouldRun, hasInput, inputEven, outputEven;
+    bool shouldRun, hasInput, inputEven, outputEven, interleaved;
 }
 
 @synthesize preferredBufferSizeMs, inputEnabled, outputEnabled;
 
 static OSStatus audioInputCallback(void *inRefCon, AudioUnitRenderActionFlags *ioActionFlags, const AudioTimeStamp *inTimeStamp, UInt32 inBusNumber, UInt32 inNumberFrames, __attribute__((unused)) AudioBufferList *ioData) {
     SuperpoweredOSXAudioIO *self = (__bridge SuperpoweredOSXAudioIO *)inRefCon;
-
     div_t d = div(inNumberFrames, 8);
-    if ((d.rem != 0) || (inNumberFrames < 32) || (inNumberFrames > MAXFRAMES)) {
-        return kAudioUnitErr_InvalidParameter;
-    };
+    if ((d.rem != 0) || (inNumberFrames < 32) || (inNumberFrames > MAXFRAMES)) return kAudioUnitErr_InvalidParameter;
 
     self->inputFrames = inNumberFrames;
     AudioBufferList *buffer = self->inputEven ? self->inputBuffers0 : self->inputBuffers1;
-    buffer->mBuffers[0].mDataByteSize = MAXFRAMES * 4 * self->numberOfChannels;
-    buffer->mBuffers[0].mNumberChannels = self->numberOfChannels;
-    buffer->mNumberBuffers = 1;
-
+    buffer->mNumberBuffers = self->interleaved ? 1 : self->numberOfChannels;
+    buffer->mBuffers[0].mNumberChannels = self->interleaved ? self->numberOfChannels : 1;
+    buffer->mBuffers[0].mDataByteSize = MAXFRAMES * 4 * buffer->mBuffers[0].mNumberChannels;
+    for (unsigned int n = 1; n < buffer->mNumberBuffers; n++) {
+        buffer->mBuffers[n].mDataByteSize = buffer->mBuffers[0].mDataByteSize;
+        buffer->mBuffers[n].mNumberChannels = buffer->mBuffers[0].mNumberChannels;
+    }
     self->hasInput = !AudioUnitRender(self->inputUnit, ioActionFlags, inTimeStamp, inBusNumber, inNumberFrames, buffer);
     
     if (self->hasInput && !self->outputEnabled) {
-        float *inputBuf = (float *)buffer->mBuffers[0].mData;
-        if (self->processingCallback) self->processingCallback(self->processingClientdata, inputBuf, NULL, inNumberFrames, self->samplerate, inTimeStamp->mHostTime);
-        else if (self->delegate) [self->delegate audioProcessingCallback:inputBuf outputBuffer:NULL numberOfFrames:inNumberFrames samplerate:self->samplerate hostTime:inTimeStamp->mHostTime];
+        if (self->interleaved) {
+            if (self->processingCallback) ((audioProcessingCallback_C)self->processingCallback)(self->processingClientdata, (float *)buffer->mBuffers[0].mData, NULL, inNumberFrames, self->samplerate, inTimeStamp->mHostTime);
+            else if (self->delegate) [self->delegate audioProcessingCallback:(float *)buffer->mBuffers[0].mData outputBuffer:NULL numberOfFrames:inNumberFrames samplerate:self->samplerate hostTime:inTimeStamp->mHostTime];
+        } else {
+            float **inputs = self->inputEven ? self->inputBufs0 : self->inputBufs1;
+            if (self->processingCallback) self->processingCallback(self->processingClientdata, inputs, NULL, inNumberFrames, self->samplerate, inTimeStamp->mHostTime);
+            else if (self->delegate) [self->delegate audioProcessingCallback:inputs outputBuffers:NULL numberOfFrames:inNumberFrames samplerate:self->samplerate hostTime:inTimeStamp->mHostTime];
+        }
     }
     
     self->inputEven = !self->inputEven;
@@ -48,26 +54,27 @@ static OSStatus audioInputCallback(void *inRefCon, AudioUnitRenderActionFlags *i
 
 static OSStatus audioOutputCallback(void *inRefCon, AudioUnitRenderActionFlags *ioActionFlags, const AudioTimeStamp *inTimeStamp, __attribute__((unused)) UInt32 inBusNumber, UInt32 inNumberFrames, AudioBufferList *ioData) {
     SuperpoweredOSXAudioIO *self = (__bridge SuperpoweredOSXAudioIO *)inRefCon;
-
     div_t d = div(inNumberFrames, 8);
-    if ((d.rem != 0) || (inNumberFrames < 32) || (inNumberFrames > MAXFRAMES) || (ioData->mBuffers[0].mNumberChannels != self->numberOfChannels)) {
-        return kAudioUnitErr_InvalidParameter;
-    };
-
-    float *inputBuf = self->hasInput ? (float *)(self->outputEven ? self->inputBuffers0->mBuffers[0].mData : self->inputBuffers1->mBuffers[0].mData) : NULL;
-    float *outputBuf = (float *)ioData->mBuffers[0].mData;
-    
+    if ((d.rem != 0) || (inNumberFrames < 32) || (inNumberFrames > MAXFRAMES) || ((self->interleaved ? ioData->mBuffers[0].mNumberChannels : ioData->mNumberBuffers) != self->numberOfChannels)) return kAudioUnitErr_InvalidParameter;
     bool silence = true;
-    self->outputEven = !self->outputEven;
 
-    if (self->processingCallback) silence = !self->processingCallback(self->processingClientdata, inputBuf, outputBuf, inNumberFrames, self->samplerate, inTimeStamp->mHostTime);
-    else if (self->delegate) silence = ![self->delegate audioProcessingCallback:inputBuf outputBuffer:outputBuf numberOfFrames:inNumberFrames samplerate:self->samplerate hostTime:inTimeStamp->mHostTime];
+    if (self->interleaved) {
+        float *inputBuf = self->hasInput ? (float *)(self->outputEven ? self->inputBuffers0->mBuffers[0].mData : self->inputBuffers1->mBuffers[0].mData) : NULL;
+        if (self->processingCallback) silence = !((audioProcessingCallback_C)self->processingCallback)(self->processingClientdata, inputBuf, (float *)ioData->mBuffers[0].mData, inNumberFrames, self->samplerate, inTimeStamp->mHostTime);
+        else if (self->delegate) silence = ![self->delegate audioProcessingCallback:inputBuf outputBuffer:(float *)ioData->mBuffers[0].mData numberOfFrames:inNumberFrames samplerate:self->samplerate hostTime:inTimeStamp->mHostTime];
+    } else {
+        float **inputs = !self->hasInput ? NULL : (self->inputEven ? self->inputBufs0 : self->inputBufs1);
+        for (unsigned int n = 0; n < self->numberOfChannels; n++) self->outputBufs[n] = (float *)ioData->mBuffers[n].mData;
+        if (self->processingCallback) silence = !self->processingCallback(self->processingClientdata, inputs, self->outputBufs, inNumberFrames, self->samplerate, inTimeStamp->mHostTime);
+        else if (self->delegate) silence = ![self->delegate audioProcessingCallback:inputs outputBuffers:self->outputBufs numberOfFrames:inNumberFrames samplerate:self->samplerate hostTime:inTimeStamp->mHostTime];
+    }
 
     if (silence) { // Despite of ioActionFlags, it outputs garbage sometimes, so must zero the buffers:
         *ioActionFlags |= kAudioUnitRenderAction_OutputIsSilence;
-        memset(ioData->mBuffers[0].mData, 0, inNumberFrames * sizeof(float) * self->numberOfChannels);
+        for (unsigned int n = 0; n < ioData->mNumberBuffers; n++) memset(ioData->mBuffers[n].mData, 0, ioData->mBuffers[n].mDataByteSize);
     };
     
+    self->outputEven = !self->outputEven;
     return noErr;
 }
 
@@ -93,12 +100,17 @@ static OSStatus devicesChangedCallback(__attribute__((unused)) AudioObjectID inO
 }
 
 - (id)initWithDelegate:(id<SuperpoweredOSXAudioIODelegate>)del preferredBufferSizeMs:(unsigned int)bufferSizeMs numberOfChannels:(int)channels enableInput:(bool)enableInput enableOutput:(bool)enableOutput {
-    return [self initWithDelegate:del preferredBufferSizeMs:bufferSizeMs numberOfChannels:channels enableInput:enableInput enableOutput:enableOutput audioDeviceID:UINT_MAX];
+    return [self initWithDelegate:del preferredBufferSizeMs:bufferSizeMs numberOfChannels:channels enableInput:enableInput enableOutput:enableOutput audioDeviceID:UINT_MAX interleaved:TRUE];
 }
 
 - (id)initWithDelegate:(id<SuperpoweredOSXAudioIODelegate>)del preferredBufferSizeMs:(unsigned int)bufferSizeMs numberOfChannels:(int)channels enableInput:(bool)enableInput enableOutput:(bool)enableOutput audioDeviceID:(unsigned int)deviceID {
+    return [self initWithDelegate:del preferredBufferSizeMs:bufferSizeMs numberOfChannels:channels enableInput:enableInput enableOutput:enableOutput audioDeviceID:deviceID interleaved:TRUE];
+}
+
+- (id)initWithDelegate:(id<SuperpoweredOSXAudioIODelegate>)del preferredBufferSizeMs:(unsigned int)bufferSizeMs numberOfChannels:(int)channels enableInput:(bool)enableInput enableOutput:(bool)enableOutput audioDeviceID:(unsigned int)deviceID interleaved:(BOOL)isInterleaved {
     self = [super init];
     if (self) {
+        interleaved = isInterleaved;
         if (bufferSizeMs < 1) bufferSizeMs = 10;
         numberOfChannels = channels;
         self->preferredBufferSizeMs = bufferSizeMs;
@@ -115,15 +127,30 @@ static OSStatus devicesChangedCallback(__attribute__((unused)) AudioObjectID inO
         hasInput = false;
         inputEven = outputEven = true;
 
-        inputBuffers0 = (AudioBufferList *)malloc(offsetof(AudioBufferList, mBuffers[0]) + sizeof(AudioBuffer));
-        inputBuffers1 = (AudioBufferList *)malloc(offsetof(AudioBufferList, mBuffers[0]) + sizeof(AudioBuffer));
+        unsigned int numBufs = interleaved ? 1 : numberOfChannels;
+        inputBuffers0 = (AudioBufferList *)malloc(offsetof(AudioBufferList, mBuffers[0]) + sizeof(AudioBuffer) * numBufs);
+        inputBuffers1 = (AudioBufferList *)malloc(offsetof(AudioBufferList, mBuffers[0]) + sizeof(AudioBuffer) * numBufs);
         if (!inputBuffers0 || !inputBuffers1) abort();
-        inputBuffers0->mBuffers[0].mData = calloc(1, MAXFRAMES * 4 * numberOfChannels);
-        inputBuffers1->mBuffers[0].mData = calloc(1, MAXFRAMES * 4 * numberOfChannels);
-        if (!inputBuffers0->mBuffers[0].mData || !inputBuffers1->mBuffers[0].mData) abort();
-        inputBuffers0->mBuffers[0].mDataByteSize = inputBuffers1->mBuffers[0].mDataByteSize = MAXFRAMES * 4 * numberOfChannels;
-        inputBuffers0->mBuffers[0].mNumberChannels = inputBuffers1->mBuffers[0].mNumberChannels = numberOfChannels;
-        inputBuffers0->mNumberBuffers = inputBuffers1->mNumberBuffers = 1;
+        inputBuffers0->mNumberBuffers = inputBuffers1->mNumberBuffers = numBufs;
+        if (!interleaved) {
+            inputBufs0 = (float **)malloc(sizeof(float *) * numberOfChannels);
+            inputBufs1 = (float **)malloc(sizeof(float *) * numberOfChannels);
+            outputBufs = (float **)malloc(sizeof(float *) * numberOfChannels);
+            if (!inputBufs0 || !inputBufs1 || !outputBufs) abort();
+        }
+        inputBuffers0->mBuffers[0].mNumberChannels = interleaved ? numberOfChannels : 1;
+        inputBuffers0->mBuffers[0].mDataByteSize = MAXFRAMES * 4 * inputBuffers0->mBuffers[0].mNumberChannels;
+        for (unsigned int n = 0; n < numBufs; n++) {
+            inputBuffers0->mBuffers[n].mNumberChannels = inputBuffers1->mBuffers[n].mNumberChannels = inputBuffers0->mBuffers[0].mNumberChannels;
+            inputBuffers0->mBuffers[n].mDataByteSize = inputBuffers1->mBuffers[n].mDataByteSize = inputBuffers0->mBuffers[0].mDataByteSize;
+            inputBuffers0->mBuffers[n].mData = calloc(1, inputBuffers0->mBuffers[0].mDataByteSize);
+            inputBuffers1->mBuffers[n].mData = calloc(1, inputBuffers0->mBuffers[0].mDataByteSize);
+            if (!inputBuffers0->mBuffers[n].mData || !inputBuffers1->mBuffers[n].mData) abort();
+            if (!interleaved) {
+                inputBufs0[n] = (float *)inputBuffers0->mBuffers[n].mData;
+                inputBufs1[n] = (float *)inputBuffers1->mBuffers[n].mData;
+            }
+        }
 
         CFRunLoopRef runLoop = NULL;
         AudioObjectPropertyAddress rladdress = { kAudioHardwarePropertyRunLoop, kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMain };
@@ -139,6 +166,11 @@ static OSStatus devicesChangedCallback(__attribute__((unused)) AudioObjectID inO
 }
 
 - (void)setProcessingCallback_C:(audioProcessingCallback_C)callback clientdata:(void *)clientdata {
+    processingCallback = (audioProcessingCallback_C_NonInterleaved)callback;
+    processingClientdata = clientdata;
+}
+
+- (void)setProcessingCallback_C_NonInterleaved:(audioProcessingCallback_C_NonInterleaved)callback clientdata:(void *)clientdata {
     processingCallback = callback;
     processingClientdata = clientdata;
 }
@@ -161,10 +193,15 @@ static void destroyUnit(AudioComponentInstance *unit) {
     
     destroyUnit(&inputUnit);
     destroyUnit(&outputUnit);
-    free(inputBuffers0->mBuffers[0].mData);
-    free(inputBuffers1->mBuffers[0].mData);
+    for (unsigned int n = 0; n < (interleaved ? 1 : numberOfChannels); n++) {
+        free(inputBuffers0->mBuffers[n].mData);
+        free(inputBuffers1->mBuffers[n].mData);
+    }
     free(inputBuffers0);
     free(inputBuffers1);
+    if (inputBufs0) free(inputBufs0);
+    if (inputBufs1) free(inputBufs1);
+    if (outputBufs) free(outputBufs);
 #if !__has_feature(objc_arc)
     [super dealloc];
 #endif
@@ -200,16 +237,17 @@ static bool enableInput(AudioUnit au, bool enable) {
     return !AudioUnitSetProperty(au, kAudioOutputUnitProperty_EnableIO, kAudioUnitScope_Input, 1, &value, sizeof(value));
 }
 
-static void makeStreamFormat(AudioUnit au, AudioStreamBasicDescription *format, bool input, unsigned int numberOfChannels) {
+static void makeStreamFormat(AudioUnit au, AudioStreamBasicDescription *format, bool input, unsigned int numberOfChannels, bool interleaved) {
     UInt32 size = 0;
     AudioUnitGetPropertyInfo(au, kAudioUnitProperty_StreamFormat, input ? kAudioUnitScope_Input : kAudioUnitScope_Output, input ? 1 : 0, &size, NULL);
     AudioUnitGetProperty(au, kAudioUnitProperty_StreamFormat, input ? kAudioUnitScope_Input : kAudioUnitScope_Output, input ? 1 : 0, format, &size);
     format->mFormatID = kAudioFormatLinearPCM;
     format->mFormatFlags = kAudioFormatFlagIsFloat | kAudioFormatFlagsNativeEndian | kAudioFormatFlagIsPacked;
+    if (!interleaved) format->mFormatFlags |= kAudioFormatFlagIsNonInterleaved;
     format->mChannelsPerFrame = numberOfChannels;
     format->mBitsPerChannel = 32;
     format->mFramesPerPacket = 1;
-    format->mBytesPerFrame = format->mBytesPerPacket = numberOfChannels * 4;
+    format->mBytesPerFrame = format->mBytesPerPacket = interleaved ? (numberOfChannels * 4) : 4;
 }
 
 static void setBufferSize(int samplerate, int preferredBufferSizeMs, AudioDeviceID deviceID) {
@@ -276,7 +314,7 @@ static bool hasMapping(int *map) {
             if ((device != UINT_MAX) && !AudioUnitSetProperty(outau, kAudioOutputUnitProperty_CurrentDevice, kAudioUnitScope_Global, 0, &device, sizeof(device))) {
                 AudioUnitAddPropertyListener(outau, kAudioUnitProperty_StreamFormat, streamFormatChangedCallback, (__bridge void *)self);
                 AudioStreamBasicDescription format;
-                makeStreamFormat(outau, &format, false, numberOfChannels);
+                makeStreamFormat(outau, &format, false, numberOfChannels, interleaved);
                 samplerate = (int)format.mSampleRate;
                 if (!AudioUnitSetProperty(outau, kAudioUnitProperty_StreamFormat, kAudioUnitScope_Input, 0, &format, sizeof(format))) {
                     AURenderCallbackStruct callbackStruct;
@@ -312,7 +350,7 @@ static bool hasMapping(int *map) {
             if ((device != UINT_MAX) && !AudioUnitSetProperty(inau, kAudioOutputUnitProperty_CurrentDevice, kAudioUnitScope_Global, 0, &device, sizeof(device))) {
                 AudioUnitAddPropertyListener(inau, kAudioUnitProperty_StreamFormat, streamFormatChangedCallback, (__bridge void *)self);
                 AudioStreamBasicDescription format;
-                makeStreamFormat(inau, &format, true, numberOfChannels);
+                makeStreamFormat(inau, &format, true, numberOfChannels, interleaved);
                 if (outputEnabled) format.mSampleRate = samplerate; else samplerate = (int)format.mSampleRate;
                 if (!AudioUnitSetProperty(inau, kAudioUnitProperty_StreamFormat, kAudioUnitScope_Output, 1, &format, sizeof(format))) {
                     AURenderCallbackStruct callbackStruct;

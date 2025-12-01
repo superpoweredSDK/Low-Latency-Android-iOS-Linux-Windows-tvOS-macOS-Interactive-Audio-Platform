@@ -35,7 +35,7 @@ typedef struct multiInputChannelMap {
 
 @protocol SuperpoweredIOSAudioIODelegate;
 
-/// @brief You can have an audio processing callback in Objective-C or pure C. This is the pure C prototype.
+/// @brief You can have an audio processing callback in Objective-C or pure C. This is the pure C prototype, interleaved version.
 /// @return Return false when you did no audio processing (silence).
 /// @param clientdata A custom pointer your callback receives.
 /// @param inputBuffer 32-bit floating point interleaved audio input. Never the same to outputBuffer. Can be NULL if input is not received.
@@ -44,6 +44,16 @@ typedef struct multiInputChannelMap {
 /// @param samplerate The current sample rate in Hz.
 /// @param hostTime A mach timestamp, indicates when this buffer of audio will be passed to the audio output.
 typedef bool (*audioProcessingCallback) (void *clientdata, float *inputBuffer, float *outputBuffer, unsigned int numberOfFrames, unsigned int samplerate, uint64_t hostTime);
+
+/// @brief You can have an audio processing callback in Objective-C or pure C. This is the pure C prototype, non-interleaved version.
+/// @return Return false when you did no audio processing (silence).
+/// @param clientdata A custom pointer your callback receives.
+/// @param inputBuffers 32-bit floating point interleaved audio input buffers. Never the same to any in outputBuffers. Can be NULL if input is not received.
+/// @param outputBuffers s32-bit floating point interleaved audio output buffers. Never the same to any in inputBuffers.
+/// @param numberOfFrames The number of frames requested.
+/// @param samplerate The current sample rate in Hz.
+/// @param hostTime A mach timestamp, indicates when this buffer of audio will be passed to the audio output.
+typedef bool (*audioProcessingCallbackNonInterleaved) (void *clientdata, float **inputBuffers, float **outputBuffers, unsigned int numberOfFrames, unsigned int samplerate, uint64_t hostTime);
 
 /// @brief Handles all audio session, audio lifecycle (interruptions), output, buffer size, samplerate and routing headaches.
 /// @warning All methods and setters should be called on the main thread only!
@@ -59,7 +69,7 @@ typedef bool (*audioProcessingCallback) (void *clientdata, float *inputBuffer, f
 @property (nonatomic, assign) bool saveBatteryInBackground; ///< Save battery if output is silence and the app runs in background mode. True by default.
 @property (nonatomic, assign, readonly) bool started;       ///< Indicates if the instance has been started.
 
-/// @brief Constructor.
+/// @brief Constructor, interleaved audio version.
 /// @param delegate The object fully implementing the SuperpoweredIOSAudioIODelegate protocol. Not retained.
 /// @param preferredBufferSize The initial value for preferredBufferSizeMs. 12 is good for every iOS device (512 frames).
 /// @param preferredSamplerate The preferred sample rate. 44100 or 48000 are recommended for good sound quality.
@@ -68,6 +78,16 @@ typedef bool (*audioProcessingCallback) (void *clientdata, float *inputBuffer, f
 /// @param callback The audio processing callback.
 /// @param clientdata Custom data passed to the audio processing callback.
 - (id)initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)delegate preferredBufferSize:(unsigned int)preferredBufferSize preferredSamplerate:(unsigned int)preferredSamplerate audioSessionCategory:(NSString *)audioSessionCategory channels:(int)channels audioProcessingCallback:(audioProcessingCallback)callback clientdata:(void *)clientdata;
+
+/// @brief Constructor, non-interleaved audio version.
+/// @param delegate The object fully implementing the SuperpoweredIOSAudioIODelegate protocol. Not retained.
+/// @param preferredBufferSize The initial value for preferredBufferSizeMs. 12 is good for every iOS device (512 frames).
+/// @param preferredSamplerate The preferred sample rate. 44100 or 48000 are recommended for good sound quality.
+/// @param audioSessionCategory The audio session category. Audio input is enabled for the appropriate categories only!
+/// @param channels The number of output channels in the audio processing callback regardless the actual hardware capabilities. The number of input channels in the audio processing callback will reflect the actual hardware configuration.
+/// @param callback The audio processing callback.
+/// @param clientdata Custom data passed to the audio processing callback.
+- (id)initWithDelegateNonInterleaved:(id<SuperpoweredIOSAudioIODelegate>)delegate preferredBufferSize:(unsigned int)preferredBufferSize preferredSamplerate:(unsigned int)preferredSamplerate audioSessionCategory:(NSString *)audioSessionCategory channels:(int)channels audioProcessingCallback:(audioProcessingCallbackNonInterleaved)callback clientdata:(void *)clientdata;
 
 /// @brief Starts audio I/O.
 /// @return True if successful, false if failed.
