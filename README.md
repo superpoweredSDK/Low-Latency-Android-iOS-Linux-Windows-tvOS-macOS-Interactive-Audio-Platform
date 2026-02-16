@@ -200,7 +200,7 @@ Superpowered USB Audio classes for Android are compatible from Android 19 (KitKa
 
 # Android Studio
 
-Before running any Android example project, please install the Android NDK version 25.1.8937393 (Tools → SDK Manager → SDK Tools → NDK (Side by side)). Furthermore, turn off Instant Run in the settings, because the Instant Run feature of Android Studio is not compatible with native C++ Android projects.
+Before running any Android example project, please install the Android NDK version 27.1.12297006 (Tools → SDK Manager → SDK Tools → NDK (Side by side)). Furthermore, turn off Instant Run in the settings, because the Instant Run feature of Android Studio is not compatible with native C++ Android projects.
 
 
 # How to create a Superpowered project with Android Studio
