@@ -54,6 +54,7 @@ public:
     static const int OpenError_ImplementationError1 =    1013; ///< Should never happen. But if it does, please let us know.
     static const int OpenError_ImplementationError2 =    1014; ///< Should never happen. But if it does, please let us know.
     static const int OpenError_UseSetTempFolder =        1015; ///< Call AdvancedAudioPlayer::setTempFolder first.
+    static const int OpenError_DRMProtected =            1016; ///< The file is DRM-protected and cannot be decoded.
 
     bool HLSAutomaticAlternativeSwitching;   ///< If true, then the decoder will automatically switch between the HLS alternatives according to the available network bandwidth. Default: true.
     int HLSMaximumDownloadAttempts;          ///< How many times to retry if a HLS segment download fails. Default: 100.
