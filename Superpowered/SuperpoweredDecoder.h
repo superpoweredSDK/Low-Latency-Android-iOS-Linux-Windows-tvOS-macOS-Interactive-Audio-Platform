@@ -295,38 +295,38 @@ public:
     /// @param size For compressed (not decoded) audio data: the total payload size in bytes. For raw 16-bit PCM audio: the total duration in frames. Set to 0 if unknown at the beginning (eg. progressive download). Set it at any point later if it gets known.
     /// @param completed False if additional buffers can be added (such as progressive download), true otherwise.
     JSWASM static void *create(unsigned int retainCount, unsigned int samplerate, unsigned int size, bool completed);
-    
+
     /// @return Creates a main table with the payload included (special "self-contained" case).
     /// @param retainCount The retain count can be used to track usage (eg. multiple simultaneous access). If set to 0, the Decoder and the AdvancedAudioPlayer will take ownership on all the memory allocated (the main table, the buffer tables and their payloads) and will automatically free them using free(). The allocation should happen using malloc() (and not _aligned_malloc() or similar).
     /// @param samplerate Samplerate is used with the AdvancedAudioPlayer only (valid range is 8192 to 384000) and must be correctly set right at the beginning. Set it to 0 if using the Decoder.
     /// @param size For compressed (not decoded) audio data: the total payload size in bytes. For raw 16-bit PCM audio: the total duration in frames. Set to 0 if unknown at the beginning (eg. progressive download). Set it at any point later if it gets known.
     JSWASM static void *createSelfContained(unsigned int retainCount, unsigned int samplerate, unsigned int size);
-    
+
     /// @brief Adds 1 to retain count.
     /// @param pointer Pointer to the main table.
     JSWASM static void retain(void *pointer);
-    
+
     /// @brief Decrease the retain count by 1.
     /// @param pointer Pointer to the main table.
     JSWASM static void release(void *pointer);
-    
+
     /// @brief Sets completed to 1.
     /// @param pointer Pointer to the main table.
     JSWASM static void complete(void *pointer);
-    
+
     /// @brief Set size.
     /// @param pointer Pointer to the main table.
     /// @param size For compressed (not decoded) audio data: the total payload size in bytes. For raw 16-bit PCM audio: the total duration in frames. Set to 0 if unknown at the beginning (eg. progressive download). Set it at any point later if it gets known.
     JSWASM static void setSize(void *pointer, unsigned int size);
-    
+
     /// @return Returns with the size.
     /// @param pointer Pointer to the main table.
     JSWASM static unsigned int getSize(void *pointer);
-    
+
     /// @return Returns with the sample rate.
     /// @param pointer Pointer to the main table.
     JSWASM static unsigned int getSamplerate(void *pointer);
-    
+
     /// @brief Adds data.
     /// @param table Pointer to the main table.
     /// @param payload Pointer to the payload. Should be allocated with malloc() (NOT new or _aligned_malloc).
