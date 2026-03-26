@@ -181,8 +181,8 @@ static unsigned int nearestPowerOfTwo(unsigned int n) {
         AudioComponentInstanceDispose(audioUnit);
     };
     if (inputBuffer) {
-        if (interleaved) for (int n = 0; n < numberOfChannels; n++) free(inputBuffer->mBuffers[n].mData);
-        else free(inputBuffer->mBuffers[0].mData);
+        if (interleaved) free(inputBuffer->mBuffers[0].mData);
+        else for (int n = 0; n < numberOfChannels; n++) free(inputBuffer->mBuffers[n].mData);
         free(inputBuffer);
     };
     if (inputBufs) free(inputBufs);
