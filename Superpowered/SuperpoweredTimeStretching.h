@@ -55,6 +55,17 @@ public:
 /// Don't call this concurrently with process() and in a real-time thread.
     JSWASM void reset();
 
+/// @return Returns with the number of "pre-roll" input frames to supply for warming up the internals, or 0 if warm-up is not applicable (transparent operation, not turning on, or preciseTurningOn is false).
+/// Warming up removes the "the first portion of the output is not pitch-shifted/time-stretched" artifact at turn-on: instead of playing the input unprocessed until the phase vocoder has enough context, feed it the audio that immediately precedes the intended start position so it can output correctly processed audio from the very first frame.
+/// Call it after reset() (or after changing rate/pitchShiftCents), then: call beginWarmUp() with this value, feed exactly this many frames of the audio preceding the start position (their output is suppressed), then feed the real audio from the start position as usual.
+/// The result is a multiple of the internal analysis increment and depends on rate. It's never blocking for real-time usage. Use it in the same thread with the other real-time methods of this class.
+    JSWASM int getWarmUpFrames();
+
+/// @brief Starts warm-up mode: the next warmUpFrames input frames are processed to build up internal state but produce no output. See getWarmUpFrames().
+/// It's never blocking for real-time usage. Use it in the same thread with the other real-time methods of this class.
+/// @param warmUpFrames The number of pre-roll input frames that will be supplied for warm-up. Use the return value of getWarmUpFrames().
+    JSWASM void beginWarmUp(int warmUpFrames);
+
 /// @brief This class can handle one stereo audio channel pair by default (left+right). Maybe you need more if you load some music with 4 channels, then less if you load a regular stereo track.
 /// Don't call this concurrently with process() and in a real-time thread.
 /// @param numStereoPairs The number of stereo audio channel pairs. Valid values: one (stereo) to four (8 channels).
