@@ -13,6 +13,7 @@ struct PlayerInternals;
 #define PlayerError_FileTooShort         2000 ///< The audio has less than 512 frames.
 #define HLSError_PlaylistTypeMismatch    2001 ///< Some alternatives in the HLS stream are different to the first one.
 #define HLSError_Empty                   2002 ///< The HLS stream contains no alternatives.
+#define PlayerError_CannotCreateThreads  2003 ///< The player could not create its file reading threads, so it can not open anything. The process is out of thread resources: check for thread leaks.
 
 /// @brief High performance advanced audio player with:
 /// - time-stretching and pitch shifting,
@@ -113,7 +114,8 @@ public:
 
 /// @brief Opens an audio file with playback paused.
 /// Playback rate, pitchShift, timeStretching and syncMode are NOT changed if you open a new file.
-/// @warning This method has no effect if the previous open didn't finish or if called in the audio processing thread.
+/// @warning Blocks the calling thread until the previous open finishes, so never call this in the audio processing thread (that would deadlock).
+/// @warning Completing an open requires the audio processing callback to run: call processStereo() (or process8Channels()) on this player in every audio processing callback, even while it has nothing open and even while it is paused. A player which is not processed can not finish opening, and the next open() call on it will block forever.
 /// @param path Full file system path or progressive download path (http or https).
 /// @param customHTTPRequest If custom HTTP communication is required (such as sending http headers for authorization), pass a fully prepared http request object. The player will copy this object.
 /// @param skipSilenceAtBeginning If true, the player will set the position to skip the initial digital silence of the audio file (up to 10 seconds).
@@ -122,7 +124,8 @@ public:
 
 /// @brief Opens an audio file with playback paused.
 /// Playback rate, pitchShift, timeStretching and syncMode are NOT changed if you open a new file.
-/// @warning This method has no effect if the previous open didn't finish or if called in the audio processing thread.
+/// @warning Blocks the calling thread until the previous open finishes, so never call this in the audio processing thread (that would deadlock).
+/// @warning Completing an open requires the audio processing callback to run: call processStereo() (or process8Channels()) on this player in every audio processing callback, even while it has nothing open and even while it is paused. A player which is not processed can not finish opening, and the next open() call on it will block forever.
 /// @param path Full file system path or progressive download path (http or https).
 /// @param offset The byte offset inside the path.
 /// @param length The byte length from the offset.
@@ -133,7 +136,8 @@ public:
 
 /// @brief Opens raw 16-bit sterteo PCM audio in memory, with playback paused.
 /// Playback rate, pitchShift, timeStretching and syncMode are NOT changed if you open a new file.
-/// @warning This method has no effect if the previous open didn't finish or if called in the audio processing thread.
+/// @warning Blocks the calling thread until the previous open finishes, so never call this in the audio processing thread (that would deadlock).
+/// @warning Completing an open requires the audio processing callback to run: call processStereo() (or process8Channels()) on this player in every audio processing callback, even while it has nothing open and even while it is paused. A player which is not processed can not finish opening, and the next open() call on it will block forever.
 /// @param pointer Pointer to 16-bit integer numbers, raw stereo interleaved pcm audio.
 /// @param samplerate The sample rate in Hz. Valid from 8192 to 384000.
 /// @param durationFrames The duration of the audio in frames.
@@ -143,7 +147,8 @@ public:
 
 /// @brief Opens a memory location in Superpowered AudioInMemory format, with playback paused. This feature supports progressive loading via AudioInMemory::append (and the AudioInMemory doesn't even need to hold any data when openMemory is called).
 /// Playback rate, pitchShift, timeStretching and syncMode are NOT changed if you open a new file.
-/// @warning This method has no effect if the previous open didn't finish or if called in the audio processing thread.
+/// @warning Blocks the calling thread until the previous open finishes, so never call this in the audio processing thread (that would deadlock).
+/// @warning Completing an open requires the audio processing callback to run: call processStereo() (or process8Channels()) on this player in every audio processing callback, even while it has nothing open and even while it is paused. A player which is not processed can not finish opening, and the next open() call on it will block forever.
 /// @param pointer Pointer to data in Superpowered AudioInMemory format, pointing to raw stereo interleaved pcm audio inside.
 /// @param skipSilenceAtBeginning If true, the player will set the position to skip the initial digital silence of the audio file (up to 10 seconds).
 /// @param measureSilenceAtEnd If true, the player will check the length of the digital silence at the end of the audio file.
@@ -155,6 +160,11 @@ public:
 /// @param url Stream URL.
 /// @param customHTTPRequest If custom HTTP communication is required (such as sending http headers for authorization), pass a fully prepared http request object. The player will copy this object.
     void openHLS(const char *url, Superpowered::httpRequest *customHTTPRequest = 0);
+
+/// @brief Closes the current content, stops playback and releases the file (or the memory location) the player has open. The player stays fully usable, open() can be called on it again.
+/// Does nothing if the player has nothing open. Does not change playback rate, pitchShift, timeStretching or syncMode. Resets getLatestEvent() to PlayerEvent_None.
+/// @warning Blocks the calling thread until the file is released, so never call this in the audio processing thread. If the previous open didn't finish yet, it also waits for that.
+    JSWASM void close();
 
 /// @return Returns with the latest player event. This method should be used in a periodically running code, at one place only, because it returns a specific event just once per open() call. Best to be used in a UI loop.
     JSWASM PlayerEvent getLatestEvent();
