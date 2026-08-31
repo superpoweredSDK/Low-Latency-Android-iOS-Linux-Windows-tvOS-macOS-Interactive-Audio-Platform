@@ -54,6 +54,7 @@ public:
         PlayerEvent_Opening = 1,    ///< Trying to open the content.
         PlayerEvent_OpenFailed = 2, ///< Failed to open the content.
         PlayerEvent_Opened = 10,    ///< Successfully opened the content, playback can start.
+        PlayerEvent_Closed = 4,     ///< close() finished, the player has nothing open. Delivered once per close() call.
         PlayerEvent_ConnectionLost = 3, ///< Network connection lost to the HLS stream or progressive download. Can only be "recovered" by a new open(). May happen after PlayerEvent_Opened has been delivered.
         PlayerEvent_ProgressiveDownloadFinished = 11 ///< The content has finished downloading and is fully available locally. May happen after PlayerEvent_Opened has been delivered.
     } PlayerEvent;
@@ -162,7 +163,7 @@ public:
     void openHLS(const char *url, Superpowered::httpRequest *customHTTPRequest = 0);
 
 /// @brief Closes the current content, stops playback and releases the file (or the memory location) the player has open. The player stays fully usable, open() can be called on it again.
-/// Does nothing if the player has nothing open. Does not change playback rate, pitchShift, timeStretching or syncMode. Resets getLatestEvent() to PlayerEvent_None.
+/// Does not change playback rate, pitchShift, timeStretching or syncMode. getLatestEvent() will return PlayerEvent_Closed once, even if the player had nothing open.
 /// @warning Blocks the calling thread until the file is released, so never call this in the audio processing thread. If the previous open didn't finish yet, it also waits for that.
     JSWASM void close();
 
