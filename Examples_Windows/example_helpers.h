@@ -6,14 +6,25 @@
 #else
 #define CONFIGURATION "Release"
 #endif
-#if _M_ARM
+#if _M_ARM64
+#define PLATFORM "ARM64"
+#elif _M_ARM
 #define PLATFORM "ARM"
 #elif _M_X64
 #define PLATFORM "x64"
 #else
 #define PLATFORM "x86"
 #endif
-#pragma comment(lib, "..\\..\\Superpowered\\libWindows\\SuperpoweredWin143_" CONFIGURATION "_MT_" PLATFORM  ".lib")
+#if _MSC_VER >= 1950
+#define TOOLSET "145"
+#elif _MSC_VER >= 1930
+#define TOOLSET "143"
+#elif _MSC_VER >= 1920
+#define TOOLSET "142"
+#else
+#define TOOLSET "141"
+#endif
+#pragma comment(lib, "..\\..\\Superpowered\\libWindows\\SuperpoweredWin" TOOLSET "_" CONFIGURATION "_MT_" PLATFORM  ".lib")
 #pragma comment(lib, "Ws2_32.lib")
 
 static void Log(const char* format, ...) {
