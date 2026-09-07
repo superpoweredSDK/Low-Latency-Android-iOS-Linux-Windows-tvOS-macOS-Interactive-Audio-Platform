@@ -3,6 +3,10 @@ package com.superpowered.simpleusb;
 import android.os.Handler;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import android.view.View;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import android.widget.TextView;
 
 import java.util.Locale;
@@ -15,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements SuperpoweredUSBAu
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        applyWindowInsets();
         textView = findViewById(R.id.text);
 
         SuperpoweredUSBAudio usbAudio = new SuperpoweredUSBAudio(getApplicationContext(), this);
@@ -57,5 +62,21 @@ public class MainActivity extends AppCompatActivity implements SuperpoweredUSBAu
 
     static {
         System.loadLibrary("SuperpoweredExample");
+    }
+
+    // Edge-to-edge is enforced from targetSdk 35. AppCompat offsets the action bar by the status
+    // bar inset but lays the content out above it, so pad the content by the same amount. The
+    // dispatched insets arrive already consumed, hence the root window insets.
+    private void applyWindowInsets() {
+        final View root = findViewById(R.id.root);
+        final int left = root.getPaddingLeft(), top = root.getPaddingTop();
+        final int right = root.getPaddingRight(), bottom = root.getPaddingBottom();
+        ViewCompat.setOnApplyWindowInsetsListener(root, (view, windowInsets) -> {
+            WindowInsetsCompat rootInsets = ViewCompat.getRootWindowInsets(view);
+            Insets bars = (rootInsets != null ? rootInsets : windowInsets)
+                    .getInsets(WindowInsetsCompat.Type.systemBars());
+            view.setPadding(left + bars.left, top + bars.top, right + bars.right, bottom + bars.bottom);
+            return windowInsets;
+        });
     }
 }

@@ -82,6 +82,7 @@ Java_com_superpowered_playerexample_MainActivity_onUserInterfaceUpdate(JNIEnv * 
         case Superpowered::AdvancedAudioPlayer::PlayerEvent_None:
         case Superpowered::AdvancedAudioPlayer::PlayerEvent_Opening: break; // do nothing
         case Superpowered::AdvancedAudioPlayer::PlayerEvent_Opened: player->play(); break;
+        case Superpowered::AdvancedAudioPlayer::PlayerEvent_Closed: break; // close() finished, nothing is open
         case Superpowered::AdvancedAudioPlayer::PlayerEvent_OpenFailed:
         {
             int openError = player->getOpenErrorCode();
