@@ -8,6 +8,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import android.view.View;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity implements SuperpoweredUSBAudioHandler, CustomAdapterHandler {
     private ListView list;
@@ -31,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements SuperpoweredUSBAu
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        applyWindowInsets();
 
         inputPath = outputPath = thruPath = -1;
         inputFeatures = outputFeatures = thruFeatures = null;
@@ -320,5 +325,18 @@ public class MainActivity extends AppCompatActivity implements SuperpoweredUSBAu
 
     static {
         System.loadLibrary("SuperpoweredExample");
+    }
+
+    private void applyWindowInsets() {
+        final View root = findViewById(R.id.root);
+        final int left = root.getPaddingLeft(), top = root.getPaddingTop();
+        final int right = root.getPaddingRight(), bottom = root.getPaddingBottom();
+        ViewCompat.setOnApplyWindowInsetsListener(root, (view, windowInsets) -> {
+            WindowInsetsCompat rootInsets = ViewCompat.getRootWindowInsets(view);
+            Insets bars = (rootInsets != null ? rootInsets : windowInsets)
+                    .getInsets(WindowInsetsCompat.Type.systemBars());
+            view.setPadding(left + bars.left, top + bars.top, right + bars.right, bottom + bars.bottom);
+            return windowInsets;
+        });
     }
 }

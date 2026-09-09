@@ -8,6 +8,10 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.appcompat.app.AppCompatActivity;
+import android.view.View;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        applyWindowInsets();
 
         // Checking permissions.
         String[] permissions = {
@@ -100,4 +105,20 @@ public class MainActivity extends AppCompatActivity {
     // Functions implemented in the native library.
     private native void FrequencyDomain(int samplerate, int buffersize);
     private native void Cleanup();
+
+    // Edge-to-edge is enforced from targetSdk 35. AppCompat offsets the action bar by the status
+    // bar inset but lays the content out above it, so pad the content by the same amount. The
+    // dispatched insets arrive already consumed, hence the root window insets.
+    private void applyWindowInsets() {
+        final View root = findViewById(R.id.root);
+        final int left = root.getPaddingLeft(), top = root.getPaddingTop();
+        final int right = root.getPaddingRight(), bottom = root.getPaddingBottom();
+        ViewCompat.setOnApplyWindowInsetsListener(root, (view, windowInsets) -> {
+            WindowInsetsCompat rootInsets = ViewCompat.getRootWindowInsets(view);
+            Insets bars = (rootInsets != null ? rootInsets : windowInsets)
+                    .getInsets(WindowInsetsCompat.Type.systemBars());
+            view.setPadding(left + bars.left, top + bars.top, right + bars.right, bottom + bars.bottom);
+            return windowInsets;
+        });
+    }
 }
